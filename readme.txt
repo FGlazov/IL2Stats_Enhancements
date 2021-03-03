@@ -34,6 +34,8 @@ sortie_min_time = 0
 skin_id = 1
 mods = mod_rating_by_type
 
+4. Run collect_static in your run folder. Otherwise you will likely get a 500 error on the pilot rankings page.
+
 Uninstallation
 ---------------------------------------------
 Remove mod_rating_by_type from mods in your src/conf.ini.
