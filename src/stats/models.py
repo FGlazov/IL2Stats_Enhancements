@@ -1058,9 +1058,10 @@ class VLife(models.Model):
     def is_captured(self):
         return self.captured
 
+    # change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player
     @property
     def is_crashed(self):
-        return self.status == SortieStatus.crashed
+        return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout
 
     @property
     def is_shotdown(self):
