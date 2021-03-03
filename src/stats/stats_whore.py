@@ -697,7 +697,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
 
 def update_general(player, new_sortie):
     flight_time_add = 0
-    if not new_sortie.is_not_takeoff:
+    if (not new_sortie.is_not_takeoff) or new_sortie.aircraft.cls_base == 'tank':
         player.sorties_total += 1
         flight_time_add = new_sortie.flight_time
     player.flight_time += flight_time_add
