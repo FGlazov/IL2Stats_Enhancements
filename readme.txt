@@ -1,17 +1,25 @@
-============================================
-IL-2 Stats Submod: Split Rankings
-============================================
-Authors: =FEW=Revolves and Enigma89
+====================================================
+IL-2 Stats Mod Bundle: Disco + Tanks + SplitRankings
+====================================================
+Bundle compiled by: =FEW=Revolves
 
-This is a mod which adds more information to your IL2 Stats website. Its main goal is to visualize who is the best fighter, attacker, and bomber pilot/squad. To that aim, it introduces rankings for fighter, attacker and bomber planes, similar to how pilots and squads are already ranked in the original version of IL2 stats. New fields include, for example, "Top fighter pilot in the last 24 hours" and "Best bomber streak".
+This is a IL-2 stats mod compilation consisting of three mods:
 
-The wonderful IL2 Stats website has been created by =FB=Vaal and =FB=Isaay. We thank =FB=Vaal and =FB=Isaay for helping us create this mod. We also thank X51 Vaudoo, botya, SamVimes, and an unnamed Spanish speaking volunteer (They never let us know who they were!) for their help translating this mod. We also thank RaptorAttacker for his graphic work for helping us make the icons.
+Tank mod by CountZero ( https://forum.il2sturmovik.com/topic/55657-mod-to-add-tank-missions-for-il2-stats-system-made-by-fbvaal-and-fbisay/ )
+Disconnect mod by CountZero ( https://forum.il2sturmovik.com/topic/56709-mod-for-il2-stats-system-more-options-for-disconnection-situations/ )
+Split Rankings mod by =Few=Revolves and Enigma89 ( https://forum.il2sturmovik.com/topic/69965-il-2-stats-submod-split-rankings/ )
 
-Video introduction: https://www.youtube.com/watch?v=5NU9jxvSP30
+IL-2 stats is a website designed by =FB=Vaal and and =FB=Islay, which is used to track statistics on most IL-2 dedicated
+servers.
 
-This version is compatible with 1.2.48 of IL2 stats.
+This bundle version is designed to work with version 1.2.48 of IL-2 stats.
 
-DISCLAIMER: This mod is NOT (currently) retroactive, it will only split the stats of new sorties. 
+Disconnect mod version: 1.5
+Tank mod version: 2.9
+Split Rankings mod version : 1.0.1
+
+Note that if you wish to run the disconnect mod and split ranking mod together (without tanks), you don't need any
+special bundle! The two mods are compatible as is, just install both of them over each other.
 
 Installation
 ---------------------------------------------
@@ -20,24 +28,14 @@ Installation
 
 2. Copy the src folder inside this .zip into your il2 stats folder.
 
-3. Inside your src/conf.ini, add the line "mods = mod_rating_by_type" under [stats]. If you have multiple mods, you can separate them as "mods = mod1, mod_rating_by_type". As an example, you might have the following lines under [stats].
+3. Inside your src/conf.ini, add the line "mods = mod_rating_by_type" under [stats].
 
-[stats]
-mission_report_delete = false
-mission_report_backup_days = 31
-inactive_player_days = 331
-new_tour_by_month = true
-win_by_score = true
-win_score_min = 2000
-win_score_ratio = 1.25
-sortie_min_time = 0
-skin_id = 1
-mods = mod_rating_by_type
+4. Inside your src/conf ini, configure the disconnect mod as you desire. To be precise, you need to add the lines
+sortie_disco_min_time = 0
+sortie_damage_disco_time = 120
+under [stats], with values as you wish (in seconds).
 
-Uninstallation
----------------------------------------------
-Remove mod_rating_by_type from mods in your src/conf.ini.
-If you want to also remove the unused mod files, then you can delete the folder src/mod_rating_by_type
+5. Run the collect_static script in your /run folder after you're done with the above.
 
 Support
 ---------------------------------------------
@@ -47,26 +45,8 @@ Contact =FEW=Revolves on the IL2 forums.
 Compatibility with other mods
 ---------------------------------------------
 
-This mod modifies the following files. If another mod also modifies these files, there is a high chance that this mod will not be compatible with the other mod without some work.
-
-src/stats/views.py
-src/stats/urls.py
-src/stats/templates/tour.html
-src/stats/templates/squad_pilots.html
-src/stats/templates/squads.html
-src/stats/templates/squad.html
-src/stats/templates/pilots.html
-src/stats/templates/pilot.html
-src/stats/templates/mission.html
-src/stats/templates/main.html
-src/stats/locale/ru/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/fr/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/es/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/de/LC_MESSAGES/* (all files in this dir)
-
-If these two mods are incompatible, then you may attempt to merge the changes together. Most friendly python programmers will be able to do this quickly! If you're technically minded, you can attempt to do this even without programming knowledge. If you don't know any friendly programmers, you may contact =FEW=Revolves on the forums and I'll try to get back to you and Frankenstein your two mods together.
-
+This mod bundle is unlikely to be compatible with any other mod, since it touches most of the files.
 
 License
 ---------------------------------------------
-The mod is licensed under the MIT License.
+The mod bundle is licensed under the MIT License.
