@@ -12,7 +12,7 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, mission, missions_list,
+from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, missions_list,
                          pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards, tankman_rankings,
                          tankman, tankman_awards, tankman_killboard, tankman_sorties, tankman_sortie_log,
                          tankman_vlifes, tankman_vlife, squad_tankmans, tankman_sortie)
@@ -371,18 +371,25 @@ def mission(request, mission_id):
     sort_by = request.GET.get('sort_by', '-score')
     if sort_by.replace('-', '') not in pilots_sort_fields:
         return redirect('stats:players_list', permanent=False)
-    players = (PlayerMission.objects.select_related('player', 'profile')
+    pilots = (PlayerMission.objects.select_related('player', 'profile')
                .filter(mission_id=mission_id, player__type='pilot')
                # .only('profile_id', 'player__tour_id', 'ak_total', 'gk_total', 'flight_time',
                #       'kd', 'khr', 'accuracy', 'score', 'sorties_coal', 'sorties_total')
                .order_by(sort_by, '-flight_time'))
+
+    tankmans = (PlayerMission.objects.select_related('player', 'profile')
+                .filter(mission_id=mission_id, player__type='tankman')
+                # .only('profile_id', 'player__tour_id', 'ak_total', 'gk_total', 'flight_time',
+                #       'gkd', 'gkhr', 'kd', 'khr', 'accuracy', 'score', 'sorties_coal', 'sorties_total')
+                .order_by(sort_by, '-flight_time'))
 
     summary_total = mission_.stats_summary_total()
     summary_coal = mission_.stats_summary_coal()
 
     return render(request, 'mission.html', {
         'mission': mission_,
-        'players': players,
+        'pilots': pilots,
+        'tankmans': tankmans,
         'sort_by': sort_by,
         'summary_total': summary_total,
         'summary_coal': summary_coal,
