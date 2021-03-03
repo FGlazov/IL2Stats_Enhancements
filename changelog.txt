@@ -1,3 +1,7 @@
 Version 1.0:
 
 - Initial version of bundle.
+
+Version 1.0.1
+
+- Actually read in mods. This means SplitRankings will properly load now, instead of just staying inactive.
