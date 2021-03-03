@@ -1,0 +1,4 @@
+Version 1.0:
+
+- Initial version. 
+- Based on branch feature/statsByPlaneType of GitHub repo FGlazov/IL2_Stats
