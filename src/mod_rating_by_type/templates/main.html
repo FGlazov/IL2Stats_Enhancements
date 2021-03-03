@@ -164,32 +164,6 @@
                 </div>
                 {% endif %}
 
-                {% if top_24_light %}
-                <div class="top_pilots" style="float: left;">
-                    <div class="top_title">
-                        {% trans 'Best fighter pilots in the last 24 hours' context 'tour_top' %}
-                    </div>
-                    <div class="top_table">
-                        <div class="head_row">
-                            <div class="cell" style="width: 30px;">#</div>
-                            <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
-                            <div class="cell" style="width: 30px;"></div>
-                            <div class="cell">{% trans 'score' context 'tour_top' %}</div>
-                        </div>
-                        {% for player, score in top_24_light %}
-                        <a class="row" href="{{ player.get_pilot_url }}">
-                            <div class="cell">{{ forloop.counter }}</div>
-                            <div class="cell">{{ player.nickname }}</div>
-                            <div class="cell img">
-                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
-                            </div>
-                            <div class="cell">{{ score }}</div>
-                        </a>
-                        {% endfor %}
-                    </div>
-                </div>
-                {% endif %}
-
                 {% if toptank_24 %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
@@ -236,6 +210,32 @@
                                 {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
                             </div>
                             <div class="cell">{{ player.score_streak_current }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if top_24_light %}
+                <div class="top_pilots" style="float: left;">
+                    <div class="top_title">
+                        {% trans 'Best fighter pilots in the last 24 hours' context 'tour_top' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                        </div>
+                        {% for player, score in top_24_light %}
+                        <a class="row" href="{{ player.get_pilot_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ score }}</div>
                         </a>
                         {% endfor %}
                     </div>

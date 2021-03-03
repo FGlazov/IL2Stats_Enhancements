@@ -267,6 +267,7 @@ def main(request):
         'summary_total': summary_total,
         'summary_coal': summary_coal,
         'top_streak': top_streak,
+        'toptank_streak': toptank_streak,
         'top_streak_heavy': top_streak_heavy,
         'top_streak_medium': top_streak_medium,
         'top_streak_light': top_streak_light,
