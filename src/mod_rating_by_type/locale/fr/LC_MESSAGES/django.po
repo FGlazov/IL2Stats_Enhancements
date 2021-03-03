@@ -7464,9 +7464,6 @@ msgid "Best live attacker pilots"
 msgstr "Meilleurs pilotes d’attaque au sol en vie"
 
 #: .\stats\templates\main.html:274
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last 24 hours"
 msgstr "Meilleurs pilotes de bombardiers dans les dernières 24 heures"
