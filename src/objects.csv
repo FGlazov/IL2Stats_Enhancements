@@ -1,0 +1,2392 @@
+cls,log_name,playable,name,name_ru
+aaa_heavy,52-K,0,52-K AAA gun,зенитное орудие 52-K
+aaa_heavy,Flak 36,0,Flak 36 AAA gun,зенитное орудие Flak 36
+aaa_heavy,Flak 37,0,Flak 37 AAA gun,зенитное орудие Flak 37
+aaa_heavy,M1A1 90 mm Gun,0,,
+aaa_light,61-K,0,61-K AAA gun,зенитное орудие 61-K
+aaa_light,61-K ship turret,0,61-K AAA gun,зенитное орудие 61-K
+aaa_light,61-K turret,0,61-K AAA gun,зенитное орудие 61-K
+aaa_light,61-K turret 1124,0,61-K AAA gun,зенитное орудие 61-K
+aaa_light,7.7 cm FlaK L/27,0,,
+aaa_light,7.7 cm FlaK L/27 turret,0,,
+aaa_light,72-K,0,72-К AAA gun,зенитная пушка 72-К
+aaa_light,Daimler M1914 FlaK 77/L27,0,,
+aaa_light,Flak 38,0,Flak 38 AAA gun,зенитное орудие Flak 38
+aaa_light,Flak 38 turret,0,Flak 38 AAA gun,зенитное орудие Flak 38
+aaa_light,M16 Half-track AAA gun,0,,
+aaa_light,QF 13 pounder 6 cwt,0,,
+aaa_light,QF 13 pounder 6 cwt turret,0,,
+aaa_light,Sd Kfz 10 Flak 38,0,Sd Kfz 10 APC with Flak 38 AAA gun,самоходное зенитное орудие Flak 38
+aaa_light,Thornycroft J-type 13pdr AA,0,,
+aaa_light,US Landlight,0,,
+aaa_light,US Searchlight,0,,
+aaa_light,US Searchlight Generator,0,,
+aaa_light,ZiS-5 72-K,0,ZiS-5 72-K AAA gun,самоходная зенитная пушка 72-К
+aaa_mg,DShK-AA,0,DShK AA machinegun,зенитный пулемёт ДШК
+aaa_mg,GAZ-AA M4,0,GAZ-AA truck with M4 AAA machinegun,самоходный зенитный пулемёт Максим
+aaa_mg,Hotchkiss Mle 14 AA,0,,
+aaa_mg,Hotchkiss Mle 14 AA turret,0,,
+aaa_mg,M2.50 AA,0,M2.50 AA machinegun,зенитный пулемёт M2.50
+aaa_mg,M4,0,M4 AAA machinegun,зенитный пулемёт Максим
+aaa_mg,M4 turret,0,M4 AAA machinegun,зенитный пулемёт Максим
+aaa_mg,MG 34 AA,0,MG-34 AA machinegun,зенитный пулемёт MG-34
+aaa_mg,MG 34 AA turret,0,MG-34 AA machinegun,зенитный пулемёт MG-34
+aaa_mg,MG-34 AA,0,MG-34 AA machinegun,зенитный пулемёт MG-34
+aaa_mg,MG-34 AA turret,0,MG-34 AA machinegun,зенитный пулемёт MG-34
+aaa_mg,Spandau MG 08 AA,0,,
+aaa_mg,Spandau MG 08 AA turret,0,,
+aerostat,AeType,0,,
+aerostat,Caquot,0,,
+aerostat,Drachen,0,,
+aerostat,Parseval,0,,
+aircraft_gunner,BotGunner,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm_RAF43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Bbtm_USA43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop_RAF43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_A20Btop_USA43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_RAF,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_RAF43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dbtm_USA43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_RAF,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_RAF43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dfwd_USA43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_RAF,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_RAF43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_B25Dtop_USA43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Bf110,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Bf110E2,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Bf110E2_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Bf110G2,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Bf110G2_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_BFF2B,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_BFF2B_M,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_BFF2B_M_RAF17,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_BFF2B_RAF17,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_HCL2,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_HCL2_GER17,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_HCL2_M,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_HCL2_M_GER17,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_HCL2_M2,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16fwd,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16fwdM,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16rear,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16rear_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16rearM,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16side,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16side_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16top,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H16top_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6fwd,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6fwd_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6fwdM,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6fwdM_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6rear,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6rear_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6rearM,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6rearM_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6side,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6side_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6top,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_He111H6top_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Il2m42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Il2m42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Il2m42_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Il2m43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Il2m43_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju87D3,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju87D3_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88btm,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88btm_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88fwd,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88fwd_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88top,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Ju88top_GER41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_femRUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_femRUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_femRUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_RUS41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35rear_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35top,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s35top_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87rear,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87rear_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87top,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87top_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87topM,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_Pe2s87topM_RUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_femRUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_femRUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_femRUSwi,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_RUS41,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_RUS42,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_RUS43,1,Aircraft gunner,стрелок
+aircraft_gunner,BotGunner_U2_RUSwi,1,Aircraft gunner,стрелок
+aircraft_heavy,A-20B,1,,
+aircraft_heavy,B-25D,0,,
+aircraft_heavy,B-25D (RAF),0,,
+aircraft_heavy,He 111 H-16,1,,
+aircraft_heavy,He 111 H-6,1,,
+aircraft_heavy,Ju 88 A-4,1,,
+aircraft_heavy,Pe-2 ser.35,1,Pe-2 (series 35),Пе-2 35-й серии
+aircraft_heavy,Pe-2 ser.87,1,Pe-2 (series 87),Пе-2 87-й серии
+aircraft_light,Albatros D.Va,1,,
+aircraft_light,Bf 109 E-7,1,,
+aircraft_light,Bf 109 F-2,1,,
+aircraft_light,Bf 109 F-4,1,,
+aircraft_light,Bf 109 G-14,1,,
+aircraft_light,Bf 109 G-2,1,,
+aircraft_light,Bf 109 G-4,1,,
+aircraft_light,Bf 109 G-6,1,,
+aircraft_light,Bf 109 G-6 Late,1,,
+aircraft_light,Bf 109 K-4,1,,
+aircraft_light,Fokker D.VII,1,,
+aircraft_light,Fokker D.VIIF,1,,
+aircraft_light,Fokker Dr.I,1,,
+aircraft_light,Fw 190 A-3,1,,
+aircraft_light,Fw 190 A-5,1,,
+aircraft_light,Fw 190 A-6,1,,
+aircraft_light,Fw 190 A-8,1,,
+aircraft_light,Fw 190 D-9,1,,
+aircraft_light,Hurricane Mk.II,1,,
+aircraft_light,I-16 type 24,1,I-16 Type 24,И-16 тип 24
+aircraft_light,La-5 ser.8,1,La-5 (series 8),Ла-5 8-й серии
+aircraft_light,La-5FN ser.2,1,La-5FN (series 2),Ла-5ФН 2-й серии
+aircraft_light,LaGG-3 ser.29,1,LaGG-3 (series 29),ЛаГГ-3 29-й серии
+aircraft_light,MC.202 ser.VIII,1,MC.202 Series VIII,
+aircraft_light,MiG-3 ser.24,1,MiG-3 (series 24),МиГ-3 24-й серии
+aircraft_light,P-39L-1,1,,
+aircraft_light,P-40E-1,1,P-40 E-1,
+aircraft_light,P-47D-22,1,,
+aircraft_light,P-47D-28,1,,
+aircraft_light,P-51D-15,1,,
+aircraft_light,Pfalz D.IIIa,1,,
+aircraft_light,S.E.5a,1,,
+aircraft_light,Sopwith Camel,1,,
+aircraft_light,Sopwith Dolphin,1,,
+aircraft_light,SPAD 13.C1,1,,
+aircraft_light,Spitfire Mk.IXe,1,,
+aircraft_light,Spitfire Mk.VB,1,,
+aircraft_light,Tempest Mk.V ser.2,1,,
+aircraft_light,Yak-1 ser.69,1,Yak-1 (series 69),Як-1 69-й серии
+aircraft_light,Yak-1B ser.127,1,Yak-1B (series 127),Як-1б 127-й серии
+aircraft_light,Yak-7B ser.36,1,Yak-7B (series 36),Як-7б 36-й серии
+aircraft_light,Yak-9 ser.1,1,Yak-9 series 1,Як-9 1-й серии
+aircraft_light,Yak-9T ser.1,1,Yak-9T series 1,Як-9Т 1-й серии
+aircraft_medium,Bf 110 E-2,1,,
+aircraft_medium,Bf 110 G-2,1,,
+aircraft_medium,Bristol F2B (F.II),1,,
+aircraft_medium,Bristol F2B (F.III),1,,
+aircraft_medium,Halberstadt CL.II,1,,
+aircraft_medium,Halberstadt CL.II 200hp,1,,
+aircraft_medium,Hs 129 B-2,1,,
+aircraft_medium,Il-2 mod.1941,1,IL-2 model 1941,Ил-2 модель 1941 года
+aircraft_medium,Il-2 mod.1942,1,IL-2 AM-38,Ил-2 AM-38
+aircraft_medium,Il-2 mod.1943,1,IL-2 AM-38F,Ил-2 AM-38Ф
+aircraft_medium,Ju 87 D-3,1,,
+aircraft_medium,Me 262 A,1,,
+aircraft_medium,P-38J-25,1,,
+aircraft_medium,U-2VS,1,U-﻿2,У-2
+aircraft_pilot,BotPilot,1,pilot,пилот
+aircraft_pilot,BotPilot_A20B,1,pilot,пилот
+aircraft_pilot,BotPilot_A20B_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_A20B_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_A20B_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_A20B_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_RAF,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_B25D_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_Bf109,1,pilot,пилот
+aircraft_pilot,BotPilot_Bf109_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_Bf109_GER41wi,1,pilot,пилот
+aircraft_pilot,BotPilot_Bf109_GER44,1,pilot,пилот
+aircraft_pilot,BotPilot_Bf109K,1,pilot,пилот
+aircraft_pilot,BotPilot_C47A_RAF43,0,pilot,пилот
+aircraft_pilot,BotPilot_C47A_RUS41,0,pilot,пилот
+aircraft_pilot,BotPilot_C47A_RUS42,0,pilot,пилот
+aircraft_pilot,BotPilot_C47A_RUS43,0,pilot,пилот
+aircraft_pilot,BotPilot_C47A_RUSwi,0,pilot,пилот
+aircraft_pilot,BotPilot_C47A_USA43,0,pilot,пилот
+aircraft_pilot,BotPilot_FokkerDr1,1,pilot,пилот
+aircraft_pilot,BotPilot_FokkerDr1_GER17,1,pilot,пилот
+aircraft_pilot,BotPilot_FW190,1,pilot,пилот
+aircraft_pilot,BotPilot_Fw190_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_Fw190_GER41wi,1,pilot,пилот
+aircraft_pilot,BotPilot_Fw190_GER44,1,pilot,пилот
+aircraft_pilot,BotPilot_Fw190D,1,pilot,пилот
+aircraft_pilot,BotPilot_He111,1,pilot,пилот
+aircraft_pilot,BotPilot_He111_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_Hs129B2,1,pilot,пилот
+aircraft_pilot,BotPilot_Hs129B2_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_Il2,1,pilot,пилот
+aircraft_pilot,BotPilot_Il2_RUS41,1,pilot,пилот
+aircraft_pilot,BotPilot_Il2_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_Il2_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_Il2_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_Ju52,1,pilot,пилот
+aircraft_pilot,BotPilot_Ju52_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_Ju88,1,pilot,пилот
+aircraft_pilot,BotPilot_Ju88_GER41,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_RUS41,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_LaGG3_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_Me262,1,pilot,пилот
+aircraft_pilot,BotPilot_Me262_GER44,1,pilot,пилот
+aircraft_pilot,BotPilot_P38,1,pilot,пилот
+aircraft_pilot,BotPilot_P38_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_P38_USA44,1,pilot,пилот
+aircraft_pilot,BotPilot_P39,1,pilot,пилот
+aircraft_pilot,BotPilot_P39_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilot_P39_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_P39_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_P39_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_P39_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_P47,1,pilot,пилот
+aircraft_pilot,BotPilot_P47_RAF,1,pilot,пилот
+aircraft_pilot,BotPilot_P47_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilot_P47_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_P47_USA43,1,pilot,пилот
+aircraft_pilot,BotPilot_P47_USA44,1,pilot,пилот
+aircraft_pilot,BotPilot_Pe2,1,pilot,пилот
+aircraft_pilot,BotPilot_Pe2_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_Spad13,1,pilot,пилот
+aircraft_pilot,BotPilot_Spad13_RAF17,1,pilot,пилот
+aircraft_pilot,BotPilot_Spit9,1,pilot,пилот
+aircraft_pilot,BotPilot_Spit9_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilot_Spit9_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_Spit9_USA44,1,pilot,пилот
+aircraft_pilot,BotPilot_U2,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_femRUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_femRUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_femRUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_RUS41,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilot_U2_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_A20B_USA43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_RAF,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_RAF43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_RUS42,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_RUS43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_B25D_USA43,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_RAF43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_RUS41,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_RUS42,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_RUS43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_RUSwi,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_C47A_USA43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_Fra,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_Ger,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_Ju52,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_Ju52_GER41,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2,1,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_femRUS42,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_femRUS43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_femRUSwi,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_RUS41,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_RUS42,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_RUS43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC_U2_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_RAF43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_RUS41,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_RUS42,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_RUS43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_RUSwi,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_C47A_USA43,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_Ju52,0,pilot,пилот
+aircraft_pilot,BotPilotNPC2_Ju52_GER41,1,pilot,пилот
+aircraft_static,static_A20B,0,parked aircraft,самолет на стоянке
+aircraft_static,static_a20raf,0,parked aircraft,самолет на стоянке
+aircraft_static,static_B25D,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109e7,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109e7_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf109e7_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Bf109K4,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf110e2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_bf110e2_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Fw190A8,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Fw190D9,0,parked aircraft,самолет на стоянке
+aircraft_static,static_he111,0,parked aircraft,самолет на стоянке
+aircraft_static,static_he111_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Hs129B2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_i16,0,parked aircraft,самолет на стоянке
+aircraft_static,static_i16_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_il2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_il2_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju52,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju87,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju87_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju87_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju88,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju88_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_ju88_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_lagg3,0,parked aircraft,самолет на стоянке
+aircraft_static,static_lagg3_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_lagg3_w1,0,parked aircraft,самолет на стоянке
+aircraft_static,static_lagg3_w2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Me262A,0,parked aircraft,самолет на стоянке
+aircraft_static,static_mig3,0,parked aircraft,самолет на стоянке
+aircraft_static,static_mig3_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_P38J25,0,parked aircraft,самолет на стоянке
+aircraft_static,static_P39L1,0,parked aircraft,самолет на стоянке
+aircraft_static,static_P40E1,0,parked aircraft,самолет на стоянке
+aircraft_static,static_P47D28,0,parked aircraft,самолет на стоянке
+aircraft_static,static_P51D15,0,parked aircraft,самолет на стоянке
+aircraft_static,static_pe2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_pe2_open,0,parked aircraft,самолет на стоянке
+aircraft_static,static_SpitfireMkIXe,0,parked aircraft,самолет на стоянке
+aircraft_static,static_TempestMkVs2,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Typhoon,0,parked aircraft,самолет на стоянке
+aircraft_static,static_U2VS,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Yak1,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Yak1_net,0,parked aircraft,самолет на стоянке
+aircraft_static,static_Yak1_open,0,parked aircraft,самолет на стоянке
+aircraft_transport,C-47A,0,,
+aircraft_transport,Ju 52 3mg4e,1,,
+aircraft_turret,aircraft_turret,1,,
+aircraft_turret,Turret_A20B_1,1,A-20B turret,турель A-20B
+aircraft_turret,Turret_A20B_2,1,A-20B turret,турель A-20B
+aircraft_turret,Turret_B25D_1,0,B25 turret,турель B25
+aircraft_turret,Turret_B25D_2,0,B25 turret,турель B25
+aircraft_turret,Turret_B25D_3,0,B25 turret,турель B25
+aircraft_turret,Turret_B25Draf_1,0,B25 turret,турель B25
+aircraft_turret,Turret_B25Draf_2,0,B25 turret,турель B25
+aircraft_turret,Turret_B25Draf_3,0,B25 turret,турель B25
+aircraft_turret,Turret_Bf110E2,1,Bf 110 E-2 turret,турель Bf 110 E-2
+aircraft_turret,Turret_Bf110G2,1,Bf 110 G-2 turret,турель Bf 110 G-2
+aircraft_turret,Turret_he111h16_1,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_He111H16_1M,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_he111h16_2,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_he111h16_3,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_He111H16_3M,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_he111h16_4,1,He 111 H-16 turret,турель He 111 H-16
+aircraft_turret,Turret_He111H6_1,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_He111H6_1M,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_He111H6_2,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_He111H6_3,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_He111H6_3M,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_He111H6_4,1,He 111 H-6 turret,турель He 111 H-6
+aircraft_turret,Turret_Il2m42,1,IL-2 AM-38 turret,турель Ил-2 AM-38
+aircraft_turret,Turret_Il2m43,1,IL-2 AM-38F turret,турель Ил-2 АМ-38Ф
+aircraft_turret,Turret_Ju523mg4e,1,Ju 52 3mg4e turret,турель Ju 52 3mg4e
+aircraft_turret,Turret_Ju87D3,1,Ju 87 D-3 turret,турель Ju-87 D-3
+aircraft_turret,Turret_Ju88A4_1,1,Ju 88 A-4 turret,турель Ju 88 A-4
+aircraft_turret,Turret_Ju88A4_2,1,Ju 88 A-4 turret,турель Ju 88 A-4
+aircraft_turret,Turret_Ju88A4_3,1,Ju 88 A-4 turret,турель Ju 88 A-4
+aircraft_turret,Turret_Pe2s35_1,1,Pe-2 (series 35) turret,турель Пе-2 35-й серии
+aircraft_turret,Turret_Pe2s35_2,1,Pe-2 (series 35) turret,турель Пе-2 35-й серии
+aircraft_turret,Turret_Pe2s87_1,1,Pe-2 (series 87) turret,турель Пе-2 87-й серии
+aircraft_turret,Turret_Pe2s87_1M,1,Pe-2 (series 87) turret,турель Пе-2 87-й серии
+aircraft_turret,Turret_Pe2s87_2,1,Pe-2 (series 87) turret,турель Пе-2 87-й серии
+aircraft_turret,Turret_U2VS,1,U-2VS turret,турель У-2ВС
+aircraft_turret,TurretBristolF2B_1,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF2_1,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF2_1_WM2,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF2_1M,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF3_1,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF3_1_WM2,1,Bristol turret,турель Bristol
+aircraft_turret,TurretBristolF2BF3_1M,1,Bristol turret,турель Bristol
+aircraft_turret,TurretHalberstadtCL2_1,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1_WM_beckAP,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1_WM_beckHE,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1_WM_beckHEAP,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1_WM_TwinPar,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1M,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2_1M2,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1_WM_beckAP,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1_WM_beckHE,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1_WM_beckHEAP,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1_WM_TwinPar,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1M,1,Halberstadt turret,турель Halberstadt
+aircraft_turret,TurretHalberstadtCL2au_1M2,1,Halberstadt turret,турель Halberstadt
+airfield,af_barracksround1,0,,
+airfield,af_barracksround2,0,,
+airfield,af_barrackssmall,0,,
+airfield,af_camptents1,0,,
+airfield,af_camptents2,0,,
+airfield,af_guardgate,0,,
+airfield,af_hangardoubleside,0,,
+airfield,af_hangartent1,0,,
+airfield,af_hangartent2,0,,
+airfield,af_smalltents,0,,
+airfield,arf_ammo_1,0,airfield ammo dump,аэродромный склад вооружения
+airfield,arf_ammo_2,0,airfield ammo dump,аэродромный склад вооружения
+airfield,arf_ammo_3,0,airfield ammo dump,аэродромный склад вооружения
+airfield,arf_ammo_4,0,airfield ammo dump,аэродромный склад вооружения
+airfield,Arf_Barak,0,barrack,барак
+airfield,arf_caponiers_1_V_5,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_10_H_3,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_11_H_5,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_12_H_5,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_2_V_5,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_3_V_5,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_4_R_6,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_5_R_7,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_6_H_4,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_7_H_4,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_8_H_4,0,airfield shelter,аэродромное укрытие
+airfield,arf_caponiers_9_H_3,0,airfield shelter,аэродромное укрытие
+airfield,arf_dugouts_1,0,dugout,укрытие
+airfield,arf_dugouts_2,0,dugout,укрытие
+airfield,arf_dugouts_3,0,dugout,укрытие
+airfield,arf_eu_barrackblack,0,,
+airfield,arf_eu_barrackblack4,0,,
+airfield,arf_eu_barrackwhite,0,,
+airfield,arf_eu_barrackwhite4,0,,
+airfield,arf_eu_controltower,0,,
+airfield,arf_eu_lufthangar,0,,
+airfield,arf_gsm_1,0,fuel storage,топливный склад
+airfield,arf_gsm_2,0,fuel storage,топливный склад
+airfield,Arf_HangarArc,0,hangar,ангар
+airfield,Arf_HangarBox,0,hangar,ангар
+airfield,arf_hangars_1,0,hangar,ангар
+airfield,arf_hangars_2,0,hangar,ангар
+airfield,arf_hangars_3,0,hangar,ангар
+airfield,arf_nets_1_4,0,,
+airfield,arf_nets_2_5,0,,
+airfield,arf_nets_3_3,0,,
+airfield,Arf_Saray,0,hangar,сарай
+airfield,Arf_Sklad,0,hangar,склад
+airfield,Arf_Tower,0,flight control tower,командная вышка
+airfield,arf_tower_1,0,flight control tower,командная вышка
+airfield,arf_tower_2,0,flight control tower,командная вышка
+airfield,dugout,0,dugout,укрытие
+airfield,gumrak,0,airfield shelter,аэродромное укрытие
+airfield,tacinskaya_1,0,airfield shelter,аэродромное укрытие
+airfield,tacinskaya_2,0,airfield shelter,аэродромное укрытие
+airfield,tacinskaya_3,0,airfield shelter,аэродромное укрытие
+armoured_vehicle,_BA-64,0,BA-64 armored car,БА-64
+armoured_vehicle,BA-10M,0,BA-10M armored car,БА-10М
+armoured_vehicle,BA-64,0,BA-64 armored car,БА-64
+armoured_vehicle,Sd Kfz 251-1 Ausf.C,0,Sd Kfz 251-1 Ausf.C APC,бронетранспортёр Sd Kfz 251-1 Ausf.C
+artillery_field,53-K,0,53-К gun,орудие 53-К
+artillery_field,7.7 cm FK 96 n.A.,0,,
+artillery_field,7.7 cm FK 96 n.A. cart,0,,
+artillery_field,Canon de 75 mle 1897,0,,
+artillery_field,Canon de 75 mle 1897 cart A,0,,
+artillery_field,Canon de 75 mle 1897 cart B,0,,
+artillery_field,M-30,0,M-30 gun,гаубица М-30
+artillery_field,M-42,0,M-42 gun,ПТ М-42
+artillery_field,Pak 35-36,0,Pak 35/36 gun,ПТ орудие Pak 35/36
+artillery_field,Pak 38,0,Pak 38 gun,ПТ орудие Pak 38
+artillery_field,Pak 40,0,Pak 40 gun,ПТ орудие Pak 40
+artillery_field,ZIS-2,0,ZiS-2 gun,ПТ орудие ЗиС-2
+artillery_field,ZIS-3,0,ZiS-3 gun,орудие ЗиС-3
+artillery_howitzer,155 mm Howitzer M1,0,,
+artillery_howitzer,B-24 turret,0,B-24 naval gun,орудие Б-24
+artillery_howitzer,leFH 18,0,leFH 18 howitzer,гаубица Lefh18
+artillery_howitzer,ML-20,0,ML-20 howitzer,гаубица МЛ-20
+artillery_howitzer,QF 4.5-inch howitzer,0,,
+artillery_howitzer,QF 4.5-inch howitzer cart,0,,
+artillery_rocket,BM-13 turret,0,BM-13 MRLS,РСЗО БМ-13
+artillery_rocket,Sd Kfz 251 Wurfrahmen 40,0,Sd Kfz 251 Wurfrahmen 40 MRLS,РСЗО Wurframen 40
+artillery_rocket,ZiS-6 BM-13,0,BM-13 MRLS,РСЗО БМ-13
+bomb,BOMB_GBR_112lb,0,,
+bomb,BOMB_GBR_20lb,0,,
+bomb,BOMB_GBR_24lb,0,,
+bomb,BOMB_GBR_GPB250,0,,
+bomb,BOMB_GBR_GPB500,0,,
+bomb,BOMB_GBR_MC1000,0,,
+bomb,BOMB_GBR_MC500,0,,
+bomb,BOMB_GER_10kg,0,,
+bomb,BOMB_GER_12kg,0,,
+bomb,BOMB_GER_50kg,0,,
+bomb,BOMB_GER_SC1000,0,SC 1000,
+bomb,BOMB_GER_SC1000_190,0,SC 1000,
+bomb,BOMB_GER_SC1800,0,SC 1800,
+bomb,BOMB_GER_SC250,0,SC 250,
+bomb,BOMB_GER_SC250_87,0,SC 250,
+bomb,BOMB_GER_SC2500,0,SC 2500,
+bomb,BOMB_GER_SC50,0,SC 50,
+bomb,BOMB_GER_SC500,0,SC 500,
+bomb,BOMB_GER_SC500_87,0,SC 500,
+bomb,BOMB_GER_SD70,0,SD 70,
+bomb,BOMB_ITA_100T,0,100-T,
+bomb,BOMB_ITA_50T,0,50-T,
+bomb,BOMB_RUS_FAB100M,0,FAB-100M,ФАБ-100М
+bomb,BOMB_RUS_FAB100M_P39,0,FAB-100M,ФАБ-100М
+bomb,BOMB_RUS_FAB250sv,0,FAB-250sv,ФАБ-250св
+bomb,BOMB_RUS_FAB250sv_P40,0,FAB-250sv,ФАБ-250св
+bomb,BOMB_RUS_FAB250tsk,0,FAB-250,ФАБ-250
+bomb,BOMB_RUS_FAB500M,0,FAB-500M,ФАБ-500М
+bomb,BOMB_RUS_FAB500M_P40,0,FAB-500M,ФАБ-500М
+bomb,BOMB_RUS_FAB50sv,0,FAB-50sv,ФАБ-50св
+bomb,BOMB_USA_M64,0,,
+bomb,BOMB_USA_M65,0,,
+bomb,BOMB_USA_M66,0,,
+bomb,CLUSTER_RUS_PTAB2515,0,PTAB,ПТАБ 
+bomb,CLUSTER_RUS_PTAB2515_HIT,0,PTAB,ПТАБ 
+bomb,test_container,0,Container,Container
+bridge,br_rd_arch,0,automobile bridge,автомобильный мост
+bridge,br_rd_arch170,0,bridge,мост
+bridge,br_rd_dngrid,0,automobile bridge,автомобильный мост
+bridge,br_rd_ramp_dn,0,automobile bridge,автомобильный мост
+bridge,br_rd_ramp_up,0,automobile bridge,автомобильный мост
+bridge,br_rd_ramphi_dn,0,automobile bridge,автомобильный мост
+bridge,br_rd_ramphi_up,0,automobile bridge,автомобильный мост
+bridge,br_rd_rampmed_dn,0,automobile bridge,автомобильный мост
+bridge,br_rd_rampmed_up,0,automobile bridge,автомобильный мост
+bridge,br_rd_sspnsn,0,bridge,мост
+bridge,br_rd_start_dn_lft,0,automobile bridge,автомобильный мост
+bridge,br_rd_start_dn_rgt,0,automobile bridge,автомобильный мост
+bridge,br_rd_start_up_lft,0,automobile bridge,автомобильный мост
+bridge,br_rd_start_up_rgt,0,automobile bridge,автомобильный мост
+bridge,br_rd_trpz,0,automobile bridge,автомобильный мост
+bridge,br_rd_updn_lft,0,automobile bridge,автомобильный мост
+bridge,br_rd_updn_rgt,0,automobile bridge,автомобильный мост
+bridge,br_rd_upgrid,0,automobile bridge,автомобильный мост
+bridge,br_rw_arch,0,railway bridge,ж/д мост
+bridge,br_rw_arch170,0,bridge,мост
+bridge,br_rw_dngrid,0,railway bridge,ж/д мост
+bridge,br_rw_ramp_dn,0,railway bridge,ж/д мост
+bridge,br_rw_ramp_up,0,railway bridge,ж/д мост
+bridge,br_rw_ramphi_dn,0,railway bridge,ж/д мост
+bridge,br_rw_ramphi_up,0,railway bridge,ж/д мост
+bridge,br_rw_rampmed_dn,0,railway bridge,ж/д мост
+bridge,br_rw_rampmed_up,0,railway bridge,ж/д мост
+bridge,br_rw_start_dn_lft,0,railway bridge,ж/д мост
+bridge,br_rw_start_dn_rgt,0,railway bridge,ж/д мост
+bridge,br_rw_start_up_lft,0,railway bridge,ж/д мост
+bridge,br_rw_start_up_rgt,0,railway bridge,ж/д мост
+bridge,br_rw_trpz,0,railway bridge,ж/д мост
+bridge,br_rw_updn_lft,0,railway bridge,ж/д мост
+bridge,br_rw_updn_rgt,0,railway bridge,ж/д мост
+bridge,br_rw_upgrid,0,railway bridge,ж/д мост
+bridge,bridge_big_1,0,railway bridge,ж/д мост
+bridge,bridge_big_2,0,railway bridge,ж/д мост
+bridge,bridge_hw110,0,bridge,мост
+bridge,bridge_hw130,0,bridge,мост
+bridge,bridge_hw150,0,bridge,мост
+bridge,bridge_hw170,0,bridge,мост
+bridge,bridge_hw190,0,bridge,мост
+bridge,bridge_hw50,0,bridge,мост
+bridge,bridge_hw70,0,bridge,мост
+bridge,bridge_hw90,0,bridge,мост
+bridge,bridge_pontoon_100,0,pontoon bridge,понтонный мост
+bridge,bridge_railroad_100,0,railway bridge,ж/д мост
+bridge,bridge_railroad_200,0,railway bridge,ж/д мост
+bridge,bridge_rd_cptl_100,0,railway bridge,ж/д мост
+bridge,bridge_rd_cptl_300,0,railway bridge,ж/д мост
+bridge,bridge_road_100,0,automobile bridge,автомобильный мост
+bridge,bridge_road_150,0,automobile bridge,автомобильный мост
+bridge,bridge_road_200,0,pontoon bridge,понтонный мост
+bridge,bridge_road_250,0,pontoon bridge,понтонный мост
+bridge,bridge_road_300_ssp,0,automobile bridge,автомобильный мост
+bridge,bridge_rr110,0,bridge,мост
+bridge,bridge_rr130,0,bridge,мост
+bridge,bridge_rr150,0,bridge,мост
+bridge,bridge_rr170,0,bridge,мост
+bridge,bridge_rr190,0,bridge,мост
+bridge,bridge_rr70,0,bridge,мост
+bridge,bridge_rr90,0,bridge,мост
+bridge,bridgestower,0,bridge,мост
+bridge,ferry,0,pontoon bridge,понтонный мост
+bridge,ferry_pontoon_end,0,pontoon bridge,понтонный мост
+bridge,ferry_pontoon_part,0,pontoon bridge,понтонный мост
+bridge,ferry2,0,pontoon bridge,понтонный мост
+bridge,ferryfloat,0,pontoon bridge,понтонный мост
+bridge,KalMost,0,automobile bridge,автомобильный мост
+bullet,BULLET_ENG_11x59_AP,0,,
+bullet,BULLET_ENG_7-7x56_AP,0,,
+bullet,BULLET_GBR_11x59_AP,0,,
+bullet,BULLET_GER_13x64_AP,0,,
+bullet,BULLET_GER_13x64_HE,0,,
+bullet,BULLET_GER_7-92x57_AP,0,,
+bullet,BULLET_GER_792x57_SS,0,,
+bullet,BULLET_ITA_12-7x81_AP,0,,
+bullet,BULLET_ITA_12-7x81_HE,0,,
+bullet,BULLET_ITA_7-7x56_AP,0,,
+bullet,BULLET_PISTOL,0,,
+bullet,BULLET_RUS_12-7x108_AP,0,,
+bullet,BULLET_RUS_12-7x108_HE,0,,
+bullet,BULLET_RUS_7-62x54_AP,0,,
+bullet,BULLET_USA_12-7x99_AP,0,,
+bullet,BULLET_USA_7-62x63_AP,0,,
+bullet,NPC_BULLET_GER_7-92,0,,
+bullet,NPC_BULLET_GER_7-92_AP_short,0,,
+bullet,NPC_BULLET_RUS_7-62_AP_short,0,,
+bullet,NPC_BULLET_RUS_7-62x4,0,,
+bullet,NPC_SHELL_RUS_122_HE,0,,
+bullet,NPC_SHELL_RUS_130_HE,0,,
+bullet,NPC_SHELL_USA_155_HE,0,,
+bullet,NPC_SHELL_USA_90_CV,0,,
+bullet,NPC_SHELL_USA_90_HE,0,,
+bullet,SHELL_GER_15x96_AP,0,,
+bullet,SHELL_GER_15x96_HE,0,,
+bullet,SHELL_GER_20x82_AP,0,,
+bullet,SHELL_GER_20x82_HE,0,,
+bullet,SHELL_GER_37x263_AP,0,,
+bullet,SHELL_GER_37x263_HE,0,,
+bullet,SHELL_RUS_122_HE,0,,
+bullet,SHELL_RUS_122_HT,0,,
+bullet,SHELL_RUS_20x99_AP,0,,
+bullet,SHELL_RUS_20x99_HE,0,,
+bullet,SHELL_RUS_23x152_AP,0,,
+bullet,SHELL_RUS_23x152_HE,0,,
+bullet,SHELL_RUS_37x195_AP,0,,
+bullet,SHELL_RUS_37x195_HE,0,,
+bullet,SHELL_RUS_37x198_AP,0,,
+bullet,SHELL_RUS_37x198_HE,0,,
+bullet,SHELL_RUS_76_naval_HE,0,,
+bullet,SHELL_USA_37x145_AP,0,,
+bullet,SHELL_USA_37x145_HE,0,,
+bullet,SHELL_USA_76_CV,0,,
+bullet,SHELL_USA_76_HE,0,,
+car,Crossley T5,0,,
+car,GAZ-M,0,GAZ-M car,автомобиль ГАЗ-М
+car,Horch 830,0,Horch 830 car,автомобиль Horch
+car,Mercedes Kettenwagen 22,0,,
+car,Willys MB,0,,
+explosion,BombFallEffect,0,,
+explosion,BombFallEffect,0,,
+explosion,BombFallEffect,0,,
+explosion,explosion,0,,
+explosion,Explosion,0,,
+explosion,explosion_sky_pp,0,,
+explosion,ExplosionBalloon,0,,
+explosion,ExplosionFT,0,,
+explosion,ExplosionPlaneAir,0,,
+explosion,ExplosionPlaneAlongGnd,0,,
+explosion,ExplosionPlaneAlongWtr,0,,
+explosion,ExplosionPlaneFireball,0,,
+explosion,ExplosionPlaneGnd,0,,
+explosion,ExplosionPlaneWtr,0,,
+explosion,ExplosionSkyPP,0,,
+explosion,ExplosionSkyPP,0,,
+explosion,explPlaneAir,0,,
+explosion,explPlaneAlongGnd,0,,
+explosion,explPlaneAlongWtr,0,,
+explosion,explPlaneGnd,0,,
+explosion,explPlaneWtr,0,,
+explosion,HE_013mm_38g_1g_building,0,,
+explosion,HE_013mm_38g_1g_ground,0,,
+explosion,HE_013mm_38g_1g_object,0,,
+explosion,HE_013mm_38g_1g_water,0,,
+explosion,HE_013mm_39g_2g_building,0,,
+explosion,HE_013mm_39g_2g_ground,0,,
+explosion,HE_013mm_39g_2g_object,0,,
+explosion,HE_013mm_39g_2g_water,0,,
+explosion,HE_015mm_57g_2g_building,0,,
+explosion,HE_015mm_57g_2g_ground,0,,
+explosion,HE_015mm_57g_2g_object,0,,
+explosion,HE_015mm_57g_2g_water,0,,
+explosion,HE_020mm_130g_11g_building,0,,
+explosion,HE_020mm_130g_11g_ground,0,,
+explosion,HE_020mm_130g_11g_object,0,,
+explosion,HE_020mm_130g_11g_water,0,,
+explosion,HE_020mm_91g_3g_building,0,,
+explosion,HE_020mm_91g_3g_ground,0,,
+explosion,HE_020mm_91g_3g_object,0,,
+explosion,HE_020mm_91g_3g_water,0,,
+explosion,HE_020mm_92g_20g_building,0,,
+explosion,HE_020mm_92g_20g_ground,0,,
+explosion,HE_020mm_92g_20g_object,0,,
+explosion,HE_020mm_92g_20g_water,0,,
+explosion,HE_023mm_196g_11g_building,0,,
+explosion,HE_023mm_196g_11g_ground,0,,
+explosion,HE_023mm_196g_11g_object,0,,
+explosion,HE_023mm_196g_11g_water,0,,
+explosion,HE_025mm_288g_13g_building,0,,
+explosion,HE_025mm_288g_13g_ground,0,,
+explosion,HE_025mm_288g_13g_object,0,,
+explosion,HE_025mm_288g_13g_water,0,,
+explosion,HE_030mm_330g_72g_building,0,,
+explosion,HE_030mm_330g_72g_ground,0,,
+explosion,HE_030mm_330g_72g_object,0,,
+explosion,HE_030mm_330g_72g_water,0,,
+explosion,HE_037mm_535g_85g_building,0,,
+explosion,HE_037mm_535g_85g_ground,0,,
+explosion,HE_037mm_535g_85g_object,0,,
+explosion,HE_037mm_535g_85g_water,0,,
+explosion,HE_037mm_620g_44g_building,0,,
+explosion,HE_037mm_620g_44g_ground,0,,
+explosion,HE_037mm_620g_44g_object,0,,
+explosion,HE_037mm_620g_44g_water,0,,
+explosion,HE_037mm_685g_13g_building,0,,
+explosion,HE_037mm_685g_13g_ground,0,,
+explosion,HE_037mm_685g_13g_internal,0,,
+explosion,HE_037mm_685g_13g_object,0,,
+explosion,HE_037mm_685g_13g_water,0,,
+explosion,HE_037mm_732g_35g_building,0,,
+explosion,HE_037mm_732g_35g_ground,0,,
+explosion,HE_037mm_732g_35g_object,0,,
+explosion,HE_037mm_732g_35g_water,0,,
+explosion,HE_037mm_825g_50g_building,0,,
+explosion,HE_037mm_825g_50g_ground,0,,
+explosion,HE_037mm_825g_50g_object,0,,
+explosion,HE_037mm_825g_50g_water,0,,
+explosion,HE_040mm_820g_71g_building,0,,
+explosion,HE_040mm_820g_71g_ground,0,,
+explosion,HE_040mm_820g_71g_object,0,,
+explosion,HE_040mm_820g_71g_water,0,,
+explosion,HE_045mm_1kg_360g_building,0,,
+explosion,HE_045mm_1kg_360g_ground,0,,
+explosion,HE_045mm_1kg_360g_internal,0,,
+explosion,HE_045mm_1kg_360g_object,0,,
+explosion,HE_045mm_1kg_360g_water,0,,
+explosion,HE_045mm_2kg_135g_building,0,,
+explosion,HE_045mm_2kg_135g_ground,0,,
+explosion,HE_045mm_2kg_135g_object,0,,
+explosion,HE_045mm_2kg_135g_water,0,,
+explosion,HE_050mm_2kg_175g_building,0,,
+explosion,HE_050mm_2kg_175g_ground,0,,
+explosion,HE_050mm_2kg_175g_object,0,,
+explosion,HE_050mm_2kg_17g_building,0,,
+explosion,HE_050mm_2kg_17g_ground,0,,
+explosion,HE_050mm_2kg_17g_internal,0,,
+explosion,HE_050mm_2kg_17g_object,0,,
+explosion,HE_050mm_2kg_17g_water,0,,
+explosion,HE_057mm_368g_218g_building,0,,
+explosion,HE_057mm_368g_218g_ground,0,,
+explosion,HE_057mm_368g_218g_object,0,,
+explosion,HE_057mm_368g_218g_water,0,,
+explosion,HE_057mm_3kg_14g_building,0,,
+explosion,HE_057mm_3kg_14g_ground,0,,
+explosion,HE_057mm_3kg_14g_internal,0,,
+explosion,HE_057mm_3kg_14g_object,0,,
+explosion,HE_057mm_3kg_14g_water,0,,
+explosion,HE_066mm_1kg_620g_building,0,,
+explosion,HE_066mm_1kg_620g_ground,0,,
+explosion,HE_066mm_1kg_620g_object,0,,
+explosion,HE_066mm_1kg_620g_water,0,,
+explosion,HE_075mm_5kg_530g_building,0,,
+explosion,HE_075mm_5kg_530g_ground,0,,
+explosion,HE_075mm_5kg_530g_object,0,,
+explosion,HE_075mm_5kg_530g_water,0,,
+explosion,HE_075mm_6kg_660g_air,0,,
+explosion,HE_075mm_6kg_660g_building,0,,
+explosion,HE_075mm_6kg_660g_ground,0,,
+explosion,HE_075mm_6kg_660g_object,0,,
+explosion,HE_075mm_6kg_660g_water,0,,
+explosion,HE_075mm_7kg_18g_building,0,,
+explosion,HE_075mm_7kg_18g_ground,0,,
+explosion,HE_075mm_7kg_18g_internal,0,,
+explosion,HE_075mm_7kg_18g_object,0,,
+explosion,HE_075mm_7kg_18g_water,0,,
+explosion,HE_075mm_7kg_667g_air,0,,
+explosion,HE_075mm_7kg_667g_building,0,,
+explosion,HE_075mm_7kg_667g_ground,0,,
+explosion,HE_075mm_7kg_667g_object,0,,
+explosion,HE_075mm_7kg_667g_water,0,,
+explosion,HE_076mm_6kg_480g_building,0,,
+explosion,HE_076mm_6kg_480g_ground,0,,
+explosion,HE_076mm_6kg_480g_object,0,,
+explosion,HE_076mm_6kg_480g_water,0,,
+explosion,HE_076mm_6kg_710g_air,0,,
+explosion,HE_076mm_6kg_710g_building,0,,
+explosion,HE_076mm_6kg_710g_ground,0,,
+explosion,HE_076mm_6kg_710g_object,0,,
+explosion,HE_076mm_6kg_710g_water,0,,
+explosion,HE_076mm_7kg_119g_building,0,,
+explosion,HE_076mm_7kg_119g_ground,0,,
+explosion,HE_076mm_7kg_119g_internal,0,,
+explosion,HE_076mm_7kg_119g_object,0,,
+explosion,HE_076mm_7kg_119g_water,0,,
+explosion,HE_076mm_7kg_458g_building,0,,
+explosion,HE_076mm_7kg_458g_ground,0,,
+explosion,HE_076mm_7kg_458g_object,0,,
+explosion,HE_076mm_7kg_458g_water,0,,
+explosion,HE_076mm_7kg_65g_building,0,,
+explosion,HE_076mm_7kg_65g_ground,0,,
+explosion,HE_076mm_7kg_65g_internal,0,,
+explosion,HE_076mm_7kg_65g_object,0,,
+explosion,HE_076mm_7kg_65g_water,0,,
+explosion,HE_082mm_3kg_560g_building,0,,
+explosion,HE_082mm_3kg_560g_ground,0,,
+explosion,HE_082mm_3kg_560g_object,0,,
+explosion,HE_082mm_3kg_560g_water,0,,
+explosion,HE_082mm_7kg_480g_building,0,,
+explosion,HE_082mm_7kg_480g_ground,0,,
+explosion,HE_082mm_7kg_480g_internal,0,,
+explosion,HE_082mm_7kg_480g_object,0,,
+explosion,HE_082mm_7kg_480g_water,0,,
+explosion,HE_085mm_10kg_660g_air,0,,
+explosion,HE_085mm_10kg_660g_building,0,,
+explosion,HE_085mm_10kg_660g_ground,0,,
+explosion,HE_085mm_10kg_660g_object,0,,
+explosion,HE_085mm_10kg_660g_water,0,,
+explosion,HE_085mm_9kg_164g_building,0,,
+explosion,HE_085mm_9kg_164g_ground,0,,
+explosion,HE_085mm_9kg_164g_internal,0,,
+explosion,HE_085mm_9kg_164g_object,0,,
+explosion,HE_085mm_9kg_164g_water,0,,
+explosion,HE_088mm_10kg_64g_building,0,,
+explosion,HE_088mm_10kg_64g_ground,0,,
+explosion,HE_088mm_10kg_64g_internal,0,,
+explosion,HE_088mm_10kg_64g_object,0,,
+explosion,HE_088mm_10kg_64g_water,0,,
+explosion,HE_088mm_8kg_640g_building,0,,
+explosion,HE_088mm_8kg_640g_ground,0,,
+explosion,HE_088mm_8kg_640g_object,0,,
+explosion,HE_088mm_8kg_640g_water,0,,
+explosion,HE_088mm_9kg_1kg_building,0,,
+explosion,HE_088mm_9kg_1kg_ground,0,,
+explosion,HE_088mm_9kg_1kg_object,0,,
+explosion,HE_088mm_9kg_1kg_water,0,,
+explosion,HE_088mm_9kg_900g_air,0,,
+explosion,HE_088mm_9kg_900g_building,0,,
+explosion,HE_088mm_9kg_900g_ground,0,,
+explosion,HE_088mm_9kg_900g_object,0,,
+explosion,HE_088mm_9kg_900g_water,0,,
+explosion,HE_090mm_11kg_975g_air,0,,
+explosion,HE_090mm_11kg_975g_building,0,,
+explosion,HE_090mm_11kg_975g_ground,0,,
+explosion,HE_090mm_11kg_975g_object,0,,
+explosion,HE_090mm_11kg_975g_water,0,,
+explosion,HE_100mm_16kg_1kg,0,,
+explosion,HE_100mm_16kg_1kg_building,0,,
+explosion,HE_100mm_16kg_1kg_ground,0,,
+explosion,HE_100mm_16kg_1kg_object,0,,
+explosion,HE_100mm_16kg_1kg_water,0,,
+explosion,HE_105mm_15kg_1kg_building,0,,
+explosion,HE_105mm_15kg_1kg_ground,0,,
+explosion,HE_105mm_15kg_1kg_object,0,,
+explosion,HE_105mm_15kg_1kg_water,0,,
+explosion,HE_115mm_16kg_2kg_building,0,,
+explosion,HE_115mm_16kg_2kg_ground,0,,
+explosion,HE_115mm_16kg_2kg_object,0,,
+explosion,HE_115mm_16kg_2kg_water,0,,
+explosion,HE_122mm_13kg_2kg_building,0,,
+explosion,HE_122mm_13kg_2kg_ground,0,,
+explosion,HE_122mm_13kg_2kg_object,0,,
+explosion,HE_122mm_13kg_2kg_water,0,,
+explosion,HE_122mm_22kg_4kg_building,0,,
+explosion,HE_122mm_22kg_4kg_ground,0,,
+explosion,HE_122mm_22kg_4kg_object,0,,
+explosion,HE_122mm_22kg_4kg_water,0,,
+explosion,HE_130mm_33kg_2kg_building,0,,
+explosion,HE_130mm_33kg_2kg_ground,0,,
+explosion,HE_130mm_33kg_2kg_internal,0,,
+explosion,HE_130mm_33kg_2kg_object,0,,
+explosion,HE_130mm_33kg_2kg_water,0,,
+explosion,HE_130mm_33kg_4kg_building,0,,
+explosion,HE_130mm_33kg_4kg_ground,0,,
+explosion,HE_130mm_33kg_4kg_object,0,,
+explosion,HE_130mm_33kg_4kg_water,0,,
+explosion,HE_132mm_22kg_5kg_building,0,,
+explosion,HE_132mm_22kg_5kg_ground,0,,
+explosion,HE_132mm_22kg_5kg_object,0,,
+explosion,HE_132mm_22kg_5kg_water,0,,
+explosion,HE_132mm_9kg_2kg_building,0,,
+explosion,HE_132mm_9kg_2kg_ground,0,,
+explosion,HE_132mm_9kg_2kg_object,0,,
+explosion,HE_132mm_9kg_2kg_water,0,,
+explosion,HE_150mm_42kg_5kg_building,0,,
+explosion,HE_150mm_42kg_5kg_ground,0,,
+explosion,HE_150mm_42kg_5kg_object,0,,
+explosion,HE_150mm_42kg_5kg_water,0,,
+explosion,HE_152mm_44kg_6kg_building,0,,
+explosion,HE_152mm_44kg_6kg_ground,0,,
+explosion,HE_152mm_44kg_6kg_object,0,,
+explosion,HE_152mm_44kg_6kg_water,0,,
+explosion,HE_152mm_49kg_1kg_building,0,,
+explosion,HE_152mm_49kg_1kg_ground,0,,
+explosion,HE_152mm_49kg_1kg_internal,0,,
+explosion,HE_152mm_49kg_1kg_object,0,,
+explosion,HE_152mm_49kg_1kg_water,0,,
+explosion,HE_155mm_43kg_7kg_building,0,,
+explosion,HE_155mm_43kg_7kg_ground,0,,
+explosion,HE_155mm_43kg_7kg_object,0,,
+explosion,HE_155mm_43kg_7kg_water,0,,
+explosion,HE_203mm_70kg_21kg_building,0,,
+explosion,HE_203mm_70kg_21kg_ground,0,,
+explosion,HE_203mm_70kg_21kg_object,0,,
+explosion,HE_203mm_70kg_21kg_water,0,,
+explosion,HE_210mm_41kg_10kg_building,0,,
+explosion,HE_210mm_41kg_10kg_ground,0,,
+explosion,HE_210mm_41kg_10kg_object,0,,
+explosion,HE_210mm_41kg_10kg_water,0,,
+explosion,HE_250mm_50kg_25kg_building,0,,
+explosion,HE_250mm_50kg_25kg_ground,0,,
+explosion,HE_250mm_50kg_25kg_object,0,,
+explosion,HE_250mm_50kg_25kg_water,0,,
+explosion,HE_250mm_60kg_30kg_building,0,,
+explosion,HE_250mm_60kg_30kg_ground,0,,
+explosion,HE_250mm_60kg_30kg_object,0,,
+explosion,HE_250mm_60kg_30kg_water,0,,
+explosion,HE_262mm_112kg_30kg_building,0,,
+explosion,HE_262mm_112kg_30kg_ground,0,,
+explosion,HE_262mm_112kg_30kg_object,0,,
+explosion,HE_262mm_112kg_30kg_water,0,,
+explosion,HE_272mm_100kg_50kg_building,0,,
+explosion,HE_272mm_100kg_50kg_ground,0,,
+explosion,HE_272mm_100kg_50kg_object,0,,
+explosion,HE_272mm_100kg_50kg_water,0,,
+explosion,HE_280mm_100kg_30kg_building,0,,
+explosion,HE_280mm_100kg_30kg_ground,0,,
+explosion,HE_280mm_100kg_30kg_object,0,,
+explosion,HE_280mm_100kg_30kg_water,0,,
+explosion,HE_280mm_82kg_50kg_building,0,,
+explosion,HE_280mm_82kg_50kg_ground,0,,
+explosion,HE_280mm_82kg_50kg_object,0,,
+explosion,HE_280mm_82kg_50kg_water,0,,
+explosion,HE_322mm_232kg_101kg_building,0,,
+explosion,HE_322mm_232kg_101kg_ground,0,,
+explosion,HE_322mm_232kg_101kg_object,0,,
+explosion,HE_322mm_232kg_101kg_water,0,,
+explosion,HE_328mm_213kg_66kg_building,0,,
+explosion,HE_328mm_213kg_66kg_ground,0,,
+explosion,HE_328mm_213kg_66kg_object,0,,
+explosion,HE_328mm_213kg_66kg_water,0,,
+explosion,HE_370mm_250kg_130kg_building,0,,
+explosion,HE_370mm_250kg_130kg_ground,0,,
+explosion,HE_370mm_250kg_130kg_object,0,,
+explosion,HE_370mm_250kg_130kg_water,0,,
+explosion,HE_450mm_500kg_240kg_building,0,,
+explosion,HE_450mm_500kg_240kg_ground,0,,
+explosion,HE_450mm_500kg_240kg_object,0,,
+explosion,HE_450mm_500kg_240kg_water,0,,
+explosion,HE_533mm_500kg_300kg_water,0,,
+explosion,HE_588mm_929kg_498kg_building,0,,
+explosion,HE_588mm_929kg_498kg_ground,0,,
+explosion,HE_588mm_929kg_498kg_object,0,,
+explosion,HE_588mm_929kg_498kg_water,0,,
+explosion,HE_660mm_1090kg_620kg_building,0,,
+explosion,HE_660mm_1090kg_620kg_ground,0,,
+explosion,HE_660mm_1090kg_620kg_object,0,,
+explosion,HE_660mm_1090kg_620kg_water,0,,
+explosion,HE_660mm_1680kg_970kg_building,0,,
+explosion,HE_660mm_1680kg_970kg_ground,0,,
+explosion,HE_660mm_1680kg_970kg_object,0,,
+explosion,HE_660mm_1680kg_970kg_water,0,,
+explosion,HE_810mm_2400kg_1923kg_building,0,,
+explosion,HE_810mm_2400kg_1923kg_ground,0,,
+explosion,HE_810mm_2400kg_1923kg_object,0,,
+explosion,HE_810mm_2400kg_1923kg_water,0,,
+explosion,tnt100kg_frag130kg_expl_building,0,,
+explosion,tnt100kg_frag130kg_expl_building,0,,
+explosion,tnt100kg_frag130kg_expl_ground,0,,
+explosion,tnt100kg_frag130kg_expl_water,0,,
+explosion,tnt10g_frag120g_HE_expl_building,0,,
+explosion,tnt10g_frag120g_HE_expl_ground,0,,
+explosion,tnt10g_frag120g_HE_expl_water,0,,
+explosion,tnt10g_frag200g_HE_expl_building,0,,
+explosion,tnt10g_frag200g_HE_expl_ground,0,,
+explosion,tnt10g_frag200g_HE_expl_water,0,,
+explosion,tnt10kg_frag30kg_expl_building,0,,
+explosion,tnt10kg_frag30kg_expl_ground,0,,
+explosion,tnt10kg_frag30kg_expl_water,0,,
+explosion,tnt119g_frag6kg_HE_expl_ground,0,,
+explosion,tnt119g_frag6kg_HE_expl_internal,0,,
+explosion,tnt119g_frag6kg_HE_expl_metal,0,,
+explosion,tnt119g_frag6kg_HE_expl_water,0,,
+explosion,tnt130kg_frag120kg_expl_building,0,,
+explosion,tnt130kg_frag120kg_expl_ground,0,,
+explosion,tnt130kg_frag120kg_expl_water,0,,
+explosion,tnt13g_frag1kg_HE_expl_ground,0,,
+explosion,tnt13g_frag1kg_HE_expl_internal,0,,
+explosion,tnt13g_frag1kg_HE_expl_metal,0,,
+explosion,tnt13g_frag1kg_HE_expl_metal,0,,
+explosion,tnt13g_frag1kg_HE_expl_water,0,,
+explosion,tnt13g_frag275g_HE_expl_building,0,,
+explosion,tnt13g_frag275g_HE_expl_ground,0,,
+explosion,tnt13g_frag275g_HE_expl_water,0,,
+explosion,tnt14g_frag3kg_HE_expl_ground,0,,
+explosion,tnt14g_frag3kg_HE_expl_internal,0,,
+explosion,tnt14g_frag3kg_HE_expl_metal,0,,
+explosion,tnt14g_frag3kg_HE_expl_metal,0,,
+explosion,tnt14g_frag3kg_HE_expl_water,0,,
+explosion,tnt150g_frag2kg_HE_expl_ground,0,,
+explosion,tnt150g_frag2kg_HE_expl_metal,0,,
+explosion,tnt150g_frag2kg_HE_expl_water,0,,
+explosion,tnt164g_frag9kg_HE_expl_ground,0,,
+explosion,tnt164g_frag9kg_HE_expl_internal,0,,
+explosion,tnt164g_frag9kg_HE_expl_metal,0,,
+explosion,tnt164g_frag9kg_HE_expl_metal,0,,
+explosion,tnt164g_frag9kg_HE_expl_water,0,,
+explosion,tnt175g_frag2kg_HE_expl_ground,0,,
+explosion,tnt175g_frag2kg_HE_expl_metal,0,,
+explosion,tnt17g_frag2kg_HE_expl_ground,0,,
+explosion,tnt17g_frag2kg_HE_expl_internal,0,,
+explosion,tnt17g_frag2kg_HE_expl_metal,0,,
+explosion,tnt17g_frag2kg_HE_expl_water,0,,
+explosion,tnt18g_frag7kg_HE_expl_ground,0,,
+explosion,tnt18g_frag7kg_HE_expl_internal,0,,
+explosion,tnt18g_frag7kg_HE_expl_metal,0,,
+explosion,tnt18g_frag7kg_HE_expl_metal,0,,
+explosion,tnt18g_frag7kg_HE_expl_water,0,,
+explosion,tnt1900kg_frag500kg_expl_ground,0,,
+explosion,tnt1900kg_frag500kg_expl_object,0,,
+explosion,tnt1900kg_frag500kg_expl_water,0,,
+explosion,tnt1g_frag30g_HE_expl_building,0,,
+explosion,tnt1g_frag30g_HE_expl_ground,0,,
+explosion,tnt1g_frag30g_HE_expl_water,0,,
+explosion,tnt1kg_frag13kg_HE_expl_ground,0,,
+explosion,tnt1kg_frag13kg_HE_expl_metal,0,,
+explosion,tnt1kg_frag13kg_HE_expl_water,0,,
+explosion,tnt1kg_frag6kg_HE_expl_air,0,,
+explosion,tnt1kg_frag6kg_HE_expl_ground,0,,
+explosion,tnt1kg_frag6kg_HE_expl_metal,0,,
+explosion,tnt1kg_frag6kg_HE_expl_water,0,,
+explosion,tnt1kg_frag8kg_HE_expl_ground,0,,
+explosion,tnt1kg_frag8kg_HE_expl_metal,0,,
+explosion,tnt1kg_frag8kg_HE_expl_water,0,,
+explosion,tnt1kg_frag9kg_expl_building,0,,
+explosion,tnt1kg_frag9kg_expl_building,0,,
+explosion,tnt1kg_frag9kg_expl_building,0,,
+explosion,tnt1kg_frag9kg_expl_ground,0,,
+explosion,tnt1kg_frag9kg_expl_water,0,,
+explosion,tnt20g_frag70g_HE_expl_building,0,,
+explosion,tnt20g_frag70g_HE_expl_ground,0,,
+explosion,tnt20g_frag70g_HE_expl_water,0,,
+explosion,tnt20kg_frag50kg_expl_building,0,,
+explosion,tnt20kg_frag50kg_expl_ground,0,,
+explosion,tnt20kg_frag50kg_expl_water,0,,
+explosion,tnt220g_frag3kg_HE_expl_ground,0,,
+explosion,tnt220g_frag3kg_HE_expl_metal,0,,
+explosion,tnt220g_frag3kg_HE_expl_water,0,,
+explosion,tnt220g_frag500g_HE_expl_building,0,,
+explosion,tnt220g_frag500g_HE_expl_ground,0,,
+explosion,tnt220g_frag500g_HE_expl_water,0,,
+explosion,tnt240kg_frag260kg_expl_building,0,,
+explosion,tnt240kg_frag260kg_expl_ground,0,,
+explosion,tnt240kg_frag260kg_expl_water,0,,
+explosion,tnt25kg_frag25kg_expl_building,0,,
+explosion,tnt25kg_frag25kg_expl_ground,0,,
+explosion,tnt25kg_frag25kg_expl_water,0,,
+explosion,tnt280kg_frag200kg_expl_water,0,,
+explosion,tnt2g_frag35g_HE_expl_building,0,,
+explosion,tnt2g_frag35g_HE_expl_ground,0,,
+explosion,tnt2g_frag35g_HE_expl_water,0,,
+explosion,tnt2g_frag55g_HE_expl_building,0,,
+explosion,tnt2g_frag55g_HE_expl_ground,0,,
+explosion,tnt2g_frag55g_HE_expl_water,0,,
+explosion,tnt2g_frag90g_HE_expl_building,0,,
+explosion,tnt2g_frag90g_HE_expl_ground,0,,
+explosion,tnt2g_frag90g_HE_expl_water,0,,
+explosion,tnt2kg_frag11kg_HE_expl_ground,0,,
+explosion,tnt2kg_frag11kg_HE_expl_metal,0,,
+explosion,tnt2kg_frag11kg_HE_expl_metal,0,,
+explosion,tnt2kg_frag11kg_HE_expl_water,0,,
+explosion,tnt2kg_frag7kg_HE_expl_ground,0,,
+explosion,tnt2kg_frag7kg_HE_expl_metal,0,,
+explosion,tnt2kg_frag7kg_HE_expl_water,0,,
+explosion,tnt300kg_frag200kg_expl_water,0,,
+explosion,tnt30kg_frag30kg_expl_building,0,,
+explosion,tnt30kg_frag30kg_expl_ground,0,,
+explosion,tnt30kg_frag30kg_expl_water,0,,
+explosion,tnt30kg_frag70kg_expl_building,0,,
+explosion,tnt30kg_frag70kg_expl_ground,0,,
+explosion,tnt30kg_frag70kg_expl_water,0,,
+explosion,tnt30kg_frag82kg_expl_building,0,,
+explosion,tnt30kg_frag82kg_expl_ground,0,,
+explosion,tnt30kg_frag82kg_expl_water,0,,
+explosion,tnt360g_frag1kg_HE_expl_ground,0,,
+explosion,tnt360g_frag1kg_HE_expl_internal,0,,
+explosion,tnt360g_frag1kg_HE_expl_metal,0,,
+explosion,tnt360g_frag1kg_HE_expl_metal,0,,
+explosion,tnt360g_frag1kg_HE_expl_water,0,,
+explosion,tnt400g_frag120g_HE_expl_ground,0,,
+explosion,tnt400g_frag120g_HE_expl_metal,0,,
+explosion,tnt400g_frag120g_HE_expl_metal,0,,
+explosion,tnt400g_frag120g_HE_expl_water,0,,
+explosion,tnt44g_frag575g_HE_expl_building,0,,
+explosion,tnt44g_frag575g_HE_expl_ground,0,,
+explosion,tnt44g_frag575g_HE_expl_water,0,,
+explosion,tnt48g_frag7kg_HE_expl_ground,0,,
+explosion,tnt48g_frag7kg_HE_expl_internal,0,,
+explosion,tnt48g_frag7kg_HE_expl_metal,0,,
+explosion,tnt48g_frag7kg_HE_expl_metal,0,,
+explosion,tnt48g_frag7kg_HE_expl_water,0,,
+explosion,tnt4kg_frag18kg_HE_expl_ground,0,,
+explosion,tnt4kg_frag18kg_HE_expl_metal,0,,
+explosion,tnt4kg_frag18kg_HE_expl_water,0,,
+explosion,tnt4kg_frag30kg_HE_expl_ground,0,,
+explosion,tnt4kg_frag30kg_HE_expl_metal,0,,
+explosion,tnt4kg_frag30kg_HE_expl_water,0,,
+explosion,tnt500g_frag6kg_HE_expl_ground,0,,
+explosion,tnt500g_frag6kg_HE_expl_metal,0,,
+explosion,tnt500g_frag6kg_HE_expl_water,0,,
+explosion,tnt500kg_frag430kg_expl_building,0,,
+explosion,tnt500kg_frag430kg_expl_building,0,,
+explosion,tnt500kg_frag430kg_expl_ground,0,,
+explosion,tnt500kg_frag430kg_expl_water,0,,
+explosion,tnt50g_frag775g_HE_expl_building,0,,
+explosion,tnt50g_frag775g_HE_expl_ground,0,,
+explosion,tnt50g_frag775g_HE_expl_water,0,,
+explosion,tnt50kg_frag50kg_expl_building,0,,
+explosion,tnt50kg_frag50kg_expl_ground,0,,
+explosion,tnt50kg_frag50kg_expl_water,0,,
+explosion,tnt50kg_frag60kg_expl_building,0,,
+explosion,tnt50kg_frag60kg_expl_ground,0,,
+explosion,tnt50kg_frag60kg_expl_water,0,,
+explosion,tnt530g_frag4kg_HE_expl_ground,0,,
+explosion,tnt530g_frag4kg_HE_expl_metal,0,,
+explosion,tnt530g_frag4kg_HE_expl_metal,0,,
+explosion,tnt530g_frag4kg_HE_expl_water,0,,
+explosion,tnt550g_frag2kg_expl_building,0,,
+explosion,tnt550g_frag2kg_expl_ground,0,,
+explosion,tnt550g_frag2kg_expl_water,0,,
+explosion,tnt5kg_frag22kg_expl_building,0,,
+explosion,tnt5kg_frag22kg_expl_ground,0,,
+explosion,tnt5kg_frag22kg_expl_water,0,,
+explosion,tnt620g_frag400g_expl_ground,0,,
+explosion,tnt620g_frag400g_expl_object,0,,
+explosion,tnt620g_frag400g_expl_water,0,,
+explosion,tnt620g_frag400g_HE_expl_ground,0,,
+explosion,tnt620g_frag400g_HE_expl_object,0,,
+explosion,tnt620g_frag400g_HE_expl_object,0,,
+explosion,tnt620g_frag400g_HE_expl_water,0,,
+explosion,tnt620kg_frag470kg_expl_building,0,,
+explosion,tnt620kg_frag470kg_expl_ground,0,,
+explosion,tnt620kg_frag470kg_expl_water,0,,
+explosion,tnt640g_frag7kg_HE_expl_ground,0,,
+explosion,tnt640g_frag7kg_HE_expl_metal,0,,
+explosion,tnt640g_frag7kg_HE_expl_water,0,,
+explosion,tnt64g_frag10kg_HE_expl_ground,0,,
+explosion,tnt64g_frag10kg_HE_expl_internal,0,,
+explosion,tnt64g_frag10kg_HE_expl_metal,0,,
+explosion,tnt64g_frag10kg_HE_expl_water,0,,
+explosion,tnt65g_frag6kg_HE_expl_ground,0,,
+explosion,tnt65g_frag6kg_HE_expl_internal,0,,
+explosion,tnt65g_frag6kg_HE_expl_metal,0,,
+explosion,tnt65g_frag6kg_HE_expl_metal,0,,
+explosion,tnt65g_frag6kg_HE_expl_water,0,,
+explosion,tnt65kg_frag145kg_expl_building,0,,
+explosion,tnt65kg_frag145kg_expl_ground,0,,
+explosion,tnt65kg_frag145kg_expl_water,0,,
+explosion,tnt660g_frag5kg_expl_building,0,,
+explosion,tnt660g_frag5kg_expl_building,0,,
+explosion,tnt660g_frag5kg_expl_building,0,,
+explosion,tnt660g_frag5kg_expl_ground,0,,
+explosion,tnt660g_frag5kg_expl_water,0,,
+explosion,tnt660g_frag9kg_expl_building,0,,
+explosion,tnt660g_frag9kg_expl_ground,0,,
+explosion,tnt660g_frag9kg_expl_water,0,,
+explosion,tnt6kg_frag37kg_HE_expl_ground,0,,
+explosion,tnt6kg_frag37kg_HE_expl_metal,0,,
+explosion,tnt6kg_frag37kg_HE_expl_water,0,,
+explosion,tnt70g_frag260g_HE_expl_building,0,,
+explosion,tnt70g_frag260g_HE_expl_ground,0,,
+explosion,tnt70g_frag260g_HE_expl_water,0,,
+explosion,tnt85g_frag500g_HE_expl_building,0,,
+explosion,tnt85g_frag500g_HE_expl_ground,0,,
+explosion,tnt85g_frag500g_HE_expl_water,0,,
+explosion,tnt970kg_frag810kg_expl_building,0,,
+explosion,tnt970kg_frag810kg_expl_ground,0,,
+explosion,tnt970kg_frag810kg_expl_water,0,,
+explosion,VehicleComTwrNoDmg,0,,
+explosion,VehicleExtFuelNoDmg,0,,
+flare,FlareGreen,0,,
+flare,FlareRed,0,,
+flare,FlareWhite,0,,
+flare,FlareYellow,0,,
+industrial,boosterStation,0,booster station,насосная станция
+industrial,industrial_200x140_01,0,factory facility,завод
+industrial,industrial_200x140_02,0,factory facility,завод
+industrial,industrial_300x100_01,0,factory facility,завод
+industrial,industrial_300x100_02,0,factory facility,завод
+industrial,industrial_300x100_03,0,factory facility,завод
+industrial,industrial_300x100_04,0,factory facility,завод
+industrial,industrial_block_BigWarehouse_300x100,0,warehouse,склад
+industrial,industrial_block_eu_fabric200x200,0,factory ,завод
+industrial,industrial_block_eu_fabric200x200_2,0,factory ,завод
+industrial,industrial_block_eu_fabric250x100,0,factory ,завод
+industrial,industrial_block_eu_fabric300x200,0,factory ,завод
+industrial,industrial_block_eu_fabric300x200_2,0,factory ,завод
+industrial,industrial_block_Fuel_300x100,0,fuel storage,топливное хранилище
+industrial,industrial_block_Fuel2_300x100,0,fuel storage,топливное хранилище
+industrial,industrial_block_Fuel25m_300x100,0,fuel storage,топливное хранилище
+industrial,industrial_block_Fuel35m_300x100,0,fuel storage,топливное хранилище
+industrial,industrial_block_MidWarehouse_200x140,0,warehouse,склад
+industrial,industrial_block_SmallWarehouse_150x100,0,warehouse,склад
+industrial,industrial_block_SmallWarehouse_300x100,0,warehouse,склад
+industrial,industrial_block_SmallWarehouse2_150x100,0,warehouse,склад
+industrial,industrial_block_SmallWarehouse2_300x100,0,warehouse,склад
+industrial,Industrial_block_ZavodCement,0,factory ,завод
+industrial,Industrial_block_ZavodOktyabr,0,factory ,завод
+industrial,industrial_cornerL_01,0,factory facility,завод
+industrial,industrial_cornerL_02,0,factory facility,завод
+industrial,industrial_cornerR_01,0,factory facility,завод
+industrial,industrial_cornerR_02,0,factory facility,завод
+industrial,industrial_object_ОilSmall,0,fuel storage,топливное хранилище
+industrial,industrial_object_oil,0,fuel storage,топливное хранилище
+industrial,industrial_object_OilSmall,0,fuel storage,топливное хранилище
+industrial,industrial_object_smallwarehouse,0,warehouse,склад
+industrial,industrial_object_zavodkorpys45m,0,factory ,завод
+industrial,industrial_object_zavodkorpys70m,0,factory ,завод
+industrial,kuban_elevator,0,elevator,элеватор
+industrial,kuban_funicolare,0,funicolare,фуникулер
+industrial,kuban_funicolare1,0,funicolare,фуникулер
+industrial,kuban_funicolare2,0,funicolare,фуникулер
+industrial,kuban_railroadstation00,0,railway station facilit,строение ж/д станции
+industrial,kuban_tower,0,tower,башня
+industrial,Meh_01,0,factory facility,мехдвор
+industrial,port_up_crane,0,crane,кран
+industrial,port_up_group_cargo_190x15,0,warehouse,склад
+industrial,port_up_group_cargo_50x25,0,warehouse,склад
+industrial,port_up_group_smallsklad,0,warehouse,склад
+industrial,port_up_group_smallwarehouse_1,0,warehouse,склад
+industrial,port_up_group_smallwarehouse_2,0,warehouse,склад
+industrial,port_up_object_smallsklad,0,warehouse,склад
+industrial,port_up_object_smallwarehouse,0,warehouse,склад
+industrial,port_up_unit_bags,0,warehouse,склад
+industrial,port_up_unit_container,0,warehouse,склад
+industrial,port_up_unit_woodbox_1x4,0,warehouse,склад
+industrial,port_up_unit_woodbox_2x24,0,warehouse,склад
+industrial,Radio Beacon,0,Non-Directional Beacon,приводной радиомаяк
+industrial,rw,0,railway station facilit,строение ж/д станции
+industrial,RWplatform_eu,0,railway station facilit,строение ж/д станции
+industrial,RWstation_b,0,railway station facilit,строение ж/д станции
+industrial,RWstation_eu,0,railway station facilit,строение ж/д станции
+industrial,rwstation_industrial_01,0,railway station facilit,строение ж/д станции
+industrial,rwstation_industrial_02,0,railway station facilit,строение ж/д станции
+industrial,RWstation_s1,0,railway station facilit,строение ж/д станции
+industrial,RWstation_s2,0,railway station facilit,строение ж/д станции
+industrial,rwstation01,0,railway station facilit,строение ж/д станции
+industrial,rwstation02,0,railway station facilit,строение ж/д станции
+industrial,rwstation03,0,railway station facilit,строение ж/д станции
+industrial,rwstation04,0,railway station facilit,строение ж/д станции
+industrial,rwstation05,0,railway station facilit,строение ж/д станции
+industrial,Scot_01,0,factory facility,скотный двор
+industrial,Sklad_01,0,factory facility,склад
+locomotive,Locomotive_E,0,E locomotive,локомотив Е
+locomotive,Locomotive_G8,0,G8 locomotive,локомотив G8
+machine_gunner,DShK,0,DShK machinegun,пулемёт ДШК
+machine_gunner,DShK Twin turret,0,DShK twin machinegun,сдвоенный пулемёт ДШК
+machine_gunner,Hotchkiss Mle 14,0,,
+machine_gunner,M2.50,0,M2.50 machinegun,пулемёт M2.50
+machine_gunner,MG 34,0,MG 34 machinegun,пулемёт MG-34
+machine_gunner,Spandau MG 08,0,,
+parachute,CParachute,0,Parachute,Парашют
+rocket,NPC_TORPEDO_53-38,0,,
+rocket,NPC_TORPEDO_G7a-53,0,G7a,G7a
+rocket,RKT_GBR_RP3AP,0,,
+rocket,RKT_GBR_RP3HE,0,,
+rocket,RKT_GER_PB1,0,,
+rocket,RKT_GER_PB1_HIT,0,,
+rocket,RKT_GER_PB1_M8,0,,
+rocket,RKT_GER_R4M,0,,
+rocket,RKT_GER_WGR21,0,,
+rocket,RKT_GER_WGR21_1000,0,,
+rocket,RKT_GER_WGR21_1200,0,,
+rocket,RKT_GER_WGR21_800,0,,
+rocket,RKT_RUS_RBS82,0,RBS-82,РБС-82
+rocket,RKT_RUS_RBS82_HIT,0,,
+rocket,RKT_RUS_ROFS132,0,ROFS-132,РОФС-132
+rocket,RKT_RUS_ROS82,0,ROS-82,РОС-82
+rocket,RKT_RUS_ROS82_1000,0,ROS-82,РОС-82
+rocket,RKT_RUS_ROS82_600,0,ROS-82,РОС-82
+rocket,RKT_RUS_ROS82_800,0,ROS-82,РОС-82
+rocket,RKT_USA_M8,0,,
+rocket,Rocket 280 mm HE,0,,
+searchlight,British Searchlight 1914,0,searchlight,зенитный прожектор
+searchlight,German Landlight,0,landlight,посадочный прожектор
+searchlight,German Searchlight,0,landlight,посадочный прожектор
+searchlight,German Searchlight 1914,0,searchlight,зенитный прожектор
+searchlight,Landlight,0,landlight,посадочный прожектор
+searchlight,Searchlight,0,searchlight,зенитный прожектор
+searchlight,Soviet Landlight,0,searchlight,зенитный прожектор
+searchlight,Soviet Searchlight,0,searchlight,зенитный прожектор
+shell,NPC_SHELL_ENG_76_HE,0,,
+shell,NPC_SHELL_GER_105_HE,0,,
+shell,NPC_SHELL_GER_20_AP,0,,
+shell,NPC_SHELL_GER_20_HE,0,,
+shell,NPC_SHELL_GER_37_CV,0,,
+shell,NPC_SHELL_GER_37_HE,0,,
+shell,NPC_SHELL_GER_37x250_AP,0,,
+shell,NPC_SHELL_GER_37x250_HE,0,,
+shell,NPC_SHELL_GER_37x263_AP,0,,
+shell,NPC_SHELL_GER_37x263_HE,0,,
+shell,NPC_SHELL_GER_50_AP,0,,
+shell,NPC_SHELL_GER_50_HE,0,,
+shell,NPC_SHELL_GER_75_AP,0,,
+shell,NPC_SHELL_GER_75_HE,0,,
+shell,NPC_SHELL_GER_77_HE,0,,
+shell,NPC_SHELL_GER_88_AP,0,,
+shell,NPC_SHELL_GER_88_HE,0,,
+shell,NPC_SHELL_RUS_100_HE,0,,
+shell,NPC_SHELL_RUS_152_HE,0,,
+shell,NPC_SHELL_RUS_25_AP,0,,
+shell,NPC_SHELL_RUS_25_HE,0,,
+shell,NPC_SHELL_RUS_37_AP,0,,
+shell,NPC_SHELL_RUS_37_HE,0,,
+shell,NPC_SHELL_RUS_45_AP,0,,
+shell,NPC_SHELL_RUS_45_CV,0,,
+shell,NPC_SHELL_RUS_45_HE,0,,
+shell,NPC_SHELL_RUS_57_AP,0,,
+shell,NPC_SHELL_RUS_57_CV,0,,
+shell,NPC_SHELL_RUS_57_HE,0,,
+shell,NPC_SHELL_RUS_76_AP,0,,
+shell,NPC_SHELL_RUS_76_HE,0,,
+shell,NPC_SHELL_RUS_76_naval_HE,0,,
+shell,NPC_SHELL_RUS_85_AP,0,,
+shell,NPC_SHELL_RUS_85_CV,0,,
+shell,NPC_SHELL_RUS_85_HE,0,,
+shell,SHELL_ENG_115_HE,0,,
+shell,SHELL_ENG_20x110_AP,0,,
+shell,SHELL_ENG_20x110_HE,0,,
+shell,SHELL_ENG_40x158_AP,0,,
+shell,SHELL_ENG_40x158_HE,0,,
+shell,SHELL_GER_105_HE,0,,
+shell,SHELL_GER_105_HT,0,,
+shell,SHELL_GER_150_HE,0,,
+shell,SHELL_GER_30x184_AP,0,,
+shell,SHELL_GER_30x184_HE,0,,
+shell,SHELL_GER_50_CV,0,,
+shell,SHELL_GER_50_HE,0,,
+shell,SHELL_GER_50_HV,0,,
+shell,SHELL_GER_75_CV,0,,
+shell,SHELL_GER_75_HE,0,,
+shell,SHELL_GER_75_HT,0,,
+shell,SHELL_GER_75_HV,0,,
+shell,SHELL_GER_88_AP,0,,
+shell,SHELL_GER_88_CV,0,,
+shell,SHELL_GER_88_HE,0,,
+shell,SHELL_GER_88_HE_kwk43,0,,
+shell,SHELL_GER_88_HV,0,,
+shell,SHELL_RUS_100_HE,0,,
+shell,SHELL_RUS_130_CV,0,,
+shell,SHELL_RUS_130_HE,0,,
+shell,SHELL_RUS_152_CV,0,,
+shell,SHELL_RUS_152_HE,0,,
+shell,SHELL_RUS_25x218_AP,0,,
+shell,SHELL_RUS_25x218_HE,0,, 
+shell,SHELL_RUS_76_AP,0,,
+shell,SHELL_RUS_76_CV,0,,
+shell,SHELL_RUS_76_HE,0,,
+shell,SHELL_RUS_76_HV,0,,
+shell,SHELL_USA_155_HE,0,,
+shell,SHELL_USA_75_AP,0,,
+shell,SHELL_USA_75_CV,0,,
+shell,SHELL_USA_75_HE,0,,
+ship_heavy,Destroyer Type 7,0,Soviet Type 7 destroyer,Советский эсминец Тип 7
+ship_light,British AAA Peniche,0,,
+ship_light,German AAA Peniche,0,,
+ship_light,Gun Boat 1124 AAA,0,Gunboat 1124 AAA,Бронекатер 1124
+ship_light,Gun Boat 1124 MRLS,0,Gunboat 1124 MRLS,Бронекатер 1124 с РСЗО
+ship_light,Gun Ship type A,0,Gunboat,Вооружённый буксир
+ship_light,Landing Boat type A,0,Marinefährprahm Typ A,Десантная баржка Type A
+ship_light,Peniche type A,0,,
+ship_light,Peniche type B,0,,
+ship_light,Torpedo Boat G-5 series 11-bis,0,Torpedo Boat G-5 series 11-bis,Торпедный катер типа Г-5 XI-бис
+ship_light,Torpedo Boat G-5 series 11-bis 213,0,Rocket Boat G-5 series 11-bis 213,Торпедный катер типа Г-5 XI-бис (проект 213)
+ship_light,Torpedo Boat type S-38,0,Schnellboot S-38,Торпедный катер типа S-38
+ship_medium,Large Cargo Ship type 1,0,7000 tons cargo ship,7000-тонный сухогруз
+ship_medium,Large Tanker Ship type 1,0,14000 tons armed tanker,вооруженный 14000-тонный нефтеналивной танкер
+ship_medium,Large Tanker Ship type 1 ger,0,14000 tons armed tanker,вооруженный 14000-тонный нефтеналивной танкер
+ship_medium,River Cargo Ship type Georgia,0,Cargo Ship,Грузовое судно
+ship_medium,River Cargo Ship type Georgia AAA,0,,
+ship_medium,Submarine Type IIB,0,U-Boot-Klasse IIB,Подводная лодка тип IIB
+ship_medium,Submarine Type Shch ser.10,0,Submarine Shch-10 (type Shchuka),Подводная лодка Тип Щ серия 10 (Щука) 
+tank_driver,BotDriver_KV1,1,driver,
+tank_driver,BotDriver_PzIII,1,driver,водитель
+tank_driver,BotDriver_T34,1,driver,водитель
+tank_heavy,JagdPz IV L70,1,JagdPz IV L70,
+tank_heavy,KV-1-41,0,KV-1 1941,КВ-1 обр. 1941
+tank_heavy,KV-1-42,0,KV-1 1942,КВ-1 обр. 1942
+tank_heavy,KV-1s,1,KV-1s,КВ-1С
+tank_heavy,KV-1s ChTZ(1943),1,KV-1s ChTZ (1943),КВ-1С ЧТЗ 1943
+tank_heavy,Mark V (male),0,,
+tank_heavy,Pz.Kpfw.VI Ausf.H,1,Pz.Kpfw.VI Ausf.H,
+tank_heavy,Pz.Kpfw.VI Ausf.H1,1,Pz.Kpfw.VI Ausf.H1,
+tank_heavy,Sd.Kfz.184,1,Sd.Kfz.184,
+tank_heavy,Sturmpanzerwagen A7V,0,,
+tank_heavy,SU-152 ChKZ (1943),1,SU-152 ChKZ (1943),СУ-152 1943
+tank_light,BT-7M,0,BT-7M,БТ-7М
+tank_light,Marder III Ausf. H,0,SPG Marder III Ausf. H,
+tank_light,PzKpfw 38(t),0,Pz.Kpfw.38(t),
+tank_light,PzKpfw 38t,0,Pz.Kpfw.38(t),
+tank_light,Sd Kfz 7 Flakvierling 38,1,Sd Kfz 7 Flakvierling 38,
+tank_light,T-70,0,T-70,T-70
+tank_medium,_PzKpfw III Ausf.L,1,Pz.Kpfw.III Ausf.L,
+tank_medium,_T-34-76 STZ,1,T-34-76 STZ 1942,Т-34 СТЗ обр. 1942
+tank_medium,M4A2,1,M4A2,
+tank_medium,M4A2(75),1,,
+tank_medium,M4A3(75)W,1,,
+tank_medium,Pz.Kpfw.III Ausf.L,1,Pz.Kpfw.III Ausf.L,
+tank_medium,Pz.Kpfw.III Ausf.M,1,Pz.Kpfw.III Ausf.M,
+tank_medium,Pz.Kpfw.IV Ausf.G,1,,
+tank_medium,Pz.Kpfw.V Ausf.D,1,,
+tank_medium,PzKpfw III Ausf.H,1,Pz.Kpfw III Ausf.H,
+tank_medium,PzKpfw III Ausf.L,0,Pz.Kpfw III Ausf.L,
+tank_medium,PzKpfw IV Ausf.F1,0,Pz.Kpfw IV Ausf.F1,
+tank_medium,PzKpfw IV Ausf.G,0,Pz.Kpfw IV Ausf.G,
+tank_medium,PzKpfw IV Ausf.H,1,,
+tank_medium,StuG III Ausf.C-D,0,StuG III Ausf.C-D,
+tank_medium,StuG III Ausf.F,0,StuG III Ausf.F,
+tank_medium,SU-122 UZTM (1943),1,SU-122 UZTM 1943,СУ-122 УЗТМ 1943
+tank_medium,T-34-76 STZ,0,T-34-76 STZ 1942,Т-34 СТЗ обр. 1942
+tank_medium,T-34-76 STZ 41,0,T-34-76 STZ 1941,Т-34 СТЗ обр. 1941
+tank_medium,T-34-76 UTZ 43,1,,
+tank_medium,T-34-76 UVZ 43,1,T-34-76 UVZ 1943,Т-34 УВЗ обр. 1943
+tank_medium,T-34/76 STZ(1942),1,T-34-76 STZ 1942,Т-34 СТЗ обр. 1942
+tank_medium,T-34/76 UTZ (1943),1,T-34-76 UTZ 1943,Т-34 УTЗ обр. 1943
+tank_medium,T-34/76 UVZ (1943),1,T-34-76 UVZ 1943,Т-34 УВЗ обр. 1943
+tank_heavy,_KV1S_T0,1,KV-1s turret,КВ-1С башня
+tank_turret,_KV1S_T1,1,,
+tank_turret,_KV1S_T2,1,,
+tank_turret,_KV1S_T3,1,,
+tank_medium,_M4A2_T0,1,M4A2 turret,M4A2 башня
+tank_turret,_M4A2_T1,1,,
+tank_turret,_M4A2_T2,1,,
+tank_turret,_PzIII-M_T1,1,,
+tank_turret,_PzIII-M_T2,1,,
+tank_turret,_PzIII-M_T3,1,,
+tank_turret,_PzIV-G_T1,1,,
+tank_turret,_PzIV-G_T2,1,,
+tank_turret,_PzIV-G_T3,1,,
+tank_medium,_PzV-D_T0,1,PzKpfw V Ausf.D turret,башня PzKpfw V Ausf.D башня
+tank_turret,_PzV-D_T1,1,,
+tank_turret,_PzV-D_T2,1,,
+tank_turret,_PzV-D_T3,1,,
+tank_heavy,_PzVI-H1_T0,1,Pz.Kpfw.VI Ausf.H1 turret,Pz.Kpfw.VI Ausf.H1 башня
+tank_turret,_PzVI-H1_T1,1,,
+tank_turret,_PzVI-H1_T2,1,,
+tank_turret,_PzVI-H1_T3,1,,
+tank_heavy,_SdKfz184_T0,1,Sd.Kfz.184 turret,Sd.Kfz.184 башня
+tank_turret,_SdKfz184_T2,1,turret Sd.Kfz.184,башня Sd.Kfz.184
+tank_medium,_SU122_T0,1,SU-122 UZTM turret,СУ-122 УЗТМ башня
+tank_turret,_SU122_T2,1,,
+tank_heavy,_SU152_T0,1,SU152 turret,СУ-152 башня 
+tank_turret,_SU152_T2,1,,
+tank_turret,_SU152_T3,1,,
+tank_turret,_SU152_T4,1,,
+tank_medium,_T34-76UVZ-43_T0,1,T-34-76 UVZ turret,Т-34 УВЗ башня
+tank_turret,_T34-76UVZ-43_T1,1,,
+tank_turret,_T34-76UVZ-43_T2,1,,
+tank_turret,_T34-76UVZ-43_T3,1,,
+tank_turret,TankTurret,0,,
+tank_medium,Turret_PzIII-L,1,PzKpfw III Ausf.L turret,башня PzKpfw III Ausf.L башня
+tank_medium,Turret_PzIII-M,1,PzKpfw III Ausf.M turret,башня PzKpfw III Ausf.M башня
+tank_medium,Turret_PzIII-M,1,PzKpfw III Ausf.M turret,башня PzKpfw III Ausf.M башня
+tank_medium,Turret_PzIV-G,1,PzKpfw III Ausf.G turret,PzKpfw III Ausf.G башня
+tank_medium,Turret_T34-76STZ,1,T-34-76 STZ turret,Т-34 СТЗ башня
+trash,_KV1S_T0_sight1,0,,
+trash,_KV1S_T0_sight2,0,,
+trash,_M4A2_T0_sight1,0,,
+trash,_PzIII-M_T0_sight1,0,,
+trash,_PzIII-M_T2_sight1,0,,
+trash,_PzIII-M_visor,0,,
+trash,_PzIV-G_T0_sight1,0,,
+trash,_PzV-D_T0_sight1,0,,
+trash,_PzVI-H1_T0_sight1,0,,
+trash,_SdKfz184_T3,0,,
+trash,_SdKfz184_T4,0,,
+trash,_SU122_T0_sight1,0,,
+trash,_SU122_T1_sight1,0,,
+trash,_SU122_T3,0,,
+trash,_SU122_T4,0,,
+trash,_SU152_T0_sight1,0,,
+trash,A20B_P2,0,,
+trash,abbayesaintvaast,0,,
+trash,Aerostat controller AI,0,,
+trash,AeType_P2,0,,
+trash,AI Point of Interest,0,,
+trash,Aiming Bot's head,0,,
+trash,Airfield,0,,
+trash,AnimationOperator,0,,
+trash,arf_sign_forward,0,,
+trash,arf_sign_left,0,,
+trash,arf_sign_noway,0,,
+trash,arf_sign_right,0,,
+trash,arrascitadelle,0,,
+trash,art_position_amb1,0,,
+trash,art_position_amb2,0,,
+trash,art_position_AT,0,,
+trash,art_position_AT2,0,,
+trash,art_position_big,0,,
+trash,art_position_medium,0,,
+trash,art_position_small,0,,
+trash,B25D_P2,0,,
+trash,B25Draf_P2,0,,
+trash,ballgate,0,,
+trash,BAR_01,0,,
+trash,BAR_02,0,,
+trash,BAR_03,0,,
+trash,BAR_04,0,,
+trash,BAR_05,0,,
+trash,BAR_06,0,,
+trash,BAR_07,0,,
+trash,BAR_09,0,,
+trash,barbed1,0,,
+trash,barbed2,0,,
+trash,barbed3,0,,
+trash,barrackround,0,,
+trash,barracksmall,0,,
+trash,barrels,0,,
+trash,barrels_4x4,0,,
+trash,beauxartsdelille,0,,
+trash,beffroidelamairiedelille,0,,
+trash,bench,0,,
+trash,bench2,0,,
+trash,bf_barbed_1,0,,
+trash,bf_barbed_2,0,,
+trash,bf_barbed_3,0,,
+trash,bf_barbed_4,0,,
+trash,bf_barbed_5,0,,
+trash,bf_barbed_50,0,,
+trash,bf_gunpos_1,0,,
+trash,bf_gunpos_2,0,,
+trash,bf_gunpos_3,0,,
+trash,bf_gunpos_4,0,,
+trash,bf_gunpos_5,0,,
+trash,bf_gunpos_6,0,,
+trash,bf_gunpos_7,0,,
+trash,bf_gunpos_8,0,,
+trash,bf_tents_1,0,,
+trash,bf_tents_2,0,,
+trash,bf_tents_3,0,,
+trash,BFManager,0,,
+trash,bike,0,,
+trash,Block of buildings,0,,
+trash,BlocksArray,0,,
+trash,Bomb Sight He111,0,,
+trash,Bomb Sight He111,0,,
+trash,Bomb Sight Pe2,0,,
+trash,Bomb Sight Pe2,0,,
+trash,Bombsite Aimer,0,,
+trash,BotController0,0,,
+trash,BotFieldController0,0,,
+trash,BotFieldTankmanController,0,,
+trash,BotInputController0,0,,
+trash,BotRangefinder,0,,
+trash,bridge_section_dmg,0,,
+trash,BulletEffect,0,,
+trash,C47A_P2,0,,
+trash,C47A_P3,0,,
+trash,CAeroplaneFragment,0,,
+trash,CAerostat,0,,
+trash,CAerostatAI,0,,
+trash,CAIPoi,0,,
+trash,CAirfield,0,,
+trash,CameraOperator,0,,
+trash,camptent1,0,,
+trash,camptent2,0,,
+trash,CAnimationOperator,0,,
+trash,CappyChateau,0,,
+trash,Caquot_P2,0,,
+trash,cart,0,,
+trash,CAttachedVehicle,0,,
+trash,CBallistics,0,,
+trash,CBanner,0,,
+trash,CBatchBallistics,0,,
+trash,CBatchExplosion,0,,
+trash,CBatchTrash,0,,
+trash,CBatchTrashAnimated,0,,
+trash,CBFManager,0,,
+trash,CBlocksArray,0,,
+trash,CBombSiteAim,0,,
+trash,CBot,0,,
+trash,CBotAimingHead,0,,
+trash,CBotCharacter,0,,
+trash,CBotController,0,,
+trash,CBotFieldController,0,,
+trash,CBotHead,0,,
+trash,CBotInputController,0,,
+trash,CCameraOperator,0,,
+trash,CCloudSky,0,,
+trash,CClusterBallistics,0,,
+trash,CCommanderInputController,0,,
+trash,CComplexTrigger,0,,
+trash,CCumulativeRocket,0,,
+trash,CDFMission,0,,
+trash,CDistantLOD,0,,
+trash,CDummyObject,0,,
+trash,CEjectionPlace,0,,
+trash,CEjectorController,0,,
+trash,CFlag,0,,
+trash,CFlareGun,0,,
+trash,CForestBody,0,,
+trash,CGameChat,0,,
+trash,CGameMission,0,,
+trash,CHK,0,,
+trash,Church_eu_big,0,,
+trash,Church_eu_mid1,0,,
+trash,Church_eu_mid2,0,,
+trash,Church_eu_mid3,0,,
+trash,Church_eu_small1,0,,
+trash,Church_eu_small2,0,,
+trash,ChurchRed,0,,
+trash,ChurchYellow,0,,
+trash,CInfluenceArea,0,,
+trash,citadelledelille,0,,
+trash,CloudSky,0,,
+trash,ClusterGroundEffect,0,,
+trash,ClusterWaterEffect,0,,
+trash,CMouseControlCameraOperator,0,,
+trash,Common Bot's head,0,,
+trash,ComplexTrigger,0,,
+trash,country_100x100_1,0,,
+trash,country_100x100_2,0,,
+trash,country_100x100_3,0,,
+trash,country_100x100_4,0,,
+trash,country_200x100_1,0,,
+trash,country_200x100_2,0,,
+trash,country_200x100_3,0,,
+trash,country_200x100_4,0,,
+trash,country_200x100_5,0,,
+trash,country_200x100_6,0,,
+trash,country_b_block1,0,,
+trash,country_b_block2,0,,
+trash,country_b_block3,0,,
+trash,country_b_block4,0,,
+trash,country_m_block1,0,,
+trash,country_m_block2,0,,
+trash,country_m_block3,0,,
+trash,country_m_block4,0,,
+trash,country_m_corner_block1,0,,
+trash,country_m_corner_block2,0,,
+trash,country_m_corner_block3,0,,
+trash,country_m_corner_block4,0,,
+trash,country_m_corner_block5,0,,
+trash,country_m_corner_block6,0,,
+trash,country_m_corner_block7,0,,
+trash,country_m_corner_block8,0,,
+trash,coverstructure,0,,
+trash,cow,0,,
+trash,CParachutedContainer,0,,
+trash,CParatroopersCreator,0,,
+trash,CPhysPlatformRadioTurretAI,0,,
+trash,CPlane,0,,
+trash,CPlaneAI,0,,
+trash,CPlaneInputController,0,,
+trash,CPlatformTank,0,,
+trash,CRobotCameraOperator,0,,
+trash,CRocket,0,,
+trash,CSharedGroup,0,,
+trash,CShip,0,,
+trash,CShipAI,0,,
+trash,CSolidTrash,0,,
+trash,CSpotlight,0,,
+trash,CSpotter,0,,
+trash,CStaticBlock,0,,
+trash,CStaticEmitter,0,,
+trash,CStaticVehicle,0,,
+trash,CSubmarine,0,,
+trash,CTank,0,,
+trash,CTerrainArray,0,,
+trash,CTorpedo,0,,
+trash,CTrainAI,0,,
+trash,CTrainLocomotive,0,,
+trash,CTrainWagon,0,,
+trash,CTrash,0,,
+trash,CTrashAnimated,0,,
+trash,CTruck,0,,
+trash,CTurret,0,,
+trash,CTurretCamera,0,,
+trash,CTurretRadioAI,0,,
+trash,CTurretRadioAIInputController,0,,
+trash,CTurretRiffle,0,,
+trash,CVehicleAI,0,,
+trash,CVehicleExplosionTurret,0,,
+trash,CVehicleInputController,0,,
+trash,CVehicleRangefinderTurret,0,,
+trash,CVehicleRangefinderTurretAI,0,,
+trash,CVehicleRocketTurret,0,,
+trash,CVehicleRocketTurretAI,0,,
+trash,CVehicleTorpedoTurret,0,,
+trash,CVehicleTorpedoTurretAI,0,,
+trash,CVehicleTurret,0,,
+trash,CVehicleTurretAI,0,,
+trash,CVehicleTurretInputController,0,,
+trash,CWindsock,0,,
+trash,det-block-admina,0,,
+trash,det-block-admina2,0,,
+trash,det-block-Farm,0,,
+trash,det-block-Farm2,0,,
+trash,det-block-village1-01,0,,
+trash,det-block-village1-02,0,,
+trash,det-block-village2-01,0,,
+trash,det-block-village2-02,0,,
+trash,det-block-village4-01,0,,
+trash,det-block-village4-02,0,,
+trash,det-block-village4-03,0,,
+trash,det-block-village4-04,0,,
+trash,det-block-village4-05,0,,
+trash,det-block-village4-06,0,,
+trash,det-block-village4-07,0,,
+trash,det-block-village4-08,0,,
+trash,det-block-village4-09,0,,
+trash,det-block-village4-10,0,,
+trash,det-block-village4-11,0,,
+trash,det-object-Admina,0,,
+trash,det-object-Barnyard,0,,
+trash,det-object-Farm,0,,
+trash,det-object-Haystack,0,,
+trash,det-object-HouseBlue,0,,
+trash,DinamoWTR,0,,
+trash,Dogfight Mission,0,,
+trash,dot1,0,,
+trash,dot2,0,,
+trash,dot3,0,,
+trash,dot4,0,,
+trash,dot5,0,,
+trash,dot6,0,,
+trash,dottent1,0,,
+trash,dottent2,0,,
+trash,Drachen_P2,0,,
+trash,EjectionPlace,0,,
+trash,EjectionPlace controller AI,0,,
+trash,EjectorController,0,,
+trash,Fake Vehicle,0,,
+trash,fake_block,0,,
+trash,fakefield,0,,
+trash,fakefield_rnwSpawn,0,,
+trash,fence_brick1,0,,
+trash,fence_plank1,0,,
+trash,fence_stone1,0,,
+trash,Flag,0,,
+trash,Forest,0,,
+trash,fountain,0,,
+trash,Game Chat,0,,
+trash,Game Mission,0,,
+trash,guardgate1,0,,
+trash,guardhouse,0,,
+trash,hangardoubleside,0,,
+trash,hangartent1,0,,
+trash,hangartent2,0,,
+trash,Horse_01,0,,
+trash,Horse_02,0,,
+trash,Horse_03,0,,
+trash,hoteldeville,0,,
+trash,Influence Area,0,,
+trash,Ju523mg4e_P2,0,,
+trash,Ju523mg4e_P3,0,,
+trash,kuban_block_zdravnica,0,,
+trash,kuban_lighthousebig,0,,
+trash,kuban_lighthousesmall,0,,
+trash,kuban_museum,0,,
+trash,Landing Canvas,0,,
+trash,Landing Fire,0,,
+trash,markettent1,0,,
+trash,markettent2,0,,
+trash,mg_position,0,,
+trash,millitarytower1,0,,
+trash,MouseControlCameraOperator,0,,
+trash,noname,0,,
+trash,notredamedamiens,0,,
+trash,od_railcoal,0,,
+trash,od_railcross,0,,
+trash,od_windmil,0,,
+trash,OKT_01,0,,
+trash,OKT_02,0,,
+trash,OKT_03,0,,
+trash,OKT_04,0,,
+trash,OKT_05,0,,
+trash,OKT_06,0,,
+trash,OKT_07,0,,
+trash,OKT_08,0,,
+trash,operadelille,0,,
+trash,ParatroopersCreator_C47,0,,
+trash,ParatroopersCreator_Ju52,0,,
+trash,Parseval_P2,0,,
+trash,Plane controller,0,,
+trash,Plane controller AI,0,,
+trash,portedeparis,0,,
+trash,prefecturedelille,0,,
+trash,Rechnoy,0,,
+trash,RobotCameraOperator,0,,
+trash,Schodnya,0,,
+trash,sec1,0,,
+trash,sec2,0,,
+trash,sec3,0,,
+trash,secU,0,,
+trash,Shared Group,0,,
+trash,Ship Controller AI,0,,
+trash,Sight_eu_antverplady,0,,
+trash,Sight_eu_beffroi,0,,
+trash,Sight_eu_keln,0,,
+trash,Sight_eu_memorialinterallie,0,,
+trash,Sight_eu_memorialinterallie2,0,,
+trash,Sight_eu_palaceofjustice,0,,
+trash,Sight_eu_parcducinquantenaire,0,,
+trash,Sight_eu_peacepalace,0,,
+trash,Sight_eu_placesaintegudule,0,,
+trash,Sight_eu_royalpalaceofbrussels,0,,
+trash,Sight_eu_schifffahrtmuseum,0,,
+trash,Sight_eu_stbartholomew,0,,
+trash,Sight_eu_stlambertus,0,,
+trash,Sight_eu_stmartin,0,,
+trash,SMOKEGEN,0,,
+trash,spotter,0,,
+trash,stalingrad_00,0,,
+trash,stalingrad_01,0,,
+trash,stalingrad_02,0,,
+trash,stalingrad_03,0,,
+trash,stalingrad_04,0,,
+trash,stalingrad_05,0,,
+trash,stalingrad_06,0,,
+trash,stalingrad_07,0,,
+trash,stalingrad_08,0,,
+trash,stalingrad_09,0,,
+trash,stalingrad_10,0,,
+trash,stalingrad_11,0,,
+trash,stalingrad_12,0,,
+trash,stalingrad_13,0,,
+trash,stalingrad_14,0,,
+trash,stalingrad_15,0,,
+trash,stalingrad_16,0,,
+trash,stalingrad_17,0,,
+trash,stalingrad_18,0,,
+trash,stalingrad_19,0,,
+trash,stalingrad_20,0,,
+trash,stalingrad_21,0,,
+trash,stalingrad_22,0,,
+trash,stalingrad_23,0,,
+trash,stalingrad_24,0,,
+trash,stalingrad_25,0,,
+trash,stalingrad_26,0,,
+trash,stalingrad_27,0,,
+trash,stalingrad_28,0,,
+trash,stalingrad_29,0,,
+trash,stalingrad_30,0,,
+trash,stalingrad_31,0,,
+trash,stalingrad_32,0,,
+trash,stalingrad_33,0,,
+trash,stalingrad_34,0,,
+trash,stalingrad_35,0,,
+trash,stalingrad_36,0,,
+trash,stalingrad_37,0,,
+trash,stalingrad_38,0,,
+trash,stalingrad_39,0,,
+trash,stalingrad_40,0,,
+trash,stalingrad_41,0,,
+trash,stalingrad_42,0,,
+trash,stalingrad_43,0,,
+trash,stalingrad_44,0,,
+trash,stalingrad_45,0,,
+trash,stalingrad_46,0,,
+trash,stalingrad_47,0,,
+trash,stalingrad_48,0,,
+trash,stalingrad_49,0,,
+trash,stalingrad_50,0,,
+trash,stalingrad_51,0,,
+trash,stalingrad_52,0,,
+trash,stalingrad_53,0,,
+trash,stalingrad_54,0,,
+trash,stalingrad_bridge_01,0,,
+trash,stalingrad_bridge_02,0,,
+trash,stand,0,,
+trash,stela,0,,
+trash,streetlamp,0,,
+trash,STZ_01,0,,
+trash,STZ_02,0,,
+trash,STZ_03,0,,
+trash,STZ_04,0,,
+trash,STZ_05,0,,
+trash,STZ_06,0,,
+trash,STZ_07,0,,
+trash,STZ_08,0,,
+trash,STZ_09,0,,
+trash,STZ_10,0,,
+trash,STZ_11,0,,
+trash,STZ_12,0,,
+trash,tank_position,0,,
+trash,tent1,0,,
+trash,tentcart,0,,
+trash,Terrain,0,,
+trash,test_bridge_1,0,,
+trash,TestTank,0,,
+trash,TestTankPlates,0,,
+trash,tonnel,0,,
+trash,town_block_01_480x420,0,,
+trash,town_block_02_480x280,0,,
+trash,town_block_03_480x140,0,,
+trash,town_block_04_240x420,0,,
+trash,town_block_05_240x280,0,,
+trash,town_block_06_440x140,0,,
+trash,town_block_07_400x420,0,,
+trash,town_block_08_200x420,0,,
+trash,town_block_09_400x280,0,,
+trash,town_block_10_200x280,0,,
+trash,town_block_11_480x210,0,,
+trash,town_block_12_480x70,0,,
+trash,town_block_13_280x200,0,,
+trash,town_block_14_140x300,0,,
+trash,town_block_15_280x100,0,,
+trash,town_eu_arras_01,0,,
+trash,town_eu_arras_02,0,,
+trash,town_eu_arras_03,0,,
+trash,town_eu_arras_03,0,,
+trash,town_eu_arras_04,0,,
+trash,town_eu_arras_05,0,,
+trash,town_eu_lille_01,0,,
+trash,town_eu_lille_02,0,,
+trash,town_eu_lille_03,0,,
+trash,town_eu_lille_04,0,,
+trash,town_eu_lille_05,0,,
+trash,town_eu_lille_06,0,,
+trash,town_eu_lrg_block_01_01,0,,
+trash,town_eu_lrg_block_01_02,0,,
+trash,town_eu_lrg_block_01_03,0,,
+trash,town_eu_lrg_block_01_04,0,,
+trash,town_eu_lrg_block_01_05,0,,
+trash,town_eu_lrg_block_01_06,0,,
+trash,town_eu_lrg_block_01_07,0,,
+trash,town_eu_lrg_block_01_08,0,,
+trash,town_eu_lrg_block_01_09,0,,
+trash,town_eu_lrg_block_01_10,0,,
+trash,town_eu_lrg_block_01_11,0,,
+trash,town_eu_lrg_block_01_12,0,,
+trash,town_eu_lrg_block_02_01,0,,
+trash,town_eu_lrg_block_02_02,0,,
+trash,town_eu_lrg_block_02_03,0,,
+trash,town_eu_lrg_block_02_04,0,,
+trash,town_eu_lrg_block_03_01,0,,
+trash,town_eu_lrg_block_03_02,0,,
+trash,town_eu_lrg_block_03_03,0,,
+trash,town_eu_lrg_block_03_04,0,,
+trash,town_eu_lrg_block_03_05,0,,
+trash,town_eu_lrg_block_03_06,0,,
+trash,town_eu_lrg_block_03_07,0,,
+trash,town_eu_lrg_block_03_08,0,,
+trash,town_eu_lrg_block_04_01,0,,
+trash,town_eu_lrg_block_04_02,0,,
+trash,town_eu_lrg_block_04_03,0,,
+trash,town_eu_lrg_block_04_04,0,,
+trash,town_eu_lrg_block_05_01,0,,
+trash,town_eu_lrg_block_05_02,0,,
+trash,town_eu_lrg_block_05_03,0,,
+trash,town_eu_lrg_block_06_01,0,,
+trash,town_eu_lrg_block_06_02,0,,
+trash,town_eu_lrg_block_06_03,0,,
+trash,town_eu_lrg_block_07_01,0,,
+trash,town_eu_lrg_block_07_02,0,,
+trash,town_eu_lrg_block_08_01,0,,
+trash,town_eu_lrg_block_08_02,0,,
+trash,town_eu_lrg_block_08_03,0,,
+trash,town_eu_lrg_block_08_04,0,,
+trash,town_eu_lrg_block_08_05,0,,
+trash,town_eu_lrg_block_08_06,0,,
+trash,town_eu_lrg_block_08_07,0,,
+trash,town_eu_lrg_block_08_08,0,,
+trash,town_eu_lrg_block_08_09,0,,
+trash,town_eu_lrg_block_08_10,0,,
+trash,town_eu_lrg_block_08_11,0,,
+trash,town_eu_lrg_block_arras,0,,
+trash,town_eu_lrg_det_01_01,0,,
+trash,town_eu_lrg_det_01_02,0,,
+trash,town_eu_lrg_det_01_03,0,,
+trash,town_eu_lrg_det_01_04,0,,
+trash,town_eu_lrg_det_01_05,0,,
+trash,town_eu_lrg_det_01_06,0,,
+trash,town_eu_lrg_det_01_07,0,,
+trash,town_eu_lrg_object_01,0,,
+trash,town_eu_lrg_object_02,0,,
+trash,town_eu_lrg_object_03,0,,
+trash,town_eu_lrg_object_04,0,,
+trash,town_eu_lrg_object_05,0,,
+trash,town_eu_lrg_object_06,0,,
+trash,town_eu_lrg_object_07,0,,
+trash,town_eu_lrg_object_08,0,,
+trash,town_eu_lrg_object_09,0,,
+trash,town_eu_lrg_object_10,0,,
+trash,town_eu_lrg_object_11,0,,
+trash,town_eu_lrg_object_12,0,,
+trash,town_eu_lrg_object_13,0,,
+trash,town_eu_lrg_object_14,0,,
+trash,town_eu_med_block_01_01,0,,
+trash,town_eu_med_block_01_02,0,,
+trash,town_eu_med_block_01_03,0,,
+trash,town_eu_med_block_01_04,0,,
+trash,town_eu_med_block_01_05,0,,
+trash,town_eu_med_block_01_06,0,,
+trash,town_eu_med_block_01_07,0,,
+trash,town_eu_med_block_01_08,0,,
+trash,town_eu_med_block_01_09,0,,
+trash,town_eu_med_block_02_01,0,,
+trash,town_eu_med_block_02_02,0,,
+trash,town_eu_med_block_02_03,0,,
+trash,town_eu_med_block_02_04,0,,
+trash,town_eu_med_block_02_05,0,,
+trash,town_eu_med_block_02_06,0,,
+trash,town_eu_med_block_03_01,0,,
+trash,town_eu_med_block_03_02,0,,
+trash,town_eu_med_block_03_03,0,,
+trash,town_eu_med_block_03_04,0,,
+trash,town_eu_med_block_03_05,0,,
+trash,town_eu_med_block_03_06,0,,
+trash,town_eu_med_block_03_07,0,,
+trash,town_eu_med_block_03_08,0,,
+trash,town_eu_med_block_03_09,0,,
+trash,town_eu_med_det_01_01,0,,
+trash,town_eu_med_det_01_03,0,,
+trash,town_eu_med_det_01_04,0,,
+trash,town_eu_med_det_01_05,0,,
+trash,town_eu_med_det_01_06,0,,
+trash,town_eu_med_det_01_07,0,,
+trash,town_eu_med_det_01_08,0,,
+trash,town_eu_med_det_01_09,0,,
+trash,town_eu_med_det_02_01,0,,
+trash,town_eu_med_det_02_02,0,,
+trash,town_eu_med_det_02_03,0,,
+trash,town_eu_med_det_02_04,0,,
+trash,town_eu_med_det_02_05,0,,
+trash,town_eu_med_det_02_06,0,,
+trash,town_eu_med_det_03_01,0,,
+trash,town_eu_med_det_03_02,0,,
+trash,town_eu_med_det_03_03,0,,
+trash,town_eu_med_det_03_04,0,,
+trash,town_eu_med_object_01,0,,
+trash,town_eu_med_object_02,0,,
+trash,town_eu_med_object_03,0,,
+trash,town_eu_med_object_04,0,,
+trash,town_eu_med_object_05,0,,
+trash,town_eu_med_object_06,0,,
+trash,town_eu_med_object_07,0,,
+trash,town_eu_med_object_08,0,,
+trash,town_eu_med_object_09,0,,
+trash,town_eu_med_object_10,0,,
+trash,town_eu_med_object_11,0,,
+trash,town_eu_med_object_12,0,,
+trash,town_eu_objgrp_01,0,,
+trash,town_eu_objgrp_02,0,,
+trash,town_lrg_01,0,,
+trash,town_lrg_02,0,,
+trash,town_lrg_03,0,,
+trash,town_lrg_04,0,,
+trash,town_lrg_05,0,,
+trash,town_lrg_06,0,,
+trash,town_lrg_corner_01,0,,
+trash,town_lrg_corner_02,0,,
+trash,town_med_140x100_01,0,,
+trash,town_med_140x100_02,0,,
+trash,town_med_140x140_01,0,,
+trash,town_med_140x140_02,0,,
+trash,town_med_140x140_03,0,,
+trash,town_med_140x140_04,0,,
+trash,town_med_200x140_01,0,,
+trash,town_med_200x140_02,0,,
+trash,town_med_200x140_03,0,,
+trash,town_med_240x140_01,0,,
+trash,town_med_240x140_02,0,,
+trash,town_med_240x140_03,0,,
+trash,town_med_240x70_01,0,,
+trash,town_med_240x70_02,0,,
+trash,town_med_280x140,0,,
+trash,town_med_420x280,0,,
+trash,town_med_420x420,0,,
+trash,town_med_corner_140x140,0,,
+trash,town_med_cornerL_01,0,,
+trash,town_med_cornerL_02,0,,
+trash,town_med_cornerR_01,0,,
+trash,town_med_cornerR_02,0,,
+trash,town_med_trapeze_01,0,,
+trash,town_med_trapeze_02,0,,
+trash,townBlock250x100_01,0,,
+trash,townBlock250x100_02,0,,
+trash,townBlock250x250_01,0,,
+trash,townBlock250x250_02,0,,
+trash,townBlock250x250u_01,0,,
+trash,townBlock250x500_01,0,,
+trash,townBlock250x500_02,0,,
+trash,townBlock250x500_03,0,,
+trash,townBlock500x250u_01,0,,
+trash,townBlock500x250u_02,0,,
+trash,townBlock500x250u_03,0,,
+trash,townBlock500x250u_04,0,,
+trash,townBlock500x250u_05,0,,
+trash,townBlock500x250u_06,0,,
+trash,townBlock500x500_01,0,,
+trash,townBlock500x500_02,0,,
+trash,townBlock500x500u_01,0,,
+trash,townBlock500x500u_02,0,,
+trash,townBlock500x500u_03,0,,
+trash,townBlock500x500u_04,0,,
+trash,TownHall_eu_1,0,,
+trash,TownHall_eu_2,0,,
+trash,Train Controller AI,0,,
+trash,trash,0,,
+trash,tunel,0,,
+trash,Vehicle Tank Controller AI,0,,
+trash,Vehicle Tank Controller AI,0,,
+trash,Vehicle Truck Controller AI,0,,
+trash,VehicleInputController0,0,,
+trash,VehicleRangefinderTurret,0,,
+trash,VehicleRangefinderTurretInputController0,0,,
+trash,VehicleTurretAIHowitzPhysic,0,,
+trash,VehicleTurretFieldCannon,0,,
+trash,VehicleTurretInputController0,0,,
+trash,VehicleTurretTankCannon,0,,
+trash,village_200_block1,0,,
+trash,village_200_block2,0,,
+trash,village_200_block3,0,,
+trash,village_400_block1,0,,
+trash,village_400_block2,0,,
+trash,village_400_block3,0,,
+trash,village_cross_200_block1,0,,
+trash,village_cross_200_block2,0,,
+trash,village_Tcross_200_block1,0,,
+trash,village_Tcross_200_block2,0,,
+trash,vl_001,0,,
+trash,vl_002,0,,
+trash,vl_003,0,,
+trash,vl_004,0,,
+trash,vl_005,0,,
+trash,vl_006,0,,
+trash,vl_007,0,,
+trash,vl_1-06,0,,
+trash,vl_1-07,0,,
+trash,vl_1-08,0,,
+trash,vl_1-09,0,,
+trash,vl_2wagons,0,,
+trash,vl_3wagons,0,,
+trash,vl_banya,0,,
+trash,vl_cerkvoznes,0,,
+trash,vl_chapel,0,,
+trash,vl_depo,0,,
+trash,vl_dk,0,,
+trash,vl_factory,0,,
+trash,vl_klad,0,,
+trash,vl_n1station,0,,
+trash,vl_n2station,0,,
+trash,vl_nsstation,0,,
+trash,vl_nsstation_w,0,,
+trash,vl_perehod,0,,
+trash,vl_perron,0,,
+trash,vl_pioner,0,,
+trash,vl_pvrz01,0,,
+trash,vl_pvrz02,0,,
+trash,vl_pvrz03,0,,
+trash,vl_rounddepot,0,,
+trash,vl_rounddepot_right,0,,
+trash,vl_school,0,,
+trash,vl_school02,0,,
+trash,vl_selmag,0,,
+trash,vl_selpo,0,,
+trash,vl_selsovet,0,,
+trash,vl_stadium,0,,
+trash,vl_torgryad,0,,
+trash,vl_tupik,0,,
+trash,vl_vlvokzal,0,,
+trash,vl_vodonapor,0,,
+trash,vl_wagon_pass,0,,
+trash,vl_wagons,0,,
+trash,Watertower,0,,
+trash,Watertower_eu_1,0,,
+trash,Watertower_eu_2,0,,
+trash,Windmill1_eu_1,0,,
+trash,Windmill1_eu_2,0,,
+trash,Windsock,0,,
+truck,Benz LKW 1912,0,,
+truck,Benz LKW 1912 ammo,0,,
+truck,BZ-35,0,,
+truck,Ford G917,0,Ford G917 truck,грузовик Ford
+truck,Ford G917 ammo,0,,
+truck,GAZ-55,0,,
+truck,GAZ-AA,0,GAZ-AA truck,грузовик ГАЗ-АА
+truck,GAZ-AA ammo,0,,
+truck,GMC CCKW 353,0,GMC CCKW truck,грузовик GMC CCKW
+truck,GMC CCKW 353 ammo,0,,
+truck,GMC CCKW 353 Fuel,0,,
+truck,Leyland 3 Ton RAF,0,,
+truck,Leyland 3 Ton RAF ammo,0,,
+truck,Opel Blitz,0,Opel Blitz truck,грузовик Opel Blitz
+truck,Opel Blitz Ambulance,0,,
+truck,Opel Blitz ammo,0,,
+truck,Opel Blitz Tankwagen,0,,
+truck,ZiS-5,0,ZiS-5 truck,грузовик ЗиС-5
+vehicle_crew,BotBoatSwain,0,boatswain,боцман
+vehicle_crew,BotCommander_KV1,0,commander,
+vehicle_crew,BotCommander_Pz6H1,0,commander,
+vehicle_crew,BotDriver,0,driver,водитель
+vehicle_crew,BotDriver_Pz6H1,0,driver,водитель
+vehicle_crew,BotDriver1,0,driver,водитель
+vehicle_crew,BotGunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotGunner_KV1,0,gunner,стрелок-наводчик
+vehicle_crew,BotGunner_Pz6H1,0,gunner,стрелок-наводчик
+vehicle_crew,BotGunner_PzIII,0,gunner,стрелок-наводчик
+vehicle_crew,BotGunner_T34,0,gunner,стрелок-наводчик
+vehicle_crew,BotGunnerHowitzer,0,gunner,стрелок-наводчик
+vehicle_crew,BotLoader_Pz6H1,0,loader,
+vehicle_crew,BotMachinist0,0,machinist,машинист
+vehicle_crew,BotPilotBalloon_Fra,0,pilot balloon,
+vehicle_crew,BotPilotBalloon_Ger,0,pilot balloon,
+vehicle_crew,BotPilotBalloon_GER17,0,pilot balloon,
+vehicle_crew,BotPilotBalloon_RAF17,0,pilot balloon,
+vehicle_crew,BotPilotBalloonNPC_Fra,0,pilot balloon,
+vehicle_crew,BotPilotBalloonNPC_Ger,0,pilot balloon,
+vehicle_crew,BotPilotBalloonNPC_GER17,0,pilot balloon,
+vehicle_crew,BotPilotBalloonNPC_RAF17,0,pilot balloon,
+vehicle_crew,BotRadist_Pz6H1,0,radist,
+vehicle_crew,BotTankKV1_Commander,0,commander,
+vehicle_crew,BotTankKV1_Driver,0,driver,водитель
+vehicle_crew,BotTankKV1_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankKV1_Loader,0,loader,
+vehicle_crew,BotTankKV1_Radist,0,radist,
+vehicle_crew,BotTankM4A2_Commander,0,commander,
+vehicle_crew,BotTankM4A2_Driver,0,driver,
+vehicle_crew,BotTankM4A2_Gunner,0,gunner,
+vehicle_crew,BotTankM4A2_Loader,0,loader,
+vehicle_crew,BotTankM4A2_MGunner,0,gunner,
+vehicle_crew,BotTankM4A2_Radist,0,radist,
+vehicle_crew,BotTankPz3M_Commander,0,commander,
+vehicle_crew,BotTankPz3M_Driver,0,driver,
+vehicle_crew,BotTankPz3M_Gunner,0,gunner,
+vehicle_crew,BotTankPz3M_Loader,0,loader,
+vehicle_crew,BotTankPz3M_Radist,0,radist,
+vehicle_crew,BotTankPz4G_Commander,0,commander,
+vehicle_crew,BotTankPz4G_Driver,0,driver,водитель
+vehicle_crew,BotTankPz4G_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankPz4G_Loader,0,loader,
+vehicle_crew,BotTankPz4G_Radist,0,radist,
+vehicle_crew,BotTankPz5D_Commander,0,commander,
+vehicle_crew,BotTankPz5D_Driver,0,driver,
+vehicle_crew,BotTankPz5D_Gunner,0,gunner,
+vehicle_crew,BotTankPz5D_Loader,0,loader,
+vehicle_crew,BotTankPz5D_Radist,0,radist,
+vehicle_crew,BotTankPz6H1_Commander,0,commander,
+vehicle_crew,BotTankPz6H1_Driver,0,driver,водитель
+vehicle_crew,BotTankPz6H1_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankPz6H1_Loader,0,loader,
+vehicle_crew,BotTankPz6H1_Radist,0,radist,
+vehicle_crew,BotTankPzIIIL_Driver,0,driver,водитель
+vehicle_crew,BotTankPzIIIL_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankSdKfz184_Commander,0,commander,
+vehicle_crew,BotTankSdKfz184_Driver,0,driver,
+vehicle_crew,BotTankSdKfz184_Gunner,0,gunner,
+vehicle_crew,BotTankSdKfz184_Loader1,0,loader,
+vehicle_crew,BotTankSdKfz184_Loader2,0,loader,
+vehicle_crew,BotTankSdKfz184_Radist,0,radist,
+vehicle_crew,BotTankSU122_Commander,0,commander,
+vehicle_crew,BotTankSU122_Driver,0,driver,
+vehicle_crew,BotTankSU122_Gunner,0,gunner,
+vehicle_crew,BotTankSU122_Loader1,0,loader,
+vehicle_crew,BotTankSU122_Loader2,0,loader,
+vehicle_crew,BotTankSU152_Commander,0,commander,
+vehicle_crew,BotTankSU152_Driver,0,driver,водитель
+vehicle_crew,BotTankSU152_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankSU152_Loader1,0,loader,
+vehicle_crew,BotTankSU152_Loader2,0,loader,
+vehicle_crew,BotTankT3442_Driver,0,driver,водитель
+vehicle_crew,BotTankT3442_Gunner,0,gunner,стрелок-наводчик
+vehicle_crew,BotTankT34UVZ43_Driver,0,driver,
+vehicle_crew,BotTankT34UVZ43_Gunner,0,gunner,
+vehicle_crew,BotTankT34UVZ43_Loader,0,loader,
+vehicle_crew,BotTankT34UVZ43_Radist,0,radist,
+vehicle_crew,ParatrooperGER,0,paratrooper,десантник
+vehicle_static,15 cm schwere Feldhaubitze 13,0,,
+vehicle_static,Flakvierling 38,0,,
+vehicle_static,M5 3-inch gun,0,,
+vehicle_static,static_BM13,0,,
+vehicle_static,static_BoxNB,0,,
+vehicle_static,static_boxnb_3,0,,
+vehicle_static,static_boxnb_5,0,,
+vehicle_static,static_BP_d3t26,0,,
+vehicle_static,static_BP_locomotive,0,,
+vehicle_static,static_BP_pl37,0,,
+vehicle_static,static_BP_pl42,0,,
+vehicle_static,static_BP_pl43,0,,
+vehicle_static,static_Bt-7m,0,,
+vehicle_static,static_E,0,,
+vehicle_static,static_ET,0,,
+vehicle_static,static_ford-G917,0,,
+vehicle_static,static_G8,0,,
+vehicle_static,static_G8T,0,,
+vehicle_static,static_gaz-m,0,,
+vehicle_static,static_gazAA,0,,
+vehicle_static,static_GMC-CCKW,0,,
+vehicle_static,static_GMC-CCKW-Fuel,0,,
+vehicle_static,static_Horch830,0,,
+vehicle_static,static_kv1-41,0,,
+vehicle_static,static_M4A3,0,,
+vehicle_static,static_opel,0,truck,грузовик
+vehicle_static,static_opel_fuel,0,truck,грузовик
+vehicle_static,static_pass,0,,
+vehicle_static,static_pass_3,0,,
+vehicle_static,static_pass_5,0,,
+vehicle_static,static_PlatformEmptyNB,0,,
+vehicle_static,static_platformemptynb_3,0,,
+vehicle_static,static_platformemptynb_5,0,,
+vehicle_static,static_PlatformNB,0,,
+vehicle_static,static_platformnb_3,0,,
+vehicle_static,static_platformnb_5,0,,
+vehicle_static,static_Pz_IIIH,0,,
+vehicle_static,static_Pz_IVF1,0,,
+vehicle_static,static_PzVI-H1,0,,
+vehicle_static,static_SdKfz251-1C,0,,
+vehicle_static,static_Stug37L24,0,,
+vehicle_static,static_T34-76,0,,
+vehicle_static,static_T70,0,,
+vehicle_static,static_tanknb,0,,
+vehicle_static,static_tanknb_3,0,,
+vehicle_static,static_tanknb_5,0,,
+vehicle_static,static_WillysMB,0,,
+vehicle_static,static_zis,0,truck,грузовик
+vehicle_static,static_zis_fuel,0,truck,грузовик
+vehicle_turret,21-K turret,0,,
+vehicle_turret,21-K turret b,0,,
+vehicle_turret,21-K turret f,0,,
+vehicle_turret,34-K turret,0,,
+vehicle_turret,39-Ju torpedo turret,0,,
+vehicle_turret,B-13 turret,0,,
+vehicle_turret,B-13 turret b,0,,
+vehicle_turret,DShK G5 turret,0,,
+vehicle_turret,DShK T7 turret,0,,
+vehicle_turret,DShK turret,0,,
+vehicle_turret,F-34 turret,0,F-34 gun,орудие Ф-34
+vehicle_turret,Flak 30 turret,0,,
+vehicle_turret,Flak 36 turret,0,,
+vehicle_turret,HowitzerTurret,0,turret,башня
+vehicle_turret,Kolt Twin turret,0,,
+vehicle_turret,M8M turret,0,,
+vehicle_turret,MGC 30 turret,0,,
+vehicle_turret,SKC 35 turret,0,,
+vehicle_turret,TorpedoTurret,0,,
+vehicle_turret,TurretRiffle,0,turret,башня
+vehicle_turret,Type 7 AA rangefinder turret,0,,
+vehicle_turret,Type 7 rangefinder turret,0,,
+vehicle_turret,VehicleTorpedoTurret,0,turret,башня
+vehicle_turret,VehicleTurret,0,turret,башня
+wagon,Wagon_AAPlatform,0,train platform,ж/д платформа
+wagon,Wagon_BoxB,0,train boxcar,ж/д вагон
+wagon,Wagon_BoxNB,0,train boxcar,ж/д вагон
+wagon,Wagon_ET,0,E tender,тендер
+wagon,Wagon_G8T,0,G8 tender,тендер
+wagon,Wagon_GondolaB,0,train gondola,ж/д полувагон
+wagon,Wagon_GondolaNB,0,train gondola,ж/д полувагон
+wagon,Wagon_Pass,0,train passenger car,ж/д пассажирский вагон
+wagon,Wagon_PassC,0,train passenger car,ж/д пассажирский вагон
+wagon,Wagon_PlatformAA-61K,0,train platform,ж/д платформа
+wagon,Wagon_PlatformAA-Flak38,0,train platform,ж/д платформа
+wagon,Wagon_PlatformAA-M4,0,train platform,ж/д платформа
+wagon,Wagon_PlatformAA-MG34,0,train platform,ж/д платформа
+wagon,Wagon_PlatformB,0,train platform,ж/д платформа
+wagon,Wagon_PlatformEmptyB,0,train platform,ж/д платформа
+wagon,Wagon_PlatformEmptyNB,0,train platform,ж/д платформа
+wagon,Wagon_PlatformNB,0,train platform,ж/д платформа
+wagon,Wagon_TankB,0,train oil tank,ж/д цистерна
+wagon,Wagon_TankNB,0,train oil tank,ж/д цистерна

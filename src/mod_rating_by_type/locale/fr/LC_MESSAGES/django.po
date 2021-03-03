@@ -9343,3 +9343,418 @@ msgstr "Profil édité avec succès."
 #~| msgid "number of sorties"
 #~ msgid "on the number of sorties"
 #~ msgstr "nombre de sorties"
+
+msgctxt "squad_nav_tab"
+msgid "Tankmen"
+msgstr "Tankiste"
+
+msgctxt "tankman_sortie_nav_tab"
+msgid "Tankman Sortie Statistics"
+msgstr "Statistiques de la sortie"
+
+msgctxt "tankman_sortie_nav_tab"
+msgid "Tankman Sortie Log"
+msgstr "Log de la sortie"
+
+msgctxt "tankman_nav_tab"
+msgid "Tankman Statistics"
+msgstr "Estadísticas de Tankiste"
+
+msgctxt "tankman_nav_tab"
+msgid "Tankman Sorties"
+msgstr "Sorties"
+
+msgctxt "tankman_nav_tab"
+msgid "Tankman Virtual Lifes"
+msgstr "Vies virtuelles"
+
+msgctxt "tankman_nav_tab"
+msgid "Tankman Awards"
+msgstr "Médailles"
+
+msgctxt "tankman_nav_tab"
+msgid "Tankman Killboard"
+msgstr "Killboard"
+
+msgctxt "tour_top"
+msgid "Best tankmen in the last 24 hours"
+msgstr "Meilleurs tankiste des dernières 24H"
+
+#: .\stats\templates\main.html:175 .\stats\templates\main.html:201
+#: .\stats\templates\tour.html:175 .\stats\templates\tour.html:201
+msgctxt "tour_top"
+msgid "tankman nickname"
+msgstr "pseudo du tankiste"
+
+#: .\stats\templates\main.html:196
+msgctxt "tour_top"
+msgid "Best live tankmen"
+msgstr "Mejores live tankiste"
+
+#: .\stats\templates\main.html:234 .\stats\templates\tour.html:232
+msgid "Overall Tankman Rankings"
+msgstr "Classement général des Tankiste"
+
+#: .\stats\templates\main.html:319 .\stats\templates\tour.html:296
+msgid "Active tankmen"
+msgstr "Tankiste actifs"
+
+#: .\stats\templates\main.html:423
+msgid "Top Tankmen"
+msgstr "Meilleurs tankiste"
+
+#: .\stats\templates\mission.html:192
+msgid "Tankmen Rankings"
+msgstr "Classement des tankiste"
+
+msgid "Tankman Rankings"
+msgstr "Classement des tankiste"
+
+msgctxt "total"
+msgid "Lost aircrafts/tanks"
+msgstr "Avion/Char perdu"
+
+#: .\stats\templates\squad.html:480 .\stats\templates\tankman.html:528
+msgctxt "specialty"
+msgid "Light Tanks"
+msgstr "Chars légers"
+
+#: .\stats\templates\squad.html:491 .\stats\templates\tankman.html:539
+msgctxt "specialty"
+msgid "Medium Tanks"
+msgstr "Chars moyens"
+
+#: .\stats\templates\squad.html:502 .\stats\templates\tankman.html:550
+msgctxt "specialty"
+msgid "Heavy Tanks"
+msgstr "Chars lourds"
+
+#: .\stats\templates\squad.html:539
+msgid "K/L - Kills per Aircraft/Tank Lost"
+msgstr "K/L victoires par Appareil perdu"
+
+#: .\stats\templates\squad.html:573
+msgid "GK/L - G.Kills per Aircraft/Tank Lost"
+msgstr "GK/L cibles au sol par Appareil perdu"
+
+#: .\stats\templates\tankman.html:35
+msgid "Favorite Tank"
+msgstr "Char favori"
+
+#: .\stats\templates\tankman.html:53
+msgid "number of destroyed aerial targets for the current virtual life"
+msgstr "nombre de cibles au aérien détruites pour le pilote virtuel actuel"
+
+#: .\stats\templates\tankman.html:78 .\stats\templates\tankman.html:472
+#: .\stats\templates\tankman_vlife.html:73
+msgid "Destroyed aerial targets"
+msgstr "aériennes détruites"
+
+#: .\stats\templates\tankman.html:398 .\stats\templates\tankman.html:484
+#: .\stats\templates\tankman_vlife.html:371
+msgctxt "total"
+msgid "Lost Tanks"
+msgstr "Chars perdus"
+
+#: .\stats\templates\tankman.html:426 .\stats\templates\tankman_vlife.html:379
+msgctxt "total"
+msgid "Destroyed Friendly Aircraft"
+msgstr "Détruit un avion ami"
+
+#: .\stats\templates\tankman.html:442
+msgid "Best Air Streak"
+msgstr "Meilleure série aérienne"
+
+#: .\stats\templates\tankman.html:446
+msgid "Best Sortie Time Streak"
+msgstr "Meilleure Temps de sortie série"
+
+#: .\stats\templates\tankman.html:454
+msgid "Max Ground targets destroyed in one sortie"
+msgstr "Max Cibles terrestres détruites en une sortie"
+
+#: .\stats\templates\tankman.html:586
+msgid ""
+"if ratio > 1 - tankman playing in the minority, if ratio < 1 - tankman "
+"playing in the majority"
+msgstr ""
+"Si le ratio > 1 - le tankiste vole pour le côté en sousnombre, si le ratio < 1 "
+"- le tankiste vole pour le côté en surnombre"
+
+#: .\stats\templates\tankman.html:614
+msgid "K/L - Kills per Tank Lost"
+msgstr "K/L victoires par Char perdu"
+
+#: .\stats\templates\tankman.html:630
+msgid "K/H - Kills per Sortie Time"
+msgstr "K/H victoires/Heure de sortie"
+
+#: .\stats\templates\tankman.html:648
+msgid "GK/L - G.Kills per Tank Lost"
+msgstr "GK/L cibles au sol par Char perdu"
+
+#: .\stats\templates\tankman.html:664
+msgid "GK/H - G.Kills per Sortie Time"
+msgstr "GK/H cibles au sol/Heure de sortie"
+
+#: .\stats\templates\tankman.html:679
+msgid "Other names of the tankman on this account"
+msgstr "Autres noms du tankiste sur ce compte"
+
+#: .\stats\templates\tankman_awards.html:3
+#: .\stats\templates\tankman_awards.html:14
+msgctxt "tankman_awards"
+msgid "Tankman Awards"
+msgstr "Médailles"
+
+#: .\stats\templates\tankman_awards.html:15
+msgctxt "tankman_awards"
+msgid "Tankman"
+msgstr "Tankiste"
+
+#: .\stats\templates\tankman_killboard.html:3
+#: .\stats\templates\tankman_killboard.html:14
+msgid "Tankman Killboard"
+msgstr "Killboard"
+
+#: .\stats\templates\tankman_killboard.html:15
+#: .\stats\templates\tankman_vlifes.html:15
+msgid "Tankman"
+msgstr "Tankiste"
+
+#: .\stats\templates\tankman_sortie.html:3
+#: .\stats\templates\tankman_sortie.html:16
+msgctxt "sortie_page_title"
+msgid "Tankman Sortie"
+msgstr "Sortie"
+
+#: .\stats\templates\tankman_sortie.html:35
+#: .\stats\templates\tankman_sortie.html:36
+#: .\stats\templates\tankman_sortie_log.html:36
+#: .\stats\templates\tankman_sortie_log.html:37
+#: .\stats\templates\tankman_sorties.html:69
+#: .\stats\templates\tankman_sorties.html:70
+#: .\stats\templates\tankman_vlife.html:34
+#: .\stats\templates\tankman_vlife.html:35
+#: .\stats\templates\tankman_vlifes.html:64
+#: .\stats\templates\tankman_vlifes.html:65
+msgctxt "sortie_status"
+msgid "Tank is destroyed"
+msgstr "Le char est détruit"
+
+#: .\stats\templates\tankman_sortie.html:47
+#: .\stats\templates\tankman_sortie.html:48
+#: .\stats\templates\tankman_sortie_log.html:48
+#: .\stats\templates\tankman_sortie_log.html:49
+#: .\stats\templates\tankman_sorties.html:81
+#: .\stats\templates\tankman_sorties.html:82
+#: .\stats\templates\tankman_vlife.html:46
+#: .\stats\templates\tankman_vlife.html:47
+#: .\stats\templates\tankman_vlifes.html:76
+#: .\stats\templates\tankman_vlifes.html:77
+msgctxt "sortie_status"
+msgid "In service"
+msgstr "en service"
+
+#: .\stats\templates\tankman_sortie.html:52
+#: .\stats\templates\tankman_sortie_log.html:53
+#: .\stats\templates\tankman_sorties.html:15
+msgctxt "tankman_sorties"
+msgid "Tankman"
+msgstr "Tankiste"
+
+#: .\stats\templates\tankman_sortie.html:57
+#: .\stats\templates\tankman_sortie_log.html:58
+msgid "Back to tankman sorties list"
+msgstr "Retour à la liste des sorties"
+
+#: .\stats\templates\tankman_sortie.html:63
+#: .\stats\templates\tankman_sortie_log.html:64
+msgid ""
+"The results of this sortie are not included in the statistics of the tankman "
+"because of the disconnect"
+msgstr ""
+"Les résultats de cette sortie ne sont pas comptés dans les statistiques du "
+"Tankiste pour cause de déconnexion"
+
+#: .\stats\templates\tankman_sortie.html:72
+msgctxt "sortie"
+msgid "Duration of sortie"
+msgstr "Durée de la sortie"
+
+#: .\stats\templates\tankman_sortie.html:75
+msgctxt "sortie"
+msgid "Crew status"
+msgstr "Statut de l'équipage"
+
+#: .\stats\templates\tankman_sortie.html:89
+msgctxt "sortie"
+msgid "Destroyed ground targets"
+msgstr "Cibles au sol détruites"
+
+#: .\stats\templates\tankman_sortie.html:90
+msgctxt "sortie"
+msgid "Destroyed aerial targets"
+msgstr "Cibles aériennes détruites"
+
+#: .\stats\templates\tankman_sortie.html:95
+msgctxt "sortie"
+msgid "Tank"
+msgstr "Char"
+
+#: .\stats\templates\tankman_sortie.html:101
+msgctxt "tank_payload"
+msgid "Default"
+msgstr "Défaut"
+
+#: .\stats\templates\tankman_sortie.html:116
+msgctxt "sortie"
+msgid "Tank status"
+msgstr "Statut du Char"
+
+#: .\stats\templates\tankman_sortie.html:118
+msgctxt "sortie"
+msgid "In service"
+msgstr "en servicio"
+
+#: .\stats\templates\tankman_sortie.html:124
+msgctxt "sortie"
+msgid "Destroyed"
+msgstr "Détruit"
+
+#: .\stats\templates\tankman_sortie.html:132
+msgctxt "sortie"
+msgid "Tank damage"
+msgstr "Dégâts du Char"
+
+#: .\stats\templates\tankman_sortie_log.html:3
+msgctxt "sortie_page_title"
+msgid "Tankman Sortie Log"
+msgstr "Log de la sortie"
+
+#: .\stats\templates\tankman_sorties.html:3
+#: .\stats\templates\tankman_sorties.html:14
+msgctxt "tankman_sorties"
+msgid "Tankman Sorties"
+msgstr "Sorties"
+
+#: .\stats\templates\tankman_vlife.html:3
+#: .\stats\templates\tankman_vlife.html:15
+msgctxt "vlife_page_title"
+msgid "Tankman VLife"
+msgstr "Vies virtuelles"
+
+#: .\stats\templates\tankman_vlife.html:51
+msgctxt "tankman_vlifes"
+msgid "Tankman"
+msgstr "Tankiste"
+
+#: .\stats\templates\tankman_vlife.html:56
+msgid "Back to tankman vlifes list"
+msgstr "Retour à la liste des Vies virtuelles"
+
+#: .\stats\templates\tankman_vlifes.html:3
+#: .\stats\templates\tankman_vlifes.html:14
+msgctxt "tankman_vlifes"
+msgid "Tankman Virtual Lifes"
+msgstr "Vies virtuelles"
+
+#: .\stats\templates\tankmans.html:19
+msgid "Search Tankman"
+msgstr "Chercher un tankiste"
+
+#: .\stats\templates\tankmans.html:39
+msgid "Current Ground Streak"
+msgstr "Série en cours de cibles au sol"
+
+#: .\stats\templates\tour.html:170
+msgctxt "tour_top"
+msgid "Best tankmen"
+msgstr "Meilleures Tankiste"
+
+#: .\stats\templates\tour.html:196
+msgctxt "tour_top"
+msgid "Best tankmen streak"
+msgstr "Meilleures séries-Tankiste"
+
+#: .\stats\templates\tour.html:299
+msgctxt "tour_active"
+msgid "total tankmen"
+msgstr "total"
+
+msgid "Payload"
+msgstr "Emport"
+
+#: .\stats\templates\main.html:223 .\stats\templates\tour.html:201
+msgid "Active pilots"
+msgstr "Pilotes actifs"
+
+msgid "Sortie Time (hours:minutes)"
+msgstr "temps de sortie(heures:minutes)"
+
+msgid "Sortie Time"
+msgstr "temps de sortie"
+
+msgid "Destroyed ground targets"
+msgstr "Cibles au sol détruites"
+
+msgid "Pilots Rankings"
+msgstr "Classement des tankiste"
+
+msgid "Players total"
+msgstr "Joueurs total"
+
+msgctxt "tour_active"
+msgid "total pilots"
+msgstr "total pilotes"
+
+#: .\stats\templates\tankman_sortie.html:81
+msgctxt "sortie"
+msgid "Abandoned Tank"
+msgstr "Char abandonné"
+
+msgctxt "sortie_status"
+msgid "Tank is abandoned"
+msgstr "Le char est abandonné"
+
+msgctxt "total"
+msgid "Abandoned tanks"
+msgstr "Char abandonné"
+
+msgid "Tankmen"
+msgstr "Tankiste"
+
+#: .\stats\templates\squad.html:52
+msgid "Not enough players to participate in the rating"
+msgstr "Pas assez de joueurs pour entrer dans le classement"
+
+msgid "on the current ground streak of kills"
+msgstr "selon la série en cours de cibles au sol"
+
+msgid "on the average number of ground kill per one death (GK/D)"
+msgstr "selon le nombre de cibles au sol par mort (GK/D)"
+
+#: .\stats\templates\mission.html:212 .\stats\templates\tankmans.html:132
+#: .\stats\templates\squads.html:111
+msgid "on the average number of ground kill per one hour (GK/Hr)"
+msgstr "selon le nombre moyen de cibles au sol par heure (GK/Hr)"
+
+msgctxt "sortie"
+msgid "Disabled"
+msgstr "désactivé"
+
+msgid "[Go to pilot statistics of same player]"
+msgstr "[Aller aux statistiques de pilote du même joueur]"
+
+msgid "[Go to tankman statistics of same player]"
+msgstr "[Aller aux statistiques de tankiste du même joueur]"
+
+msgid "Players on the server"
+msgstr "Joueurs sur le serveur"
+
+msgid "List of players online"
+msgstr "Liste des joueurs en ligne"
+
+msgctxt "online"
+msgid "players"
+msgstr "joueurs"

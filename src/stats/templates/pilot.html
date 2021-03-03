@@ -15,11 +15,13 @@
                         (<a href="{{ player.squad.get_profile_url }}">{{ player.squad.name }}</a>)
                     {% endif %}
             </div>
-            <a href="{{ player.get_tankman_url }}">
+			<a href="{{ player.get_tankman_url }}">
                 <div class="go_to_player_tankman">
                     {% trans '[Go to tankman statistics of same player]' %}
                 </div>
             </a>
+			
+			
             <div class="profile_head">
                 <div class="head_left">
                     {% if player.coal_pref == 1 %}
@@ -104,39 +106,6 @@
                     <div class="num" title="{{ player.rating }}">
                         {% if rating_position %}
                             <a href="{% url 'stats:pilots' %}?page={{ page_position }}&tour={{ player.tour_id }}">{{ rating_position }}</a>
-                        {% else %}
-                            <span title="">?</span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{% static 'img/icons/big/rating_light.png' %}" width="" height="" title="" alt="">
-                    <div class="text">{% trans 'Position Fighter Rating' %}</div>
-                    <div class="num" title="{{ player.rating_light }}">
-                        {% if rating_light_position %}
-                            <a href="{% url 'stats:pilots' %}?page={{ page_light_position }}&tour={{ player.tour_id }}&sort_by=-rating_light">{{ rating_light_position }}</a>
-                        {% else %}
-                            <span title="">?</span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{% static 'img/icons/big/rating_medium.png' %}" width="" height="" title="" alt="">
-                    <div class="text">{% trans 'Position Attacker Rating' %}</div>
-                    <div class="num" title="{{ player.rating_medium }}">
-                        {% if rating_medium_position %}
-                            <a href="{% url 'stats:pilots' %}?page={{ page_medium_position }}&tour={{ player.tour_id }}&sort_by=-rating_medium">{{ rating_medium_position }}</a>
-                        {% else %}
-                            <span title="">?</span>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="{% static 'img/icons/big/rating_heavy.png' %}" width="" height="" title="" alt="">
-                    <div class="text">{% trans 'Position Bomber Rating' %}</div>
-                    <div class="num" title="{{ player.rating_heavy }}">
-                        {% if rating_heavy_position %}
-                            <a href="{% url 'stats:pilots' %}?page={{ page_heavy_position }}&tour={{ player.tour_id }}&sort_by=-rating_heavy">{{ rating_heavy_position }}</a>
                         {% else %}
                             <span title="">?</span>
                         {% endif %}

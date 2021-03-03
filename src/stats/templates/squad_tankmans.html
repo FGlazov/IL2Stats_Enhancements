@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles tz stats %}
+{% block title %}{{ squad.name }} / {{ block.super }}{% endblock title %}
+
+{% block nav_tabs %}
+    {% include 'inline/squad_tabs.html' %}
+{% endblock nav_tabs %}
+
+{% block content %}
+    <section id="player">
+        <div class="wrapper">
+            <div class="profile_name">
+                {{ squad.name }} ({{ squad.tag }})
+            </div>
+            <div class="profile_head">
+                <div class="head_left">
+                    {% if squad.coal_pref == 1 %}
+                        <img src="{% static 'img/flag/coal_1.png' %}" width="" height="" class="coal_flag"
+                             title="{{ COAL_1_NAME }}" alt="{{ COAL_1_NAME }}" align="left">
+                        <div class="coalition">{% trans 'favorite coalition' %}: <span>{{ COAL_1_NAME }}</span></div>
+                    {% elif squad.coal_pref == 2 %}
+                        <img src="{% static 'img/flag/coal_2.png' %}" width="" height="" class="coal_flag"
+                             title="{{ COAL_2_NAME }}" alt="{{ COAL_2_NAME }}" align="left">
+                        <div class="coalition">{% trans 'favorite coalition' %}: <span>{{ COAL_2_NAME }}</span></div>
+                    {% else %}
+                        <img src="{% static 'img/flag/neutral.png' %}" width="" height="" class="coal_flag"
+                             title="{% trans 'No' context 'favorite_coalition' %}" alt="{% trans 'No' context 'favorite_coalition' %}" align="left">
+                        <div class="coalition">{% trans 'favorite coalition' %}: <span>{% trans 'No' context 'favorite_coalition' %}</span></div>
+                    {% endif %}
+                        <div class="squad_about">
+                            {% if squad.profile.website %}
+                            <div class="squad_site"><a href="{{ squad.profile.website }}" target="_blank">
+                                {% trans 'Go to the website of the squad' %}</a></div>
+                            {% endif %}
+                            {{ squad.profile.about }}
+                        </div>
+                </div>
+                <div class="head_right">
+                    {% if squad.profile.logo %}
+                    <div class="squad_logo">
+                        <img src="{{ squad.profile.logo.url }}?{{ squad.profile.logo.size }}" align="right" alt="" title="">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if tankmans %}
+            <div class="content_table">
+                <div class="head_row">
+                    <div class="cell" style="width: 60px;"></div>
+                    <div class="cell"></div>
+                    <div class="cell" style="width: 60px;"></div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-gk_total">
+                            <img src="{% static 'img/icons/small/gk.png' %}" width="18" height="18"
+                                 alt="{% trans 'Ground Kills' %}" title="{% trans 'Ground Kills' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-streak_ground_current">
+                            <img src="{% static 'img/icons/small/streak.png' %}" width="18" height="18"
+                                 alt="{% trans 'Current Streak' %}" title="{% trans 'Current Streak' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-ak_total">
+                            <img src="{% static 'img/icons/small/ak.png' %}" width="18" height="18"
+                                 alt="{% trans 'Air Kills' %}" title="{% trans 'Air Kills' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-flight_time">
+                            <img src="{% static 'img/icons/small/ft.png' %}" width="18" height="18"
+                                 alt="{% trans 'Flight Time (hours:minutes)' %}" title="{% trans 'Flight Time (hours:minutes)' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-kd">
+                            <img src="{% static 'img/icons/small/kd.png' %}" width="18" height="18"
+                                 alt="GK/D" title="GK/D">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-khr">
+                            <img src="{% static 'img/icons/small/gkhr.png' %}" width="18" height="18"
+                                 alt="GK/Hr" title="GK/Hr">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-accuracy">
+                            <img src="{% static 'img/icons/small/acc.png' %}" width="18" height="18"
+                                 alt="{% trans 'Gunnery Accuracy' %}" title="{% trans 'Gunnery Accuracy' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-rating">
+                            <img src="{% static 'img/icons/small/rating.png' %}" width="18" height="18"
+                                 alt="{% trans 'Rating' %}" title="{% trans 'Rating' %}">
+                        </a>
+                    </div>
+                </div>
+                {% for tankman in tankmans %}
+                <a class="row" href="{{ tankman.get_tankman_url }}">
+                    <div class="cell">{{ forloop.counter }}</div>
+                    <div class="cell" style="text-align: left;">{{ tankman.nickname }}</div>
+                    <div class="cell img">
+                        {% include 'inline/table_coal_pref_icon.html' with coal_pref=tankman.coal_pref %}
+                    </div>
+                    <div class="cell">{{ tankman.gk_total }}</div>
+                    <div class="cell">{{ tankman.streak_ground_current }}</div>
+                    <div class="cell">{{ tankman.ak_total }}</div>
+                    <div class="cell">{{ tankman.flight_time|seconds_to_time }}</div>
+                    <div class="cell">{{ tankman.gkd }}</div>
+                    <div class="cell">{{ tankman.gkhr }}</div>
+                    <div class="cell">{{ tankman.accuracy }}%</div>
+                    <div class="cell" title="{{ tankman.rating }}">{{ tankman.rating_format }}</div>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="clearfix"></div>
+
+            <div class="info">
+
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+
+{% block bottom %}
+    {{ block.super }}
+    <script src="{% static 'js/table.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            uri_sort_by('-rating');
+        });
+    </script>
+{% endblock bottom %}

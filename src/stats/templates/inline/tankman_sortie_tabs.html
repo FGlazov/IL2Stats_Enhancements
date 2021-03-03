@@ -1,0 +1,9 @@
+{% load i18n staticfiles tz stats %}
+<nav id="nav_tabs">
+    <div class="nav_tabs">
+        <a href="{% url 'stats:tankman_sortie' sortie.id %}?tour={{ player.tour_id }}">
+            {% trans 'Tankman Sortie Statistics' context 'tankman_sortie_nav_tab' %}</a>
+        <a href="{% url 'stats:tankman_sortie_log' sortie.id %}?tour={{ player.tour_id }}">
+            {% trans 'Tankman Sortie Log' context 'tankman_sortie_nav_tab' %}</a>
+    </div>
+</nav>
