@@ -13,7 +13,9 @@ from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
 from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, mission, missions_list,
-                         pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards)
+                         pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards, tankman_rankings,
+                         tankman, tankman_awards, tankman_killboard, tankman_sorties, tankman_sortie_log,
+                         tankman_vlifes, tankman_vlife, squad_tankmans, tankman_sortie)
 
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
