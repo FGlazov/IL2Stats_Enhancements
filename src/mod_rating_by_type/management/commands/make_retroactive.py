@@ -1,10 +1,9 @@
 from django.core.management.base import BaseCommand
-from django.db import connection
-from django.db.models import Q
 from django.utils import timezone
-import time
 import datetime
+import time
 from django.utils.timezone import make_aware
+from django.db import transaction
 
 from stats.models import (Object, Mission, Sortie, Profile, Player, PlayerAircraft, VLife,
                           PlayerMission, KillboardPvP, Tour, LogEntry, Score, Squad)
@@ -17,33 +16,48 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('-t', '--time', type=int, help='Number in unix time in seconds which determines the cutoff'
                                                            ' for which sorties are considered. Should be the time just'
-                                                           ' as this mod was installed.')
+                                                           ' as version >=1.2.48 of IL-2 stats was installed.')
 
     def handle(self, *args, **options):
-        # TODO: Input time as a parameter.
         if options['time'] is not None:
             cutoff_time = datetime.datetime.fromtimestamp(options['time'])
             cutoff_time = make_aware(cutoff_time)
         else:
             cutoff_time = timezone.now()
+        print("\n=====================================================================================================")
+        print("Cutoff time is " + str(cutoff_time))
+        print("Cutoff time as unix time (to pass as a -t param): " + str(int(time.mktime(cutoff_time.timetuple()))))
 
-        print("Cut off time is " + str(cutoff_time) + " -- It should correspond to the time you have first installed "
-                                                      "this mod.")
+        print("\nNo sorties after version >=1.2.48 of IL-2 stats have been installed should be present after the cutoff")
+        print("time. If there any sorties after the cut off time, then you may specify the cutoff time via a -t")
+        print("parameter (as unix time in seconds). Any sorties after the cutoff time will count twice towards")
+        print("split rankings.")
+        print("\n")
+        print("IMPORTANT: Make sure that stats.cmd is NOT running. Waitress.cmd is not affected.")
+        print("Otherwise you'll likely cause stats.cmd or this process to crash.")
+        print("You may quit this script at any time if you wish to run stats.cmd!")
+        print("This script will pick up where you left off if you quit it.")
+        print("Just make sure to save your cutoff time and pass it into the script later!")
+        print("\n")
         input("Press Enter to continue.")
 
-        sorties = Sortie.objects.filter(date_start__lt=cutoff_time)
+        sorties = Sortie.objects.filter(date_start__lt=cutoff_time, debug__retrosplitmod__isnull=True)
         sorties_count = sorties.count()
         print("Retroactively computing split rankings for {} sorties".format(sorties_count))
 
-        # Use a paginator-like pattern. Prevents too much memory usage.
-        pointer = 0
-        batch_size = 250
-        while pointer < sorties_count:
-            print("Progress: {0:.2%}".format(pointer / sorties_count))
-            for sortie in sorties[pointer:pointer + batch_size]:
-                add_split_rankings(sortie)
-            pointer += batch_size
+        # Only get 500 sorties at a time. Prevents too much memory usage.
+        batch_size = 500
+        county = 0
+        done_pages = 0
 
+        while done_pages < sorties_count:
+            with transaction.atomic():
+                print("Progress: {0:.4%} | {1} sorties processed".format(done_pages / sorties_count, done_pages))
+                # One does not need to iterate the slice by page.
+                # We're marking the sorties in one such batch as "done", and the query does not find them later.
+                for sortie in sorties[0:batch_size]:
+                    add_split_rankings(sortie)
+                done_pages += batch_size
         print("Done retroactively computing split rankings!")
 
 
@@ -65,9 +79,14 @@ def add_split_rankings(sortie):
     player.score_streak_max_medium = max(player.score_streak_max_medium, player.score_streak_current_medium)
     player.score_streak_max_light = max(player.score_streak_max_light, player.score_streak_current_light)
 
+    # Hacky solution to makesure that a sortie is not retroactively added twice.
+    sortie.debug['retrosplitmod'] = 1
+
     vlife.save()
     player_mission.save()
     player.save()
+    sortie.save()
+
 
 def update_general(player, sortie):
     relive_add = 1 if sortie.is_relive else 0
@@ -86,4 +105,4 @@ def update_general(player, sortie):
                 player.flight_time_heavy += sortie.flight_time
                 player.relive_heavy += relive_add
     except AttributeError:
-        pass # Vlife doesn't have flight_time/relive.
+        pass  # Vlife doesn't have flight_time/relive.
