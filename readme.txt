@@ -35,7 +35,7 @@ sortie_disco_min_time = 0
 sortie_damage_disco_time = 120
 under [stats], with values as you wish (in seconds).
 
-5. Run the collect_static script in your /run folder after you're done with the above.
+5. Run the collectstatic script in your /run folder after you're done with the above.
 
 Support
 ---------------------------------------------

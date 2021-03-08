@@ -5,3 +5,7 @@ Version 1.0:
 Version 1.0.1
 
 - Actually read in mods. This means SplitRankings will properly load now, instead of just staying inactive.
+
+Version 1.0.2
+
+- Fix issue with merge of disconnect mod which caused 500 errors in virtual lives of pilot.
