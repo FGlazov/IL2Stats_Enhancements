@@ -10,3 +10,14 @@ class ModConfig(AppConfig):
         from stats import urls as original_urls
         from . import urls as new_urls
         original_urls.urlpatterns = new_urls.urlpatterns
+
+        from stats import views as original_views
+        from . import views as new_views
+        original_views.pilot = new_views.pilot
+        original_views.squad = new_views.squad
+        original_views.squad_pilots = new_views.squad_pilots
+        original_views.squad_rankings = new_views.squad_rankings
+        original_views.pilot_rankings = new_views.pilot_rankings
+        original_views.main = new_views.main
+        original_views.tour = new_views.tour
+        original_views.mission = new_views.mission

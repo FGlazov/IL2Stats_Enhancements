@@ -8,3 +8,8 @@ Version 1.0.1
 - Create change log.
 - Add missing step to installation process.
 - Fix issue where "Best bomber pilot in last 24 hours" was not being translated to french.
+
+
+Version 1.0.2
+
+- Technical changes to allow for compatibility to Aircraft Stats mod.
