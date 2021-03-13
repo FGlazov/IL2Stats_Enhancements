@@ -10,6 +10,7 @@ Version 1.0.1
 - Fix issue where "Best bomber pilot in last 24 hours" was not being translated to french.
 
 
-Version 1.0.2
+Version 1.1.0
 
 - Technical changes to allow for compatibility to Aircraft Stats mod.
+- In pilot/squad view: When a player or squad has 0 fighter/attacker/bomber rating, show position as "-" instead of an arbitrary, large position.
