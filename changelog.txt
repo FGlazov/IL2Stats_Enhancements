@@ -9,3 +9,7 @@ Version 1.0.1
 Version 1.0.2
 
 - Fix issue with merge of disconnect mod which caused 500 errors in virtual lives of pilot.
+
+Version 1.1.0
+
+- Upgrade to version 1.1.0 of SplitRankings
