@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles tz stats %}
+{% block title %}{% trans 'Killboard' %} / {{ aircraft_bucket.aircraft.name }} / {{ block.super }}{% endblock title %}
+
+{% block nav_tabs %}
+{% include 'inline/aircraft_tabs.html' %}
+{% endblock nav_tabs %}
+
+{% block content %}
+<section id="content">
+    <div class="wrapper">
+        <div class="profile_name">
+            {% trans 'Aircraft Killboard' %} : {{ aircraft_bucket.aircraft.name }}
+        </div>
+        <div class="profile_head">
+            <div class="head_left">
+                {% if aircraft_bucket.coalition == 1 %}
+                <img src="{% static 'img/flag/coal_1.png' %}" width="" height="" class="coal_flag"
+                     title="{{ COAL_1_NAME }}" alt="{{ COAL_1_NAME }}" align="left">
+                <div class="coalition">{% trans 'coalition' %}: <span>{{ COAL_1_NAME }}</span></div>
+                {% else %}
+                <img src="{% static 'img/flag/coal_2.png' %}" width="" height="" class="coal_flag"
+                     title="{{ COAL_2_NAME }}" alt="{{ COAL_2_NAME }}" align="left">
+                <div class="coalition">{% trans 'coalition' %}: <span>{{ COAL_2_NAME }}</span></div>
+                {% endif %}
+                <img src="{{ aircraft_bucket.aircraft.aircraft_image }}" width="670" height="240" class="fav_aircraft"
+                     title="{% trans aircraft_bucket.aircraft.name %}" alt="{% trans aircraft_bucket.aircraft.name %}">
+            </div>
+
+            <div class="head_right">
+                {% if aircraft_bucket.has_bomb_variant and not aircraft_bucket.has_juiced_variant %}
+                <label>{% trans 'Filter by:' %}</label>
+                <select style="background: #303030; border: 1px solid #252525; width: 400px;"
+                        onchange="if (this.value) window.location.href=this.value">
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_FILTER %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}" selected>{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'with bombs only' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without bombs only' %}</option>
+                    {% endif %}
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.BOMBS %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}" selected>{% trans 'with bombs only' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without bombs only' %}</option>
+                    {% endif %}
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_BOMBS_NO_JUICE %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'with bombs only' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}" selected>{% trans 'without bombs only' %}</option>
+                    {% endif %}
+                </select>
+                <div class="clearfix"></div>
+                <div class="info">
+                    {% trans 'This filter applies to all aircraft (where applicable), including the ones inside the table below.' %}
+                </div>
+                {% endif %}
+
+                {% if not aircraft_bucket.has_bomb_variant and aircraft_bucket.has_juiced_variant %}
+                <label>{% trans 'Filter by:' %}</label>
+                <select style="background: #303030; border: 1px solid #252525; width: 400px;"
+                        onchange="if (this.value) window.location.href=this.value">
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_FILTER %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}" selected>{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded fuel/engine' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded fuel/engine' %}</option>
+                    {% endif %}
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.JUICED %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}" selected>{% trans 'with upgraded fuel/engine' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded fuel/engine' %}</option>
+                    {% endif %}
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_BOMBS_NO_JUICE %}
+                    <option value="{{ aircraft_bucket.get_killboard_url}}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded fuel/engine' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}" selected>{% trans 'without upgraded fuel/engine' %}</option>
+                    {% endif %}
+                </select>
+                <div class="clearfix"></div>
+                <div class="info">
+                    {% trans 'This filter applies to all aircraft (where applicable), including the ones inside the table below.' %}
+                </div>
+                {% endif %}
+
+                {% if aircraft_bucket.has_bomb_variant and aircraft_bucket.has_juiced_variant %}
+                <label>{% trans 'Filter by:' %}</label>
+                <select style="background: #303030; border: 1px solid #252525; width: 400px;"
+                        onchange="if (this.value) window.location.href=this.value">
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_FILTER %}
+                    <option value="{{ aircraft_bucket.get_killboard_url }}" selected>{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_all_mods }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                    {% endif %}
+
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.JUICED %}
+                    <option value="{{ aircraft_bucket.get_killboard_url }}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}" selected>{% trans 'with upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_all_mods }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                    {% endif %}
+
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.NO_BOMBS_NO_JUICE %}
+                    <option value="{{ aircraft_bucket.get_killboard_url }}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}" selected>{% trans 'without upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_all_mods }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                    {% endif %}
+
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.ALL %}
+                    <option value="{{ aircraft_bucket.get_killboard_url }}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_all_mods }}" selected>{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                    {% endif %}
+
+                    {% if aircraft_bucket.filter_type == aircraft_bucket.BOMBS %}
+                    <option value="{{ aircraft_bucket.get_killboard_url }}">{% trans 'no filter' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_juiced }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_no_mods }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_all_mods }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                    <option value="{{ aircraft_bucket.get_killboard_bombs }}" selected>{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                    {% endif %}
+
+                </select>
+                <div class="clearfix"></div>
+                <div class="info">
+                    {% trans 'This filter applies to all aircraft (where applicable), including the ones inside the table below.' %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if killboard %}
+        <div class="content_table" style="width: 1000px;">
+            <div class="head_row">
+                <div class="cell" style="width: 60px;"></div>
+                <div class="cell"></div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-kills">
+                        <img src="{% static 'img/icons/small/kb_won.png' %}" width="18" height="18"
+                             alt="{% trans 'Won' context 'killboard' %}" title="{% trans 'Won' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-deaths">
+                        <img src="{% static 'img/icons/small/kb_lose.png' %}" width="18" height="18"
+                             alt="{% trans 'Lose' context 'killboard' %}"
+                             title="{% trans 'Lose' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-kdr">
+                        <img src="{% static 'img/icons/small/kd.png' %}" width="18" height="18"
+                             alt="{% trans 'K/D - Kills per Death' context 'killboard' %}"
+                             title="{% trans 'K/D - Kills per Death' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-plane_survivability">
+                        <img src="{% static 'img/icons/small/plane_surv.png' %}" width="18" height="18"
+                             alt="{% trans 'Plane Durability' context 'killboard' %}"
+                             title="{% trans 'Plane Durability' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-pilot_survivability">
+                        <img src="{% static 'img/icons/small/pilot_surv.png' %}" width="18" height="18"
+                             alt="{% trans 'Pilot Survivability' context 'killboard' %}"
+                             title="{% trans 'Pilot Survivability' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-plane_lethality">
+                        <img src="{% static 'img/icons/small/plane_lethal.png' %}" width="18" height="18"
+                             alt="{% trans 'Plane Lethality' context 'killboard' %}"
+                             title="{% trans 'Plane Lethality' context 'killboard' %}">
+                    </a>
+                </div>
+                <div class="cell" style="width: 90px;">
+                    <a class="sort_by" href="?sort_by=-pilot_lethality">
+                        <img src="{% static 'img/icons/small/pilot_lethal.png' %}" width="18" height="18"
+                             alt="{% trans 'Pilot Lethality' context 'killboard' %}"
+                             title="{% trans 'Pilot Lethality' context 'killboard' %}">
+                    </a>
+                </div>
+            </div>
+            {% for k in killboard %}
+            <a class="row" href="{{ k.url }}">
+                <div class="cell">{{ forloop.counter }}</div>
+                <div class="cell" style="text-align: left;">{{ k.aircraft.name }}</div>
+                <div class="cell">{{ k.kills }}</div>
+                <div class="cell">{{ k.deaths }}</div>
+                <div class="cell">{{ k.kdr }}</div>
+                <div class="cell">{{ k.plane_survivability }}%</div>
+                <div class="cell">{{ k.pilot_survivability }}%</div>
+                <div class="cell">{{ k.plane_lethality }}%</div>
+                <div class="cell">{{ k.pilot_lethality }}%</div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="info">
+            <div>
+                {% blocktrans trimmed %}
+                * Plane Durability is percent of sorties the plane survived after taking damage. </br>
+                * Pilot Survivability is the percent of sorties the pilot survived after the plane took damage. </br>
+                * Plane Lethality is the percent of enemy aircraft which went down after taking damage from this plane.
+                Assists count. </br>
+                * Pilot Lethality is the percent of enemy pilots which died after taking damage from this plane. Assists
+                count.
+                {% endblocktrans %}
+            </div>
+            <div>
+                {% blocktrans trimmed %}
+                <strong>Attention!</strong> Algorithms collection statistics IL2 stats differs from statistics
+                in-game. As a consequence of these statistics will not coincide with the game.
+                {% endblocktrans %}
+            </div>
+            <div>
+                {% if INACTIVE_PLAYER_DAYS %}
+                {% blocktrans trimmed count days=INACTIVE_PLAYER_DAYS.days %}
+                Players inactive for more than {{ days }} day - do not participate in the rating.
+                {% plural %}
+                Players inactive for more than {{ days }} days - do not participate in the rating.
+                {% endblocktrans %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block bottom %}
+{{ block.super }}
+<script src="{% static 'js/table.js' %}"></script>
+<script>
+        $(document).ready(function() {
+            uri_sort_by('-kdr');
+        });
+
+
+
+
+</script>
+{% endblock bottom %}

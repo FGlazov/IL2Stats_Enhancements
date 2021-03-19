@@ -1,0 +1,2002 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-17 20:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\mod_stats_by_aircraft\aircraft_mod_models.py:89
+msgid "neutral"
+msgstr "neutral"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:20
+#: .\mod_stats_by_aircraft\templates\aircraft.html:24
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:20
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:24
+#, fuzzy
+#| msgid "Coalitions"
+msgid "coalition"
+msgstr "Coaliciones"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:32
+#: .\mod_stats_by_aircraft\templates\aircraft.html:54
+#: .\mod_stats_by_aircraft\templates\aircraft.html:76
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:32
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:58
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:84
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:16
+msgid "Filter by:"
+msgstr "Filtro:"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:36
+#: .\mod_stats_by_aircraft\templates\aircraft.html:41
+#: .\mod_stats_by_aircraft\templates\aircraft.html:46
+#: .\mod_stats_by_aircraft\templates\aircraft.html:58
+#: .\mod_stats_by_aircraft\templates\aircraft.html:63
+#: .\mod_stats_by_aircraft\templates\aircraft.html:68
+#: .\mod_stats_by_aircraft\templates\aircraft.html:80
+#: .\mod_stats_by_aircraft\templates\aircraft.html:88
+#: .\mod_stats_by_aircraft\templates\aircraft.html:96
+#: .\mod_stats_by_aircraft\templates\aircraft.html:104
+#: .\mod_stats_by_aircraft\templates\aircraft.html:112
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:36
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:41
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:46
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:62
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:67
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:72
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:88
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:96
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:104
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:112
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:120
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:20
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:28
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:36
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:44
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:52
+msgid "no filter"
+msgstr "Sin flitro"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:37
+#: .\mod_stats_by_aircraft\templates\aircraft.html:42
+#: .\mod_stats_by_aircraft\templates\aircraft.html:47
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:37
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:42
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:47
+msgid "with bombs only"
+msgstr "Sólo con bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:38
+#: .\mod_stats_by_aircraft\templates\aircraft.html:43
+#: .\mod_stats_by_aircraft\templates\aircraft.html:48
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:38
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:43
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:48
+msgid "without bombs only"
+msgstr "Sólo sin bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:59
+#: .\mod_stats_by_aircraft\templates\aircraft.html:64
+#: .\mod_stats_by_aircraft\templates\aircraft.html:69
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:63
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:68
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:73
+msgid "with upgraded fuel/engine"
+msgstr "Con motor mejorado"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:60
+#: .\mod_stats_by_aircraft\templates\aircraft.html:65
+#: .\mod_stats_by_aircraft\templates\aircraft.html:70
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:64
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:69
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:74
+msgid "without upgraded fuel/engine"
+msgstr "Sin motor mejorado"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:81
+#: .\mod_stats_by_aircraft\templates\aircraft.html:89
+#: .\mod_stats_by_aircraft\templates\aircraft.html:97
+#: .\mod_stats_by_aircraft\templates\aircraft.html:105
+#: .\mod_stats_by_aircraft\templates\aircraft.html:113
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:89
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:97
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:105
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:113
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:121
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:21
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:29
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:37
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:45
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:53
+msgid "with upgraded engine and no bombs"
+msgstr "Con motor mejorado sin bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:82
+#: .\mod_stats_by_aircraft\templates\aircraft.html:90
+#: .\mod_stats_by_aircraft\templates\aircraft.html:98
+#: .\mod_stats_by_aircraft\templates\aircraft.html:106
+#: .\mod_stats_by_aircraft\templates\aircraft.html:114
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:90
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:98
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:106
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:114
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:122
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:22
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:30
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:38
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:46
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:54
+msgid "without upgraded engine and no bombs"
+msgstr "Sin motor mejorado sin bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:83
+#: .\mod_stats_by_aircraft\templates\aircraft.html:91
+#: .\mod_stats_by_aircraft\templates\aircraft.html:99
+#: .\mod_stats_by_aircraft\templates\aircraft.html:107
+#: .\mod_stats_by_aircraft\templates\aircraft.html:115
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:91
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:99
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:107
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:115
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:123
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:23
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:31
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:39
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:47
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:55
+msgid "with upgraded fuel/engine and bombs"
+msgstr "Con motor mejorado con bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:84
+#: .\mod_stats_by_aircraft\templates\aircraft.html:92
+#: .\mod_stats_by_aircraft\templates\aircraft.html:100
+#: .\mod_stats_by_aircraft\templates\aircraft.html:108
+#: .\mod_stats_by_aircraft\templates\aircraft.html:116
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:92
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:100
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:108
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:116
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:124
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:24
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:32
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:40
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:48
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:56
+msgid "without upgraded fuel/engine and bombs"
+msgstr "Sin motor mejorado con bombas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:127
+msgid "Air K/HR"
+msgstr "Drb/H aire"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:132
+msgid "Air KD"
+msgstr "Drb/Mte aire"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:137
+msgid "Ground K/HR"
+msgstr "Drb/H tierra"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:142
+msgid "Ground KD"
+msgstr "Drb/Mte tierra"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:147
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:108
+msgid "Gunnery Accuracy"
+msgstr "Puntería"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:152
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:132
+msgid "Elo"
+msgstr "Elo"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:157
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:138
+msgid "Rating"
+msgstr "Ranking"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:163
+msgid "Detailed combat results"
+msgstr "Detalle de resultados del combate"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:166
+#, fuzzy
+#| msgid "Gunnery Accuracy"
+msgctxt "total"
+msgid "Gunnery Accuracy"
+msgstr "Puntería"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:170
+msgctxt "total"
+msgid "Total Aircraft"
+msgstr "Total Aviones"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:175
+#: .\mod_stats_by_aircraft\templates\aircraft.html:195
+msgctxt "total"
+msgid "Fighters"
+msgstr "Cazas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:179
+#: .\mod_stats_by_aircraft\templates\aircraft.html:202
+msgctxt "total"
+msgid "Attacker"
+msgstr "Ataque"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:184
+#: .\mod_stats_by_aircraft\templates\aircraft.html:209
+msgctxt "total"
+msgid "Bombers"
+msgstr "Bombarderos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:189
+#: .\mod_stats_by_aircraft\templates\aircraft.html:216
+msgctxt "total"
+msgid "Transport"
+msgstr "Transportes"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:195
+#: .\mod_stats_by_aircraft\templates\aircraft.html:202
+#: .\mod_stats_by_aircraft\templates\aircraft.html:209
+#: .\mod_stats_by_aircraft\templates\aircraft.html:216
+msgctxt "total"
+msgid "AI"
+msgstr "IA"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:222
+msgctxt "total"
+msgid "Assisted"
+msgstr "Asisitido"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:227
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:114
+msgctxt "total"
+msgid "Bomb/Rocket Accuracy"
+msgstr "Precisión de bomba/proyectil"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:232
+msgctxt "total"
+msgid "Destroyed ground targets"
+msgstr "Objetivos destruidos en tierra"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:238
+msgctxt "total"
+msgid "Heavy Tanks"
+msgstr "Tanques Pesados"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:245
+msgctxt "total"
+msgid "Medium Tanks"
+msgstr "Tanques Medianos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:252
+msgctxt "total"
+msgid "Light Tanks"
+msgstr "Tanques Livianos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:259
+msgctxt "total"
+msgid "Armored vehicles"
+msgstr "Vehículos Blindados"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:266
+msgctxt "total"
+msgid "Cars"
+msgstr "Autos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:273
+msgctxt "total"
+msgid "Trucks"
+msgstr "Camiones"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:280
+msgctxt "total"
+msgid "Large-caliber AA guns"
+msgstr "AA pesadas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:287
+msgctxt "total"
+msgid "Medium-caliber AA guns"
+msgstr "AA medianas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:294
+msgctxt "total"
+msgid "Small-caliber AA guns"
+msgstr "AA livianas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:301
+msgctxt "total"
+msgid "Machine gunners"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:308
+msgctxt "total"
+msgid "Aerostats"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:315
+msgctxt "total"
+msgid "Searchlights"
+msgstr "Luces de búsqueda"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:322
+msgctxt "total"
+msgid "Locomotives"
+msgstr "Locomotoras"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:329
+msgctxt "total"
+msgid "Wagons"
+msgstr "Vagones"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:336
+msgctxt "total"
+msgid "Field Artillery"
+msgstr "Artillería de campo"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:343
+msgctxt "total"
+msgid "Howitzers"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:350
+msgctxt "total"
+msgid "Rocket Artillery"
+msgstr "Artillería de cohetes"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+msgctxt "total"
+msgid "Ships"
+msgstr "Buques"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+msgid "outdated parameter"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:364
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Heavy Tanks"
+msgctxt "total"
+msgid "Heavy Ships"
+msgstr "Tanques Pesados"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:371
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Medium Tanks"
+msgctxt "total"
+msgid "Medium Ships"
+msgstr "Tanques Medianos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:378
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Light Tanks"
+msgctxt "total"
+msgid "Light Ships"
+msgstr "Tanques Livianos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:385
+msgctxt "total"
+msgid "Static Aircraft"
+msgstr "Aviones aparcados"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:392
+msgctxt "total"
+msgid "Static Vehicles"
+msgstr "Vehículos estáticos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:399
+msgctxt "total"
+msgid "Airfield Objects"
+msgstr "Objetos de Aeródromo"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:406
+msgctxt "total"
+msgid "Bridges"
+msgstr "Puentes"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:413
+msgctxt "total"
+msgid "Industrial Objects"
+msgstr "Objetos Industriales"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:420
+msgctxt "total"
+msgid "Big buildings"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:427
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Medium Tanks"
+msgctxt "total"
+msgid "Medium buildings"
+msgstr "Tanques Medianos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:434
+msgctxt "total"
+msgid "Small buildings"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:442
+msgid "Detailed sorties results"
+msgstr "Detalle de resultados de la salida"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:445
+msgid "Flight Time"
+msgstr "Tiempo de Vuelo"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:449
+msgctxt "total"
+msgid "Score"
+msgstr "Puntos"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:453
+msgctxt "total"
+msgid "Sorties"
+msgstr "Salidas"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:457
+msgctxt "sortie"
+msgid "Landed on Airfield"
+msgstr "Aterrizado en Base"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:461
+msgctxt "sortie_status"
+msgid "in flight"
+msgstr "en vuelo"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:465
+msgctxt "total"
+msgid "Lost aircraft"
+msgstr "Avión perdido"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:469
+msgctxt "total"
+msgid "Bailout"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:473
+msgctxt "total"
+msgid "Dead"
+msgstr "Muerto"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:477
+msgctxt "total"
+msgid "Captured"
+msgstr "Capturado"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:481
+msgctxt "sortie_status"
+msgid "ditched"
+msgstr "forzoso"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:493
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:120
+msgid "Plane Durability"
+msgstr "Durabilidad del avión"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:500
+msgid ""
+"if ratio > 1 - pilot flying in the minority, if ratio < 1 - pilot flying in "
+"the majority"
+msgstr ""
+"ratio > 1 - piloto vuela con la minoría, ratio < 1 - piloto vuela con la "
+"mayoría"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:502
+msgid "Pilot Survivability"
+msgstr "Supervivencia del piloto"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:510
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:126
+msgid "Plane Lethality"
+msgstr "Letalidad del avión"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:518
+msgid "Pilot Lethality"
+msgstr "Letalidad del piloto"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:528
+msgid "K/D - Kills per Death"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:536
+msgid "K/L - Kills per Aircraft Lost"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:544
+msgid "K/S - Kills per Sortie"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:552
+msgid "K/H - Kills per Hour of Flight"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:562
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:96
+msgid "GK/D - G.Kills per Death"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:570
+msgid "GK/L - G.Kills per Aircraft Lost"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:578
+msgid "GK/S - G.Kills per Sortie"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:586
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:102
+msgid "GK/H - G.Kills per Hour of Flight"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:600
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:207
+msgid ""
+"* Plane Durability is percent of sorties the plane survived after taking "
+"damage. </br> * Pilot Survivability is the percent of sorties the pilot "
+"survived after the plane took damage. </br> * Plane Lethality is the percent "
+"of enemy aircraft which went down after taking damage from this plane. "
+"Assists count. </br> * Pilot Lethality is the percent of enemy pilots which "
+"died after taking damage from this plane. Assists count."
+msgstr ""
+"* La durabilidad del avión es el porcentaje de salidas que el avión "
+"sobrevivió después de tomar daño.</br>* La supervivencia del piloto es el "
+"porcentaje de salidas que el piloto sobrevivió después de tomar daño.</br>* "
+"La letalidad del avión es el porcentaje de aviones enemigos derribados "
+"después de tomar daño de este avión. Las asistencias cuentan.</br>* La "
+"letalidad del piloto es el porcentaje de pilotos enemigos que murieron "
+"después de tomar daño de este avión.</br>"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:610
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:217
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:176
+msgid ""
+"<strong>Attention!</strong> Algorithms collection statistics IL2 stats "
+"differs from statistics in-game. As a consequence of these statistics will "
+"not coincide with the game."
+msgstr ""
+"<strong>¡Atención!</strong> Algoritmos que colectan estadísticas en IL2 "
+"stats son diferentes a los del simulador. Como consecuencia pueden no "
+"coincidir."
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:617
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:224
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:183
+#, python-format
+msgid ""
+"Players inactive for more than %(days)s day - do not participate in the "
+"rating."
+msgid_plural ""
+"Players inactive for more than %(days)s days - do not participate in the "
+"rating."
+msgstr[0] ""
+"Pilotos inactivos por más de %(days)s día no participan en el ranking."
+msgstr[1] ""
+"Pilotos inactivos por más de %(days)s días no participan en el ranking."
+
+#: .\mod_stats_by_aircraft\templates\aircraft_does_not_exist.html:12
+msgid "There are no sorties of this aircraft with the applied filter."
+msgstr "No hay salidas de esta aeronave con el filtro aplicado"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:3
+msgid "Killboard"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:13
+#, fuzzy
+#| msgctxt "pilot_nav_tab"
+#| msgid "Aircraft Killboard"
+msgid "Aircraft Killboard"
+msgstr "Tabla de derribos de aeronave"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:53
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:79
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:130
+msgid ""
+"This filter applies to all aircraft (where applicable), including the ones "
+"inside the table below."
+msgstr "Este filtro aplica a todas las aeronaves (si corresponde), incluidas las que están dentro de la tabla siguiente"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:143
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Wagons"
+msgctxt "killboard"
+msgid "Won"
+msgstr "Vagones"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:149
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:150
+msgctxt "killboard"
+msgid "Lose"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:156
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:157
+msgctxt "killboard"
+msgid "K/D - Kills per Death"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:163
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:164
+msgctxt "killboard"
+msgid "Plane Durability"
+msgstr "Durabilidad del avión"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:170
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:171
+msgctxt "killboard"
+msgid "Pilot Survivability"
+msgstr "Supervivencia del piloto "
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:177
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:178
+msgctxt "killboard"
+msgid "Plane Lethality"
+msgstr "Letalidad del avión"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:184
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:185
+msgctxt "killboard"
+msgid "Pilot Lethality"
+msgstr "Letalidad del piloto"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:3
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:13
+#: .\mod_stats_by_aircraft\templates\base.html:87
+msgid "Aircraft Rankings"
+msgstr "Clasificación de aeronave"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:63
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Static Aircraft"
+msgid "Search aircraft"
+msgstr "Buscar aeronave"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:77
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:78
+msgid "Flight Time (hours:minutes)"
+msgstr "Tiempo de vuelo (horas:minutos)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:170
+msgid ""
+"* Plane Durability is percent of sorties the plane survived after taking "
+"damage. </br> * Plane Lethality is the percent of enemy aircraft which went "
+"down after taking damage from this plane. Assists count. </br>"
+msgstr ""
+"* La durabilidad del avión es el porcentaje de salidas que el avión "
+"sobrevivió después de tomar daño.</br>* La letalidad del avión es el "
+"porcentaje de aviones enemigos derribados después de tomar daño de este "
+"avión. Las asistencias cuentan.</br>"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:200
+msgid "on the number of air kills"
+msgstr "sobre el número de victorias aéreas"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:201
+msgid "on the current streak of kills"
+msgstr "en la racha actual de victorias"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:202
+msgid "on the number of ground kills"
+msgstr "sobre el número de destrucciones en tierra"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:203
+msgid "on the flight time (hours:minutes)"
+msgstr "sobre el tiempo de vuelo (horas:minutos)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:204
+msgid "on the average number of kill per one death (K/D)"
+msgstr "sobre el número promedio de victorias por muerte"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:205
+msgid "on the average number of kill per one hour (K/Hr)"
+msgstr "sobre el número promedio de victorias por hora (K/Hr)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:206
+msgid "on the accuracy"
+msgstr "sobre la puntería"
+
+#: .\mod_stats_by_aircraft\templates\base.html:47
+msgid ""
+"For full functionality of this site it is necessary to enable JavaScript. "
+"Here are the <a href=\"//www.enable-javascript.com\" target=\"_blank\"> "
+"instructions how to enable JavaScript in your web browser</a>."
+msgstr ""
+"Para que este sitio funcione correctamente es necesario habilitar "
+"JavaScript. Aquí hay <a href=\"//www.enable-javascript.com\" target=\"_blank"
+"\"> instrucciones para habilitar JavaScript en tu navegador</a>."
+
+#: .\mod_stats_by_aircraft\templates\base.html:62
+msgid "Admin panel"
+msgstr "Panel Admin"
+
+#: .\mod_stats_by_aircraft\templates\base.html:64
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\mod_stats_by_aircraft\templates\base.html:69
+msgid "Logout"
+msgstr "Salir"
+
+#: .\mod_stats_by_aircraft\templates\base.html:71
+msgctxt "action"
+msgid "Registration"
+msgstr "Registrarse"
+
+#: .\mod_stats_by_aircraft\templates\base.html:72
+msgctxt "action"
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: .\mod_stats_by_aircraft\templates\base.html:81
+msgctxt "nav_menu"
+msgid "Main"
+msgstr "Principal"
+
+#: .\mod_stats_by_aircraft\templates\base.html:83
+msgid "Rankings"
+msgstr "Rankings"
+
+#: .\mod_stats_by_aircraft\templates\base.html:85
+msgid "Pilot Rankings"
+msgstr "Ranking de Pilotos"
+
+#: .\mod_stats_by_aircraft\templates\base.html:86
+msgid "Squad Rankings"
+msgstr "Ranking de Escuadrones"
+
+#: .\mod_stats_by_aircraft\templates\base.html:90
+msgid "Missions"
+msgstr "Misiones"
+
+#: .\mod_stats_by_aircraft\templates\base.html:92
+msgid "Forum"
+msgstr "Foro"
+
+#: .\mod_stats_by_aircraft\templates\base.html:95
+msgid "Info"
+msgstr "Información"
+
+#: .\mod_stats_by_aircraft\templates\base.html:98
+msgid "Tour"
+msgstr "Campaña"
+
+#: .\mod_stats_by_aircraft\templates\inline\aircraft_tabs.html:4
+msgctxt "pilot_nav_tab"
+msgid "Aircraft Statistics"
+msgstr "Estadísticas de aeronave"
+
+#: .\mod_stats_by_aircraft\templates\inline\aircraft_tabs.html:5
+msgctxt "pilot_nav_tab"
+msgid "Aircraft Killboard"
+msgstr "Tabla de derribos de aeronave"
+
+#, fuzzy
+#~| msgctxt "sortie"
+#~| msgid "Aircraft"
+#~ msgid "aircraft"
+#~ msgstr "Avión"
+
+#~ msgid "key"
+#~ msgstr "llave"
+
+#~ msgid "A unique name for this chunk of content"
+#~ msgstr "Un nombre único para este fragmento de contenido"
+
+#~ msgid "title"
+#~ msgstr "título"
+
+#~ msgid "content"
+#~ msgstr "contenido"
+
+#~ msgid "English"
+#~ msgstr "Inglés"
+
+#~ msgid "Russian"
+#~ msgstr "Ruso"
+
+#~ msgid "German"
+#~ msgstr "Alemán"
+
+#~ msgid "French"
+#~ msgstr "Francés"
+
+#, fuzzy
+#~| msgid "content"
+#~ msgctxt "coalition"
+#~ msgid "Entente"
+#~ msgstr "contenido"
+
+#~ msgctxt "coalition"
+#~ msgid "Allies"
+#~ msgstr "Aliados"
+
+#~ msgctxt "coalition"
+#~ msgid "Axis"
+#~ msgstr "Eje"
+
+#~ msgid "Squads"
+#~ msgstr "Escuadrones"
+
+#~ msgid "A squad with that tag already exists."
+#~ msgstr "Ya existe un escuadrón con ese tag."
+
+#~ msgid "Remove logo"
+#~ msgstr "Remover logo"
+
+#, python-format
+#~ msgid "Maximum file size: %(size)s"
+#~ msgstr "Tamaño máximo del archivo: %(size)s"
+
+#, python-format
+#~ msgid "Allowed file formats are: %(formats)s"
+#~ msgstr "Los formatos de archivo permitidos son: %(formats)s"
+
+#~ msgid "squad name"
+#~ msgstr "nombre de escuadón"
+
+#~ msgid "squad tag"
+#~ msgstr "tag de escuadrón"
+
+#~ msgid "website"
+#~ msgstr "sitio web"
+
+#~ msgid "about squad"
+#~ msgstr "sobre el escuadrón"
+
+#~ msgid "squad logo"
+#~ msgstr "logo del escuadrón"
+
+#~ msgid "squad"
+#~ msgstr "escuadrón"
+
+#~ msgid "squads"
+#~ msgstr "escuadrones"
+
+#~ msgid "date joined"
+#~ msgstr "fecha de registro"
+
+#~ msgid "squad member"
+#~ msgstr "miembro del escuadrón"
+
+#~ msgid "squads members"
+#~ msgstr "miembros de escuadrones"
+
+#~ msgid "Join Squad"
+#~ msgstr "Unirse al Escuadrón"
+
+#~ msgid "Are you already a member of the squad"
+#~ msgstr "Ya eres miembro del escuadrón"
+
+#~ msgid ""
+#~ "You use the wrong url for joining the squad. Request the correct url from "
+#~ "the admin of your squad."
+#~ msgstr ""
+#~ "Usas la URL incorrecta para unirte al escuadrón. Solicita la url correcta "
+#~ "al administrador del escuadrón."
+
+#~ msgid "Confirm that you want to join the squad"
+#~ msgstr "Confirma que quieres unirte al escuadrón"
+
+#~ msgctxt "action"
+#~ msgid "Confirm"
+#~ msgstr "Confirmar"
+
+#~ msgid "Leave Squad"
+#~ msgstr "Abandonar Escuadrón"
+
+#~ msgid ""
+#~ "Now you are the sole admin of the squad. Therefore, if you leave the "
+#~ "squad - the squad will be removed."
+#~ msgstr ""
+#~ "Ahora eres el único administrador de la escuadra. Por lo tanto, si lo "
+#~ "abandonas el escuadrón será borrado."
+
+#~ msgid "Confirm that you want to leave the squad."
+#~ msgstr "Confirma que quieres abandonar el escuadrón."
+
+#~ msgid "My Squad"
+#~ msgstr "Mi Escuadrón"
+
+#~ msgid "Edit profile"
+#~ msgstr "Editar perfil"
+
+#~ msgid "Squad members"
+#~ msgstr "Miembros del Escuadrón"
+
+#~ msgid "Give admin role"
+#~ msgstr "Asignar función de administrador"
+
+#~ msgid "Remove admin role"
+#~ msgstr "Remover función de administrador"
+
+#~ msgid "Kick from squad"
+#~ msgstr "Expulsar del escuadrón"
+
+#~ msgid "Join squad url"
+#~ msgstr "URL para unirse al escuadrón"
+
+#~ msgid "With this url any registered user can join your squad."
+#~ msgstr ""
+#~ "Con esta URL cualquier usuario registrado puede unirse a tu escuadrón."
+
+#~ msgid "Generate new url"
+#~ msgstr "Generar nueva URL"
+
+#~ msgid "Remove Squad"
+#~ msgstr "Remover Escuadrón"
+
+#~ msgid ""
+#~ "You are not a member of a any squad. In order to join the squad, you need "
+#~ "\"join url\", which can be obtained from the admin of the squad."
+#~ msgstr ""
+#~ "No eres miembro de ningún escuadrón. Para enlistarte en uno necesitas la "
+#~ "\"URL para unirte\", que se puede obtener del administrador del escuadrón."
+
+#~ msgctxt "action"
+#~ msgid "Registration Squad"
+#~ msgstr "Registro de Escuadrón"
+
+#~ msgid "Squad Profile"
+#~ msgstr "Perfil de Escuadrón"
+
+#~ msgctxt "action"
+#~ msgid "Save"
+#~ msgstr "Guardar"
+
+#~ msgid "Squad registration"
+#~ msgstr "Registro de Escuadrón"
+
+#~ msgid ""
+#~ "Your squad will be removed, this action is irreversible. The old "
+#~ "statistics will be available for viewing. Confirm the remove of the squad."
+#~ msgstr ""
+#~ "Tu escuadrón será borrado, esta acción es irreversible. Las viejas "
+#~ "estadísticas estarán disponibles para su visualización. Confirma la "
+#~ "eliminación de la escuadra."
+
+#~ msgid "Your squad has been successfully registered."
+#~ msgstr "Tu escuadrón ha sido registrado con éxito."
+
+#~ msgid "Squad profile successfully changed."
+#~ msgstr "Perfil de escuadrón actualizado con éxito."
+
+#, fuzzy
+#~| msgctxt "sortie_status"
+#~| msgid "in flight"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Cockpit light"
+#~ msgstr "en vuelo"
+
+#, fuzzy
+#~| msgid "Allies"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Aldis"
+#~ msgstr "Aliados"
+
+#, fuzzy
+#~| msgid "modifications"
+#~ msgctxt "aircraft_mod"
+#~ msgid "U17 strike modification"
+#~ msgstr "modificaciones"
+
+#, fuzzy
+#~| msgctxt "sortie_status"
+#~| msgid "in flight"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Landing light"
+#~ msgstr "en vuelo"
+
+#, fuzzy
+#~| msgctxt "total"
+#~| msgid "Armored vehicles"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Armoured Headrest"
+#~ msgstr "Vehículos Blindados"
+
+#, fuzzy
+#~| msgid "Remove admin role"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removed Front Armor"
+#~ msgstr "Remover función de administrador"
+
+#, fuzzy
+#~| msgid "modifications"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Ground attack modification"
+#~ msgstr "modificaciones"
+
+#, fuzzy
+#~| msgctxt "sortie"
+#~| msgid "Duration of flight"
+#~ msgctxt "aircraft_mod"
+#~ msgid "Navigation lights"
+#~ msgstr "Duración del vuelo"
+
+#~ msgid "Stats"
+#~ msgstr "Estadísticas"
+
+#~ msgid "score"
+#~ msgstr "puntos"
+
+#~ msgid "scoring"
+#~ msgstr "puntuación"
+
+#~ msgid "object"
+#~ msgstr "objeto"
+
+#~ msgid "objects"
+#~ msgstr "objetos"
+
+#~ msgid "tour"
+#~ msgstr "campaña"
+
+#~ msgid "tours"
+#~ msgstr "campañas"
+
+#~ msgctxt "preset"
+#~ msgid "custom"
+#~ msgstr "custom"
+
+#~ msgctxt "preset"
+#~ msgid "normal"
+#~ msgstr "normal"
+
+#~ msgctxt "preset"
+#~ msgid "expert"
+#~ msgstr "experto"
+
+#~ msgid "profile"
+#~ msgstr "perfil"
+
+#~ msgid "profiles"
+#~ msgstr "perfiles"
+
+#~ msgctxt "sortie_status"
+#~ msgid "landed"
+#~ msgstr "aterrizado"
+
+#~ msgctxt "sortie_status"
+#~ msgid "crashed"
+#~ msgstr "estrellado"
+
+#~ msgctxt "sortie_status"
+#~ msgid "shotdown"
+#~ msgstr "derribado"
+
+#~ msgctxt "sortie_status"
+#~ msgid "not takeoff"
+#~ msgstr "sin despegar"
+
+#~ msgctxt "aircraft_status"
+#~ msgid "unharmed"
+#~ msgstr "sin daños"
+
+#~ msgctxt "aircraft_status"
+#~ msgid "damaged"
+#~ msgstr "dañado"
+
+#~ msgctxt "aircraft_status"
+#~ msgid "destroyed"
+#~ msgstr "destruido"
+
+#~ msgctxt "sortie_status"
+#~ msgid "healthy"
+#~ msgstr "sano"
+
+#~ msgctxt "sortie_status"
+#~ msgid "wounded"
+#~ msgstr "herido"
+
+#~ msgctxt "sortie_status"
+#~ msgid "dead"
+#~ msgstr "muerto"
+
+#~ msgid "USSR"
+#~ msgstr "USSR"
+
+#~ msgid "Germany"
+#~ msgstr "Alemania"
+
+#, fuzzy
+#~| msgid "French"
+#~ msgid "France"
+#~ msgstr "Francés"
+
+#, fuzzy
+#~| msgid "Russian"
+#~ msgid "Russia"
+#~ msgstr "Ruso"
+
+#~ msgctxt "award_type"
+#~ msgid "tour"
+#~ msgstr "campaña"
+
+#~ msgctxt "award_type"
+#~ msgid "mission"
+#~ msgstr "misión"
+
+#~ msgctxt "award_type"
+#~ msgid "sortie"
+#~ msgstr "salida"
+
+#~ msgid "function name"
+#~ msgstr "nombre de función"
+
+#~ msgid "type"
+#~ msgstr "tipo"
+
+#~ msgid "description"
+#~ msgstr "descripción"
+
+#~ msgid "image"
+#~ msgstr "imagen"
+
+#~ msgid "Image size should be 180x180"
+#~ msgstr "El tamaño de la imagen debe ser 180x180"
+
+#~ msgid "award"
+#~ msgstr "condecoración"
+
+#~ msgid "awards"
+#~ msgstr "condecoraciones"
+
+#~ msgid "reward"
+#~ msgstr "recompensa"
+
+#~ msgid "rewards"
+#~ msgstr "recompensas"
+
+#~ msgid "player online"
+#~ msgstr "piloto online"
+
+#~ msgid "players online"
+#~ msgstr "pilotos online"
+
+#~ msgctxt "sortie_log"
+#~ msgid "damaged"
+#~ msgstr "dañado"
+
+#~ msgctxt "sortie_log"
+#~ msgid "wounded"
+#~ msgstr "herido"
+
+#~ msgctxt "sortie_log"
+#~ msgid "KILLED"
+#~ msgstr "MUERTO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DESTROYED"
+#~ msgstr "DESTRUIDO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "SHOTDOWN"
+#~ msgstr "DERRIBADO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "was damaged"
+#~ msgstr "fue dañado"
+
+#~ msgctxt "sortie_log"
+#~ msgid "was wounded"
+#~ msgstr "fue herido"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS KILLED"
+#~ msgstr "FUE MUERTO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS DESTROYED"
+#~ msgstr "FUE DESTRUIDO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS SHOTDOWN"
+#~ msgstr "FUE DERRIBADO"
+
+#~ msgctxt "sortie_log"
+#~ msgid "respawn"
+#~ msgstr "respawn"
+
+#~ msgctxt "sortie_log"
+#~ msgid "end"
+#~ msgstr "fin"
+
+#~ msgctxt "sortie_log"
+#~ msgid "takeoff"
+#~ msgstr "despegue"
+
+#~ msgctxt "sortie_log"
+#~ msgid "landed"
+#~ msgstr "aterrizaje"
+
+#~ msgctxt "sortie_log"
+#~ msgid "crashed"
+#~ msgstr "estrellado"
+
+#~ msgctxt "sortie_log"
+#~ msgid "ditched"
+#~ msgstr "forzoso"
+
+#~ msgctxt "sortie_log"
+#~ msgid "BAILOUT"
+#~ msgstr "BAILOUT"
+
+#~ msgctxt "sortie_log"
+#~ msgid "damage"
+#~ msgstr "daño"
+
+#~ msgctxt "sortie_log"
+#~ msgid "wound"
+#~ msgstr "herido"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DIED"
+#~ msgstr "MURIÓ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DISABLED"
+#~ msgstr "INCAPACITADO"
+
+#~ msgid "Frequently Asked Questions"
+#~ msgstr "Preguntas frecuentes"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Sorties"
+#~ msgstr "Salidas"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Awards"
+#~ msgstr "Condecoraciones"
+
+#~ msgctxt "sortie_nav_tab"
+#~ msgid "Sortie Statistics"
+#~ msgstr "Estadísticas de Salida"
+
+#~ msgctxt "sortie_nav_tab"
+#~ msgid "Sortie Log"
+#~ msgstr "Log de Salida"
+
+#~ msgctxt "squad_nav_tab"
+#~ msgid "Squad Statistics"
+#~ msgstr "Estadísticas de Escuadrón"
+
+#~ msgctxt "squad_nav_tab"
+#~ msgid "Pilots"
+#~ msgstr "Pilotos"
+
+#~ msgid "Current Tour"
+#~ msgstr "Campaña actual"
+
+#~ msgctxt "tour"
+#~ msgid "Dominance"
+#~ msgstr "Dominio"
+
+#~ msgctxt "tour"
+#~ msgid "Won missions"
+#~ msgstr "Misiones ganadas"
+
+#~ msgctxt "tour"
+#~ msgid "Shotdown aircraft"
+#~ msgstr "Aviones derribados"
+
+#~ msgctxt "tour"
+#~ msgid "Ground targets destroyed"
+#~ msgstr "Objetos destruídos en tierra"
+
+#~ msgctxt "tour"
+#~ msgid "Score"
+#~ msgstr "Puntos"
+
+#~ msgctxt "tour"
+#~ msgid "Flight time (hours)"
+#~ msgstr "Tiempo de vuelo (horas)"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots in the last 24 hours"
+#~ msgstr "Mejores pilotos en las últimas 24 horas"
+
+#~ msgctxt "tour_top"
+#~ msgid "pilot nickname"
+#~ msgstr "piloto"
+
+#~ msgctxt "tour_top"
+#~ msgid "score"
+#~ msgstr "puntos"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best live pilots"
+#~ msgstr "Mejores pilotos vivos"
+
+#~ msgid "Overall Pilot Rankings"
+#~ msgstr "Ranking general de Pilotos"
+
+#, python-format
+#~ msgid "%(days)s day left"
+#~ msgid_plural "%(days)s days left"
+#~ msgstr[0] "Falta %(days)s día"
+#~ msgstr[1] "Faltan %(days)s días"
+
+#~ msgid "Active players"
+#~ msgstr "Pilotos Activos"
+
+#~ msgctxt "tour_active"
+#~ msgid "total"
+#~ msgstr "total"
+
+#~ msgctxt "online"
+#~ msgid "pilots"
+#~ msgstr "pilotos"
+
+#~ msgid "List of pilots online"
+#~ msgstr "Lista de pilotos online"
+
+#~ msgid "Summary previous tour"
+#~ msgstr "Sumario de campañas previas"
+
+#~ msgctxt "tour_winner"
+#~ msgid "winner"
+#~ msgstr "ganador"
+
+#~ msgid "Top Pilots"
+#~ msgstr "Top Pilotos"
+
+#~ msgid "Mission"
+#~ msgstr "Misión"
+
+#~ msgctxt "mission"
+#~ msgid "Start Date"
+#~ msgstr "Fecha de Inicio"
+
+#~ msgctxt "mission"
+#~ msgid "End Date"
+#~ msgstr "Fecha Final"
+
+#~ msgctxt "mission"
+#~ msgid "Duration"
+#~ msgstr "Duración"
+
+#~ msgid "Winning coalition"
+#~ msgstr "Coalición ganadora"
+
+#~ msgid "Performed the task of the mission"
+#~ msgstr "Realizó la tarea de la misión"
+
+#~ msgid "Won by score"
+#~ msgstr "Ganó por puntos"
+
+#~ msgid "Score"
+#~ msgstr "Puntos"
+
+#~ msgid "on the score"
+#~ msgstr "sobre el puntaje"
+
+#~ msgid "Search mission"
+#~ msgstr "Buscar misión"
+
+#~ msgid "Duration (hours:minutes)"
+#~ msgstr "Duración (horas:minutos)"
+
+#~ msgid "Pilots on the server"
+#~ msgstr "Pilotos en el servidor"
+
+#~ msgid "favorite coalition"
+#~ msgstr "coalición favorita"
+
+#~ msgid "favorite aircraft"
+#~ msgstr "avión favorito"
+
+#~ msgid "Streak"
+#~ msgstr "Racha"
+
+#~ msgid "number of downed aircraft for the current virtual life"
+#~ msgstr "número de aviones derribados en la vida virtual actual"
+
+#~ msgid "Ground Streak"
+#~ msgstr "Racha en Ataque"
+
+#~ msgid "number of destroyed ground targets for the current virtual life"
+#~ msgstr "número de objetivos en tierra destruídos en la vida virtual actual"
+
+#~ msgid "Aerial victories"
+#~ msgstr "Victorias aéreas"
+
+#~ msgid "Best Streak"
+#~ msgstr "Mejor Racha"
+
+#~ msgid "Destroyed on Ground"
+#~ msgstr "Destruídos en Tierra"
+
+#~ msgid "Best Ground Streak"
+#~ msgstr "Mejor Racha en Ataque"
+
+#~ msgid "Position in Rating"
+#~ msgstr "Posición en el Ranking"
+
+#~ msgctxt "total"
+#~ msgid "Disco"
+#~ msgstr "Desconectado"
+
+#~ msgctxt "total"
+#~ msgid "Shotdown Friendly Aircraft"
+#~ msgstr "Derribo de Avión Amigo"
+
+#~ msgctxt "total"
+#~ msgid "Destroyed Friendly Ground Targets"
+#~ msgstr "Destrucción de Objetivo en Tierra Amigo"
+
+#, fuzzy
+#~| msgctxt "sortie"
+#~| msgid "Detailed results"
+#~ msgid "Best results"
+#~ msgstr "Detalle de resultados"
+
+#, fuzzy
+#~| msgid "Best Streak"
+#~ msgid "Best Flight time Streak"
+#~ msgstr "Mejor Racha"
+
+#, fuzzy
+#~| msgctxt "tour_top"
+#~| msgid "Best pilots streak"
+#~ msgid "Best Sorties Streak"
+#~ msgstr "Mejores rachas de pilotos"
+
+#, fuzzy
+#~| msgid "Aerial victories"
+#~ msgid "Max Aerial Victories in one sortie"
+#~ msgstr "Victorias aéreas"
+
+#, fuzzy
+#~| msgid "Destroyed on Ground"
+#~ msgid "Max Destroyed on Ground in one sortie"
+#~ msgstr "Destruídos en Tierra"
+
+#, fuzzy
+#~| msgid "Current Streak"
+#~ msgid "Current life"
+#~ msgstr "Racha Actual"
+
+#~ msgid "number of sorties"
+#~ msgstr "número de salidas"
+
+#~ msgid "Specialty"
+#~ msgstr "Especialidad"
+
+#~ msgctxt "specialty"
+#~ msgid "Fighter"
+#~ msgstr "Caza"
+
+#~ msgctxt "specialty"
+#~ msgid "Attacker"
+#~ msgstr "Ataque"
+
+#~ msgctxt "specialty"
+#~ msgid "Bomber"
+#~ msgstr "Bombardero"
+
+#, fuzzy
+#~| msgctxt "total"
+#~| msgid "Transport"
+#~ msgctxt "specialty"
+#~ msgid "Transport"
+#~ msgstr "Transportes"
+
+#~ msgid "Fairplay Index"
+#~ msgstr "Índice de Juego Limpio"
+
+#~ msgid "Other names of the pilot on this account"
+#~ msgstr "Otros nombres del piloto en esta cuenta"
+
+#~ msgctxt "pilot_awards"
+#~ msgid "Awards"
+#~ msgstr "Condecoraciones"
+
+#~ msgctxt "pilot_awards"
+#~ msgid "pilot"
+#~ msgstr "piloto"
+
+#~ msgid "Player profile was hidden"
+#~ msgstr "El perfil del jugador está oculto"
+
+#, fuzzy
+#~| msgctxt "pilot_awards"
+#~| msgid "pilot"
+#~ msgid "pilot"
+#~ msgstr "piloto"
+
+#~ msgid "The player did not participate in this tour"
+#~ msgstr "El piloto no participó en esta campaña"
+
+#~ msgctxt "sortie_page_title"
+#~ msgid "Sortie"
+#~ msgstr "Salida"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Disconnect"
+#~ msgstr "Desconetado"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Dead"
+#~ msgstr "Muerto"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Captured"
+#~ msgstr "Capturado"
+
+#~ msgctxt "sortie_status"
+#~ msgid "In Flight"
+#~ msgstr "En Vuelo"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Landed"
+#~ msgstr "Aterrizado"
+
+#~ msgctxt "pilot_sorties"
+#~ msgid "pilot"
+#~ msgstr "piloto"
+
+#~ msgid "Back to sorties list"
+#~ msgstr "Volver a la lista de salidas"
+
+#~ msgid ""
+#~ "The results of this sortie are not included in the statistics of the "
+#~ "pilot because of the disconnect"
+#~ msgstr ""
+#~ "Los resultados de esta salida no están incluidos en las estadísticas del "
+#~ "pilotodebido a la desconexión"
+
+#~ msgctxt "sortie"
+#~ msgid "Mission"
+#~ msgstr "Misión"
+
+#~ msgctxt "sortie"
+#~ msgid "Start Time"
+#~ msgstr "Hora de Inicio"
+
+#~ msgctxt "sortie"
+#~ msgid "End Time"
+#~ msgstr "Hora Final"
+
+#~ msgctxt "sortie"
+#~ msgid "Duration of flight"
+#~ msgstr "Duración del vuelo"
+
+#~ msgctxt "sortie"
+#~ msgid "Country"
+#~ msgstr "País"
+
+#~ msgctxt "sortie"
+#~ msgid "pilot status"
+#~ msgstr "estado del piloto"
+
+#~ msgctxt "sortie"
+#~ msgid "Score"
+#~ msgstr "Puntos"
+
+#~ msgctxt "sortie"
+#~ msgid "Aerial victories"
+#~ msgstr "Victoria Aéreas"
+
+#~ msgctxt "sortie"
+#~ msgid "Destroyed on Ground"
+#~ msgstr "Destrucciones en Tierra"
+
+#~ msgctxt "sortie"
+#~ msgid "fuel"
+#~ msgstr "combustible"
+
+#~ msgid "payload"
+#~ msgstr "carga"
+
+#~ msgid "modifications"
+#~ msgstr "modificaciones"
+
+#~ msgctxt "sortie"
+#~ msgid "aircraft status"
+#~ msgstr "estado del avión"
+
+#~ msgctxt "sortie"
+#~ msgid "Not Takeoff"
+#~ msgstr "Sin despegar"
+
+#~ msgctxt "sortie"
+#~ msgid "In Flight"
+#~ msgstr "En Vuelo"
+
+#~ msgctxt "sortie"
+#~ msgid "Shotdown"
+#~ msgstr "Derribado"
+
+#~ msgctxt "sortie"
+#~ msgid "Landed not on Airfield"
+#~ msgstr "Aterrizado fuera de Base"
+
+#~ msgctxt "sortie"
+#~ msgid "Crashed"
+#~ msgstr "Estrellado"
+
+#~ msgctxt "sortie"
+#~ msgid "damage aircraft"
+#~ msgstr "Avión Dañado"
+
+#~ msgctxt "sortie"
+#~ msgid "Detailed results"
+#~ msgstr "Detalle de resultados"
+
+#~ msgctxt "sortie"
+#~ msgid "Scoring"
+#~ msgstr "Puntaje"
+
+#~ msgctxt "total"
+#~ msgid "Bonuses"
+#~ msgstr "Bonos"
+
+#~ msgctxt "sortie"
+#~ msgid "Coalition won a mission"
+#~ msgstr "Coalición ganó la misión"
+
+#~ msgid "Stats of weapons"
+#~ msgstr "Estadísticas de armas"
+
+#~ msgid "Number of shots"
+#~ msgstr "Número de disparos"
+
+#~ msgid "Number of bullets hit the target"
+#~ msgstr "Número de balas que impactaron el objetivo"
+
+#~ msgid "Number of rockets launches"
+#~ msgstr "Número de cohetes lanzados"
+
+#~ msgid "Number of bombs dropped"
+#~ msgstr "Número de bombas lanzadas"
+
+#~ msgid ""
+#~ "This block may contain incorrect information, this is due to the errors "
+#~ "in the game log."
+#~ msgstr ""
+#~ "Este bloque puede contener información incorrecta, esto es debido a los "
+#~ "errores en el"
+
+#~ msgctxt "sortie_page_title"
+#~ msgid "Sortie Log"
+#~ msgstr "Log de salida"
+
+#~ msgctxt "sortie_log"
+#~ msgid "AI"
+#~ msgstr "IA"
+
+#~ msgctxt "pilot_sorties"
+#~ msgid "Sorties"
+#~ msgstr "Salidas"
+
+#, fuzzy
+#~| msgctxt "pilot_awards"
+#~| msgid "pilot"
+#~ msgctxt "pilot_vlifes"
+#~ msgid "pilot"
+#~ msgstr "piloto"
+
+#, fuzzy
+#~| msgid "Back to sorties list"
+#~ msgid "Back to vlifes list"
+#~ msgstr "Volver a la lista de salidas"
+
+#~ msgid "Search pilot"
+#~ msgstr "Buscar piloto"
+
+#~ msgid "Current Streak"
+#~ msgstr "Racha Actual"
+
+#~ msgid "Go to the website of the squad"
+#~ msgstr "Ir al sitio web del escuadrón"
+
+#~ msgid "Number of pilots"
+#~ msgstr "Número de pilotos"
+
+#~ msgid "Not enough pilots to participate in the rating"
+#~ msgstr "No hay suficientes pilotos para participar en el ranking"
+
+#~ msgctxt "specialty"
+#~ msgid "Fighters"
+#~ msgstr "Cazas"
+
+#~ msgctxt "specialty"
+#~ msgid "Attackers"
+#~ msgstr "Ataque"
+
+#~ msgctxt "specialty"
+#~ msgid "Bombers"
+#~ msgstr "Bombarderos"
+
+#~ msgid ""
+#~ "<strong>Attention!</strong> Statistics squad - accumulative. When a "
+#~ "player joins to squad, his past statistics does not affect the current "
+#~ "squad statistics. Only new sorties will be added in the squad statistics."
+#~ msgstr ""
+#~ "<strong>¡Atención!</strong> Cuando un piloto se une al esuadrón sus "
+#~ "estdísticas anteriores no afectan a las estadísticas del escuadrón. Solo "
+#~ "las nuevas salidas serán añadidas."
+
+#~ msgid "The squad did not participate in this tour"
+#~ msgstr "El escuadrón no participó en esta campaña"
+
+#~ msgid "Search squad"
+#~ msgstr "Buscar escuadrón"
+
+#~ msgid "on the number of squad members"
+#~ msgstr "en el número de miembros del escuadrón"
+
+#, python-format
+#~ msgid "Tour \"%(tour)s\" ended"
+#~ msgstr "Campaña \"%(tour)s\" terminada"
+
+#, python-format
+#~ msgid "%(coal)s victory"
+#~ msgstr "Victoria %(coal)s"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots"
+#~ msgstr "Mejores pilotos"
+
+#~ msgctxt "tour_top"
+#~ msgid "rating"
+#~ msgstr "ranking"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots streak"
+#~ msgstr "Mejores rachas de pilotos"
+
+#~ msgid "hour"
+#~ msgid_plural "hours"
+#~ msgstr[0] "hora"
+#~ msgstr[1] "horas"
+
+#~ msgid "minute"
+#~ msgid_plural "minutes"
+#~ msgstr[0] "minuto"
+#~ msgstr[1] "minutos"
+
+#~ msgid "second"
+#~ msgid_plural "seconds"
+#~ msgstr[0] "segundo"
+#~ msgstr[1] "segundos"
+
+#~ msgid "day"
+#~ msgid_plural "days"
+#~ msgstr[0] "día"
+#~ msgstr[1] "días"
+
+#~ msgid "Personal info"
+#~ msgstr "Información personal"
+
+#~ msgid "Permissions"
+#~ msgstr "Permisos"
+
+#~ msgid "Important dates"
+#~ msgstr "Fechas importantes"
+
+#~ msgid "Users"
+#~ msgstr "Usuarios"
+
+#~ msgid "Remember me"
+#~ msgstr "Recuérdame"
+
+#~ msgid "Password"
+#~ msgstr "Contraseña"
+
+#~ msgid "Protection from bots"
+#~ msgstr "Protección contra bots"
+
+#~ msgid "Enter number associated with correct part of the aircraft."
+#~ msgstr "Introduzca el número asociado con la parte correcta de la aeronave."
+
+#~ msgid "Incorrect answer."
+#~ msgstr "Respuesta incorrecta."
+
+#~ msgid "A user with this email is not found."
+#~ msgstr "No se ha encontrado un usuario con este email"
+
+#~ msgid "Registration has already been confirmed. This user is activated."
+#~ msgstr "El registro ha sido confirmado. Usuario activado."
+
+#~ msgid "New password"
+#~ msgstr "Nueva contraseña"
+
+#~ msgid "Current password"
+#~ msgstr "Contraseña actual"
+
+#~ msgid "To change the email or password you must enter current password."
+#~ msgstr ""
+#~ "Para cambiar el email o la contraseña debes ingresar la contraseña actual."
+
+#~ msgid "Incorrect current password."
+#~ msgstr "Contraseña actual incorrecta."
+
+#~ msgid "IL2 stats: registration confirm"
+#~ msgstr "IL2 stats: confirmación de registro"
+
+#, python-format
+#~ msgid "Confirmation of registration: %(url)s"
+#~ msgstr "Confirmación de registro: %(url)s"
+
+#~ msgid "IL2 stats: password reset"
+#~ msgstr "IL2 stats: restablecimiento de contraseña"
+
+#, python-format
+#~ msgid "Password reset: %(url)s"
+#~ msgstr "Restablecimiento de contraseña: %(url)s"
+
+#~ msgid "username"
+#~ msgstr "Nombre de usuario"
+
+#~ msgid "Username must match the name in the game IL-2 (including squad tag)."
+#~ msgstr ""
+#~ "El nombre de usuario debe coincidir con el nombre en el juego IL-2 "
+#~ "(incluido el tag de escuadrón)."
+
+#~ msgid "A user with that username already exists."
+#~ msgstr "Un usuario ya utiliza ese nombre de usuario."
+
+#~ msgid "Designates whether the user can log into this admin site."
+#~ msgstr ""
+#~ "Designa si el usuario puede iniciar sesión en este sitio de administración"
+
+#~ msgid "active"
+#~ msgstr "activo"
+
+#~ msgid ""
+#~ "Designates whether this user should be treated as active. Unselect this "
+#~ "instead of deleting accounts."
+#~ msgstr ""
+#~ "Designa si este usuario debe ser tratado como activo. Deseleccionarlo "
+#~ "elimina la cuenta"
+
+#~ msgid "user"
+#~ msgstr "usuario"
+
+#~ msgid "users"
+#~ msgstr "usuarios"
+
+#~ msgid "Login"
+#~ msgstr "Iniciar sesión"
+
+#~ msgid "Forgot password"
+#~ msgstr "Contraseña perdida"
+
+#~ msgid "Registration confirmation"
+#~ msgstr "Confirmación de registro"
+
+#~ msgid "Password reset"
+#~ msgstr "Restablecimiento de contraseña"
+
+#~ msgctxt "action"
+#~ msgid "Reset"
+#~ msgstr "Restablecimiento"
+
+#~ msgid "Set new password"
+#~ msgstr "Establecer nueva contraseña"
+
+#~ msgid "Save new password"
+#~ msgstr "Guardar nueva contraseña"
+
+#~ msgid "Save"
+#~ msgstr "Guardar"
+
+#~ msgid "Registration"
+#~ msgstr "Registro"
+
+#~ msgid ""
+#~ "Enter a valid username. This value may contain only letters, numbers and "
+#~ "@/./+/-/_ characters."
+#~ msgstr ""
+#~ "Ingresa un nombre de usuario válido. Debe contener solo letras, números, "
+#~ "y @/./+/-/_ caracteres."
+
+#~ msgid ""
+#~ "We send to your email address message with a link to confirm your "
+#~ "registration."
+#~ msgstr ""
+#~ "Enviamos a tu email un mensaje con un enlace para confirmar tu registro."
+
+#~ msgid "Your registration has been confirmed. Now you can login."
+#~ msgstr "Tu registro ha sido confirmado. Ahora puedes iniciar sesión."
+
+#~ msgid "Incorrect link to confirm your registration."
+#~ msgstr "Link incorrecto, no se puede confirmar tu registro."
+
+#~ msgid "We send to your email address message with a link to reset password."
+#~ msgstr ""
+#~ "Enviamos a tu email un mensaje con un enlace para reestablecer tu "
+#~ "contraseña."
+
+#~ msgid "Password successfully changed. Now you can login."
+#~ msgstr "Contraseña reestablecida. Ahora puedes iniciar sesión."
+
+#~ msgid "Password reset unsuccessful"
+#~ msgstr "No se pudo reestablecer cotraseña"
+
+#~ msgid ""
+#~ "Retry a using link from the email or start the password reset procedure "
+#~ "again."
+#~ msgstr ""
+#~ "Vuelva a intentar usar el enlace del email o inicie el procedimiento de "
+#~ "nuevo."
+
+#~ msgid "Profile successfully changed."
+#~ msgstr "Perfil actualizado con éxito."
+
+#~ msgid "Axis"
+#~ msgstr "Eje"
+
+#~ msgid "Allied Pilots"
+#~ msgstr "Pilotos Aliados"
+
+#~ msgid "Axis Pilots"
+#~ msgstr "Pilotos del Eje"
+
+#, fuzzy
+#~| msgid "active"
+#~ msgctxt "vlife_status"
+#~ msgid "alive"
+#~ msgstr "activo"
+
+#, fuzzy
+#~| msgctxt "sortie_status"
+#~| msgid "dead"
+#~ msgctxt "vlife_status"
+#~ msgid "dead"
+#~ msgstr "muerto"
+
+#, fuzzy
+#~| msgctxt "total"
+#~| msgid "Captured"
+#~ msgctxt "vlife_status"
+#~ msgid "captured"
+#~ msgstr "Capturado"
+
+#, fuzzy
+#~| msgid "Overall Pilot Rankings"
+#~ msgid "Virtual Lifes Rankings"
+#~ msgstr "Ranking general de Pilotos"
+
+#, fuzzy
+#~| msgctxt "pilot_nav_tab"
+#~| msgid "Sorties"
+#~ msgid "Sorties"
+#~ msgstr "Salidas"
+
+#, fuzzy
+#~| msgid "Overall Pilot Rankings"
+#~ msgid "Virtual Life Rankings"
+#~ msgstr "Ranking general de Pilotos"
+
+#, fuzzy
+#~| msgid "on the average number of kill per one death (K/D)"
+#~ msgid "on the average number of kill per one lost (K/L)"
+#~ msgstr "sobre el número promedio de victorias por muerte"
+
+#, fuzzy
+#~| msgid "number of sorties"
+#~ msgid "on the number of sorties"
+#~ msgstr "número de salidas"

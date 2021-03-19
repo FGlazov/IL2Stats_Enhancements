@@ -1,0 +1,5619 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-17 20:12+0100\n"
+"PO-Revision-Date: 2016-03-19 20:51+0000\n"
+"Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Translated-Using: django-rosetta 0.7.10\n"
+
+#: .\mod_stats_by_aircraft\aircraft_mod_models.py:89
+#, fuzzy
+#| msgctxt "coalition"
+#| msgid "neutral"
+msgid "neutral"
+msgstr "нейтральная"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:20
+#: .\mod_stats_by_aircraft\templates\aircraft.html:24
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:20
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:24
+#, fuzzy
+#| msgid "Coalitions"
+msgid "coalition"
+msgstr "Коалиции"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:32
+#: .\mod_stats_by_aircraft\templates\aircraft.html:54
+#: .\mod_stats_by_aircraft\templates\aircraft.html:76
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:32
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:58
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:84
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:16
+msgid "Filter by:"
+msgstr "Отфильтровать:"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:36
+#: .\mod_stats_by_aircraft\templates\aircraft.html:41
+#: .\mod_stats_by_aircraft\templates\aircraft.html:46
+#: .\mod_stats_by_aircraft\templates\aircraft.html:58
+#: .\mod_stats_by_aircraft\templates\aircraft.html:63
+#: .\mod_stats_by_aircraft\templates\aircraft.html:68
+#: .\mod_stats_by_aircraft\templates\aircraft.html:80
+#: .\mod_stats_by_aircraft\templates\aircraft.html:88
+#: .\mod_stats_by_aircraft\templates\aircraft.html:96
+#: .\mod_stats_by_aircraft\templates\aircraft.html:104
+#: .\mod_stats_by_aircraft\templates\aircraft.html:112
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:36
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:41
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:46
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:62
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:67
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:72
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:88
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:96
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:104
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:112
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:120
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:20
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:28
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:36
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:44
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:52
+msgid "no filter"
+msgstr "без фильтра"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:37
+#: .\mod_stats_by_aircraft\templates\aircraft.html:42
+#: .\mod_stats_by_aircraft\templates\aircraft.html:47
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:37
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:42
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:47
+msgid "with bombs only"
+msgstr "только с бомбами"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:38
+#: .\mod_stats_by_aircraft\templates\aircraft.html:43
+#: .\mod_stats_by_aircraft\templates\aircraft.html:48
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:38
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:43
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:48
+msgid "without bombs only"
+msgstr "только без бомб"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:59
+#: .\mod_stats_by_aircraft\templates\aircraft.html:64
+#: .\mod_stats_by_aircraft\templates\aircraft.html:69
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:63
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:68
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:73
+msgid "with upgraded fuel/engine"
+msgstr "с улучшенным двигателем"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:60
+#: .\mod_stats_by_aircraft\templates\aircraft.html:65
+#: .\mod_stats_by_aircraft\templates\aircraft.html:70
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:64
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:69
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:74
+msgid "without upgraded fuel/engine"
+msgstr "без улучшенного двигателя"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:81
+#: .\mod_stats_by_aircraft\templates\aircraft.html:89
+#: .\mod_stats_by_aircraft\templates\aircraft.html:97
+#: .\mod_stats_by_aircraft\templates\aircraft.html:105
+#: .\mod_stats_by_aircraft\templates\aircraft.html:113
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:89
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:97
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:105
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:113
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:121
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:21
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:29
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:37
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:45
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:53
+msgid "with upgraded engine and no bombs"
+msgstr "с улучшенным двигателем и без бомб"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:82
+#: .\mod_stats_by_aircraft\templates\aircraft.html:90
+#: .\mod_stats_by_aircraft\templates\aircraft.html:98
+#: .\mod_stats_by_aircraft\templates\aircraft.html:106
+#: .\mod_stats_by_aircraft\templates\aircraft.html:114
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:90
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:98
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:106
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:114
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:122
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:22
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:30
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:38
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:46
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:54
+msgid "without upgraded engine and no bombs"
+msgstr "без улучшенного двигателя и без бомб"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:83
+#: .\mod_stats_by_aircraft\templates\aircraft.html:91
+#: .\mod_stats_by_aircraft\templates\aircraft.html:99
+#: .\mod_stats_by_aircraft\templates\aircraft.html:107
+#: .\mod_stats_by_aircraft\templates\aircraft.html:115
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:91
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:99
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:107
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:115
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:123
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:23
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:31
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:39
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:47
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:55
+msgid "with upgraded fuel/engine and bombs"
+msgstr "с улучшенным двигателем и с бомбами"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:84
+#: .\mod_stats_by_aircraft\templates\aircraft.html:92
+#: .\mod_stats_by_aircraft\templates\aircraft.html:100
+#: .\mod_stats_by_aircraft\templates\aircraft.html:108
+#: .\mod_stats_by_aircraft\templates\aircraft.html:116
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:92
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:100
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:108
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:116
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:124
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:24
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:32
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:40
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:48
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:56
+msgid "without upgraded fuel/engine and bombs"
+msgstr "без улучшенного двигателя и с бомбами"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:127
+msgid "Air K/HR"
+msgstr "Воздух УбвЧ"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:132
+msgid "Air KD"
+msgstr "Воздух УбзаСм"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:137
+msgid "Ground K/HR"
+msgstr "Наземка УбвЧ"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:142
+msgid "Ground KD"
+msgstr "Наземка УбзаСм"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:147
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:108
+msgid "Gunnery Accuracy"
+msgstr "Точность стрельбы"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:152
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:132
+msgid "Elo"
+msgstr "Эло"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:157
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:138
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:163
+msgid "Detailed combat results"
+msgstr "Подробные боевые результаты"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:166
+#, fuzzy
+#| msgid "Gunnery Accuracy"
+msgctxt "total"
+msgid "Gunnery Accuracy"
+msgstr "Точность стрельбы"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:170
+msgctxt "total"
+msgid "Total Aircraft"
+msgstr "Самолетов всего"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:175
+#: .\mod_stats_by_aircraft\templates\aircraft.html:195
+msgctxt "total"
+msgid "Fighters"
+msgstr "Истребители"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:179
+#: .\mod_stats_by_aircraft\templates\aircraft.html:202
+msgctxt "total"
+msgid "Attacker"
+msgstr "Ударные"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:184
+#: .\mod_stats_by_aircraft\templates\aircraft.html:209
+msgctxt "total"
+msgid "Bombers"
+msgstr "Бомбардировщики"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:189
+#: .\mod_stats_by_aircraft\templates\aircraft.html:216
+msgctxt "total"
+msgid "Transport"
+msgstr "Транспортные"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:195
+#: .\mod_stats_by_aircraft\templates\aircraft.html:202
+#: .\mod_stats_by_aircraft\templates\aircraft.html:209
+#: .\mod_stats_by_aircraft\templates\aircraft.html:216
+msgctxt "total"
+msgid "AI"
+msgstr "ИИ"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:222
+msgctxt "total"
+msgid "Assisted"
+msgstr "Ассистов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:227
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:114
+msgctxt "total"
+msgid "Bomb/Rocket Accuracy"
+msgstr "Точность бомб и ракет"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:232
+msgctxt "total"
+msgid "Destroyed ground targets"
+msgstr "Уничтожено наземных целей"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:238
+msgctxt "total"
+msgid "Heavy Tanks"
+msgstr "Тяжелых танков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:245
+msgctxt "total"
+msgid "Medium Tanks"
+msgstr "Средних танков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:252
+msgctxt "total"
+msgid "Light Tanks"
+msgstr "Легких танков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:259
+msgctxt "total"
+msgid "Armored vehicles"
+msgstr "Бронемашин"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:266
+msgctxt "total"
+msgid "Cars"
+msgstr "Автомобилей"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:273
+msgctxt "total"
+msgid "Trucks"
+msgstr "Грузовиков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:280
+msgctxt "total"
+msgid "Large-caliber AA guns"
+msgstr "Зениток крупного калибра"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:287
+msgctxt "total"
+msgid "Medium-caliber AA guns"
+msgstr "Зениток среднего калибра"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:294
+msgctxt "total"
+msgid "Small-caliber AA guns"
+msgstr "Зениток малого калибра"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:301
+msgctxt "total"
+msgid "Machine gunners"
+msgstr "Пулеметчиков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:308
+msgctxt "total"
+msgid "Aerostats"
+msgstr "Аэростатов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:315
+msgctxt "total"
+msgid "Searchlights"
+msgstr "Прожекторов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:322
+msgctxt "total"
+msgid "Locomotives"
+msgstr "Локомотивов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:329
+msgctxt "total"
+msgid "Wagons"
+msgstr "Вагонов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:336
+msgctxt "total"
+msgid "Field Artillery"
+msgstr "Полевых орудий"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:343
+msgctxt "total"
+msgid "Howitzers"
+msgstr "Гаубиц"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:350
+msgctxt "total"
+msgid "Rocket Artillery"
+msgstr "Реактивной артиллерии"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+msgctxt "total"
+msgid "Ships"
+msgstr "Судов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+msgid "outdated parameter"
+msgstr "устаревший параметр"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:364
+msgctxt "total"
+msgid "Heavy Ships"
+msgstr "Тяжелых судов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:371
+msgctxt "total"
+msgid "Medium Ships"
+msgstr "Средних судов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:378
+msgctxt "total"
+msgid "Light Ships"
+msgstr "Легких судов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:385
+msgctxt "total"
+msgid "Static Aircraft"
+msgstr "Статичных самолетов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:392
+msgctxt "total"
+msgid "Static Vehicles"
+msgstr "Статичной техники"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:399
+msgctxt "total"
+msgid "Airfield Objects"
+msgstr "Аэродромных объектов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:406
+msgctxt "total"
+msgid "Bridges"
+msgstr "Мостов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:413
+msgctxt "total"
+msgid "Industrial Objects"
+msgstr "Индустриальных объектов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:420
+msgctxt "total"
+msgid "Big buildings"
+msgstr "Больших зданий"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:427
+msgctxt "total"
+msgid "Medium buildings"
+msgstr "Средних зданий"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:434
+msgctxt "total"
+msgid "Small buildings"
+msgstr "Маленьких зданий"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:442
+msgid "Detailed sorties results"
+msgstr "Подробные результаты вылетов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:445
+msgid "Flight Time"
+msgstr "Налет"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:449
+msgctxt "total"
+msgid "Score"
+msgstr "Очков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:453
+msgctxt "total"
+msgid "Sorties"
+msgstr "Вылетов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:457
+msgctxt "sortie"
+msgid "Landed on Airfield"
+msgstr "Посадка на аэродром"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:461
+msgctxt "sortie_status"
+msgid "in flight"
+msgstr "в полете"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:465
+msgctxt "total"
+msgid "Lost aircraft"
+msgstr "Самолетов потеряно"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:469
+msgctxt "total"
+msgid "Bailout"
+msgstr "Прыжков с парашютом"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:473
+msgctxt "total"
+msgid "Dead"
+msgstr "Смертей"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:477
+msgctxt "total"
+msgid "Captured"
+msgstr "Попаданий в плен"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:481
+msgctxt "sortie_status"
+msgid "ditched"
+msgstr "посадка вне аэродрома"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:493
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:120
+msgid "Plane Durability"
+msgstr "Прочность самолёта"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:500
+msgid ""
+"if ratio > 1 - pilot flying in the minority, if ratio < 1 - pilot flying in "
+"the majority"
+msgstr ""
+"ратио > 1 - пилот летает в меньшинстве, ратио < 1 - пилот летает в "
+"большинстве"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:502
+msgid "Pilot Survivability"
+msgstr "Живучесть пилота"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:510
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:126
+msgid "Plane Lethality"
+msgstr "Смертоносность самолёта"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:518
+msgid "Pilot Lethality"
+msgstr "Смертоносность пилота"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:528
+msgid "K/D - Kills per Death"
+msgstr "K/D - Сбитых к смертям"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:536
+msgid "K/L - Kills per Aircraft Lost"
+msgstr "K/L - Сбитых к потерям"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:544
+msgid "K/S - Kills per Sortie"
+msgstr "K/S - Сбитых за вылет"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:552
+msgid "K/H - Kills per Hour of Flight"
+msgstr "K/H - Сбитых в час"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:562
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:96
+msgid "GK/D - G.Kills per Death"
+msgstr "GK/D - Уничтожено к смертям"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:570
+msgid "GK/L - G.Kills per Aircraft Lost"
+msgstr "GK/L - Уничтожено к потерям"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:578
+msgid "GK/S - G.Kills per Sortie"
+msgstr "GK/S - Уничтожено за вылет"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:586
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:102
+msgid "GK/H - G.Kills per Hour of Flight"
+msgstr "GK/H - Уничтожено в час"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:600
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:207
+msgid ""
+"* Plane Durability is percent of sorties the plane survived after taking "
+"damage. </br> * Pilot Survivability is the percent of sorties the pilot "
+"survived after the plane took damage. </br> * Plane Lethality is the percent "
+"of enemy aircraft which went down after taking damage from this plane. "
+"Assists count. </br> * Pilot Lethality is the percent of enemy pilots which "
+"died after taking damage from this plane. Assists count."
+msgstr ""
+"* Прочность самолета - это процент вылетов, в которых самолет выжил после "
+"получения повреждений.<br/>* Живучесть пилота - это процент вылетов, в "
+"которых пилот выжил после того, как самолет получил повреждения.<br/>* "
+"Смертоносность самолёта - это процент вражеских самолетов, которые упали "
+"после получения повреждений от этого самолета. Количество помощи в "
+"уничтожении также засчитывается.<br/>* Смертоносность пилота - это процент "
+"вражеских пилотов, погибших после получения повреждений от этого самолета. "
+"Количество помощи в уничтожении также засчитывается.<br/>"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:610
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:217
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:176
+msgid ""
+"<strong>Attention!</strong> Algorithms collection statistics IL2 stats "
+"differs from statistics in-game. As a consequence of these statistics will "
+"not coincide with the game."
+msgstr ""
+"<strong>Внимание!</strong> Алгоритмы сбора статистики IL2 stats отличаются "
+"от статистики в игре. Как следствие данная статистика не будет совпадать с "
+"игровой."
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:617
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:224
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:183
+#, python-format
+msgid ""
+"Players inactive for more than %(days)s day - do not participate in the "
+"rating."
+msgid_plural ""
+"Players inactive for more than %(days)s days - do not participate in the "
+"rating."
+msgstr[0] "Игроки неактивные более %(days)s дня - не участвуют в рейтинге."
+msgstr[1] "Игроки неактивные более %(days)s дней - не участвуют в рейтинге."
+msgstr[2] "Игроки неактивные более %(days)s дней - не участвуют в рейтинге."
+
+#: .\mod_stats_by_aircraft\templates\aircraft_does_not_exist.html:12
+msgid "There are no sorties of this aircraft with the applied filter."
+msgstr "Нет результатов для данного самолёта с применённым фильтром."
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:3
+msgid "Killboard"
+msgstr ""
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:13
+#, fuzzy
+#| msgctxt "pilot_nav_tab"
+#| msgid "Aircraft Killboard"
+msgid "Aircraft Killboard"
+msgstr "Доска эффективности самолётов"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:53
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:79
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:130
+msgid ""
+"This filter applies to all aircraft (where applicable), including the ones "
+"inside the table below."
+msgstr ""
+"Этот фильтр применяется ко всем самолетам (если применимо), включая те, "
+"которые указаны в таблице ниже."
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:143
+msgctxt "killboard"
+msgid "Won"
+msgstr "Победы"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:149
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:150
+msgctxt "killboard"
+msgid "Lose"
+msgstr "Поражения"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:156
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:157
+#, fuzzy
+#| msgid "K/D - Kills per Death"
+msgctxt "killboard"
+msgid "K/D - Kills per Death"
+msgstr "K/D - Сбитых к смертям"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:163
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:164
+msgctxt "killboard"
+msgid "Plane Durability"
+msgstr "Прочность самолёта"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:170
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:171
+msgctxt "killboard"
+msgid "Pilot Survivability"
+msgstr "Живучесть пилота"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:177
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:178
+msgctxt "killboard"
+msgid "Plane Lethality"
+msgstr "Смертоносность самолёта"
+
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:184
+#: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:185
+msgctxt "killboard"
+msgid "Pilot Lethality"
+msgstr "Смертоносность пилота"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:3
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:13
+#: .\mod_stats_by_aircraft\templates\base.html:87
+msgid "Aircraft Rankings"
+msgstr "Рейтинги самолётов"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:63
+msgid "Search aircraft"
+msgstr "Найти самолёт"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:77
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:78
+msgid "Flight Time (hours:minutes)"
+msgstr "Налет (часы:минуты)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:170
+msgid ""
+"* Plane Durability is percent of sorties the plane survived after taking "
+"damage. </br> * Plane Lethality is the percent of enemy aircraft which went "
+"down after taking damage from this plane. Assists count. </br>"
+msgstr ""
+"* Прочность самолета - это процент вылетов, в которых самолет выжил после "
+"получения повреждений.<br/>* Смертоносность самолёта - это процент вражеских "
+"самолетов, которые упали после получения повреждений от этого самолета. "
+"Количество помощи в уничтожении также засчитывается.<br/>"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:200
+msgid "on the number of air kills"
+msgstr "по количеству сбитых"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:201
+msgid "on the current streak of kills"
+msgstr "по текущему стрику"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:202
+msgid "on the number of ground kills"
+msgstr "по количеству уничтоженных наземных целей"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:203
+msgid "on the flight time (hours:minutes)"
+msgstr "по налету (часы:минуты)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:204
+msgid "on the average number of kill per one death (K/D)"
+msgstr "по среднему количеству сбитых на одну смерть (K/D)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:205
+msgid "on the average number of kill per one hour (K/Hr)"
+msgstr "по среднему количеству сбитых в час (K/Hr)"
+
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:206
+msgid "on the accuracy"
+msgstr "по точности стрельбы"
+
+#: .\mod_stats_by_aircraft\templates\base.html:47
+msgid ""
+"For full functionality of this site it is necessary to enable JavaScript. "
+"Here are the <a href=\"//www.enable-javascript.com\" target=\"_blank\"> "
+"instructions how to enable JavaScript in your web browser</a>."
+msgstr ""
+"Для полной функциональности этого сайта необходимо включить JavaScript. Вот "
+"<a href=\"//www.enable-javascript.com/ru/\" target=\"_blank\"> инструкции, "
+"как включить JavaScript в вашем браузере</a>."
+
+#: .\mod_stats_by_aircraft\templates\base.html:62
+msgid "Admin panel"
+msgstr "Админ панель"
+
+#: .\mod_stats_by_aircraft\templates\base.html:64
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\mod_stats_by_aircraft\templates\base.html:69
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\mod_stats_by_aircraft\templates\base.html:71
+msgctxt "action"
+msgid "Registration"
+msgstr "Зарегистрироваться"
+
+#: .\mod_stats_by_aircraft\templates\base.html:72
+msgctxt "action"
+msgid "Login"
+msgstr "Войти"
+
+#: .\mod_stats_by_aircraft\templates\base.html:81
+msgctxt "nav_menu"
+msgid "Main"
+msgstr "Главная"
+
+#: .\mod_stats_by_aircraft\templates\base.html:83
+msgid "Rankings"
+msgstr "Рейтинги"
+
+#: .\mod_stats_by_aircraft\templates\base.html:85
+msgid "Pilot Rankings"
+msgstr "Рейтинг пилотов"
+
+#: .\mod_stats_by_aircraft\templates\base.html:86
+msgid "Squad Rankings"
+msgstr "Рейтинг сквадов"
+
+#: .\mod_stats_by_aircraft\templates\base.html:90
+msgid "Missions"
+msgstr "Миссии"
+
+#: .\mod_stats_by_aircraft\templates\base.html:92
+msgid "Forum"
+msgstr "Форум"
+
+#: .\mod_stats_by_aircraft\templates\base.html:95
+msgid "Info"
+msgstr "Инфо"
+
+#: .\mod_stats_by_aircraft\templates\base.html:98
+msgid "Tour"
+msgstr "Тур"
+
+#: .\mod_stats_by_aircraft\templates\inline\aircraft_tabs.html:4
+msgctxt "pilot_nav_tab"
+msgid "Aircraft Statistics"
+msgstr "Статистика вылета"
+
+#: .\mod_stats_by_aircraft\templates\inline\aircraft_tabs.html:5
+msgctxt "pilot_nav_tab"
+msgid "Aircraft Killboard"
+msgstr "Доска эффективности самолётов"
+
+#, fuzzy
+#~| msgctxt "sortie"
+#~| msgid "Aircraft"
+#~ msgid "aircraft"
+#~ msgstr "Самолет"
+
+#~ msgid "Bomb/Rocket Accuracy"
+#~ msgstr "Точность бомб и ракет"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Статистика самолётов"
+#~ msgstr "Статистика пилота"
+
+#~ msgid "title"
+#~ msgstr "название"
+
+#~ msgid "English"
+#~ msgstr "Английский"
+
+#~ msgid "Russian"
+#~ msgstr "Русский"
+
+#~ msgid "German"
+#~ msgstr "Немецкий"
+
+#~ msgid "French"
+#~ msgstr "Французский"
+
+#~ msgctxt "coalition"
+#~ msgid "Entente"
+#~ msgstr "Антанта"
+
+#~ msgctxt "coalition"
+#~ msgid "Central Powers"
+#~ msgstr "Центральные державы"
+
+#~ msgctxt "coalition"
+#~ msgid "Allies"
+#~ msgstr "Союзники"
+
+#~ msgctxt "coalition"
+#~ msgid "Axis"
+#~ msgstr "Страны оси"
+
+#~ msgid "Squads"
+#~ msgstr "Сквады"
+
+#~ msgid "A squad with that tag already exists."
+#~ msgstr "Сквад с этим тегом уже существует."
+
+#~ msgid "Remove logo"
+#~ msgstr "Удалить логотип"
+
+#, python-format
+#~ msgid "Maximum file size: %(size)s"
+#~ msgstr "Максимальный размер файла: %(size)s"
+
+#, python-format
+#~ msgid "Allowed file formats are: %(formats)s"
+#~ msgstr "Разрешенные форматы файла: %(formats)s"
+
+#~ msgid "squad name"
+#~ msgstr "название сквада"
+
+#~ msgid "squad tag"
+#~ msgstr "сквад тэг"
+
+#~ msgid "website"
+#~ msgstr "сайт"
+
+#~ msgid "about squad"
+#~ msgstr "о скваде"
+
+#~ msgid "squad logo"
+#~ msgstr "логотип сквада"
+
+#~ msgid "squad"
+#~ msgstr "сквад"
+
+#~ msgid "squads"
+#~ msgstr "сквады"
+
+#~ msgid "date joined"
+#~ msgstr "дата регистрации"
+
+#~ msgid "squad member"
+#~ msgstr "член сквада"
+
+#~ msgid "squads members"
+#~ msgstr "члены сквадов"
+
+#~ msgid "Join Squad"
+#~ msgstr "Присоединиться к скваду"
+
+#~ msgid "Are you already a member of the squad"
+#~ msgstr "Вы уже являетесь членом сквада"
+
+#~ msgid ""
+#~ "You use the wrong url for joining the squad. Request the correct url from "
+#~ "the admin of your squad."
+#~ msgstr ""
+#~ "Вы использовали не правильную ссылку для присоединения к скваду. "
+#~ "Запросите корректную ссылку у админа вашего сквада."
+
+#~ msgid "Confirm that you want to join the squad"
+#~ msgstr "Подтвердить, что вы хотите присоединиться к скваду"
+
+#~ msgctxt "action"
+#~ msgid "Confirm"
+#~ msgstr "Подтвердить"
+
+#~ msgid "Leave Squad"
+#~ msgstr "Выйти из сквада"
+
+#~ msgid ""
+#~ "Now you are the sole admin of the squad. Therefore, if you leave the "
+#~ "squad - the squad will be removed."
+#~ msgstr ""
+#~ "Сейчас вы единственный админ сквада. Поэтому сквад будет удален после "
+#~ "вашего выхода."
+
+#~ msgid "Confirm that you want to leave the squad."
+#~ msgstr "Подтвердить, что вы хотите выйти из сквада."
+
+#~ msgid "My Squad"
+#~ msgstr "Мой сквад"
+
+#~ msgid "Edit profile"
+#~ msgstr "Редактивировать профиль"
+
+#~ msgid "Squad members"
+#~ msgstr "Члены сквада"
+
+#~ msgid "Give admin role"
+#~ msgstr "Назначить админом"
+
+#~ msgid "Remove admin role"
+#~ msgstr "Разжаловать из админов"
+
+#~ msgid "Kick from squad"
+#~ msgstr "Выгнать из сквада"
+
+#~ msgid "Join squad url"
+#~ msgstr "Ссылка для присоединения к скваду"
+
+#~ msgid "With this url any registered user can join your squad."
+#~ msgstr ""
+#~ "С помощью этой ссылки любой зарегистрированный пользователь сможет "
+#~ "вступить в ваш сквад."
+
+#~ msgid "Generate new url"
+#~ msgstr "Перегенерировать"
+
+#~ msgid "Remove Squad"
+#~ msgstr "Удалить сквад"
+
+#~ msgid ""
+#~ "You are not a member of a any squad. In order to join the squad, you need "
+#~ "\"join url\", which can be obtained from the admin of the squad."
+#~ msgstr ""
+#~ "Вы не состоите в скваде. Для того что бы вступить в сквад, необходима "
+#~ "ссылка которую можно получить у админа сквада."
+
+#~ msgctxt "action"
+#~ msgid "Registration Squad"
+#~ msgstr "Зарегистрировать сквад"
+
+#~ msgid "Squad Profile"
+#~ msgstr "Профиль сквада"
+
+#~ msgctxt "action"
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "Squad registration"
+#~ msgstr "Регистрация сквада"
+
+#~ msgid ""
+#~ "Your squad will be removed, this action is irreversible. The old "
+#~ "statistics will be available for viewing. Confirm the remove of the squad."
+#~ msgstr ""
+#~ "Ваш сквад будет удален, это действие является необратимым. Старая "
+#~ "статистика будет доступна для просмотра. Подтвердите удаление сквада."
+
+#~ msgid "Your squad has been successfully registered."
+#~ msgstr "Ваш сквад успешно зарегистрирован."
+
+#~ msgid "Squad profile successfully changed."
+#~ msgstr "Профиль сквада успешно изменен."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "20 x FAB-100M bombs"
+#~ msgstr "20 x ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x FAB-250tsk bombs"
+#~ msgstr "4 x ФАБ-250цк"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bendix MN-26"
+#~ msgstr "Bendix MN-26"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Collimator Day"
+#~ msgstr "Коллиматор дневной"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Collimator Night"
+#~ msgstr "Коллиматор ночной"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Gunsight"
+#~ msgstr "Прицел"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Anemometer, Altimeter, Clock"
+#~ msgstr "Анемометр, Высотомер, Часы"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Inclinometer"
+#~ msgstr "Указатель наклона"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bullet Counters"
+#~ msgstr "Счётчики патронов"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Thermometer"
+#~ msgstr "Термометр"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Cockpit light"
+#~ msgstr "Освещение кабины"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Lewis Overwing"
+#~ msgstr "Пулемёт Льюис над верхним крылом"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x SC 50 bombs"
+#~ msgstr "4 x SC 50"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "1 x SC 250 bomb"
+#~ msgstr "1 x SC 250"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Armoured Wind Screen"
+#~ msgstr "Бронированное лобовое стекло"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removed Headrest"
+#~ msgstr "Снятый бронезаголовник"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Additional armour plates"
+#~ msgstr "Дополнительные бронеплиты"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "20mm MG 151/20 gun"
+#~ msgstr "20-мм пушка MG 151/20"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 15mm MG 151/15 gun pods"
+#~ msgstr "2 x 15-мм пушки MG 151/15"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm MG 151/20 gun pods"
+#~ msgstr "2 x 20-мм пушки MG 151/20"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "30mm MK 108 gun"
+#~ msgstr "30-мм пушка MK 108"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x SD 70 bombs"
+#~ msgstr "4 x SD 70"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "21 cm BR"
+#~ msgstr "2 ракеты WGr.21"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "FuG-16ZY"
+#~ msgstr "FuG-16ZY"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Armoured Glass Head Rest"
+#~ msgstr "Бронированный прозрачный заголовник"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Peilrahmen PR 16"
+#~ msgstr "Peilrahmen PR 16"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "1 x SC 500 bomb"
+#~ msgstr "1 x SC 500"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "DB 605 DC engine"
+#~ msgstr "Двигатель DB 605 DC"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Armoured Windscreen and pilot's Headrest"
+#~ msgstr "Бронированное лобовое стекло и заголовник пилота"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "12 x SC 50 bombs"
+#~ msgstr "12 x SC 50"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x SC 500 bomb"
+#~ msgstr "2 x SC 500"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "SC 1000 heavy bomb"
+#~ msgstr "Тяжелая авиабомба SC 1000"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm MG 151/20 gun pod"
+#~ msgstr "2 x 20-мм пушки MG 151/20"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "37mm 3.7cm BK gun pod"
+#~ msgstr "37-мм пушка 3,7cm BK"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Twin Lewis Overwing"
+#~ msgstr "Два пулемёта Льюис над верхним крылом"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Twin Lewis MG turret"
+#~ msgstr "Турель с пулемётами Lewis"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Aldis"
+#~ msgstr "Aldis"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Fuel Gauge"
+#~ msgstr "Топливомер"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Cooper / H.E.R.L. bombs"
+#~ msgstr "Бомбы Купера / H.E.R.L."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Camera"
+#~ msgstr "Фотокамера"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Radio"
+#~ msgstr "Радио"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Anemometer"
+#~ msgstr "Анемометр"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "High Altimeter"
+#~ msgstr "Высотомер"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bullet counters"
+#~ msgstr "Счётчики патронов"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm MG FF/M (120 rounds)"
+#~ msgstr "2 x 20-мм MG FF/M (120 снарядов)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm MG FF/M (180 rounds)"
+#~ msgstr "2 x 20-мм MG FF/M (180 снарядов)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "U17 strike modification"
+#~ msgstr "Штурмовой вариант Fw 190 A5/U17"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "30mm MK 108 guns"
+#~ msgstr "30-мм пушки MK 108"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "ETC 501 Central Bombholder"
+#~ msgstr "Центральный бомбодержатель ETC 501"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Sturmjäger"
+#~ msgstr "Sturmjäger"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Fw 190 F-8 / G-8"
+#~ msgstr "Fw 190 F-8 / G-8"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removal of MG 131"
+#~ msgstr "Снятие пулемётов MG 131"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "26 x R4M rockets"
+#~ msgstr "26 х R4M"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Gyro Gunsight"
+#~ msgstr "Гироприцел"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bubble Canopy"
+#~ msgstr "Каплевидный фонарь"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Twin Spandau MG"
+#~ msgstr "Пулемёты Spandau"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Twin Parabellum MG Turret"
+#~ msgstr "Турель с пулемётом Parabellum"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "20mm Becker Turret"
+#~ msgstr "20мм пушка Becker"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Aldis (Trophy)"
+#~ msgstr "Aldis (Трофейный)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Additional Gauges"
+#~ msgstr "Дополнительные приборы"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "P.u.W. Bombs"
+#~ msgstr "Авиабомбы P.u.W."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x SC 1000 heavy bombs"
+#~ msgstr "2 x Тяжелых авиабомбы SC 1000"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x SC 1800 heavy bombs"
+#~ msgstr "2 x Тяжелых авиабомбы SC 1800"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "SC 2500 heavy bomb"
+#~ msgstr "Тяжелая авиабомба SC 2500"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Belly 20mm gun turret"
+#~ msgstr "Нижняя турельная установка с 20-мм пушкой"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Nose 20mm gun turret"
+#~ msgstr "Носовая турельная установка с 20-мм пушкой"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm MG 151/20 gun"
+#~ msgstr "2 x 20-мм пушка MG 151/20"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x 7.92mm MG 17 gun pod"
+#~ msgstr "4 x 7.92-мм пулеметы MG 17"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "30mm MK 101"
+#~ msgstr "30-мм пушка MK 101"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "30mm MK 103"
+#~ msgstr "30-мм пушка MK 103"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Mirror"
+#~ msgstr "Зеркало"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x ROS-82 rockets"
+#~ msgstr "4 х РОС-82"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "6 x ROS-82 rockets"
+#~ msgstr "6 х РОС-82"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x FAB-50sv / FAB-100M bombs"
+#~ msgstr "2 х ФАБ-50св / ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "One-piece Windscreen"
+#~ msgstr "Цельный козырёк"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm ShVAK (180 rounds)"
+#~ msgstr "2 x 20-мм ШВАК (180 снарядов)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 23mm VYa-23 gun"
+#~ msgstr "2 x 23-мм пушки ВЯ-23"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "6 x FAB-50sv / FAB-100M bombs"
+#~ msgstr "6 х ФАБ-50св / ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x FAB-250sv bombs"
+#~ msgstr "2 x ФАБ-250св"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "8 x RBS-82 rockets"
+#~ msgstr "8 x РБС-82"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "8 x ROFS-132 rockets"
+#~ msgstr "8 x РОФС-132"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 37mm Sh-37 gun"
+#~ msgstr "2 x 37-мм пушки Ш-37"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "8 x RBS-82 / ROFS-132 rockets"
+#~ msgstr "8 x РБС-82 / РОФС-132"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Rear turret"
+#~ msgstr "Задняя турельная установка"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 37mm NS-37gun"
+#~ msgstr "2 x 37-мм пушки НС-37"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x RBS-82 / ROFS-132 rockets"
+#~ msgstr "4 x РБС-82 / РОФС-132"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "192(240) x PTAB-2.5-1.5 bomblets"
+#~ msgstr "192(240) x ПТАБ-2.5-1.5"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2300 kg of cargo"
+#~ msgstr "2300 кг груз военного назначения"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "10 x MAB 250 containers"
+#~ msgstr "10 контейнеров MAB 250"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "12 paratroopers"
+#~ msgstr "12 десантников"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Siren"
+#~ msgstr "Сирена"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "SC 1800 heavy bomb"
+#~ msgstr "Тяжелая авиабомба SC 1800"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Machine gun pods"
+#~ msgstr "Подвесные пулемётные контейнеры"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 37mm 3.7cm BK gun pods"
+#~ msgstr "2 x 37-мм пушки 3,7cm BK"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "6 x SC 250 bombs"
+#~ msgstr "6 x SC 250"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x SC 500 bombs"
+#~ msgstr "4 x SC 500"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "44 x SC 50 bombs"
+#~ msgstr "44 x SC 50"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x FAB-50sv bombs"
+#~ msgstr "2 х ФАБ-50св"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x FAB-100M bombs"
+#~ msgstr "2 х ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Landing light"
+#~ msgstr "Фара"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "RPK-10"
+#~ msgstr "РПК-10"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Special Guns Ammo Load"
+#~ msgstr "Специальная зарядка пушек"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Flat Windscreen"
+#~ msgstr "Гранёный козырёк"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "M-82F engine"
+#~ msgstr "Двигатель М-82Ф"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "23mm VYa-23 gun"
+#~ msgstr "23-мм мотор-пушка ВЯ-23"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "37mm Sh-37 gun"
+#~ msgstr "37-мм мотор-пушка Ш-37"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 50-T bombs"
+#~ msgstr "2 x 50-T"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 100-T bombs"
+#~ msgstr "2 x 100-T"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 7.7mm machineguns"
+#~ msgstr "2 x 7,7-мм пулемета"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "24 x R4M rockets"
+#~ msgstr "24 х R4M"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Armoured Headrest"
+#~ msgstr "Бронезаголовок"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Back Armor"
+#~ msgstr "Бронеспинка пилота"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removed Front Armor"
+#~ msgstr "Снять переднюю броню"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removed Inner Cannons"
+#~ msgstr "Снять внутренние пушки"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bomb load"
+#~ msgstr "Бомбовая нагрузка"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Fuel regulating valve"
+#~ msgstr "Клапан приёмистости"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 12.7 mm BK machinegun pods"
+#~ msgstr "2 x 12,7-мм крыльевые пулеметы БК"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x BS 12.7 mm (700 rounds)"
+#~ msgstr "2 x 12,7-мм БС (700 снарядов)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 20mm ShVAK (300 rounds)"
+#~ msgstr "2 x 20-мм ШВАК (300 снарядов)"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Additional ANM2 .50 cal MG ammo"
+#~ msgstr "Увеличенный боезапас пулемётов"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "General purpose bombs"
+#~ msgstr "Осколочно-фугасные авиабомбы"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Additional bomb racks"
+#~ msgstr "Дополнительные бомбодержатели"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "M8 rockets"
+#~ msgstr "Неуправляемые ракеты M8"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "FAB-100M bomb"
+#~ msgstr "ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "FAB-250tsk bomb"
+#~ msgstr "ФАБ-250цк"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Additional ANM2 .30 cal MG ammo"
+#~ msgstr "Увеличенный боезапас пулемётов"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Removal of ANM2 .30"
+#~ msgstr "Снятие пулемётов M2 .30"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Special 37mm Gun Ammo Load"
+#~ msgstr "Специальная зарядка 37мм пушки"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x ANM2 .50 cal machine guns"
+#~ msgstr "4 x 12,7-мм пулемёта M2 .50"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "FAB-250sv bomb"
+#~ msgstr "ФАБ-250св"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "FAB-500M bomb"
+#~ msgstr "ФАБ-500М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "6 x ANM2 .50 cal machine guns"
+#~ msgstr "6 x 12,7-мм пулемёта M2 .50"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Ground attack modification"
+#~ msgstr "Штурмовой вариант"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x M64 bombs"
+#~ msgstr "2 x M64"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x M65 bombs"
+#~ msgstr "2 x M65"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "150 grade fuel"
+#~ msgstr "150-октановое топливо"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "10 x FAB-100M bombs"
+#~ msgstr "10 x ФАБ-100М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "4 x FAB-250sv bombs"
+#~ msgstr "4 x ФАБ-250св"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x FAB-500M bombs"
+#~ msgstr "2 x ФАБ-500М"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "10 x ROS-132 rockets"
+#~ msgstr "10 х РОС-132"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "RPK-2"
+#~ msgstr "РПК-2"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Blister turret"
+#~ msgstr "Башенная турельная установка"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Cooper bombs"
+#~ msgstr "Бомбы Купера"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Enlarged window"
+#~ msgstr "Расширенное окно"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Twin Lewis lower-wing"
+#~ msgstr "Два пулемёта Льюис на нижнем крыле"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Balloon guns"
+#~ msgstr "Пулемёты Vickers"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Le-Chretien"
+#~ msgstr "Le-Chretien"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "500 lb G.P. bomb"
+#~ msgstr "500 lb G.P."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 250 lb G.P. bombs"
+#~ msgstr "2 х 250 lb G.P."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 х RP-3 HE / AP rockets"
+#~ msgstr "2 х RP-3"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Clipped Wing"
+#~ msgstr "Укороченное крыло"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Merlin 70 engine"
+#~ msgstr "Двигатель Merlin 70"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Merlin 45 engine"
+#~ msgstr "Двигатель Merlin 45"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 500 lb M.C. bombs"
+#~ msgstr "2 х 500 lb M.C."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x 1000 lb M.C. bomb"
+#~ msgstr "2 х 1000 lb M.C."
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Sabre IIA engine with +11 lb boost"
+#~ msgstr "Двигатель Sabre IIA с наддувом +11 lb"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Bow MG"
+#~ msgstr "Курсовой пулемёт"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Navigation lights"
+#~ msgstr "АНО"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Horizon indicator"
+#~ msgstr "Авиагоризонт"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Radio transmitter"
+#~ msgstr "Радиостанция"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Rockets"
+#~ msgstr "Ракеты"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "2 x ROS-82 rockets"
+#~ msgstr "2 х РОС-82"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Reflector Gunsight"
+#~ msgstr "Коллиматорный прицел"
+
+#~ msgctxt "aircraft_mod"
+#~ msgid "Ammo counter"
+#~ msgstr "Счетчик боекомплекта"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400]"
+#~ msgstr "M2.50 ББ [400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], FAB-100M [8]"
+#~ msgstr "M2.50 ББ [400], ФАБ-100М [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], FAB-100M [16]"
+#~ msgstr "M2.50 ББ [400], ФАБ-100М [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], FAB-100M [20]"
+#~ msgstr "M2.50 ББ [400], ФАБ-100М [20]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], FAB-250tsk [4]"
+#~ msgstr "M2.50 ББ [400], ФАБ-250цк [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], FAB-100M [8], FAB-250tsk [4]"
+#~ msgstr "M2.50 ББ [400], ФАБ-100М [8], ФАБ-250цк [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Empty"
+#~ msgstr "Без вооружения"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "White Smoke [1]"
+#~ msgstr "Белый дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "White Smoke [2]"
+#~ msgstr "Белый дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Blue Smoke [1]"
+#~ msgstr "Синий дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Blue Smoke [2]"
+#~ msgstr "Синий дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Red Smoke [1]"
+#~ msgstr "Красный дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Red Smoke [2]"
+#~ msgstr "Красный дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Green Smoke [1]"
+#~ msgstr "Зеленый дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Green Smoke [2]"
+#~ msgstr "Зеленый дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Yellow Smoke [1]"
+#~ msgstr "Желтый дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Yellow Smoke [2]"
+#~ msgstr "Желтый дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Black Smoke [1]"
+#~ msgstr "Черный дым [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Black Smoke [2]"
+#~ msgstr "Черный дым [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000]"
+#~ msgstr "LMG 08/15 ББ [1000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500]"
+#~ msgstr "LMG 08/15 ББ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], Lewis gun AP [291]"
+#~ msgstr "LMG 08/15 ББ [1000], Lewis gun ББ [291]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], 500 lb GP [8]"
+#~ msgstr "M2.50 ББ [400], 500 lb GP [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], 1000 lb MC [4]"
+#~ msgstr "M2.50 ББ [400], 1000 lb MC [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [400], 1000 lb MC [2], 500 lb GP [4]"
+#~ msgstr "M2.50 ББ [400], 1000 lb MC [2], 500 lb GP [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG FF/M AP/HE [120]"
+#~ msgstr "MG 17 ББ [2000], MG FF/M ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG FF/M AP/HE [120], SC 50 [4]"
+#~ msgstr "MG 17 ББ [2000], MG FF/M ББ/ОФ [120], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG FF/M AP/HE [120], SC 250 [1]"
+#~ msgstr "MG 17 ББ [2000], MG FF/M ББ/ОФ [120], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/15 AP/HE [200]"
+#~ msgstr "MG 17 ББ [1000], MG 151/15 ББ/ОФ [200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/15 AP/HE [200], SC 50 [4]"
+#~ msgstr "MG 17 ББ [1000], MG 151/15 ББ/ОФ [200], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/15 AP/HE [200], SC 250 [1]"
+#~ msgstr "MG 17 ББ [1000], MG 151/15 ББ/ОФ [200], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/20 AP/HE [200]"
+#~ msgstr "MG 17 ББ [1000], MG 151/20 ББ/ОФ [200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/20 AP/HE [200], SC 50 [4]"
+#~ msgstr "MG 17 ББ [1000], MG 151/20 ББ/ОФ [200], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/20 AP/HE [200], SC 250 [1]"
+#~ msgstr "MG 17 ББ [1000], MG 151/20 ББ/ОФ [200], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/20 AP/HE [200], MG 151/15 AP/HE [270]"
+#~ msgstr "MG 17 ББ [1000], MG 151/20 ББ/ОФ [200], MG 151/15 ББ/ОФ [270]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1000], MG 151/20 AP/HE [470]"
+#~ msgstr "MG 17 ББ [1000], MG 151/20 ББ/ОФ [470]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [200]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [200], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [200], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [200], SC 250 [1]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [200], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [470]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [470]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [200], 21cm WGr.42 [2]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [200], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], SC 250 [1]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], MG 151/20 AP/HE [270]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], MG 151/20 ББ/ОФ [270]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], 21cm WGr.42 [2]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MG 151/20 AP/HE [200], SC 50 [4]"
+#~ msgstr "MG 131 ББ/ОФ [600], MG 151/20 ББ/ОФ [200], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], SC 50 [4]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [600], MK 108 HE [65], SC 500 [1]"
+#~ msgstr "MG 131 ББ/ОФ [600], MK 108 ОФ [65], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 250 [2]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 250 [2], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 250 [2], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 50 [12]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 50 [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 500 [2]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 500 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 500 [2], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 500 [2], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 1000 [1]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 1000 [1], SC 250 [1]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 1000 [1], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG FF/M AP/HE [360], SC 1000 [1], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG FF/M ББ/ОФ [360], SC 1000 [1], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 250 [2]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 250 [2], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 250 [2], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 50 [12]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 50 [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 500 [2]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 500 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 500 [2], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 500 [2], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 1000 [1]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 1000 [1], SC 250 [1]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 1000 [1], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [750], SC 1000 [1], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [750], SC 1000 [1], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [1150]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [1150]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], MG 151/20 AP/HE [1150], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], MG 151/20 ББ/ОФ [1150], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], BK 3.7 AP [66]"
+#~ msgstr "MG 17 ББ [4000], BK 3.7 ББ [66]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], BK 3.7 AP [66], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], BK 3.7 ББ [66], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], BK 3.7 HE [66]"
+#~ msgstr "MG 17 ББ [4000], BK 3.7 ОФ [66]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [4000], BK 3.7 HE [66], SC 50 [4]"
+#~ msgstr "MG 17 ББ [4000], BK 3.7 ОФ [66], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973]"
+#~ msgstr "Vickers Mk.I ББ [973]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], Lewis gun AP [582]"
+#~ msgstr "Vickers Mk.I ББ [973], Lewis gun ББ [582]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], 24 lb Cooper [12]"
+#~ msgstr "Vickers Mk.I ББ [973], 24 lb Cooper [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], 24 lb Cooper [8], H.E.R.L. 112 lbs [2]"
+#~ msgstr "Vickers Mk.I ББ [973], 24 lb Cooper [8], H.E.R.L. 112 lbs [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], H.E.R.L. 112 lbs [4]"
+#~ msgstr "Vickers Mk.I ББ [973], H.E.R.L. 112 lbs [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], H.E.R.L. 112 lbs [2]"
+#~ msgstr "Vickers Mk.I ББ [973], H.E.R.L. 112 lbs [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], Lewis gun AP [582], 24 lb Cooper [12]"
+#~ msgstr "Vickers Mk.I ББ [973], Lewis gun ББ [582], 24 lb Cooper [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "Vickers Mk.I AP [973], Lewis gun AP [582], 24 lb Cooper [8], H.E.R.L. 112 "
+#~ "lbs [2]"
+#~ msgstr ""
+#~ "Vickers Mk.I ББ [973], Lewis gun ББ [582], 24 lb Cooper [8], H.E.R.L. 112 "
+#~ "lbs [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], Lewis gun AP [582], H.E.R.L. 112 lbs [4]"
+#~ msgstr "Vickers Mk.I ББ [973], Lewis gun ББ [582], H.E.R.L. 112 lbs [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [973], Lewis gun AP [582], H.E.R.L. 112 lbs [2]"
+#~ msgstr "Vickers Mk.I ББ [973], Lewis gun ББ [582], H.E.R.L. 112 lbs [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 50 [4]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 250 [1]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 500 [1]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], MG FF/M AP/HE [120]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], MG FF/M ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], MG FF/M AP/HE [180]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], MG FF/M ББ/ОФ [180]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [1000]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [1000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 50 [8]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 50 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 250 [1], SC 50 [4]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 250 [1], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [1800], MG 151/20 AP/HE [500], SC 500 [1], SC 50 [4]"
+#~ msgstr "MG 17 ББ [1800], MG 151/20 ББ/ОФ [500], SC 500 [1], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [780]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [780]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [780], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [780], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [780], SC 250 [1]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [780], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [780], SC 500 [1]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [780], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [780], 21cm WGr.42 [2]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [780], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [780]"
+#~ msgstr "MG 151/20 ББ/ОФ [780]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [780], SD 70 [4]"
+#~ msgstr "MG 151/20 ББ/ОФ [780], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [780], SC 250 [1]"
+#~ msgstr "MG 151/20 ББ/ОФ [780], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [780], SC 500 [1]"
+#~ msgstr "MG 151/20 ББ/ОФ [780], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [780], 21cm WGr.42 [2]"
+#~ msgstr "MG 151/20 ББ/ОФ [780], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], MK 108 HE [110]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], MK 108 ОФ [110]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "MG 131 AP/HE [950], MG 151/20 AP/HE [500], MK 108 HE [110], SD 70 [4]"
+#~ msgstr ""
+#~ "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "MG 131 AP/HE [950], MG 151/20 AP/HE [500], MK 108 HE [110], SC 250 [1]"
+#~ msgstr ""
+#~ "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "MG 131 AP/HE [950], MG 151/20 AP/HE [500], MK 108 HE [110], SC 500 [1]"
+#~ msgstr ""
+#~ "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "MG 131 AP/HE [950], MG 151/20 AP/HE [500], MK 108 HE [110], 21cm WGr.42 "
+#~ "[2]"
+#~ msgstr ""
+#~ "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], 21cm WGr.42 "
+#~ "[2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], MK 108 HE [110]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], MK 108 ОФ [110]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], MK 108 HE [110], SD 70 [4]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], MK 108 HE [110], SC 250 [1]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], MK 108 HE [110], SC 500 [1]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], MK 108 HE [110], 21cm WGr.42 [2]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], MK 108 ОФ [110], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500]"
+#~ msgstr "MG 151/20 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], SC 250 [2]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], R-Hl. Pz.Bl. 1 [12]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], R-Hl. Pz.Bl. 1 [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], R-Sprgr. M8 [12]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], R-Sprgr. M8 [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SD 70 [8]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SD 70 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], SD 70 [4], SC 250 [2]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], SD 70 [4], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SC 250 [1]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SC 250 [1], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SC 250 [1], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], SC 250 [3]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], SC 250 [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SC 500 [1]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], SC 500 [1], SD 70 [4]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], SC 500 [1], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 151/20 AP/HE [500], SC 1000 [1]"
+#~ msgstr "MG 151/20 ББ/ОФ [500], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], 21cm WGr.42 [2]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], 21cm WGr.42 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 131 AP/HE [950], MG 151/20 AP/HE [500], R4M Orkan [26]"
+#~ msgstr "MG 131 ББ/ОФ [950], MG 151/20 ББ/ОФ [500], R4M Orkan [26]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500], 12.5 kg. P.u.W [12]"
+#~ msgstr "LMG 08/15 ББ [500], 12.5 kg. P.u.W [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500], 50 kg. P.u.W [1], 12.5 kg. P.u.W [8]"
+#~ msgstr "LMG 08/15 ББ [500], 50 kg. P.u.W [1], 12.5 kg. P.u.W [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500], 50 kg. P.u.W [3]"
+#~ msgstr "LMG 08/15 ББ [500], 50 kg. P.u.W [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500], 12.5 kg. P.u.W [4]"
+#~ msgstr "LMG 08/15 ББ [500], 12.5 kg. P.u.W [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [500], 50 kg. P.u.W [1]"
+#~ msgstr "LMG 08/15 ББ [500], 50 kg. P.u.W [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], 12.5 kg. P.u.W [12]"
+#~ msgstr "LMG 08/15 ББ [1000], 12.5 kg. P.u.W [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], 50 kg. P.u.W [1], 12.5 kg. P.u.W [8]"
+#~ msgstr "LMG 08/15 ББ [1000], 50 kg. P.u.W [1], 12.5 kg. P.u.W [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], 50 kg. P.u.W [3]"
+#~ msgstr "LMG 08/15 ББ [1000], 50 kg. P.u.W [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], 12.5 kg. P.u.W [4]"
+#~ msgstr "LMG 08/15 ББ [1000], 12.5 kg. P.u.W [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "LMG 08/15 AP [1000], 50 kg. P.u.W [1]"
+#~ msgstr "LMG 08/15 ББ [1000], 50 kg. P.u.W [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 50 [16]"
+#~ msgstr "SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 50 [32]"
+#~ msgstr "SC 50 [32]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [4]"
+#~ msgstr "SC 250 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [8]"
+#~ msgstr "SC 250 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [4], SC 50 [16]"
+#~ msgstr "SC 250 [4], SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [1], SC 50 [16]"
+#~ msgstr "SC 500 [1], SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [1], SC 250 [4]"
+#~ msgstr "SC 500 [1], SC 250 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [2]"
+#~ msgstr "SC 500 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1000 [1], SC 50 [16]"
+#~ msgstr "SC 1000 [1], SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1000 [1], SC 250 [4]"
+#~ msgstr "SC 1000 [1], SC 250 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1000 [2]"
+#~ msgstr "SC 1000 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800 [1], SC 50 [16]"
+#~ msgstr "SC 1800 [1], SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800 [1], SC 250 [4]"
+#~ msgstr "SC 1800 [1], SC 250 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800 [2]"
+#~ msgstr "SC 1800 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800 [1], SC 1000 [1]"
+#~ msgstr "SC 1800 [1], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 2500 [1]"
+#~ msgstr "SC 2500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 2500 [1], SC 50 [16]"
+#~ msgstr "SC 2500 [1], SC 50 [16]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 2500 [1], SC 250 [4]"
+#~ msgstr "SC 2500 [1], SC 250 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 2500 [1], SC 1000 [1]"
+#~ msgstr "SC 2500 [1], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], SC 50 [4]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], SC 50 [6]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], SC 50 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], SC 250 [1]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], SC 250 [1], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], SC 250 [1], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [6000], MG 151/15 AP/HE [500]"
+#~ msgstr "MG 17 ББ [6000], MG 151/15 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [6000], MG 151/15 AP/HE [500], SC 50 [2]"
+#~ msgstr "MG 17 ББ [6000], MG 151/15 ББ/ОФ [500], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 101 AP [30]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 101 ББ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 101 HE [30]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 101 ОФ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 101 AP [30], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 101 ББ [30], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 101 HE [30], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 101 ОФ [30], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 AP [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ББ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 HE [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 AP/HE [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ББ/ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 AP [80], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ББ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 HE [80], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ОФ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/15 AP/HE [500], MK 103 AP/HE [80], SC 50 [2]"
+#~ msgstr ""
+#~ "MG 17 ББ [2000], MG 151/15 ББ/ОФ [500], MK 103 ББ/ОФ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], SC 50 [4]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], SC 50 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], SC 50 [6]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], SC 50 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], SC 250 [1]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], SC 250 [1], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], SC 250 [1], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [6000], MG 151/20 AP/HE [500]"
+#~ msgstr "MG 17 ББ [6000], MG 151/20 ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [6000], MG 151/20 AP/HE [500], SC 50 [2]"
+#~ msgstr "MG 17 ББ [6000], MG 151/20 ББ/ОФ [500], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 101 AP [30]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 101 ББ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 101 HE [30]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 101 ОФ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 101 AP [30], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 101 ББ [30], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 101 HE [30], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 101 ОФ [30], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 AP [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ББ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 HE [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 AP/HE [80]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ББ/ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 AP [80], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ББ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 HE [80], SC 50 [2]"
+#~ msgstr "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ОФ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], MG 151/20 AP/HE [500], MK 103 AP/HE [80], SC 50 [2]"
+#~ msgstr ""
+#~ "MG 17 ББ [2000], MG 151/20 ББ/ОФ [500], MK 103 ББ/ОФ [80], SC 50 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [2800]"
+#~ msgstr "ШКАС ББ [2800]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [2800], FAB-50sv [2]"
+#~ msgstr "ШКАС ББ [2800], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [2800], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [2800], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [2800], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [2800], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [2800], ROS-82 [6]"
+#~ msgstr "ШКАС ББ [2800], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1000], SHVAK AP/HE [180]"
+#~ msgstr "ШКАС ББ [1000], ШВАК ББ/ОФ [180]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1000], SHVAK AP/HE [180], FAB-50sv [2]"
+#~ msgstr "ШКАС ББ [1000], ШВАК ББ/ОФ [180], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1000], SHVAK AP/HE [180], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1000], ШВАК ББ/ОФ [180], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1000], SHVAK AP/HE [180], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1000], ШВАК ББ/ОФ [180], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1000], SHVAK AP/HE [180], ROS-82 [6]"
+#~ msgstr "ШКАС ББ [1000], ШВАК ББ/ОФ [180], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [6], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [6], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-100M [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-100М [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [6], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [6], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-100M [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-100М [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [4], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [4], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-50sv [6], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-50св [6], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [420], FAB-100M [2], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [420], ФАБ-100М [2], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [2], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [2], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [2], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [2], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [2], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [2], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP/HE [80]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ/ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP [80]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 HE [80]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ОФ [80]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP/HE [80], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ/ОФ [80], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP [80], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ [80], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 HE [80], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ОФ [80], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP/HE [80], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ/ОФ [80], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP [80], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ [80], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 HE [80], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ОФ [80], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP/HE [80], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ/ОФ [80], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP [80], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ [80], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 HE [80], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ОФ [80], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [4], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [4], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP/HE [80], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ/ОФ [80], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 AP [80], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ББ [80], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SH-37 HE [80], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], Ш-37 ОФ [80], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [4], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [4], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [2], ROFS-132 [8]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [2], РОФС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP/HE [100]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ/ОФ [100]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP [100]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ [100]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 HE [100]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ОФ [100]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP/HE [100], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ/ОФ [100], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP [100], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ [100], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 HE [100], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ОФ [100], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP/HE [100], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ/ОФ [100], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP [100], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ [100], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 HE [100], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ОФ [100], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [4], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [4], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [4], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [4], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [4], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [4], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [4], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [4], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-50sv [6], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-50св [6], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-50sv [6], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-50св [6], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-50sv [6], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-50св [6], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-50sv [6], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-50св [6], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], FAB-100M [2], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ФАБ-100М [2], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], FAB-100M [2], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ФАБ-100М [2], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], FAB-100M [2], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ФАБ-100М [2], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], FAB-100M [2], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ФАБ-100М [2], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], PTAB-2.5-1.5 [192]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ПТАБ-2.5-1.5 [192]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], PTAB-2.5-1.5 [192]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ПТАБ-2.5-1.5 [192]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], PTAB-2.5-1.5 [192]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ПТАБ-2.5-1.5 [192]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], PTAB-2.5-1.5 [192]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ПТАБ-2.5-1.5 [192]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], PTAB-2.5-1.5 [192], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ПТАБ-2.5-1.5 [192], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], PTAB-2.5-1.5 [192], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ПТАБ-2.5-1.5 [192], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], PTAB-2.5-1.5 [192], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ПТАБ-2.5-1.5 [192], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], PTAB-2.5-1.5 [192], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ПТАБ-2.5-1.5 [192], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], PTAB-2.5-1.5 [192], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ПТАБ-2.5-1.5 [192], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], PTAB-2.5-1.5 [192], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ПТАБ-2.5-1.5 [192], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], PTAB-2.5-1.5 [192], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ПТАБ-2.5-1.5 [192], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], PTAB-2.5-1.5 [192], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ПТАБ-2.5-1.5 [192], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], PTAB-2.5-1.5 [192], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ПТАБ-2.5-1.5 [192], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "SHKAS AP [1500], VYA-23 AP/HE [300], PTAB-2.5-1.5 [192], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ПТАБ-2.5-1.5 [192], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], PTAB-2.5-1.5 [192], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ПТАБ-2.5-1.5 [192], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], PTAB-2.5-1.5 [192], ROFS-132 [4]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ПТАБ-2.5-1.5 [192], РОФС-132 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [500], PTAB-2.5-1.5 [240]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [500], ПТАБ-2.5-1.5 [240]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP/HE [300], PTAB-2.5-1.5 [240]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ/ОФ [300], ПТАБ-2.5-1.5 [240]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 AP [300], PTAB-2.5-1.5 [240]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ББ [300], ПТАБ-2.5-1.5 [240]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], VYA-23 HE [300], PTAB-2.5-1.5 [240]"
+#~ msgstr "ШКАС ББ [1500], ВЯ-23 ОФ [300], ПТАБ-2.5-1.5 [240]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP/HE [100], PTAB-2.5-1.5 [120]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ/ОФ [100], ПТАБ-2.5-1.5 [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 AP [100], PTAB-2.5-1.5 [120]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ББ [100], ПТАБ-2.5-1.5 [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], NS-37 HE [100], PTAB-2.5-1.5 [120]"
+#~ msgstr "ШКАС ББ [1500], НС-37 ОФ [100], ПТАБ-2.5-1.5 [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Cargo [2300]"
+#~ msgstr "Груз [2300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MAB 250 [10]"
+#~ msgstr "MAB 250 [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Paratroopers [12]"
+#~ msgstr "Парашютисты [12]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000]"
+#~ msgstr "MG 17 ББ [2000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 250 [1], SD 70 [4]"
+#~ msgstr "MG 17 ББ [2000], SC 250 [1], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 500 [1]"
+#~ msgstr "MG 17 ББ [2000], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 500 [1], SD 70 [4]"
+#~ msgstr "MG 17 ББ [2000], SC 500 [1], SD 70 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 500 [1], SC 250 [2]"
+#~ msgstr "MG 17 ББ [2000], SC 500 [1], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 250 [3]"
+#~ msgstr "MG 17 ББ [2000], SC 250 [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 1000 [1]"
+#~ msgstr "MG 17 ББ [2000], SC 1000 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], SC 1800 [1]"
+#~ msgstr "MG 17 ББ [2000], SC 1800 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MG 17 AP [2000], WB 81 B AP [3000]"
+#~ msgstr "MG 17 ББ [2000], WB 81 B ББ [3000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BK 3.7 AP [24]"
+#~ msgstr "BK 3.7 ББ [24]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BK 3.7 HE [24]"
+#~ msgstr "BK 3.7 ОФ [24]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [6]"
+#~ msgstr "SC 250 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 50 [28]"
+#~ msgstr "SC 50 [28]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 50 [44]"
+#~ msgstr "SC 50 [44]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [4], SC 50 [28]"
+#~ msgstr "SC 250 [4], SC 50 [28]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250 [6], SC 50 [28]"
+#~ msgstr "SC 250 [6], SC 50 [28]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [4]"
+#~ msgstr "SC 500 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [4], SC 250 [2]"
+#~ msgstr "SC 500 [4], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500 [4], SC 50 [18]"
+#~ msgstr "SC 500 [4], SC 50 [18]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800 [1]"
+#~ msgstr "SC 1800 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [340]"
+#~ msgstr "ШВАК ББ/ОФ [340]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [340], FAB-50sv [2]"
+#~ msgstr "ШВАК ББ/ОФ [340], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [340], FAB-100M [2]"
+#~ msgstr "ШВАК ББ/ОФ [340], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP [340]"
+#~ msgstr "ШВАК ББ [340]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP [340], FAB-50sv [2]"
+#~ msgstr "ШВАК ББ [340], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP [340], FAB-100M [2]"
+#~ msgstr "ШВАК ББ [340], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK HE [340]"
+#~ msgstr "ШВАК ОФ [340]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK HE [340], FAB-50sv [2]"
+#~ msgstr "ШВАК ОФ [340], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK HE [340], FAB-100M [2]"
+#~ msgstr "ШВАК ОФ [340], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], SHVAK AP/HE [160]"
+#~ msgstr "УБ ББ/ОФ [200], ШВАК ББ/ОФ [160]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP/HE [90]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ/ОФ [90]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP [90]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ [90]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 HE [90]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ОФ [90]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP/HE [20]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ/ОФ [20]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP [20]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ [20]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 HE [20]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ОФ [20]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], SHVAK AP/HE [160], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [200], ШВАК ББ/ОФ [160], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP/HE [90], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ/ОФ [90], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP [90], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ [90], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 HE [90], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ОФ [90], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP/HE [20], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ/ОФ [20], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP [20], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ [20], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 HE [20], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ОФ [20], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], SHVAK AP/HE [160], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [200], ШВАК ББ/ОФ [160], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP/HE [90], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ/ОФ [90], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP [90], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ [90], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 HE [90], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ОФ [90], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP/HE [20], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ/ОФ [20], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP [20], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ [20], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 HE [20], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ОФ [20], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], SHVAK AP/HE [160], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [200], ШВАК ББ/ОФ [160], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP/HE [90], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ/ОФ [90], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 AP [90], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ББ [90], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], VYA-23 HE [90], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [200], ВЯ-23 ОФ [90], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP/HE [20], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ/ОФ [20], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 AP [20], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ББ [20], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [140], SH-37 HE [20], ROS-82 [6]"
+#~ msgstr "УБ ББ/ОФ [140], Ш-37 ОФ [20], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Breda 12.7 AP/HE [800]"
+#~ msgstr "Breda 12.7 ББ/ОФ [800]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Breda 12.7 AP/HE [800], 50-T [2]"
+#~ msgstr "Breda 12.7 ББ/ОФ [800], 50-T [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Breda 12.7 AP/HE [800], 100-T [2]"
+#~ msgstr "Breda 12.7 ББ/ОФ [800], 100-T [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Breda 12.7 AP/HE [800], Breda 7.7 AP [1000]"
+#~ msgstr "Breda 12.7 ББ/ОФ [800], Breda 7.7 ББ [1000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Breda 12.7 AP/HE [800], MG 151/20 AP/HE [270]"
+#~ msgstr "Breda 12.7 ББ/ОФ [800], MG 151/20 ББ/ОФ [270]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [360]"
+#~ msgstr "MK 108 ОФ [360]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [160]"
+#~ msgstr "MK 108 ОФ [160]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [360], R4M Orkan [24]"
+#~ msgstr "MK 108 ОФ [360], R4M Orkan [24]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [360], SC 250 [1]"
+#~ msgstr "MK 108 ОФ [360], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [360], SC 250 [2]"
+#~ msgstr "MK 108 ОФ [360], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [360], SC 500 [1]"
+#~ msgstr "MK 108 ОФ [360], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [160], SC 250 [1]"
+#~ msgstr "MK 108 ОФ [160], SC 250 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [160], SC 250 [2]"
+#~ msgstr "MK 108 ОФ [160], SC 250 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MK 108 HE [160], SC 500 [1]"
+#~ msgstr "MK 108 ОФ [160], SC 500 [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], BS AP/HE [300]"
+#~ msgstr "ШКАС ББ [1500], БС ББ/ОФ [300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], BS AP/HE [300], ROS-82 [6]"
+#~ msgstr "ШКАС ББ [1500], БС ББ/ОФ [300], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], BS AP/HE [300], FAB-50sv [2]"
+#~ msgstr "ШКАС ББ [1500], БС ББ/ОФ [300], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], BS AP/HE [300], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], БС ББ/ОФ [300], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], BS AP/HE [300], BK AP/HE [290]"
+#~ msgstr "ШКАС ББ [1500], БС ББ/ОФ [300], БК ББ/ОФ [290]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BS AP/HE [700]"
+#~ msgstr "БС ББ/ОФ [700]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BS AP/HE [700], ROS-82 [6]"
+#~ msgstr "БС ББ/ОФ [700], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BS AP/HE [700], FAB-50sv [2]"
+#~ msgstr "БС ББ/ОФ [700], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BS AP/HE [700], FAB-100M [2]"
+#~ msgstr "БС ББ/ОФ [700], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "BS AP/HE [700], BK AP/HE [290]"
+#~ msgstr "БС ББ/ОФ [700], БК ББ/ОФ [290]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [300]"
+#~ msgstr "ШВАК ББ/ОФ [300]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [300], ROS-82 [6]"
+#~ msgstr "ШВАК ББ/ОФ [300], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [300], FAB-50sv [2]"
+#~ msgstr "ШВАК ББ/ОФ [300], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [300], FAB-100M [2]"
+#~ msgstr "ШВАК ББ/ОФ [300], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHVAK AP/HE [300], BK AP/HE [290]"
+#~ msgstr "ШВАК ББ/ОФ [300], БК ББ/ОФ [290]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M64 500 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M64 500 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M65 1000 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M65 1000 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M66 2000 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M66 2000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M66 2000 lb [2]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M66 2000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M64 500 lb [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M64 500 lb [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M64 500 lb [6]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M64 500 lb [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [1200], M65 1000 lb [4]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [1200], M65 1000 lb [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2 AP/HE [150], M2.50 AP [2000], M65 1000 lb [4]"
+#~ msgstr "M2 ББ/ОФ [150], M2.50 ББ [2000], M65 1000 lb [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [1200]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [1200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [1200]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [1200]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [4000]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [4000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [4000]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [4000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [1200], FAB-100M [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [1200], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [1200], FAB-100M [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [1200], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [4000], FAB-100M [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [4000], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [4000], FAB-100M [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [4000], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], FAB-100M [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], FAB-100M [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], ФАБ-100М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [1200], FAB-250tsk [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [1200], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [1200], FAB-250tsk [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [1200], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], M2.30 AP [4000], FAB-250tsk [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], M2.30 ББ [4000], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], M2.30 AP [4000], FAB-250tsk [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], M2.30 ББ [4000], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 HE [30], M2.50 AP [400], FAB-250tsk [1]"
+#~ msgstr "M4 ОФ [30], M2.50 ББ [400], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M4 AP [30], M2.50 AP [400], FAB-250tsk [1]"
+#~ msgstr "M4 ББ [30], M2.50 ББ [400], ФАБ-250цк [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410]"
+#~ msgstr "M2.50 ББ [1410]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686]"
+#~ msgstr "M2.50 ББ [1686]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940]"
+#~ msgstr "M2.50 ББ [940]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460]"
+#~ msgstr "M2.50 ББ [2460]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410], FAB-250sv [1]"
+#~ msgstr "M2.50 ББ [1410], ФАБ-250св [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686], FAB-250sv [1]"
+#~ msgstr "M2.50 ББ [1686], ФАБ-250св [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940], FAB-250sv [1]"
+#~ msgstr "M2.50 ББ [940], ФАБ-250св [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460], FAB-250sv [1]"
+#~ msgstr "M2.50 ББ [2460], ФАБ-250св [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410], FAB-500M [1]"
+#~ msgstr "M2.50 ББ [1410], ФАБ-500М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686], FAB-500M [1]"
+#~ msgstr "M2.50 ББ [1686], ФАБ-500М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940], FAB-500M [1]"
+#~ msgstr "M2.50 ББ [940], ФАБ-500М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460], FAB-500M [1]"
+#~ msgstr "M2.50 ББ [2460], ФАБ-500М [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1410], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1686], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [940], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [2460], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410], FAB-250sv [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1410], ФАБ-250св [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686], FAB-250sv [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1686], ФАБ-250св [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940], FAB-250sv [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [940], ФАБ-250св [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460], FAB-250sv [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [2460], ФАБ-250св [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1410], FAB-500M [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1410], ФАБ-500М [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1686], FAB-500M [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [1686], ФАБ-500М [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [940], FAB-500M [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [940], ФАБ-500М [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2460], FAB-500M [1], ROS-82 [4]"
+#~ msgstr "M2.50 ББ [2460], ФАБ-500М [1], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136]"
+#~ msgstr "M2.50 ББ [2136]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602]"
+#~ msgstr "M2.50 ББ [1602]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068]"
+#~ msgstr "M2.50 ББ [1068]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400]"
+#~ msgstr "M2.50 ББ [3400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550]"
+#~ msgstr "M2.50 ББ [2550]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700]"
+#~ msgstr "M2.50 ББ [1700]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [3]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [3]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [2136], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1602], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1068], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [3400], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [2550], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1700], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [2136], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1602], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1068], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [3400], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [2550], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M65 1000 lb [2], M64 500 lb [1]"
+#~ msgstr "M2.50 ББ [1700], M65 1000 lb [2], M64 500 lb [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M64 500 lb [3], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M64 500 lb [3], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M65 1000 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M65 1000 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2136], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2136], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1602], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1602], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1068], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1068], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [3400], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [3400], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2550], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2550], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1700], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1700], M65 1000 lb [2], M64 500 lb [1], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1880]"
+#~ msgstr "M2.50 ББ [1880]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1800]"
+#~ msgstr "M2.50 ББ [1800]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2060]"
+#~ msgstr "M2.50 ББ [2060]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1980]"
+#~ msgstr "M2.50 ББ [1980]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1880], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1880], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1800], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1800], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2060], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [2060], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1980], M64 500 lb [2]"
+#~ msgstr "M2.50 ББ [1980], M64 500 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1880], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1880], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1800], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1800], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2060], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [2060], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1980], M65 1000 lb [2]"
+#~ msgstr "M2.50 ББ [1980], M65 1000 lb [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1880], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1880], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1800], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1800], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2060], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2060], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1980], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1980], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1880], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1880], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1800], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1800], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [2060], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [2060], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M2.50 AP [1980], M64 500 lb [2], M8 4.5 in [6]"
+#~ msgstr "M2.50 ББ [1980], M64 500 lb [2], M8 4.5 in [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-100M [4]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-100М [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-100M [6]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-100М [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-250sv [2]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-250св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-100M [10]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-100М [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-250sv [4]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-250св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-500M [2]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-500М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], ROS-132 [10]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], РОС-132 [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-100M [4], ROS-132 [10]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-100М [4], РОС-132 [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-100M [6], ROS-132 [10]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-100М [6], РОС-132 [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [450], UB AP/HE [150], FAB-250sv [2], ROS-132 [10]"
+#~ msgstr "ШКАС ББ [450], УБ ББ/ОФ [150], ФАБ-250св [2], РОС-132 [10]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [400], Lewis gun AP [388]"
+#~ msgstr "Vickers Mk.I ББ [400], Lewis gun ББ [388]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [200], Lewis gun AP [194]"
+#~ msgstr "Vickers Mk.I ББ [200], Lewis gun ББ [194]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [400], Lewis gun AP [388], 24 lb Cooper [4]"
+#~ msgstr "Vickers Mk.I ББ [400], Lewis gun ББ [388], 24 lb Cooper [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [400], Lewis gun AP [388], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [400], Lewis gun ББ [388], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000]"
+#~ msgstr "Vickers Mk.I ББ [1000]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [500]"
+#~ msgstr "Vickers Mk.I ББ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], 24 lb Cooper [4]"
+#~ msgstr "Vickers Mk.I ББ [1000], 24 lb Cooper [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [1000], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [388]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [388]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [388], 24 lb Cooper [4]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [388], 24 lb Cooper [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [388], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [388], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [194]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [194]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [194], 24 lb Cooper [4]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [194], 24 lb Cooper [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [194], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [194], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [582]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [582]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [582], 24 lb Cooper [4]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [582], 24 lb Cooper [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [1000], Lewis gun AP [582], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [1000], Lewis gun ББ [582], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [800]"
+#~ msgstr "Vickers Mk.I ББ [800]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [400]"
+#~ msgstr "Vickers Mk.I ББ [400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Balloon Gun AP [400]"
+#~ msgstr "Balloon Gun ББ [400]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [800], 24 lb Cooper [2]"
+#~ msgstr "Vickers Mk.I ББ [800], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Vickers Mk.I AP [800], 24 lb Cooper [1]"
+#~ msgstr "Vickers Mk.I ББ [800], 24 lb Cooper [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Balloon Gun AP [400], 24 lb Cooper [2]"
+#~ msgstr "Balloon Gun ББ [400], 24 lb Cooper [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Balloon Gun AP [400], 24 lb Cooper [1]"
+#~ msgstr "Balloon Gun ББ [400], 24 lb Cooper [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .50 AP [500], Hispano Mk.II AP/HE [240]"
+#~ msgstr "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .50 AP [500], Hispano Mk.II AP/HE [240], 500 lb GP [1]"
+#~ msgstr "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], 500 lb GP [1]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .50 AP [500], Hispano Mk.II AP/HE [240], 250 lb GP [2]"
+#~ msgstr "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], 250 lb GP [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "Browning .50 AP [500], Hispano Mk.II AP/HE [240], 500 lb GP [1], 250 lb "
+#~ "GP [2]"
+#~ msgstr ""
+#~ "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], 500 lb GP [1], 250 lb "
+#~ "GP [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .50 AP [500], Hispano Mk.II AP/HE [240], RP-3 HE [2]"
+#~ msgstr "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], RP-3 HE [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .50 AP [500], Hispano Mk.II AP/HE [240], RP-3 AP [2]"
+#~ msgstr "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], RP-3 AP [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "Browning .50 AP [500], Hispano Mk.II AP/HE [240], 500 lb GP [1], RP-3 HE "
+#~ "[2]"
+#~ msgstr ""
+#~ "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], 500 lb GP [1], RP-3 HE "
+#~ "[2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid ""
+#~ "Browning .50 AP [500], Hispano Mk.II AP/HE [240], 500 lb GP [1], RP-3 AP "
+#~ "[2]"
+#~ msgstr ""
+#~ "Browning .50 ББ [500], Hispano Mk.II ББ/ОФ [240], 500 lb GP [1], RP-3 AP "
+#~ "[2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Browning .303 AP [1400], Hispano Mk.II AP/HE [120]"
+#~ msgstr "Browning .303 ББ [1400], Hispano Mk.II ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Hispano Mk.V AP/HE [600]"
+#~ msgstr "Hispano Mk.V ББ/ОФ [600]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Hispano Mk.V AP/HE [600], 500 lb MC [2]"
+#~ msgstr "Hispano Mk.V ББ/ОФ [600], 500 lb MC [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Hispano Mk.V AP/HE [600], 1000 lb MC [2]"
+#~ msgstr "Hispano Mk.V ББ/ОФ [600], 1000 lb MC [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [2]"
+#~ msgstr "ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [4]"
+#~ msgstr "ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [6]"
+#~ msgstr "ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-100M [2]"
+#~ msgstr "ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [2], FAB-100M [2]"
+#~ msgstr "ФАБ-50св [2], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500]"
+#~ msgstr "ШКАС ББ [500]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [2]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [4]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [6]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [500], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [2], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [2], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "ROS-82 [8]"
+#~ msgstr "РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "RBS-82 [8]"
+#~ msgstr "РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "ROS-132 [8]"
+#~ msgstr "РОС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [2], ROS-82 [8]"
+#~ msgstr "ФАБ-50св [2], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-100M [2], ROS-82 [8]"
+#~ msgstr "ФАБ-100М [2], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [2], RBS-82 [8]"
+#~ msgstr "ФАБ-50св [2], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-100M [2], RBS-82 [8]"
+#~ msgstr "ФАБ-100М [2], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [500], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [500], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], ROS-132 [8]"
+#~ msgstr "ШКАС ББ [500], РОС-132 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [2], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [2], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-100M [2], ROS-82 [8]"
+#~ msgstr "ШКАС ББ [500], ФАБ-100М [2], РОС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [2], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [2], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-100M [2], RBS-82 [8]"
+#~ msgstr "ШКАС ББ [500], ФАБ-100М [2], РБС-82 [8]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [4], ROS-82 [4]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [4], РОС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [500], FAB-50sv [4], RBS-82 [4]"
+#~ msgstr "ШКАС ББ [500], ФАБ-50св [4], РБС-82 [4]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [220], SHVAK AP/HE [140]"
+#~ msgstr "УБ ББ/ОФ [220], ШВАК ББ/ОФ [140]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [220], SHVAK AP/HE [140], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [220], ШВАК ББ/ОФ [140], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [220], SHVAK AP/HE [140], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [220], ШВАК ББ/ОФ [140], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [120]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [120], ROS-82 [2]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [120], РОС-82 [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [120], ROS-82 [6]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [120], РОС-82 [6]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [120], FAB-50sv [2]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [120], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SHKAS AP [1500], SHVAK AP/HE [120], FAB-100M [2]"
+#~ msgstr "ШКАС ББ [1500], ШВАК ББ/ОФ [120], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [400], SHVAK AP/HE [120]"
+#~ msgstr "УБ ББ/ОФ [400], ШВАК ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [400], SHVAK AP/HE [120], FAB-50sv [2]"
+#~ msgstr "УБ ББ/ОФ [400], ШВАК ББ/ОФ [120], ФАБ-50св [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [400], SHVAK AP/HE [120], FAB-100M [2]"
+#~ msgstr "УБ ББ/ОФ [400], ШВАК ББ/ОФ [120], ФАБ-100М [2]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], SHVAK AP/HE [120]"
+#~ msgstr "УБ ББ/ОФ [200], ШВАК ББ/ОФ [120]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], NS-37 AP/HE [30]"
+#~ msgstr "УБ ББ/ОФ [200], НС-37 ББ/ОФ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], NS-37 AP [30]"
+#~ msgstr "УБ ББ/ОФ [200], НС-37 ББ [30]"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "UB AP/HE [200], NS-37 HE [30]"
+#~ msgstr "УБ ББ/ОФ [200], НС-37 ОФ [30]"
+
+#~ msgid "Stats"
+#~ msgstr "Статистика"
+
+#, fuzzy
+#~| msgid "Score"
+#~ msgid "score"
+#~ msgstr "Очки"
+
+#, fuzzy
+#~| msgctxt "sortie"
+#~| msgid "Scoring"
+#~ msgid "scoring"
+#~ msgstr "Подсчет очков"
+
+#~ msgid "object"
+#~ msgstr "объект"
+
+#~ msgid "objects"
+#~ msgstr "объекты"
+
+#~ msgid "tour"
+#~ msgstr "тур"
+
+#~ msgid "tours"
+#~ msgstr "туры"
+
+#~ msgctxt "preset"
+#~ msgid "custom"
+#~ msgstr "кастом"
+
+#~ msgctxt "preset"
+#~ msgid "normal"
+#~ msgstr "нормальный"
+
+#~ msgctxt "preset"
+#~ msgid "expert"
+#~ msgstr "эксперт"
+
+#~ msgid "profile"
+#~ msgstr "профиль"
+
+#~ msgid "profiles"
+#~ msgstr "профили"
+
+#~ msgctxt "sortie_status"
+#~ msgid "landed"
+#~ msgstr "посадка на аэродром"
+
+#~ msgctxt "sortie_status"
+#~ msgid "crashed"
+#~ msgstr "разбился"
+
+#~ msgctxt "sortie_status"
+#~ msgid "shotdown"
+#~ msgstr "сбит"
+
+#~ msgctxt "sortie_status"
+#~ msgid "not takeoff"
+#~ msgstr "не взлетал"
+
+#, fuzzy
+#~| msgid "username"
+#~ msgctxt "aircraft_status"
+#~ msgid "unharmed"
+#~ msgstr "имя пользователя"
+
+#~ msgctxt "sortie_status"
+#~ msgid "healthy"
+#~ msgstr "здоров"
+
+#~ msgctxt "sortie_status"
+#~ msgid "wounded"
+#~ msgstr "ранен"
+
+#~ msgctxt "sortie_status"
+#~ msgid "dead"
+#~ msgstr "погиб"
+
+#~ msgid "USSR"
+#~ msgstr "СССР"
+
+#~ msgid "Germany"
+#~ msgstr "Германия"
+
+#, fuzzy
+#~| msgid "French"
+#~ msgid "France"
+#~ msgstr "Французский"
+
+#, fuzzy
+#~| msgid "Russian"
+#~ msgid "Russia"
+#~ msgstr "Русский"
+
+#~ msgctxt "award_type"
+#~ msgid "tour"
+#~ msgstr "тур"
+
+#~ msgctxt "award_type"
+#~ msgid "mission"
+#~ msgstr "миссия"
+
+#~ msgctxt "award_type"
+#~ msgid "sortie"
+#~ msgstr "вылет"
+
+#~ msgid "function name"
+#~ msgstr "имя функции"
+
+#~ msgid "type"
+#~ msgstr "тип"
+
+#~ msgid "description"
+#~ msgstr "описание"
+
+#~ msgid "image"
+#~ msgstr "картинка"
+
+#~ msgid "Image size should be 180x180"
+#~ msgstr "Размер изображения должен быть 180х180"
+
+#~ msgid "award"
+#~ msgstr "награда"
+
+#~ msgid "awards"
+#~ msgstr "награды"
+
+#~ msgctxt "sortie_log"
+#~ msgid "damaged"
+#~ msgstr "нанес повреждения"
+
+#~ msgctxt "sortie_log"
+#~ msgid "wounded"
+#~ msgstr "ранил"
+
+#~ msgctxt "sortie_log"
+#~ msgid "KILLED"
+#~ msgstr "УБИЛ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DESTROYED"
+#~ msgstr "УНИЧТОЖИЛ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "SHOTDOWN"
+#~ msgstr "СБИЛ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "was damaged"
+#~ msgstr "поврежден"
+
+#~ msgctxt "sortie_log"
+#~ msgid "was wounded"
+#~ msgstr "ранен"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS KILLED"
+#~ msgstr "УБИТ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS DESTROYED"
+#~ msgstr "УНИЧТОЖЕН"
+
+#~ msgctxt "sortie_log"
+#~ msgid "WAS SHOTDOWN"
+#~ msgstr "СБИТ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "respawn"
+#~ msgstr "респаун"
+
+#~ msgctxt "sortie_log"
+#~ msgid "end"
+#~ msgstr "конец вылета"
+
+#~ msgctxt "sortie_log"
+#~ msgid "takeoff"
+#~ msgstr "взлет"
+
+#~ msgctxt "sortie_log"
+#~ msgid "landed"
+#~ msgstr "посадка"
+
+#~ msgctxt "sortie_log"
+#~ msgid "crashed"
+#~ msgstr "разбился"
+
+#~ msgctxt "sortie_log"
+#~ msgid "ditched"
+#~ msgstr "посадка в поле"
+
+#~ msgctxt "sortie_log"
+#~ msgid "BAILOUT"
+#~ msgstr "ВЫПРЫГНУЛ С ПАРАШЮТОМ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "damage"
+#~ msgstr "повреждение"
+
+#~ msgctxt "sortie_log"
+#~ msgid "wound"
+#~ msgstr "ранение"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DIED"
+#~ msgstr "ПОГИБ"
+
+#~ msgctxt "sortie_log"
+#~ msgid "DISABLED"
+#~ msgstr "ВЫВЕДЕН ИЗ СТРОЯ"
+
+#~ msgid "Frequently Asked Questions"
+#~ msgstr "Ответы на часто задаваемые вопросы"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Sorties"
+#~ msgstr "Журнал вылетов"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Virtual Lifes"
+#~ msgstr "Виртуальные жизни"
+
+#~ msgctxt "pilot_nav_tab"
+#~ msgid "Awards"
+#~ msgstr "Награды"
+
+#~ msgctxt "sortie_nav_tab"
+#~ msgid "Sortie Log"
+#~ msgstr "Хронология вылета"
+
+#~ msgctxt "squad_nav_tab"
+#~ msgid "Squad Statistics"
+#~ msgstr "Статистика сквада"
+
+#~ msgctxt "squad_nav_tab"
+#~ msgid "Pilots"
+#~ msgstr "Пилоты"
+
+#~ msgid "Current Tour"
+#~ msgstr "Текущий тур"
+
+#~ msgctxt "tour"
+#~ msgid "Dominance"
+#~ msgstr "Доминирование"
+
+#~ msgctxt "tour"
+#~ msgid "Won missions"
+#~ msgstr "Побед в миссиях"
+
+#~ msgctxt "tour"
+#~ msgid "Shotdown aircraft"
+#~ msgstr "Сбили самолетов"
+
+#~ msgctxt "tour"
+#~ msgid "Ground targets destroyed"
+#~ msgstr "Уничтожили наземных целей"
+
+#~ msgctxt "tour"
+#~ msgid "Score"
+#~ msgstr "Очков"
+
+#~ msgctxt "tour"
+#~ msgid "Flight time (hours)"
+#~ msgstr "Налет часов"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots in the last 24 hours"
+#~ msgstr "Лучшие пилоты за последние 24 часа"
+
+#~ msgctxt "tour_top"
+#~ msgid "pilot nickname"
+#~ msgstr "имя пилота"
+
+#~ msgctxt "tour_top"
+#~ msgid "score"
+#~ msgstr "очков"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best live pilots"
+#~ msgstr "Лучшие живые пилоты"
+
+#~ msgid "Overall Pilot Rankings"
+#~ msgstr "Полный рейтинг пилотов"
+
+#, python-format
+#~ msgid "%(days)s day left"
+#~ msgid_plural "%(days)s days left"
+#~ msgstr[0] "Остался %(days)s день"
+#~ msgstr[1] "Осталось %(days)s дня"
+#~ msgstr[2] "Осталось %(days)s дней"
+
+#~ msgid "Active players"
+#~ msgstr "Активные игроки"
+
+#~ msgctxt "tour_active"
+#~ msgid "total"
+#~ msgstr "всего"
+
+#~ msgid "Online"
+#~ msgstr "Сейчас на сервере"
+
+#~ msgctxt "online"
+#~ msgid "pilots"
+#~ msgstr "пилотов"
+
+#~ msgid "List of pilots online"
+#~ msgstr "Список пилотов онлайн"
+
+#~ msgid "Summary previous tour"
+#~ msgstr "Сводка прошлого тура"
+
+#~ msgctxt "tour_winner"
+#~ msgid "winner"
+#~ msgstr "победитель"
+
+#~ msgid "Top Pilots"
+#~ msgstr "Лучшие пилоты"
+
+#~ msgid "Mission"
+#~ msgstr "Миссия"
+
+#~ msgctxt "mission"
+#~ msgid "Start Date"
+#~ msgstr "Начало миссии"
+
+#~ msgctxt "mission"
+#~ msgid "End Date"
+#~ msgstr "Окончание миссии"
+
+#~ msgctxt "mission"
+#~ msgid "Duration"
+#~ msgstr "Продолжительность"
+
+#~ msgid "Winning coalition"
+#~ msgstr "Победившая коалиция"
+
+#~ msgid "Performed the task of the mission"
+#~ msgstr "Выполнены задачи миссии"
+
+#~ msgid "Won by score"
+#~ msgstr "Победа по очкам"
+
+#~ msgid "Score"
+#~ msgstr "Очки"
+
+#~ msgid "on the score"
+#~ msgstr "по очкам"
+
+#~ msgid "Search mission"
+#~ msgstr "Найти миссию"
+
+#~ msgid "Duration (hours:minutes)"
+#~ msgstr "Продолжительность (часы:минуты)"
+
+#~ msgid "Pilots on the server"
+#~ msgstr "Пилотов на сервере"
+
+#~ msgid "favorite coalition"
+#~ msgstr "предпочитаемая коалиция"
+
+#~ msgctxt "favorite_coalition"
+#~ msgid "No"
+#~ msgstr "Полосатый"
+
+#~ msgid "favorite aircraft"
+#~ msgstr "любимый самолет"
+
+#~ msgid "Streak"
+#~ msgstr "Стрик"
+
+#~ msgid "number of downed aircraft for the current virtual life"
+#~ msgstr "количество сбитых самолетов за текущую виртуальную жизнь"
+
+#~ msgid "Ground Streak"
+#~ msgstr "Стрик по наземным целям"
+
+#~ msgid "number of destroyed ground targets for the current virtual life"
+#~ msgstr "количество уничтоженных наземных целей за текущую виртуальную жизнь"
+
+#~ msgid "Aerial victories"
+#~ msgstr "Воздушных побед"
+
+#~ msgid "Best Streak"
+#~ msgstr "Лучший стрик"
+
+#~ msgid "Destroyed on Ground"
+#~ msgstr "Уничтожено на земле"
+
+#~ msgid "Best Ground Streak"
+#~ msgstr "Лучший стрик по Н.Ц."
+
+#~ msgid "Position in Rating"
+#~ msgstr "Позиция в рейтинге"
+
+#~ msgctxt "total"
+#~ msgid "Disco"
+#~ msgstr "Разрывов связи"
+
+#~ msgctxt "total"
+#~ msgid "Shotdown Friendly Aircraft"
+#~ msgstr "Сбито дружественных самолетов"
+
+#~ msgctxt "total"
+#~ msgid "Destroyed Friendly Ground Targets"
+#~ msgstr "Уничтожено дружественных наземных целей"
+
+#~ msgid "Best results"
+#~ msgstr "Лучшие достижения"
+
+#~ msgid "Best Flight time Streak"
+#~ msgstr "Макс. налет за одну жизнь"
+
+#~ msgid "Best Sorties Streak"
+#~ msgstr "Макс. кол-во вылетов за одну жизнь"
+
+#~ msgid "Max Aerial Victories in one sortie"
+#~ msgstr "Макс. кол-во воздушных побед за один вылет"
+
+#~ msgid "Max Destroyed on Ground in one sortie"
+#~ msgstr "Макс. кол-во уничтоженых Н.Ц. за один вылет"
+
+#~ msgid "Current life"
+#~ msgstr "Текущая виртуальная жизнь"
+
+#~ msgid "number of sorties"
+#~ msgstr "количество вылетов"
+
+#~ msgid "Specialty"
+#~ msgstr "Специализация"
+
+#~ msgctxt "specialty"
+#~ msgid "Fighter"
+#~ msgstr "Истребитель"
+
+#~ msgctxt "specialty"
+#~ msgid "Attacker"
+#~ msgstr "Ударный"
+
+#~ msgctxt "specialty"
+#~ msgid "Bomber"
+#~ msgstr "Бомбардировщик"
+
+#~ msgctxt "specialty"
+#~ msgid "Transport"
+#~ msgstr "Транспорт"
+
+#~ msgid "W/L - Win/Loss"
+#~ msgstr "W/L - Побед/Поражений"
+
+#~ msgid "Ratio"
+#~ msgstr "Ратио"
+
+#~ msgid "Fairplay Index"
+#~ msgstr "Индекс честной игры"
+
+#~ msgid "Other names of the pilot on this account"
+#~ msgstr "Другие имена пилота на этом аккаунте"
+
+#~ msgctxt "pilot_awards"
+#~ msgid "Awards"
+#~ msgstr "Награды"
+
+#~ msgctxt "pilot_awards"
+#~ msgid "pilot"
+#~ msgstr "пилот"
+
+#~ msgid "Player profile was hidden"
+#~ msgstr "Профиль игрока был скрыт"
+
+#~ msgid "pilot"
+#~ msgstr "пилот"
+
+#~ msgctxt "killboard"
+#~ msgid "Won/Lose"
+#~ msgstr "Победы/Поражения"
+
+#~ msgid "The player did not participate in this tour"
+#~ msgstr "Игрок не принимал участия в этом туре"
+
+#~ msgctxt "sortie_page_title"
+#~ msgid "Sortie"
+#~ msgstr "Вылет от"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Disconnect"
+#~ msgstr "Разрыв связи"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Dead"
+#~ msgstr "Погиб"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Captured"
+#~ msgstr "Попал в плен"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Bailout"
+#~ msgstr "Выпрыгнул с парашютом"
+
+#~ msgctxt "sortie_status"
+#~ msgid "In Flight"
+#~ msgstr "В полете"
+
+#~ msgctxt "sortie_status"
+#~ msgid "Landed"
+#~ msgstr "Посадка на аэродром"
+
+#~ msgctxt "pilot_sorties"
+#~ msgid "pilot"
+#~ msgstr "пилот"
+
+#~ msgid "Back to sorties list"
+#~ msgstr "Назад к журналу вылетов"
+
+#~ msgid ""
+#~ "The results of this sortie are not included in the statistics of the "
+#~ "pilot because of the disconnect"
+#~ msgstr ""
+#~ "Результаты данного вылета не добавляются в статистику пилота из-за "
+#~ "разрыва связи"
+
+#~ msgctxt "sortie"
+#~ msgid "Mission"
+#~ msgstr "Миссия"
+
+#~ msgctxt "sortie"
+#~ msgid "Start Time"
+#~ msgstr "Время начала"
+
+#~ msgctxt "sortie"
+#~ msgid "End Time"
+#~ msgstr "Время окончания"
+
+#~ msgctxt "sortie"
+#~ msgid "Duration of flight"
+#~ msgstr "Продолжительность полета"
+
+#~ msgctxt "sortie"
+#~ msgid "Country"
+#~ msgstr "Страна"
+
+#~ msgctxt "sortie"
+#~ msgid "pilot status"
+#~ msgstr "статус пилота"
+
+#~ msgctxt "sortie"
+#~ msgid "Bailout"
+#~ msgstr "Выпрыгнул с парашютом"
+
+#~ msgctxt "sortie"
+#~ msgid "Score"
+#~ msgstr "Очков"
+
+#~ msgctxt "sortie"
+#~ msgid "Aerial victories"
+#~ msgstr "Воздушных побед"
+
+#~ msgctxt "sortie"
+#~ msgid "Destroyed on Ground"
+#~ msgstr "Уничтожено на земле"
+
+#~ msgctxt "sortie"
+#~ msgid "fuel"
+#~ msgstr "топливо"
+
+#~ msgid "payload"
+#~ msgstr "вооружение"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Default"
+#~ msgstr "По умолчанию"
+
+#~ msgid "modifications"
+#~ msgstr "модификации"
+
+#~ msgctxt "sortie"
+#~ msgid "aircraft status"
+#~ msgstr "статус самолета"
+
+#~ msgctxt "sortie"
+#~ msgid "Not Takeoff"
+#~ msgstr "Не взлетал"
+
+#~ msgctxt "sortie"
+#~ msgid "In Flight"
+#~ msgstr "В полете"
+
+#~ msgctxt "sortie"
+#~ msgid "Shotdown"
+#~ msgstr "Сбит"
+
+#~ msgctxt "sortie"
+#~ msgid "Landed not on Airfield"
+#~ msgstr "Приземлился в поле"
+
+#~ msgctxt "sortie"
+#~ msgid "Crashed"
+#~ msgstr "Разбился"
+
+#~ msgctxt "sortie"
+#~ msgid "damage aircraft"
+#~ msgstr "повреждения самолета"
+
+#~ msgctxt "sortie"
+#~ msgid "Detailed results"
+#~ msgstr "Подробные результаты"
+
+#~ msgctxt "sortie"
+#~ msgid "Scoring"
+#~ msgstr "Подсчет очков"
+
+#~ msgctxt "total"
+#~ msgid "Bonuses"
+#~ msgstr "Бонусы"
+
+#~ msgctxt "sortie"
+#~ msgid "Coalition won a mission"
+#~ msgstr "Коалиция победила в миссии"
+
+#~ msgid "Stats of weapons"
+#~ msgstr "Статистика оружия"
+
+#~ msgid "Number of shots"
+#~ msgstr "Потрачено патронов"
+
+#~ msgid "Number of bullets hit the target"
+#~ msgstr "Попаданий при стрельбе"
+
+#~ msgid "Number of rockets launches"
+#~ msgstr "Ракет выпущено"
+
+#~ msgid "Number of bombs dropped"
+#~ msgstr "Бомб сброшено"
+
+#~ msgid ""
+#~ "This block may contain incorrect information, this is due to the errors "
+#~ "in the game log."
+#~ msgstr ""
+#~ "Данный блок может содержать некорректную информацию, это связано с "
+#~ "ошибками в логе игры."
+
+#~ msgctxt "sortie_page_title"
+#~ msgid "Sortie Log"
+#~ msgstr "Хронология вылета"
+
+#~ msgctxt "sortie_log"
+#~ msgid "AI"
+#~ msgstr "ИИ"
+
+#~ msgctxt "pilot_sorties"
+#~ msgid "Sorties"
+#~ msgstr "Журнал вылетов"
+
+#~ msgctxt "vlife_page_title"
+#~ msgid "VLife"
+#~ msgstr "Виртуальная жизнь"
+
+#~ msgctxt "pilot_vlifes"
+#~ msgid "pilot"
+#~ msgstr "пилот"
+
+#~ msgid "Back to vlifes list"
+#~ msgstr "Назад к списку виртуальных жизней"
+
+#~ msgctxt "pilot_vlifes"
+#~ msgid "Virtual Lifes"
+#~ msgstr "Виртуальные жизни"
+
+#~ msgid "Search pilot"
+#~ msgstr "Найти пилота"
+
+#~ msgid "Current Streak"
+#~ msgstr "Текущий стрик"
+
+#~ msgid "Go to the website of the squad"
+#~ msgstr "Перейти на сайт сквада"
+
+#~ msgid "Number of pilots"
+#~ msgstr "Кол-во пилотов"
+
+#~ msgid "Not enough pilots to participate in the rating"
+#~ msgstr "Недостаточно пилотов для участия в рейтинге"
+
+#~ msgctxt "specialty"
+#~ msgid "Fighters"
+#~ msgstr "Истребители"
+
+#~ msgctxt "specialty"
+#~ msgid "Attackers"
+#~ msgstr "Ударные"
+
+#~ msgctxt "specialty"
+#~ msgid "Bombers"
+#~ msgstr "Бомбардировщики"
+
+#~ msgid ""
+#~ "<strong>Attention!</strong> Statistics squad - accumulative. When a "
+#~ "player joins to squad, his past statistics does not affect the current "
+#~ "squad statistics. Only new sorties will be added in the squad statistics."
+#~ msgstr ""
+#~ "<strong>Внимание!</strong> Статистика сквада - накопительная. Когда игрок "
+#~ "присоединяется к скваду, его прошлая статистика не влияет на текущею "
+#~ "статистику сквада. Только новые вылеты будут учтены в статистике сквада."
+
+#, fuzzy
+#~| msgid "The player did not participate in this tour"
+#~ msgid "The squad did not participate in this tour"
+#~ msgstr "Игрок не принимал участия в этом туре"
+
+#~ msgid "Search squad"
+#~ msgstr "Найти сквад"
+
+#, fuzzy
+#~| msgid "on the number of air kills"
+#~ msgid "on the number of squad members"
+#~ msgstr "по количеству сбитых"
+
+#, python-format
+#~ msgid "Tour \"%(tour)s\" ended"
+#~ msgstr "Тур \"%(tour)s\" закончен"
+
+#, python-format
+#~ msgid "%(coal)s victory"
+#~ msgstr "Победили %(coal)s"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots"
+#~ msgstr "Лучшие пилоты"
+
+#~ msgctxt "tour_top"
+#~ msgid "rating"
+#~ msgstr "рейтинг"
+
+#~ msgctxt "tour_top"
+#~ msgid "Best pilots streak"
+#~ msgstr "Лучшие стрики пилотов"
+
+#~ msgid "Personal info"
+#~ msgstr "Персональная информация"
+
+#~ msgid "Permissions"
+#~ msgstr "Права доступа"
+
+#~ msgid "Important dates"
+#~ msgstr "Важные даты"
+
+#~ msgid "Users"
+#~ msgstr "Пользователи"
+
+#~ msgid "Remember me"
+#~ msgstr "Запомнить меня"
+
+#~ msgid "Password"
+#~ msgstr "Пароль"
+
+#~ msgid "Protection from bots"
+#~ msgstr "Защита от ботов"
+
+#~ msgid "Enter number associated with correct part of the aircraft."
+#~ msgstr "Введите номер подходящей детали самолета."
+
+#~ msgid "Incorrect answer."
+#~ msgstr "Неправильный ответ."
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "A user with this email is not found."
+#~ msgstr "Пользователь с таким email не найден."
+
+#~ msgid "Registration has already been confirmed. This user is activated."
+#~ msgstr "Регистрация уже подтверждена. Этот пользователь активирован."
+
+#~ msgid "New password"
+#~ msgstr "Новый пароль"
+
+#~ msgid "Current password"
+#~ msgstr "Текущий пароль"
+
+#~ msgid "To change the email or password you must enter current password."
+#~ msgstr "Для изменения email или пароля требуется ввести текущий пароль"
+
+#~ msgid "Incorrect current password."
+#~ msgstr "Неправильный текущий пароль"
+
+#~ msgid "IL2 stats: registration confirm"
+#~ msgstr "IL2 stats: подтверждение регистрации"
+
+#, python-format
+#~ msgid "Confirmation of registration: %(url)s"
+#~ msgstr "Подтверждение регистрации: %(url)s"
+
+#~ msgid "IL2 stats: password reset"
+#~ msgstr "IL2 stats: сброс пароля"
+
+#, python-format
+#~ msgid "Password reset: %(url)s"
+#~ msgstr "Сброс пароля: %(url)s"
+
+#~ msgid "username"
+#~ msgstr "имя"
+
+#~ msgid "Username must match the name in the game IL-2 (including squad tag)."
+#~ msgstr ""
+#~ "Имя должно совпадать с именем игрока в игре Ил-2 (включая сквадовую "
+#~ "приставку)."
+
+#~ msgid "A user with that username already exists."
+#~ msgstr "Пользователь с таким именем уже существует."
+
+#~ msgid "staff status"
+#~ msgstr "статус персонала"
+
+#~ msgid "Designates whether the user can log into this admin site."
+#~ msgstr ""
+#~ "Отметьте, если пользователь может входить в административную часть сайта."
+
+#~ msgid "active"
+#~ msgstr "активный"
+
+#~ msgid ""
+#~ "Designates whether this user should be treated as active. Unselect this "
+#~ "instead of deleting accounts."
+#~ msgstr ""
+#~ "Отметьте, если пользователь должен считаться активным. Уберите эту "
+#~ "отметку вместо удаления учётной записи."
+
+#~ msgid "timezone"
+#~ msgstr "часовой пояс"
+
+#~ msgid "user"
+#~ msgstr "пользователь"
+
+#~ msgid "users"
+#~ msgstr "пользователи"
+
+#~ msgid "Login"
+#~ msgstr "Вход"
+
+#~ msgid "Forgot password"
+#~ msgstr "Забыл пароль"
+
+#~ msgid "Registration confirmation"
+#~ msgstr "Подтверждение регистрации"
+
+#~ msgid "Password reset"
+#~ msgstr "Сброс пароля"
+
+#~ msgctxt "action"
+#~ msgid "Reset"
+#~ msgstr "Сбросить"
+
+#~ msgid "Set new password"
+#~ msgstr "Установить новый пароль"
+
+#~ msgid "Save new password"
+#~ msgstr "Сохранить новый пароль"
+
+#~ msgid "Save"
+#~ msgstr "Сохранить"
+
+#~ msgid "Registration"
+#~ msgstr "Регистрация"
+
+#~ msgid ""
+#~ "Enter a valid username. This value may contain only letters, numbers and "
+#~ "@/./+/-/_ characters."
+#~ msgstr ""
+#~ "Введите правильное имя пользователя. Оно может содержать только буквы, "
+#~ "цифры и знаки @/./+/-/_."
+
+#~ msgid ""
+#~ "We send to your email address message with a link to confirm your "
+#~ "registration."
+#~ msgstr "Мы отправили вам письмо с ссылкой для подтверждения регистрации."
+
+#~ msgid "Your registration has been confirmed. Now you can login."
+#~ msgstr "Ваша регистрация подтверждена. Теперь вы можете войти."
+
+#~ msgid "Incorrect link to confirm your registration."
+#~ msgstr "Неправильная ссылка для подтверждения регистрации."
+
+#~ msgid "We send to your email address message with a link to reset password."
+#~ msgstr "Мы отправили вам письмо с ссылкой на сброс пароля."
+
+#~ msgid "Password successfully changed. Now you can login."
+#~ msgstr "Пароль успешно изменен. Теперь вы можете войти."
+
+#~ msgid "Password reset unsuccessful"
+#~ msgstr "Неудачный сброс пароля"
+
+#~ msgid ""
+#~ "Retry a using link from the email or start the password reset procedure "
+#~ "again."
+#~ msgstr ""
+#~ "Попробуйте заново использовать ссылку из письма или запустите процедуру "
+#~ "сброса пароля заново."
+
+#~ msgid "Profile successfully changed."
+#~ msgstr "Профиль успешно обновлен."
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-100M"
+#~ msgstr "ФАБ-100М"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-250tsk"
+#~ msgstr "ФАБ-250цк"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "White Smoke"
+#~ msgstr "Белый дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Blue Smoke"
+#~ msgstr "Синий дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Red Smoke"
+#~ msgstr "Красный дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Green Smoke"
+#~ msgstr "Зеленый дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Yellow Smoke"
+#~ msgstr "Желтый дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Black Smoke"
+#~ msgstr "Черный дым"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "500 lb GP"
+#~ msgstr "500 lb GP"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "1000 lb MC"
+#~ msgstr "1000 lb MC"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 50"
+#~ msgstr "SC 50"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 250"
+#~ msgstr "SC 250"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SD 70"
+#~ msgstr "SD 70"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "21cm WGr.42"
+#~ msgstr "21cm WGr.42"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 500"
+#~ msgstr "SC 500"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1000"
+#~ msgstr "SC 1000"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "24 lb Cooper"
+#~ msgstr "24 lb Cooper"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "H.E.R.L. 112 lbs"
+#~ msgstr "H.E.R.L. 112 lbs"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "R-Hl. Pz.Bl. 1"
+#~ msgstr "R-Hl. Pz.Bl. 1"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "R-Sprgr. M8"
+#~ msgstr "R-Sprgr. M8"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "R4M Orkan"
+#~ msgstr "R4M Orkan"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "12.5 kg. P.u.W"
+#~ msgstr "12.5 kg. P.u.W"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "50 kg. P.u.W"
+#~ msgstr "50 kg. P.u.W"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 1800"
+#~ msgstr "SC 1800"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "SC 2500"
+#~ msgstr "SC 2500"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-50sv"
+#~ msgstr "ФАБ-50св"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "ROS-82"
+#~ msgstr "РОС-82"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-250sv"
+#~ msgstr "ФАБ-250св"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "RBS-82"
+#~ msgstr "РБС-82"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "ROFS-132"
+#~ msgstr "РОФС-132"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "PTAB-2.5-1.5"
+#~ msgstr "ПТАБ-2.5-1.5"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Cargo"
+#~ msgstr "Груз"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "MAB 250"
+#~ msgstr "MAB 250"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "Paratroopers"
+#~ msgstr "Парашютисты"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "50-T"
+#~ msgstr "50-T"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "100-T"
+#~ msgstr "100-T"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M64 500 lb"
+#~ msgstr "M64 500 lb"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M65 1000 lb"
+#~ msgstr "M65 1000 lb"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M66 2000 lb"
+#~ msgstr "M66 2000 lb"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "M8 4.5 in"
+#~ msgstr "M8 4.5 in"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "FAB-500M"
+#~ msgstr "ФАБ-500М"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "ROS-132"
+#~ msgstr "РОС-132"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "250 lb GP"
+#~ msgstr "250 lb GP"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "RP-3 HE"
+#~ msgstr "RP-3 HE"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "RP-3 AP"
+#~ msgstr "RP-3 AP"
+
+#~ msgctxt "aircraft_payload"
+#~ msgid "500 lb MC"
+#~ msgstr "500 lb MC"

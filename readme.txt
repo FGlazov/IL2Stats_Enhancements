@@ -1,6 +1,6 @@
-====================================================
-IL-2 Stats Mod Bundle: Disco + Tanks + SplitRankings
-====================================================
+============================================================================
+IL-2 Stats Mod Bundle: Disco + Tanks + SplitRankings + Global Aircraft Stats
+============================================================================
 Bundle compiled by: =FEW=Revolves
 
 This is a IL-2 stats mod compilation consisting of three mods:
@@ -8,6 +8,7 @@ This is a IL-2 stats mod compilation consisting of three mods:
 Tank mod by CountZero ( https://forum.il2sturmovik.com/topic/55657-mod-to-add-tank-missions-for-il2-stats-system-made-by-fbvaal-and-fbisay/ )
 Disconnect mod by CountZero ( https://forum.il2sturmovik.com/topic/56709-mod-for-il2-stats-system-more-options-for-disconnection-situations/ )
 Split Rankings mod by =Few=Revolves and Enigma89 ( https://forum.il2sturmovik.com/topic/69965-il-2-stats-submod-split-rankings/ )
+Global Aircraft Stats mod =Few=Revolves and Enigma89  ( https://forum.il2sturmovik.com/topic/70380-il-2-stats-mod-global-aircraft-stats/ )
 
 IL-2 stats is a website designed by =FB=Vaal and and =FB=Islay, which is used to track statistics on most IL-2 dedicated
 servers.
@@ -17,9 +18,11 @@ This bundle version is designed to work with version 1.2.48 of IL-2 stats.
 Disconnect mod version: 1.5
 Tank mod version: 2.9
 Split Rankings mod version : 1.1.0
+Global Aircraft Stats mod version : 1.0.0
 
 Note that if you wish to run the disconnect mod and split ranking mod together (without tanks), you don't need any
-special bundle! The two mods are compatible as is, just install both of them over each other.
+special bundle! The two mods are compatible as is, just install both of them over each other. Global Aircraft Stats
+also works well with the other mods, see its readme.
 
 Installation
 ---------------------------------------------
@@ -28,14 +31,21 @@ Installation
 
 2. Copy the src folder inside this .zip into your il2 stats folder.
 
-3. Inside your src/conf.ini, add the line "mods = mod_rating_by_type" under [stats].
+3. Inside your src/conf.ini, change the "mods" parameter under [stats] to "mods=mod_rating_by_type, mod_stats_by_aircraft".
+If you don't have such a parameter, then add it. 
 
-4. Inside your src/conf ini, configure the disconnect mod as you desire. To be precise, you need to add the lines
+4. Inside your src/conf.ini, configure the disconnect mod as you desire. To be precise, you need to add the lines
 sortie_disco_min_time = 0
 sortie_damage_disco_time = 120
 under [stats], with values as you wish (in seconds).
+More details in the disconnect mod thread/readme.
 
-5. Run the collectstatic script in your /run folder after you're done with the above.
+5. Inside your src/conf.ini, configure how many tours back you wish to retroactively compute for the global aircraft stats mod.
+The parameter is "retro_compute_for_last_tours=10" under [stats]. A value of -1 disables retroactive computations,
+0 retroactively computes for all sorties inside the current tour (before the mod was installed). A value of 10 computes for
+the last 10 tours. More details inside the Global Aircraft stats readme.
+
+6. Run the update script in your /run folder after you're done with the above.
 
 Support
 ---------------------------------------------

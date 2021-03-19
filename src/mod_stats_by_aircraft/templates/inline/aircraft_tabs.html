@@ -1,0 +1,7 @@
+{% load i18n staticfiles tz stats %}
+<nav id="nav_tabs">
+    <div class="nav_tabs">
+        <a href="{{ aircraft_bucket.get_aircraft_url }}">{% trans 'Aircraft Statistics' context 'pilot_nav_tab' %}</a>
+        <a href="{{ aircraft_bucket.get_killboard_url }}">{% trans 'Aircraft Killboard' context 'pilot_nav_tab' %}</a>
+    </div>
+</nav>
