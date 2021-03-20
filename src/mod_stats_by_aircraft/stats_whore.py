@@ -91,7 +91,7 @@ def main():
                 processed_reports.append(m_report_file.name)
                 continue
         # ======================== MODDED PART BEGIN
-        elif backfill_aircraft_by_stats:
+        if backfill_aircraft_by_stats:
             work_done = process_old_sorties_batch_aircraft_stats(backfill_log)
             backfill_aircraft_by_stats = work_done
             backfill_log = False

@@ -14,3 +14,7 @@ Version 1.1.0
 
 - Upgrade to version 1.1.0 of SplitRankings
 - Add Global Aircraft Stats to bundle.
+
+Version 1.1.1
+
+- Upgrade to version of 1.0.1 of Global Aircraft Stats, which fixes bug with retroactive computations.
