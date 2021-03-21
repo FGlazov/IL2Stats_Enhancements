@@ -367,6 +367,9 @@ def stats_whore(m_report_file):
 @transaction.atomic
 def process_old_sorties_batch_aircraft_stats(backfill_log):
     max_id = Tour.objects.aggregate(Max('id'))['id__max']
+    if max_id is None:  # Edge case: No tour yet
+        return False
+	
     tour_cutoff = max_id - RETRO_COMPUTE_FOR_LAST_HOURS
 
     backfill_sorties = (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__isnull=True,
@@ -505,7 +508,10 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype):
                      .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
                      .filter(Q(cact_sortie_id=sortie.id),
                              Q(type='shotdown') | Q(type='killed') | Q(type='damaged'),
-                             act_object__cls='aircraft_turret', cact_object__cls_base='aircraft')
+                             act_object__cls='aircraft_turret', cact_object__cls_base='aircraft',
+                             # Filter out AI kills from turret.
+                             cact_sortie_id__isnull=False)
+
                      # Disregard friendly fire incidents.
                      .exclude(extra_data__is_friendly_fire=True))
 

@@ -18,7 +18,7 @@ This bundle version is designed to work with version 1.2.48 of IL-2 stats.
 Disconnect mod version: 1.5
 Tank mod version: 2.9
 Split Rankings mod version : 1.1.0
-Global Aircraft Stats mod version : 1.0.1
+Global Aircraft Stats mod version : 1.0.2
 
 Note that if you wish to run the disconnect mod and split ranking mod together (without tanks), you don't need any
 special bundle! The two mods are compatible as is, just install both of them over each other. Global Aircraft Stats
