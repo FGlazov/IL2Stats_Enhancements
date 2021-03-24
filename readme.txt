@@ -16,7 +16,7 @@ servers.
 This bundle version is designed to work with version 1.2.48 of IL-2 stats.
 
 Disconnect mod version: 1.5
-Tank mod version: 2.9
+Tank mod version: 2.9.1
 Split Rankings mod version : 1.1.0
 Global Aircraft Stats mod version : 1.0.2
 

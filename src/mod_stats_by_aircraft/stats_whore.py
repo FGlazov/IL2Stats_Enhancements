@@ -317,7 +317,11 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the damage to the tank driver.
+                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -336,7 +340,11 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the kill to the tank driver.
+                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -346,7 +354,7 @@ def stats_whore(m_report_file):
                 params['cact_sortie_id'] = event['target'].sortie.sortie_db.id
             else:
                 params['cact_object_id'] = objects[event['target'].log_name]['id']
-
+				
         l = LogEntry.objects.create(**params)
         if l.type == 'shotdown' and l.act_sortie and l.cact_sortie and not l.act_sortie.is_disco and not l.extra_data.get(
                 'is_friendly_fire'):

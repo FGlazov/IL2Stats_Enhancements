@@ -22,3 +22,7 @@ Version 1.1.1
 Version 1.1.2
 
 - Upgrade to version 1.0.2 of Global Aircraft Stats, which fixes some more bugs.
+
+Version 1.2
+
+- Upgrade to version 2.9.1 of CountZero's tank mod, which now includes sortie logs for tanks which show what objects you've damaged.
