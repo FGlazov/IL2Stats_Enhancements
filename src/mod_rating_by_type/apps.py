@@ -21,3 +21,8 @@ class ModConfig(AppConfig):
         original_views.main = new_views.main
         original_views.tour = new_views.tour
         original_views.mission = new_views.mission
+
+        from . import report as new_report
+        from mission_report.report import MissionReport
+
+        MissionReport.event_hit = new_report.event_hit
