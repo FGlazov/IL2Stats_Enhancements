@@ -26,3 +26,7 @@ class ModConfig(AppConfig):
         from mission_report.report import MissionReport
 
         MissionReport.event_hit = new_report.event_hit
+
+        from stats import stats_whore as original_stats_whore
+        from . import stats_whore as new_stats_whore
+        original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
