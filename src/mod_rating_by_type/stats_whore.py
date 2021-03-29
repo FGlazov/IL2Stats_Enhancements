@@ -127,7 +127,6 @@ def create_ammo(sortie):
 
     if hasattr(sortie, 'ammo_breakdown'):
         result['ammo_breakdown'] = sortie.ammo_breakdown
-    # TODO: If ammo module configured, maybe return an empty dict in other case here?
 
     return result
 # ======================== MODDED PART END

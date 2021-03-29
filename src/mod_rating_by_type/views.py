@@ -12,8 +12,10 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, mission, missions_list,
-                         pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards)
+from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, missions_list,
+                         pilot_sortie_log, pilot_sorties, pilot_killboard, pilot_awards)
+from .bullets_types import translate_ammo_breakdown
+from .config_modules import *
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -48,6 +50,7 @@ def squad(request, squad_id, squad_tag=None):
         'page_light_position': page_light_position,
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -59,7 +62,11 @@ def squad_pilots(request, squad_id, squad_tag=None):
     request.tour = squad_.tour
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
     pilots = Player.players.pilots(tour_id=squad_.tour_id, squad_id=squad_.id).order_by(sort_by, 'id')
-    return render(request, 'squad_pilots.html', {'squad': squad_, 'pilots': pilots})
+    return render(request, 'squad_pilots.html', {
+        'squad': squad_,
+        'pilots': pilots,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
 
 
 def squad_rankings(request):
@@ -75,6 +82,7 @@ def squad_rankings(request):
     return render(request, 'squads.html', {
         'squads': squads,
         'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -91,6 +99,7 @@ def pilot_rankings(request):
     return render(request, 'pilots.html', {
         'players': players,
         'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -143,6 +152,7 @@ def pilot(request, profile_id, nickname=None):
         'page_light_position': page_light_position,
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -181,24 +191,33 @@ def main(request):
     top_streak = (Player.players.pilots(tour_id=request.tour.id)
                       .exclude(score_streak_current=0)
                       .active(tour=request.tour).order_by('-score_streak_current')[:10])
-    top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(score_streak_current_heavy=0)
-                            .active(tour=request.tour).order_by('-score_streak_current_heavy')[:10])
-    top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                             .exclude(score_streak_current_medium=0)
-                             .active(tour=request.tour).order_by('-score_streak_current_medium')[:10])
-    top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(score_streak_current_light=0)
-                            .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
 
     top_24 = _top_pilots(tour_id=request.tour.id,
                          queryset=_top_24_queryset(tour_id=request.tour.id))
-    top_24_heavy = _top_pilots(tour_id=request.tour.id,
-                               queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_heavy'))
-    top_24_medium = _top_pilots(tour_id=request.tour.id,
-                                queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_medium'))
-    top_24_light = _top_pilots(tour_id=request.tour.id,
-                               queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_light'))
+
+    if module_active(MODULE_SPLIT_RANKINGS):
+        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_current_heavy=0)
+                                .active(tour=request.tour).order_by('-score_streak_current_heavy')[:10])
+        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(score_streak_current_medium=0)
+                                 .active(tour=request.tour).order_by('-score_streak_current_medium')[:10])
+        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_current_light=0)
+                                .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
+        top_24_heavy = _top_pilots(tour_id=request.tour.id,
+                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_heavy'))
+        top_24_medium = _top_pilots(tour_id=request.tour.id,
+                                    queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_medium'))
+        top_24_light = _top_pilots(tour_id=request.tour.id,
+                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_light'))
+    else:
+        top_streak_heavy = None
+        top_streak_medium = None
+        top_streak_light = None
+        top_24_heavy = None
+        top_24_medium = None
+        top_24_light = None
 
     coal_active_players = request.tour.coal_active_players()
     total_active_players = sum(coal_active_players.values())
@@ -207,20 +226,22 @@ def main(request):
         previous_tour = Tour.objects.exclude(id=request.tour.id).order_by('-id')[0]
     except IndexError:
         previous_tour = None
+
+    previous_tour_top_light = None
+    previous_tour_top_medium = None
+    previous_tour_top_heavy = None
     if previous_tour:
         previous_tour_top = (Player.players.pilots(tour_id=previous_tour.id)
                                  .active(tour=previous_tour).order_by('-rating')[:20])
-        previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
-                                       .active(tour=previous_tour).order_by('-rating_light')[:20])
-        previous_tour_top_medium = (Player.players.pilots(tour_id=previous_tour.id)
-                                        .active(tour=previous_tour).order_by('-rating_medium')[:20])
-        previous_tour_top_heavy = (Player.players.pilots(tour_id=previous_tour.id)
-                                       .active(tour=previous_tour).order_by('-rating_heavy')[:20])
+        if module_active(MODULE_SPLIT_RANKINGS):
+            previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
+                                           .active(tour=previous_tour).order_by('-rating_light')[:20])
+            previous_tour_top_medium = (Player.players.pilots(tour_id=previous_tour.id)
+                                            .active(tour=previous_tour).order_by('-rating_medium')[:20])
+            previous_tour_top_heavy = (Player.players.pilots(tour_id=previous_tour.id)
+                                           .active(tour=previous_tour).order_by('-rating_heavy')[:20])
     else:
         previous_tour_top = None
-        previous_tour_top_light = None
-        previous_tour_top_medium = None
-        previous_tour_top_heavy = None
 
     coal_1_online = PlayerOnline.objects.filter(coalition=Coalition.coal_1).count()
     coal_2_online = PlayerOnline.objects.filter(coalition=Coalition.coal_2).count()
@@ -264,33 +285,41 @@ def tour(request):
                       .exclude(score_streak_max=0)
                       .active(tour=request.tour).order_by('-score_streak_max')[:10])
 
-    top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(score_streak_max_heavy=0)
-                            .active(tour=request.tour).order_by('-score_streak_max_heavy')[:10])
-
-    top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                             .exclude(score_streak_max_medium=0)
-                             .active(tour=request.tour).order_by('-score_streak_max_medium')[:10])
-
-    top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(score_streak_max_light=0)
-                            .active(tour=request.tour).order_by('-score_streak_max_light')[:10])
-
     top_rating = (Player.players.pilots(tour_id=request.tour.id)
                       .exclude(rating=0)
                       .active(tour=request.tour).order_by('-rating')[:10])
 
-    top_rating_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(rating_heavy=0)
-                            .active(tour=request.tour).order_by('-rating_heavy')[:10])
+    if module_active(MODULE_SPLIT_RANKINGS):
+        top_rating_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(rating_heavy=0)
+                                .active(tour=request.tour).order_by('-rating_heavy')[:10])
 
-    top_rating_medium = (Player.players.pilots(tour_id=request.tour.id)
-                             .exclude(rating_medium=0)
-                             .active(tour=request.tour).order_by('-rating_medium')[:10])
+        top_rating_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(rating_medium=0)
+                                 .active(tour=request.tour).order_by('-rating_medium')[:10])
 
-    top_rating_light = (Player.players.pilots(tour_id=request.tour.id)
-                            .exclude(rating_light=0)
-                            .active(tour=request.tour).order_by('-rating_light')[:10])
+        top_rating_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(rating_light=0)
+                                .active(tour=request.tour).order_by('-rating_light')[:10])
+
+        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_max_heavy=0)
+                                .active(tour=request.tour).order_by('-score_streak_max_heavy')[:10])
+
+        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(score_streak_max_medium=0)
+                                 .active(tour=request.tour).order_by('-score_streak_max_medium')[:10])
+
+        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_max_light=0)
+                                .active(tour=request.tour).order_by('-score_streak_max_light')[:10])
+    else:
+        top_rating_heavy = None
+        top_rating_medium = None
+        top_rating_light = None
+        top_streak_heavy = None
+        top_streak_medium = None
+        top_streak_light = None
 
     coal_active_players = request.tour.coal_active_players()
     total_active_players = sum(coal_active_players.values())
@@ -334,4 +363,27 @@ def mission(request, mission_id):
         'sort_by': sort_by,
         'summary_total': summary_total,
         'summary_coal': summary_coal,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
+
+
+def pilot_sortie(request, sortie_id):
+    try:
+        sortie = (Sortie.objects
+                  .select_related('player', 'player__profile', 'player__tour', 'mission')
+                  .get(id=sortie_id, player__type='pilot'))
+    except Sortie.DoesNotExist:
+        raise Http404
+
+    # TODO: Modularize this too.
+    if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
+        ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
+    else:
+        ammo_breakdown = dict()
+
+    return render(request, 'pilot_sortie.html', {
+        'player': sortie.player,
+        'sortie': sortie,
+        'score_dict': sortie.mission.score_dict,
+        'ammo_breakdown': ammo_breakdown,
     })

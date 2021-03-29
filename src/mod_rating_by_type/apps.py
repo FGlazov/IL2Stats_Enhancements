@@ -6,6 +6,11 @@ class ModConfig(AppConfig):
     name = 'mod_rating_by_type'
 
     def ready(self):
+        # monkey-patch the new config parameter.
+        import config
+        config.DEFAULT['stats']['modules'] = ''
+        from . import config_modules
+
         # !!! monkey patch
         from stats import urls as original_urls
         from . import urls as new_urls
@@ -21,6 +26,7 @@ class ModConfig(AppConfig):
         original_views.main = new_views.main
         original_views.tour = new_views.tour
         original_views.mission = new_views.mission
+        original_views.pilot_sortie = new_views.pilot_sortie
 
         from . import report as new_report
         from mission_report.report import MissionReport

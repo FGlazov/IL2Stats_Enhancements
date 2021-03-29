@@ -485,6 +485,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% if previous_tour_top_light %}
                 <div class="top_pilots">
                     <div class="title">{% trans 'Top Fighter Pilots' %}</div>
                     <div class="top_pilots_columns">
@@ -496,6 +497,8 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
+                {% if previous_tour_top_medium %}
                 <div class="top_pilots">
                     <div class="title">{% trans 'Top Attacker Pilots' %}</div>
                     <div class="top_pilots_columns">
@@ -507,6 +510,8 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
+                {% if previous_tour_top_heavy %}
                 <div class="top_pilots">
                     <div class="title">{% trans 'Top Bomber Pilots' %}</div>
                     <div class="top_pilots_columns">
@@ -518,6 +523,7 @@
                         {% endfor %}
                     </div>
                 </div>
+                {% endif %}
             </div>
             {% endif %}
         </div>
