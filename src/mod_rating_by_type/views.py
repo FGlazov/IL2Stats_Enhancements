@@ -375,7 +375,6 @@ def pilot_sortie(request, sortie_id):
     except Sortie.DoesNotExist:
         raise Http404
 
-    # TODO: Modularize this too.
     if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
         ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
     else:
