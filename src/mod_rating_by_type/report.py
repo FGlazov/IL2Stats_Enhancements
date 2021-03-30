@@ -1,10 +1,11 @@
 from .config_modules import MODULE_AMMO_BREAKDOWN, module_active
 
-HIT_BY_OBJECT = 'hit_by_object'
-RECEIVED_BY_OBJECT = 'received_by_object'
 TOTAL_HITS = 'total_hits'
 TOTAL_RECEIVED = 'total_received'
 ALL_TAKEN = 'all_taken'
+DMG_FROM_ONE_SOURCE = 'dmg_from_one_source'
+LAST_DMG_SORTIE = 'last_dmg_sortie'
+LAST_DMG_OBJECT = 'last_dmg_object'
 
 
 def event_hit(self, tik, ammo, attacker_id, target_id):
@@ -35,24 +36,37 @@ def record_hits(target, attacker, ammo):
             target.sortie.ammo_breakdown = default_ammo_breakdown()
 
         increment(target.sortie.ammo_breakdown, TOTAL_RECEIVED, ammo['name'])
-        increment(target.sortie.ammo_breakdown, RECEIVED_BY_OBJECT, encode_tuple(target, ammo))
         target.sortie.ammo_breakdown[ALL_TAKEN] += 1
+
+        if attacker:
+            ammo_breakdown = target.sortie.ammo_breakdown
+            if ammo_breakdown[LAST_DMG_OBJECT] is None and ammo_breakdown[LAST_DMG_SORTIE] is None:
+                ammo_breakdown[DMG_FROM_ONE_SOURCE] = True
+            else:
+                if attacker.sortie and attacker.sortie.index != ammo_breakdown[LAST_DMG_SORTIE]:
+                    ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
+                if attacker.id != target.sortie.ammo_breakdown[LAST_DMG_OBJECT]:
+                    ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
+
+            ammo_breakdown[LAST_DMG_OBJECT] = attacker.id
+            if attacker.sortie:
+                ammo_breakdown[LAST_DMG_SORTIE] = attacker.sortie.index
 
     if attacker and attacker.sortie:
         if not hasattr(attacker.sortie, 'ammo_breakdown'):
             attacker.sortie.ammo_breakdown = default_ammo_breakdown()
 
         increment(attacker.sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
-        increment(attacker.sortie.ammo_breakdown, HIT_BY_OBJECT, encode_tuple(target, ammo))
 
 
 def default_ammo_breakdown():
     return {
-        HIT_BY_OBJECT: dict(),
-        RECEIVED_BY_OBJECT: dict(),
         TOTAL_HITS: dict(),
         TOTAL_RECEIVED: dict(),
-        ALL_TAKEN: 0
+        ALL_TAKEN: 0,
+        DMG_FROM_ONE_SOURCE: False,
+        LAST_DMG_SORTIE: None,
+        LAST_DMG_OBJECT: None,
     }
 
 
