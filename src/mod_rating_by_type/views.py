@@ -12,7 +12,7 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, missions_list,
+from stats.views import (_get_rating_position, _get_squad, pilot_vlifes, online, missions_list,
                          pilot_sortie_log, pilot_sorties, pilot_killboard, pilot_awards)
 from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
@@ -23,7 +23,7 @@ ITEMS_PER_PAGE = 20
 missions_sort_fields = ['id', 'pilots_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
-pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'khr', 'accuracy',
+pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
                       'score', 'score_light', 'score_medium', 'score_heavy',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 killboard_sort_fields = ['won', 'lose', 'wl']
@@ -397,7 +397,10 @@ def ironman_stats(request):
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
-    players = VLife.objects.filter(relive=0).exclude(sorties_total=0).order_by(sort_by, 'id')
+    players = (VLife.objects
+               .filter(relive=0, tour_id=request.tour.id, sorties_total__gt=0, player__type='pilot')
+               .exclude(profile__is_hide=True)
+               .order_by(sort_by, 'id'))
     if search:
         players = players.search(name=search)
 
@@ -406,4 +409,19 @@ def ironman_stats(request):
         'players': players,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
+
+
+def pilot_vlife(request, vlife_id):
+    try:
+        vlife = (VLife.objects
+                 .select_related('player', 'player__profile', 'player__tour')
+                 .get(id=vlife_id, player__type='pilot'))
+    except VLife.DoesNotExist:
+        raise Http404
+    return render(request, 'pilot_vlife.html', {
+        'player': vlife.player,
+        'vlife': vlife,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
     })

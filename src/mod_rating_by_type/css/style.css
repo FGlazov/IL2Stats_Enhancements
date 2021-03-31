@@ -1,0 +1,38 @@
+section#vlife .wrapper .player_analytics {
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+section#vlife .wrapper .player_analytics .item {
+  background: rgba(150, 150, 150, 0.05);
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+section#vlife .wrapper .player_analytics .item .text {
+  display: inline;
+  padding-left: 25px;
+}
+section#vlife .wrapper .player_analytics .item .num {
+  display: inline;
+  padding-right: 25px;
+  float: right;
+}
+section#vlife .wrapper .player_analytics .left_block {
+  display: inline-block;
+  width: 368px;
+  vertical-align: top;
+  float: left;
+}
+section#vlife .wrapper .player_analytics .center_block {
+  display: inline-block;
+  width: 368px;
+  vertical-align: top;
+}
+section#vlife .wrapper .player_analytics .right_block {
+  display: inline-block;
+  width: 368px;
+  vertical-align: top;
+  float: right;
+}

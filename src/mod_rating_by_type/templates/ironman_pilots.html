@@ -10,7 +10,7 @@
         <div class="wrapper">
             <div class="content_head">
                 <div class="content_title">
-                    {% trans 'Ironman Rankings' %}
+                    {% trans 'Ironman Rankings (Living Pilots)' %}
                     <div class="content_title_sm" id="sort_by_text"></div>
                 </div>
                 <div class="form_search">
@@ -19,6 +19,7 @@
                         <input type="text" name="search" value="" placeholder="{% trans 'Search pilot' %}">
                     </form>
                 </div>
+
             </div>
 
             {% if players %}
@@ -85,7 +86,7 @@
                     {% endif %}
                     <div class="cell" style="width: 90px;">
                         <a class="sort_by" href="?sort_by=-score">
-                            <img src="{% static 'img/icons/small/score.png' %}" width="18" height="18"
+                            <img src="{% static 'img/icons/small/rating.png' %}" width="18" height="18"
                                  alt="{% trans 'Score' %}" title="{% trans 'Score' %}">
                         </a>
                     </div>
@@ -147,7 +148,7 @@
             'streak_current': '{% trans 'on the current streak of kills' %}',
             'gk_total': '{% trans 'on the number of ground kills' %}',
             'flight_time': '{% trans 'on the flight time (hours:minutes)' %}',
-            'kd': '{% trans 'on the average number of kill per one death (K/D)' %}',
+            'kl': '{% trans 'on the average number of kills per one aircraft lost (K/L)' %}',
             'khr': '{% trans 'on the average number of kill per one hour (K/Hr)' %}',
             'accuracy': '{% trans 'on the accuracy' %}',
             'rating': ''
