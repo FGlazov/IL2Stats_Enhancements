@@ -20,6 +20,7 @@ Version 1.2.0
 
 - Introduction of modules system. SplitRankings turned into a module.
 - Module SplitRankings: Add fighter/atttacker/bomber rankings to VLife page.
+- Module SplitRankings: Jabo sorties (e.g. a jabo FW-190) now contribute to attacker rating. Me-262 and P-38 sorties without bombs contribute to fighter ratings (they both used to be considered attackers).
 - New module: Ammo Breakdown. See which shots you hit, and which shots you got hit by in indivual sortie pages.
 - New module: Ironman Stats. A new table which shows you how your current pilot life stacks up against all other current pilot lives.
 - Ironman Stats: Display more information on VLife page. E.g. your kills/per aircraft lost.

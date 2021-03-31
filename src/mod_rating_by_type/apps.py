@@ -44,3 +44,4 @@ class ModConfig(AppConfig):
         from stats import stats_whore as original_stats_whore
         from . import stats_whore as new_stats_whore
         original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
+        original_stats_whore.update_general = new_stats_whore.update_general

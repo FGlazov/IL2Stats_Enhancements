@@ -2,6 +2,7 @@ from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
 from stats.models import Sortie
+from .variant_utils import is_jabo, is_fighter
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
@@ -115,7 +116,6 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 # ======================== MODDED PART BEGIN
 # Here we additionally inject ammo_breakdown.
 def create_ammo(sortie):
-
     result = {'used_cartridges': sortie.used_cartridges,
               'used_bombs': sortie.used_bombs,
               'used_rockets': sortie.used_rockets,
@@ -130,3 +130,39 @@ def create_ammo(sortie):
 
     return result
 # ======================== MODDED PART END
+
+
+def update_general(player, new_sortie):
+    flight_time_add = 0
+    if not new_sortie.is_not_takeoff:
+        player.sorties_total += 1
+        flight_time_add = new_sortie.flight_time
+    player.flight_time += flight_time_add
+
+    relive_add = 1 if new_sortie.is_relive else 0
+    player.relive += relive_add
+
+    player.ak_total += new_sortie.ak_total
+    player.fak_total += new_sortie.fak_total
+    player.gk_total += new_sortie.gk_total
+    player.fgk_total += new_sortie.fgk_total
+    player.ak_assist += new_sortie.ak_assist
+    player.score += new_sortie.score
+
+    try:
+        # ======================== MODDED PART BEGIN
+        if is_fighter(new_sortie):
+            player.score_light += new_sortie.score
+            player.flight_time_light += flight_time_add
+            player.relive_light += relive_add
+        elif new_sortie.aircraft.cls == "aircraft_medium" or is_jabo(new_sortie):
+            # ======================== MODDED PART END
+            player.score_medium += new_sortie.score
+            player.flight_time_medium += flight_time_add
+            player.relive_medium += relive_add
+        elif new_sortie.aircraft.cls == "aircraft_heavy":
+            player.score_heavy += new_sortie.score
+            player.flight_time_heavy += flight_time_add
+            player.relive_heavy += relive_add
+    except AttributeError:
+        pass  # Some player objects have no score or relive attributes for light/medium/heavy aircraft.
