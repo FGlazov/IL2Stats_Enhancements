@@ -386,3 +386,22 @@ def pilot_sortie(request, sortie_id):
         'score_dict': sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
     })
+
+
+def ironman_stats(request):
+    # TODO: Throw 404 if ironman module is not configured!
+
+    page = request.GET.get('page', 1)
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
+    players = Player.players.pilots(tour_id=request.tour.id).order_by(sort_by, 'id')
+    if search:
+        players = players.search(name=search)
+    else:
+        players = players.active(tour=request.tour)
+    players = Paginator(players, ITEMS_PER_PAGE).page(page)
+    return render(request, 'ironman_pilots.html', {
+        'players': players,
+        'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })

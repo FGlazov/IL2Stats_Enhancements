@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
+from django.conf.urls import url
 
 class ModConfig(AppConfig):
     name = 'mod_rating_by_type'
@@ -10,6 +11,11 @@ class ModConfig(AppConfig):
         import config
         config.DEFAULT['stats']['modules'] = ''
         from . import config_modules
+
+        # Add ironman config middleware so pages know when to render "ironman rankings".
+        import core.settings as settings
+        settings.MIDDLEWARE.append('mod_rating_by_type.middleware.ironman_middleware')
+        settings.MIDDLEWARE.append('mod_rating_by_type.middleware.aircraft_installed')
 
         # !!! monkey patch
         from stats import urls as original_urls
@@ -27,6 +33,7 @@ class ModConfig(AppConfig):
         original_views.tour = new_views.tour
         original_views.mission = new_views.mission
         original_views.pilot_sortie = new_views.pilot_sortie
+        original_views.ironman_stats = new_views.ironman_stats
 
         from . import report as new_report
         from mission_report.report import MissionReport

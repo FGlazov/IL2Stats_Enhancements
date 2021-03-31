@@ -46,4 +46,6 @@ urlpatterns = [
     url(r'^pilot/(?P<profile_id>\d+)/$', views.pilot),
     url(r'^sorties/(?P<profile_id>\d+)/$', views.pilot_sorties),
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
+
+    url(r'^ironman/$', views.ironman_stats, name='ironman')
 ]
