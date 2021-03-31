@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles tz stats %}
-{% block title %}{% trans 'Pilot Rankings' %} / {{ block.super }}{% endblock title %}
+{% block title %}{% trans 'Ironman Rankings' %} / {{ block.super }}{% endblock title %}
 
 {% block head %}
 {% endblock head %}
@@ -10,7 +10,7 @@
         <div class="wrapper">
             <div class="content_head">
                 <div class="content_title">
-                    {% trans 'Pilot Rankings' %}
+                    {% trans 'Ironman Rankings' %}
                     <div class="content_title_sm" id="sort_by_text"></div>
                 </div>
                 <div class="form_search">
@@ -34,12 +34,6 @@
                         </a>
                     </div>
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-streak_current">
-                            <img src="{% static 'img/icons/small/streak.png' %}" width="18" height="18"
-                                 alt="{% trans 'Current Streak' %}" title="{% trans 'Current Streak' %}">
-                        </a>
-                    </div>
-                    <div class="cell" style="width: 90px;">
                         <a class="sort_by" href="?sort_by=-gk_total">
                             <img src="{% static 'img/icons/small/gk.png' %}" width="18" height="18"
                                  alt="{% trans 'Ground Kills' %}" title="{% trans 'Ground Kills' %}">
@@ -52,9 +46,9 @@
                         </a>
                     </div>
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-kd">
+                        <a class="sort_by" href="?sort_by=-kl">
                             <img src="{% static 'img/icons/small/kd.png' %}" width="18" height="18"
-                                 alt="K/D" title="K/D">
+                                 alt="K/L" title="K/L">
                         </a>
                     </div>
                     <div class="cell" style="width: 90px;">
@@ -71,51 +65,51 @@
                     </div>
                     {% if split_rankings %}
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-rating_light">
+                        <a class="sort_by" href="?sort_by=-score_light">
                             <img src="{% static 'img/icons/small/rating_light.png' %}" width="18" height="18"
-                                 alt="{% trans 'Rating' %}" title="{% trans 'Fighter Rating' %}">
+                                 alt="{% trans 'Score' %}" title="{% trans 'Fighter Score' %}">
                         </a>
                     </div>
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-rating_medium">
+                        <a class="sort_by" href="?sort_by=-score_medium">
                             <img src="{% static 'img/icons/small/rating_medium.png' %}" width="18" height="18"
-                                 alt="{% trans 'Rating' %}" title="{% trans 'Attacker Rating' %}">
+                                 alt="{% trans 'Score' %}" title="{% trans 'Attacker Score' %}">
                         </a>
                     </div>
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-rating_heavy">
+                        <a class="sort_by" href="?sort_by=-score_heavy">
                             <img src="{% static 'img/icons/small/rating_heavy.png' %}" width="18" height="18"
-                                 alt="{% trans 'Rating' %}" title="{% trans 'Bomber Rating' %}">
+                                 alt="{% trans 'Score' %}" title="{% trans 'Bomber Score' %}">
                         </a>
                     </div>
                     {% endif %}
                     <div class="cell" style="width: 90px;">
-                        <a class="sort_by" href="?sort_by=-rating">
-                            <img src="{% static 'img/icons/small/rating.png' %}" width="18" height="18"
-                                 alt="{% trans 'Rating' %}" title="{% trans 'Rating' %}">
+                        <a class="sort_by" href="?sort_by=-score">
+                            <img src="{% static 'img/icons/small/score.png' %}" width="18" height="18"
+                                 alt="{% trans 'Score' %}" title="{% trans 'Score' %}">
                         </a>
                     </div>
                 </div>
                 {% for player in players %}
-                <a class="row" href="{{ player.get_profile_url }}">
+                <a class="row" href="{% url 'stats:pilot_vlife' player.id %}?tour={{ player.tour_id }}">
                     <div class="cell">{{ players.start_index|add:forloop.counter0 }}</div>
                     <div class="cell" style="text-align: left;">{{ player.nickname }}</div>
                     <div class="cell img">
                         {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
                     </div>
                     <div class="cell">{{ player.ak_total }}</div>
-                    <div class="cell">{{ player.streak_current }}</div>
                     <div class="cell">{{ player.gk_total }}</div>
                     <div class="cell">{{ player.flight_time|seconds_to_time }}</div>
-                    <div class="cell">{{ player.kd }}</div>
+                    <div class="cell">{{ player.kl }}</div>
                     <div class="cell">{{ player.khr }}</div>
-                    <div class="cell">{{ player.accuracy }}%</div>
+                    <div class="cell">{{ player.accuracy}}% </div>
                     {% if split_rankings %}
-                    <div class="cell" title="{{ player.rating_light }}">{{ player.rating_format_light }}</div>
-                    <div class="cell" title="{{ player.rating_medium }}">{{ player.rating_format_medium }}</div>
-                    <div class="cell" title="{{ player.rating_heavy }}">{{ player.rating_format_heavy }}</div>
+                    <div class="cell">{{ player.score_light }}</div>
+                    <div class="cell">{{ player.score_medium }}</div>
+                    <div class="cell">{{ player.score_heavy }}</div>
                     {% endif %}
-                    <div class="cell" title="{{ player.rating }}">{{ player.rating_format }}</div>
+
+                    <div class="cell">{{ player.score }}</div>
                 </a>
                 {% endfor %}
             </div>
@@ -160,7 +154,7 @@
         };
 
         $(document).ready(function() {
-            uri_sort_by('-rating', sort_by_text);
+            uri_sort_by('-score', sort_by_text);
             var paginator = new Paginator('paginator', {{ players.paginator.num_pages }}, 15, {{ players.number }}, uri_paginator);
         });
     </script>

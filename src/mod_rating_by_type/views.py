@@ -389,16 +389,18 @@ def pilot_sortie(request, sortie_id):
 
 
 def ironman_stats(request):
-    # TODO: Throw 404 if ironman module is not configured!
+    if not module_active(MODULE_IRONMAN_STATS):
+        raise Http404("Ironman stats not available on this server.")
+
+    # TODO: Switch the ironman rankings to "Best Streak" for not-active tours.
 
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
-    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
-    players = Player.players.pilots(tour_id=request.tour.id).order_by(sort_by, 'id')
+    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
+    players = VLife.objects.filter(relive=0).exclude(sorties_total=0).order_by(sort_by, 'id')
     if search:
         players = players.search(name=search)
-    else:
-        players = players.active(tour=request.tour)
+
     players = Paginator(players, ITEMS_PER_PAGE).page(page)
     return render(request, 'ironman_pilots.html', {
         'players': players,

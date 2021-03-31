@@ -19,5 +19,7 @@ Version 1.1.0
 Version 1.2.0
 
 - Introduction of modules system. SplitRankings turned into a module.
-- New module: Ammo Breakdown
-- New module: Ironman Stats
+- New module: Ammo Breakdown. See which shots you hit, and which shots you got hit by in indivual sortie pages.
+- New module: Ironman Stats. A new table which shows you 
+- Module SplitRankings: Add fighter/atttacker/bomber rankings to VLife page.
+- Display more information on VLife page. E.g. your kills/per aircraft lost.
