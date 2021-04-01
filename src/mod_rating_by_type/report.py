@@ -6,6 +6,7 @@ ALL_TAKEN = 'all_taken'
 DMG_FROM_ONE_SOURCE = 'dmg_from_one_source'
 LAST_DMG_SORTIE = 'last_dmg_sortie'
 LAST_DMG_OBJECT = 'last_dmg_object'
+LAST_TURRET_ACCOUNT = 'last_turret_account'
 
 
 def event_hit(self, tik, ammo, attacker_id, target_id):
@@ -51,6 +52,9 @@ def record_hits(target, attacker, ammo):
             ammo_breakdown[LAST_DMG_OBJECT] = attacker.id
             if attacker.sortie:
                 ammo_breakdown[LAST_DMG_SORTIE] = attacker.sortie.index
+
+            if attacker.cls == 'aircraft_turret' and attacker.parent:
+                ammo_breakdown[LAST_TURRET_ACCOUNT] = attacker.parent.sortie.account_id
 
     if attacker and attacker.sortie:
         if not hasattr(attacker.sortie, 'ammo_breakdown'):

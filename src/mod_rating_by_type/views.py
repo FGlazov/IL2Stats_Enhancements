@@ -402,7 +402,7 @@ def ironman_stats(request):
                .exclude(profile__is_hide=True)
                .order_by(sort_by, 'id'))
     if search:
-        players = players.search(name=search)
+        players = players.filter(profile__nickname__icontains=search)
 
     players = Paginator(players, ITEMS_PER_PAGE).page(page)
     return render(request, 'ironman_pilots.html', {
