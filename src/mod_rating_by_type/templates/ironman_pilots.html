@@ -10,7 +10,11 @@
         <div class="wrapper">
             <div class="content_head">
                 <div class="content_title">
+                    {% if request.tour.is_ended  %}
+                    {% trans 'Ironman Rankings (Best streak)' %}
+                    {% else %}
                     {% trans 'Ironman Rankings (Living Pilots)' %}
+                    {% endif %}
                     <div class="content_title_sm" id="sort_by_text"></div>
                 </div>
                 <div class="form_search">

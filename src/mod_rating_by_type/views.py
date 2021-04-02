@@ -1,11 +1,10 @@
 from datetime import timedelta
 
 from django.conf import settings
-from django.db.models import Q, Sum
+from django.db.models import Sum, OuterRef, Subquery
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-
 from mission_report.constants import Coalition
 
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
@@ -392,17 +391,29 @@ def ironman_stats(request):
     if not module_active(MODULE_IRONMAN_STATS):
         raise Http404("Ironman stats not available on this server.")
 
-    # TODO: Switch the ironman rankings to "Best Streak" for not-active tours.
+    request.tour.is_ended = True
 
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
-    players = (VLife.objects
-               .filter(relive=0, tour_id=request.tour.id, sorties_total__gt=0, player__type='pilot')
-               .exclude(profile__is_hide=True)
-               .order_by(sort_by, 'id'))
+    if request.tour.is_ended:
+        to_max = '-score'
+        if 'score_light' in sort_by:
+            to_max = '-score_light'
+        if 'score_medium' in sort_by:
+            to_max = '-score_medium'
+        if 'score_heavy' in sort_by:
+            to_max = '-score_heavy'
+
+        players = get_best_streak_ironman(request.tour.id, to_max).order_by(sort_by, 'id')
+    else:
+        players = (VLife.objects
+                   .filter(relive=0, tour_id=request.tour.id, sorties_total__gt=0, player__type='pilot')
+                   .exclude(profile__is_hide=True)
+                   .order_by(sort_by, 'id'))
+
     if search:
-        players = players.filter(profile__nickname__icontains=search)
+        players = players.filter(player__profile__nickname__icontains=search)
 
     players = Paginator(players, ITEMS_PER_PAGE).page(page)
     return render(request, 'ironman_pilots.html', {
@@ -410,6 +421,26 @@ def ironman_stats(request):
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
+
+
+# Basically, the following (psuedo code) SQL is wanted:
+#   SELECT *, Max(score)
+#   FROM VLife
+#   WHERE tour.id = tour_id AND sorties_total > 0 AND player_type = 'pilot' AND NOT profile.is.hide
+#   GROUP BY player.profile.id
+#
+# Where we want to extract VLife objects from the "*" part of the SELECT.
+# Everything but the "*" part is done inside the subquery sq.
+# Then, once we know the ids
+def get_best_streak_ironman(tour_id, to_max):
+    sq = (VLife.objects
+          .filter(tour_id=tour_id, sorties_total__gt=0, player__type='pilot',
+                  # For some reason player__profile__id raises an error...
+                  player__profile__nickname=OuterRef('player__profile__nickname'))
+          .exclude(profile__is_hide=True)
+          .order_by(to_max, '-score'))
+
+    return VLife.objects.filter(pk=Subquery(sq.values('id')[:1]))
 
 
 def pilot_vlife(request, vlife_id):
