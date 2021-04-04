@@ -21,7 +21,7 @@ def ironman_middleware(get_response):
 
 
 # Inserts "Aircraft Rankings" in navigation at top if the mod is installed.
-# (The base.html inside that mod sometimes gets overwritten by the base.html inside this mod)
+# (The base.html inside that mod gets overwritten by the base.html inside this mod)
 def aircraft_installed(get_response):
     # One-time configuration and initialization.
 

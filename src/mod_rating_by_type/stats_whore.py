@@ -34,7 +34,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
             is_friendly = sortie.coal_id == target.coal_id
 
             if not is_friendly:
-                score += mission.score_dict[target.cls]
+                score += mission.score_dict[target.cls]['ai' if target.is_ai() else 'base']
                 if target.cls_base == 'aircraft':
                     ak_total += 1
                 elif target.cls_base in ('block', 'vehicle', 'tank'):
@@ -61,7 +61,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 if sortie.coal_id == target.coal_id:
                     continue
                 ak_assist += 1
-                score += mission.score_dict['ak_assist']
+                score += mission.score_dict['ak_assist']['base']
 
     new_sortie = Sortie(
         profile=profile,

@@ -17,7 +17,7 @@ def get_active_modules():
             continue
         if module not in modules:
             print("[mod_rating_by_type] Unknown module " + module)
-        else :
+        else:
             print("[mod_rating_by_type] Added module " + module)
             result.add(module)
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 12:16+0200\n"
+"POT-Creation-Date: 2021-04-02 12:18+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,22 +78,22 @@ msgstr ""
 #: .\mod_rating_by_type\bullets_types.py:39
 msgctxt "bullet_type"
 msgid "Pistol bullet"
-msgstr ""
+msgstr "Пистолетная пуля"
 
 #: .\mod_rating_by_type\bullets_types.py:40
 msgctxt "bullet_type"
 msgid "UB (AP)"
-msgstr ""
+msgstr "УБ (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:41
 msgctxt "bullet_type"
 msgid "UB (HE)"
-msgstr ""
+msgstr "УБ (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:42
 msgctxt "bullet_type"
 msgid "ShKAS (AP)"
-msgstr ""
+msgstr "ШКАС (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:43
 msgctxt "bullet_type"
@@ -200,42 +200,42 @@ msgstr ""
 #: .\mod_rating_by_type\bullets_types.py:62
 msgctxt "bullet_type"
 msgid "ShVAK (AP)"
-msgstr ""
+msgstr "ШВАК (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:63
 msgctxt "bullet_type"
 msgid "ShVAK (HE)"
-msgstr ""
+msgstr "ШВАК (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:64
 msgctxt "bullet_type"
 msgid "VYA-23 Soviet (AP)"
-msgstr ""
+msgstr "ВЯ-23 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
 msgid "VYA-23 Soviet (HE)"
-msgstr ""
+msgstr "ВЯ-23 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:66
 msgctxt "bullet_type"
 msgid "SH-37 (AP)"
-msgstr ""
+msgstr "Ш-37 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:67
 msgctxt "bullet_type"
 msgid "SH-37 (HE)"
-msgstr ""
+msgstr "Ш-37 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:68
 msgctxt "bullet_type"
 msgid "NS-37 (AP)"
-msgstr ""
+msgstr "НС-37 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:69
 msgctxt "bullet_type"
 msgid "NS-37 (HE)"
-msgstr ""
+msgstr "НС-37 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:70
 msgctxt "bullet_type"
@@ -645,10 +645,8 @@ msgstr "Рейтинг пилотов"
 
 #: .\mod_rating_by_type\templates\base.html:87
 #: .\mod_rating_by_type\templates\ironman_pilots.html:3
-#, fuzzy
-#| msgid "Pilot Rankings"
 msgid "Ironman Rankings"
-msgstr "Рейтинг пилотов"
+msgstr "Рейтинг Ironman"
 
 #: .\mod_rating_by_type\templates\base.html:89
 #: .\mod_rating_by_type\templates\squads.html:3
@@ -682,11 +680,11 @@ msgstr "Тур"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:14
 msgid "Ironman Rankings (Best streak)"
-msgstr ""
+msgstr "Рейтинг Ironman (Лучшая серия)"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:16
 msgid "Ironman Rankings (Living Pilots)"
-msgstr ""
+msgstr "Рейтинг Ironman (Живые пилоты)"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:23
 #: .\mod_rating_by_type\templates\pilots.html:19
@@ -743,9 +741,6 @@ msgstr "Очки"
 #: .\mod_rating_by_type\templates\ironman_pilots.html:75
 #: .\mod_rating_by_type\templates\mission.html:170
 #: .\mod_rating_by_type\templates\pilot_vlife.html:80
-#, fuzzy
-#| msgctxt "specialty"
-#| msgid "Fighter"
 msgid "Fighter Score"
 msgstr "Истребитель"
 
@@ -1951,13 +1946,11 @@ msgstr ""
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:778
 msgid "Damage Report"
-msgstr ""
+msgstr "Отчет о повреждениях"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:781
-#, fuzzy
-#| msgid "Number of shots"
 msgid "Number of hits taken"
-msgstr "Потрачено патронов"
+msgstr "Количество"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:3
 #: .\mod_rating_by_type\templates\pilot_vlife.html:15

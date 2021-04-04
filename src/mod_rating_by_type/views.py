@@ -11,8 +11,7 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-from stats.views import (_get_rating_position, _get_squad, pilot_vlifes, online, missions_list,
-                         pilot_sortie_log, pilot_sorties, pilot_killboard, pilot_awards)
+from stats.views import *
 from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
 
@@ -374,6 +373,13 @@ def pilot_sortie(request, sortie_id):
     except Sortie.DoesNotExist:
         raise Http404
 
+    # обработка старого формат хранения очков, без AI очков
+    mission_score_dict = {}
+    for k, v in sortie.mission.score_dict.items():
+        if isinstance(v, dict):
+            break
+        mission_score_dict[k] = {'base': v, 'ai': v}
+
     if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
         ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
     else:
@@ -382,7 +388,7 @@ def pilot_sortie(request, sortie_id):
     return render(request, 'pilot_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,
-        'score_dict': sortie.mission.score_dict,
+        'score_dict':  mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
     })
 

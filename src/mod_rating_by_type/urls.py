@@ -19,7 +19,6 @@ from django.views.generic import RedirectView
 
 from . import views
 
-
 app_name = 'stats'
 urlpatterns = [
     url(r'^pilots/$', views.pilot_rankings, name='pilots'),
@@ -38,6 +37,8 @@ urlpatterns = [
     url(r'^sortie/log/(?P<sortie_id>\d+)/$', views.pilot_sortie_log, name='pilot_sortie_log'),
     url(r'^mission/(?P<mission_id>\d+)/$', views.mission, name='mission'),
     url(r'^vlife/(?P<vlife_id>\d+)/$', views.pilot_vlife, name='pilot_vlife'),
+
+    url(r'^overall/$', views.overall, name='overall'),
 
     url(r'^online/$', views.online, name='online'),
     url(r'^$', views.main, name='main'),
