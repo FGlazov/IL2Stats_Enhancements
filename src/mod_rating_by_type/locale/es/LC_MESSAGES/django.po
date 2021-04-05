@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 12:18+0200\n"
+"POT-Creation-Date: 2021-04-05 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,13 +91,9 @@ msgid ".50 BMG"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:45
-msgctxt "bullet_type"
-msgid "MG 34"
-msgstr ""
-
 #: .\mod_rating_by_type\bullets_types.py:46
 msgctxt "bullet_type"
-msgid "7.92mm Kurz"
+msgid "MG 34"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:47
@@ -126,14 +122,20 @@ msgid "155mm Soviet"
 msgstr "155mm Rusa"
 
 #: .\mod_rating_by_type\bullets_types.py:52
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "MK 108 (AP)"
 msgctxt "bullet_type"
-msgid "90mm US (APHE)"
-msgstr ""
+msgid "M2 90mm (APHE)"
+msgstr "MK 108 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:53
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "MK 108 (HE)"
 msgctxt "bullet_type"
-msgid "90mm US (HE)"
-msgstr ""
+msgid "M2 90mm (HE)"
+msgstr "MK 108 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:54
 msgctxt "bullet_type"
@@ -217,28 +219,34 @@ msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:70
 msgctxt "bullet_type"
-msgid "76.2 mm Soviet naval AA"
-msgstr "76.2mm Rusa naval AA"
+msgid "76.2mm 34-K"
+msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:71
 msgctxt "bullet_type"
-msgid "37mm American (AP)"
-msgstr "37mm Americana (AP)"
+msgid "M4 Cobra (AP)"
+msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:72
 msgctxt "bullet_type"
-msgid "37mm American (HE)"
-msgstr "37mm Americana (HE)"
+msgid "M4 Cobra (HE)"
+msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:73
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "76mm Soviet (APHE)"
 msgctxt "bullet_type"
-msgid "76mm American (APHE)"
-msgstr "76mm Americana (APHE)"
+msgid "76mm M5 (APHE)"
+msgstr "76mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:74
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "76mm Soviet (HE)"
 msgctxt "bullet_type"
-msgid "76mm American (HE)"
-msgstr "76mm Americana (HE)"
+msgid "76mm M5 (HE)"
+msgstr "76mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:75
 msgctxt "bullet_type"
@@ -249,174 +257,191 @@ msgstr "76mm Británica (HE)"
 #: .\mod_rating_by_type\bullets_types.py:115
 msgctxt "bullet_type"
 msgid "105mm German (HE)"
-msgstr  "105mm Alemana (HE)"
+msgstr "105mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:77
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "MK 108 (AP)"
 msgctxt "bullet_type"
-msgid "20mm German (AP)"
-msgstr  "20mm Alemana (AP)"
+msgid "Flak 38 (AP)"
+msgstr "MK 108 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:78
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "MK 108 (HE)"
 msgctxt "bullet_type"
-msgid "20mm German (HE)"
-msgstr  "20mm Alemana (HE)"
+msgid "Flak 38 (HE)"
+msgstr "MK 108 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:79
 msgctxt "bullet_type"
-msgid "37mm German (APHE)"
-msgstr  "37mm Alemana (APHE)"
+msgid "Flak 36"
+msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:80
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "37mm German (HE)"
 msgctxt "bullet_type"
-msgid "37mm German (HE)"
-msgstr  "37mm Alemana (HE)"
+msgid "37mm Pak-35 (HE)"
+msgstr "37mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:81
 #: .\mod_rating_by_type\bullets_types.py:83
 msgctxt "bullet_type"
 msgid "37mm German Flak (AP)"
-msgstr  "37mm Alemana Flak (AP)"
+msgstr "37mm Alemana Flak (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:82
 #: .\mod_rating_by_type\bullets_types.py:84
 msgctxt "bullet_type"
 msgid "37mm German Flak (HE)"
-msgstr  "37mm Alemana Flak (HE)"
+msgstr "37mm Alemana Flak (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:85
 msgctxt "bullet_type"
 msgid "50mm German (AP)"
-msgstr  "50mm Alemana (AP)"
+msgstr "50mm Alemana (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:86
 #: .\mod_rating_by_type\bullets_types.py:121
 msgctxt "bullet_type"
 msgid "50mm German (HE)"
-msgstr  "50mm Alemana (HE)"
+msgstr "50mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:87
 msgctxt "bullet_type"
 msgid "75mm German (AP)"
-msgstr  "75mm Alemana (AP)"
+msgstr "75mm Alemana (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:88
 #: .\mod_rating_by_type\bullets_types.py:124
 msgctxt "bullet_type"
 msgid "75mm German (HE)"
-msgstr  "75mm Alemana (HE)"
+msgstr "75mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:89
 msgctxt "bullet_type"
 msgid "77mm German (HE)"
-msgstr  "77mm Alemana (HE)"
+msgstr "77mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:90
 msgctxt "bullet_type"
 msgid "88mm German Flak (AP)"
-msgstr  "88mm Alemana Flak (AP)"
+msgstr "88mm Alemana Flak (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:91
 msgctxt "bullet_type"
 msgid "88mm German Flak (HE)"
-msgstr  "88mm Alemana Flak (HE)"
+msgstr "88mm Alemana Flak (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:92
 msgctxt "bullet_type"
 msgid "100mm Soviet (AP)"
-msgstr  "100mm Rusa (AP)"
+msgstr "100mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:93
 #: .\mod_rating_by_type\bullets_types.py:136
 msgctxt "bullet_type"
 msgid "152mm Soviet (HE)"
-msgstr  "152mm Rusa (HE)"
+msgstr "152mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:94
+#: .\mod_rating_by_type\bullets_types.py:137
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "25mm Soviet (AP)"
 msgctxt "bullet_type"
-msgid "25mm Soviet (AP)"
-msgstr  "25mm Rusa (AP)"
+msgid "25mm 72-K (AP)"
+msgstr "25mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:95
+#: .\mod_rating_by_type\bullets_types.py:138
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "25mm Soviet (HE)"
 msgctxt "bullet_type"
-msgid "25mm Soviet (HE)"
-msgstr  "25mm Rusa (HE)"
+msgid "25mm 72-K (HE)"
+msgstr "25mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:96
 msgctxt "bullet_type"
 msgid "37mm Soviet (AP)"
-msgstr  "37mm Rusa (AP)"
+msgstr "37mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:97
 msgctxt "bullet_type"
 msgid "37mm Soviet (HE)"
-msgstr  "37mm Rusa (HE)"
+msgstr "37mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:98
 msgctxt "bullet_type"
 msgid "45mm Soviet (AP)"
-msgstr  "45mm Rusa (AP)"
+msgstr "45mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:99
 msgctxt "bullet_type"
 msgid "45mm Soviet (APHE)"
-msgstr  "45mm Rusa (APHE)"
+msgstr "45mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:100
 msgctxt "bullet_type"
 msgid "45mm Soviet (HEAT)"
-msgstr  "45mm Rusa (HEAT)"
+msgstr "45mm Rusa (HEAT)"
 
 #: .\mod_rating_by_type\bullets_types.py:101
 msgctxt "bullet_type"
 msgid "57mm Soviet (AP)"
-msgstr  "57mm Rusa (AP)"
+msgstr "57mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:102
 msgctxt "bullet_type"
 msgid "57mm Soviet (APHE)"
-msgstr  "57mm Rusa (APHE)"
+msgstr "57mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:103
 msgctxt "bullet_type"
 msgid "57mm Soviet (HE) "
-msgstr  "57mm Rusa (HE) "
+msgstr "57mm Rusa (HE) "
 
 #: .\mod_rating_by_type\bullets_types.py:104
 #: .\mod_rating_by_type\bullets_types.py:139
 msgctxt "bullet_type"
 msgid "76mm Soviet (AP)"
-msgstr  "76mm Rusa (AP)"
+msgstr "76mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:105
 #: .\mod_rating_by_type\bullets_types.py:141
 msgctxt "bullet_type"
 msgid "76mm Soviet (HE)"
-msgstr  "76mm Rusa (HE)"
+msgstr "76mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:106
 msgctxt "bullet_type"
 msgid "76mm Soviet Naval (HE)"
-msgstr  "76mm Rusa Naval (HE)"
+msgstr "76mm Rusa Naval (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:107
 msgctxt "bullet_type"
 msgid "85mm Soviet (AP)"
-msgstr  "85mm Rusa (AP)"
+msgstr "85mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:108
 msgctxt "bullet_type"
 msgid "85mm Soviet (APHE)"
-msgstr  "85mm Rusa (APHE)"
+msgstr "85mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:109
 msgctxt "bullet_type"
 msgid "85mm Soviet (HE)"
-msgstr  "85mm Rusa (HE)"
+msgstr "85mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:110
 msgctxt "bullet_type"
 msgid "115mm British"
-msgstr  "115mm Británica"
+msgstr "115mm Británica"
 
 #: .\mod_rating_by_type\bullets_types.py:111
 msgctxt "bullet_type"
@@ -441,134 +466,124 @@ msgstr ""
 #: .\mod_rating_by_type\bullets_types.py:116
 msgctxt "bullet_type"
 msgid "105mm German (HEAT)"
-msgstr  "105mm Alemana (HEAT)"
+msgstr "105mm Alemana (HEAT)"
 
 #: .\mod_rating_by_type\bullets_types.py:117
 msgctxt "bullet_type"
 msgid "150mm German (HE)"
-msgstr  "150mm Alemana (HE)"
+msgstr "150mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:118
 msgctxt "bullet_type"
 msgid "MK 108 (AP)"
-msgstr  "MK 108 (AP)"
+msgstr "MK 108 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:119
 msgctxt "bullet_type"
 msgid "MK 108 (HE)"
-msgstr  "MK 108 (HE)"
+msgstr "MK 108 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:120
 msgctxt "bullet_type"
 msgid "50mm German (APHE)"
-msgstr  "50mm Alemana (APHE)"
+msgstr "50mm Alemana (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:122
 msgctxt "bullet_type"
 msgid "50mm German (HVAP)"
-msgstr  "50mm Alemana (HVAP)"
+msgstr "50mm Alemana (HVAP)"
 
 #: .\mod_rating_by_type\bullets_types.py:123
 msgctxt "bullet_type"
 msgid "75mm German (APHE)"
-msgstr  "75mm Alemana (APHE)"
+msgstr "75mm Alemana (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:125
 msgctxt "bullet_type"
 msgid "75mm German (HEAT)"
-msgstr  "75mm Alemana (HEAT)"
+msgstr "75mm Alemana (HEAT)"
 
 #: .\mod_rating_by_type\bullets_types.py:126
 msgctxt "bullet_type"
 msgid "75mm German (HVAP)"
-msgstr  "75mm Alemana (HVAP)"
+msgstr "75mm Alemana (HVAP)"
 
 #: .\mod_rating_by_type\bullets_types.py:127
 msgctxt "bullet_type"
 msgid "88mm German (AP)"
-msgstr  "88mm Alemana (AP)"
+msgstr "88mm Alemana (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:128
 msgctxt "bullet_type"
 msgid "88mm German (APHE)"
-msgstr  "88mm Alemana (APHE)"
+msgstr "88mm Alemana (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:129
 msgctxt "bullet_type"
 msgid "88mm German (HE)"
-msgstr  "88mm Alemana (HE)"
+msgstr "88mm Alemana (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:130
 #, fuzzy
 #| msgid "German"
 msgctxt "bullet_type"
 msgid "88mm German"
-msgstr  "88mm Alemana"
+msgstr "88mm Alemana"
 
 #: .\mod_rating_by_type\bullets_types.py:131
 msgctxt "bullet_type"
 msgid "88mm German (HVAP)"
-msgstr  "88mm Alemana (HVAP)"
+msgstr "88mm Alemana (HVAP)"
 
 #: .\mod_rating_by_type\bullets_types.py:132
 msgctxt "bullet_type"
 msgid "100mm Soviet (HE)"
-msgstr  "100mm Rusa (HE)"
+msgstr "100mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:133
 msgctxt "bullet_type"
 msgid "100mm Soviet (APHE)"
-msgstr  "100mm Rusa (APHE)"
+msgstr "100mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:134
 msgctxt "bullet_type"
 msgid "130mm Soviet (HE)"
-msgstr  "130mm Rusa (HE)"
+msgstr "130mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:135
 msgctxt "bullet_type"
 msgid "152mm Soviet (APHE)"
-msgstr  "152mm Rusa (APHE)"
-
-#: .\mod_rating_by_type\bullets_types.py:137
-msgctxt "bullet_type"
-msgid "25mm Soviet Flak (AP)"
-msgstr  "25mm Rusa Flak (AP)"
-
-#: .\mod_rating_by_type\bullets_types.py:138
-msgctxt "bullet_type"
-msgid "25mm Soviet Flak (HE)"
-msgstr  "25mm Rusa Flak (HE)"
+msgstr "152mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:140
 msgctxt "bullet_type"
 msgid "76mm Soviet (APHE)"
-msgstr  "76mm Rusa (APHE)"
+msgstr "76mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:142
 msgctxt "bullet_type"
 msgid "76mm Soviet (HVAP)"
-msgstr  "76mm Rusa (HVAP)"
+msgstr "76mm Rusa (HVAP)"
 
 #: .\mod_rating_by_type\bullets_types.py:143
 msgctxt "bullet_type"
 msgid "155mm Soviet (HE)"
-msgstr  "155mm Rusa (HE)"
+msgstr "155mm Rusa (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:144
 msgctxt "bullet_type"
 msgid "75mm Soviet (AP)"
-msgstr  "75mm Rusa (AP)"
+msgstr "75mm Rusa (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:145
 msgctxt "bullet_type"
 msgid "75mm Soviet (APHE)"
-msgstr  "75mm Rusa (APHE)"
+msgstr "75mm Rusa (APHE)"
 
 #: .\mod_rating_by_type\bullets_types.py:146
 msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
-msgstr  "75mm Rusa (HE)"
+msgstr "75mm Rusa (HE)"
 
 #: .\mod_rating_by_type\templates\base.html:47
 msgid ""
@@ -641,15 +656,20 @@ msgstr "Ranking de Pilotos"
 msgid "Missions"
 msgstr "Misiones"
 
-#: .\mod_rating_by_type\templates\base.html:97
+#: .\mod_rating_by_type\templates\base.html:96
+msgctxt "menu"
+msgid "Overall"
+msgstr ""
+
+#: .\mod_rating_by_type\templates\base.html:98
 msgid "Forum"
 msgstr "Foro"
 
-#: .\mod_rating_by_type\templates\base.html:100
+#: .\mod_rating_by_type\templates\base.html:101
 msgid "Info"
 msgstr "Información"
 
-#: .\mod_rating_by_type\templates\base.html:103
+#: .\mod_rating_by_type\templates\base.html:104
 #: .\mod_rating_by_type\templates\main.html:363
 #: .\mod_rating_by_type\templates\tour.html:3
 msgid "Tour"
@@ -2113,6 +2133,46 @@ msgstr "Mejores pilotos de bombardero"
 msgctxt "tour_top"
 msgid "Best bomber streak"
 msgstr "Mejor racha de bombardero"
+
+#~ msgctxt "bullet_type"
+#~ msgid "76.2 mm Soviet naval AA"
+#~ msgstr "76.2mm Rusa naval AA"
+
+#~ msgctxt "bullet_type"
+#~ msgid "37mm American (AP)"
+#~ msgstr "37mm Americana (AP)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "37mm American (HE)"
+#~ msgstr "37mm Americana (HE)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "76mm American (APHE)"
+#~ msgstr "76mm Americana (APHE)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "76mm American (HE)"
+#~ msgstr "76mm Americana (HE)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "20mm German (AP)"
+#~ msgstr "20mm Alemana (AP)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "20mm German (HE)"
+#~ msgstr "20mm Alemana (HE)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "37mm German (APHE)"
+#~ msgstr "37mm Alemana (APHE)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "25mm Soviet Flak (AP)"
+#~ msgstr "25mm Rusa Flak (AP)"
+
+#~ msgctxt "bullet_type"
+#~ msgid "25mm Soviet Flak (HE)"
+#~ msgstr "25mm Rusa Flak (HE)"
 
 #~ msgid "key"
 #~ msgstr "llave"

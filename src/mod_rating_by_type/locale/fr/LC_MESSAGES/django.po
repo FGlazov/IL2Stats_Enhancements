@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 12:18+0200\n"
+"POT-Creation-Date: 2021-04-05 13:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,13 +100,9 @@ msgid ".50 BMG"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:45
-msgctxt "bullet_type"
-msgid "MG 34"
-msgstr ""
-
 #: .\mod_rating_by_type\bullets_types.py:46
 msgctxt "bullet_type"
-msgid "7.92mm Kurz"
+msgid "MG 34"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:47
@@ -136,13 +132,16 @@ msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:52
 msgctxt "bullet_type"
-msgid "90mm US (APHE)"
+msgid "M2 90mm (APHE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:53
+#, fuzzy
+#| msgctxt "aircraft_payload"
+#| msgid "SC 1000 [1], SC 50 [16]"
 msgctxt "bullet_type"
-msgid "90mm US (HE)"
-msgstr ""
+msgid "M2 90mm (HE)"
+msgstr "SC 1000 [1], SC 50 [16]"
 
 #: .\mod_rating_by_type\bullets_types.py:54
 msgctxt "bullet_type"
@@ -238,27 +237,30 @@ msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:70
 msgctxt "bullet_type"
-msgid "76.2 mm Soviet naval AA"
+msgid "76.2mm 34-K"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:71
+#, fuzzy
+#| msgctxt "aircraft_payload"
+#| msgid "MG 17 AP [2000]"
 msgctxt "bullet_type"
-msgid "37mm American (AP)"
-msgstr ""
+msgid "M4 Cobra (AP)"
+msgstr "MG 17 AP [2000]"
 
 #: .\mod_rating_by_type\bullets_types.py:72
 msgctxt "bullet_type"
-msgid "37mm American (HE)"
+msgid "M4 Cobra (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:73
 msgctxt "bullet_type"
-msgid "76mm American (APHE)"
+msgid "76mm M5 (APHE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:74
 msgctxt "bullet_type"
-msgid "76mm American (HE)"
+msgid "76mm M5 (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:75
@@ -273,23 +275,29 @@ msgid "105mm German (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:77
+#, fuzzy
+#| msgctxt "aircraft_payload"
+#| msgid "BK 37 AP [24]"
 msgctxt "bullet_type"
-msgid "20mm German (AP)"
-msgstr ""
+msgid "Flak 38 (AP)"
+msgstr "BK 37 AP [24]"
 
 #: .\mod_rating_by_type\bullets_types.py:78
+#, fuzzy
+#| msgctxt "aircraft_payload"
+#| msgid "SC 1000 [1], SC 50 [16]"
 msgctxt "bullet_type"
-msgid "20mm German (HE)"
-msgstr ""
+msgid "Flak 38 (HE)"
+msgstr "SC 1000 [1], SC 50 [16]"
 
 #: .\mod_rating_by_type\bullets_types.py:79
 msgctxt "bullet_type"
-msgid "37mm German (APHE)"
+msgid "Flak 36"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:80
 msgctxt "bullet_type"
-msgid "37mm German (HE)"
+msgid "37mm Pak-35 (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:81
@@ -353,13 +361,15 @@ msgid "152mm Soviet (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:94
+#: .\mod_rating_by_type\bullets_types.py:137
 msgctxt "bullet_type"
-msgid "25mm Soviet (AP)"
+msgid "25mm 72-K (AP)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:95
+#: .\mod_rating_by_type\bullets_types.py:138
 msgctxt "bullet_type"
-msgid "25mm Soviet (HE)"
+msgid "25mm 72-K (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:96
@@ -554,16 +564,6 @@ msgctxt "bullet_type"
 msgid "152mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:137
-msgctxt "bullet_type"
-msgid "25mm Soviet Flak (AP)"
-msgstr ""
-
-#: .\mod_rating_by_type\bullets_types.py:138
-msgctxt "bullet_type"
-msgid "25mm Soviet Flak (HE)"
-msgstr ""
-
 #: .\mod_rating_by_type\bullets_types.py:140
 msgctxt "bullet_type"
 msgid "76mm Soviet (APHE)"
@@ -665,15 +665,20 @@ msgstr "Classement des pilotes"
 msgid "Missions"
 msgstr "Missions"
 
-#: .\mod_rating_by_type\templates\base.html:97
+#: .\mod_rating_by_type\templates\base.html:96
+msgctxt "menu"
+msgid "Overall"
+msgstr ""
+
+#: .\mod_rating_by_type\templates\base.html:98
 msgid "Forum"
 msgstr "Forum"
 
-#: .\mod_rating_by_type\templates\base.html:100
+#: .\mod_rating_by_type\templates\base.html:101
 msgid "Info"
 msgstr "Infos"
 
-#: .\mod_rating_by_type\templates\base.html:103
+#: .\mod_rating_by_type\templates\base.html:104
 #: .\mod_rating_by_type\templates\main.html:363
 #: .\mod_rating_by_type\templates\tour.html:3
 msgid "Tour"
