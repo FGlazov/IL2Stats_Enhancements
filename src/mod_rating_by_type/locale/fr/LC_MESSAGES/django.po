@@ -208,12 +208,12 @@ msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:64
 msgctxt "bullet_type"
-msgid "VYA-23 Soviet (AP)"
+msgid "VYA-23 (AP)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
-msgid "VYA-23 Soviet (HE)"
+msgid "VYA-23 (HE)"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:66

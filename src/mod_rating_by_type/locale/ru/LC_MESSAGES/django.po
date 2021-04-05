@@ -209,12 +209,12 @@ msgstr "ШВАК (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:64
 msgctxt "bullet_type"
-msgid "VYA-23 Soviet (AP)"
+msgid "VYA-23 (AP)"
 msgstr "ВЯ-23 (AP)"
 
 #: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
-msgid "VYA-23 Soviet (HE)"
+msgid "VYA-23 (HE)"
 msgstr "ВЯ-23 (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:66
