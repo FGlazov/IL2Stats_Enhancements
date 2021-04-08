@@ -427,7 +427,7 @@ msgstr "76mm Sowjetisch (HE)"
 #: .\mod_rating_by_type\bullets_types.py:106
 msgctxt "bullet_type"
 msgid "76mm Soviet Naval (HE)"
-msgstr "76mm Sowjetisch Naval (HE)"
+msgstr "76mm Sowjetisch (HE)"
 
 #: .\mod_rating_by_type\bullets_types.py:107
 msgctxt "bullet_type"
@@ -2169,23 +2169,23 @@ msgstr "Besten Bomberpiloten in einer Serie"
 
 #~ msgctxt "bullet_type"
 #~ msgid "76.2 mm Soviet naval AA"
-#~ msgstr "76.2 mm Sowjetisch naval AA"
+#~ msgstr "76.2 mm Sowjetisch AA"
 
 #~ msgctxt "bullet_type"
 #~ msgid "37mm American (AP)"
-#~ msgstr "37mm American (AP)"
+#~ msgstr "37mm Amerikanisch (AP)"
 
 #~ msgctxt "bullet_type"
 #~ msgid "37mm American (HE)"
-#~ msgstr "37mm American (HE)"
+#~ msgstr "37mm Amerikanisch (HE)"
 
 #~ msgctxt "bullet_type"
 #~ msgid "76mm American (APHE)"
-#~ msgstr "76mm American (APHE)"
+#~ msgstr "76mm Amerikanisch (APHE)"
 
 #~ msgctxt "bullet_type"
 #~ msgid "76mm American (HE)"
-#~ msgstr "76mm American (HE)"
+#~ msgstr "76mm Amerikanisch (HE)"
 
 #~ msgctxt "bullet_type"
 #~ msgid "20mm German (AP)"
