@@ -60,6 +60,7 @@ class Score(models.Model):
     type = models.CharField(max_length=3, choices=SCORE_TYPE, editable=False, default='int')
     value = models.IntegerField(default=0, editable=False)
     custom_value = models.IntegerField(null=True, blank=True)
+    ai_value = models.IntegerField(null=True, blank=True)
 
     class Meta:
         db_table = 'scoring'
@@ -76,6 +77,11 @@ class Score(models.Model):
         else:
             return self.value
 
+    def get_ai_value(self):
+        if self.ai_value is not None:
+            return self.ai_value
+        else:
+            return self.get_value()
 
 class Object(models.Model):
     CLASSES = (
@@ -1255,14 +1261,14 @@ class Sortie(models.Model):
     def is_in_flight(self):
         return self.status == SortieStatus.in_flight
 
+	# change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player	
     @property
     def is_ditched(self):
-        return self.status == SortieStatus.ditched
+        return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout
 
-    # change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player
     @property
     def is_crashed(self):
-        return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout
+        return self.status == SortieStatus.crashed
 
     @property
     def is_shotdown(self):

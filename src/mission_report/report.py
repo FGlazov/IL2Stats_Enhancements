@@ -255,7 +255,7 @@ class MissionReport:
             if target.sortie and not target.is_crew() and target.sortie.is_ended:
                 return
             target.got_damaged(damage=damage, attacker=attacker, pos=pos)
-            # получить время об последний урон для диско - get time of last damage done to airplane when sortie is disco
+			# получить время об последний урон для диско - get time of last damage done to airplane when sortie is disco
             if target.sortie:
                 target.sortie.tik_lastdamage = tik
 
@@ -382,12 +382,11 @@ class MissionReport:
         sortie = self.sorties_accounts.get(account_id)
         # TODO работает только в Ил2, в РОФ нет такого события
         if sortie:
-            # you can determine the amount of damage that is considered
-            dmg_pct = 0
-            # the departure was completed, there was a jump, no plane was created, the plane on the ground, and the plane was damaged,
-            # player disconection can then be changed into captured.
-            if not (sortie.is_ended or sortie.is_bailout or (
-                    not sortie.aircraft) or sortie.aircraft.on_ground) and sortie.aircraft.damage > dmg_pct:
+			# you can determine the amount of damage that is considered
+            dmg_pct=0
+			# the departure was completed, there was a jump, no plane was created, the plane on the ground, and the plane was damaged,
+			# player disconection can then be changed into captured.
+            if not (sortie.is_ended or sortie.is_bailout or (not sortie.aircraft) or sortie.aircraft.on_ground ) and sortie.aircraft.damage > dmg_pct:
                 sortie.is_damageddisco = True
                 self.logger_event({'type': 'disco', 'sortie': sortie})
             # вылет был завершен, был прыжок, не был создан самолет, самолет на земле
@@ -673,8 +672,7 @@ class Object:
             # - записываем его как сбитый
             if (self.on_ground and not self.is_rtb) or self.is_bailout or (self.bot and self.bot.life_status.is_destroyed):
                 self.got_killed(force_by_dmg=True)
-            # in case of disconection - the player who damaged him gets kill, when damage occurs at any time in flight
-            if self.sortie and not self.is_rtb:
+			if self.sortie and not self.is_rtb:
                 if not self.sortie.is_ended:
                     self.got_killed(force_by_dmg=True)
 
@@ -716,6 +714,9 @@ class Object:
 
     def is_crew(self):
         return self.cls_base == 'crew'
+
+    def is_ai(self):
+        return self.sortie is None
 
 
 class Sortie:
@@ -764,8 +765,7 @@ class Sortie:
         self.tik_last = tik
         if self.is_airstart:
             self.tik_takeoff = self.tik_spawn
-        self.tik_lastdamage = None
-
+		self.tik_lastdamage = None
 
         self.used_cartridges = cartridges
         self.used_shells = shells
@@ -781,7 +781,7 @@ class Sortie:
 
         # вылет завершен
         self.is_disco = False
-        self.is_discobailout = False
+		self.is_discobailout = False
         self.is_damageddisco = False
         self.is_ended = False
 

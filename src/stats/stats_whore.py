@@ -37,8 +37,6 @@ WIN_BY_SCORE = settings.WIN_BY_SCORE
 WIN_SCORE_MIN = settings.WIN_SCORE_MIN
 WIN_SCORE_RATIO = settings.WIN_SCORE_RATIO
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
-SORTIE_DISCO_MIN_TIME = settings.SORTIE_DISCO_MIN_TIME
-SORTIE_DAMAGE_DISCO_TIME = settings.SORTIE_DAMAGE_DISCO_TIME
 
 
 def main():
@@ -155,7 +153,7 @@ def stats_whore(m_report_file):
 
     objects = MappingProxyType({obj['log_name']: obj for obj in Object.objects.values()})
     # classes = MappingProxyType({obj['cls']: obj['cls_base'] for obj in objects.values()})
-    score_dict = MappingProxyType({s.key: s.get_value() for s in Score.objects.all()})
+    score_dict = MappingProxyType({s.key: {'base': s.get_value(), 'ai': s.get_ai_value()} for s in Score.objects.all()})
 
     m_report = MissionReport(objects=objects)
     m_report.processing(files=m_report_files)
@@ -311,10 +309,10 @@ def stats_whore(m_report_file):
             params['type'] = 'end'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
             params['act_sortie_id'] = event['sortie'].sortie_db.id
-        elif event['type'] == 'disco':
+		elif event['type'] == 'disco':
             params['type'] = 'disco'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
-            params['act_sortie_id'] = event['sortie'].sortie_db.id
+            params['act_sortie_id'] = event['sortie'].sortie_db.id			
         elif event['type'] == 'takeoff':
             params['type'] = 'takeoff'
             params['act_object_id'] = event['aircraft'].sortie.sortie_db.aircraft.id
@@ -341,7 +339,11 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the damage to the tank driver.
+                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -360,7 +362,11 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the kill to the tank driver.
+                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -452,23 +458,23 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         if (sortie_tik_last // 50) - (sortie.tik_spawn // 50) < SORTIE_MIN_TIME:
             is_ignored = True
 
-    # for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
+	# for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
     if SORTIE_DISCO_MIN_TIME and sortie.is_disco:
         if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
             sortie.is_discobailout = True
             sortie.is_disco = False
-
-    # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco,
-    # if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
-    if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:
+			
+    # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco, 
+	# if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
+    if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:  
         if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
             sortie.is_disco = True
-            sortie.is_damageddisco = False
-            # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
+            sortie.is_damageddisco = False	
+	        # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie 
             if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
                 sortie.is_discobailout = True
                 sortie.is_disco = False
-                sortie.is_damageddisco = False
+                sortie.is_damageddisco = False			
 
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)
@@ -485,7 +491,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
             is_friendly = sortie.coal_id == target.coal_id
 
             if not is_friendly:
-                score += mission.score_dict[target.cls]
+                score += mission.score_dict[target.cls]['ai' if target.is_ai() else 'base']
                 if target.cls_base == 'aircraft':
                     ak_total += 1
                 elif target.cls_base in ('block', 'vehicle', 'tank'):
@@ -512,7 +518,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 if sortie.coal_id == target.coal_id:
                     continue
                 ak_assist += 1
-                score += mission.score_dict['ak_assist']
+                score += mission.score_dict['ak_assist']['base']
 
     new_sortie = Sortie(
         profile=profile,
@@ -553,7 +559,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         aircraft_status=sortie.aircraft_status.status,
         bot_status=sortie.bot_status.status,
 
-        is_bailout=sortie.is_bailout or sortie.is_discobailout,
+		is_bailout=sortie.is_bailout or sortie.is_discobailout,
         is_captured=sortie.is_captured or sortie.is_damageddisco,
         is_disco=sortie.is_disco,
 
@@ -752,7 +758,6 @@ def update_general(player, new_sortie):
     except AttributeError:
         pass  # Some player objects have no score or relive attributes for light/medium/heavy aircraft.
 
-
 def update_ammo(sortie, player):
     # в логах есть баги, по окончание вылета у самолета может быть больше боемкомплекта чем было вначале
     if sortie.ammo['used_cartridges'] >= sortie.ammo['hit_bullets']:
@@ -832,11 +837,11 @@ def update_fairplay(new_sortie):
     score_dict = new_sortie.mission.score_dict
 
     if new_sortie.is_disco:
-        player.fairplay -= score_dict['fairplay_disco']
+        player.fairplay -= score_dict['fairplay_disco']['base']
     if new_sortie.fak_total:
-        player.fairplay -= score_dict['fairplay_fak']
+        player.fairplay -= score_dict['fairplay_fak']['base']
     if new_sortie.fgk_total:
-        player.fairplay -= score_dict['fairplay_fgk']
+        player.fairplay -= score_dict['fairplay_fgk']['base']
 
     if player.fairplay < 0:
         player.fairplay = 0
@@ -847,7 +852,7 @@ def update_fairplay(new_sortie):
         player.fairplay_time += new_sortie.flight_time
         fairplay_hours = player.fairplay_time // 3600
         if fairplay_hours > 0:
-            player.fairplay += (score_dict['fairplay_up'] * fairplay_hours)
+            player.fairplay += (score_dict['fairplay_up']['base'] * fairplay_hours)
             player.fairplay_time -= 3600 * fairplay_hours
 
     if player.fairplay > 100:

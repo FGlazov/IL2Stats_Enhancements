@@ -49,6 +49,8 @@ urlpatterns = [
     url(r'^tankman_sortie/log/(?P<sortie_id>\d+)/$', views.tankman_sortie_log, name='tankman_sortie_log'),
     url(r'^tankman_vlife/(?P<vlife_id>\d+)/$', views.tankman_vlife, name='tankman_vlife'),
 
+    url(r'^overall/$', views.overall, name='overall'),
+
     url(r'^online/$', views.online, name='online'),
     url(r'^$', views.main, name='main'),
 
