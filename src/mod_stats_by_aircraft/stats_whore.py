@@ -772,12 +772,30 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
                      .order_by().distinct())
 
     if enemy_objects.count() != 1:
-        # Something went wrong here. This is likely due to errors in the sortie logs.
-        # I.e. "Damage" and "Hits" ATypes tell a different story.
-        # According to "Hits", there should be one source of damage, according to "Damage" that isn't the case.
-        # (Likely) Because the hits were so minor that they didn't register as damage.
-        # Just in case, we're still throwing the data out, there will be more than enough left over.
-        return
+        if enemy_objects.count() > 1 and sortie.ammo['ammo_breakdown']['last_turret_account'] is not None:
+            # We've been hit by a turret!
+            # Check if we've been hit by multiple turrets of the same plane.
+            # If so, continue - otherwise there is a bug in the sortie log where we throw out the data.
+            # I.e. we got hit by an aircraft turret and the MGs of another plane (the MGs didn't cause any dmg)
+            aircraft_hit_us = set()
+            for enemy_object in enemy_objects:
+                db_object = Object.objects.get(id=enemy_object[0])
+                if db_object.cls != 'aircraft_turret':
+                    return
+                aircraft = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour)
+                if aircraft is None:
+                    return
+                aircraft_hit_us.add(aircraft.id)
+                if len(aircraft_hit_us) != 1:
+                    return
+
+        else:
+            return
+            # Something went wrong here. This is likely due to errors in the sortie logs.
+            # I.e. "Damage" and "Hits" ATypes tell a different story.
+            # According to "Hits", there should be one source of damage, according to "Damage" that isn't the case.
+            # (Likely) Because the hits were so minor that they didn't register as damage.
+            # Just in case, we're still throwing the data out, there will be more than enough left over.
     ammo_breakdown = sortie.ammo['ammo_breakdown']
 
     # TODO: At some point make this less hacky. Possibly derive other ammo from aircraft payload?

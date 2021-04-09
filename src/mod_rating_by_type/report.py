@@ -40,27 +40,40 @@ def record_hits(target, attacker, ammo):
         target.sortie.ammo_breakdown[ALL_TAKEN] += 1
 
         if attacker:
+            attacker_id = attacker.id
+            if attacker.cls == 'aircraft_turret' and attacker.parent and attacker.parent.sortie:
+                # Multiple turrets of an aircraft are counted together!
+                # That's why we take the aircraft's sortie.
+                attacker_id = attacker.parent.sortie.index
+
             ammo_breakdown = target.sortie.ammo_breakdown
             if ammo_breakdown[LAST_DMG_OBJECT] is None and ammo_breakdown[LAST_DMG_SORTIE] is None:
                 ammo_breakdown[DMG_FROM_ONE_SOURCE] = True
             else:
                 if attacker.sortie and attacker.sortie.index != ammo_breakdown[LAST_DMG_SORTIE]:
                     ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
-                if attacker.id != target.sortie.ammo_breakdown[LAST_DMG_OBJECT]:
+                if attacker_id != target.sortie.ammo_breakdown[LAST_DMG_OBJECT]:
                     ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
 
-            ammo_breakdown[LAST_DMG_OBJECT] = attacker.id
+            ammo_breakdown[LAST_DMG_OBJECT] = attacker_id
             if attacker.sortie:
                 ammo_breakdown[LAST_DMG_SORTIE] = attacker.sortie.index
 
             if attacker.cls == 'aircraft_turret' and attacker.parent:
                 ammo_breakdown[LAST_TURRET_ACCOUNT] = attacker.parent.sortie.account_id
 
-    if attacker and attacker.sortie:
-        if not hasattr(attacker.sortie, 'ammo_breakdown'):
-            attacker.sortie.ammo_breakdown = default_ammo_breakdown()
+    if attacker and attacker.coal_id == target.coal_id:
+        return
 
-        increment(attacker.sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
+    sortie = attacker.sortie
+    if attacker.cls == 'aircraft_turret' and attacker.parent:
+        sortie = attacker.parent.sortie
+
+    if sortie:
+        if not hasattr(sortie, 'ammo_breakdown'):
+            sortie.ammo_breakdown = default_ammo_breakdown()
+
+        increment(sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
 
 
 def default_ammo_breakdown():
@@ -71,6 +84,7 @@ def default_ammo_breakdown():
         DMG_FROM_ONE_SOURCE: False,
         LAST_DMG_SORTIE: None,
         LAST_DMG_OBJECT: None,
+        LAST_TURRET_ACCOUNT: None,
     }
 
 
