@@ -807,9 +807,6 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
     # Same problem as above, but for MG 151/20 and MG 151/15.
     fill_in_ammo(ammo_breakdown, 'SHELL_GER_20x82_AP', 'SHELL_GER_20x82_HE')
     fill_in_ammo(ammo_breakdown, 'SHELL_GER_15x96_AP', 'SHELL_GER_15x96_HE')
-    # Same as above, but for MGs
-    fill_in_ammo(ammo_breakdown, 'BULLET_GER_13x64_AP', 'BULLET_GER_13x64_HE')
-    fill_in_ammo(ammo_breakdown, 'BULLET_RUS_12-7x108_AP', 'BULLET_RUS_12-7x108_HE')
 
     # For ShVAKs: We keep it as is, since LA-5(FN) has mono-ammo belts.
     # So even if another plane has a fluke like this, it does same damage as when shot by LA-5 anyways.
