@@ -511,7 +511,7 @@
 
 
         {% if ammo_breakdown.given|length > 0 %}
-         <div class="player_detailed" style="float: left; width: 380px">
+         <div class="player_detailed" style="float: left;">
             <div class="title">
                 {% trans 'Offensive ammo breakdown' %}
             </div>
@@ -520,18 +520,22 @@
             </div>
 
              {% for ammo_name, avg_used in ammo_breakdown.given %}
-             <div class="sub_item">
+            {% if ammo_name|length <= 40 %}
+            <div class="item">
+            {% else %}
+            <div class="item" style="height: 80px;">
+            {% endif %}
                 <div class="name">{{ammo_name}}</div>
                 <div class="num">{{avg_used}}</div>
              </div>
-             {% endfor %}
+            {% endfor %}
 
 
          </div>
         {% endif  %}
 
         {% if ammo_breakdown.received|length > 0 %}
-        <div class="player_detailed" style="float: right; width: 750px;">
+        <div class="player_detailed" style="float: right;">
             <div class="title">
                 {% trans 'Defensive ammo breakdown' %}
             </div>
@@ -539,10 +543,10 @@
                 <div class="name">{% trans 'Average hits per aircraft lost' %} ⛤</div>
             </div>
             {% for ammo_name, avg_used in ammo_breakdown.received %}
-            {% if ammo_name|length <= 60 %}
-            <div class="sub_item">
+            {% if ammo_name|length <= 40 %}
+            <div class="item">
             {% else %}
-            <div class="sub_item" style="height: 80px;">
+            <div class="item" style="height: 80px;">
             {% endif %}
                 <div class="name">{{ammo_name}}</div>
                 <div class="num">{{avg_used}}</div>
@@ -675,7 +679,7 @@
             <div>
                 {% blocktrans trimmed %}
                 ★ This data is pulled purely from sorties where this plane was the sole source of damage. </br>
-                ⛤ This data is pulled purely from sorties where this plane was damaged by a single enemy (one aircraft/tank/AA/etc.). Only weapon configurations which account for at least 1% of deaths are displayed.</br>
+                ⛤ This data is pulled purely from sorties where this plane was damaged by a single enemy (one aircraft/tank/AA/etc.). Only weapon configurations which account for at least 5% of deaths are displayed.</br>
                 {% endblocktrans %}
                 {% blocktrans trimmed %}
                 * Plane Durability is percent of sorties the plane survived after taking damage. </br>

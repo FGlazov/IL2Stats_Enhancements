@@ -27,7 +27,7 @@
                         ({% trans 'Won by score' %})
                     {% endif %}<br>
                 {% endif %}
-                {% trans 'Players total' %}: {{ mission.players_total }}<br>
+                {% trans 'Pilots total' %}: {{ mission.pilots_total }}<br>
             </div>
 
             <div class="dominant_bars" style="margin-top: 30px;">
@@ -116,11 +116,11 @@
 
             <div class="content_head">
                 <div class="content_title">
-                    {% trans 'Pilots Rankings' %}
+                    {% trans 'Pilot Rankings' %}
                     <div class="content_title_sm" id="sort_by_text"></div>
                 </div>
             </div>
-            {% if pilots %}
+            {% if players %}
                 <div class="content_table">
                     <div class="head_row">
                         <div class="cell" style="width: 60px;"></div>
@@ -190,94 +190,21 @@
                             </a>
                         </div>
                     </div>
-                    {% for pilot in pilots %}
-                        <a class="row" href="{{ pilot.get_pilot_url }}">
+                    {% for player in players %}
+                        <a class="row" href="{{ player.get_profile_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
-                            <div class="cell" style="text-align: left;">{{ pilot.nickname }}</div>
-                            <div class="cell img">{% include 'inline/table_coal_pref_icon.html' with coal_pref=pilot.coal_pref %}</div>
-                            <div class="cell">{{ pilot.ak_total }}</div>
-                            <div class="cell">{{ pilot.gk_total }}</div>
-                            <div class="cell">{{ pilot.flight_time|seconds_to_time }}</div>
-                            <div class="cell">{{ pilot.kd }}</div>
-                            <div class="cell">{{ pilot.khr }}</div>
-                            <div class="cell">{{ pilot.accuracy }}%</div>
-                            <div class="cell">{{ pilot.score_light }}</div>
-                            <div class="cell">{{ pilot.score_medium }}</div>
-                            <div class="cell">{{ pilot.score_heavy }}</div>
-                            <div class="cell">{{ pilot.score }}</div>
-                        </a>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            <div class="content_head">
-                <div class="content_title">
-                    {% trans 'Tankmen Rankings' %}
-                    <div class="content_title_sm" id="sort_by_text"></div>
-                </div>
-            </div>
-            {% if tankmans %}
-                <div class="content_table">
-                    <div class="head_row">
-                        <div class="cell" style="width: 60px;"></div>
-                        <div class="cell"></div>
-                        <div class="cell" style="width: 60px;"></div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-gk_total">
-                                <img src="{% static 'img/icons/small/gk.png' %}" width="18" height="18"
-                                     alt="{% trans 'Ground Kills' %}" title="{% trans 'Ground Kills' %}">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-ak_total">
-                                <img src="{% static 'img/icons/small/ak.png' %}" width="18" height="18"
-                                     alt="{% trans 'Air Kills' %}" title="{% trans 'Air Kills' %}">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-flight_time">
-                                <img src="{% static 'img/icons/small/ft.png' %}" width="18" height="18"
-                                     alt="{% trans 'Flight Time (hours:minutes)' %}"
-                                     title="{% trans 'Flight Time (hours:minutes)' %}">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-gkd">
-                                <img src="{% static 'img/icons/small/kd.png' %}" width="18" height="18"
-                                     alt="GK/D" title="GK/D">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-gkhr">
-                                <img src="{% static 'img/icons/small/gkhr.png' %}" width="18" height="18"
-                                     alt="GK/Hr" title="GK/Hr">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-accuracy">
-                                <img src="{% static 'img/icons/small/acc.png' %}" width="18" height="18"
-                                     alt="{% trans 'Gunnery Accuracy' %}" title="{% trans 'Gunnery Accuracy' %}">
-                            </a>
-                        </div>
-                        <div class="cell" style="width: 90px;">
-                            <a class="sort_by" href="?sort_by=-score">
-                                <img src="{% static 'img/icons/small/score.png' %}" width="18" height="18"
-                                     alt="{% trans 'Score' %}" title="{% trans 'Score' %}">
-                            </a>
-                        </div>
-                    </div>
-                    {% for tankman in tankmans %}
-                        <a class="row" href="{{ tankman.get_tankman_url }}">
-                            <div class="cell">{{ forloop.counter }}</div>
-                            <div class="cell" style="text-align: left;">{{ tankman.nickname }}</div>
-                            <div class="cell img">{% include 'inline/table_coal_pref_icon.html' with coal_pref=tankman.coal_pref %}</div>
-                            <div class="cell">{{ tankman.gk_total }}</div>
-                            <div class="cell">{{ tankman.ak_total }}</div>
-                            <div class="cell">{{ tankman.flight_time|seconds_to_time }}</div>
-                            <div class="cell">{{ tankman.gkd }}</div>
-                            <div class="cell">{{ tankman.gkhr }}</div>
-                            <div class="cell">{{ tankman.accuracy }}%</div>
-                            <div class="cell">{{ tankman.score }}</div>
+                            <div class="cell" style="text-align: left;">{{ player.nickname }}</div>
+                            <div class="cell img">{% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}</div>
+                            <div class="cell">{{ player.ak_total }}</div>
+                            <div class="cell">{{ player.gk_total }}</div>
+                            <div class="cell">{{ player.flight_time|seconds_to_time }}</div>
+                            <div class="cell">{{ player.kd }}</div>
+                            <div class="cell">{{ player.khr }}</div>
+                            <div class="cell">{{ player.accuracy }}%</div>
+                            <div class="cell">{{ player.score_light }}</div>
+                            <div class="cell">{{ player.score_medium }}</div>
+                            <div class="cell">{{ player.score_heavy }}</div>
+                            <div class="cell">{{ player.score }}</div>
                         </a>
                     {% endfor %}
                 </div>
@@ -306,8 +233,6 @@
             'flight_time': '{% trans 'on the flight time (hours:minutes)' %}',
             'kd': '{% trans 'on the average number of kill per one death (K/D)' %}',
             'khr': '{% trans 'on the average number of kill per one hour (K/Hr)' %}',
-            'gkd': '{% trans 'on the average number of ground kill per one death (GK/D)' %}',
-            'gkhr': '{% trans 'on the average number of ground kill per one hour (GK/Hr)' %}',
             'accuracy': '{% trans 'on the accuracy' %}',
             'rating': '',
             'score': '{% trans 'on the score' %}'

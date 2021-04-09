@@ -5,8 +5,6 @@ from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
-SORTIE_DISCO_MIN_TIME = settings.SORTIE_DISCO_MIN_TIME
-SORTIE_DAMAGE_DISCO_TIME = settings.SORTIE_DAMAGE_DISCO_TIME
 
 
 def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
@@ -20,27 +18,6 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     if SORTIE_MIN_TIME:
         if (sortie_tik_last // 50) - (sortie.tik_spawn // 50) < SORTIE_MIN_TIME:
             is_ignored = True
-
-    # for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
-
-    if SORTIE_DISCO_MIN_TIME and sortie.is_disco:
-        if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
-            sortie.is_discobailout = True
-            sortie.is_disco = False
-
-    # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco,
-    # if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
-
-    if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:
-
-        if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
-            sortie.is_disco = True
-            sortie.is_damageddisco = False
-    # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
-            if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
-                sortie.is_discobailout = True
-                sortie.is_disco = False
-                sortie.is_damageddisco = False
 
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)
@@ -120,8 +97,8 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         aircraft_status=sortie.aircraft_status.status,
         bot_status=sortie.bot_status.status,
 
-        is_bailout=sortie.is_bailout or sortie.is_discobailout,
-        is_captured=sortie.is_captured or sortie.is_damageddisco,
+        is_bailout=sortie.is_bailout,
+        is_captured=sortie.is_captured,
         is_disco=sortie.is_disco,
 
         score=score,
@@ -152,8 +129,6 @@ def create_ammo(sortie):
         result['ammo_breakdown'] = sortie.ammo_breakdown
 
     return result
-
-
 # ======================== MODDED PART END
 
 

@@ -15,11 +15,6 @@
                         (<a href="{{ player.squad.get_profile_url }}">{{ player.squad.name }}</a>)
                     {% endif %}
             </div>
-            <a href="{{ player.get_tankman_url }}">
-                <div class="go_to_player_tankman">
-                    {% trans '[Go to tankman statistics of same player]' %}
-                </div>
-            </a>
             <div class="profile_head">
                 <div class="head_left">
                     {% if player.coal_pref == 1 %}

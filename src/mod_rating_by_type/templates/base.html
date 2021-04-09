@@ -86,7 +86,6 @@ r{% load i18n staticfiles tz stats %}
                     {% if request.module_ironman %}
                     <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}">{% trans 'Ironman Rankings' %}</a>
                     {% endif %}
-                    <a href="{% url 'stats:tankmans' %}?tour={{ request.tour.id }}">{% trans 'Tankman Rankings' %}</a>
                     <a href="{% url 'stats:squads' %}?tour={{ request.tour.id }}">{% trans 'Squad Rankings' %}</a>
                     {% if request.aircraft_rankings_installed %}
                     <a href="{% url 'stats:all_aircraft' %}?tour={{ request.tour.id }}">{% trans 'Aircraft Rankings' %}</a>
