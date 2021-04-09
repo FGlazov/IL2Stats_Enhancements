@@ -30,7 +30,9 @@ Config name: ammo_breakdown
 This module modifies the sortie views to show how many and which bullets you've taken in that sortie. E.g. you can now see you've taken 30 hits in an IL-2 that one sortie, 20 of which were MG 17, and another 10 MG 151/20 hits. Additionally, you can also see which bullets you've hit, e.g.. you can see how many cannon rounds and MG rounds you hit. The idea is you can use this mod to analyze how hits many you can take without going down, or judging whether you're perhaps only hitting with MG rounds and whiffing all your cannon rounds.
 
 If you additionally have the Global Aircraft Stats mod, then you will also be able to see Average Ammo To kill/Average ammo to death statistics. For example, you could see the average number of ShVAK rounds needed to take down a BF 109 G-4. 
-TODO: Translation thanks, Insert Video Intro.
+
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
 
 DISCLAIMER: This module is not retroactive, and will likely never be. It only gives you ammo breakdowns of new sorties. This also applies to the Global Aircraft Stats mod, the average offensive/defensive breakdowns of ammo can only be computed on new sorties.
 
@@ -42,7 +44,8 @@ Config name: ironman_stats
 
 This module adds a new table "Ironman Rankings" to IL2 stats, which is similar to the Pilot Rankings. The difference is that the stats in this page get reset as soon as your pilot dies. This is essentially an overview of all the current virutal lives. For past tours, the table instead shows the best streak of each pilot.
 
-TODO: Translation thanks.
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
  
 Installation
 ---------------------------------------------
@@ -70,28 +73,15 @@ Contact =FEW=Revolves on the IL2 forums.
 Compatibility with other mods
 ---------------------------------------------
 
-TODO: UPDATE THIS!
 
+This mod is compatible with Global Aircraft Stats. Make sure mod_stats_by_aircraft comes after mod_rating_by_type in the mods config parameter. I.e., like:
+mods = mod_rating_by_type, mod_stats_by_aircraft
 
-This mod modifies the following files. If another mod also modifies these files, there is a high chance that this mod will not be compatible with the other mod without some work.
+This mod is incompatible with the disconnect mod, but a compatbility patch is included in the .zip. After installing both mods, copy over the src file in the compatbility_patch/disconnect folder. Made for version 1.6 of the disconnect mod.
 
-src/stats/views.py
-src/stats/urls.py
-src/stats/templates/tour.html
-src/stats/templates/squad_pilots.html
-src/stats/templates/squads.html
-src/stats/templates/squad.html
-src/stats/templates/pilots.html
-src/stats/templates/pilot.html
-src/stats/templates/mission.html
-src/stats/templates/main.html
-src/stats/locale/ru/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/fr/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/es/LC_MESSAGES/* (all files in this dir)
-src/stats/locale/de/LC_MESSAGES/* (all files in this dir)
+This mod is incompatible with the tank mod.
 
-If these two mods are incompatible, then you may attempt to merge the changes together. Most friendly python programmers will be able to do this quickly! If you're technically minded, you can attempt to do this even without programming knowledge. If you don't know any friendly programmers, you may contact =FEW=Revolves on the forums and I'll try to get back to you and Frankenstein your two mods together.
-
+If you want to run all four mods at the same time, consider this bundle: https://forum.il2sturmovik.com/topic/70029-il-2-stats-mod-bundle-disco-tanks-splitrankings/
 
 License
 ---------------------------------------------
