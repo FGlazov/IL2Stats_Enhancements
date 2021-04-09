@@ -11,7 +11,7 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-from stats.views import _get_rating_position
+from stats.views import _get_rating_position, _get_squad
 from stats.views import *
 from .bullets_types import translate_ammo_breakdown
 from .config_modules import *

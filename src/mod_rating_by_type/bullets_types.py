@@ -2,18 +2,25 @@ from django.utils.translation import pgettext_lazy
 from .report import TOTAL_HITS, TOTAL_RECEIVED, ALL_TAKEN
 
 
+def take_first(elem):
+    return elem[0]
+
+
 def translate_ammo_breakdown(ammo_breakdown):
     result = {
-        TOTAL_HITS: dict(),
-        TOTAL_RECEIVED: dict(),
+        TOTAL_HITS: [],
+        TOTAL_RECEIVED: [],
         ALL_TAKEN: ammo_breakdown[ALL_TAKEN],
     }
 
     for ammo, hits in ammo_breakdown[TOTAL_HITS].items():
-        result[TOTAL_HITS][translate_bullet(ammo)] = hits
+        result[TOTAL_HITS].append((translate_bullet(ammo), hits))
 
     for ammo, received in ammo_breakdown[TOTAL_RECEIVED].items():
-        result[TOTAL_RECEIVED][translate_bullet(ammo)] = received
+        result[TOTAL_RECEIVED].append((translate_bullet(ammo), received))
+
+    result[TOTAL_HITS].sort(key=take_first)
+    result[TOTAL_RECEIVED].sort(key=take_first)
 
     return result
 

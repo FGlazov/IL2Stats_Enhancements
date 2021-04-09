@@ -749,7 +749,7 @@
                     <div class="num">{{ sortie.ammo.hit_bullets }}</div>
                 </div>
                 {% if ammo_breakdown.total_hits %}
-                {% for ammo, nr_hits in ammo_breakdown.total_hits.items %}
+                {% for ammo, nr_hits in ammo_breakdown.total_hits %}
                 <div class="sub_item">
                     <div class="name">{{ ammo }}</div>
                     <div class="num">{{ nr_hits }}</div>
@@ -781,7 +781,7 @@
                     <div class="name">{% trans 'Number of hits taken' %}</div>
                     <div class="num">{{ ammo_breakdown.all_taken }}</div>
                 </div>
-                {% for ammo, nr_hits in ammo_breakdown.total_received.items %}
+                {% for ammo, nr_hits in ammo_breakdown.total_received %}
                 <div class="sub_item">
                     <div class="name">{{ ammo }}</div>
                     <div class="num">{{ nr_hits }}</div>
