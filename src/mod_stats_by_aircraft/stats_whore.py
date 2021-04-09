@@ -288,6 +288,10 @@ def stats_whore(m_report_file):
             params['type'] = 'end'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
             params['act_sortie_id'] = event['sortie'].sortie_db.id
+        elif event['type'] == 'disco':
+            params['type'] = 'disco'
+            params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
+            params['act_sortie_id'] = event['sortie'].sortie_db.id
         elif event['type'] == 'takeoff':
             params['type'] = 'takeoff'
             params['act_object_id'] = event['aircraft'].sortie.sortie_db.aircraft.id
@@ -314,7 +318,12 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the damage to the tank driver.
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -333,7 +342,12 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the kill to the tank driver.
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -531,15 +545,8 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype):
         enemy_bucket.update_derived_fields()
         enemy_bucket.save()
 
-    process_aa_accident_death(bucket, sortie)
-    if 'ammo_breakdown' in sortie.ammo:
-        process_ammo_breakdown(bucket, sortie, is_subtype)
-
-    bucket.update_derived_fields()
-    bucket.save()
-
     # LogEntry does not store what your turrets did. Only what turrets hit you.
-    # So we parse all turret encounters from the perspective of the plane the turrets hit.
+    # So we parse all turret encounters from the perspective of the turret's plane.
     turret_events = (LogEntry.objects
                      .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
                      .filter(Q(cact_sortie_id=sortie.id),
@@ -547,12 +554,20 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype):
                              act_object__cls='aircraft_turret', cact_object__cls_base='aircraft',
                              # Filter out AI kills from turret.
                              cact_sortie_id__isnull=False)
+
                      # Disregard friendly fire incidents.
                      .exclude(extra_data__is_friendly_fire=True))
 
     enemies_damaged = set()
     enemies_shotdown = set()
     enemies_killed = set()
+
+    process_aa_accident_death(bucket, sortie)
+    if 'ammo_breakdown' in sortie.ammo:
+        process_ammo_breakdown(bucket, sortie, is_subtype)
+
+    bucket.update_derived_fields()
+    bucket.save()
 
     if len(turret_events) > 0 and not is_subtype:
         cache_turret_buckets = dict()
@@ -638,7 +653,7 @@ def update_from_entries(bucket, enemies_damaged, enemies_killed, enemies_shotdow
     return cache_enemy_buckets, cache_kb
 
 
-# There are in essence three cases for the Elo Update:
+# There are in essecence three cases for the Elo Update:
 
 # Aircraft 1 and Aircraft 2 have no subtypes -> Just update elo directly.
 # Aircraft 1 and 2 have subtypes: Main types update each other. Subtypes update each other.
@@ -814,7 +829,8 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
     base_bucket, db_sortie, filter_type = ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
 
     if base_bucket:
-        base_bucket.increment_ammo_given(ammo_breakdown['total_received'])
+        for ammo_log_name, times_hit in ammo_breakdown['total_received'].items():
+            base_bucket.increment_ammo_given(ammo_log_name, times_hit)
         base_bucket.save()
 
     # Note that we can't update filtered Halberstadt (turreted plane with jabo type)
@@ -827,7 +843,8 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
             filtered_bucket = AircraftBucket.objects.get_or_create(
                 tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=None)[0]
 
-        filtered_bucket.increment_ammo_given(ammo_breakdown['total_received'])
+        for ammo_log_name, times_hit in ammo_breakdown['total_received'].items():
+            filtered_bucket.increment_ammo_given(ammo_log_name, times_hit)
 
         filtered_bucket.save()
 
@@ -857,17 +874,16 @@ def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
         db_sortie = None
         if bucket.player:
             if 'last_turret_account' in ammo_breakdown:
-                try:
-                    enemy_player = Player.objects.filter(
-                        profile__uuid=ammo_breakdown['last_turret_account'],
-                        tour=bucket.tour,
-                        type='pilot'
-                    ).get()
-                    base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour, player=enemy_player)
-                except Player.DoesNotExist:
-                    base_bucket = None
+                enemy_player = Player.objects.filter(
+                    profile__uuid=ammo_breakdown['last_turret_account'],
+                    tour=bucket.tour,
+                    type='pilot'
+                ).get()
+                base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour, player=enemy_player)
             else:
                 base_bucket = None
+        # There is a small chance that hits and damaged are not synced here due to log bugs.
+
         else:
             base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour)
 

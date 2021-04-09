@@ -125,7 +125,7 @@
                             <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_rating %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -151,7 +151,59 @@
                             <div class="cell">{% trans 'score' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_streak %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ player.score_streak_max }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if toptank_rating %}
+                <div class="top_pilots" style="float: left;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen' context 'tour_top' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
+                        </div>
+                        {% for player in toptank_rating %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ player.rating_format }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if toptank_streak %}
+                <div class="top_pilots" style="float: right;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen streak' context 'tour_top' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                        </div>
+                        {% for player in toptank_streak %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -177,7 +229,7 @@
                             <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_rating_light %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -203,7 +255,7 @@
                             <div class="cell">{% trans 'score' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_streak_light %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -229,7 +281,7 @@
                             <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_rating_medium %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -255,7 +307,7 @@
                             <div class="cell">{% trans 'score' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_streak_medium %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -281,7 +333,7 @@
                             <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_rating_heavy %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -307,7 +359,7 @@
                             <div class="cell">{% trans 'score' context 'tour_top' %}</div>
                         </div>
                         {% for player in top_streak_heavy %}
-                        <a class="row" href="{{ player.get_profile_url }}">
+                        <a class="row" href="{{ player.get_pilot_url }}">
                             <div class="cell">{{ forloop.counter }}</div>
                             <div class="cell">{{ player.nickname }}</div>
                             <div class="cell img">
@@ -326,6 +378,14 @@
                     <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}">
                         <span>
                             {% trans 'Overall Pilot Rankings' %}
+                        </span>
+                    </a>
+                </div>
+
+                <div class="full_rating">
+                    <a href="{% url 'stats:tankmans' %}?tour={{ request.tour.id }}">
+                        <span>
+                            {% trans 'Overall Tankman Rankings' %}
                         </span>
                     </a>
                 </div>
@@ -351,13 +411,13 @@
                     </div>
                 </div>
 
-                {% if total_active_players %}
+                {% if total_active_pilots %}
                 <div class="active_players">
                     <div class="title">
                         {% trans 'Active players' %}
                     </div>
                     <div class="total">
-                        {% trans 'total' context 'tour_active' %}
+                        {% trans 'total pilots' context 'tour_active' %}
                     </div>
                     <div class="total_num">
                         {{ total_active_players }}
@@ -372,13 +432,48 @@
                             <div class="bar_blue" style="width: {{ width }}%;"></div>
                         </div>
                         <div class="bar_red_num">
-                            {{ coal_active_players.1 }}
+                            {{ coal_active_pilots.1 }}
                         </div>
                         <div class="bar_gray_num">
-                            {{ coal_active_players.0 }}
+                            {{ coal_active_pilots.0 }}
                         </div>
                         <div class="bar_blue_num">
-                            {{ coal_active_players.2 }}
+                            {{ coal_active_pilots.2 }}
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                {% endif %}
+
+                {% if total_active_tankmans %}
+                <div class="active_players">
+                    <div class="title">
+                        {% trans 'Active tankmen' %}
+                    </div>
+                    <div class="total">
+                        {% trans 'total tankmen' context 'tour_active' %}
+                    </div>
+                    <div class="total_num">
+                        {{ total_active_tankmans }}
+                    </div>
+
+                    <div class="bar_mini" style="float: right;">
+                        <div class="bar">
+                            <div class="bar_grid" style="width: 50%;"></div>
+                            {% widthratio coal_active_tankmans.1 total_active_tankmans 100 as width %}
+                            <div class="bar_red" style="width: {{ width }}%;"></div>
+                            {% widthratio coal_active_tankmans.2 total_active_tankmans 100 as width %}
+                            <div class="bar_blue" style="width: {{ width }}%;"></div>
+                        </div>
+                        <div class="bar_red_num">
+                            {{ coal_active_tankmans.1 }}
+                        </div>
+                        <div class="bar_gray_num">
+                            {{ coal_active_tankmans.0 }}
+                        </div>
+                        <div class="bar_blue_num">
+                            {{ coal_active_tankmans.2 }}
                         </div>
                     </div>
 

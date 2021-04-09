@@ -1,4 +1,4 @@
-r{% load i18n staticfiles tz stats %}
+{% load i18n staticfiles tz stats %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -83,6 +83,7 @@ r{% load i18n staticfiles tz stats %}
                 {% trans 'Rankings' %} &#x25BE;
                 <div class="nav_sub_menu_items">
                     <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}">{% trans 'Pilot Rankings' %}</a>
+					<a href="{% url 'stats:tankmans' %}?tour={{ request.tour.id }}">{% trans 'Tankman Rankings' %}</a>
                     <a href="{% url 'stats:squads' %}?tour={{ request.tour.id }}">{% trans 'Squad Rankings' %}</a>
                     <a href="{% url 'stats:all_aircraft' %}?tour={{ request.tour.id }}">{% trans 'Aircraft Rankings' %}</a>
                 </div>

@@ -29,7 +29,6 @@ urlpatterns = [
     url(r'^vlifes/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.pilot_vlifes, name='pilot_vlifes'),
     url(r'^awards/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.pilot_awards, name='pilot_awards'),
     url(r'^killboard/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.pilot_killboard, name='pilot_killboard'),
-
     url(r'^missions/$', views.missions_list, name='missions_list'),
 
     url(r'^squad/(?P<squad_id>\d+)/(?P<squad_tag>\S+)/$', views.squad, name='squad'),
@@ -44,8 +43,21 @@ urlpatterns = [
     url(r'^mission/(?P<mission_id>\d+)/$', views.mission, name='mission'),
     url(r'^vlife/(?P<vlife_id>\d+)/$', views.pilot_vlife, name='pilot_vlife'),
 
-    url(r'^overall/$', views.overall, name='overall'),
+    url(r'^online/$', views.online, name='online'),
+    url(r'^$', views.main, name='main'),
 
+    url(r'^tankman/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman, name='tankman'),
+    url(r'^tankman_sortie/(?P<sortie_id>\d+)/$', views.tankman_sortie, name='tankman_sortie'),
+    url(r'^tankman_sortie/log/(?P<sortie_id>\d+)/$', views.tankman_sortie_log, name='tankman_sortie_log'),
+    url(r'^tankman_vlife/(?P<vlife_id>\d+)/$', views.tankman_vlife, name='tankman_vlife'),
+    url(r'^tankman_sorties/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_sorties, name='tankman_sorties'),
+    url(r'^tankman_vlifes/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_vlifes, name='tankman_vlifes'),
+    url(r'^tankman_awards/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_awards, name='tankman_awards'),
+    url(r'^tankman_killboard/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_killboard,
+        name='tankman_killboard'),
+    url(r'^tankmans/(?P<squad_id>\d+)/(?P<squad_tag>\S+)/$', views.squad_tankmans, name='squad_tankmans'),
+
+    url(r'^overall/$', views.overall, name='overall'),
     url(r'^aircraft_overview/(?P<profile_id>\d+)/(?P<nickname>\S+)/(?P<airfilter>\S+)/$', views.pilot_aircraft_overview,
         name='pilot_aircraft_overview'),
     url(r'^pilot_aircraft/(?P<aircraft_id>\d+)/(?P<airfilter>\S+)/(?P<profile_id>\d+)/(?P<nickname>\S+)/$',
@@ -53,13 +65,14 @@ urlpatterns = [
     url(r'^pilot_aircraft_killboard/(?P<aircraft_id>\d+)/(?P<airfilter>\S+)/(?P<profile_id>\d+)/(?P<nickname>\S+)/$',
         views.pilot_aircraft_killboard, name='pilot_aircraft_killboard'),
 
-    url(r'^online/$', views.online, name='online'),
-    url(r'^$', views.main, name='main'),
-
     # нужно чтобы работали url без имени
     url(r'^pilot/(?P<profile_id>\d+)/$', views.pilot),
     url(r'^sorties/(?P<profile_id>\d+)/$', views.pilot_sorties),
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
+    url(r'^tankman/(?P<profile_id>\d+)/$', views.tankman),
+    url(r'^tankman_sorties/(?P<profile_id>\d+)/$', views.tankman_sorties),
+    url(r'^tankman_vlifes/(?P<profile_id>\d+)/$', views.tankman_vlifes),
+    url(r'^tankmans/$', views.tankman_rankings, name='tankmans'),
 ]
 
 if hasattr(views, 'ironman_stats'):  # For compatibility with mod_rating_by_type.
