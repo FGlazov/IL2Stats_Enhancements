@@ -62,9 +62,9 @@ def record_hits(target, attacker, ammo):
 
     if sortie is not None:
         if not hasattr(sortie, 'ammo_breakdown'):
-            sortie = default_ammo_breakdown()
+            sortie.ammo_breakdown = default_ammo_breakdown()
 
-        increment(sortie, TOTAL_HITS, ammo['name'])
+        increment(sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
 
 
 def default_ammo_breakdown():
