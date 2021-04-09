@@ -23,4 +23,4 @@ def is_jabo(sortie):
 def is_fighter(sortie):
     if is_jabo(sortie):
         return False
-    return sortie.aircraft.cls == 'aircraft_light' or sortie.aircraft.en in FIGHTER_WHITE_LIST
+    return sortie.aircraft.cls == 'aircraft_light' or sortie.aircraft.name_en in FIGHTER_WHITE_LIST
