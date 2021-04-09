@@ -55,6 +55,14 @@ urlpatterns = [
     url(r'^tankman_awards/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_awards, name='tankman_awards'),
     url(r'^tankman_killboard/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.tankman_killboard, name='tankman_killboard'),
 	url(r'^tankmans/(?P<squad_id>\d+)/(?P<squad_tag>\S+)/$', views.squad_tankmans, name='squad_tankmans'),
+	
+	url(r'^overall/$', views.overall, name='overall'),
+    url(r'^aircraft_overview/(?P<profile_id>\d+)/(?P<nickname>\S+)/(?P<airfilter>\S+)/$', views.pilot_aircraft_overview,
+        name='pilot_aircraft_overview'),
+    url(r'^pilot_aircraft/(?P<aircraft_id>\d+)/(?P<airfilter>\S+)/(?P<profile_id>\d+)/(?P<nickname>\S+)/$',
+        views.pilot_aircraft, name='pilot_aircraft'),
+    url(r'^pilot_aircraft_killboard/(?P<aircraft_id>\d+)/(?P<airfilter>\S+)/(?P<profile_id>\d+)/(?P<nickname>\S+)/$',
+        views.pilot_aircraft_killboard, name='pilot_aircraft_killboard'),
 
 
     # нужно чтобы работали url без имени
