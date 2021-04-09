@@ -829,8 +829,7 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
     base_bucket, db_sortie, filter_type = ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
 
     if base_bucket:
-        for ammo_log_name, times_hit in ammo_breakdown['total_received'].items():
-            base_bucket.increment_ammo_given(ammo_log_name, times_hit)
+        base_bucket.increment_ammo_given(ammo_breakdown['total_received'])
         base_bucket.save()
 
     # Note that we can't update filtered Halberstadt (turreted plane with jabo type)
@@ -843,10 +842,9 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
             filtered_bucket = AircraftBucket.objects.get_or_create(
                 tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=None)[0]
 
-        for ammo_log_name, times_hit in ammo_breakdown['total_received'].items():
-            filtered_bucket.increment_ammo_given(ammo_log_name, times_hit)
-
+        filtered_bucket.increment_ammo_given(ammo_breakdown['total_received'])
         filtered_bucket.save()
+
 
 
 def fill_in_ammo(ammo_breakdown, ap_ammo, he_ammo):
@@ -874,12 +872,15 @@ def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
         db_sortie = None
         if bucket.player:
             if 'last_turret_account' in ammo_breakdown:
-                enemy_player = Player.objects.filter(
-                    profile__uuid=ammo_breakdown['last_turret_account'],
-                    tour=bucket.tour,
-                    type='pilot'
-                ).get()
-                base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour, player=enemy_player)
+                try:
+                    enemy_player = Player.objects.filter(
+                        profile__uuid=ammo_breakdown['last_turret_account'],
+                        tour=bucket.tour,
+                        type='pilot'
+                    ).get()
+                    base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour, player=enemy_player)
+                except Player.DoesNotExist:
+                    base_bucket = None
             else:
                 base_bucket = None
         # There is a small chance that hits and damaged are not synced here due to log bugs.

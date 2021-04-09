@@ -8,26 +8,22 @@ def take_first(elem):
 
 
 def render_ammo_breakdown(ammo_breakdown, filter_out_flukes=True):
-    result = {
-        GIVEN: [],
-        RECEIVED: [],
+    return {
+        GIVEN: __render_sub_dict(ammo_breakdown[GIVEN], filter_out_flukes),
+        RECEIVED: __render_sub_dict(ammo_breakdown[RECEIVED], filter_out_flukes),
     }
 
-    for ammo_log_name, avg_used in ammo_breakdown[GIVEN][AVERAGES].items():
-        if ammo_log_name == 'BULLET_PISTOL':
-            continue  # I mean...
 
-        ammo_name = translate_bullet(ammo_log_name)
-        result[GIVEN].append((ammo_name, avg_used))
-    result[GIVEN].sort(key=take_first)
+def __render_sub_dict(sub_dict, filter_out_flukes):
+    result = []
 
     total_inst = 0
-    for multi_key in ammo_breakdown[RECEIVED][TOTALS]:
-        total_inst += ammo_breakdown[RECEIVED][TOTALS][multi_key][INST]
+    for multi_key in sub_dict[TOTALS]:
+        total_inst += sub_dict[TOTALS][multi_key][INST]
 
-    for multi_key in ammo_breakdown[RECEIVED][TOTALS]:
-        inst = ammo_breakdown[RECEIVED][TOTALS][multi_key][INST]
-        if filter_out_flukes and (inst < 4 or inst/total_inst < 0.01):
+    for multi_key in sub_dict[TOTALS]:
+        inst = sub_dict[TOTALS][multi_key][INST]
+        if filter_out_flukes and (inst < 4 or inst / total_inst < 0.05):
             continue
 
         keys = string_to_multikey(multi_key)
@@ -49,11 +45,11 @@ def render_ammo_breakdown(ammo_breakdown, filter_out_flukes=True):
         cannon_avgs = [0] * len(cannon_keys)
         for mg_key in mg_keys:
             key_index = translated_mg_keys.index(translate_bullet(mg_key))
-            mg_avgs[key_index] = ammo_breakdown[RECEIVED][AVERAGES][multi_key][mg_key]
+            mg_avgs[key_index] = sub_dict[AVERAGES][multi_key][mg_key]
 
         for cannon_key in cannon_keys:
             key_index = translated_cannon_keys.index(translate_bullet(cannon_key))
-            cannon_avgs[key_index] = ammo_breakdown[RECEIVED][AVERAGES][multi_key][cannon_key]
+            cannon_avgs[key_index] = sub_dict[AVERAGES][multi_key][cannon_key]
 
         if mg_avgs and cannon_avgs:
             avg_use = (multi_key_to_string(cannon_avgs, ' | ') + ' | ' + multi_key_to_string(mg_avgs, ' | '))
@@ -62,10 +58,9 @@ def render_ammo_breakdown(ammo_breakdown, filter_out_flukes=True):
         else:
             avg_use = multi_key_to_string(cannon_avgs, ' | ')
 
-        result[RECEIVED].append((ammo_names, avg_use))
+        result.append((ammo_names, avg_use))
 
-    result[RECEIVED].sort(key=take_first)
-
+    result.sort(key=take_first)
     return result
 
 

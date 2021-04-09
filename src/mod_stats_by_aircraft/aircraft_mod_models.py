@@ -493,41 +493,34 @@ class AircraftBucket(models.Model):
         return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_FILTER, self.player)
 
     def increment_ammo_received(self, ammo_dict):
+        self.__increment_helper(ammo_dict, self.ammo_breakdown[RECEIVED])
+
+    def increment_ammo_given(self, ammo_dict):
+        self.__increment_helper(ammo_dict, self.ammo_breakdown[GIVEN])
+
+    @staticmethod
+    def __increment_helper(ammo_dict, sub_dict):
         key = multi_key_to_string(list(ammo_dict.keys()))
         if not key:
             return
 
-        if key not in self.ammo_breakdown[RECEIVED][TOTALS]:
-            self.ammo_breakdown[RECEIVED][TOTALS][key] = {
+        if key not in sub_dict[TOTALS]:
+            sub_dict[TOTALS][key] = {
                 INST: 0,
                 COUNT: dict(),
             }
-            self.ammo_breakdown[RECEIVED][AVERAGES][key] = dict()
+            sub_dict[AVERAGES][key] = dict()
             for ammo_key in ammo_dict:
-                self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key] = 0
+                sub_dict[TOTALS][key][COUNT][ammo_key] = 0
 
-        self.ammo_breakdown[RECEIVED][TOTALS][key][INST] += 1
+        sub_dict[TOTALS][key][INST] += 1
         for ammo_key in ammo_dict:
             times_hit = ammo_dict[ammo_key]
-            self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key] += times_hit
-            self.ammo_breakdown[RECEIVED][AVERAGES][key][ammo_key] = compute_float(
-                self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key],
-                self.ammo_breakdown[RECEIVED][TOTALS][key][INST]
+            sub_dict[TOTALS][key][COUNT][ammo_key] += times_hit
+            sub_dict[AVERAGES][key][ammo_key] = compute_float(
+                sub_dict[TOTALS][key][COUNT][ammo_key],
+                sub_dict[TOTALS][key][INST]
             )
-
-    def increment_ammo_given(self, ammo_log_name, times_hit):
-        if ammo_log_name not in self.ammo_breakdown[GIVEN][TOTALS]:
-            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name] = {
-                INST: 0,
-                COUNT: 0,
-            }
-
-        self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][COUNT] += times_hit
-        self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][INST] += 1
-        self.ammo_breakdown[GIVEN][AVERAGES][ammo_log_name] = compute_float(
-            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][COUNT],
-            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][INST]
-        )
 
 
 def multi_key_to_string(keys, separator='|'):

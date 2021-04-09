@@ -1436,13 +1436,13 @@ msgid ""
 "★ This data is pulled purely from sorties where this plane was the sole "
 "source of damage. </br> ⛤ This data is pulled purely from sorties where this "
 "plane was damaged by a single enemy (one aircraft/tank/AA/etc.). Only weapon "
-"configurations which account for at least 1%% of deaths are displayed.</br>"
+"configurations which account for at least 5%% of deaths are displayed.</br>"
 msgstr ""
 "★ Estos datos se obtienen puramente de salidas en las que este avión fue la "
 "única fuente de daños. <br/> ⛤ Estos datos se obtienen puramente de salidas "
 "en las que este avión fue impactado por un solo enemigo (una aeronave/tanque/"
 "AA/etc). Solo se muestran las configuraciones de armas que representanal "
-"menos 1%% de las muertes. <br/> "
+"menos 5%% de las muertes. <br/> "
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:680
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:243
