@@ -56,11 +56,15 @@ def record_hits(target, attacker, ammo):
             if attacker.cls == 'aircraft_turret' and attacker.parent:
                 ammo_breakdown[LAST_TURRET_ACCOUNT] = attacker.parent.sortie.account_id
 
-    if attacker and attacker.sortie:
-        if not hasattr(attacker.sortie, 'ammo_breakdown'):
-            attacker.sortie.ammo_breakdown = default_ammo_breakdown()
+    sortie = attacker.sortie
+    if sortie is None and attacker.parent:
+        sortie = attacker.parent
 
-        increment(attacker.sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
+    if sortie is not None:
+        if not hasattr(sortie, 'ammo_breakdown'):
+            sortie = default_ammo_breakdown()
+
+        increment(sortie, TOTAL_HITS, ammo['name'])
 
 
 def default_ammo_breakdown():
