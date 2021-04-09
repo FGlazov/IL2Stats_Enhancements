@@ -10,11 +10,14 @@ from django.urls import reverse
 from mission_report.constants import Coalition
 
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
-from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
+from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, SortieStatus, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
 from stats.views import *
+
+from .variant_utils import has_juiced_variant, has_bomb_variant
 from .aircraft_mod_models import AircraftBucket, AircraftKillboard, compute_float
+from .bullets_types import render_ammo_breakdown
 
 aircraft_sort_fields = ['total_sorties', 'total_flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy',
                         'bomb_rocket_accuracy', 'plane_survivability', 'pilot_survivability', 'plane_lethality',
@@ -28,7 +31,8 @@ def all_aircraft(request, airfilter='NO_FILTER'):
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=aircraft_sort_fields, default='-rating')
-    buckets = AircraftBucket.objects.filter(tour_id=request.tour.id, filter_type=airfilter).order_by(sort_by, 'id')
+    buckets = AircraftBucket.objects.filter(tour_id=request.tour.id, filter_type=airfilter,
+                                            player=None).order_by(sort_by, 'id')
     if search:
         buckets = buckets.filter(aircraft__name__icontains=search)
 
@@ -56,35 +60,120 @@ def aircraft(request, aircraft_id, airfilter):
     if bucket is None:
         return render(request, 'aircraft_does_not_exist.html')
 
+    ammo_breakdown = render_ammo_breakdown(bucket.ammo_breakdown)
+
     return render(request, 'aircraft.html', {
         'aircraft_bucket': bucket,
         'filter_option': airfilter,
+        'ammo_breakdown': ammo_breakdown
     })
 
 
 def aircraft_killboard(request, aircraft_id, airfilter):
     tour_id = request.GET.get('tour')
+    enemy_filter = request.GET.get('enemy_filter', 'NO_FILTER')
     bucket = find_aircraft_bucket(aircraft_id, tour_id, airfilter)
     if bucket is None:
         return render(request, 'aircraft_does_not_exist.html')
     aircraft_id = int(aircraft_id)
 
+    killboard = render_killboard(aircraft_id, airfilter, bucket, request, tour_id, enemy_filter, True)
+
+    return render(request, 'aircraft_killboard.html', {
+        'aircraft_bucket': bucket,
+        'killboard': killboard,
+        'enemy_filter': enemy_filter,
+    })
+
+
+def pilot_aircraft_overview(request, profile_id, airfilter, nickname=None):
+    try:
+        player = (Player.objects.select_related('profile', 'tour')
+                  .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
+    except Player.DoesNotExist:
+        raise Http404
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    page = request.GET.get('page', 1)
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=aircraft_sort_fields, default='-rating')
+    buckets = (AircraftBucket.objects
+               .filter(tour_id=request.tour.id, filter_type=airfilter, player=player)
+               .order_by(sort_by, 'id'))
+    if search:
+        buckets = buckets.filter(aircraft__name__icontains=search)
+
+    buckets = Paginator(buckets, ITEMS_PER_PAGE).page(page)
+
+    return render(request, 'pilot_aircraft_overview.html', {
+        'all_aircraft': buckets,
+        'player': player,
+        'filter_type': airfilter,
+        'no_filter_url': pilot_aircraft_overview_url(profile_id, nickname, request.tour.id, 'NO_FILTER'),
+        'no_mods_url': pilot_aircraft_overview_url(profile_id, nickname, request.tour.id, 'NO_BOMBS_JUICE'),
+        'bombs_url': pilot_aircraft_overview_url(profile_id, nickname, request.tour.id, 'BOMBS'),
+        'juiced_url': pilot_aircraft_overview_url(profile_id, nickname, request.tour.id, 'JUICE'),
+        'all_mods_urls': pilot_aircraft_overview_url(profile_id, nickname, request.tour.id, 'ALL'),
+    })
+
+
+def pilot_aircraft_overview_url(profile_id, nickname, tour_id, filter_type):
+    url = '{url}?tour={tour_id}'.format(
+        url=reverse('stats:pilot_aircraft_overview', args=[profile_id, nickname, filter_type]),
+        tour_id=tour_id)
+    return url
+
+
+def pilot_aircraft_killboard(request, profile_id, aircraft_id, airfilter, nickname=None):
+    try:
+        player = (Player.objects.select_related('profile', 'tour')
+                  .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
+    except Player.DoesNotExist:
+        raise Http404
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    tour_id = request.GET.get('tour')
+    enemy_filter = request.GET.get('enemy_filter', 'NO_FILTER')
+    bucket = find_aircraft_bucket(aircraft_id, tour_id, airfilter, player)
+    if bucket is None:
+        return render(request, 'aircraft_does_not_exist.html')
+    killboard = render_killboard(aircraft_id, airfilter, bucket, request, tour_id, enemy_filter, False)
+
+    return render(request, 'pilot_aircraft_killboard.html', {
+        'player': player,
+        'aircraft_bucket': bucket,
+        'killboard': killboard,
+        'enemy_filter': enemy_filter,
+    })
+
+
+def render_killboard(aircraft_id, airfilter, bucket, request, tour_id, enemy_filter, no_players):
+    aircraft_id = int(aircraft_id)
     unsorted_killboard = (AircraftKillboard.objects
                           .select_related('aircraft_1', 'aircraft_2')
                           .filter((Q(aircraft_1=bucket) & Q(aircraft_1__filter_type=airfilter)) |
                                   (Q(aircraft_2=bucket) & Q(aircraft_2__filter_type=airfilter)),
+                                  (Q(aircraft_2=bucket) & Q(aircraft_1__filter_type=enemy_filter)) |
+                                  (Q(aircraft_1=bucket) & Q(aircraft_2__filter_type=enemy_filter)),
                                   # Edge case: Killboards with only assists/distinct hits. Look strange.
                                   Q(aircraft_1_shotdown__gt=0) | Q(aircraft_2_shotdown__gt=0),
                                   tour__id=tour_id,
                                   ))
+    if no_players:
+        unsorted_killboard = unsorted_killboard.filter(aircraft_1__player=None, aircraft_2__player=None)
 
     killboard = []
     for k in unsorted_killboard:
         aircraft_1 = k.aircraft_1.aircraft
         if aircraft_1.id == aircraft_id:
-            if not allow_killboard_line(k.aircraft_1, k.aircraft_2):
-                continue
-
             killboard.append(
                 {'aircraft': k.aircraft_2.aircraft,
                  'kills': k.aircraft_1_shotdown,
@@ -104,9 +193,6 @@ def aircraft_killboard(request, aircraft_id, airfilter):
                  }
             )
         else:
-            if not allow_killboard_line(k.aircraft_2, k.aircraft_1):
-                continue
-
             killboard.append(
                 {'aircraft': k.aircraft_1.aircraft,
                  'kills': k.aircraft_2_shotdown,
@@ -125,55 +211,50 @@ def aircraft_killboard(request, aircraft_id, airfilter):
                  'url': k.get_aircraft_url(1),
                  }
             )
-
     _sort_by = get_sort_by(request=request, sort_fields=aircraft_killboard_sort_fields, default='-kdr')
     sort_reverse = True if _sort_by.startswith('-') else False
     sort_by = _sort_by.replace('-', '')
     killboard = sorted(killboard, key=lambda x: x[sort_by], reverse=sort_reverse)
+    return killboard
 
-    return render(request, 'aircraft_killboard.html', {
+
+def pilot_aircraft(request, aircraft_id, airfilter, profile_id, nickname=None):
+    try:
+        player = (Player.objects.select_related('profile', 'tour')
+                  .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
+    except Player.DoesNotExist:
+        raise Http404
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    bucket = find_aircraft_bucket(aircraft_id, request.GET.get('tour'), airfilter, player)
+    if bucket is None:
+        return render(request, 'aircraft_does_not_exist.html')
+
+    ammo_breakdown = render_ammo_breakdown(bucket.ammo_breakdown, filter_out_flukes=False)
+
+    return render(request, 'pilot_aircraft.html', {
+        'player': player,
         'aircraft_bucket': bucket,
-        'killboard': killboard,
+        'filter_option': airfilter,
+        'ammo_breakdown': ammo_breakdown
     })
 
 
-def allow_killboard_line(our_aircraft, enemy_aircraft):
-    b = our_aircraft
-    # Technically speaking this function could be folded into the query and it would likely be quicker.
-    # The logic here is so complicated, that it is IMO more readable as a separate python function.
-    # Not much performance lost anyways - it's at most 50 objects which are iterated over in (slow) python.
-
-    if enemy_aircraft.has_juiced_variant and enemy_aircraft.has_bomb_variant:
-        return our_aircraft.filter_type == enemy_aircraft.filter_type
-    elif enemy_aircraft.has_juiced_variant:
-        if our_aircraft.filter_type == b.BOMBS:
-            return enemy_aircraft.filter_type == b.NO_FILTER
-        elif our_aircraft.filter_type == b.ALL:
-            return enemy_aircraft.filter_type == b.JUICED
-        else:
-            return our_aircraft.filter_type == enemy_aircraft.filter_type
-    elif enemy_aircraft.has_bomb_variant:
-        if our_aircraft.filter_type == b.JUICED:
-            return enemy_aircraft.filter_type == b.NO_FILTER
-        elif our_aircraft.filter_type == b.ALL:
-            return enemy_aircraft.filter_type == b.BOMBS
-        else:
-            return our_aircraft.filter_type == enemy_aircraft.filter_type
-    else:
-        return True  # Enemy aircraft type is always NO_FILTER, so there are no duplicates here anyways.
-
-
-def find_aircraft_bucket(aircraft_id, tour_id, bucket_filter):
+def find_aircraft_bucket(aircraft_id, tour_id, bucket_filter, player=None):
     if tour_id:
         try:
             bucket = (AircraftBucket.objects.select_related('aircraft', 'tour')
-                      .get(aircraft=aircraft_id, tour_id=tour_id, filter_type=bucket_filter))
+                      .get(aircraft=aircraft_id, tour_id=tour_id, filter_type=bucket_filter, player=player))
         except AircraftBucket.DoesNotExist:
             bucket = None
     else:
         try:
             bucket = (AircraftBucket.objects.select_related('aircraft', 'tour')
-                      .filter(aircraft=aircraft_id, filter_type=bucket_filter)
+                      .filter(aircraft=aircraft_id, filter_type=bucket_filter, player=player)
                       .order_by('-id'))[0]
         except IndexError:
             raise Http404

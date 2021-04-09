@@ -57,12 +57,9 @@ urlpatterns = [
     url(r'^pilot/(?P<profile_id>\d+)/$', views.pilot),
     url(r'^sorties/(?P<profile_id>\d+)/$', views.pilot_sorties),
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
-<<<<<<< HEAD
     url(r'^tankman/(?P<profile_id>\d+)/$', views.tankman),
     url(r'^tankman_sorties/(?P<profile_id>\d+)/$', views.tankman_sorties),
     url(r'^tankman_vlifes/(?P<profile_id>\d+)/$', views.tankman_vlifes),
-=======
 
     url(r'^ironman/$', views.ironman_stats, name='ironman')
->>>>>>> master
 ]

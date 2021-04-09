@@ -672,7 +672,7 @@ class Object:
             # - записываем его как сбитый
             if (self.on_ground and not self.is_rtb) or self.is_bailout or (self.bot and self.bot.life_status.is_destroyed):
                 self.got_killed(force_by_dmg=True)
-			if self.sortie and not self.is_rtb:
+            if self.sortie and not self.is_rtb:
                 if not self.sortie.is_ended:
                     self.got_killed(force_by_dmg=True)
 

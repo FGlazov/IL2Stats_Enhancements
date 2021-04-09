@@ -11,35 +11,20 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
-<<<<<<< HEAD
-from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, missions_list,
-                         pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards, tankman_rankings,
-                         tankman, tankman_awards, tankman_killboard, tankman_sorties, tankman_sortie_log,
-                         tankman_vlifes, tankman_vlife, squad_tankmans, tankman_sortie)
-
-=======
 from stats.views import _get_rating_position, _get_squad
 from stats.views import *
 from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
->>>>>>> master
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
 
-<<<<<<< HEAD
 
 missions_sort_fields = ['id', 'players_total', 'pilots_total', 'tankmans_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
-pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy',
-=======
-missions_sort_fields = ['id', 'pilots_total', 'winning_coalition', 'duration']
-squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
-                      'rating_light', 'rating_medium', 'rating_heavy', 'rating']
-pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
->>>>>>> master
-                      'score', 'score_light', 'score_medium', 'score_heavy',
+pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy', 'gkd',
+                      'gkhr','score', 'score_light', 'score_medium', 'score_heavy',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy', 'score', 'rating']
 killboard_sort_fields = ['won', 'lose', 'wl']
@@ -272,25 +257,9 @@ def main(request):
     previous_tour_top_light = None
     previous_tour_top_medium = None
     previous_tour_top_heavy = None
+    previous_tour_toptank = None
     if previous_tour:
         previous_tour_top = (Player.players.pilots(tour_id=previous_tour.id)
-<<<<<<< HEAD
-                             .active(tour=previous_tour).order_by('-rating')[:20])
-        previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
-                                   .active(tour=previous_tour).order_by('-rating_light')[:20])
-        previous_tour_top_medium = (Player.players.pilots(tour_id=previous_tour.id)
-                                    .active(tour=previous_tour).order_by('-rating_medium')[:20])
-        previous_tour_top_heavy = (Player.players.pilots(tour_id=previous_tour.id)
-                                   .active(tour=previous_tour).order_by('-rating_heavy')[:20])
-        previous_tour_toptank = (Player.players.tankmans(tour_id=previous_tour.id)
-                             .active(tour=previous_tour).order_by('-rating')[:20])
-    else:
-        previous_tour_top = None
-        previous_tour_top_light = None
-        previous_tour_top_medium = None
-        previous_tour_top_heavy = None
-        previous_tour_toptank = None
-=======
                                  .active(tour=previous_tour).order_by('-rating')[:20])
         if module_active(MODULE_SPLIT_RANKINGS):
             previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
@@ -299,9 +268,10 @@ def main(request):
                                             .active(tour=previous_tour).order_by('-rating_medium')[:20])
             previous_tour_top_heavy = (Player.players.pilots(tour_id=previous_tour.id)
                                            .active(tour=previous_tour).order_by('-rating_heavy')[:20])
+            previous_tour_toptank = (Player.players.tankmans(tour_id=previous_tour.id)
+                                         .active(tour=previous_tour).order_by('-rating')[:20])
     else:
         previous_tour_top = None
->>>>>>> master
 
     coal_1_online = PlayerOnline.objects.filter(coalition=Coalition.coal_1).count()
     coal_2_online = PlayerOnline.objects.filter(coalition=Coalition.coal_2).count()

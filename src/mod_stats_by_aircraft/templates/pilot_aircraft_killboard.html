@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles tz stats filters %}
-{% block title %}{% trans 'Aircraft Killboard' context 'pilot_nav_tab' %} / {{ aircraft_bucket.aircraft.name }} / {{ block.super }}{% endblock title %}
+{% block title %}{% trans 'Aircraft Killboard' context 'pilot_nav_tab' %} / {{ player.nickname }} / {{ aircraft_bucket.aircraft.name }} / {{ block.super }}{% endblock title %}
 
 {% block nav_tabs %}
-{% include 'inline/aircraft_tabs.html' %}
+{% include 'inline/extended_pilot_tabs.html' %}
 {% endblock nav_tabs %}
 
 {% block content %}
@@ -12,6 +12,8 @@
         <div class="profile_name">
             {% trans 'Aircraft Killboard' context 'pilot_nav_tab' %} : {{ aircraft_bucket.aircraft.name }}
         </div>
+        <div class="content_title_sm">{% trans 'pilot' context 'pilot_awards' %}: {{ player.nickname }}</div>
+
         <div class="profile_head">
             <div class="head_left">
                 {% if aircraft_bucket.coalition == 1 %}
@@ -25,6 +27,7 @@
                 {% endif %}
                 <img src="{{ aircraft_bucket.aircraft.aircraft_image }}" width="670" height="240" class="fav_aircraft"
                      title="{% trans aircraft_bucket.aircraft.name %}" alt="{% trans aircraft_bucket.aircraft.name %}">
+                <div class="content_title_sm">{% trans 'pilot' context 'pilot_awards' %}: {{ player.nickname }}</div>
             </div>
 
             <div class="head_right">
@@ -240,6 +243,9 @@
 
         <div class="info">
             <div>
+                {% blocktrans trimmed %}
+                Due to technical reasons, kills from your turret gunners are not counted towards the killboard. Plane and pilot lethality are also affected. </br>
+                {% endblocktrans %}
                 {% blocktrans trimmed %}
                 * Plane Durability is percent of sorties the plane survived after taking damage. </br>
                 * Pilot Survivability is the percent of sorties the pilot survived after the plane took damage. </br>

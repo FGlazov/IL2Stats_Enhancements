@@ -318,7 +318,12 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the damage to the tank driver.
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:
@@ -337,7 +342,12 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if event['attacker'].sortie:
+                if event['attacker'].cls == 'tank_turret' and event['attacker'].parent.sortie:
+                    # Credit the kill to the tank driver.
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
+                elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
                     params['act_sortie_id'] = event['attacker'].sortie.sortie_db.id
                 else:

@@ -1,35 +1,43 @@
 from django.db import models
-from stats.models import Tour, Object, Sortie, rating_format_helper
+from stats.models import Tour, Object, Sortie, rating_format_helper, Player
 from mission_report.constants import Coalition
 from django.contrib.postgres.fields import JSONField
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from django.conf import settings
 from django.urls import reverse
 
+from .variant_utils import has_bomb_variant, has_juiced_variant
+
+TOTALS = 'totals'
+AVERAGES = 'avg'
+CANNON = 'cannon'
+MACHINE_GUN = 'mg'
+CANNON_MG = 'all'
+RECEIVED = 'received'
+GIVEN = 'given'
+INST = 'instances'
+COUNT = 'count'
+
+
+def default_ammo_breakdown():
+    return {
+        GIVEN: {
+            TOTALS: dict(),
+            AVERAGES: dict(),
+        },
+        RECEIVED: {
+            TOTALS: dict(),
+            AVERAGES: dict(),
+        },
+    }
+
 
 def compute_float(numerator, denominator, round_to=2):
     return round(numerator / max(denominator, 1), round_to)
 
 
-def has_juiced_variant(aircraft):
-    juiceables = ['P-47D-28', 'P-47D-22', 'P-51D-15', 'La-5 (series 8)', 'Bf 109 G-6 Late', 'Bf 109 K-4',
-                  'Spitfire Mk.IXe', 'Hurricane Mk.II', 'Tempest Mk.V ser.2']
-
-    return aircraft.name in juiceables
-
-
-def has_bomb_variant(aircraft):
-    if aircraft.name == "P-38J-25" or aircraft.name == "Me 262 A":
-        return True
-
-    if aircraft.cls != "aircraft_light":
-        return False
-
-    no_jabo_possible = ['Spitfire Mk.VB', 'Yak-9 ser.1', 'Yak-9T ser.1', 'Hurricane Mk.II']
-    if aircraft.name in no_jabo_possible:
-        return False
-
-    return True
+def percent_format(percent, total):
+    return '{value}% ({total})'.format(value=percent, total=total)
 
 
 class AircraftBucket(models.Model):
@@ -53,6 +61,7 @@ class AircraftBucket(models.Model):
     tour = models.ForeignKey(Tour, related_name='+', on_delete=models.PROTECT)
     aircraft = models.ForeignKey(Object, related_name='+', on_delete=models.PROTECT)
     filter_type = models.CharField(max_length=16, choices=filter_choices, default=NO_FILTER)
+    player = models.ForeignKey(Player, related_name='+', on_delete=models.PROTECT, null=True)
     # ========================= NATURAL KEY END
 
     # ========================= SORTABLE FIELDS
@@ -72,6 +81,11 @@ class AircraftBucket(models.Model):
     # ========================= SORTABLE FIELDS END
 
     # ========================= NON-SORTABLE VISIBLE FIELDS
+    plane_lethality_no_assists = models.FloatField(default=0)
+    # TODO: At some point add pilot_lethality_no_assists.
+    # Problem is, it can't be computed because it is not known how much of pilot_lethality_counter is assists.
+    # Can't use pilot_lethality_counter - assists, since assists are defined for shotdowns.
+
     total_sorties = models.BigIntegerField(default=0)
     score = models.BigIntegerField(default=0)
     # Assists per hour
@@ -102,6 +116,13 @@ class AircraftBucket(models.Model):
     in_flight = models.BigIntegerField(default=0)
     crashes = models.BigIntegerField(default=0)
     shotdown = models.BigIntegerField(default=0)
+
+    deaths_to_accident = models.BigIntegerField(default=0)
+    deaths_to_aa = models.BigIntegerField(default=0)
+    aircraft_lost_to_accident = models.BigIntegerField(default=0)
+    aircraft_lost_to_aa = models.BigIntegerField(default=0)
+
+    ammo_breakdown = JSONField(default=default_ammo_breakdown)
     # ========================== NON-SORTABLE VISIBLE FIELDS END
 
     # ========================== NON-VISIBLE HELPER FIELDS (used to calculate other visible fields)
@@ -140,6 +161,7 @@ class AircraftBucket(models.Model):
         self.pilot_survivability = compute_float(100 * self.pilot_survivability_counter, self.sorties_plane_was_hit)
         self.plane_lethality = compute_float(100 * self.plane_lethality_counter, self.distinct_enemies_hit)
         self.pilot_lethality = compute_float(100 * self.pilot_lethality_counter, self.distinct_enemies_hit)
+        self.plane_lethality_no_assists = compute_float(100 * self.kills, self.distinct_enemies_hit)
         self.update_rating()
         self.ahr = compute_float(self.assists, self.flight_time_hours)
         self.ahd = compute_float(self.assists, self.relive)
@@ -171,21 +193,27 @@ class AircraftBucket(models.Model):
 
     def percent_pvp_helper(self, key):
         if key in self.killboard_planes:
-            return str(compute_float(self.killboard_planes[key] * 100, self.kills)) + '%'
+            percent = compute_float(self.killboard_planes[key] * 100, self.kills)
+            total = self.killboard_planes[key]
+            return percent_format(percent, total)
         else:
-            return '0%'
+            return percent_format(0, 0)
 
     def percent_air_ai_helper(self, key):
         if key in self.killboard_ground:
-            return str(compute_float(self.killboard_ground[key] * 100, self.kills)) + '%'
+            percent = compute_float(self.killboard_ground[key] * 100, self.kills)
+            total = self.killboard_ground[key]
+            return percent_format(percent, total)
         else:
-            return '0%'
+            return percent_format(0, 0)
 
     def percent_ground_helper(self, key):
         if key in self.killboard_ground:
-            return str(compute_float(self.killboard_ground[key] * 100, self.ground_kills)) + '%'
+            percent = compute_float(self.killboard_ground[key] * 100, self.ground_kills)
+            total = self.killboard_ground[key]
+            return percent_format(percent, total)
         else:
-            return '0%'
+            return percent_format(0, 0)
 
     @property
     def percent_light_kills(self):
@@ -336,7 +364,9 @@ class AircraftBucket(models.Model):
         return self.percent_ground_helper('building_small')
 
     def percent_of_sorties_helper(self, occurrences):
-        return str(compute_float(occurrences * 100, self.total_sorties)) + "%"
+        percent = compute_float(occurrences * 100, self.total_sorties)
+        total = occurrences
+        return percent_format(percent, total)
 
     @property
     def percent_deaths(self):
@@ -390,46 +420,155 @@ class AircraftBucket(models.Model):
     def ground_kills_per_sortie(self):
         return compute_float(self.ground_kills, self.total_sorties)
 
+    @property
+    def percent_deaths_to_accidents(self):
+        percent = compute_float(100 * self.deaths_to_accident, self.relive)
+        total = self.deaths_to_accident
+        return percent_format(percent, total)
+
+    @property
+    def percent_deaths_to_aa(self):
+        percent = compute_float(100 * self.deaths_to_aa, self.relive)
+        total = self.deaths_to_aa
+        return percent_format(percent, total)
+
+    @property
+    def percent_aircraft_lost_to_accidents(self):
+        percent = compute_float(100 * self.aircraft_lost_to_accident, self.aircraft_lost)
+        total = self.aircraft_lost_to_accident
+        return percent_format(percent, total)
+
+    @property
+    def percent_aircraft_lost_to_aa(self):
+        percent = compute_float(100 * self.aircraft_lost_to_aa, self.aircraft_lost)
+        total = self.aircraft_lost_to_aa
+        return percent_format(percent, total)
+
     def get_aircraft_url(self):
-        return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_FILTER)
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_FILTER, self.player)
 
     def get_url_no_mods(self):
-        return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_BOMBS_NO_JUICE)
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_BOMBS_NO_JUICE, self.player)
 
     def get_url_bombs(self):
-        return get_aircraft_url(self.aircraft.id, self.tour.id, self.BOMBS)
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.BOMBS, self.player)
 
     def get_url_juiced(self):
-        return get_aircraft_url(self.aircraft.id, self.tour.id, self.JUICED)
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.JUICED, self.player)
 
     def get_url_all_mods(self):
-        return get_aircraft_url(self.aircraft.id, self.tour.id, self.ALL)
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.ALL, self.player)
 
     def get_killboard_url(self):
-        return get_killboard_url(self.aircraft.id, self.tour.id, self.NO_FILTER)
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.NO_FILTER)
 
     def get_killboard_no_mods(self):
-        return get_killboard_url(self.aircraft.id, self.tour.id, self.NO_BOMBS_NO_JUICE)
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.NO_BOMBS_NO_JUICE)
 
     def get_killboard_bombs(self):
-        return get_killboard_url(self.aircraft.id, self.tour.id, self.BOMBS)
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.BOMBS)
 
     def get_killboard_juiced(self):
-        return get_killboard_url(self.aircraft.id, self.tour.id, self.JUICED)
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.JUICED)
 
     def get_killboard_all_mods(self):
-        return get_killboard_url(self.aircraft.id, self.tour.id, self.ALL)
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.ALL)
+
+    def get_killboard_enemy_no_filter(self):
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.NO_FILTER)
+
+    def get_killboard_enemy_no_mods(self):
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.NO_BOMBS_NO_JUICE)
+
+    def get_killboard_enemy_bombs(self):
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.BOMBS)
+
+    def get_killboard_enemy_juiced(self):
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.JUICED)
+
+    def get_killboard_enemy_all_mods(self):
+        return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.ALL)
+
+    def get_pilot_url(self):
+        return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_FILTER, self.player)
+
+    def increment_ammo_received(self, ammo_dict):
+        key = multi_key_to_string(list(ammo_dict.keys()))
+        if not key:
+            return
+
+        if key not in self.ammo_breakdown[RECEIVED][TOTALS]:
+            self.ammo_breakdown[RECEIVED][TOTALS][key] = {
+                INST: 0,
+                COUNT: dict(),
+            }
+            self.ammo_breakdown[RECEIVED][AVERAGES][key] = dict()
+            for ammo_key in ammo_dict:
+                self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key] = 0
+
+        self.ammo_breakdown[RECEIVED][TOTALS][key][INST] += 1
+        for ammo_key in ammo_dict:
+            times_hit = ammo_dict[ammo_key]
+            self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key] += times_hit
+            self.ammo_breakdown[RECEIVED][AVERAGES][key][ammo_key] = compute_float(
+                self.ammo_breakdown[RECEIVED][TOTALS][key][COUNT][ammo_key],
+                self.ammo_breakdown[RECEIVED][TOTALS][key][INST]
+            )
+
+    def increment_ammo_given(self, ammo_log_name, times_hit):
+        if ammo_log_name not in self.ammo_breakdown[GIVEN][TOTALS]:
+            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name] = {
+                INST: 0,
+                COUNT: 0,
+            }
+
+        self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][COUNT] += times_hit
+        self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][INST] += 1
+        self.ammo_breakdown[GIVEN][AVERAGES][ammo_log_name] = compute_float(
+            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][COUNT],
+            self.ammo_breakdown[GIVEN][TOTALS][ammo_log_name][INST]
+        )
 
 
-def get_aircraft_url(aircraft_id, tour_id, bucket_filter='NO_FILTER'):
-    url = '{url}?tour={tour_id}'.format(url=reverse('stats:aircraft', args=[aircraft_id, bucket_filter]),
-                                        tour_id=tour_id)
+def multi_key_to_string(keys, separator='|'):
+    keys = sorted(keys)
+    if len(keys) == 0:
+        return ''
+    if len(keys) == 1:
+        return str(keys[0])
+
+    result = str(keys[0])
+    for key in keys[1:]:
+        result += separator + str(key)
+    return result
+
+
+def string_to_multikey(string, separator='|'):
+    return string.split(separator)
+
+
+def get_aircraft_url(aircraft_id, tour_id, bucket_filter='NO_FILTER', player=None):
+    if player is None:
+        url = '{url}?tour={tour_id}'.format(url=reverse('stats:aircraft', args=[aircraft_id, bucket_filter]),
+                                            tour_id=tour_id)
+    else:
+        url = '{url}?tour={tour_id}'.format(
+            url=reverse('stats:pilot_aircraft',
+                        args=[aircraft_id, bucket_filter, player.profile.id, player.nickname]),
+            tour_id=tour_id)
     return url
 
 
-def get_killboard_url(aircraft_id, tour_id, bucket_filter):
-    url = '{url}?tour={tour_id}'.format(url=reverse('stats:aircraft_killboard', args=[aircraft_id, bucket_filter]),
-                                        tour_id=tour_id)
+def get_killboard_url(aircraft_id, tour_id, player, bucket_filter, enemy_filter='NO_FILTER'):
+    if player is None:
+        url = '{url}?tour={tour_id}&enemy_filter={enemy_filter}'.format(
+            url=reverse('stats:aircraft_killboard', args=[aircraft_id, bucket_filter]),
+            tour_id=tour_id, enemy_filter=enemy_filter)
+    else:
+        url = '{url}?tour={tour_id}&enemy_filter={enemy_filter}'.format(
+            url=reverse('stats:pilot_aircraft_killboard',
+                        args=[aircraft_id, bucket_filter, player.profile.id, player.nickname]),
+            tour_id=tour_id, enemy_filter=enemy_filter)
     return url
 
 
@@ -472,6 +611,7 @@ class SortieAugmentation(models.Model):
     sortie = models.OneToOneField(Sortie, on_delete=models.PROTECT, primary_key=True,
                                   related_name='SortieAugmentation_MOD_STATS_BY_AIRCRAFT')
     sortie_stats_processed = models.BooleanField(default=False, db_index=True)
+    player_stats_processed = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

@@ -1,68 +1,74 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles tz stats filters %}
-{% block title %}{% trans 'Aircraft Rankings' %} / {{ block.super }}{% endblock title %}
+{% block title %}{% trans 'Aircraft Overview' context 'pilot_nav_tab' %} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
 
 {% block head %}
 {% endblock head %}
+
+{% block nav_tabs %}
+{% include 'inline/pilot_tabs.html' %}
+{% endblock nav_tabs %}
 
 {% block content %}
 <section id="content">
     <div class="wrapper aircraft" style="width: 1400px;">
         <div class="content_head">
             <div class="content_title" style="width: 620px">
-                {% trans 'Aircraft Rankings' %}
+                {% trans 'Aircraft Overview' context 'pilot_nav_tab' %}
             </div>
             <label>{% trans 'Filter by:' %}</label>
-                <select style="background: #303030; border: 1px solid #252525; width: 400px;"
-                        onchange="if (this.value) window.location.href=this.value">
-                    {% if filter_type == "NO_FILTER" %}
-                    <option value="{{ no_filter_url }}" selected>{% trans 'no filter' %}</option>
-                    <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
-                    <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
-                    <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
-                    <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
-                    {% endif %}
+            <select style="background: #303030; border: 1px solid #252525; width: 400px;"
+                    onchange="if (this.value) window.location.href=this.value">
+                {% if filter_type == "NO_FILTER" %}
+                <option value="{{ no_filter_url }}" selected>{% trans 'no filter' %}</option>
+                <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                {% endif %}
 
-                    {% if filter_type == "JUICE" %}
-                    <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
-                    <option value="{{ juiced_url }}" selected>{% trans 'with upgraded engine and no bombs' %}</option>
-                    <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
-                    <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
-                    <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
-                    {% endif %}
+                {% if filter_type == "JUICE" %}
+                <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
+                <option value="{{ juiced_url }}" selected>{% trans 'with upgraded engine and no bombs' %}</option>
+                <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                {% endif %}
 
-                    {% if filter_type == "NO_BOMBS_JUICE" %}
-                   <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
-                    <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
-                    <option value="{{ no_mods_url }}" selected>{% trans 'without upgraded engine and no bombs' %}</option>
-                    <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
-                    <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
-                    {% endif %}
+                {% if filter_type == "NO_BOMBS_JUICE" %}
+                <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
+                <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                <option value="{{ no_mods_url }}" selected>{% trans 'without upgraded engine and no bombs' %}</option>
+                <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                {% endif %}
 
-                    {% if filter_type == "ALL" %}
-                   <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
-                    <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
-                    <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
-                    <option value="{{ all_mods_urls }}" selected>{% trans 'with upgraded fuel/engine and bombs' %}</option>
-                    <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
-                    {% endif %}
+                {% if filter_type == "ALL" %}
+                <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
+                <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                <option value="{{ all_mods_urls }}" selected>{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                <option value="{{ bombs_url }}">{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                {% endif %}
 
-                    {% if filter_type == "BOMBS" %}
-                    <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
-                    <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
-                    <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
-                    <option value="{{ all_mods_urls }}" >{% trans 'with upgraded fuel/engine and bombs' %}</option>
-                    <option value="{{ bombs_url }}" selected>{% trans 'without upgraded fuel/engine and bombs' %}</option>
-                    {% endif %}
+                {% if filter_type == "BOMBS" %}
+                <option value="{{ no_filter_url }}">{% trans 'no filter' %}</option>
+                <option value="{{ juiced_url }}">{% trans 'with upgraded engine and no bombs' %}</option>
+                <option value="{{ no_mods_url }}">{% trans 'without upgraded engine and no bombs' %}</option>
+                <option value="{{ all_mods_urls }}">{% trans 'with upgraded fuel/engine and bombs' %}</option>
+                <option value="{{ bombs_url }}" selected>{% trans 'without upgraded fuel/engine and bombs' %}</option>
+                {% endif %}
 
-                </select>
+            </select>
             <div class="form_search" style="margin-top: 9px;">
                 <form action="" method="GET">
                     <input type="hidden" name="tour" value="{{ request.tour.id }}"/>
                     <input type="text" name="search" value="" placeholder="{% trans 'Search aircraft' %}">
                 </form>
             </div>
+            <div class="content_title_sm">{% trans 'pilot' context 'pilot_awards' %}: {{ player.nickname }}</div>
             <div class="content_title_sm" id="sort_by_text"></div>
+
         </div>
 
         {% if all_aircraft %}
@@ -93,13 +99,15 @@
                 <div class="cell" style="width: 90px;">
                     <a class="sort_by" href="?sort_by=-gkd">
                         <img src="{% static 'img/icons/small/gkd.png' %}" width="18" height="18"
-                             alt="{% trans 'GK/D - G.Kills per Death' %}" title="{% trans 'GK/D - G.Kills per Death' %}">
+                             alt="{% trans 'GK/D - G.Kills per Death' %}"
+                             title="{% trans 'GK/D - G.Kills per Death' %}">
                     </a>
                 </div>
                 <div class="cell" style="width: 90px;">
                     <a class="sort_by" href="?sort_by=-gkhr">
                         <img src="{% static 'img/icons/small/gkh.png' %}" width="18" height="18"
-                             alt="{% trans 'GK/H - G.Kills per Hour of Flight' %}" title="{% trans 'GK/H - G.Kills per Hour of Flight' %}">
+                             alt="{% trans 'GK/H - G.Kills per Hour of Flight' %}"
+                             title="{% trans 'GK/H - G.Kills per Hour of Flight' %}">
                     </a>
                 </div>
                 <div class="cell" style="width: 90px;">
@@ -111,7 +119,8 @@
                 <div class="cell" style="width: 90px;">
                     <a class="sort_by" href="?sort_by=-bomb_rocket_accuracy">
                         <img src="{% static 'img/icons/small/bomb_rock_acc.png' %}" width="18" height="18"
-                             alt="{% trans 'Bomb/Rocket Accuracy' context 'total' %}" title="{% trans 'Bomb/Rocket Accuracy' context 'total' %}">
+                             alt="{% trans 'Bomb/Rocket Accuracy' context 'total' %}"
+                             title="{% trans 'Bomb/Rocket Accuracy' context 'total' %}">
                     </a>
                 </div>
                 <div class="cell" style="width: 90px;">
@@ -124,12 +133,6 @@
                     <a class="sort_by" href="?sort_by=-plane_lethality">
                         <img src="{% static 'img/icons/small/plane_lethal.png' %}" width="18" height="18"
                              alt="{% trans 'Plane Lethality' %}" title="{% trans 'Plane Lethality' %}">
-                    </a>
-                </div>
-                <div class="cell" style="width: 90px;">
-                    <a class="sort_by" href="?sort_by=-elo">
-                        <img src="{% static 'img/icons/small/streak.png' %}" width="18" height="18"
-                             alt="{% trans 'Elo' %}" title="{% trans 'Elo' %}">
                     </a>
                 </div>
                 <div class="cell" style="width: 90px;">
@@ -155,7 +158,6 @@
                 <div class="cell">{{ aircraft_bucket.bomb_rocket_accuracy }}%</div>
                 <div class="cell">{{ aircraft_bucket.plane_survivability }}%</div>
                 <div class="cell">{{ aircraft_bucket.plane_lethality }}%</div>
-                <div class="cell">{{ aircraft_bucket.elo }}</div>
                 <div class="cell" title="{{ aircraft_bucket.rating }}">{{ aircraft_bucket.rating_format }}</div>
             </a>
             {% endfor %}
@@ -168,8 +170,12 @@
         <div class="info" style="padding-top: 20px;">
             <div>
                 {% blocktrans trimmed %}
+                Due to technical reasons, kills from your turret gunners are not counted towards the killboard. Plane and pilot lethality are also affected. </br>
+                {% endblocktrans %}
+                {% blocktrans trimmed %}
                 * Plane Durability is percent of sorties the plane survived after taking damage. </br>
-                * Plane Lethality is the percent of enemy aircraft which went down after taking damage from this plane. Assists count. </br>
+                * Plane Lethality is the percent of enemy aircraft which went down after taking damage from this plane.
+                Assists count. </br>
                 {% endblocktrans %}
             </div>
             <div>
@@ -211,6 +217,7 @@
             uri_sort_by('-rating', sort_by_text);
             var paginator = new Paginator('paginator', {{ all_aircraft.paginator.num_pages }}, 15, {{ all_aircraft.number }}, uri_paginator);
         });
+
 
 </script>
 {% endblock bottom %}

@@ -35,13 +35,12 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 
         if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
             sortie.is_disco = True
-        sortie.is_damageddisco = False
+            sortie.is_damageddisco = False
     # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
-
-    if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
-        sortie.is_discobailout = True
-        sortie.is_disco = False
-        sortie.is_damageddisco = False
+            if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
+                sortie.is_discobailout = True
+                sortie.is_disco = False
+                sortie.is_damageddisco = False
 
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)

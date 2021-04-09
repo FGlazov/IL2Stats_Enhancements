@@ -18,6 +18,11 @@ class ModConfig(AppConfig):
         old_stats_whore.main = stats_whore.main
         old_stats_whore.stats_whore = stats_whore.stats_whore
 
+        from . import models
+        from stats import models as old_models
+
+        old_models.Player.get_aircraft_overview_url = models.get_aircraft_overview_url
+
         # monkey-patch the new config parameter.
         import config
 
