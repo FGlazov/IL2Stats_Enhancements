@@ -255,7 +255,7 @@ class MissionReport:
             if target.sortie and not target.is_crew() and target.sortie.is_ended:
                 return
             target.got_damaged(damage=damage, attacker=attacker, pos=pos)
-			# получить время об последний урон для диско - get time of last damage done to airplane when sortie is disco
+            # получить время об последний урон для диско - get time of last damage done to airplane when sortie is disco
             if target.sortie:
                 target.sortie.tik_lastdamage = tik
 
@@ -382,10 +382,10 @@ class MissionReport:
         sortie = self.sorties_accounts.get(account_id)
         # TODO работает только в Ил2, в РОФ нет такого события
         if sortie:
-			# you can determine the amount of damage that is considered
+            # you can determine the amount of damage that is considered
             dmg_pct=0
-			# the departure was completed, there was a jump, no plane was created, the plane on the ground, and the plane was damaged,
-			# player disconection can then be changed into captured.
+            # the departure was completed, there was a jump, no plane was created, the plane on the ground, and the plane was damaged,
+            # player disconection can then be changed into captured.
             if not (sortie.is_ended or sortie.is_bailout or (not sortie.aircraft) or sortie.aircraft.on_ground ) and sortie.aircraft.damage > dmg_pct:
                 sortie.is_damageddisco = True
                 self.logger_event({'type': 'disco', 'sortie': sortie})
@@ -765,7 +765,7 @@ class Sortie:
         self.tik_last = tik
         if self.is_airstart:
             self.tik_takeoff = self.tik_spawn
-		self.tik_lastdamage = None
+        self.tik_lastdamage = None
 
         self.used_cartridges = cartridges
         self.used_shells = shells
@@ -781,7 +781,7 @@ class Sortie:
 
         # вылет завершен
         self.is_disco = False
-		self.is_discobailout = False
+        self.is_discobailout = False
         self.is_damageddisco = False
         self.is_ended = False
 
