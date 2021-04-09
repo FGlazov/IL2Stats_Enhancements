@@ -19,7 +19,6 @@ from django.views.generic import RedirectView
 
 from . import views
 
-
 app_name = 'stats'
 urlpatterns = [
     url(r'^pilots/$', views.pilot_rankings, name='pilots'),
@@ -49,6 +48,8 @@ urlpatterns = [
     url(r'^tankman_sortie/log/(?P<sortie_id>\d+)/$', views.tankman_sortie_log, name='tankman_sortie_log'),
     url(r'^tankman_vlife/(?P<vlife_id>\d+)/$', views.tankman_vlife, name='tankman_vlife'),
 
+    url(r'^overall/$', views.overall, name='overall'),
+
     url(r'^online/$', views.online, name='online'),
     url(r'^$', views.main, name='main'),
 
@@ -56,7 +57,12 @@ urlpatterns = [
     url(r'^pilot/(?P<profile_id>\d+)/$', views.pilot),
     url(r'^sorties/(?P<profile_id>\d+)/$', views.pilot_sorties),
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
+<<<<<<< HEAD
     url(r'^tankman/(?P<profile_id>\d+)/$', views.tankman),
     url(r'^tankman_sorties/(?P<profile_id>\d+)/$', views.tankman_sorties),
     url(r'^tankman_vlifes/(?P<profile_id>\d+)/$', views.tankman_vlifes),
+=======
+
+    url(r'^ironman/$', views.ironman_stats, name='ironman')
+>>>>>>> master
 ]

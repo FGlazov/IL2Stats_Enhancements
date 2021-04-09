@@ -109,6 +109,7 @@
                         {% endif %}
                     </div>
                 </div>
+                {% if split_rankings %}
                 <div class="item">
                     <img src="{% static 'img/icons/big/rating_light.png' %}" width="" height="" title="" alt="">
                     <div class="text">{% trans 'Position Fighter Rating' %}</div>
@@ -142,6 +143,7 @@
                         {% endif %}
                     </div>
                 </div>
+                {% endif %}
             </div>
 
             <div class="player_detailed" style="float: left;">
@@ -152,6 +154,7 @@
                     <div class="name">{% trans 'Total Aircraft' context 'total' %}</div>
                     <div class="num">{{ player.ak_total }}</div>
                 </div>
+
 
                 {% if player.killboard_pvp.aircraft_light %}
                 <div class="sub_item">

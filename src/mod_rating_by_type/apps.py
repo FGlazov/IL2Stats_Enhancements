@@ -1,11 +1,22 @@
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
+from django.conf.urls import url
 
 class ModConfig(AppConfig):
     name = 'mod_rating_by_type'
 
     def ready(self):
+        # monkey-patch the new config parameter.
+        import config
+        config.DEFAULT['stats']['modules'] = ''
+        from . import config_modules
+
+        # Add ironman config middleware so pages know when to render "ironman rankings".
+        import core.settings as settings
+        settings.MIDDLEWARE.append('mod_rating_by_type.middleware.ironman_middleware')
+        settings.MIDDLEWARE.append('mod_rating_by_type.middleware.aircraft_installed')
+
         # !!! monkey patch
         from stats import urls as original_urls
         from . import urls as new_urls
@@ -21,3 +32,16 @@ class ModConfig(AppConfig):
         original_views.main = new_views.main
         original_views.tour = new_views.tour
         original_views.mission = new_views.mission
+        original_views.pilot_sortie = new_views.pilot_sortie
+        original_views.ironman_stats = new_views.ironman_stats
+        original_views.pilot_vlife = new_views.pilot_vlife
+
+        from . import report as new_report
+        from mission_report.report import MissionReport
+
+        MissionReport.event_hit = new_report.event_hit
+
+        from stats import stats_whore as original_stats_whore
+        from . import stats_whore as new_stats_whore
+        original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
+        original_stats_whore.update_general = new_stats_whore.update_general

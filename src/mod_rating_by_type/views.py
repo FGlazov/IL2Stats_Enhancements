@@ -1,31 +1,44 @@
 from datetime import timedelta
 
 from django.conf import settings
-from django.db.models import Q, Sum
+from django.db.models import Sum, OuterRef, Subquery
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-
 from mission_report.constants import Coalition
 
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
                           Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
 from stats import sortie_log
+<<<<<<< HEAD
 from stats.views import (_get_rating_position, _get_squad, pilot_vlife, pilot_vlifes, online, missions_list,
                          pilot_sortie_log, pilot_sortie, pilot_sorties, pilot_killboard, pilot_awards, tankman_rankings,
                          tankman, tankman_awards, tankman_killboard, tankman_sorties, tankman_sortie_log,
                          tankman_vlifes, tankman_vlife, squad_tankmans, tankman_sortie)
 
+=======
+from stats.views import _get_rating_position, _get_squad
+from stats.views import *
+from .bullets_types import translate_ammo_breakdown
+from .config_modules import *
+>>>>>>> master
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
 
+<<<<<<< HEAD
 
 missions_sort_fields = ['id', 'players_total', 'pilots_total', 'tankmans_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy',
+=======
+missions_sort_fields = ['id', 'pilots_total', 'winning_coalition', 'duration']
+squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
+                      'rating_light', 'rating_medium', 'rating_heavy', 'rating']
+pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
+>>>>>>> master
                       'score', 'score_light', 'score_medium', 'score_heavy',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy', 'score', 'rating']
@@ -53,6 +66,7 @@ def squad(request, squad_id, squad_tag=None):
         'page_light_position': page_light_position,
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -64,7 +78,11 @@ def squad_pilots(request, squad_id, squad_tag=None):
     request.tour = squad_.tour
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
     pilots = Player.players.pilots(tour_id=squad_.tour_id, squad_id=squad_.id).order_by(sort_by, 'id')
-    return render(request, 'squad_pilots.html', {'squad': squad_, 'pilots': pilots})
+    return render(request, 'squad_pilots.html', {
+        'squad': squad_,
+        'pilots': pilots,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
 
 
 def squad_rankings(request):
@@ -80,6 +98,7 @@ def squad_rankings(request):
     return render(request, 'squads.html', {
         'squads': squads,
         'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -96,6 +115,7 @@ def pilot_rankings(request):
     return render(request, 'pilots.html', {
         'players': players,
         'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -114,7 +134,7 @@ def pilot(request, profile_id, nickname=None):
     else:
         try:
             player = (Player.objects.select_related('profile', 'tour')
-                      .filter(profile_id=profile_id, type='pilot').order_by('-id')[0])
+                .filter(profile_id=profile_id, type='pilot').order_by('-id')[0])
             request.tour = player.tour
         except IndexError:
             try:
@@ -131,9 +151,9 @@ def pilot(request, profile_id, nickname=None):
 
     try:
         fav_aircraft = (PlayerAircraft.objects
-                        .select_related('aircraft')
-                        .filter(player_id=player.id, aircraft__cls_base='aircraft')
-                        .order_by('-sorties_total')[0])
+            .select_related('aircraft')
+            .filter(player_id=player.id, aircraft__cls_base='aircraft')
+            .order_by('-sorties_total')[0])
     except IndexError:
         fav_aircraft = None
 
@@ -153,6 +173,7 @@ def pilot(request, profile_id, nickname=None):
         'page_light_position': page_light_position,
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
 
 
@@ -189,26 +210,35 @@ def main(request):
     summary_coal = request.tour.stats_summary_coal()
 
     top_streak = (Player.players.pilots(tour_id=request.tour.id)
-                  .exclude(score_streak_current=0)
-                  .active(tour=request.tour).order_by('-score_streak_current')[:10])
-    top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(score_streak_current_heavy=0)
-                        .active(tour=request.tour).order_by('-score_streak_current_heavy')[:10])
-    top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                         .exclude(score_streak_current_medium=0)
-                         .active(tour=request.tour).order_by('-score_streak_current_medium')[:10])
-    top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(score_streak_current_light=0)
-                        .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
+                      .exclude(score_streak_current=0)
+                      .active(tour=request.tour).order_by('-score_streak_current')[:10])
 
     top_24 = _top_pilots(tour_id=request.tour.id,
                          queryset=_top_24_queryset(tour_id=request.tour.id))
-    top_24_heavy = _top_pilots(tour_id=request.tour.id,
-                               queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_heavy'))
-    top_24_medium = _top_pilots(tour_id=request.tour.id,
-                                queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_medium'))
-    top_24_light = _top_pilots(tour_id=request.tour.id,
-                               queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_light'))
+
+    if module_active(MODULE_SPLIT_RANKINGS):
+        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_current_heavy=0)
+                                .active(tour=request.tour).order_by('-score_streak_current_heavy')[:10])
+        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(score_streak_current_medium=0)
+                                 .active(tour=request.tour).order_by('-score_streak_current_medium')[:10])
+        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_current_light=0)
+                                .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
+        top_24_heavy = _top_pilots(tour_id=request.tour.id,
+                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_heavy'))
+        top_24_medium = _top_pilots(tour_id=request.tour.id,
+                                    queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_medium'))
+        top_24_light = _top_pilots(tour_id=request.tour.id,
+                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_light'))
+    else:
+        top_streak_heavy = None
+        top_streak_medium = None
+        top_streak_light = None
+        top_24_heavy = None
+        top_24_medium = None
+        top_24_light = None
 
     toptank_streak = (Player.players.tankmans(tour_id=request.tour.id)
                           .exclude(score_streak_current=0)
@@ -238,8 +268,13 @@ def main(request):
         previous_tour = Tour.objects.exclude(id=request.tour.id).order_by('-id')[0]
     except IndexError:
         previous_tour = None
+
+    previous_tour_top_light = None
+    previous_tour_top_medium = None
+    previous_tour_top_heavy = None
     if previous_tour:
         previous_tour_top = (Player.players.pilots(tour_id=previous_tour.id)
+<<<<<<< HEAD
                              .active(tour=previous_tour).order_by('-rating')[:20])
         previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
                                    .active(tour=previous_tour).order_by('-rating_light')[:20])
@@ -255,6 +290,18 @@ def main(request):
         previous_tour_top_medium = None
         previous_tour_top_heavy = None
         previous_tour_toptank = None
+=======
+                                 .active(tour=previous_tour).order_by('-rating')[:20])
+        if module_active(MODULE_SPLIT_RANKINGS):
+            previous_tour_top_light = (Player.players.pilots(tour_id=previous_tour.id)
+                                           .active(tour=previous_tour).order_by('-rating_light')[:20])
+            previous_tour_top_medium = (Player.players.pilots(tour_id=previous_tour.id)
+                                            .active(tour=previous_tour).order_by('-rating_medium')[:20])
+            previous_tour_top_heavy = (Player.players.pilots(tour_id=previous_tour.id)
+                                           .active(tour=previous_tour).order_by('-rating_heavy')[:20])
+    else:
+        previous_tour_top = None
+>>>>>>> master
 
     coal_1_online = PlayerOnline.objects.filter(coalition=Coalition.coal_1).count()
     coal_2_online = PlayerOnline.objects.filter(coalition=Coalition.coal_2).count()
@@ -300,36 +347,44 @@ def tour(request):
     summary_coal = request.tour.stats_summary_coal()
 
     top_streak = (Player.players.pilots(tour_id=request.tour.id)
-                  .exclude(score_streak_max=0)
-                  .active(tour=request.tour).order_by('-score_streak_max')[:10])
-
-    top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(score_streak_max_heavy=0)
-                        .active(tour=request.tour).order_by('-score_streak_max_heavy')[:10])
-
-    top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                         .exclude(score_streak_max_medium=0)
-                         .active(tour=request.tour).order_by('-score_streak_max_medium')[:10])
-
-    top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(score_streak_max_light=0)
-                        .active(tour=request.tour).order_by('-score_streak_max_light')[:10])
+                      .exclude(score_streak_max=0)
+                      .active(tour=request.tour).order_by('-score_streak_max')[:10])
 
     top_rating = (Player.players.pilots(tour_id=request.tour.id)
-                  .exclude(rating=0)
-                  .active(tour=request.tour).order_by('-rating')[:10])
+                      .exclude(rating=0)
+                      .active(tour=request.tour).order_by('-rating')[:10])
 
-    top_rating_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(rating_heavy=0)
-                        .active(tour=request.tour).order_by('-rating_heavy')[:10])
+    if module_active(MODULE_SPLIT_RANKINGS):
+        top_rating_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(rating_heavy=0)
+                                .active(tour=request.tour).order_by('-rating_heavy')[:10])
 
-    top_rating_medium = (Player.players.pilots(tour_id=request.tour.id)
-                         .exclude(rating_medium=0)
-                         .active(tour=request.tour).order_by('-rating_medium')[:10])
+        top_rating_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(rating_medium=0)
+                                 .active(tour=request.tour).order_by('-rating_medium')[:10])
 
-    top_rating_light = (Player.players.pilots(tour_id=request.tour.id)
-                        .exclude(rating_light=0)
-                        .active(tour=request.tour).order_by('-rating_light')[:10])
+        top_rating_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(rating_light=0)
+                                .active(tour=request.tour).order_by('-rating_light')[:10])
+
+        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_max_heavy=0)
+                                .active(tour=request.tour).order_by('-score_streak_max_heavy')[:10])
+
+        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
+                                 .exclude(score_streak_max_medium=0)
+                                 .active(tour=request.tour).order_by('-score_streak_max_medium')[:10])
+
+        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
+                                .exclude(score_streak_max_light=0)
+                                .active(tour=request.tour).order_by('-score_streak_max_light')[:10])
+    else:
+        top_rating_heavy = None
+        top_rating_medium = None
+        top_rating_light = None
+        top_streak_heavy = None
+        top_streak_medium = None
+        top_streak_light = None
 
     coal_active_pilots = request.tour.coal_active_pilots()
     total_active_pilots = sum(coal_active_pilots.values())
@@ -366,6 +421,7 @@ def tour(request):
         'total_active_tankmans': total_active_tankmans,
     })
 
+
 def mission(request, mission_id):
     mission_ = get_object_or_404(Mission, id=mission_id)
     sort_by = request.GET.get('sort_by', '-score')
@@ -393,4 +449,104 @@ def mission(request, mission_id):
         'sort_by': sort_by,
         'summary_total': summary_total,
         'summary_coal': summary_coal,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
+
+
+def pilot_sortie(request, sortie_id):
+    try:
+        sortie = (Sortie.objects
+                  .select_related('player', 'player__profile', 'player__tour', 'mission')
+                  .get(id=sortie_id, player__type='pilot'))
+    except Sortie.DoesNotExist:
+        raise Http404
+
+    # обработка старого формат хранения очков, без AI очков
+    mission_score_dict = {}
+    for k, v in sortie.mission.score_dict.items():
+        if isinstance(v, dict):
+            break
+        mission_score_dict[k] = {'base': v, 'ai': v}
+
+    if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
+        ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
+    else:
+        ammo_breakdown = dict()
+
+    return render(request, 'pilot_sortie.html', {
+        'player': sortie.player,
+        'sortie': sortie,
+        'score_dict':  mission_score_dict or sortie.mission.score_dict,
+        'ammo_breakdown': ammo_breakdown,
+    })
+
+
+def ironman_stats(request):
+    if not module_active(MODULE_IRONMAN_STATS):
+        raise Http404("Ironman stats not available on this server.")
+
+    request.tour.is_ended = True
+
+    page = request.GET.get('page', 1)
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
+    if request.tour.is_ended:
+        to_max = '-score'
+        if 'score_light' in sort_by:
+            to_max = '-score_light'
+        if 'score_medium' in sort_by:
+            to_max = '-score_medium'
+        if 'score_heavy' in sort_by:
+            to_max = '-score_heavy'
+
+        players = get_best_streak_ironman(request.tour.id, to_max).order_by(sort_by, 'id')
+    else:
+        players = (VLife.objects
+                   .filter(relive=0, tour_id=request.tour.id, sorties_total__gt=0, player__type='pilot')
+                   .exclude(profile__is_hide=True)
+                   .order_by(sort_by, 'id'))
+
+    if search:
+        players = players.filter(player__profile__nickname__icontains=search)
+
+    players = Paginator(players, ITEMS_PER_PAGE).page(page)
+    return render(request, 'ironman_pilots.html', {
+        'players': players,
+        'sort_by': sort_by,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
+
+
+# Basically, the following (psuedo code) SQL is wanted:
+#   SELECT *, Max(score)
+#   FROM VLife
+#   WHERE tour.id = tour_id AND sorties_total > 0 AND player_type = 'pilot' AND NOT profile.is.hide
+#   GROUP BY player.profile.id
+#
+# Where we want to extract VLife objects from the "*" part of the SELECT.
+# Everything but the "*" part is done inside the subquery sq.
+# Then, once we know the ids
+def get_best_streak_ironman(tour_id, to_max):
+    sq = (VLife.objects
+          .filter(tour_id=tour_id, sorties_total__gt=0, player__type='pilot',
+                  # For some reason player__profile__id raises an error...
+                  player__profile__nickname=OuterRef('player__profile__nickname'))
+          .exclude(profile__is_hide=True)
+          .order_by(to_max, '-score'))
+
+    return VLife.objects.filter(pk=Subquery(sq.values('id')[:1]))
+
+
+def pilot_vlife(request, vlife_id):
+    try:
+        vlife = (VLife.objects
+                 .select_related('player', 'player__profile', 'player__tour')
+                 .get(id=vlife_id, player__type='pilot'))
+    except VLife.DoesNotExist:
+        raise Http404
+    return render(request, 'pilot_vlife.html', {
+        'player': vlife.player,
+        'vlife': vlife,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
     })

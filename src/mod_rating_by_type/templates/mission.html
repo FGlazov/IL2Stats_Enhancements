@@ -163,6 +163,7 @@
                                      alt="{% trans 'Gunnery Accuracy' %}" title="{% trans 'Gunnery Accuracy' %}">
                             </a>
                         </div>
+                        {% if split_rankings %}
                         <div class="cell" style="width: 90px;">
                             <a class="sort_by" href="?sort_by=-score_light">
                                 <img src="{% static 'img/icons/small/rating_light.png' %}" width="18" height="18"
@@ -181,6 +182,7 @@
                                      alt="{% trans 'Score' %}" title="{% trans 'Bomber Score' %}">
                             </a>
                         </div>
+                        {% endif %}
                         <div class="cell" style="width: 90px;">
                             <a class="sort_by" href="?sort_by=-score">
                                 <img src="{% static 'img/icons/small/score.png' %}" width="18" height="18"
