@@ -520,11 +520,7 @@
             </div>
 
              {% for ammo_name, avg_used in ammo_breakdown.given %}
-            {% if ammo_name|length <= 45 %}
-            <div class="item">
-            {% else %}
-            <div class="item" style="height: 80px;">
-            {% endif %}
+             <div class="item" style="height: auto;overflow: hidden;">
                 <div class="name">{{ammo_name}}</div>
                 <div class="num">{{avg_used}}</div>
              </div>
@@ -543,11 +539,7 @@
                 <div class="name">{% trans 'Average hits per aircraft lost' %} ⛤</div>
             </div>
             {% for ammo_name, avg_used in ammo_breakdown.received %}
-            {% if ammo_name|length <= 45 %}
-            <div class="item">
-            {% else %}
-            <div class="item" style="height: 80px;">
-            {% endif %}
+            <div class="item" style="height: auto;overflow: hidden;">
                 <div class="name">{{ammo_name}}</div>
                 <div class="num">{{avg_used}}</div>
              </div>

@@ -9,12 +9,12 @@ def take_first(elem):
 
 def render_ammo_breakdown(ammo_breakdown, filter_out_flukes=True):
     return {
-        GIVEN: __render_sub_dict(ammo_breakdown[GIVEN], filter_out_flukes),
+        GIVEN: __render_sub_dict(ammo_breakdown[GIVEN], filter_out_flukes, fluke_threshold=0.1),
         RECEIVED: __render_sub_dict(ammo_breakdown[RECEIVED], filter_out_flukes),
     }
 
 
-def __render_sub_dict(sub_dict, filter_out_flukes):
+def __render_sub_dict(sub_dict, filter_out_flukes, fluke_threshold=0.05):
     result = []
 
     total_inst = 0
@@ -23,7 +23,7 @@ def __render_sub_dict(sub_dict, filter_out_flukes):
 
     for multi_key in sub_dict[TOTALS]:
         inst = sub_dict[TOTALS][multi_key][INST]
-        if filter_out_flukes and (inst < 4 or inst / total_inst < 0.05):
+        if filter_out_flukes and (inst < 4 or inst / total_inst < fluke_threshold):
             continue
 
         keys = string_to_multikey(multi_key)
