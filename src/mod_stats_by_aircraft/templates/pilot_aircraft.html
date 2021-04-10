@@ -516,7 +516,7 @@
             </div>
 
              {% for ammo_name, avg_used in ammo_breakdown.given %}
-            {% if ammo_name|length <= 43 %}
+            {% if ammo_name|length <= 45 %}
             <div class="item">
             {% else %}
             <div class="item" style="height: 80px;">
@@ -539,7 +539,7 @@
                 <div class="name">{% trans 'Average hits per aircraft lost' %} ⛤</div>
             </div>
             {% for ammo_name, avg_used in ammo_breakdown.received %}
-            {% if ammo_name|length <= 43 %}
+            {% if ammo_name|length <= 45 %}
             <div class="item">
             {% else %}
             <div class="item" style="height: 80px;">
