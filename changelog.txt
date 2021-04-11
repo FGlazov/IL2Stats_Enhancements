@@ -12,7 +12,6 @@ Version 1.0.2
 
 Version 1.1.0
 
-<<<<<<< HEAD
 - Upgrade to version 1.1.0 of SplitRankings
 - Add Global Aircraft Stats to bundle.
 
@@ -27,3 +26,7 @@ Version 1.1.2
 Version 1.2
 
 - Upgrade to version 2.9.1 of CountZero's tank mod, which now includes sortie logs for tanks which show what objects you've damaged.
+
+Version 1.3
+
+- Upgrade to version 2.9.2 of Tanks, 1.6 of disconnect, 2.0.0 of enchancments, 1.2 of aircraft.
