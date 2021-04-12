@@ -25,3 +25,7 @@ Version 2.0.0
 - New module: Ironman Stats. A new table which shows you how your current pilot life stacks up against all other current pilot lives. Your stats on this page reset when your pilot dies!
 - Display more information on VLife page. E.g. your kills/per aircraft lost.
 - Update to version 1.2.49 of IL-2 Stats.
+
+Version 2.0.1
+
+- Fix CSS issue with VLife page. Now "KDR", "Ratio" and so on are correctly rendered.
