@@ -58,6 +58,11 @@ Installation
 
 4. Inside your src/conf.ini add the config parameter modules under [stats]. Set it to the modules you want using their config names, seperated by commas. For example, if you want the Split Ranking and Ammo Breakdown modules, you need to add the line "modules = split_rankings, ammo_breakdown". 
 
+After step 3 and 4 your config should contain two lines like:
+
+mods = mod_rating_by_type
+modules = split_rankings, ammo_breakdown, ironman_stats
+
 5. Run collect_static in your run folder. Otherwise you will likely get a 500 error on the pilot rankings page.
 
 Uninstallation

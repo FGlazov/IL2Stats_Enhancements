@@ -33,3 +33,7 @@ Version 2.0.1
 Version 2.0.2
 
 - Update Spanish localization.
+
+Version 2.0.3
+
+- Fix bug where "Best Fighter/Attacker pilot in the last 24 hours" was not properly counting jabo flights towards attacker pilots.
