@@ -1,20 +1,20 @@
 from datetime import timedelta
 
 from django.conf import settings
-from django.db.models import Sum, OuterRef, Subquery
+from django.db.models import Sum, OuterRef, Subquery, Q
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from mission_report.constants import Coalition
-
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
-from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, KillboardPvP,
-                          Tour, LogEntry, Profile, Squad, Reward, PlayerOnline, VLife)
-from stats import sortie_log
-from stats.views import _get_rating_position, _get_squad
+from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
+                          VLife)
 from stats.views import *
+from stats.views import _get_rating_position, _get_squad
+
 from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
+from .variant_utils import FIGHTER_WHITE_LIST
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -162,7 +162,7 @@ def pilot(request, profile_id, nickname=None):
     })
 
 
-def _top_24_queryset(tour_id, aircraft_cls=None):
+def __top_24_pilots(tour_id, cls=None):
     _queryset = (Sortie.objects
                  .exclude(score=0)
                  .filter(tour_id=tour_id,
@@ -170,13 +170,17 @@ def _top_24_queryset(tour_id, aircraft_cls=None):
                          player__type='pilot',
                          profile__is_hide=False,
                          date_start__gt=timezone.now() - timedelta(hours=24)))
-    if aircraft_cls:
-        _queryset = _queryset.filter(aircraft__cls=aircraft_cls)
-    return _queryset.values('player').annotate(sum_score=Sum('score'))
 
+    if cls:
+        aircraft_cls = 'aircraft_' + cls
+        _queryset = _queryset.filter(
+            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls) # Expected case. E.g. recorded jabos as type 'medium'.
 
-def _top_pilots(tour_id, queryset):
-    top_24_score = queryset.order_by('-sum_score')[:10]
+             # The edge case, when this mod is freshly installed we haven't recorded type. So instead use aircraft type.
+             | (Q(aircraft__cls=aircraft_cls) & Q(SortieAugmentation_MOD_SPLIT_RANKINGS=None))))
+
+    _queryset = _queryset.values('player').annotate(sum_score=Sum('score'))
+    top_24_score = _queryset.order_by('-sum_score')[:10]
     top_24_pilots = Player.players.pilots(tour_id=tour_id).filter(id__in=[s['player'] for s in top_24_score])
     top_24_pilots = {p.id: p for p in top_24_pilots}
     top_24 = []
@@ -198,8 +202,7 @@ def main(request):
                       .exclude(score_streak_current=0)
                       .active(tour=request.tour).order_by('-score_streak_current')[:10])
 
-    top_24 = _top_pilots(tour_id=request.tour.id,
-                         queryset=_top_24_queryset(tour_id=request.tour.id))
+    top_24 = __top_24_pilots(tour_id=request.tour.id)
 
     if module_active(MODULE_SPLIT_RANKINGS):
         top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
@@ -211,12 +214,9 @@ def main(request):
         top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
                                 .exclude(score_streak_current_light=0)
                                 .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
-        top_24_heavy = _top_pilots(tour_id=request.tour.id,
-                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_heavy'))
-        top_24_medium = _top_pilots(tour_id=request.tour.id,
-                                    queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_medium'))
-        top_24_light = _top_pilots(tour_id=request.tour.id,
-                                   queryset=_top_24_queryset(tour_id=request.tour.id, aircraft_cls='aircraft_light'))
+        top_24_heavy = __top_24_pilots(tour_id=request.tour.id, cls='heavy')
+        top_24_medium = __top_24_pilots(tour_id=request.tour.id, cls='medium')
+        top_24_light = __top_24_pilots(tour_id=request.tour.id, cls='light')
     else:
         top_streak_heavy = None
         top_streak_medium = None
@@ -446,7 +446,7 @@ def pilot_sortie(request, sortie_id):
     return render(request, 'pilot_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,
-        'score_dict':  mission_score_dict or sortie.mission.score_dict,
+        'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
     })
 

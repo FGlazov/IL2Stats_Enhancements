@@ -43,7 +43,7 @@ the last 10 tours. More details inside the Global Aircraft stats readme.
 6. Inside your src/confi.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
 config parameter modules under [stats]. 
 
-6. Run the update script in your /run folder after you're done with the above.
+7. Run the update script in your /run folder after you're done with the above.
 
 
 Support

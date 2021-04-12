@@ -3,6 +3,7 @@ from django.conf import settings
 from datetime import timedelta
 from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
+from .models import SortieAugmentation
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 SORTIE_DISCO_MIN_TIME = settings.SORTIE_DISCO_MIN_TIME
@@ -132,6 +133,18 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         debug={'aircraft_id': sortie.aircraft_id, 'bot_id': sortie.bot_id},
         is_ignored=is_ignored,
     )
+
+    new_sortie.save()
+
+    cls = 'placeholder'
+    if is_fighter(new_sortie):
+        cls = 'light'
+    elif new_sortie.aircraft.cls == "aircraft_medium" or is_jabo(new_sortie):
+        cls = 'medium'
+    elif new_sortie.aircraft.cls == "aircraft_heavy":
+        cls = 'heavy'
+
+    SortieAugmentation(sortie=new_sortie, cls=cls).save()
 
     return new_sortie
 
