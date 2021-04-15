@@ -685,6 +685,48 @@
                     </div>
                 {% endif %}
 
+                {% if sortie.score_dict.flight_time_bonus %}
+                    <div class="row">
+                        <div class="left">
+                            {% trans 'Flight time bonus' %}
+                        </div>
+                        <div class="right">
+                            <span class="sum">{{ sortie.score_dict.flight_time_bonus }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if sortie.score_dict.undamaged_bailout_penalty %}
+                    <div class="row">
+                        <div class="left">
+                            {% trans 'Undamaged bailout penalty' %}
+                        </div>
+                        <div class="right">
+                            <span class="sum" style="color: red">-{{ sortie.score_dict.undamaged_bailout_penalty }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if sortie.score_dict.penalty_pct %}
+                    <div class="row">
+                        <div class="left">
+                            {% trans 'Penalty' %}:
+								{% if sortie.is_dead %}
+										 {% trans 'Dead' context 'sortie_status' %}
+								{% elif sortie.is_captured %}
+										 {% trans 'Captured' context 'sortie_status' %}
+								{% elif sortie.is_bailout %}
+										 {% trans 'Bailout' context 'sortie_status' %}
+								{% elif sortie.is_shotdown %}
+										 {% trans 'Shotdown' context 'sortie_status' %}
+								{% endif %}
+                        </div>
+                        <div class="right">
+                            <span class="bonus" style="color: red">-{{ sortie.score_dict.penalty_pct }}%</span>
+                        </div>
+                    </div>
+                {% endif %}
+
                 {% if sortie.bonus.total %}
                     <div class="row">
                         <div class="left">

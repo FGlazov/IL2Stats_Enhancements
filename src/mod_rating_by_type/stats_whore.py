@@ -4,7 +4,8 @@ from datetime import timedelta
 from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
 from .models import SortieAugmentation
-from .config_modules import MODULE_BAILOUT_PENALTY, module_active
+from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
+                             MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES)
 from stats import stats_whore as old_stats_whore
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
@@ -67,7 +68,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 score += mission.score_dict['ak_assist']['base']
 
     # ======================== MODDED PART BEGIN
-    score, score_dict = adjust_score_modules(sortie, player, score)
+    score, score_dict = adjust_base_score_modules(sortie, player, flight_time, score)
     # ======================== MODDED PART END
 
     new_sortie = Sortie(
@@ -137,10 +138,16 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 
 
 # ======================== MODDED PART BEGIN
-def adjust_score_modules(sortie, player, score):
+# TODO: Configurability. Create new admin panel to import this stuff in.
+def adjust_base_score_modules(sortie, player, flight_time, score):
     score_dict = {'basic': score}
 
-    if module_active(MODULE_BAILOUT_PENALTY):
+    if module_active(MODULE_FLIGHT_TIME_BONUS):
+        flight_time_bonus = int(flight_time / 60)  # TODO: Make this configurable
+        score += flight_time_bonus
+        score_dict['flight_time_bonus'] = flight_time_bonus
+
+    if module_active(MODULE_UNDAMAGED_BAILOUT_PENALTY):
         # Check for a bail where no damage was taken from anyone else
         if sortie.is_bailout and not (sortie.aircraft_damage() or sortie.bot_damage):
             penalty = min(score, 100)  # TODO: Make the "100" configurable.
