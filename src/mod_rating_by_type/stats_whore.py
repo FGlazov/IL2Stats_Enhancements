@@ -4,6 +4,8 @@ from datetime import timedelta
 from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
 from .models import SortieAugmentation
+from .config_modules import MODULE_BAILOUT_PENALTY, module_active
+from stats import stats_whore as old_stats_whore
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
@@ -64,6 +66,10 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 ak_assist += 1
                 score += mission.score_dict['ak_assist']['base']
 
+    # ======================== MODDED PART BEGIN
+    score, score_dict = adjust_score_modules(sortie, player, score)
+    # ======================== MODDED PART END
+
     new_sortie = Sortie(
         profile=profile,
         player=player,
@@ -103,7 +109,9 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         is_disco=sortie.is_disco,
 
         score=score,
-        score_dict={'basic': score},
+        # ======================== MODDED PART BEGIN
+        score_dict=score_dict,
+        # ======================== MODDED PART END
         ratio=sortie.ratio,
         damage=round(sortie.aircraft_damage, 2),
         wound=round(sortie.bot_damage, 2),
@@ -121,12 +129,31 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     elif new_sortie.aircraft.cls == "aircraft_heavy":
         cls = 'heavy'
 
+    # ======================== MODDED PART BEGIN
     SortieAugmentation(sortie=new_sortie, cls=cls).save()
+    # ======================== MODDED PART END
 
     return new_sortie
 
 
 # ======================== MODDED PART BEGIN
+def adjust_score_modules(sortie, player, score):
+    score_dict = {'basic': score}
+
+    if module_active(MODULE_BAILOUT_PENALTY):
+        # Check for a bail where no damage was taken from anyone else
+        if sortie.is_bailout and not (sortie.aircraft_damage() or sortie.bot_damage):
+            penalty = min(score, 100)  # TODO: Make the "100" configurable.
+            score -= penalty
+            score_dict['undamaged_bailout_penalty'] = penalty
+
+            # This technically should be in "update_fairplay" function.
+            # Updating it here avoids monkey patching that function.
+            player.fairplay -= 20  # TODO: Make this "20" configurable.
+
+    return score
+
+
 # Here we additionally inject ammo_breakdown.
 def create_ammo(sortie):
     result = {'used_cartridges': sortie.used_cartridges,
