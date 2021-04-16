@@ -696,13 +696,13 @@
                     </div>
                 {% endif %}
 
-                {% if sortie.score_dict.undamaged_bailout_penalty %}
+                {% if sortie.score_dict.undamagedbailout_penalty %}
                     <div class="row">
                         <div class="left">
                             {% trans 'Undamaged bailout penalty' %}
                         </div>
                         <div class="right">
-                            <span class="sum" style="color: red">-{{ sortie.score_dict.undamaged_bailout_penalty }}</span>
+                            <span class="sum" style="color: red">-{{ sortie.score_dict.undamagedbailout_penalty }}</span>
                         </div>
                     </div>
                 {% endif %}
@@ -722,7 +722,10 @@
 								{% endif %}
                         </div>
                         <div class="right">
-                            <span class="bonus" style="color: red">-{{ sortie.score_dict.penalty_pct }}%</span>
+                            {{ sortie.score_dict.basic }}
+                            -
+                            <span class="bonus" style="color: red">{{ sortie.score_dict.penalty_pct }}%</span>
+                             = {{ sortie.score_dict.after_penalty_score }}
                         </div>
                     </div>
                 {% endif %}
@@ -733,7 +736,11 @@
                             {% trans 'Bonuses' context 'total' %}
                         </div>
                         <div class="right">
+                            {% if sortie.score_dict.after_penalty_score %}
+                            {{ sortie.score_dict.after_penalty_score }}
+                            {% else %}
                             {{ sortie.score_dict.basic }}
+                            {% endif %}
                             +
                             <span class="bonus">{{ sortie.bonus.total }}%</span>
                             =

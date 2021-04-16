@@ -386,6 +386,11 @@ def pilot_sortie(request, sortie_id):
     else:
         ammo_breakdown = dict()
 
+    if 'penalty_pct' in sortie.score_dict:
+        base_score = sortie.score_dict['basic']
+        penalty_pct = sortie.score_dict['penalty_pct']
+        sortie.score_dict['after_penalty_score'] = int(base_score * ((100 - penalty_pct) / 100))
+
     return render(request, 'pilot_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,

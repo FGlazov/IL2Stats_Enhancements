@@ -152,7 +152,7 @@ def adjust_base_score_modules(sortie, player, flight_time, score, bonuses_score_
         if sortie.is_bailout and not (sortie.aircraft_damage or sortie.bot_damage):
             penalty = min(score, bonuses_score_dict['mod_undmg_bailout_score']['base'])
             adjusted_score -= penalty
-            score_dict['undamaged_bailout_penalty'] = penalty
+            score_dict['undamagedbailout_penalty'] = penalty
 
             # This technically should be in "update_fairplay" function.
             # Updating it here avoids monkey patching that function
@@ -220,7 +220,7 @@ def update_bonus_score(new_sortie):
         penalty_pct = bonuses_score_dict['mod_penalty_bailout']['base']
     elif new_sortie.is_shotdown:
         penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
-    new_sortie.score = new_sortie.score * ((100 - penalty_pct) / 100)
+    new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
     new_sortie.score_dict['penalty_pct'] = penalty_pct
 
     new_sortie.bonus = bonus_dict
