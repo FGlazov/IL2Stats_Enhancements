@@ -1,0 +1,11 @@
+key,value,type
+mod_undmg_bailout_score,100,int
+mod_undmg_bailout_fair,20,int
+mod_flight_time_bonus,60,int
+mod_bonus_landed,25,pct
+mod_bonus_winning_coal,25,pct
+mod_bonus_in_flight,25,pct
+mod_penalty_dead,75,pct
+mod_penalty_captured,75,pct
+mod_penalty_bailout,50,pct
+mod_penalty_shotdown,20,pct

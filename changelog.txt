@@ -37,3 +37,9 @@ Version 2.0.2
 Version 2.0.3
 
 - Fix bug where "Best Fighter/Attacker pilot in the last 24 hours" was not properly counting jabo flights towards attacker pilots.
+
+Version 2.1.0
+
+- Add new module 'undamaged_bailout_penalty' - If a player bails out without having any damage taken, then he loses up to (by default, this is configurable in the admin panel) 100 score, and 20 fairplay. This is to incentivize players to fight instead of bailing out at the first sign of trouble.
+- Add new module 'flight_time_bonus' - Gives (by default, this is configurable in the admin panel) players one extra point for every minute the player is in the air. This is to encourge players to run CAP over areas which might not see the most action.
+- Add new module 'adjustable_bonuses_penalties' - Lets you adjust percent penalties/bonuses for sorties. Bonuses for landing, being in flight, being in winning coalation. Penalties for dying, getting captured, bailing out, or getting shotdown. Defaults as in combat box. Encourges players to stay as alive as possible.
