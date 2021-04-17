@@ -41,7 +41,7 @@ The parameter is "retro_compute_for_last_tours=10" under [stats]. A value of -1 
 the last 10 tours. More details inside the Global Aircraft stats readme.
 
 6. Inside your src/confi.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
-config parameter modules under [stats]. 
+config parameter "modules" under [stats]. More details inside the Stats Enhancements readme.
 
 7. Run the update script in your /run folder after you're done with the above.
 

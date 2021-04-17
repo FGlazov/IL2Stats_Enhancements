@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.conf.urls import url
 
+
 class ModConfig(AppConfig):
     name = 'mod_rating_by_type'
 
@@ -45,3 +46,8 @@ class ModConfig(AppConfig):
         from . import stats_whore as new_stats_whore
         original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
         original_stats_whore.update_general = new_stats_whore.update_general
+        original_stats_whore.update_bonus_score = new_stats_whore.update_bonus_score
+
+        from stats.management.commands import import_csv_data as old_csv_data
+        from . import import_csv_data as new_csv_data
+        old_csv_data.Command.handle = new_csv_data.Command.handle

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 14:01+0200\n"
+"POT-Creation-Date: 2021-04-17 14:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -723,7 +723,7 @@ msgstr "Temps de vol (heures:minutes)"
 #: .\mod_rating_by_type\templates\ironman_pilots.html:68
 #: .\mod_rating_by_type\templates\mission.html:163
 #: .\mod_rating_by_type\templates\pilot.html:93
-#: .\mod_rating_by_type\templates\pilot_sortie.html:740
+#: .\mod_rating_by_type\templates\pilot_sortie.html:789
 #: .\mod_rating_by_type\templates\pilot_vlife.html:76
 #: .\mod_rating_by_type\templates\pilots.html:69
 #: .\mod_rating_by_type\templates\squad_pilots.html:92
@@ -1685,7 +1685,7 @@ msgid "Ratio"
 msgstr "Ratio"
 
 #: .\mod_rating_by_type\templates\pilot.html:650
-#: .\mod_rating_by_type\templates\pilot_sortie.html:726
+#: .\mod_rating_by_type\templates\pilot_sortie.html:775
 msgid "Fairplay Index"
 msgstr "Index de fairplay"
 
@@ -1753,6 +1753,7 @@ msgstr "Déconnecté"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:23
 #: .\mod_rating_by_type\templates\pilot_sortie.html:24
+#: .\mod_rating_by_type\templates\pilot_sortie.html:715
 #: .\mod_rating_by_type\templates\pilot_vlife.html:24
 #: .\mod_rating_by_type\templates\pilot_vlife.html:25
 msgctxt "sortie_status"
@@ -1762,6 +1763,7 @@ msgstr "Tué"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:27
 #: .\mod_rating_by_type\templates\pilot_sortie.html:28
 #: .\mod_rating_by_type\templates\pilot_sortie.html:75
+#: .\mod_rating_by_type\templates\pilot_sortie.html:717
 #: .\mod_rating_by_type\templates\pilot_vlife.html:28
 #: .\mod_rating_by_type\templates\pilot_vlife.html:29
 msgctxt "sortie_status"
@@ -1770,6 +1772,7 @@ msgstr "Capturé"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:31
 #: .\mod_rating_by_type\templates\pilot_sortie.html:32
+#: .\mod_rating_by_type\templates\pilot_sortie.html:719
 #: .\mod_rating_by_type\templates\pilot_vlife.html:32
 #: .\mod_rating_by_type\templates\pilot_vlife.html:33
 msgctxt "sortie_status"
@@ -1901,7 +1904,7 @@ msgid "Not Takeoff"
 msgstr "Pas décollé"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:117
-#: .\mod_rating_by_type\templates\pilot_sortie.html:705
+#: .\mod_rating_by_type\templates\pilot_sortie.html:754
 msgctxt "sortie"
 msgid "Landed on Airfield"
 msgstr "Posé sur un aérodrome"
@@ -1942,36 +1945,56 @@ msgid "Scoring"
 msgstr "Score"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:691
+msgid "Flight time bonus"
+msgstr "Bonus de temps de vol"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:702
+msgid "Undamaged bailout penalty"
+msgstr "Pénalité pour s’être éjecté sans avoir subit de dégâts"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:713
+msgid "Penalty"
+msgstr "Pénalité"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:721
+#, fuzzy
+#| msgctxt "sortie"
+#| msgid "Shotdown"
+msgctxt "sortie_status"
+msgid "Shotdown"
+msgstr "Abattu"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:736
 msgctxt "total"
 msgid "Bonuses"
 msgstr "Bonus"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:716
+#: .\mod_rating_by_type\templates\pilot_sortie.html:765
 msgctxt "sortie"
 msgid "Coalition won a mission"
 msgstr "La coalition a gagné une mission"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:737
+#: .\mod_rating_by_type\templates\pilot_sortie.html:786
 msgid "Stats of weapons"
 msgstr "Stats armement"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:744
+#: .\mod_rating_by_type\templates\pilot_sortie.html:793
 msgid "Number of shots"
 msgstr "Nombre de tirs"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:748
+#: .\mod_rating_by_type\templates\pilot_sortie.html:797
 msgid "Number of bullets hit the target"
 msgstr "Nombre de tirs touchant la cible"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:760
+#: .\mod_rating_by_type\templates\pilot_sortie.html:809
 msgid "Number of rockets launches"
 msgstr "Nombre de roquettes tirées"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:764
+#: .\mod_rating_by_type\templates\pilot_sortie.html:813
 msgid "Number of bombs dropped"
 msgstr "Nombre de bombes larguées"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:768
+#: .\mod_rating_by_type\templates\pilot_sortie.html:817
 msgid ""
 "This block may contain incorrect information, this is due to the errors in "
 "the game log."
@@ -1979,11 +2002,11 @@ msgstr ""
 "Cette partie peut contenir des informations incorrectes, à cause d'erreurs "
 "dans le log du jeu."
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:778
+#: .\mod_rating_by_type\templates\pilot_sortie.html:827
 msgid "Damage Report"
 msgstr "Compte rendu des dommages"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:781
+#: .\mod_rating_by_type\templates\pilot_sortie.html:830
 msgid "Number of hits taken"
 msgstr "Nombre de tirs reçus"
 

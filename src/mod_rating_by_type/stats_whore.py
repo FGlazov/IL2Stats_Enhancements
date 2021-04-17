@@ -4,6 +4,9 @@ from datetime import timedelta
 from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
 from .models import SortieAugmentation
+from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
+                             MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES)
+from stats import stats_whore as old_stats_whore
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 SORTIE_DISCO_MIN_TIME = settings.SORTIE_DISCO_MIN_TIME
@@ -87,6 +90,10 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 ak_assist += 1
                 score += mission.score_dict['ak_assist']['base']
 
+    # ======================== MODDED PART BEGIN
+    score, score_dict = adjust_base_score_modules(sortie, player, flight_time, score, mission.score_dict)
+    # ======================== MODDED PART END
+
     new_sortie = Sortie(
         profile=profile,
         player=player,
@@ -126,7 +133,9 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         is_disco=sortie.is_disco,
 
         score=score,
-        score_dict={'basic': score},
+        # ======================== MODDED PART BEGIN
+        score_dict=score_dict,
+        # ======================== MODDED PART END
         ratio=sortie.ratio,
         damage=round(sortie.aircraft_damage, 2),
         wound=round(sortie.bot_damage, 2),
@@ -144,12 +153,39 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     elif new_sortie.aircraft.cls == "aircraft_heavy":
         cls = 'heavy'
 
+    # ======================== MODDED PART BEGIN
     SortieAugmentation(sortie=new_sortie, cls=cls).save()
+    # ======================== MODDED PART END
 
     return new_sortie
 
 
 # ======================== MODDED PART BEGIN
+def adjust_base_score_modules(sortie, player, flight_time, score, bonuses_score_dict):
+    score_dict = {}
+    adjusted_score = score
+
+    if module_active(MODULE_FLIGHT_TIME_BONUS):
+        flight_time_bonus = int(flight_time / bonuses_score_dict['mod_flight_time_bonus']['base'])
+        adjusted_score += flight_time_bonus
+        score_dict['flight_time_bonus'] = flight_time_bonus
+
+    if module_active(MODULE_UNDAMAGED_BAILOUT_PENALTY):
+        # Check for a bail where no damage was taken from anyone else
+        if sortie.is_bailout and not (sortie.aircraft_damage or sortie.bot_damage):
+            penalty = min(score, bonuses_score_dict['mod_undmg_bailout_score']['base'])
+            adjusted_score -= penalty
+            score_dict['undamagedbailout_penalty'] = penalty
+
+            # This technically should be in "update_fairplay" function.
+            # Updating it here avoids monkey patching that function
+            player.fairplay -= bonuses_score_dict['mod_undmg_bailout_fair']['base']
+
+    score_dict['basic'] = adjusted_score
+
+    return adjusted_score, score_dict
+
+
 # Here we additionally inject ammo_breakdown.
 def create_ammo(sortie):
     result = {'used_cartridges': sortie.used_cartridges,
@@ -165,6 +201,59 @@ def create_ammo(sortie):
         result['ammo_breakdown'] = sortie.ammo_breakdown
 
     return result
+
+
+# Monkey patched in stats_whore.
+def update_bonus_score(new_sortie):
+    if not module_active(MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES):
+        old_stats_whore.update_bonus_score(new_sortie)
+        return
+
+    bonuses_score_dict = new_sortie.mission.score_dict
+
+    # бонус процент
+    bonus_pct = 0
+    bonus_dict = {}
+    penalty_pct = 0
+
+    # бонусы получают только "честные" игроки
+    if new_sortie.fairplay == 100:
+        if new_sortie.is_landed:
+            bonus = bonuses_score_dict['mod_bonus_landed']['base']
+            bonus_pct += bonus
+            bonus_dict['landed'] = bonus
+        if new_sortie.coalition == new_sortie.mission.winning_coalition:
+            bonus = bonuses_score_dict['mod_bonus_winning_coal']['base']
+            bonus_pct += bonus
+            bonus_dict['winning_coalition'] = bonus
+        if new_sortie.is_in_flight:
+            bonus = bonuses_score_dict['mod_bonus_in_flight']['base']
+            bonus_pct += bonus
+            bonus_dict['in_flight'] = bonus
+    bonus_dict['total'] = bonus_pct
+
+    # ставим базовые очки т.к. функция может вызваться несколько раз
+    new_sortie.score = new_sortie.score_dict['basic']
+
+    if new_sortie.is_dead:
+        penalty_pct = bonuses_score_dict['mod_penalty_dead']['base']
+    elif new_sortie.is_captured:
+        penalty_pct = bonuses_score_dict['mod_penalty_captured']['base']
+    elif new_sortie.is_bailout:
+        penalty_pct = bonuses_score_dict['mod_penalty_bailout']['base']
+    elif new_sortie.is_shotdown:
+        penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
+    new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
+    new_sortie.score_dict['penalty_pct'] = penalty_pct
+
+    new_sortie.bonus = bonus_dict
+    bonus_score = new_sortie.score * bonus_pct // 100
+    new_sortie.score_dict['bonus'] = bonus_score
+    new_sortie.score += bonus_score
+    penalty_score = new_sortie.score * (100 - new_sortie.fairplay) // 100
+    new_sortie.score_dict['penalty'] = penalty_score
+    new_sortie.score -= penalty_score
+    # new_sortie.save()
 
 
 # ======================== MODDED PART END
