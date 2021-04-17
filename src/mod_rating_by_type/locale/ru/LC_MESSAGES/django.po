@@ -1920,7 +1920,7 @@ msgstr "Налет часов"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:702
 msgid "Undamaged bailout penalty"
-msgstr "Штраф за прыжок из самолёта без повреждений"
+msgstr "Штраф за прыжок из неповрежденного самолёта"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:713
 msgid "Наказание"
