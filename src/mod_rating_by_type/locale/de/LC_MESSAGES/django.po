@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 14:01+0200\n"
+"POT-Creation-Date: 2021-04-17 14:44+0200\n"
 "PO-Revision-Date: 2016-07-18 19:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -726,7 +726,7 @@ msgstr "Flugzeit (Stunden:Minuten)"
 #: .\mod_rating_by_type\templates\ironman_pilots.html:68
 #: .\mod_rating_by_type\templates\mission.html:163
 #: .\mod_rating_by_type\templates\pilot.html:93
-#: .\mod_rating_by_type\templates\pilot_sortie.html:740
+#: .\mod_rating_by_type\templates\pilot_sortie.html:789
 #: .\mod_rating_by_type\templates\pilot_vlife.html:76
 #: .\mod_rating_by_type\templates\pilots.html:69
 #: .\mod_rating_by_type\templates\squad_pilots.html:92
@@ -1699,7 +1699,7 @@ msgid "Ratio"
 msgstr "Verhältnis"
 
 #: .\mod_rating_by_type\templates\pilot.html:650
-#: .\mod_rating_by_type\templates\pilot_sortie.html:726
+#: .\mod_rating_by_type\templates\pilot_sortie.html:775
 msgid "Fairplay Index"
 msgstr "Fairplay Index"
 
@@ -1767,6 +1767,7 @@ msgstr "Verbindungstrennung"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:23
 #: .\mod_rating_by_type\templates\pilot_sortie.html:24
+#: .\mod_rating_by_type\templates\pilot_sortie.html:715
 #: .\mod_rating_by_type\templates\pilot_vlife.html:24
 #: .\mod_rating_by_type\templates\pilot_vlife.html:25
 msgctxt "sortie_status"
@@ -1776,6 +1777,7 @@ msgstr "Tod"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:27
 #: .\mod_rating_by_type\templates\pilot_sortie.html:28
 #: .\mod_rating_by_type\templates\pilot_sortie.html:75
+#: .\mod_rating_by_type\templates\pilot_sortie.html:717
 #: .\mod_rating_by_type\templates\pilot_vlife.html:28
 #: .\mod_rating_by_type\templates\pilot_vlife.html:29
 msgctxt "sortie_status"
@@ -1784,6 +1786,7 @@ msgstr "Gefangenschaft"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:31
 #: .\mod_rating_by_type\templates\pilot_sortie.html:32
+#: .\mod_rating_by_type\templates\pilot_sortie.html:719
 #: .\mod_rating_by_type\templates\pilot_vlife.html:32
 #: .\mod_rating_by_type\templates\pilot_vlife.html:33
 msgctxt "sortie_status"
@@ -1917,7 +1920,7 @@ msgid "Not Takeoff"
 msgstr "Nicht gestartet"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:117
-#: .\mod_rating_by_type\templates\pilot_sortie.html:705
+#: .\mod_rating_by_type\templates\pilot_sortie.html:754
 msgctxt "sortie"
 msgid "Landed on Airfield"
 msgstr "Gelandet"
@@ -1958,46 +1961,66 @@ msgid "Scoring"
 msgstr "Auswertung"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:691
+msgid "Flight time bonus"
+msgstr "Flugzeitbonus"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:702
+msgid "Undamaged bailout penalty"
+msgstr "Bestrafung: Ausstieg, unbeschädigtes Flugzeug"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:71
+msgid "Penalty"
+msgstr "Bestrafung"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:721
+#, fuzzy
+#| msgctxt "sortie"
+#| msgid "Shotdown"
+msgctxt "sortie_status"
+msgid "Shotdown"
+msgstr "Abgeschossen"
+
+#: .\mod_rating_by_type\templates\pilot_sortie.html:736
 msgctxt "total"
 msgid "Bonuses"
 msgstr "Bonus"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:716
+#: .\mod_rating_by_type\templates\pilot_sortie.html:765
 msgctxt "sortie"
 msgid "Coalition won a mission"
 msgstr "Koalition hat die Mission gewonnen"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:737
+#: .\mod_rating_by_type\templates\pilot_sortie.html:786
 msgid "Stats of weapons"
 msgstr "Statistik der Waffen"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:744
+#: .\mod_rating_by_type\templates\pilot_sortie.html:793
 msgid "Number of shots"
 msgstr "Anzahl der Schüsse"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:748
+#: .\mod_rating_by_type\templates\pilot_sortie.html:797
 msgid "Number of bullets hit the target"
 msgstr "Anzahl der Kugeln die getroffen haben"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:760
+#: .\mod_rating_by_type\templates\pilot_sortie.html:809
 msgid "Number of rockets launches"
 msgstr "Anzahl der abgefeuerten Raketen"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:764
+#: .\mod_rating_by_type\templates\pilot_sortie.html:813
 msgid "Number of bombs dropped"
 msgstr "Anzahl der abgeworfenen Bomben"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:768
+#: .\mod_rating_by_type\templates\pilot_sortie.html:817
 msgid ""
 "This block may contain incorrect information, this is due to the errors in "
 "the game log."
 msgstr "Es kam zu einem Fehler. Bitte Log prüfen"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:778
+#: .\mod_rating_by_type\templates\pilot_sortie.html:827
 msgid "Damage Report"
 msgstr "Schadensbericht"
 
-#: .\mod_rating_by_type\templates\pilot_sortie.html:781
+#: .\mod_rating_by_type\templates\pilot_sortie.html:830
 msgid "Number of hits taken"
 msgstr "Anzahl Treffer auf diesem Flugzeug"
 
