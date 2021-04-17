@@ -75,7 +75,7 @@ def squad_pilots(request, squad_id, squad_tag=None):
     pilots = Player.players.pilots(tour_id=squad_.tour_id, squad_id=squad_.id).order_by(sort_by, 'id')
     return render(request, 'squad_pilots.html', {'squad': squad_, 'pilots': pilots})
 
-	
+
 def squad_tankmans(request, squad_id, squad_tag=None):
     squad_ = _get_squad(request=request, squad_id=squad_id)
     if squad_.tag != squad_tag:
@@ -118,7 +118,7 @@ def pilot_rankings(request):
         'sort_by': sort_by,
     })
 
-	
+
 def pilot(request, profile_id, nickname=None):
     tour_id = request.GET.get('tour')
     if tour_id:
@@ -443,10 +443,30 @@ def tankman_sortie(request, sortie_id):
         if isinstance(v, dict):
             break
         mission_score_dict[k] = {'base': v, 'ai': v}
+
+    try:
+        from mod_rating_by_type.config_modules import module_active, MODULE_AMMO_BREAKDOWN
+        from mod_rating_by_type.bullets_types import translate_ammo_breakdown
+        if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
+            ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
+        else:
+            ammo_breakdown = dict()
+    except ImportError:
+        # Couldn't find the mod which creates ammo_breakdowns for some reason, perhaps it is disabled?
+        print("[BundleMod]: WARNING: Could not find ammo_breakdowns translation for tank sortie."
+              " Is [mod_ratings_by_type] disabled? ")
+        ammo_breakdown = None
+
+    if 'penalty_pct' in sortie.score_dict:
+        base_score = sortie.score_dict['basic']
+        penalty_pct = sortie.score_dict['penalty_pct']
+        sortie.score_dict['after_penalty_score'] = int(base_score * ((100 - penalty_pct) / 100))
+
     return render(request, 'tankman_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,
         'score_dict': sortie.mission.score_dict,
+        'ammo_breakdown': ammo_breakdown
     })
 
 
@@ -557,8 +577,8 @@ def main(request):
 
     coal_active_pilots = request.tour.coal_active_pilots()
     total_active_pilots = sum(coal_active_pilots.values())
-		
-		
+
+
     toptank_streak = (Player.players.tankmans(tour_id=request.tour.id)
                   .exclude(score_streak_current=0)
                   .active(tour=request.tour).order_by('-score_streak_current')[:10])
@@ -593,7 +613,7 @@ def main(request):
     coal_1_online = PlayerOnline.objects.filter(coalition=Coalition.coal_1).count()
     coal_2_online = PlayerOnline.objects.filter(coalition=Coalition.coal_2).count()
     total_online = coal_1_online + coal_2_online
-		
+
     try:
         previous_tour = Tour.objects.exclude(id=request.tour.id).order_by('-id')[0]
     except IndexError:
@@ -641,7 +661,7 @@ def tour(request):
     top_streak = (Player.players.pilots(tour_id=request.tour.id)
                   .exclude(score_streak_max=0)
                   .active(tour=request.tour).order_by('-score_streak_max')[:10])
-				  
+
     top_rating = (Player.players.pilots(tour_id=request.tour.id)
                   .exclude(rating=0)
                   .active(tour=request.tour).order_by('-rating')[:10])

@@ -675,6 +675,50 @@
                 </div>
                 {% endif %}
 
+                {% if sortie.score_dict.flight_time_bonus %}
+                    <div class="row">
+                        <div class="left">
+                            {% trans 'Flight time bonus' %}
+                        </div>
+                        <div class="right">
+                            <span class="sum">{{ sortie.score_dict.flight_time_bonus }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if sortie.score_dict.undamagedbailout_penalty %}
+                    <div class="row" style="height: auto;">
+                        <div class="left">
+                            {% trans 'Undamaged bailout penalty' %}
+                        </div>
+                        <div class="right">
+                            <span class="sum" style="color: red">-{{ sortie.score_dict.undamagedbailout_penalty }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if sortie.score_dict.penalty_pct %}
+                    <div class="row">
+                        <div class="left">
+                            {% trans 'Penalty' %}:
+								{% if sortie.is_dead %}
+										 {% trans 'Dead' context 'sortie_status' %}
+								{% elif sortie.is_captured %}
+										 {% trans 'Captured' context 'sortie_status' %}
+								{% elif sortie.is_bailout %}
+										 {% trans 'Bailout' context 'sortie_status' %}
+								{% elif sortie.is_shotdown %}
+										 {% trans 'Shotdown' context 'sortie_status' %}
+								{% endif %}
+                        </div>
+                        <div class="right">
+                            {{ sortie.score_dict.basic }}
+                            -
+                            <span class="bonus" style="color: red">{{ sortie.score_dict.penalty_pct }}%</span>
+                             = {{ sortie.score_dict.after_penalty_score }}
+                        </div>
+                    </div>
+                {% endif %}
 
                 {% if sortie.bonus.total %}
                     <div class="row">
@@ -739,10 +783,39 @@
                     <div class="name">{% trans 'Number of bullets hit the target' %}</div>
                     <div class="num">{{ sortie.ammo.hit_bullets }}</div>
                 </div>
+                {% if ammo_breakdown.total_hits %}
+                {% for ammo, nr_hits in ammo_breakdown.total_hits %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <span style="color: #CF2D1C; font-size: 13px;">
                     * {% trans 'This block may contain incorrect information, this is due to the errors in the game log.' %}
                 </span>
             </div>
+
+            <div class="clearfix"></div>
+
+            {% if ammo_breakdown.total_received %}
+            <div class="sortie_detailed" style="float: left;">
+                <div class="title">
+                    {% trans 'Damage Report' %}
+                </div>
+                <div class="item">
+                    <div class="name">{% trans 'Number of hits taken' %}</div>
+                    <div class="num">{{ ammo_breakdown.all_taken }}</div>
+                </div>
+                {% for ammo, nr_hits in ammo_breakdown.total_received %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+
+            </div>
+            {% endif %}
 
             <div class="clearfix"></div>
 
