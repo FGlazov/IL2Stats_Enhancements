@@ -7,6 +7,8 @@ This is a mod for IL2 Stats, which adds and changes minor things to the IL2 stat
 
 This version of the mod is compatible with version 1.2.49 of IL2 stats.
 
+------------ Modules which show new information ------------ 
+
 ----------------------------
 Module Split Rankings
 ----------------------------
@@ -45,6 +47,59 @@ Config name: ironman_stats
 This module adds a new table "Ironman Rankings" to IL2 stats, which is similar to the Pilot Rankings. The difference is that the stats in this page get reset as soon as your pilot dies. This is essentially an overview of all the current virutal lives. For past tours, the table instead shows the best streak of each pilot.
 
 Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
+
+------------ Modules changing scoring of sorties ------------ 
+
+All of these scoring modules do NOT apply retroactively. They only apply to sorties after the module has been activated.
+
+----------------------------
+Module Adjustable Bonuses and Penalties.
+----------------------------
+Config name: adjustable_bonuses_penalties
+
+This module gives you more control over the basic modifiers which affect a sortie's score. In the base version of IL2 Stats, you receive a 25% bonus for landing your plane, and a 25% bonus for being on the winning side of a mission. These are not adjustable in the base version, and there are no penalities for dying/getting captured/bailing out/getting shotdown.
+
+This module adds penalties for dying/getting captured/bailing out/getting shotdown, as well as a bonus for being "In Flight" (i.e. server ended map without you landing). All of these bonuses and penalties are adjustable. To adjust the values, login into your IL2 Stats website as an admin, and go to the admin panel. Under Stats->Scoring you'll find the following variables, which you can give custom values (0% is a perfectly acceptable value!):
+
+Config name              | Default
+-------------------------|--------
+mod_bonus_landed         | 100%
+mod_bonus_winning_coal   | 25%
+mod_bonus_in_flight      | 100%
+mod_penalty_dead         | 75%
+mod_penalty_captured     | 75%
+mod_penalty_bailout      | 50%
+mod_penalty_shotdown     | 20%
+
+
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
+
+----------------------------
+Module Flight Time Bonus
+----------------------------
+
+Config name: flight_time_bonus
+
+This module adds bonus points to sorties depending on how long the player stayed in the air. By default, 1 minute results in 1 bonus point. The point of this scoring change is to encourge people to run CAP over areas which do not see much action, as sometimes you may have sorties where there simply is no action. 
+
+If you wish to change the rate at which players gain points for staying in the air, then login into your IL2 stats installation as an admin. In the Admin Panel, under Stats->Scoring you will find the variable "mod_flight_time_bonus". By default it is 60, which stands for the 60 seconds a player needs to stay in the air in order to receive a point. 
+
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
+----------------------------
+Module Undamaged Bailout Penalty
+----------------------------
+
+Config name: undamaged_bailout_penalty
+
+This module adds a penalty to sorties where the player bailed out of their aircraft without having any damage taken. By default, the player loses (up to, score can't be negative) 100 points and 20 fairplay points if he bails out of an undamaged plane with this module enabled. The idea here is to encourge people to fight, instead of bailing out at the first sign of trouble to deny a kill or in order to preserve your kill streak. If you take any damage before bailout, then this does not apply.
+
+If you wish to change the concrete values for this penalty, then login into your IL2 stats installation as an admin. In the Admin Panel, under Stats->Scoring you will find the two variables "mod_undmg_bailout_score" and "mod_undmg_bailout_fair". The first variable is how many points are taken away as penalty, and the second variable controls the number of fairplay points that are taken away. Set a custom value for those variables you wish to change.
+
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+
 
  
 Installation
