@@ -32,12 +32,16 @@ def record_hits(target, attacker, ammo):
     if ammo['cls'] != 'shell' and ammo['cls'] != 'bullet':
         return
 
-    if target.sortie:
-        if not hasattr(target.sortie, 'ammo_breakdown'):
-            target.sortie.ammo_breakdown = default_ammo_breakdown()
+    sortie = target.sortie
+    if target.parent:
+        sortie = target.parent.sortie
 
-        increment(target.sortie.ammo_breakdown, TOTAL_RECEIVED, ammo['name'])
-        target.sortie.ammo_breakdown[ALL_TAKEN] += 1
+    if sortie:
+        if not hasattr(sortie, 'ammo_breakdown'):
+            sortie.ammo_breakdown = default_ammo_breakdown()
+
+        increment(sortie.ammo_breakdown, TOTAL_RECEIVED, ammo['name'])
+        sortie.ammo_breakdown[ALL_TAKEN] += 1
 
         if attacker:
             attacker_id = attacker.id
@@ -46,13 +50,13 @@ def record_hits(target, attacker, ammo):
                 # That's why we take the aircraft's sortie.
                 attacker_id = attacker.parent.sortie.index
 
-            ammo_breakdown = target.sortie.ammo_breakdown
+            ammo_breakdown = sortie.ammo_breakdown
             if ammo_breakdown[LAST_DMG_OBJECT] is None and ammo_breakdown[LAST_DMG_SORTIE] is None:
                 ammo_breakdown[DMG_FROM_ONE_SOURCE] = True
             else:
                 if attacker.sortie and attacker.sortie.index != ammo_breakdown[LAST_DMG_SORTIE]:
                     ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
-                if attacker_id != target.sortie.ammo_breakdown[LAST_DMG_OBJECT]:
+                if attacker_id != sortie.ammo_breakdown[LAST_DMG_OBJECT]:
                     ammo_breakdown[DMG_FROM_ONE_SOURCE] = False
 
             ammo_breakdown[LAST_DMG_OBJECT] = attacker_id
@@ -66,7 +70,7 @@ def record_hits(target, attacker, ammo):
         return
 
     sortie = attacker.sortie
-    if attacker.cls == 'aircraft_turret' and attacker.parent:
+    if attacker.parent:
         sortie = attacker.parent.sortie
 
     if sortie:
