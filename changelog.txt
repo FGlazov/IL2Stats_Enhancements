@@ -43,6 +43,7 @@ Version 1.3.3.
 - Upgrade to version 2.0.3 of enhancements.
 
 Version 1.4.0
+
 - Upgrade to version 2.1.0 of enhancements.
 - Fix issue with merge of 2.9.2 of tanks, now "Sortie Logs Damaged" should appear properly.
 - Merge in various changes from IL-2 stats enhancment from pilot_sortie.html into tankman_sortie.html. E.g. ammo breakdown and penalties now work correctly for tankmen.
