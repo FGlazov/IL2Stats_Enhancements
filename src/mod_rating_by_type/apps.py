@@ -38,9 +38,10 @@ class ModConfig(AppConfig):
         original_views.pilot_vlife = new_views.pilot_vlife
 
         from . import report as new_report
-        from mission_report.report import MissionReport
-
+        from mission_report.report import MissionReport, Object
         MissionReport.event_hit = new_report.event_hit
+        MissionReport.event_damage = new_report.event_damage
+        Object.got_damaged = new_report.got_damaged
 
         from stats import stats_whore as original_stats_whore
         from . import stats_whore as new_stats_whore

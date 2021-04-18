@@ -9,6 +9,73 @@ LAST_DMG_OBJECT = 'last_dmg_object'
 LAST_TURRET_ACCOUNT = 'last_turret_account'
 
 
+class RecentHitsCache:
+    def __init__(self):
+        self.cache = {}
+        self.prune_counter = 0
+
+    def add_to_hits_cache(self, tik, target, attacker, ammo):
+        if target is None or attacker is None:
+            return
+
+        if target.parent:
+            target = target.parent
+        if attacker.parent:
+            attacker = attacker.parent
+
+        key = (target.id, attacker.id)
+
+        if key not in self.cache:
+            self.cache[key] = []
+
+        self.cache[key].append({'ammo': ammo['name'], 'tik': tik})
+
+        self.prune_counter += 1
+        if self.prune_counter > PRUNE_COUNTER_MAX:
+            self.prune_hits_cache(tik)
+
+    def prune_hits_cache(self, current_tik):
+        empty_keys = []
+        for key in self.cache:
+            self.cache[key] = [hit for hit in self.cache[key] if current_tik - hit['tik'] < RECENT_HITS_CUTOFF]
+            if not self.cache[key]:
+                empty_keys.append(key)
+
+        for empty_key in empty_keys:
+            del self.cache[empty_key]
+
+        self.prune_counter = 0
+
+    def get_recent_hits(self, current_tik, attacker, target):
+        if target is None or attacker is None:
+            return {}
+
+        if target.parent:
+            target = target.parent
+        if attacker.parent:
+            attacker = attacker.parent
+
+        key = (target.id, attacker.id)
+        if key not in self.cache:
+            return {}
+
+        recent_hits = [hit for hit in self.cache[key] if current_tik - hit['tik'] < RECENT_HITS_CUTOFF]
+        result = {}
+        for recent_hit in recent_hits:
+            ammo = recent_hit['ammo']
+            if ammo not in result:
+                result[ammo] = 0
+            result[ammo] += 1
+
+        return result
+
+
+RECENT_HITS_CACHE = RecentHitsCache()
+RECENT_HITS_CUTOFF = 250  # After 250 ticks = ~5 seconds a hit isn't considered recent anymore.
+PRUNE_COUNTER_MAX = 500  # After 500 event hits prune the cache.
+
+
+# Monkey patched event_hit in report.py
 def event_hit(self, tik, ammo, attacker_id, target_id):
     # ======================== MODDED PART BEGIN
     ammo_db = self.objects[ammo.lower()]
@@ -20,17 +87,65 @@ def event_hit(self, tik, ammo, attacker_id, target_id):
     if target:
         target.got_hit(ammo=ammo, attacker=attacker)
         # ======================== MODDED PART BEGIN
-        record_hits(target, attacker, ammo_db)
+        record_hits(tik, target, attacker, ammo_db)
         # ======================== MODDED PART END
 
 
+# Monkey patched event_damage in report.py.
+def event_damage(self, tik, damage, attacker_id, target_id, pos):
+    attacker = self.get_object(object_id=attacker_id)
+    target = self.get_object(object_id=target_id)
+    # дамага может не быть из-за бага логов
+    if target and damage:
+        # таймаут для парашютистов
+        if target.sortie and target.is_crew() and target.sortie.is_ended_by_timeout(timeout=120, tik=tik):
+            return
+        if target.sortie and not target.is_crew() and target.sortie.is_ended:
+            return
+        # ======================== MODDED PART BEGIN (pass tik)
+        target.got_damaged(damage=damage, attacker=attacker, pos=pos, tik=tik)
+        # ======================== MODDED PART END
+
+
+# Monkey patched into Object class inside report.py
+def got_damaged(self, damage, tik, attacker=None, pos=None):
+    """
+    :type damage: int | float
+    :type attacker: Object | None
+    """
+    if self.life_status.is_destroyed:
+        return
+    self.life_status.damage()
+    self.damage += damage
+    # если атакуем сами себя - убираем прямое упоминание об этом
+    if self.is_attack_itself(attacker=attacker):
+        attacker = None
+    if attacker:
+        self.damagers[attacker] += damage
+    is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
+
+    # ======================== MODDED PART BEGIN
+    self.mission.logger_event({
+        'type': 'damage',
+        'damage': damage,
+        'pos': pos,
+        'attacker': attacker,
+        'target': self,
+        'is_friendly_fire': is_friendly_fire,
+        'hits': RECENT_HITS_CACHE.get_recent_hits(tik, attacker, self)
+    })
+    # ======================== MODDED PART END
+
+
 # ======================== MODDED PART BEGIN
-def record_hits(target, attacker, ammo):
+def record_hits(tik, target, attacker, ammo):
     if not module_active(MODULE_AMMO_BREAKDOWN):
         return
 
     if ammo['cls'] != 'shell' and ammo['cls'] != 'bullet':
         return
+
+    RECENT_HITS_CACHE.add_to_hits_cache(tik, target, attacker, ammo)
 
     sortie = target.sortie
     if target.parent:
