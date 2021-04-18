@@ -9,6 +9,14 @@ LAST_DMG_OBJECT = 'last_dmg_object'
 LAST_TURRET_ACCOUNT = 'last_turret_account'
 
 
+# This is a bit of a hack to associate event_damage with the bullets that caused the damage.
+# The data we get from the log files currently does not connect the damage to the bullet.
+# Instead, we get "Bullet from A hit B", and "A damaged B" as separate lines.
+# Typically, the damage line comes after a bullet hit line (or multiple bullet hit lines).
+# So, we guess that the damage line after a bullet hit line is the one which is associated to the bullet hit line.
+#
+# This can fail in many ways, since this really is only an educated guess.
+# That's why we, for example, drop non-recent hits - i.e. if a damage line is missing.
 class RecentHitsCache:
     def __init__(self):
         self.cache = {}
@@ -67,11 +75,13 @@ class RecentHitsCache:
                 result[ammo] = 0
             result[ammo] += 1
 
+        del self.cache[key]
+
         return result
 
 
 RECENT_HITS_CACHE = RecentHitsCache()
-RECENT_HITS_CUTOFF = 250  # After 250 ticks = ~5 seconds a hit isn't considered recent anymore.
+RECENT_HITS_CUTOFF = 3000  # After 3000 ticks = ~1 minute a hit isn't considered recent anymore.
 PRUNE_COUNTER_MAX = 500  # After 500 event hits prune the cache.
 
 
@@ -91,24 +101,8 @@ def event_hit(self, tik, ammo, attacker_id, target_id):
         # ======================== MODDED PART END
 
 
-# Monkey patched event_damage in report.py.
-def event_damage(self, tik, damage, attacker_id, target_id, pos):
-    attacker = self.get_object(object_id=attacker_id)
-    target = self.get_object(object_id=target_id)
-    # дамага может не быть из-за бага логов
-    if target and damage:
-        # таймаут для парашютистов
-        if target.sortie and target.is_crew() and target.sortie.is_ended_by_timeout(timeout=120, tik=tik):
-            return
-        if target.sortie and not target.is_crew() and target.sortie.is_ended:
-            return
-        # ======================== MODDED PART BEGIN (pass tik)
-        target.got_damaged(damage=damage, attacker=attacker, pos=pos, tik=tik)
-        # ======================== MODDED PART END
-
-
 # Monkey patched into Object class inside report.py
-def got_damaged(self, damage, tik, attacker=None, pos=None):
+def got_damaged(self, damage, attacker=None, pos=None):
     """
     :type damage: int | float
     :type attacker: Object | None
@@ -127,12 +121,14 @@ def got_damaged(self, damage, tik, attacker=None, pos=None):
     # ======================== MODDED PART BEGIN
     self.mission.logger_event({
         'type': 'damage',
-        'damage': damage,
+        'damage': {
+            'pct': damage,
+            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self)
+        },
         'pos': pos,
         'attacker': attacker,
         'target': self,
         'is_friendly_fire': is_friendly_fire,
-        'hits': RECENT_HITS_CACHE.get_recent_hits(tik, attacker, self)
     })
     # ======================== MODDED PART END
 

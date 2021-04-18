@@ -1,3 +1,5 @@
+import string
+
 from django.utils.translation import pgettext_lazy
 from .report import TOTAL_HITS, TOTAL_RECEIVED, ALL_TAKEN
 
@@ -23,6 +25,19 @@ def translate_ammo_breakdown(ammo_breakdown):
     result[TOTAL_RECEIVED].sort(key=take_first)
 
     return result
+
+
+def translate_damage_log_bullets(hits):
+    result = [''] * len(hits)
+    sorted_names = sorted([translate_bullet(ammo) for ammo in hits])
+    for ammo in hits:
+        ammo_name = translate_bullet(ammo)
+        times = hits[ammo]
+        if times > 1:
+            result[sorted_names.index(ammo_name)] = '{} X {}'.format(times, ammo_name)
+        else:
+            result[sorted_names.index(ammo_name)] = str(ammo_name)
+    return ', '.join(result)
 
 
 def translate_bullet(bullet_type):
