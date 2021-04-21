@@ -47,3 +47,7 @@ Version 2.1.0
 Version 2.1.1
 
 - Fix an incorrect Russian translation.
+
+Version 2.1.2
+
+- Update to 1.2.50 of IL2 Stats.
