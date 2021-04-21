@@ -48,6 +48,10 @@ Version 2.1.1
 
 - Fix an incorrect Russian translation.
 
+Version 2.1.2
+
+- Update to 1.2.50 of IL2 Stats.
+
 Version 2.2.0
 
 - Module Ammo Breakdown: Show which ammo caused damage in a "damage/damaged" line, and show it. Note this is an educated guess and not a gurantee!
