@@ -56,3 +56,4 @@ Version 1.4.1
 Version 1.4.2
 
 - Update to 1.2.50 of IL2 Stats.
+- Update to 3.0.1 tank mod, 2.1.2 Enhancements, 1.2.1 Global Aircraft Stats.
