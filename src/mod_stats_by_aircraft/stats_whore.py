@@ -319,10 +319,11 @@ def stats_whore(m_report_file):
                 params['type'] = 'damaged'
             if event['attacker']:
                 if ((event['attacker'].cls == 'tank_turret' or
-                    (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
+                     (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
                         and event['attacker'].parent.sortie):
                     # Credit the damage to the tank driver.
-                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
                     params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
                 elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
@@ -344,10 +345,11 @@ def stats_whore(m_report_file):
                 params['type'] = 'destroyed'
             if event['attacker']:
                 if ((event['attacker'].cls == 'tank_turret' or
-                    (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
+                     (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
                         and event['attacker'].parent.sortie):
                     # Credit the kill to the tank driver.
-                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
                     params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
                 elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
@@ -430,6 +432,13 @@ def process_old_sorties_player_aircraft(backfill_log, tour_cutoff):
                                                            filter_type='NO_FILTER', player=None))[0]
             process_aa_accident_death(bucket, sortie)
             bucket.save()
+
+            filter_type = get_sortie_type(sortie)
+            if filter_type != 'NO_FILTER':
+                bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                               filter_type=filter_type, player=None))[0]
+                process_aa_accident_death(bucket, sortie)
+                bucket.save()
 
     if nr_left <= 1000:
         logger.info('[mod_stats_by_aircraft]: Completed retroactively computing player aircraft stats.')
@@ -604,8 +613,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype):
                                                # We can't determine the subtype of the bomber
                                                # Edge case: Halberstadt. It is turreted and has a jabo variant.
                                                # This should be fixed somehow in the long run.
-                                               False, False,
-                                               bucket.player is not None)
+                                               False, False, bucket.player is not None, bucket.player is None)
 
             turret_bucket.update_derived_fields()
             turret_bucket.save()
@@ -618,14 +626,16 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype):
 
 
 def update_from_entries(bucket, enemies_damaged, enemies_killed, enemies_shotdown, has_subtype, is_subtype,
-                        use_pilot_kbs):
+                        use_pilot_kbs, update_primary_bucket=True):
     cache_kb = dict()
     cache_enemy_buckets_kb = dict()  # Helper cache needed in order to find buckets (quickly) inside get_killboard.
     for damaged_enemy in enemies_damaged:
         enemy_sortie = damaged_enemy[1]
-        kbs = get_killboards(damaged_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs)
+        kbs = get_killboards(damaged_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs,
+                             update_primary_bucket)
         for kb in kbs:
-            update_damaged_enemy(bucket, damaged_enemy, enemies_killed, enemies_shotdown, enemy_sortie, kb)
+            update_damaged_enemy(bucket, damaged_enemy, enemies_killed, enemies_shotdown, enemy_sortie, kb,
+                                 update_primary_bucket)
 
     cache_enemy_buckets = dict()
     for shotdown_enemy in enemies_shotdown:
@@ -634,19 +644,22 @@ def update_from_entries(bucket, enemies_damaged, enemies_killed, enemies_shotdow
 
         subtype_enemy_bucket_key = (bucket.tour, shotdown_enemy[0], enemy_sortie_type)
         subtype_enemy_bucket = ensure_bucket_in_cache(cache_enemy_buckets, subtype_enemy_bucket_key, None)
-        if bucket.player is None:
+        if bucket.player is None and update_primary_bucket:
             update_elo(bucket, cache_enemy_buckets, enemy_sortie_type, has_subtype, is_subtype, shotdown_enemy,
                        subtype_enemy_bucket)
 
-        kbs = get_killboards(shotdown_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs)
+        kbs = get_killboards(shotdown_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs,
+                             update_primary_bucket)
         for kb in kbs:
             if kb.aircraft_1.aircraft == bucket.aircraft:
                 kb.aircraft_1_shotdown += 1
             else:
                 kb.aircraft_2_shotdown += 1
     for killed_enemy in enemies_killed:
-        bucket.pilot_kills += 1
-        kbs = get_killboards(killed_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs)
+        if update_primary_bucket:
+            bucket.pilot_kills += 1
+        kbs = get_killboards(killed_enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs,
+                             update_primary_bucket)
         for kb in kbs:
             if kb.aircraft_1.aircraft == bucket.aircraft:
                 kb.aircraft_1_kills += 1
@@ -699,10 +712,12 @@ def ensure_bucket_in_cache(cache_enemy_buckets, bucket_key, player):
     return cache_enemy_buckets[bucket_key]
 
 
-def update_damaged_enemy(bucket, damaged_enemy, enemies_killed, enemies_shotdown, enemy_sortie, kb):
+def update_damaged_enemy(bucket, damaged_enemy, enemies_killed, enemies_shotdown, enemy_sortie, kb,
+                         update_primary_bucket):
     if kb.aircraft_1.aircraft == bucket.aircraft:
         kb.aircraft_1_distinct_hits += 1
-        bucket.distinct_enemies_hit += 1
+        if update_primary_bucket:
+            bucket.distinct_enemies_hit += 1
         if enemy_sortie.is_shotdown:
             bucket.plane_lethality_counter += 1
             if damaged_enemy not in enemies_shotdown:
@@ -714,14 +729,16 @@ def update_damaged_enemy(bucket, damaged_enemy, enemies_killed, enemies_shotdown
                 kb.aircraft_1_pk_assists += 1
     else:
         kb.aircraft_2_distinct_hits += 1
-        bucket.distinct_enemies_hit += 1
+        if update_primary_bucket:
+            bucket.distinct_enemies_hit += 1
         if enemy_sortie.is_shotdown:
             bucket.plane_lethality_counter += 1
             if damaged_enemy not in enemies_shotdown:
                 kb.aircraft_2_assists += 1
 
         if enemy_sortie.is_dead:
-            bucket.pilot_lethality_counter += 1
+            if update_primary_bucket:
+                bucket.pilot_lethality_counter += 1
             if damaged_enemy not in enemies_killed:
                 kb.aircraft_2_pk_assists += 1
 
@@ -848,7 +865,6 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
         filtered_bucket.save()
 
 
-
 def fill_in_ammo(ammo_breakdown, ap_ammo, he_ammo):
     if (ap_ammo not in ammo_breakdown['total_received']
             and he_ammo in ammo_breakdown['total_received']):
@@ -894,18 +910,28 @@ def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
     return base_bucket, db_sortie, filter_type
 
 
-def get_killboards(enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs):
+def get_killboards(enemy, bucket, cache_kb, cache_enemy_buckets_kb, use_pilot_kbs, update_primary_bucket):
     (enemy_aircraft, enemy_sortie) = enemy
 
     enemy_bucket_keys = set()
-    enemy_bucket_keys.add((bucket.tour, enemy_aircraft, bucket.NO_FILTER, None))
+    if update_primary_bucket:
+        # This is the case where we are updating only a bucket with a Player, from the perspective of the turret.
+        # The values of the turret's aircraft bucket should not change, only the damaged Player's bucket.
+        enemy_bucket_keys.add((bucket.tour, enemy_aircraft, bucket.NO_FILTER, None))
     if use_pilot_kbs:
-        # Killboard format with players is that exactly one of the two buckets has a player.
+        # This happens when the bucket doesn't have a player, in this case we record "Player in aircraft X got damaged"
+        # Or in the case where we're looking from the perspective of the turret, then this happens in the case
+        # that we're currently updating a player bucket, here we record "player in aircrafct X got damaged by turret"
         enemy_bucket_keys.add((bucket.tour, enemy_aircraft, bucket.NO_FILTER, enemy_sortie.player))
     if has_bomb_variant(enemy_aircraft) or has_juiced_variant(enemy_aircraft):
-        enemy_bucket_keys.add((bucket.tour, enemy_aircraft, get_sortie_type(enemy_sortie), None))
+        if update_primary_bucket:
+            # This is the case where we are updating only a bucket with a Player, from the perspective of the turret.
+            # The values of the turret's aircraft bucket should not change, only the damaged Player's bucket.
+            enemy_bucket_keys.add((bucket.tour, enemy_aircraft, get_sortie_type(enemy_sortie), None))
         if use_pilot_kbs:
-            # Killboard format with players is that exactly one of the two buckets has a player.
+            # This happens when the bucket doesn't have a player, in this case we record "Player in aircraft X got damaged"
+            # Or in the case where we're looking from the perspective of the turret, then this happens in the case
+            # that we're currently updating a player bucket, here we record "player in aircrafct X got damaged by turret"
             enemy_bucket_keys.add((bucket.tour, enemy_aircraft, get_sortie_type(enemy_sortie), enemy_sortie.player))
 
     result = []
