@@ -61,3 +61,7 @@ Version 1.4.2
 Version 1.4.3
 
 - Update to 1.2.2 Global Aircraft Stats.
+
+Version 1.4.4
+
+- Update to 1.2.3 Global Aircraft Stats
