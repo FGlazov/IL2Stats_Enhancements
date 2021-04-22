@@ -837,6 +837,21 @@ def overall(request):
                      .exclude(streak_ground_max=0)
                      .order_by('-streak_ground_max')[:10])
 
+    toptank_rating = (Player.players.tankmans()
+                  .exclude(rating=0)
+                  .order_by('-rating')[:10])
+
+    toptank_streak_score = (Player.players.tankmans()
+                        .exclude(score_streak_max=0)
+                        .order_by('-score_streak_max')[:10])
+
+    toptank_streak_ak = (Player.players.tankmans()
+                     .exclude(streak_max=0)
+                     .order_by('-streak_max')[:10])
+
+    toptank_streak_gk = (Player.players.tankmans()
+                     .exclude(streak_ground_max=0)
+                     .order_by('-streak_ground_max')[:10])
     return render(request, 'overall.html', {
         'tour': request.tour,
         'missions_wins': missions_wins,
@@ -847,4 +862,8 @@ def overall(request):
         'top_streak_score': top_streak_score,
         'top_streak_ak': top_streak_ak,
         'top_streak_gk': top_streak_gk,
+        'toptank_rating': toptank_rating,
+        'toptank_streak_score': toptank_streak_score,
+        'toptank_streak_ak': toptank_streak_ak,
+        'toptank_streak_gk': toptank_streak_gk,
     })

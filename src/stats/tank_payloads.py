@@ -908,4 +908,22 @@ aircraft_payloads = {
         22: pgettext_lazy('aircraft_payload', '75 mm M-3 AP [48], M1919 AP [6750], M2 .50 AP [1600]'),
         23: pgettext_lazy('aircraft_payload', '75 mm M-3 HE [48], M1919 AP [6750], M2 .50 AP [1600]'),
     },
+    'gaz-mm 72-k': {
+        0: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [147]'),
+        1: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [147]'),
+        2: pgettext_lazy('aircraft_payload', '25 mm 72-K HE [147]'),
+        3: pgettext_lazy('aircraft_payload', '25 mm 72-K AP [147]'),
+        4: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [77]'),
+        5: pgettext_lazy('aircraft_payload', '25 mm 72-K HE [77]'),
+        6: pgettext_lazy('aircraft_payload', '25 mm 72-K AP [77]'),
+    },
+    '_gaz-mm-72k_t0': {
+        0: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [147]'),
+        1: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [147]'),
+        2: pgettext_lazy('aircraft_payload', '25 mm 72-K HE [147]'),
+        3: pgettext_lazy('aircraft_payload', '25 mm 72-K AP [147]'),
+        4: pgettext_lazy('aircraft_payload', '25 mm 72-K APHE [77]'),
+        5: pgettext_lazy('aircraft_payload', '25 mm 72-K HE [77]'),
+        6: pgettext_lazy('aircraft_payload', '25 mm 72-K AP [77]'),
+    },
 }
