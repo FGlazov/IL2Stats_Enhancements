@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-09 09:31+0200\n"
+"POT-Creation-Date: 2021-04-23 11:14+0200\n"
 "PO-Revision-Date: 2016-07-18 19:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,110 +22,110 @@ msgstr ""
 msgid "neutral"
 msgstr "Neutral"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:80
-#: .\mod_stats_by_aircraft\bullets_types.py:82
+#: .\mod_stats_by_aircraft\bullets_types.py:75
+#: .\mod_stats_by_aircraft\bullets_types.py:77
 msgctxt "bullet_type"
 msgid "11mm Vickers"
 msgstr "11mm Vickers"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:81
-#: .\mod_stats_by_aircraft\bullets_types.py:95
+#: .\mod_stats_by_aircraft\bullets_types.py:76
+#: .\mod_stats_by_aircraft\bullets_types.py:90
 msgctxt "bullet_type"
 msgid ".303 BMG"
 msgstr ".303 BMG"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:83
+#: .\mod_stats_by_aircraft\bullets_types.py:78
 msgctxt "bullet_type"
 msgid "MG 131 (AP)"
 msgstr "MG 131 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:84
+#: .\mod_stats_by_aircraft\bullets_types.py:79
 msgctxt "bullet_type"
 msgid "MG 131 (HE)"
 msgstr "MG 131 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:85
+#: .\mod_stats_by_aircraft\bullets_types.py:80
 msgctxt "bullet_type"
 msgid "MG 17 (AP)"
 msgstr "MG 17 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:86
+#: .\mod_stats_by_aircraft\bullets_types.py:81
 msgctxt "bullet_type"
 msgid "MG 17 (SS)"
 msgstr "MG 17 (SS)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:87
+#: .\mod_stats_by_aircraft\bullets_types.py:82
 msgctxt "bullet_type"
 msgid "Breda 12.7mm (AP)"
 msgstr "Breda 12.7mm (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:88
+#: .\mod_stats_by_aircraft\bullets_types.py:83
 msgctxt "bullet_type"
 msgid "Breda 12.7mm (HE)"
 msgstr "Breda 12.7mm (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:89
+#: .\mod_stats_by_aircraft\bullets_types.py:84
 msgctxt "bullet_type"
 msgid " Breda 7.7mm"
 msgstr " Breda 7.7mm"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:90
+#: .\mod_stats_by_aircraft\bullets_types.py:85
 msgctxt "bullet_type"
 msgid "Pistol bullet"
 msgstr "Pistolenkugel"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:91
+#: .\mod_stats_by_aircraft\bullets_types.py:86
 msgctxt "bullet_type"
 msgid "UB (AP)"
 msgstr "UB (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:92
+#: .\mod_stats_by_aircraft\bullets_types.py:87
 msgctxt "bullet_type"
 msgid "UB (HE)"
 msgstr "UB (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:93
+#: .\mod_stats_by_aircraft\bullets_types.py:88
 msgctxt "bullet_type"
 msgid "ShKAS (AP)"
 msgstr "ShKAS (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:94
+#: .\mod_stats_by_aircraft\bullets_types.py:89
 msgctxt "bullet_type"
 msgid ".50 BMG"
 msgstr ".50 BMG"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:96
-#: .\mod_stats_by_aircraft\bullets_types.py:97
+#: .\mod_stats_by_aircraft\bullets_types.py:91
+#: .\mod_stats_by_aircraft\bullets_types.py:92
 msgctxt "bullet_type"
 msgid "MG 34"
 msgstr "MG 34"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:98
+#: .\mod_stats_by_aircraft\bullets_types.py:93
 msgctxt "bullet_type"
 msgid "7.62 Soviet"
 msgstr "7.62 Sowjetisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:99
+#: .\mod_stats_by_aircraft\bullets_types.py:94
 msgctxt "bullet_type"
 msgid "4x 7.62 Soviet"
 msgstr "4x 7.62 Sowjetisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:100
+#: .\mod_stats_by_aircraft\bullets_types.py:95
 msgctxt "bullet_type"
 msgid "122mm Soviet"
 msgstr "122mm Sowjetisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:101
+#: .\mod_stats_by_aircraft\bullets_types.py:96
 msgctxt "bullet_type"
 msgid "130mm Soviet"
 msgstr "130mm Sowjetisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:102
+#: .\mod_stats_by_aircraft\bullets_types.py:97
 msgctxt "bullet_type"
 msgid "155mm Soviet"
 msgstr "155mm Sowjetisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:103
+#: .\mod_stats_by_aircraft\bullets_types.py:98
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "90mm US (APHE)"
@@ -133,7 +133,7 @@ msgctxt "bullet_type"
 msgid "M2 90mm (APHE)"
 msgstr "90mm US (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:104
+#: .\mod_stats_by_aircraft\bullets_types.py:99
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "90mm US (HE)"
@@ -141,87 +141,87 @@ msgctxt "bullet_type"
 msgid "M2 90mm (HE)"
 msgstr "90mm US (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:105
+#: .\mod_stats_by_aircraft\bullets_types.py:100
 msgctxt "bullet_type"
 msgid "MG 151/15 (AP)"
 msgstr "MG 151/15 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:106
+#: .\mod_stats_by_aircraft\bullets_types.py:101
 msgctxt "bullet_type"
 msgid "MG 151/15 (HE)"
 msgstr "MG 151/15 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:107
+#: .\mod_stats_by_aircraft\bullets_types.py:102
 msgctxt "bullet_type"
 msgid "MG 151/20 (AP)"
 msgstr "MG 151/20 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:108
+#: .\mod_stats_by_aircraft\bullets_types.py:103
 msgctxt "bullet_type"
 msgid "MG 151/20 (HE)"
 msgstr "MG 151/20 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:109
+#: .\mod_stats_by_aircraft\bullets_types.py:104
 msgctxt "bullet_type"
 msgid "BK 3,7 (AP)"
 msgstr "BK 3,7 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:110
+#: .\mod_stats_by_aircraft\bullets_types.py:105
 msgctxt "bullet_type"
 msgid "BK 3,7 (HE)"
 msgstr "BK 3,7 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:111
+#: .\mod_stats_by_aircraft\bullets_types.py:106
 msgctxt "bullet_type"
 msgid "122mm Soviet (HE)"
 msgstr "122mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:112
+#: .\mod_stats_by_aircraft\bullets_types.py:107
 msgctxt "bullet_type"
 msgid "122mm Soviet (HEAT)"
 msgstr "122mm Sowjetisch (HEAT)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:113
+#: .\mod_stats_by_aircraft\bullets_types.py:108
 msgctxt "bullet_type"
 msgid "ShVAK (AP)"
 msgstr "ShVAK (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:114
+#: .\mod_stats_by_aircraft\bullets_types.py:109
 msgctxt "bullet_type"
 msgid "ShVAK (HE)"
 msgstr "ShVAK (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:115
+#: .\mod_stats_by_aircraft\bullets_types.py:110
 msgctxt "bullet_type"
 msgid "VYA-23 (AP)"
 msgstr "VYA-23 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:116
+#: .\mod_stats_by_aircraft\bullets_types.py:111
 msgctxt "bullet_type"
 msgid "VYA-23 (HE)"
 msgstr "VYA-23 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:117
+#: .\mod_stats_by_aircraft\bullets_types.py:112
 msgctxt "bullet_type"
 msgid "SH-37 (AP)"
 msgstr "SH-37 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:118
+#: .\mod_stats_by_aircraft\bullets_types.py:113
 msgctxt "bullet_type"
 msgid "SH-37 (HE)"
 msgstr "SH-37 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:119
+#: .\mod_stats_by_aircraft\bullets_types.py:114
 msgctxt "bullet_type"
 msgid "NS-37 (AP)"
 msgstr "NS-37 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:120
+#: .\mod_stats_by_aircraft\bullets_types.py:115
 msgctxt "bullet_type"
 msgid "NS-37 (HE)"
 msgstr "NS-37 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:121
+#: .\mod_stats_by_aircraft\bullets_types.py:116
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "7.92mm Kurz"
@@ -229,7 +229,7 @@ msgctxt "bullet_type"
 msgid "76.2mm 34-K"
 msgstr "7.92mm Kurz"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:122
+#: .\mod_stats_by_aircraft\bullets_types.py:117
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "MG 17 (AP)"
@@ -237,12 +237,12 @@ msgctxt "bullet_type"
 msgid "M4 Cobra (AP)"
 msgstr "MG 17 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:123
+#: .\mod_stats_by_aircraft\bullets_types.py:118
 msgctxt "bullet_type"
 msgid "M4 Cobra (HE)"
 msgstr ""
 
-#: .\mod_stats_by_aircraft\bullets_types.py:124
+#: .\mod_stats_by_aircraft\bullets_types.py:119
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "76mm Soviet (APHE)"
@@ -250,7 +250,7 @@ msgctxt "bullet_type"
 msgid "76mm M5 (APHE)"
 msgstr "76mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:125
+#: .\mod_stats_by_aircraft\bullets_types.py:120
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "76mm Soviet (HE)"
@@ -258,18 +258,18 @@ msgctxt "bullet_type"
 msgid "76mm M5 (HE)"
 msgstr "76mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:126
+#: .\mod_stats_by_aircraft\bullets_types.py:121
 msgctxt "bullet_type"
 msgid "76mm British (HE)"
 msgstr "76mm Britisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:127
-#: .\mod_stats_by_aircraft\bullets_types.py:166
+#: .\mod_stats_by_aircraft\bullets_types.py:122
+#: .\mod_stats_by_aircraft\bullets_types.py:161
 msgctxt "bullet_type"
 msgid "105mm German (HE)"
 msgstr "105mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:128
+#: .\mod_stats_by_aircraft\bullets_types.py:123
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "MK 108 (AP)"
@@ -277,7 +277,7 @@ msgctxt "bullet_type"
 msgid "Flak 38 (AP)"
 msgstr "MK 108 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:129
+#: .\mod_stats_by_aircraft\bullets_types.py:124
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "MK 108 (HE)"
@@ -285,12 +285,12 @@ msgctxt "bullet_type"
 msgid "Flak 38 (HE)"
 msgstr "MK 108 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:130
+#: .\mod_stats_by_aircraft\bullets_types.py:125
 msgctxt "bullet_type"
 msgid "Flak 36"
 msgstr ""
 
-#: .\mod_stats_by_aircraft\bullets_types.py:131
+#: .\mod_stats_by_aircraft\bullets_types.py:126
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "37mm German (HE)"
@@ -298,68 +298,68 @@ msgctxt "bullet_type"
 msgid "37mm Pak-35 (HE)"
 msgstr "37mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:132
-#: .\mod_stats_by_aircraft\bullets_types.py:134
+#: .\mod_stats_by_aircraft\bullets_types.py:127
+#: .\mod_stats_by_aircraft\bullets_types.py:129
 msgctxt "bullet_type"
 msgid "37mm German Flak (AP)"
 msgstr "37mm Deutsch Flak (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:133
-#: .\mod_stats_by_aircraft\bullets_types.py:135
+#: .\mod_stats_by_aircraft\bullets_types.py:128
+#: .\mod_stats_by_aircraft\bullets_types.py:130
 msgctxt "bullet_type"
 msgid "37mm German Flak (HE)"
 msgstr "37mm Deutsch Flak (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:136
+#: .\mod_stats_by_aircraft\bullets_types.py:131
 msgctxt "bullet_type"
 msgid "50mm German (AP)"
 msgstr "50mm Deutsch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:137
-#: .\mod_stats_by_aircraft\bullets_types.py:172
+#: .\mod_stats_by_aircraft\bullets_types.py:132
+#: .\mod_stats_by_aircraft\bullets_types.py:167
 msgctxt "bullet_type"
 msgid "50mm German (HE)"
 msgstr "50mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:138
+#: .\mod_stats_by_aircraft\bullets_types.py:133
 msgctxt "bullet_type"
 msgid "75mm German (AP)"
 msgstr "75mm Deutsch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:139
-#: .\mod_stats_by_aircraft\bullets_types.py:175
+#: .\mod_stats_by_aircraft\bullets_types.py:134
+#: .\mod_stats_by_aircraft\bullets_types.py:170
 msgctxt "bullet_type"
 msgid "75mm German (HE)"
 msgstr "75mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:140
+#: .\mod_stats_by_aircraft\bullets_types.py:135
 msgctxt "bullet_type"
 msgid "77mm German (HE)"
 msgstr "77mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:141
+#: .\mod_stats_by_aircraft\bullets_types.py:136
 msgctxt "bullet_type"
 msgid "88mm German Flak (AP)"
 msgstr "88mm Deutsch Flak (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:142
+#: .\mod_stats_by_aircraft\bullets_types.py:137
 msgctxt "bullet_type"
 msgid "88mm German Flak (HE)"
 msgstr "88mm Deutsch Flak (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:143
+#: .\mod_stats_by_aircraft\bullets_types.py:138
 msgctxt "bullet_type"
 msgid "100mm Soviet (AP)"
 msgstr "100mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:144
-#: .\mod_stats_by_aircraft\bullets_types.py:187
+#: .\mod_stats_by_aircraft\bullets_types.py:139
+#: .\mod_stats_by_aircraft\bullets_types.py:182
 msgctxt "bullet_type"
 msgid "152mm Soviet (HE)"
 msgstr "152mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:145
-#: .\mod_stats_by_aircraft\bullets_types.py:188
+#: .\mod_stats_by_aircraft\bullets_types.py:140
+#: .\mod_stats_by_aircraft\bullets_types.py:183
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "25mm Soviet (AP)"
@@ -367,8 +367,8 @@ msgctxt "bullet_type"
 msgid "25mm 72-K (AP)"
 msgstr "25mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:146
-#: .\mod_stats_by_aircraft\bullets_types.py:189
+#: .\mod_stats_by_aircraft\bullets_types.py:141
+#: .\mod_stats_by_aircraft\bullets_types.py:184
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "25mm Soviet (HE)"
@@ -376,114 +376,114 @@ msgctxt "bullet_type"
 msgid "25mm 72-K (HE)"
 msgstr "25mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:147
+#: .\mod_stats_by_aircraft\bullets_types.py:142
 msgctxt "bullet_type"
 msgid "37mm Soviet (AP)"
 msgstr "37mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:148
+#: .\mod_stats_by_aircraft\bullets_types.py:143
 msgctxt "bullet_type"
 msgid "37mm Soviet (HE)"
 msgstr "37mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:149
+#: .\mod_stats_by_aircraft\bullets_types.py:144
 msgctxt "bullet_type"
 msgid "45mm Soviet (AP)"
 msgstr "45mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:150
+#: .\mod_stats_by_aircraft\bullets_types.py:145
 msgctxt "bullet_type"
 msgid "45mm Soviet (APHE)"
 msgstr "45mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:151
+#: .\mod_stats_by_aircraft\bullets_types.py:146
 msgctxt "bullet_type"
 msgid "45mm Soviet (HEAT)"
 msgstr "45mm Sowjetisch (HEAT)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:152
+#: .\mod_stats_by_aircraft\bullets_types.py:147
 msgctxt "bullet_type"
 msgid "57mm Soviet (AP)"
 msgstr "57mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:153
+#: .\mod_stats_by_aircraft\bullets_types.py:148
 msgctxt "bullet_type"
 msgid "57mm Soviet (APHE)"
 msgstr "57mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:154
+#: .\mod_stats_by_aircraft\bullets_types.py:149
 msgctxt "bullet_type"
 msgid "57mm Soviet (HE) "
 msgstr "57mm Sowjetisch (HE) "
 
-#: .\mod_stats_by_aircraft\bullets_types.py:155
-#: .\mod_stats_by_aircraft\bullets_types.py:190
+#: .\mod_stats_by_aircraft\bullets_types.py:150
+#: .\mod_stats_by_aircraft\bullets_types.py:185
 msgctxt "bullet_type"
 msgid "76mm Soviet (AP)"
 msgstr "76mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:156
-#: .\mod_stats_by_aircraft\bullets_types.py:192
+#: .\mod_stats_by_aircraft\bullets_types.py:151
+#: .\mod_stats_by_aircraft\bullets_types.py:187
 msgctxt "bullet_type"
 msgid "76mm Soviet (HE)"
 msgstr "76mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:157
+#: .\mod_stats_by_aircraft\bullets_types.py:152
 msgctxt "bullet_type"
 msgid "76mm Soviet Naval (HE)"
 msgstr "76mm Sowjetisch Naval (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:158
+#: .\mod_stats_by_aircraft\bullets_types.py:153
 msgctxt "bullet_type"
 msgid "85mm Soviet (AP)"
 msgstr "85mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:159
+#: .\mod_stats_by_aircraft\bullets_types.py:154
 msgctxt "bullet_type"
 msgid "85mm Soviet (APHE)"
 msgstr "85mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:160
+#: .\mod_stats_by_aircraft\bullets_types.py:155
 msgctxt "bullet_type"
 msgid "85mm Soviet (HE)"
 msgstr "85mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:161
+#: .\mod_stats_by_aircraft\bullets_types.py:156
 msgctxt "bullet_type"
 msgid "115mm British"
 msgstr "115mm Britisch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:162
+#: .\mod_stats_by_aircraft\bullets_types.py:157
 msgctxt "bullet_type"
 msgid "Hispano (AP)"
 msgstr "Hispano (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:163
+#: .\mod_stats_by_aircraft\bullets_types.py:158
 msgctxt "bullet_type"
 msgid "Hispano (HE)"
 msgstr "Hispano (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:164
+#: .\mod_stats_by_aircraft\bullets_types.py:159
 msgctxt "bullet_type"
 msgid "40mm Vickers (AP)"
 msgstr "40mm Vickers (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:165
+#: .\mod_stats_by_aircraft\bullets_types.py:160
 msgctxt "bullet_type"
 msgid "40mm Vickers (HE)"
 msgstr "40mm Vickers (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:167
+#: .\mod_stats_by_aircraft\bullets_types.py:162
 msgctxt "bullet_type"
 msgid "105mm German (HEAT)"
 msgstr "105mm Deutsch (HEAT)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:168
+#: .\mod_stats_by_aircraft\bullets_types.py:163
 msgctxt "bullet_type"
 msgid "150mm German (HE)"
 msgstr "150mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:169
+#: .\mod_stats_by_aircraft\bullets_types.py:164
 #, fuzzy
 #| msgctxt "bullet_type"
 #| msgid "MK 108 (AP)"
@@ -491,109 +491,109 @@ msgctxt "bullet_type"
 msgid "MK 101 (AP)"
 msgstr "MK 108 (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:170
+#: .\mod_stats_by_aircraft\bullets_types.py:165
 msgctxt "bullet_type"
 msgid "MK 108 (HE)"
 msgstr "MK 108 (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:171
+#: .\mod_stats_by_aircraft\bullets_types.py:166
 msgctxt "bullet_type"
 msgid "50mm German (APHE)"
 msgstr "50mm Deutsch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:173
+#: .\mod_stats_by_aircraft\bullets_types.py:168
 msgctxt "bullet_type"
 msgid "50mm German (HVAP)"
 msgstr "50mm Deutsch (HVAP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:174
+#: .\mod_stats_by_aircraft\bullets_types.py:169
 msgctxt "bullet_type"
 msgid "75mm German (APHE)"
 msgstr "75mm Deutsch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:176
+#: .\mod_stats_by_aircraft\bullets_types.py:171
 msgctxt "bullet_type"
 msgid "75mm German (HEAT)"
 msgstr "75mm Deutsch (HEAT)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:177
+#: .\mod_stats_by_aircraft\bullets_types.py:172
 msgctxt "bullet_type"
 msgid "75mm German (HVAP)"
 msgstr "75mm Deutsch (HVAP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:178
+#: .\mod_stats_by_aircraft\bullets_types.py:173
 msgctxt "bullet_type"
 msgid "88mm German (AP)"
 msgstr "88mm Deutsch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:179
+#: .\mod_stats_by_aircraft\bullets_types.py:174
 msgctxt "bullet_type"
 msgid "88mm German (APHE)"
 msgstr "88mm Deutsch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:180
+#: .\mod_stats_by_aircraft\bullets_types.py:175
 msgctxt "bullet_type"
 msgid "88mm German (HE)"
 msgstr "88mm Deutsch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:181
+#: .\mod_stats_by_aircraft\bullets_types.py:176
 #, fuzzy
 #| msgid "German"
 msgctxt "bullet_type"
 msgid "88mm German"
 msgstr "88mm Deutsch"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:182
+#: .\mod_stats_by_aircraft\bullets_types.py:177
 msgctxt "bullet_type"
 msgid "88mm German (HVAP)"
 msgstr "88mm Deutsch (HVAP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:183
+#: .\mod_stats_by_aircraft\bullets_types.py:178
 msgctxt "bullet_type"
 msgid "100mm Soviet (HE)"
 msgstr "100mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:184
+#: .\mod_stats_by_aircraft\bullets_types.py:179
 msgctxt "bullet_type"
 msgid "100mm Soviet (APHE)"
 msgstr "100mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:185
+#: .\mod_stats_by_aircraft\bullets_types.py:180
 msgctxt "bullet_type"
 msgid "130mm Soviet (HE)"
 msgstr "130mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:186
+#: .\mod_stats_by_aircraft\bullets_types.py:181
 msgctxt "bullet_type"
 msgid "152mm Soviet (APHE)"
 msgstr "152mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:191
+#: .\mod_stats_by_aircraft\bullets_types.py:186
 msgctxt "bullet_type"
 msgid "76mm Soviet (APHE)"
 msgstr "76mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:193
+#: .\mod_stats_by_aircraft\bullets_types.py:188
 msgctxt "bullet_type"
 msgid "76mm Soviet (HVAP)"
 msgstr "76mm Sowjetisch (HVAP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:194
+#: .\mod_stats_by_aircraft\bullets_types.py:189
 msgctxt "bullet_type"
 msgid "155mm Soviet (HE)"
 msgstr "155mm Sowjetisch (HE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:195
+#: .\mod_stats_by_aircraft\bullets_types.py:190
 msgctxt "bullet_type"
 msgid "75mm Soviet (AP)"
 msgstr "75mm Sowjetisch (AP)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:196
+#: .\mod_stats_by_aircraft\bullets_types.py:191
 msgctxt "bullet_type"
 msgid "75mm Soviet (APHE)"
 msgstr "75mm Sowjetisch (APHE)"
 
-#: .\mod_stats_by_aircraft\bullets_types.py:197
+#: .\mod_stats_by_aircraft\bullets_types.py:192
 msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
 msgstr "75mm Sowjetisch (HE)"
@@ -1343,15 +1343,15 @@ msgstr "Defensiver Munitionsbericht"
 msgid "Average hits per aircraft lost"
 msgstr "Durchschnitttliche Anzahl Treffer pro Verlust"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:561
+#: .\mod_stats_by_aircraft\templates\aircraft.html:557
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:120
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:557
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:555
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:129
 msgid "Plane Durability"
 msgstr "Flugzeugbeständigkeit"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:568
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:564
+#: .\mod_stats_by_aircraft\templates\aircraft.html:564
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:562
 msgid ""
 "if ratio > 1 - pilot flying in the minority, if ratio < 1 - pilot flying in "
 "the majority"
@@ -1359,75 +1359,75 @@ msgstr ""
 "Wenn das Verhältnis der Piloten >1 ist. Dann sind diese in der Minderheit. "
 "Wenn das Verhältnis der Piloten <1 ist, dann sind diese in der Mehrheit"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:570
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:566
+#: .\mod_stats_by_aircraft\templates\aircraft.html:566
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:564
 msgid "Pilot Survivability"
 msgstr "Pilotenschutz"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:578
+#: .\mod_stats_by_aircraft\templates\aircraft.html:574
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:126
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:574
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:572
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:135
 msgid "Plane Lethality"
 msgstr "Flugzeugtödlichkeit"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:586
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:582
+#: .\mod_stats_by_aircraft\templates\aircraft.html:582
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:580
 msgid "Plane Lethality (no assists)"
 msgstr "Flugzeugtödlichkeit (ohne unterstütze Abschüsse)"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:594
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:590
+#: .\mod_stats_by_aircraft\templates\aircraft.html:590
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:588
 msgid "Pilot Lethality"
 msgstr "Pilotentödlichkeit"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:604
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:600
+#: .\mod_stats_by_aircraft\templates\aircraft.html:600
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:598
 msgid "K/D - Kills per Death"
 msgstr "Luftsiege pro Tod"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:612
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:608
+#: .\mod_stats_by_aircraft\templates\aircraft.html:608
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:606
 msgid "K/L - Kills per Aircraft Lost"
 msgstr "Luftsiege pro Flugzeugverlust"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:620
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:616
+#: .\mod_stats_by_aircraft\templates\aircraft.html:616
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:614
 msgid "K/S - Kills per Sortie"
 msgstr "Luftsiege pro Einsatz"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:628
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:624
+#: .\mod_stats_by_aircraft\templates\aircraft.html:624
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:622
 msgid "K/H - Kills per Hour of Flight"
 msgstr "Luftsiege pro Stunde"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:638
+#: .\mod_stats_by_aircraft\templates\aircraft.html:634
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:96
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:634
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:632
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:102
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:103
 msgid "GK/D - G.Kills per Death"
 msgstr "zer. Bodenziele pro Tod"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:646
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:642
+#: .\mod_stats_by_aircraft\templates\aircraft.html:642
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:640
 msgid "GK/L - G.Kills per Aircraft Lost"
 msgstr "zer. Bodenziele pro Flugzeugverlust"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:654
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:650
+#: .\mod_stats_by_aircraft\templates\aircraft.html:650
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:648
 msgid "GK/S - G.Kills per Sortie"
 msgstr "zer. Bodenziele pro Einsatz"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:662
+#: .\mod_stats_by_aircraft\templates\aircraft.html:658
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:102
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:658
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:656
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:109
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:110
 msgid "GK/H - G.Kills per Hour of Flight"
 msgstr "zer. Bodenziele pro Flug"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:676
+#: .\mod_stats_by_aircraft\templates\aircraft.html:672
 #, python-format
 msgid ""
 "★ This data is pulled purely from sorties where this plane was the sole "
@@ -1441,9 +1441,9 @@ msgstr ""
 "wurde (ein Flugzeug/Panzer/AA/usw.). Nur Waffenkonfigurationen, die für mehr "
 "als 5%% der Verlüste verantwortlich sind, werden angezeigt. </br>"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:680
+#: .\mod_stats_by_aircraft\templates\aircraft.html:676
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:243
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:679
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:677
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:249
 msgid ""
 "* Plane Durability is percent of sorties the plane survived after taking "
@@ -1463,10 +1463,10 @@ msgstr ""
 "feindlichen Piloten gemeint, die gestroben sind, nachdem ihr Flugzeug "
 "beschädigt wurde. Unterstüzte Abschüsse zählen mit."
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:690
+#: .\mod_stats_by_aircraft\templates\aircraft.html:686
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:253
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:176
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:689
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:687
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:259
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:182
 msgid ""
@@ -1477,10 +1477,10 @@ msgstr ""
 "<strong>Achtung!</strong> Diese Statistik berücksichtigt nur Flüge auf "
 "diesem Server. Die Bewertungen erfolgen unabhänig der Anzeigen im Spiel"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:697
+#: .\mod_stats_by_aircraft\templates\aircraft.html:693
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:260
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:183
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:696
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:694
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:266
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:189
 #, python-format
@@ -1577,7 +1577,7 @@ msgstr "Pilotentödlichkeit"
 
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:3
 #: .\mod_stats_by_aircraft\templates\all_aircraft.html:13
-#: .\mod_stats_by_aircraft\templates\base.html:87
+#: .\mod_stats_by_aircraft\templates\base.html:88
 msgid "Aircraft Rankings"
 msgstr "Flugzeugrangliste"
 
@@ -1692,22 +1692,28 @@ msgstr "Rangliste"
 #: .\mod_stats_by_aircraft\templates\base.html:86
 #, fuzzy
 #| msgid "Pilot Rankings"
+msgid "Tankman Rankings"
+msgstr "Rangliste"
+
+#: .\mod_stats_by_aircraft\templates\base.html:87
+#, fuzzy
+#| msgid "Pilot Rankings"
 msgid "Squad Rankings"
 msgstr "Rangliste"
 
-#: .\mod_stats_by_aircraft\templates\base.html:90
+#: .\mod_stats_by_aircraft\templates\base.html:91
 msgid "Missions"
 msgstr "Missionen"
 
-#: .\mod_stats_by_aircraft\templates\base.html:92
+#: .\mod_stats_by_aircraft\templates\base.html:93
 msgid "Forum"
 msgstr "Forum"
 
-#: .\mod_stats_by_aircraft\templates\base.html:95
+#: .\mod_stats_by_aircraft\templates\base.html:96
 msgid "Info"
 msgstr ""
 
-#: .\mod_stats_by_aircraft\templates\base.html:98
+#: .\mod_stats_by_aircraft\templates\base.html:99
 msgid "Tour"
 msgstr "Luftschlacht"
 
@@ -1774,7 +1780,7 @@ msgctxt "pilot_awards"
 msgid "pilot"
 msgstr "Pilot"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:672
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:670
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:246
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:172
 msgid ""
@@ -1784,7 +1790,7 @@ msgstr ""
 "Aus technischen Gründen zählen die Abschüsse von den Richtschützen nicht "
 "mit. Flugzeug- und Pilotentödlichkeit sind auch betroffen."
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:675
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:673
 msgid ""
 "★ This data is pulled purely from sorties where this plane was the sole "
 "source of damage. </br> ⛤ This data is pulled purely from sorties where this "
