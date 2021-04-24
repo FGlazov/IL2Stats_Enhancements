@@ -318,9 +318,8 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if ((event['attacker'].cls == 'tank_turret' or
-                     (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
-                        and event['attacker'].parent.sortie):
+                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
+                        and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the damage to the tank driver.
                     params['act_object_id'] = event[
                         'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
@@ -344,9 +343,8 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if ((event['attacker'].cls == 'tank_turret' or
-                     (event['attacker'].cls_base == 'tank' and event['attacker'].parent))
-                        and event['attacker'].parent.sortie):
+                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
+                        and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the kill to the tank driver.
                     params['act_object_id'] = event[
                         'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
