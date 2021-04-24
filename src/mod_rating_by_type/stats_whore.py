@@ -183,7 +183,7 @@ def create_ammo(sortie):
 # Monkey patched in stats_whore.
 def update_bonus_score(new_sortie):
     if not module_active(MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES):
-        old_stats_whore.update_bonus_score(new_sortie)
+        old_stats_whore.old_update_bonus_score(new_sortie)
         return
 
     bonuses_score_dict = new_sortie.mission.score_dict
