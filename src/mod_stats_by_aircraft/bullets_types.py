@@ -41,22 +41,17 @@ def __render_sub_dict(sub_dict, filter_out_flukes, fluke_threshold=0.05):
         else:
             ammo_names = multi_key_to_string(translated_cannon_keys, ' | ')
 
-        mg_avgs = [0] * len(mg_keys)
-        cannon_avgs = [0] * len(cannon_keys)
+        mg_avgs = [''] * len(mg_keys)
+        cannon_avgs = [''] * len(cannon_keys)
         for mg_key in mg_keys:
             key_index = translated_mg_keys.index(translate_bullet(mg_key))
-            mg_avgs[key_index] = sub_dict[AVERAGES][multi_key][mg_key]
+            mg_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][mg_key])
 
         for cannon_key in cannon_keys:
             key_index = translated_cannon_keys.index(translate_bullet(cannon_key))
-            cannon_avgs[key_index] = sub_dict[AVERAGES][multi_key][cannon_key]
+            cannon_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][cannon_key])
 
-        if mg_avgs and cannon_avgs:
-            avg_use = (multi_key_to_string(cannon_avgs, ' | ') + ' | ' + multi_key_to_string(mg_avgs, ' | '))
-        elif mg_avgs:
-            avg_use = multi_key_to_string(mg_avgs, ' | ')
-        else:
-            avg_use = multi_key_to_string(cannon_avgs, ' | ')
+        avg_use = " | ".join(cannon_avgs + mg_avgs)
 
         result.append((ammo_names, avg_use))
 

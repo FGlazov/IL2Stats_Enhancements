@@ -69,3 +69,7 @@ Version 1.4.4
 Version 1.4.5
 
 - Fix bug where new translations weren't showing up and instead causing a 500 error.
+
+Version 1.4.6
+
+- Update to 1.2.4. Global Aircraft stats.
