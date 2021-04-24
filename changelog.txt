@@ -55,3 +55,7 @@ Version 2.1.2
 Version 2.1.3
 
 - Fix bug where not having adjustabe scores and penalties module caused an infinite recursion when trying to process stats.
+
+Version 2.1.4
+
+- Fix bug where stats process would sometimes hang on ammo breakdown.
