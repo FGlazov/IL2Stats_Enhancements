@@ -1,4 +1,5 @@
-from .config_modules import MODULE_AMMO_BREAKDOWN, module_active
+from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKAROUND, \
+    MODULE_BAILOUT_ACCURACY_WORKAROUND, module_active
 
 TOTAL_HITS = 'total_hits'
 TOTAL_RECEIVED = 'total_received'
@@ -130,6 +131,28 @@ def got_damaged(self, damage, attacker=None, pos=None):
         'target': self,
         'is_friendly_fire': is_friendly_fire,
     })
+    # ======================== MODDED PART END
+
+
+# Monkey patched into Object class inside report.py
+def takeoff(self, tik):
+    self.is_takeoff = True
+    self.on_ground = False
+    self.is_rtb = False
+    self.uncaptured()
+    if self.sortie:
+        self.sortie.tik_landed = None
+        if not self.sortie.tik_takeoff:
+            self.sortie.tik_takeoff = tik
+
+    # ======================== MODDED PART BEGIN
+    if not module_active(MODULE_REARM_ACCURACY_WORKAROUND):
+        return
+    # If you rearm then your number of shots gets reset to 0. This screws up gunnery accuracy.
+    # So we use "taking off twice" as a proxy for rearming, since there is no rearm event.
+    if not hasattr(self, 'takeoff_count'):
+        self.takeoff_count = 0
+    self.takeoff_count += 1
     # ======================== MODDED PART END
 
 

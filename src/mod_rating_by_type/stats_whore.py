@@ -5,7 +5,8 @@ from stats.models import Sortie
 from .variant_utils import is_jabo, is_fighter
 from .models import SortieAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
-                             MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES)
+                             MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
+                             MODULE_BAILOUT_ACCURACY_WORKAROUND)
 from stats import stats_whore as old_stats_whore
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
@@ -132,6 +133,10 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 
     # ======================== MODDED PART BEGIN
     SortieAugmentation(sortie=new_sortie, cls=cls).save()
+
+    new_sortie.takeoff_count = 0
+    if hasattr(sortie.aircraft, 'takeoff_count'):
+        new_sortie.takeoff_count = sortie.aircraft.takeoff_count
     # ======================== MODDED PART END
 
     return new_sortie
@@ -163,7 +168,6 @@ def adjust_base_score_modules(sortie, player, flight_time, score, bonuses_score_
     return adjusted_score, score_dict
 
 
-# Here we additionally inject ammo_breakdown.
 def create_ammo(sortie):
     result = {'used_cartridges': sortie.used_cartridges,
               'used_bombs': sortie.used_bombs,
@@ -270,3 +274,28 @@ def update_general(player, new_sortie):
             player.relive_heavy += relive_add
     except AttributeError:
         pass  # Some player objects have no score or relive attributes for light/medium/heavy aircraft.
+
+
+def update_ammo(sortie, player):
+    # ======================== MODDED PART BEGIN
+    if module_active(MODULE_REARM_ACCURACY_WORKAROUND):
+        if sortie.takeoff_count > 1:
+            return
+
+    if module_active(MODULE_BAILOUT_ACCURACY_WORKAROUND):
+        if sortie.is_bailout:
+            return
+    # ======================== MODDED PART END
+    # в логах есть баги, по окончание вылета у самолета может быть больше боемкомплекта чем было вначале
+    if sortie.ammo['used_cartridges'] >= sortie.ammo['hit_bullets']:
+        player.ammo['used_cartridges'] += sortie.ammo['used_cartridges']
+        player.ammo['hit_bullets'] += sortie.ammo['hit_bullets']
+    if sortie.ammo['used_bombs'] >= sortie.ammo['hit_bombs']:
+        player.ammo['used_bombs'] += sortie.ammo['used_bombs']
+        player.ammo['hit_bombs'] += sortie.ammo['hit_bombs']
+    if sortie.ammo['used_rockets'] >= sortie.ammo['hit_rockets']:
+        player.ammo['used_rockets'] += sortie.ammo['used_rockets']
+        player.ammo['hit_rockets'] += sortie.ammo['hit_rockets']
+    if sortie.ammo['used_shells'] >= sortie.ammo['hit_shells']:
+        player.ammo['used_shells'] += sortie.ammo['used_shells']
+        player.ammo['hit_shells'] += sortie.ammo['hit_shells']
