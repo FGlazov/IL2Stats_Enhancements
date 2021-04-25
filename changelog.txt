@@ -52,6 +52,13 @@ Version 2.1.2
 
 - Update to 1.2.50 of IL2 Stats.
 
-Version 2.2.0
+Version 2.1.3
 
-- Module Ammo Breakdown: Show which ammo caused damage in a "damage/damaged" line, and show it. Note this is an educated guess and not a gurantee!
+- Fix bug where not having adjustabe scores and penalties module caused an infinite recursion when trying to process stats.
+
+Version 2.1.4
+
+- Fix bug where stats process would sometimes hang on ammo breakdown.
+
+Version 2.2.0
+- Module Ammo Breakdown: Try to figure out which ammo caused damage in a "damage/damaged" line and show it. 

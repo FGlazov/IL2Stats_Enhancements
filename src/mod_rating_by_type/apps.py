@@ -47,6 +47,7 @@ class ModConfig(AppConfig):
         from . import stats_whore as new_stats_whore
         original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
         original_stats_whore.update_general = new_stats_whore.update_general
+        original_stats_whore.old_update_bonus_score = original_stats_whore.update_bonus_score
         original_stats_whore.update_bonus_score = new_stats_whore.update_bonus_score
 
         from stats.management.commands import import_csv_data as old_csv_data

@@ -174,7 +174,7 @@ def record_hits(tik, target, attacker, ammo):
             if attacker.sortie:
                 ammo_breakdown[LAST_DMG_SORTIE] = attacker.sortie.index
 
-            if attacker.cls == 'aircraft_turret' and attacker.parent:
+            if attacker.cls == 'aircraft_turret' and attacker.parent and attacker.parent.sortie:
                 ammo_breakdown[LAST_TURRET_ACCOUNT] = attacker.parent.sortie.account_id
 
     if attacker and attacker.coal_id == target.coal_id:
