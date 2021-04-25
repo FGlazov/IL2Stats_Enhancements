@@ -154,7 +154,39 @@ def pilot(request, profile_id, nickname=None):
     })
 
 
-def __top_24_pilots(tour_id, cls=None):
+def __top_recent_players(tour_id, by_mission, cls=None):
+    if by_mission:
+        return __top_last_mission_players(tour_id, cls)
+    else:
+        return __top_24_pilots(tour_id, cls)
+
+
+def __top_last_mission_players(tour_id, cls):
+    mission_query = (Mission.objects
+                     .values_list('id', flat=True)
+                     .filter(tour_id=tour_id, players_total__gt=0)
+                     .order_by('-date_start'))
+
+    if not mission_query.exists():
+        return []
+
+    mission_id = mission_query[0]
+    score_name = 'score'
+    if cls:
+        score_name = 'score_' + cls
+
+    player_missions = (PlayerMission.objects.select_related('player')
+                       .filter(mission_id=mission_id, player__type='pilot')
+                       .order_by('-' + score_name))[:10]
+
+    result = []
+    for player_mission in player_missions:
+        result.append((player_mission.player, getattr(player_mission, score_name)))
+
+    return result
+
+
+def __top_24_pilots(tour_id, cls):
     _queryset = (Sortie.objects
                  .exclude(score=0)
                  .filter(tour_id=tour_id,
@@ -194,7 +226,7 @@ def main(request):
                       .exclude(score_streak_current=0)
                       .active(tour=request.tour).order_by('-score_streak_current')[:10])
 
-    top_24 = __top_24_pilots(tour_id=request.tour.id)
+    top_24 = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION))
 
     if module_active(MODULE_SPLIT_RANKINGS):
         top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
@@ -206,9 +238,9 @@ def main(request):
         top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
                                 .exclude(score_streak_current_light=0)
                                 .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
-        top_24_heavy = __top_24_pilots(tour_id=request.tour.id, cls='heavy')
-        top_24_medium = __top_24_pilots(tour_id=request.tour.id, cls='medium')
-        top_24_light = __top_24_pilots(tour_id=request.tour.id, cls='light')
+        top_24_heavy = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='heavy')
+        top_24_medium = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='medium')
+        top_24_light = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='light')
     else:
         top_streak_heavy = None
         top_streak_medium = None
@@ -269,6 +301,7 @@ def main(request):
         'total_online': total_online,
         'coal_1_online': coal_1_online,
         'coal_2_online': coal_2_online,
+        'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
     })
 
 
