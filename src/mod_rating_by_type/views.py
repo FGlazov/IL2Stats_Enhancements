@@ -12,9 +12,8 @@ from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie
 from stats.views import *
 from stats.views import _get_rating_position, _get_squad
 
-from .bullets_types import translate_ammo_breakdown
+from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
-from .variant_utils import FIGHTER_WHITE_LIST
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -162,7 +161,39 @@ def pilot(request, profile_id, nickname=None):
     })
 
 
-def __top_24_pilots(tour_id, cls=None):
+def __top_recent_players(tour_id, by_mission, cls=None):
+    if by_mission:
+        return __top_last_mission_players(tour_id, cls)
+    else:
+        return __top_24_pilots(tour_id, cls)
+
+
+def __top_last_mission_players(tour_id, cls):
+    mission_query = (Mission.objects
+                     .values_list('id', flat=True)
+                     .filter(tour_id=tour_id, players_total__gt=0)
+                     .order_by('-date_start'))
+
+    if not mission_query.exists():
+        return []
+
+    mission_id = mission_query[0]
+    score_name = 'score'
+    if cls:
+        score_name = 'score_' + cls
+
+    player_missions = (PlayerMission.objects.select_related('player')
+                       .filter(mission_id=mission_id, player__type='pilot')
+                       .order_by('-' + score_name))[:10]
+
+    result = []
+    for player_mission in player_missions:
+        result.append((player_mission.player, getattr(player_mission, score_name)))
+
+    return result
+
+
+def __top_24_pilots(tour_id, cls):
     _queryset = (Sortie.objects
                  .exclude(score=0)
                  .filter(tour_id=tour_id,
@@ -174,7 +205,7 @@ def __top_24_pilots(tour_id, cls=None):
     if cls:
         aircraft_cls = 'aircraft_' + cls
         _queryset = _queryset.filter(
-            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls) # Expected case. E.g. recorded jabos as type 'medium'.
+            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)  # Expected case. E.g. recorded jabos as type 'medium'.
 
              # The edge case, when this mod is freshly installed we haven't recorded type. So instead use aircraft type.
              | (Q(aircraft__cls=aircraft_cls) & Q(SortieAugmentation_MOD_SPLIT_RANKINGS=None))))
@@ -202,7 +233,7 @@ def main(request):
                       .exclude(score_streak_current=0)
                       .active(tour=request.tour).order_by('-score_streak_current')[:10])
 
-    top_24 = __top_24_pilots(tour_id=request.tour.id)
+    top_24 = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION))
 
     if module_active(MODULE_SPLIT_RANKINGS):
         top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
@@ -214,9 +245,9 @@ def main(request):
         top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
                                 .exclude(score_streak_current_light=0)
                                 .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
-        top_24_heavy = __top_24_pilots(tour_id=request.tour.id, cls='heavy')
-        top_24_medium = __top_24_pilots(tour_id=request.tour.id, cls='medium')
-        top_24_light = __top_24_pilots(tour_id=request.tour.id, cls='light')
+        top_24_heavy = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='heavy')
+        top_24_medium = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='medium')
+        top_24_light = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='light')
     else:
         top_streak_heavy = None
         top_streak_medium = None
@@ -306,6 +337,7 @@ def main(request):
         'total_online': total_online,
         'coal_1_online': coal_1_online,
         'coal_2_online': coal_2_online,
+        'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
     })
 
 
@@ -453,6 +485,45 @@ def pilot_sortie(request, sortie_id):
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
+    })
+
+
+def pilot_sortie_log(request, sortie_id):
+    try:
+        sortie = Sortie.objects.select_related('player', 'player__profile', 'player__tour', 'mission').get(id=sortie_id)
+    except Sortie.DoesNotExist:
+        raise Http404
+    events = (LogEntry.objects
+              .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
+              .filter(Q(act_sortie_id=sortie.id) | Q(cact_sortie_id=sortie.id))
+              .exclude(
+        Q(act_object__cls='trash') | Q(cact_object__cls='trash') | Q(type='shotdown', act_object__isnull=True))
+              .order_by('tik'))
+    for e in events:
+        is_friendly_fire = e.extra_data.get('is_friendly_fire', False)
+        if e.cact_sortie and e.cact_sortie.id == sortie.id:
+            e.message = sortie_log.get_message(act_type='cact', event_type=e.type, has_opponent=e.act_object)
+            e.color = sortie_log.get_color(act_type='cact', event_type=e.type, is_friendly_fire=is_friendly_fire)
+            e.opponent_sortie = e.act_sortie
+            e.opponent_object = e.act_object
+            e.opponent_act = True
+        elif e.act_sortie and e.act_sortie.id == sortie.id:
+            e.message = sortie_log.get_message(act_type='act', event_type=e.type, has_opponent=e.cact_object)
+            e.color = sortie_log.get_color(act_type='act', event_type=e.type, is_friendly_fire=is_friendly_fire)
+            e.opponent_sortie = e.cact_sortie
+            e.opponent_object = e.cact_object
+            e.opponent_act = False
+
+        # TODO: Add a disclaimer that this is a bit of a hack...
+        if (e.type == 'damaged' or e.type == 'wounded' and type(e.extra_data['damage']) is dict
+                and 'hits' in e.extra_data['damage']):
+            e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
+
+    return render(request, 'pilot_sortie_log.html', {
+        'player': sortie.player,
+        'sortie': sortie,
+        'events': events,
+        'MODULE_AMMO_BREAKDOWN': module_active(MODULE_AMMO_BREAKDOWN),
     })
 
 

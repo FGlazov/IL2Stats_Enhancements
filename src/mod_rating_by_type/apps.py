@@ -36,11 +36,13 @@ class ModConfig(AppConfig):
         original_views.pilot_sortie = new_views.pilot_sortie
         original_views.ironman_stats = new_views.ironman_stats
         original_views.pilot_vlife = new_views.pilot_vlife
+        original_views.pilot_sortie_log = new_views.pilot_sortie_log
 
         from . import report as new_report
-        from mission_report.report import MissionReport
-
+        from mission_report.report import MissionReport, Object
         MissionReport.event_hit = new_report.event_hit
+        Object.got_damaged = new_report.got_damaged
+        Object.takeoff = new_report.takeoff
 
         from stats import stats_whore as original_stats_whore
         from . import stats_whore as new_stats_whore
@@ -48,6 +50,7 @@ class ModConfig(AppConfig):
         original_stats_whore.update_general = new_stats_whore.update_general
         original_stats_whore.old_update_bonus_score = original_stats_whore.update_bonus_score
         original_stats_whore.update_bonus_score = new_stats_whore.update_bonus_score
+        original_stats_whore.update_ammo = new_stats_whore.update_ammo
 
         from stats.management.commands import import_csv_data as old_csv_data
         from . import import_csv_data as new_csv_data
