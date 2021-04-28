@@ -615,7 +615,9 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
             if turret_name in enemies_killed:
                 enemy_killed.add((bucket.aircraft, sortie))
 
-            update_primary_bucket = not stop_update_primary_bucket or bucket.player is None
+            update_primary_bucket = bucket.player is None
+            if stop_update_primary_bucket:
+                update_primary_bucket = False
             buckets, kbs = update_from_entries(turret_bucket, enemy_damaged, enemy_killed, enemy_shotdown,
                                                # We can't determine the subtype of the bomber
                                                # Edge case: Halberstadt. It is turreted and has a jabo variant.
