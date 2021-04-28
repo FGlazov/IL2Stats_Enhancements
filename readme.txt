@@ -137,7 +137,7 @@ Compatibility with other mods
 This mod is compatible with Global Aircraft Stats. Make sure mod_stats_by_aircraft comes after mod_rating_by_type in the mods config parameter. I.e., like:
 mods = mod_rating_by_type, mod_stats_by_aircraft
 
-This mod is incompatible with the disconnect mod, but a compatbility patch is included in the .zip. After installing both mods, copy over the src file in the compatbility_patch/disconnect folder. Made for version 1.6 of the disconnect mod.
+This mod is incompatible with the disconnect mod, consider perhaps using the mod bundle:  https://forum.il2sturmovik.com/topic/70029-il-2-stats-mod-bundle-disco-tanks-splitrankings/ - (and remove the tank rankings from the src/mod_stats_by_aircraft/base.html if you don't have tanks) . 
 
 This mod is incompatible with the tank mod.
 
