@@ -27,32 +27,23 @@ def __render_sub_dict(sub_dict, filter_out_flukes, fluke_threshold=0.05):
             continue
 
         keys = string_to_multikey(multi_key)
-        mg_keys = [key for key in keys if 'BULLET' in key]
-        cannon_keys = [key for key in keys if 'SHELL' in key]
 
-        translated_mg_keys = sorted([translate_bullet(key) for key in mg_keys])
-        translated_cannon_keys = sorted([translate_bullet(key) for key in cannon_keys])
+        translated_mg_keys = sorted([str(translate_bullet(key)) for key in keys if 'BULLET' in key])
+        translated_cannon_keys = sorted([str(translate_bullet(key)) for key in keys if 'SHELL' in key])
 
-        if translated_mg_keys and translated_cannon_keys:
-            ammo_names = (multi_key_to_string(translated_cannon_keys, ' | ')
-                          + " | " + multi_key_to_string(translated_mg_keys, ' | '))
-        elif translated_mg_keys:
-            ammo_names = multi_key_to_string(translated_mg_keys, ' | ')
-        else:
-            ammo_names = multi_key_to_string(translated_cannon_keys, ' | ')
+        mg_avgs = [''] * len(translated_mg_keys)
+        cannon_avgs = [''] * len(translated_cannon_keys)
 
-        mg_avgs = [''] * len(mg_keys)
-        cannon_avgs = [''] * len(cannon_keys)
-        for mg_key in mg_keys:
-            key_index = translated_mg_keys.index(translate_bullet(mg_key))
-            mg_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][mg_key])
+        for key in keys:
+            if 'BULLET' in key:
+                key_index = translated_mg_keys.index(translate_bullet(key))
+                mg_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][key])
+            else:
+                key_index = translated_cannon_keys.index(translate_bullet(key))
+                cannon_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][key])
 
-        for cannon_key in cannon_keys:
-            key_index = translated_cannon_keys.index(translate_bullet(cannon_key))
-            cannon_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][cannon_key])
-
+        ammo_names = ' | '.join(translated_cannon_keys + translated_mg_keys)
         avg_use = " | ".join(cannon_avgs + mg_avgs)
-
         result.append((ammo_names, avg_use))
 
     result.sort(key=take_first)

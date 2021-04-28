@@ -378,6 +378,7 @@ def stats_whore(m_report_file):
 
 
 # ======================== MODDED PART BEGIN
+# TODO: Refactor these jobs into a new file and an easier to understand framework.
 @transaction.atomic
 def process_old_sorties_batch_aircraft_stats(backfill_log):
     max_id = Tour.objects.aggregate(Max('id'))['id__max']
@@ -414,7 +415,7 @@ def process_old_sorties_player_aircraft(backfill_log, tour_cutoff):
 
     nr_left = backfill_sorties.count()
     if nr_left == 0:
-        return False
+        return fix_corrupted_aa_accident_stats(backfill_log, tour_cutoff)
 
     if backfill_log:
         logger.info(
@@ -430,23 +431,69 @@ def process_old_sorties_player_aircraft(backfill_log, tour_cutoff):
             filter_type = get_sortie_type(sortie)
             has_subtype = filter_type != 'NO_FILTER'
 
-            # The 4 new fields deaths/shotdowns_by_aa/accidents were introduced with the same update.
-            process_aa_accident_death(bucket, sortie)
-            # To update killboards of buckets with Player shotdown in this sortie.
+            # To update killboards of buckets with Player shotdown in this sortie,
+            # and also AA/accident shotdowns/deaths
             process_log_entries(bucket, sortie, has_subtype, False, stop_update_primary_bucket=True)
             bucket.save()
 
             if has_subtype:
                 bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                                filter_type=filter_type, player=None))[0]
-                # The 4 new fields deaths/shotdowns_by_aa/accidents were introduced with the same update.
-                process_aa_accident_death(bucket, sortie)
-                # To update killboards of buckets with Player shotdown in this sortie.
+                # To update killboards of buckets with Player shotdown in this sortie,
+                # and also AA/accident shotdowns/deaths
                 process_log_entries(bucket, sortie, True, True, stop_update_primary_bucket=True)
                 bucket.save()
 
     if nr_left <= 1000:
         logger.info('[mod_stats_by_aircraft]: Completed retroactively computing player aircraft stats.')
+
+    return True
+
+
+def fix_corrupted_aa_accident_stats(backfill_log, tour_cutoff):
+    broken_buckets = AircraftBucket.objects.filter(reset_accident_aa_stats=False)
+    for broken_bucket in broken_buckets:
+        broken_bucket.deaths_to_accident = 0
+        broken_bucket.deaths_to_aa = 0
+        broken_bucket.aircraft_lost_to_accident = 0
+        broken_bucket.aircraft_lost_to_aa = 0
+
+        broken_bucket.reset_accident_aa_stats = True
+        broken_bucket.save()
+
+    backfill_sorties = (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__fixed_aa_accident_stats=False,
+                                              aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
+                        .order_by('-tour__id'))
+
+    nr_left = backfill_sorties.count()
+    if nr_left == 0:
+        return False
+
+    if backfill_log:
+        logger.info(
+            '[mod_stats_by_aircraft]: Fixing AA/Accidents aircraft lost/deaths stats. {} sorties left to process.'
+            .format(nr_left))
+
+    for sortie in backfill_sorties:
+        buckets = [(AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                         filter_type='NO_FILTER', player=None))[0],
+                   (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                         filter_type='NO_FILTER', player=sortie.player))[0]]
+        filter_type = get_sortie_type(sortie)
+        if filter_type != 'NO_FILTER':
+            buckets.append((AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                                 filter_type=filter_type, player=None))[0])
+            buckets.append((AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                                 filter_type=filter_type, player=None))[0])
+        for bucket in buckets:
+            process_aa_accident_death(bucket, sortie)
+            bucket.save()
+
+        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.fixed_aa_accident_stats = True
+        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.save()
+
+    if nr_left <= 1000:
+        logger.info('[mod_stats_by_aircraft]: Completed fixing AA/Accidents aircraft lost/deaths stats.')
 
     return True
 
@@ -523,6 +570,7 @@ def process_bucket(bucket, sortie, has_subtype, is_subtype):
         sortie_augmentation.sortie_stats_processed = True
     else:
         sortie_augmentation.player_stats_processed = True
+    sortie_augmentation.fixed_aa_accident_stats = True
     sortie_augmentation.save()
 
 
@@ -583,6 +631,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
         process_ammo_breakdown(bucket, sortie, is_subtype)
 
     if not stop_update_primary_bucket:
+        bucket.reset_accident_aa_stats = True
         bucket.update_derived_fields()
         bucket.save()
 

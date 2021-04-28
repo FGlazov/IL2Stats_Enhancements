@@ -143,6 +143,8 @@ class AircraftBucket(models.Model):
     has_juiced_variant = models.BooleanField(default=False, db_index=True)
     has_bomb_variant = models.BooleanField(default=False, db_index=True)
 
+    # This is to check if we reset accident/aa stats. There was a bugged version which doubled this.
+    reset_accident_aa_stats = models.BooleanField(default=False, db_index=True)
     # ========================== NON-VISIBLE HELPER FIELDS  END
 
     class Meta:
@@ -605,6 +607,7 @@ class SortieAugmentation(models.Model):
                                   related_name='SortieAugmentation_MOD_STATS_BY_AIRCRAFT')
     sortie_stats_processed = models.BooleanField(default=False, db_index=True)
     player_stats_processed = models.BooleanField(default=False, db_index=True)
+    fixed_aa_accident_stats = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

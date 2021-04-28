@@ -90,4 +90,8 @@ Version 1.4.10
 
 - Update to 2.1.5 Enhancements, 1.2.5 Global Aircraft stats.
 
+Version 1.4.11
+
+- Update to 1.2.6 Global Aircraft stats
+
 
