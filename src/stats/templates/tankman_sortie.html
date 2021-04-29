@@ -755,6 +755,16 @@
                             </div>
                         </div>
                     {% endif %}
+                    {% if sortie.bonus.in_service %}
+                        <div class="sub_row">
+                            <div class="left">
+                                {% trans 'In service' context 'sortie' %}
+                            </div>
+                            <div class="right">
+                                <span class="bonus">+ {{ sortie.bonus.in_service }}%</span>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
                     <div class="row">
                         <div class="left">
