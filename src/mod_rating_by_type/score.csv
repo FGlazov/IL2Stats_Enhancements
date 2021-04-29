@@ -9,3 +9,11 @@ mod_penalty_dead,75,pct
 mod_penalty_captured,75,pct
 mod_penalty_bailout,50,pct
 mod_penalty_shotdown,20,pct
+tank_bonus_landed,100,pct
+tank_bonus_winning_coa,25,pct
+tank_bonus_in_flight,100,pct
+tank_bonus_in_service,100,pct
+tank_penalty_dead,75,pct
+tank_penalty_captured,75,pct
+tank_penalty_bailout,50,pct
+tank_penalty_shotdown,20,pct

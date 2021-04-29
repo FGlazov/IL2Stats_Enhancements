@@ -40,8 +40,23 @@ The parameter is "retro_compute_for_last_tours=10" under [stats]. A value of -1 
 0 retroactively computes for all sorties inside the current tour (before the mod was installed). A value of 10 computes for
 the last 10 tours. More details inside the Global Aircraft stats readme.
 
-6. Inside your src/confi.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
+6. Inside your src/conf.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
 config parameter "modules" under [stats]. More details inside the Stats Enhancements readme.
+
+6a. If you're using the module "Adjustable Bonuses and Penalities", there are seperate variables for tank bonuses/penalties you might wish to configure:
+
+Config name              | Default
+-------------------------|--------
+tank_bonus_landed        | 100%
+tank_bonus_winning_coa   | 25%
+tank_bonus_in_flight     | 100%
+tank_bonus_in_service    | 100%
+tank_penalty_dead        | 75%
+tank_penalty_captured    | 75%
+tank_penalty_bailout     | 50%
+tank_penalty_shotdown    | 20%
+
+Currently "in_service" is the scenario where a tank makes it back, "in_flight" or "landed" might become relevant if the game logs change.
 
 7. Run the update script in your /run folder after you're done with the above.
 
