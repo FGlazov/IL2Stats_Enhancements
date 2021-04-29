@@ -92,6 +92,5 @@ Version 1.4.10
 
 Version 1.4.11
 
-- Update to 1.2.6 Global Aircraft stats
-
+- Update to 1.2.5 Global Aircraft stats
 
