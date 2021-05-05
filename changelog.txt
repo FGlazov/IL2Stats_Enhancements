@@ -63,3 +63,8 @@ Version 2.1.4
 Version 2.1.5
 
 - Fix malformed base.html
+
+Version 2.1.6
+
+- Improve performance of ironman rankings table. In previous tours, currently multiple VLifes for a single player are shown. Finding the best one for each player was taking too long.
+- Fix bug in ironman rankings table where dead VLives were being shown in current tour (your best streak was displayed on current tour and not just in previous ones).

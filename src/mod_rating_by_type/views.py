@@ -167,7 +167,7 @@ def __top_24_pilots(tour_id, cls=None):
     if cls:
         aircraft_cls = 'aircraft_' + cls
         _queryset = _queryset.filter(
-            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls) # Expected case. E.g. recorded jabos as type 'medium'.
+            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)  # Expected case. E.g. recorded jabos as type 'medium'.
 
              # The edge case, when this mod is freshly installed we haven't recorded type. So instead use aircraft type.
              | (Q(aircraft__cls=aircraft_cls) & Q(SortieAugmentation_MOD_SPLIT_RANKINGS=None))))
@@ -403,26 +403,17 @@ def ironman_stats(request):
     if not module_active(MODULE_IRONMAN_STATS):
         raise Http404("Ironman stats not available on this server.")
 
-    request.tour.is_ended = True
-
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
-    if request.tour.is_ended:
-        to_max = '-score'
-        if 'score_light' in sort_by:
-            to_max = '-score_light'
-        if 'score_medium' in sort_by:
-            to_max = '-score_medium'
-        if 'score_heavy' in sort_by:
-            to_max = '-score_heavy'
 
-        players = get_best_streak_ironman(request.tour.id, to_max).order_by(sort_by, 'id')
-    else:
-        players = (VLife.objects
-                   .filter(relive=0, tour_id=request.tour.id, sorties_total__gt=0, player__type='pilot')
-                   .exclude(profile__is_hide=True)
-                   .order_by(sort_by, 'id'))
+    players = (VLife.objects
+               .filter(tour__id=request.tour.id, sorties_total__gt=0, player__type='pilot')
+               .exclude(profile__is_hide=True)
+               .order_by(sort_by, 'id'))
+
+    if not request.tour.is_ended:
+        players.filter(relive=0)
 
     if search:
         players = players.filter(player__profile__nickname__icontains=search)
@@ -433,26 +424,6 @@ def ironman_stats(request):
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
-
-
-# Basically, the following (psuedo code) SQL is wanted:
-#   SELECT *, Max(score)
-#   FROM VLife
-#   WHERE tour.id = tour_id AND sorties_total > 0 AND player_type = 'pilot' AND NOT profile.is.hide
-#   GROUP BY player.profile.id
-#
-# Where we want to extract VLife objects from the "*" part of the SELECT.
-# Everything but the "*" part is done inside the subquery sq.
-# Then, once we know the ids
-def get_best_streak_ironman(tour_id, to_max):
-    sq = (VLife.objects
-          .filter(tour_id=tour_id, sorties_total__gt=0, player__type='pilot',
-                  # For some reason player__profile__id raises an error...
-                  player__profile__nickname=OuterRef('player__profile__nickname'))
-          .exclude(profile__is_hide=True)
-          .order_by(to_max, '-score'))
-
-    return VLife.objects.filter(pk=Subquery(sq.values('id')[:1]))
 
 
 def pilot_vlife(request, vlife_id):
