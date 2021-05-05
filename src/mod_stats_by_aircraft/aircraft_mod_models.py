@@ -145,6 +145,9 @@ class AircraftBucket(models.Model):
 
     # This is to check if we reset accident/aa stats. There was a bugged version which doubled this.
     reset_accident_aa_stats = models.BooleanField(default=False, db_index=True)
+    # Dito for Elo computations, this was bugged.
+    reset_elo = models.BooleanField(default=False, db_index=True)
+
     # ========================== NON-VISIBLE HELPER FIELDS  END
 
     class Meta:
@@ -169,6 +172,11 @@ class AircraftBucket(models.Model):
         self.ahd = compute_float(self.assists, self.relive)
         self.has_juiced_variant = has_juiced_variant(self.aircraft)
         self.has_bomb_variant = has_bomb_variant(self.aircraft)
+
+        # If the bucket is being saved like this, then the bucket was already either reset,
+        # or it was made after the bug was fixed.
+        self.reset_accident_aa_stats = True
+        self.reset_elo = True
 
     def update_rating(self):
         # score per death
@@ -589,6 +597,10 @@ class AircraftKillboard(models.Model):
     aircraft_1_distinct_hits = models.BigIntegerField(default=0)
     aircraft_2_distinct_hits = models.BigIntegerField(default=0)
 
+    # Helper fields in order to detect corrupted data.
+    # This field is only relevant for killboards without Player
+    reset_kills_turret_bug = models.BooleanField(default=False, db_index=True)
+
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
         db_table = "AircraftKillboard_MOD_STATS_BY_AIRCRAFT"
@@ -608,6 +620,7 @@ class SortieAugmentation(models.Model):
     sortie_stats_processed = models.BooleanField(default=False, db_index=True)
     player_stats_processed = models.BooleanField(default=False, db_index=True)
     fixed_aa_accident_stats = models.BooleanField(default=False, db_index=True)
+    fixed_doubled_turret_killboards = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

@@ -6,6 +6,7 @@ from stats.rewards import reward_sortie, reward_tour, reward_mission, reward_vli
 from stats.logger import logger
 from stats.online import update_online
 from stats.models import LogEntry, Mission, PlayerMission, VLife, PlayerAircraft, Object, Score, Sortie, Tour, Player
+from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data
 from users.utils import cleanup_registration
 from django.conf import settings
 from django.db.models import Q, F, Max, Count
@@ -37,13 +38,6 @@ WIN_SCORE_MIN = settings.WIN_SCORE_MIN
 WIN_SCORE_RATIO = settings.WIN_SCORE_RATIO
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
-# ======================== MODDED PART BEGIN
-RETRO_COMPUTE_FOR_LAST_HOURS = config.get_conf()['stats'].getint('retro_compute_for_last_tours')
-if RETRO_COMPUTE_FOR_LAST_HOURS is None:
-    RETRO_COMPUTE_FOR_LAST_HOURS = 10
-
-
-# ======================== MODDED PART END
 
 def main():
     logger.info('IL2 stats {stats}, Python {python}, Django {django}'.format(
@@ -56,8 +50,8 @@ def main():
     online_timestamp = 0
 
     # ======================== MODDED PART BEGIN
-    backfill_aircraft_by_stats = True
-    backfill_log = True
+    reset_corrupted_data()
+    background_work_left = True
     # ======================== MODDED PART END
 
     while True:
@@ -68,9 +62,6 @@ def main():
 
         if len(new_reports) > 1:
             waiting_new_report = False
-            # ======================== MODDED PART BEGIN
-            backfill_log = True
-            # ======================== MODDED PART END
             # обрабатываем все логи кроме последней миссии
             for m_report_file in new_reports[:-1]:
                 stats_whore(m_report_file=m_report_file)
@@ -92,10 +83,8 @@ def main():
                 processed_reports.append(m_report_file.name)
                 continue
         # ======================== MODDED PART BEGIN
-        if backfill_aircraft_by_stats:
-            work_done = process_old_sorties_batch_aircraft_stats(backfill_log)
-            backfill_aircraft_by_stats = work_done
-            backfill_log = False
+        if background_work_left:
+            background_work_left = run_background_jobs()
             continue
         # ======================== MODDED PART END
 
@@ -108,7 +97,6 @@ def main():
 
         # в идеале новые логи появляются как минимум раз в 30 секунд
         time.sleep(30)
-
 
 @transaction.atomic
 def stats_whore(m_report_file):
@@ -378,126 +366,6 @@ def stats_whore(m_report_file):
 
 
 # ======================== MODDED PART BEGIN
-# TODO: Refactor these jobs into a new file and an easier to understand framework.
-@transaction.atomic
-def process_old_sorties_batch_aircraft_stats(backfill_log):
-    max_id = Tour.objects.aggregate(Max('id'))['id__max']
-    if max_id is None:  # Edge case: No tour yet
-        return False
-
-    tour_cutoff = max_id - RETRO_COMPUTE_FOR_LAST_HOURS
-
-    backfill_sorties = (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__isnull=True,
-                                              aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
-                        .order_by('-tour__id'))
-    nr_left = backfill_sorties.count()
-    if nr_left == 0:
-        return process_old_sorties_player_aircraft(backfill_log, tour_cutoff)
-
-    if backfill_log:
-        logger.info('[mod_stats_by_aircraft]: Retroactively computing aircraft stats. {} sorties left to process.'
-                    .format(nr_left))
-
-    for sortie in backfill_sorties[0:1000]:
-        process_aircraft_stats(sortie)
-        process_aircraft_stats(sortie, sortie.player)
-
-    if nr_left <= 1000:
-        logger.info('[mod_stats_by_aircraft]: Completed retroactively computing aircraft stats.')
-
-    return True
-
-
-def process_old_sorties_player_aircraft(backfill_log, tour_cutoff):
-    backfill_sorties = (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__player_stats_processed=False,
-                                              aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
-                        .order_by('-tour__id'))
-
-    nr_left = backfill_sorties.count()
-    if nr_left == 0:
-        return fix_corrupted_aa_accident_stats(backfill_log, tour_cutoff)
-
-    if backfill_log:
-        logger.info(
-            '[mod_stats_by_aircraft]: Retroactively computing player aircraft stats. {} sorties left to process.'
-                .format(nr_left))
-
-    for sortie in backfill_sorties[0:1000]:
-        process_aircraft_stats(sortie, sortie.player)
-
-        if sortie.is_lost_aircraft:
-            bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                           filter_type='NO_FILTER', player=None))[0]
-            filter_type = get_sortie_type(sortie)
-            has_subtype = filter_type != 'NO_FILTER'
-
-            # To update killboards of buckets with Player shotdown in this sortie,
-            # and also AA/accident shotdowns/deaths
-            process_log_entries(bucket, sortie, has_subtype, False, stop_update_primary_bucket=True)
-            bucket.save()
-
-            if has_subtype:
-                bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                               filter_type=filter_type, player=None))[0]
-                # To update killboards of buckets with Player shotdown in this sortie,
-                # and also AA/accident shotdowns/deaths
-                process_log_entries(bucket, sortie, True, True, stop_update_primary_bucket=True)
-                bucket.save()
-
-    if nr_left <= 1000:
-        logger.info('[mod_stats_by_aircraft]: Completed retroactively computing player aircraft stats.')
-
-    return True
-
-
-def fix_corrupted_aa_accident_stats(backfill_log, tour_cutoff):
-    broken_buckets = AircraftBucket.objects.filter(reset_accident_aa_stats=False)
-    for broken_bucket in broken_buckets:
-        broken_bucket.deaths_to_accident = 0
-        broken_bucket.deaths_to_aa = 0
-        broken_bucket.aircraft_lost_to_accident = 0
-        broken_bucket.aircraft_lost_to_aa = 0
-
-        broken_bucket.reset_accident_aa_stats = True
-        broken_bucket.save()
-
-    backfill_sorties = (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__fixed_aa_accident_stats=False,
-                                              aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
-                        .order_by('-tour__id'))
-
-    nr_left = backfill_sorties.count()
-    if nr_left == 0:
-        return False
-
-    if backfill_log:
-        logger.info(
-            '[mod_stats_by_aircraft]: Fixing AA/Accidents aircraft lost/deaths stats. {} sorties left to process.'
-            .format(nr_left))
-
-    for sortie in backfill_sorties:
-        buckets = [(AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                         filter_type='NO_FILTER', player=None))[0],
-                   (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                         filter_type='NO_FILTER', player=sortie.player))[0]]
-        filter_type = get_sortie_type(sortie)
-        if filter_type != 'NO_FILTER':
-            buckets.append((AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                                 filter_type=filter_type, player=None))[0])
-            buckets.append((AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                                 filter_type=filter_type, player=None))[0])
-        for bucket in buckets:
-            process_aa_accident_death(bucket, sortie)
-            bucket.save()
-
-        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.fixed_aa_accident_stats = True
-        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.save()
-
-    if nr_left <= 1000:
-        logger.info('[mod_stats_by_aircraft]: Completed fixing AA/Accidents aircraft lost/deaths stats.')
-
-    return True
-
-
 # This should be run after the other objects have been saved, otherwise it will not work.
 def process_aircraft_stats(sortie, player=None):
     if not sortie.aircraft.cls_base == "aircraft":
@@ -571,10 +439,12 @@ def process_bucket(bucket, sortie, has_subtype, is_subtype):
     else:
         sortie_augmentation.player_stats_processed = True
     sortie_augmentation.fixed_aa_accident_stats = True
+    sortie_augmentation.fixed_doubled_turret_killboards = True
     sortie_augmentation.save()
 
 
-def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_primary_bucket=False):
+def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_primary_bucket=False,
+                        compute_only_pure_killboard_stats=False):
     events = (LogEntry.objects
               .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
               .filter(Q(act_sortie_id=sortie.id),
@@ -599,11 +469,18 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
             enemies_shotdown.add(enemy_plane_sortie_pair)
         elif event.type == 'killed':
             enemies_killed.add(enemy_plane_sortie_pair)
+
+    use_pilot_kbs = bucket.player is None
+    if compute_only_pure_killboard_stats:
+        # This is True while we're recomputing corrupted killboards which don't have players.
+        # So we don't want to update deaths to turret for players.
+        use_pilot_kbs = False
     enemy_buckets, kbs = update_from_entries(bucket, enemies_damaged, enemies_killed, enemies_shotdown,
-                                             has_subtype, is_subtype, bucket.player is None,
+                                             has_subtype, is_subtype, use_pilot_kbs,
                                              update_primary_bucket=not stop_update_primary_bucket)
 
     for killboard in kbs.values():
+        killboard.reset_kills_turret_bug = True
         killboard.save()
     for enemy_bucket in enemy_buckets.values():
         enemy_bucket.update_derived_fields()
@@ -626,12 +503,12 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
     enemies_shotdown = set()
     enemies_killed = set()
 
-    process_aa_accident_death(bucket, sortie)
-    if 'ammo_breakdown' in sortie.ammo:
-        process_ammo_breakdown(bucket, sortie, is_subtype)
+    if not compute_only_pure_killboard_stats:
+        process_aa_accident_death(bucket, sortie)
+        if 'ammo_breakdown' in sortie.ammo:
+            process_ammo_breakdown(bucket, sortie, is_subtype)
 
     if not stop_update_primary_bucket:
-        bucket.reset_accident_aa_stats = True
         bucket.update_derived_fields()
         bucket.save()
 
@@ -667,11 +544,17 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
             update_primary_bucket = bucket.player is None
             if stop_update_primary_bucket:
                 update_primary_bucket = False
+            use_pilot_kbs = bucket.player is not None
+            if compute_only_pure_killboard_stats:
+                # This is True while we're recomputing corrupted killboards which don't have players.
+                # So we don't want to update deaths to turret for players.
+                use_pilot_kbs = False
+
             buckets, kbs = update_from_entries(turret_bucket, enemy_damaged, enemy_killed, enemy_shotdown,
                                                # We can't determine the subtype of the bomber
                                                # Edge case: Halberstadt. It is turreted and has a jabo variant.
                                                # This should be fixed somehow in the long run.
-                                               False, False, bucket.player is not None, update_primary_bucket)
+                                               False, False, use_pilot_kbs, update_primary_bucket)
             if not stop_update_primary_bucket:
                 turret_bucket.update_derived_fields()
                 turret_bucket.save()
@@ -680,6 +563,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
                 bucket.save()
 
             for kb in kbs.values():
+                kb.reset_kills_turret_bug = True
                 kb.save()
 
 

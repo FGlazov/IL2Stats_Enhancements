@@ -14,8 +14,8 @@ This bundle version is designed to work with version 1.2.50 of IL-2 stats.
 
 Disconnect mod version: 1.6
 Tank mod version: 3.0.1
-Stats Enhancements version : 2.1.5
-Global Aircraft Stats mod version : 1.2.5
+Stats Enhancements version : 2.1.6
+Global Aircraft Stats mod version : 1.2.8
 
 DISCLAIMER: This module is NOT (currently) retroactive, it will only split the stats of new sorties. 
 
@@ -43,7 +43,9 @@ the last 10 tours. More details inside the Global Aircraft stats readme.
 6. Inside your src/conf.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
 config parameter "modules" under [stats]. More details inside the Stats Enhancements readme.
 
-6a. If you're using the module "Adjustable Bonuses and Penalities", there are seperate variables for tank bonuses/penalties you might wish to configure:
+7. Run the update script in your /run folder after you're done with the above.
+
+8. If you're using the module "Adjustable Bonuses and Penalities", there are seperate variables for tank bonuses/penalties you might wish to configure:
 
 Config name              | Default
 -------------------------|--------
@@ -58,7 +60,6 @@ tank_penalty_shotdown    | 20%
 
 Currently "in_service" is the scenario where a tank makes it back, "in_flight" or "landed" might become relevant if the game logs change.
 
-7. Run the update script in your /run folder after you're done with the above.
 
 
 Support
