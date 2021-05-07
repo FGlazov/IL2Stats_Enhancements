@@ -24,24 +24,23 @@ class PlayerRetroCompute(BackgroundJob):
 
         process_aircraft_stats(sortie, sortie.player)
 
-        if sortie.is_lost_aircraft:
-            bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                           filter_type='NO_FILTER', player=None))[0]
-            filter_type = get_sortie_type(sortie)
-            has_subtype = filter_type != 'NO_FILTER'
+        bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                       filter_type='NO_FILTER', player=None))[0]
+        filter_type = get_sortie_type(sortie)
+        has_subtype = filter_type != 'NO_FILTER'
 
+        # To update killboards of buckets with Player shotdown in this sortie,
+        # and also AA/accident shotdowns/deaths
+        process_log_entries(bucket, sortie, has_subtype, False, stop_update_primary_bucket=True)
+        bucket.save()
+
+        if has_subtype:
+            bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
+                                                           filter_type=filter_type, player=None))[0]
             # To update killboards of buckets with Player shotdown in this sortie,
             # and also AA/accident shotdowns/deaths
-            process_log_entries(bucket, sortie, has_subtype, False, stop_update_primary_bucket=True)
+            process_log_entries(bucket, sortie, True, True, stop_update_primary_bucket=True)
             bucket.save()
-
-            if has_subtype:
-                bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
-                                                               filter_type=filter_type, player=None))[0]
-                # To update killboards of buckets with Player shotdown in this sortie,
-                # and also AA/accident shotdowns/deaths
-                process_log_entries(bucket, sortie, True, True, stop_update_primary_bucket=True)
-                bucket.save()
 
     def log_update(self, to_compute):
         return '[mod_stats_by_aircraft]: Retroactively computing player aircraft stats. {} sorties left to process.' \

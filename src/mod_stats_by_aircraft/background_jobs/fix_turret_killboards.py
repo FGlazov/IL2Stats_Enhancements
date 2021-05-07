@@ -11,7 +11,7 @@ class FixTurretKillboards(BackgroundJob):
     This job resets all the killoboards, Elos and lethalities,, and recomputes them.
     """
 
-    def reset_relevant_fields(self):
+    def reset_relevant_fields(self, tour_cutoff):
         AircraftBucket.objects.filter(player=None, reset_elo=False).update(
             elo=1500,
             pilot_kills=0,
@@ -41,7 +41,8 @@ class FixTurretKillboards(BackgroundJob):
                                                                  filter_type=filter_type, player=None))[0])
         for bucket in buckets:
             process_log_entries(bucket, sortie, has_subtype, bucket.filter_type != 'NO_FILTER',
-                                compute_only_pure_killboard_stats=True)
+                                compute_only_pure_killboard_stats=True,
+                                do_not_use_pilot_kbs=True)
 
         sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.fixed_doubled_turret_killboards = True
         sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.save()

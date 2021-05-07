@@ -600,6 +600,8 @@ class AircraftKillboard(models.Model):
     # Helper fields in order to detect corrupted data.
     # This field is only relevant for killboards without Player
     reset_kills_turret_bug = models.BooleanField(default=False, db_index=True)
+    # This field is only relevant for killboards with Player.
+    reset_player_loses = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
@@ -621,6 +623,7 @@ class SortieAugmentation(models.Model):
     player_stats_processed = models.BooleanField(default=False, db_index=True)
     fixed_aa_accident_stats = models.BooleanField(default=False, db_index=True)
     fixed_doubled_turret_killboards = models.BooleanField(default=False, db_index=True)
+    added_player_kb_losses = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

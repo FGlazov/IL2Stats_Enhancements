@@ -5,13 +5,13 @@ from ..aircraft_mod_models import AircraftBucket
 
 class FixCorruptedAaAccidents(BackgroundJob):
     """
-    A bug in the early versions of 1.2.X the retroactive compute to double accidental/aa deaths.
+    A bug in the early versions of 1.2.X caused the retroactive compute to double accidental/aa deaths.
 
     This job resets the accidental/aa deaths, and recomputes them. Note that a simple halving would not work here,
     since missions processed after the bugged update did not double accidental/aa deaths.
     """
 
-    def reset_relevant_fields(self):
+    def reset_relevant_fields(self, tour_cutoff):
         AircraftBucket.objects.filter(reset_accident_aa_stats=False).update(
             deaths_to_accident=0,
             deaths_to_aa=0,

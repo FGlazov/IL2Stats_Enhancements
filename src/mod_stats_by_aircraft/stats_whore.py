@@ -366,6 +366,7 @@ def stats_whore(m_report_file):
 
 
 # ======================== MODDED PART BEGIN
+# TODO: Refactor these functions into a new file.
 # This should be run after the other objects have been saved, otherwise it will not work.
 def process_aircraft_stats(sortie, player=None):
     if not sortie.aircraft.cls_base == "aircraft":
@@ -440,11 +441,12 @@ def process_bucket(bucket, sortie, has_subtype, is_subtype):
         sortie_augmentation.player_stats_processed = True
     sortie_augmentation.fixed_aa_accident_stats = True
     sortie_augmentation.fixed_doubled_turret_killboards = True
+    sortie_augmentation.added_player_kb_losses = True
     sortie_augmentation.save()
 
 
 def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_primary_bucket=False,
-                        compute_only_pure_killboard_stats=False):
+                        compute_only_pure_killboard_stats=False, do_not_use_pilot_kbs=False):
     events = (LogEntry.objects
               .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
               .filter(Q(act_sortie_id=sortie.id),
@@ -471,9 +473,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
             enemies_killed.add(enemy_plane_sortie_pair)
 
     use_pilot_kbs = bucket.player is None
-    if compute_only_pure_killboard_stats:
-        # This is True while we're recomputing corrupted killboards which don't have players.
-        # So we don't want to update deaths to turret for players.
+    if do_not_use_pilot_kbs:
         use_pilot_kbs = False
     enemy_buckets, kbs = update_from_entries(bucket, enemies_damaged, enemies_killed, enemies_shotdown,
                                              has_subtype, is_subtype, use_pilot_kbs,
@@ -481,6 +481,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
 
     for killboard in kbs.values():
         killboard.reset_kills_turret_bug = True
+        killboard.reset_player_loses = True
         killboard.save()
     for enemy_bucket in enemy_buckets.values():
         enemy_bucket.update_derived_fields()
@@ -545,9 +546,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
             if stop_update_primary_bucket:
                 update_primary_bucket = False
             use_pilot_kbs = bucket.player is not None
-            if compute_only_pure_killboard_stats:
-                # This is True while we're recomputing corrupted killboards which don't have players.
-                # So we don't want to update deaths to turret for players.
+            if do_not_use_pilot_kbs:
                 use_pilot_kbs = False
 
             buckets, kbs = update_from_entries(turret_bucket, enemy_damaged, enemy_killed, enemy_shotdown,
@@ -564,6 +563,7 @@ def process_log_entries(bucket, sortie, has_subtype, is_subtype, stop_update_pri
 
             for kb in kbs.values():
                 kb.reset_kills_turret_bug = True
+                kb.reset_player_loses = True
                 kb.save()
 
 
@@ -934,3 +934,4 @@ def turret_to_aircraft_bucket(turret_name, tour, player=None):
         logger.info("[mod_stats_by_aircraft] WARNING: Could not find aircraft for turret " + turret_name)
         return None
 # ======================== MODDED PART END
+

@@ -5,12 +5,14 @@ from .full_retro_compute import FullRetroCompute
 from .player_retro_compute import PlayerRetroCompute
 from .fix_corrupted_aa_accident import FixCorruptedAaAccidents
 from .fix_turret_killboards import FixTurretKillboards
+from .fix_no_deaths_player_kb import FixNoDeathsPlayerKB
 from stats.models import Tour
 from stats.logger import logger
 import config
 
 # Subclasses of BackgroundJob, see background_job.py
-jobs = [FullRetroCompute(), PlayerRetroCompute(), FixCorruptedAaAccidents(), FixTurretKillboards()]
+jobs = [FullRetroCompute(), PlayerRetroCompute(), FixCorruptedAaAccidents(), FixTurretKillboards(),
+        FixNoDeathsPlayerKB()]
 
 LOG_COUNTER = 0
 LOGGING_INTERVAL = 5  # How many batches are run before an update log is produced.
@@ -29,8 +31,12 @@ def reset_corrupted_data():
     Note this must be done before any new mission is processed, otherwise the new data would be overwritten
     if reset later after the mission is processed.
     """
+    tour_cutoff = __get_tour_cutoff()
+    if tour_cutoff is None:
+        return
+
     for job in jobs:
-        job.reset_relevant_fields()
+        job.reset_relevant_fields(tour_cutoff)
 
 
 @transaction.atomic
@@ -40,11 +46,10 @@ def run_background_jobs():
 
     @returns True if some work was done, False if there is no more work left to do.
     """
-    max_id = Tour.objects.aggregate(Max('id'))['id__max']
-    if max_id is None:  # Edge case: No tour yet
-        return False
 
-    tour_cutoff = max_id - RETRO_COMPUTE_FOR_LAST_TOURS
+    tour_cutoff = __get_tour_cutoff()
+    if tour_cutoff is None:
+        return False
 
     for job in jobs:
         work_done = __run_background_job(job, tour_cutoff)
@@ -74,3 +79,11 @@ def __run_background_job(job, tour_cutoff):
         LOG_COUNTER = 0
 
     return True
+
+
+def __get_tour_cutoff():
+    max_id = Tour.objects.aggregate(Max('id'))['id__max']
+    if max_id is None:  # Edge case: No tour yet
+        return None
+
+    return max_id - RETRO_COMPUTE_FOR_LAST_TOURS

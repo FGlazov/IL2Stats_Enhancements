@@ -37,7 +37,7 @@ class BackgroundJob:
 
         return "[mod_stats_by_aircraft]: WARNING: Programming error, unimplemented logs done method."
 
-    def reset_relevant_fields(self):
+    def reset_relevant_fields(self, tour_cutoff):
         """
         Optional method.
 
