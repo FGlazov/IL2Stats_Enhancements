@@ -60,5 +60,15 @@ Version 2.1.4
 
 - Fix bug where stats process would sometimes hang on ammo breakdown.
 
+Version 2.1.5
+
+- Fix malformed base.html
+
+Version 2.1.6
+
+- Improve performance of ironman rankings table. In previous tours, currently multiple VLifes for a single player are shown. Finding the best one for each player was taking too long.
+- Fix bug in ironman rankings table where dead VLives were being shown in current tour (your best streak was displayed on current tour and not just in previous ones).
+
 Version 2.2.0
+
 - Module Ammo Breakdown: Try to figure out which ammo caused damage in a "damage/damaged" line and show it. 
