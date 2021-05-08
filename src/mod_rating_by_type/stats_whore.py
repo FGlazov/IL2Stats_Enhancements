@@ -2,7 +2,7 @@ from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
 from stats.models import Sortie
-from .variant_utils import is_jabo, is_fighter
+from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
@@ -123,15 +123,8 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 
     new_sortie.save()
 
-    cls = 'placeholder'
-    if is_fighter(new_sortie):
-        cls = 'light'
-    elif new_sortie.aircraft.cls == "aircraft_medium" or is_jabo(new_sortie):
-        cls = 'medium'
-    elif new_sortie.aircraft.cls == "aircraft_heavy":
-        cls = 'heavy'
-
     # ======================== MODDED PART BEGIN
+    cls = decide_adjusted_cls(new_sortie, touch_db=True)
     SortieAugmentation(sortie=new_sortie, cls=cls).save()
 
     new_sortie.takeoff_count = 0
@@ -259,16 +252,17 @@ def update_general(player, new_sortie):
 
     try:
         # ======================== MODDED PART BEGIN
-        if is_fighter(new_sortie):
+        cls = decide_adjusted_cls(new_sortie)
+        if cls == 'light':
             player.score_light += new_sortie.score
             player.flight_time_light += flight_time_add
             player.relive_light += relive_add
-        elif new_sortie.aircraft.cls == "aircraft_medium" or is_jabo(new_sortie):
+        elif cls == 'medium':
             # ======================== MODDED PART END
             player.score_medium += new_sortie.score
             player.flight_time_medium += flight_time_add
             player.relive_medium += relive_add
-        elif new_sortie.aircraft.cls == "aircraft_heavy":
+        elif cls == "heavy":
             player.score_heavy += new_sortie.score
             player.flight_time_heavy += flight_time_add
             player.relive_heavy += relive_add
