@@ -7,6 +7,10 @@
 {% endblock nav_tabs %}
 
 {% block content %}
+
+<link href="{% static 'css/personas.css' %}" rel="stylesheet">
+
+
     <section id="player">
         <div class="wrapper">
             <div class="profile_name">
@@ -61,7 +65,25 @@
                     </div>
                 </div>
             </div>
+            <div id="container" class="personas">
+                <div class="persona selected">
+                    All
+                    <img src="{% static 'img/icons/personas/all-persona.png' %}">
+                </div>
+                <div class="persona">
+                    Fighter
+                    <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
+                </div>
+                <div class="persona">
+                    Attacker
+                    <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
+                </div>
+                <div class="persona">
+                    Bomber
+                    <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
+                </div>
 
+            </div>
             <div class="profile_main_stats">
                 <div class="item">
                     <img src="{% static 'img/icons/big/ak.png' %}" width="" height="" title="" alt="">

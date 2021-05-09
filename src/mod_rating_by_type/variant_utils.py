@@ -57,8 +57,6 @@ def decide_adjusted_cls(sortie, touch_db=False):
     # Here we use the recent history of the player to decide.
     # E.g. if the player recently did a lot of attacker-as-fighter sorties, count it as 'light'.
     result = player_augmentation.decide_ambiguous_fighter_attacker_sortie()
-    if touch_db:
-       print("AMBIG decision: ", result, sortie.ak_total+ sortie.ak_assist, sortie.gk_total)
     if result is None:
         return 'medium'
     return result

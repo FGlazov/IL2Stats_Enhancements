@@ -1,0 +1,26 @@
+.persona{
+    display: inline-block;
+    text-align: center;
+    margin: 30px;
+    border: solid grey;
+}
+.persona > img{
+    display: block;
+}
+.selected {
+    border: solid #fdf1dc;
+    background: #a8a8a8;
+    background-color: rgb(168, 168, 168);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: none;
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+}
+
+.personas {
+    text-align: center;
+}

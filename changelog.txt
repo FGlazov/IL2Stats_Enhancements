@@ -72,4 +72,4 @@ Version 2.1.6
 Version 2.2.0
 
 - Module Ammo Breakdown: Try to figure out which ammo caused damage in a "damage/damaged" line and show it. 
-- Module SplitRankings: Now consider some attacker aircraft sorties towards fighter rating. Those sorties with more air kills and air assist together than ground kills are counted towards fighter rating.
+- Module SplitRankings: Now consider some attacker aircraft sorties towards fighter rating. Those sorties with more air kills and air assist together than ground kills are counted towards fighter rating. Recent history of the player is taken into account in case of ambiguous sorties.
