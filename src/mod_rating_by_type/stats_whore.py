@@ -1,13 +1,16 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie
+from stats.models import Sortie, KillboardPvP
 from .variant_utils import decide_adjusted_cls
-from .models import SortieAugmentation
+from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
-                             MODULE_BAILOUT_ACCURACY_WORKAROUND)
+                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS)
 from stats import stats_whore as old_stats_whore
+
+from stats.rewards import reward_sortie, reward_vlife, reward_mission
+from stats.stats_whore import update_sortie
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
@@ -130,6 +133,10 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     new_sortie.takeoff_count = 0
     if hasattr(sortie.aircraft, 'takeoff_count'):
         new_sortie.takeoff_count = sortie.aircraft.takeoff_count
+
+    # TODO: Only do this if there is no retroactive compute going.
+    if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
+        increment_subtype_persona(new_sortie, cls)
     # ======================== MODDED PART END
 
     return new_sortie
@@ -273,7 +280,7 @@ def update_general(player, new_sortie):
 def update_ammo(sortie, player):
     # ======================== MODDED PART BEGIN
     if module_active(MODULE_REARM_ACCURACY_WORKAROUND):
-        if sortie.takeoff_count > 1:
+        if hasattr(sortie, 'takeoff_count') and sortie.takeoff_count > 1:
             return
 
     if module_active(MODULE_BAILOUT_ACCURACY_WORKAROUND):
@@ -293,3 +300,72 @@ def update_ammo(sortie, player):
     if sortie.ammo['used_shells'] >= sortie.ammo['hit_shells']:
         player.ammo['used_shells'] += sortie.ammo['used_shells']
         player.ammo['hit_shells'] += sortie.ammo['hit_shells']
+
+
+# Monkey patched into update_killboard pvp.
+def update_killboard_pvp(player, opponent, players_killboard):
+    _update_killboard_pvp(player, opponent, players_killboard)
+    pass
+
+
+def _update_killboard_pvp(player, opponent, players_killboard):
+    # ключ это tuple из ID'шников двух игроков - отсортированные в порядке возрастания
+    kb_key = tuple(sorted((player.id, opponent.id)))
+    player_killboard = players_killboard.setdefault(
+        kb_key,
+        KillboardPvP.objects.get_or_create(player_1_id=kb_key[0], player_2_id=kb_key[1])[0])
+    player_killboard.add_won(player=player)
+
+
+# ======================== MODDED PART BEGIN
+def increment_subtype_persona(sortie, cls):
+    # TODO: At some point also calculate the killboard.
+    #   At the moment there seems to be no way to do it outside of monkey patching stats_whore or retroactive computing.
+    #   Perhaps there is a nicer way to calculate it...
+    player = FilteredPlayer.objects.get_or_create(
+        profile_id=sortie.player.profile.id,
+        tour_id=sortie.tour.id,
+        type='pilot',
+        cls=cls,
+    )[0]
+    player.save()
+
+    _profile_id = sortie.profile.id
+    mission = sortie.mission
+
+    player_mission = FilteredPlayerMission.objects.get_or_create(
+        profile_id=_profile_id,
+        player=player,
+        mission_id=mission.id,
+        cls=cls
+    )[0]
+    player_aircraft = FilteredPlayerAircraft.objects.get_or_create(
+        profile_id=_profile_id,
+        player=player,
+        aircraft_id=sortie.aircraft.id,
+        cls=cls
+    )[0]
+    vlife = FilteredVLife.objects.get_or_create(
+        profile_id=_profile_id,
+        player=player,
+        tour_id=sortie.tour.id,
+        relive=0,
+        cls=cls
+    )[0]
+
+    # если случилась победа по очкам - требуется обновить бонусы
+    if mission.win_reason == 'score':
+        update_bonus_score(new_sortie=sortie)
+
+    update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife)
+
+    player_mission.save()
+    player_aircraft.save()
+    vlife.save()
+    sortie.save()
+
+    reward_sortie(sortie=sortie)
+    reward_vlife(vlife)
+    reward_mission(player_mission=player_mission)
+
+# ======================== MODDED PART END
