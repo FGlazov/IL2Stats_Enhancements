@@ -37,6 +37,9 @@ class ModConfig(AppConfig):
         original_views.ironman_stats = new_views.ironman_stats
         original_views.pilot_vlife = new_views.pilot_vlife
         original_views.pilot_sortie_log = new_views.pilot_sortie_log
+        original_views.pilot_sorties = new_views.pilot_sorties
+        original_views.pilot_vlifes = new_views.pilot_vlifes
+        original_views.pilot_awards = new_views.pilot_awards
 
         from . import report as new_report
         from mission_report.report import MissionReport, Object

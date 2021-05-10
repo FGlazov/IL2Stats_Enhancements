@@ -8,13 +8,13 @@ from django.utils import timezone
 from mission_report.constants import Coalition
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
-                          VLife)
+                          VLife, Reward)
 from stats.views import *
 from stats.views import _get_rating_position, _get_squad
 
 from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
-from .models import FilteredPlayer, FilteredPlayerAircraft
+from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -130,12 +130,7 @@ def pilot(request, profile_id, nickname=None):
         rating_light_position = rating_medium_position = rating_heavy_position = None
         page_light_position = page_medium_position = page_heavy_position = None
 
-    light_player_exists = FilteredPlayer.objects.filter(
-        cls='light', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
-    medium_player_exists = FilteredPlayer.objects.filter(
-        cls='medium', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
-    heavy_player_exists = FilteredPlayer.objects.filter(
-        cls='heavy', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, tour_id)
 
     return render(request, 'pilot.html', {
         'fav_aircraft': fav_aircraft,
@@ -154,6 +149,16 @@ def pilot(request, profile_id, nickname=None):
         'heavy_player_exists': heavy_player_exists,
         'cls': cls,
     })
+
+
+def __find_filtered_players(profile_id, tour_id):
+    light_player_exists = FilteredPlayer.objects.filter(
+        cls='light', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    medium_player_exists = FilteredPlayer.objects.filter(
+        cls='medium', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    heavy_player_exists = FilteredPlayer.objects.filter(
+        cls='heavy', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    return light_player_exists, medium_player_exists, heavy_player_exists
 
 
 def __get_player(profile_id, request, tour_id, cls):
@@ -206,6 +211,108 @@ def __get_fav_aircraft(player):
     except IndexError:
         fav_aircraft = None
     return fav_aircraft
+
+
+def pilot_sorties(request, profile_id, nickname=None):
+    cls = request.GET.get('cls', 'all')
+    if cls != 'all' and not module_active(MODULE_SPLIT_RANKINGS):
+        raise Http404("Server does not have split rankings.")
+
+    try:
+        base_player = (Player.objects.select_related('profile', 'tour')
+                       .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
+        player = base_player
+    except Player.DoesNotExist:
+        raise Http404
+
+    if cls != 'all':
+        player, profile = __get_player(profile_id, request, base_player.tour_id, cls)
+
+    if base_player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=base_player.nickname)
+    if base_player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'base_player': base_player})
+    sorties = (Sortie.objects.select_related('aircraft', 'mission')
+               .filter(player_id=base_player.id)
+               .exclude(status='not_takeoff')
+               .order_by('-id'))
+    if cls != 'all':
+        sorties = sorties.filter(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)
+
+    page = request.GET.get('page', 1)
+    sorties = Paginator(sorties, ITEMS_PER_PAGE).page(page)
+    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
+
+    return render(request, 'pilot_sorties.html', {
+        'player': player,
+        'sorties': sorties,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'light_player_exists': light_player_exists,
+        'medium_player_exists': medium_player_exists,
+        'heavy_player_exists': heavy_player_exists,
+        'cls': cls,
+    })
+
+
+def pilot_vlifes(request, profile_id, nickname=None):
+    cls = request.GET.get('cls', 'all')
+    player, profile = __get_player(profile_id, request, request.tour.id, cls)
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+    if cls == 'all':
+        vlife_class = VLife
+    else:
+        vlife_class = FilteredVLife
+
+    vlifes = vlife_class.objects.filter(player_id=player.id).exclude(sorties_total=0).order_by('-id')
+    if cls != 'all':
+        vlifes.filter(cls=cls)
+
+    page = request.GET.get('page', 1)
+    vlifes = Paginator(vlifes, ITEMS_PER_PAGE).page(page)
+
+    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
+
+    return render(request, 'pilot_vlifes.html', {
+        'player': player,
+        'vlifes': vlifes,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'light_player_exists': light_player_exists,
+        'medium_player_exists': medium_player_exists,
+        'heavy_player_exists': heavy_player_exists,
+        'cls': cls,
+    })
+
+
+def pilot_awards(request, profile_id, nickname=None):
+    cls = request.GET.get('cls', 'all')
+    player, profile = __get_player(profile_id, request, request.tour.id, cls)
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    if cls == 'all':
+        reward_class = Reward
+    else:
+        reward_class = FilteredReward
+
+    rewards = reward_class.objects.select_related('award').filter(player_id=player.id).order_by('award__order', '-date')
+    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
+
+    return render(request, 'pilot_awards.html', {
+        'player': player,
+        'rewards': rewards,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'light_player_exists': light_player_exists,
+        'medium_player_exists': medium_player_exists,
+        'heavy_player_exists': heavy_player_exists,
+        'cls': cls,
+    })
 
 
 def __top_recent_players(tour_id, by_mission, cls=None):
@@ -551,10 +658,20 @@ def ironman_stats(request):
 
 
 def pilot_vlife(request, vlife_id):
+    # TODO: Render that it is a fighter/attacker/bomber VLife
+
+    cls = request.GET.get('cls', 'all')
+
+    if cls == 'all':
+        vlife_class = VLife
+    else:
+        vlife_class = FilteredVLife
+
     try:
-        vlife = (VLife.objects
+        vlife = (vlife_class.objects
                  .select_related('player', 'player__profile', 'player__tour')
                  .get(id=vlife_id, player__type='pilot'))
+
     except VLife.DoesNotExist:
         raise Http404
     return render(request, 'pilot_vlife.html', {
