@@ -130,6 +130,13 @@ def pilot(request, profile_id, nickname=None):
         rating_light_position = rating_medium_position = rating_heavy_position = None
         page_light_position = page_medium_position = page_heavy_position = None
 
+    light_player_exists = FilteredPlayer.objects.filter(
+        cls='light', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    medium_player_exists = FilteredPlayer.objects.filter(
+        cls='medium', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+    heavy_player_exists = FilteredPlayer.objects.filter(
+        cls='heavy', tour_id=tour_id, profile_id=profile_id, type='pilot').exists()
+
     return render(request, 'pilot.html', {
         'fav_aircraft': fav_aircraft,
         'player': player,
@@ -142,6 +149,10 @@ def pilot(request, profile_id, nickname=None):
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'light_player_exists': light_player_exists,
+        'medium_player_exists': medium_player_exists,
+        'heavy_player_exists': heavy_player_exists,
+        'cls': cls,
     })
 
 
@@ -169,7 +180,7 @@ def __get_player(profile_id, request, tour_id, cls):
     else:
         try:
             query = (player_class.objects.select_related('profile', 'tour')
-                .filter(profile_id=profile_id, type='pilot'))
+                     .filter(profile_id=profile_id, type='pilot'))
             if cls != 'all':
                 query = query.filter(cls=cls)
             player = query.order_by('-id')[0]
