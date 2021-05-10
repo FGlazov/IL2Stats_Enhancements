@@ -56,3 +56,31 @@ class ModConfig(AppConfig):
         from stats.management.commands import import_csv_data as old_csv_data
         from . import import_csv_data as new_csv_data
         old_csv_data.Command.handle = new_csv_data.Command.handle
+
+        from stats.models import Player
+        from .models import FilteredPlayer
+
+        Player.get_base_profile_url = FilteredPlayer.get_base_profile_url
+        Player.get_light_profile_url = FilteredPlayer.get_light_profile_url
+        Player.get_medium_profile_url = FilteredPlayer.get_medium_profile_url
+        Player.get_heavy_profile_url = FilteredPlayer.get_heavy_profile_url
+
+        Player.get_base_sorties_url = FilteredPlayer.get_base_sorties_url
+        Player.get_light_sorties_url = FilteredPlayer.get_light_sorties_url
+        Player.get_medium_sorties_url = FilteredPlayer.get_medium_sorties_url
+        Player.get_heavy_sorties_url = FilteredPlayer.get_heavy_sorties_url
+
+        Player.get_base_vlifes_url = FilteredPlayer.get_base_vlifes_url
+        Player.get_light_vlifes_url = FilteredPlayer.get_light_vlifes_url
+        Player.get_medium_vlifes_url = FilteredPlayer.get_medium_vlifes_url
+        Player.get_heavy_vlifes_url = FilteredPlayer.get_heavy_vlifes_url
+
+        Player.get_base_awards_url = FilteredPlayer.get_base_awards_url
+        Player.get_light_awards_url = FilteredPlayer.get_light_awards_url
+        Player.get_medium_awards_url = FilteredPlayer.get_medium_awards_url
+        Player.get_heavy_awards_url = FilteredPlayer.get_heavy_awards_url
+
+        Player.get_base_killboard_url = FilteredPlayer.get_base_killboard_url
+        Player.get_light_killboard_url = FilteredPlayer.get_light_killboard_url
+        Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
+        Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url

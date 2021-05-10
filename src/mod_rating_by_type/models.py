@@ -13,6 +13,40 @@ from stats.sql import get_position_by_field
 from django.urls import reverse
 
 
+def get_profile_url(profile_id, nickname, tour_id, cls):
+    url = '{url}?tour={tour_id}&cls={cls}'.format(url=reverse('stats:pilot', args=[profile_id, nickname]),
+                                                  tour_id=tour_id, cls=cls)
+    return url
+
+
+def get_sorties_url(profile_id, nickname, tour_id, cls):
+    url = '{url}?tour={tour_id}&cls={cls}'.format(
+        url=reverse('stats:pilot_sorties', args=[profile_id, nickname]),
+        tour_id=tour_id, cls=cls)
+    return url
+
+
+def get_vlifes_url(profile_id, nickname, tour_id, cls):
+    url = '{url}?tour={tour_id}&cls={cls}'.format(
+        url=reverse('stats:pilot_vlifes', args=[profile_id, nickname]),
+        tour_id=tour_id, cls=cls)
+    return url
+
+
+def get_awards_url(profile_id, nickname, tour_id, cls):
+    url = '{url}?tour={tour_id}&cls={cls}'.format(
+        url=reverse('stats:pilot_awards', args=[profile_id, nickname]),
+        tour_id=tour_id, cls=cls)
+    return url
+
+
+def get_killboard_url(profile_id, nickname, tour_id, cls):
+    url = '{url}?tour={tour_id}&cls={cls}'.format(
+        url=reverse('stats:pilot_killboard', args=[profile_id, nickname]),
+        tour_id=tour_id, cls=cls)
+    return url
+
+
 class SortieAugmentation(models.Model):
     """
     Additional fields to Sortie objects used by this mod.
@@ -220,29 +254,81 @@ class FilteredPlayer(models.Model):
         super().save(*args, **kwargs)
 
     def get_profile_url(self):
-        url = '{url}?tour={tour_id}'.format(url=reverse('stats:pilot', args=[self.profile_id, self.nickname]),
-                                            tour_id=self.tour_id)
-        return url
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_base_profile_url(self):
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, 'all   ')
+
+    def get_light_profile_url(self):
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, 'light')
+
+    def get_medium_profile_url(self):
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, 'medium')
+
+    def get_heavy_profile_url(self):
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, 'heavy')
 
     def get_sorties_url(self):
-        url = '{url}?tour={tour_id}'.format(url=reverse('stats:pilot_sorties', args=[self.profile_id, self.nickname]),
-                                            tour_id=self.tour_id)
-        return url
+        return get_sorties_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_base_sorties_url(self):
+        return get_sorties_url(self.profile_id, self.nickname, self.tour_id, 'all')
+
+    def get_light_sorties_url(self):
+        return get_sorties_url(self.profile_id, self.nickname, self.tour_id, 'light')
+
+    def get_medium_sorties_url(self):
+        return get_sorties_url(self.profile_id, self.nickname, self.tour_id, 'medium')
+
+    def get_heavy_sorties_url(self):
+        return get_sorties_url(self.profile_id, self.nickname, self.tour_id, 'heavy')
 
     def get_vlifes_url(self):
-        url = '{url}?tour={tour_id}'.format(url=reverse('stats:pilot_vlifes', args=[self.profile_id, self.nickname]),
-                                            tour_id=self.tour_id)
-        return url
+        return get_vlifes_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_base_vlifes_url(self):
+        return get_vlifes_url(self.profile_id, self.nickname, self.tour_id, 'all')
+
+    def get_light_vlifes_url(self):
+        return get_vlifes_url(self.profile_id, self.nickname, self.tour_id, 'light')
+
+    def get_medium_vlifes_url(self):
+        return get_vlifes_url(self.profile_id, self.nickname, self.tour_id, 'medium')
+
+    def get_heavy_vlifes_url(self):
+        return get_vlifes_url(self.profile_id, self.nickname, self.tour_id, 'heavy')
 
     def get_awards_url(self):
-        url = '{url}?tour={tour_id}'.format(url=reverse('stats:pilot_awards', args=[self.profile_id, self.nickname]),
-                                            tour_id=self.tour_id)
-        return url
+        return get_awards_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_base_awards_url(self):
+        return get_awards_url(self.profile_id, self.nickname, self.tour_id, 'all')
+
+    def get_light_awards_url(self):
+        return get_awards_url(self.profile_id, self.nickname, self.tour_id, 'light')
+
+    def get_medium_awards_url(self):
+        return get_awards_url(self.profile_id, self.nickname, self.tour_id, 'medium')
+
+    def get_heavy_awards_url(self):
+        return get_awards_url(self.profile_id, self.nickname, self.tour_id, 'heavy')
 
     def get_killboard_url(self):
-        url = '{url}?tour={tour_id}'.format(url=reverse('stats:pilot_killboard', args=[self.profile_id, self.nickname]),
-                                            tour_id=self.tour_id)
-        return url
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_base_killboard_url(self):
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
+    def get_light_killboard_url(self):
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, 'light')
+
+    def get_medium_killboard_url(self):
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, 'medium')
+
+    def get_heavy_killboard_url(self):
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, 'heavy')
+
+    # TODO: Get Aircraft overview working here as well.
 
     def get_position_by_field(self, field='rating'):
         return get_position_by_field(player=self, field=field)

@@ -71,40 +71,56 @@
                 {% if cls == 'all' %}
                 <div class="persona selected">
                 {% else %}
-                <div class="persona">
+                <a href="{{ player.get_base_profile_url }}" >
+                <div class="persona" >
                 {% endif %}
                     {% trans 'All' context 'persona' %}
                     <img src="{% static 'img/icons/personas/all-persona.png' %}">
                 </div>
+                {% if cls != 'all' %}
+                </a>
+                {% endif %}
                 {% if light_player_exists %}
                 {% if cls == 'light' %}
                 <div class="persona selected">
                 {% else %}
-                <div class="persona">
+                <a href="{{ player.get_light_profile_url }}" >
+                <div class="persona" >
                 {% endif %}
                     {% trans 'Fighter' %}
                     <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
                 </div>
                 {% endif %}
+                {% if cls != 'light' %}
+                </a>
+                {% endif %}
                 {% if medium_player_exists %}
                 {% if cls == 'medium' %}
                 <div class="persona selected">
                 {% else %}
-                <div class="persona">
+                <a href="{{ player.get_medium_profile_url }}" >
+                <div class="persona" >
                 {% endif %}
                     {% trans 'Attacker' %}
                     <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
                 </div>
                 {% endif %}
+                {% if cls != 'medium' %}
+                </a>
+                {% endif %}
                 {% if heavy_player_exists %}
                 {% if cls == 'heavy' %}
                 <div class="persona selected">
                 {% else %}
-                <div class="persona">
+                <a href="{{ player.get_heavy_profile_url }}" >
+                <div class="persona" >
                 {% endif %}
                     {% trans 'Bomber' %}
                     <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
                 </div>
+                {% endif %}
+                {% if cls != 'heavy' %}
+                </a>
                 {% endif %}
             </div>
             {% endif %}
@@ -151,7 +167,7 @@
                         {% endif %}
                     </div>
                 </div>
-                {% if split_rankings %}
+                {% if split_rankings and cls == 'all' %}
                 <div class="item">
                     <img src="{% static 'img/icons/big/rating_light.png' %}" width="" height="" title="" alt="">
                     <div class="text">{% trans 'Position Fighter Rating' %}</div>
