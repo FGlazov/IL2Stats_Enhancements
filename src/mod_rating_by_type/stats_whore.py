@@ -303,12 +303,9 @@ def update_ammo(sortie, player):
 
 
 # Monkey patched into update_sortie of stats_whore.
-def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
+def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=None):
     # ======================== MODDED PART BEGIN
-    if GLOBAL_PLAYER is not None:
-        # Hack to pass filtered player into this function.
-        player = GLOBAL_PLAYER
-    else:
+    if player is None:
         player = new_sortie.player
     # ======================== MODDED PART END
 
@@ -432,12 +429,8 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
         update_status(new_sortie=new_sortie, player=player.squad)
 
 
-GLOBAL_PLAYER = None
-
 # ======================== MODDED PART BEGIN
 def increment_subtype_persona(sortie, cls):
-    global GLOBAL_PLAYER
-
     # TODO: At some point also calculate the killboard.
     #   At the moment there seems to be no way to do it outside of monkey patching stats_whore or retroactive computing.
     #   Perhaps there is a nicer way to calculate it...
@@ -475,9 +468,8 @@ def increment_subtype_persona(sortie, cls):
     if mission.win_reason == 'score':
         update_bonus_score(new_sortie=sortie)
 
-    GLOBAL_PLAYER = player # A hack to pass player into update_sortie.
-    update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife)
-    GLOBAL_PLAYER = None
+    update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife,
+                  player=player)
 
     player.save()
     player_mission.save()
