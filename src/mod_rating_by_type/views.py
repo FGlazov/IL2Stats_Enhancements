@@ -14,6 +14,7 @@ from stats.views import _get_rating_position, _get_squad
 
 from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
+from .models import FilteredPlayer, FilteredPlayerAircraft
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -103,41 +104,31 @@ def pilot_rankings(request):
 
 def pilot(request, profile_id, nickname=None):
     tour_id = request.GET.get('tour')
-    if tour_id:
-        try:
-            player = (Player.objects.select_related('profile', 'tour')
-                      .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
-        except Player.DoesNotExist:
-            try:
-                profile = Profile.objects.get(id=profile_id)
-                return render(request, 'pilot_not_exist.html', {'profile': profile})
-            except Profile.DoesNotExist:
-                raise Http404
-    else:
-        try:
-            player = (Player.objects.select_related('profile', 'tour')
-                .filter(profile_id=profile_id, type='pilot').order_by('-id')[0])
-            request.tour = player.tour
-        except IndexError:
-            raise Http404
+    cls = request.GET.get('cls', 'all')
+    if cls != 'all' and not module_active(MODULE_SPLIT_RANKINGS):
+        raise Http404("Server does not have split rankings.")
 
+    player, profile = __get_player(profile_id, request, tour_id, cls)
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
         return render(request, 'pilot_hide.html', {'player': player})
 
-    try:
-        fav_aircraft = (PlayerAircraft.objects
-            .select_related('aircraft')
-            .filter(player_id=player.id, aircraft__cls_base='aircraft')
-            .order_by('-sorties_total')[0])
-    except IndexError:
-        fav_aircraft = None
+    fav_aircraft = __get_fav_aircraft(player)
 
-    rating_position, page_position = _get_rating_position(item=player)
-    rating_light_position, page_light_position = _get_rating_position(item=player, field='rating_light')
-    rating_medium_position, page_medium_position = _get_rating_position(item=player, field='rating_medium')
-    rating_heavy_position, page_heavy_position = _get_rating_position(item=player, field='rating_heavy')
+    if cls == 'all':
+        rating_position, page_position = _get_rating_position(item=player)
+        rating_light_position, page_light_position = _get_rating_position(item=player, field='rating_light')
+        rating_medium_position, page_medium_position = _get_rating_position(item=player, field='rating_medium')
+        rating_heavy_position, page_heavy_position = _get_rating_position(item=player, field='rating_heavy')
+    else:
+        # TODO: Implement this
+        rating_position = 1
+        page_position = 1
+        rating_light_position = rating_medium_position = rating_heavy_position = None
+        page_light_position = page_medium_position = page_heavy_position = None
 
     return render(request, 'pilot.html', {
         'fav_aircraft': fav_aircraft,
@@ -152,6 +143,58 @@ def pilot(request, profile_id, nickname=None):
         'page_heavy_position': page_heavy_position,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
     })
+
+
+def __get_player(profile_id, request, tour_id, cls):
+    if cls == 'all':
+        player_class = Player
+    else:
+        player_class = FilteredPlayer
+
+    profile = None
+    if tour_id:
+        try:
+            query = player_class.objects.select_related('profile', 'tour')
+            if cls != 'all':
+                query = query.filter(cls=cls)
+            player = query.get(profile_id=profile_id, type='pilot', tour_id=request.tour.id)
+
+        except player_class.DoesNotExist:
+            try:
+                profile = Profile.objects.get(id=profile_id)
+                player = None
+            except Profile.DoesNotExist:
+                raise Http404
+
+    else:
+        try:
+            query = (player_class.objects.select_related('profile', 'tour')
+                .filter(profile_id=profile_id, type='pilot'))
+            if cls != 'all':
+                query = query.filter(cls=cls)
+            player = query.order_by('-id')[0]
+
+            request.tour = player.tour
+        except IndexError:
+            raise Http404
+    return player, profile
+
+
+def __get_fav_aircraft(player):
+    if isinstance(player, Player):
+        aircraft_class = PlayerAircraft
+    else:
+        aircraft_class = FilteredPlayerAircraft
+    try:
+        query = (aircraft_class.objects
+                 .select_related('aircraft')
+                 .filter(player_id=player.id, aircraft__cls_base='aircraft'))
+        if hasattr(player, 'cls'):
+            query = query.filter(cls=player.cls)
+        fav_aircraft = query.order_by('-sorties_total')[0]
+    except IndexError:
+        fav_aircraft = None
+    return fav_aircraft
 
 
 def __top_recent_players(tour_id, by_mission, cls=None):

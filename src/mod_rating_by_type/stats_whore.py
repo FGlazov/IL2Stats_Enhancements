@@ -10,7 +10,7 @@ from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MO
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
-from stats.stats_whore import update_sortie
+from stats.stats_whore import update_killboard, update_status
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
@@ -302,23 +302,142 @@ def update_ammo(sortie, player):
         player.ammo['hit_shells'] += sortie.ammo['hit_shells']
 
 
-# Monkey patched into update_killboard pvp.
-def update_killboard_pvp(player, opponent, players_killboard):
-    _update_killboard_pvp(player, opponent, players_killboard)
-    pass
+# Monkey patched into update_sortie of stats_whore.
+def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
+    # ======================== MODDED PART BEGIN
+    if GLOBAL_PLAYER is not None:
+        # Hack to pass filtered player into this function.
+        player = GLOBAL_PLAYER
+    else:
+        player = new_sortie.player
+    # ======================== MODDED PART END
+
+    if not player.date_first_sortie:
+        player.date_first_sortie = new_sortie.date_start
+        player.date_last_combat = new_sortie.date_start
+    player.date_last_sortie = new_sortie.date_start
+
+    if not vlife.date_first_sortie:
+        vlife.date_first_sortie = new_sortie.date_start
+        vlife.date_last_combat = new_sortie.date_start
+    vlife.date_last_sortie = new_sortie.date_start
+
+    # если вылет был окончен диско - результаты вылета не добавляться к общему профилю
+    if new_sortie.is_disco:
+        player.disco += 1
+        player_mission.disco += 1
+        player_aircraft.disco += 1
+        vlife.disco += 1
+        return
+    # если вылет игнорируется по каким либо причинам
+    elif new_sortie.is_ignored:
+        return
+
+    # если в вылете было что-то уничтожено - считаем его боевым
+    if new_sortie.score:
+        player.date_last_combat = new_sortie.date_start
+        vlife.date_last_combat = new_sortie.date_start
+
+    vlife.status = new_sortie.status
+    vlife.aircraft_status = new_sortie.aircraft_status
+    vlife.bot_status = new_sortie.bot_status
+
+    # TODO проверить как это отработает для вылетов стрелков
+    if not new_sortie.is_not_takeoff:
+        player.sorties_coal[new_sortie.coalition] += 1
+        player_mission.sorties_coal[new_sortie.coalition] += 1
+        vlife.sorties_coal[new_sortie.coalition] += 1
+
+        if player.squad:
+            player.squad.sorties_coal[new_sortie.coalition] += 1
+
+        if new_sortie.aircraft.cls_base == 'aircraft':
+            if new_sortie.aircraft.cls in player.sorties_cls:
+                player.sorties_cls[new_sortie.aircraft.cls] += 1
+            else:
+                player.sorties_cls[new_sortie.aircraft.cls] = 1
+
+            if new_sortie.aircraft.cls in vlife.sorties_cls:
+                vlife.sorties_cls[new_sortie.aircraft.cls] += 1
+            else:
+                vlife.sorties_cls[new_sortie.aircraft.cls] = 1
+
+            if player.squad:
+                if new_sortie.aircraft.cls in player.squad.sorties_cls:
+                    player.squad.sorties_cls[new_sortie.aircraft.cls] += 1
+                else:
+                    player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
+
+    update_general(player=player, new_sortie=new_sortie)
+    update_general(player=player_mission, new_sortie=new_sortie)
+    update_general(player=player_aircraft, new_sortie=new_sortie)
+    update_general(player=vlife, new_sortie=new_sortie)
+    if player.squad:
+        update_general(player=player.squad, new_sortie=new_sortie)
+
+    update_ammo(sortie=new_sortie, player=player)
+    update_ammo(sortie=new_sortie, player=player_mission)
+    update_ammo(sortie=new_sortie, player=player_aircraft)
+    update_ammo(sortie=new_sortie, player=vlife)
+
+    update_killboard(player=player, killboard_pvp=new_sortie.killboard_pvp,
+                     killboard_pve=new_sortie.killboard_pve)
+    update_killboard(player=player_mission, killboard_pvp=new_sortie.killboard_pvp,
+                     killboard_pve=new_sortie.killboard_pve)
+    update_killboard(player=player_aircraft, killboard_pvp=new_sortie.killboard_pvp,
+                     killboard_pve=new_sortie.killboard_pve)
+    update_killboard(player=vlife, killboard_pvp=new_sortie.killboard_pvp,
+                     killboard_pve=new_sortie.killboard_pve)
+
+    player.streak_current = vlife.ak_total
+    player.streak_max = max(player.streak_max, player.streak_current)
+    player.streak_ground_current = vlife.gk_total
+    player.streak_ground_max = max(player.streak_ground_max, player.streak_ground_current)
+    player.score_streak_current = vlife.score
+    player.score_streak_current_heavy = vlife.score_heavy
+    player.score_streak_current_medium = vlife.score_medium
+    player.score_streak_current_light = vlife.score_light
+    player.score_streak_max = max(player.score_streak_max, player.score_streak_current)
+    player.score_streak_max_heavy = max(player.score_streak_max_heavy, player.score_streak_current_heavy)
+    player.score_streak_max_medium = max(player.score_streak_max_medium, player.score_streak_current_medium)
+    player.score_streak_max_light = max(player.score_streak_max_light, player.score_streak_current_light)
+
+    player.sorties_streak_current = vlife.sorties_total
+    player.sorties_streak_max = max(player.sorties_streak_max, player.sorties_streak_current)
+    player.ft_streak_current = vlife.flight_time
+    player.ft_streak_max = max(player.ft_streak_max, player.ft_streak_current)
+
+    if new_sortie.is_relive:
+        player.streak_current = 0
+        player.streak_ground_current = 0
+        player.score_streak_current = 0
+        player.score_streak_current_heavy = 0
+        player.score_streak_current_medium = 0
+        player.score_streak_current_light = 0
+        player.sorties_streak_current = 0
+        player.ft_streak_current = 0
+        player.lost_aircraft_current = 0
+    else:
+        if new_sortie.is_lost_aircraft:
+            player.lost_aircraft_current += 1
+
+    player.sortie_max_ak = max(player.sortie_max_ak, new_sortie.ak_total)
+    player.sortie_max_gk = max(player.sortie_max_gk, new_sortie.gk_total)
+
+    update_status(new_sortie=new_sortie, player=player)
+    update_status(new_sortie=new_sortie, player=player_mission)
+    update_status(new_sortie=new_sortie, player=player_aircraft)
+    update_status(new_sortie=new_sortie, player=vlife)
+    if player.squad:
+        update_status(new_sortie=new_sortie, player=player.squad)
 
 
-def _update_killboard_pvp(player, opponent, players_killboard):
-    # ключ это tuple из ID'шников двух игроков - отсортированные в порядке возрастания
-    kb_key = tuple(sorted((player.id, opponent.id)))
-    player_killboard = players_killboard.setdefault(
-        kb_key,
-        KillboardPvP.objects.get_or_create(player_1_id=kb_key[0], player_2_id=kb_key[1])[0])
-    player_killboard.add_won(player=player)
-
+GLOBAL_PLAYER = None
 
 # ======================== MODDED PART BEGIN
 def increment_subtype_persona(sortie, cls):
+    global GLOBAL_PLAYER
+
     # TODO: At some point also calculate the killboard.
     #   At the moment there seems to be no way to do it outside of monkey patching stats_whore or retroactive computing.
     #   Perhaps there is a nicer way to calculate it...
@@ -328,7 +447,6 @@ def increment_subtype_persona(sortie, cls):
         type='pilot',
         cls=cls,
     )[0]
-    player.save()
 
     _profile_id = sortie.profile.id
     mission = sortie.mission
@@ -357,8 +475,11 @@ def increment_subtype_persona(sortie, cls):
     if mission.win_reason == 'score':
         update_bonus_score(new_sortie=sortie)
 
+    GLOBAL_PLAYER = player # A hack to pass player into update_sortie.
     update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife)
+    GLOBAL_PLAYER = None
 
+    player.save()
     player_mission.save()
     player_aircraft.save()
     vlife.save()
