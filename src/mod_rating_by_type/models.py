@@ -2,7 +2,7 @@ from django.contrib.postgres.fields import ArrayField, JSONField
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import Avg
-from stats.models import (Sortie, Player, VLife, PlayerMission, PlayerAircraft, Tour, Profile, default_coal_list,
+from stats.models import (Sortie, Player, VLife, PlayerMission, PlayerAircraft, Tour, Profile, default_coal_list, Award,
                           default_sorties_cls, default_ammo, rating_format_helper, calculate_rating, Mission, Object)
 from mission_report.constants import Coalition, Country
 from mission_report.statuses import BotLifeStatus, SortieStatus, LifeStatus, VLifeStatus
@@ -823,3 +823,23 @@ class FilteredPlayerAircraft(models.Model):
             .aggregate(ratio=Avg('ratio'))['ratio'])
         if ratio:
             self.ratio = round(ratio, 2)
+
+
+class FilteredReward(models.Model):
+    """
+    Copy of Reward which uses FilteredPlayer instead of Player. Medals for fighter/attacker/bomber personas.
+
+    Django model inheritance doesn't work here because it doesn't work for FilteredPlayer.
+    """
+    award = models.ForeignKey(Award, on_delete=models.CASCADE)
+    player = models.ForeignKey(FilteredPlayer, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'FilteredRewards_MOD_SPLIT_RANKINGS'
+        unique_together = (('award', 'player'),)
+        verbose_name = _('reward')
+        verbose_name_plural = _('rewards')
+
+    def __str__(self):
+        return '{player} - {award}'.format(player=self.player, award=self.award)

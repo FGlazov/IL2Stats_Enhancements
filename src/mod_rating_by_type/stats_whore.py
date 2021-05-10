@@ -9,7 +9,7 @@ from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MO
                              MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS)
 from stats import stats_whore as old_stats_whore
 
-from stats.rewards import reward_sortie, reward_vlife, reward_mission
+from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
 from stats.stats_whore import update_sortie
 
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
@@ -364,8 +364,9 @@ def increment_subtype_persona(sortie, cls):
     vlife.save()
     sortie.save()
 
-    reward_sortie(sortie=sortie)
-    reward_vlife(vlife)
-    reward_mission(player_mission=player_mission)
+    reward_sortie(sortie=sortie, player=player)
+    reward_vlife(vlife=vlife, player=player)
+    reward_mission(player_mission=player_mission, player=player)
+    reward_tour(player=player)
 
 # ======================== MODDED PART END
