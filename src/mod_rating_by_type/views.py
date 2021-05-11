@@ -124,9 +124,8 @@ def pilot(request, profile_id, nickname=None):
         rating_medium_position, page_medium_position = _get_rating_position(item=player, field='rating_medium')
         rating_heavy_position, page_heavy_position = _get_rating_position(item=player, field='rating_heavy')
     else:
-        # TODO: Implement this
-        rating_position = 1
-        page_position = 1
+        # TODO: Make this point to the page in Filtered sorties.
+        rating_position, page_position = _get_filtered_player_rating_position(player)
         rating_light_position = rating_medium_position = rating_heavy_position = None
         page_light_position = page_medium_position = page_heavy_position = None
 
@@ -211,6 +210,20 @@ def __get_fav_aircraft(player):
     except IndexError:
         fav_aircraft = None
     return fav_aircraft
+
+
+def _get_filtered_player_rating_position(filtered_player):
+    if filtered_player.score == 0:
+        return None, None
+
+    position = 1 + (FilteredPlayer.objects.filter(
+        tour=filtered_player.tour,
+        type='pilot',
+        cls=filtered_player.cls,
+        rating__gt=filtered_player.rating
+    ).count())
+    page = position // ITEMS_PER_PAGE + 1
+    return position, page
 
 
 def pilot_sorties(request, profile_id, nickname=None):
@@ -466,7 +479,7 @@ def __top_current_streak(tour, cls='all'):
     if cls != 'all' and FilteredPlayer.objects.filter(tour=tour).exists():
 
         query = (FilteredPlayer.objects.filter(tour_id=tour.id, type='pilot', cls=cls)
-                    .exclude(score_streak_current_heavy=0))
+                 .exclude(score_streak_current_heavy=0))
         query = __active_filter(tour, query).order_by(sort_by)
         return query[:10]
 

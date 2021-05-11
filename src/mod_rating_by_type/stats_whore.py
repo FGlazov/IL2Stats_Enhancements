@@ -133,10 +133,6 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     new_sortie.takeoff_count = 0
     if hasattr(sortie.aircraft, 'takeoff_count'):
         new_sortie.takeoff_count = sortie.aircraft.takeoff_count
-
-    # TODO: Only do this if there is no retroactive compute going.
-    if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
-        increment_subtype_persona(new_sortie, cls)
     # ======================== MODDED PART END
 
     return new_sortie
@@ -188,54 +184,57 @@ def create_ammo(sortie):
 def update_bonus_score(new_sortie):
     if not module_active(MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES):
         old_stats_whore.old_update_bonus_score(new_sortie)
-        return
+    else:
 
-    bonuses_score_dict = new_sortie.mission.score_dict
+        bonuses_score_dict = new_sortie.mission.score_dict
 
-    # бонус процент
-    bonus_pct = 0
-    bonus_dict = {}
-    penalty_pct = 0
+        # бонус процент
+        bonus_pct = 0
+        bonus_dict = {}
+        penalty_pct = 0
 
-    # бонусы получают только "честные" игроки
-    if new_sortie.fairplay == 100:
-        if new_sortie.is_landed:
-            bonus = bonuses_score_dict['mod_bonus_landed']['base']
-            bonus_pct += bonus
-            bonus_dict['landed'] = bonus
-        if new_sortie.coalition == new_sortie.mission.winning_coalition:
-            bonus = bonuses_score_dict['mod_bonus_winning_coal']['base']
-            bonus_pct += bonus
-            bonus_dict['winning_coalition'] = bonus
-        if new_sortie.is_in_flight:
-            bonus = bonuses_score_dict['mod_bonus_in_flight']['base']
-            bonus_pct += bonus
-            bonus_dict['in_flight'] = bonus
-    bonus_dict['total'] = bonus_pct
+        # бонусы получают только "честные" игроки
+        if new_sortie.fairplay == 100:
+            if new_sortie.is_landed:
+                bonus = bonuses_score_dict['mod_bonus_landed']['base']
+                bonus_pct += bonus
+                bonus_dict['landed'] = bonus
+            if new_sortie.coalition == new_sortie.mission.winning_coalition:
+                bonus = bonuses_score_dict['mod_bonus_winning_coal']['base']
+                bonus_pct += bonus
+                bonus_dict['winning_coalition'] = bonus
+            if new_sortie.is_in_flight:
+                bonus = bonuses_score_dict['mod_bonus_in_flight']['base']
+                bonus_pct += bonus
+                bonus_dict['in_flight'] = bonus
+        bonus_dict['total'] = bonus_pct
 
-    # ставим базовые очки т.к. функция может вызваться несколько раз
-    new_sortie.score = new_sortie.score_dict['basic']
+        # ставим базовые очки т.к. функция может вызваться несколько раз
+        new_sortie.score = new_sortie.score_dict['basic']
 
-    if new_sortie.is_dead:
-        penalty_pct = bonuses_score_dict['mod_penalty_dead']['base']
-    elif new_sortie.is_captured:
-        penalty_pct = bonuses_score_dict['mod_penalty_captured']['base']
-    elif new_sortie.is_bailout:
-        penalty_pct = bonuses_score_dict['mod_penalty_bailout']['base']
-    elif new_sortie.is_shotdown:
-        penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
-    new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
-    new_sortie.score_dict['penalty_pct'] = penalty_pct
+        if new_sortie.is_dead:
+            penalty_pct = bonuses_score_dict['mod_penalty_dead']['base']
+        elif new_sortie.is_captured:
+            penalty_pct = bonuses_score_dict['mod_penalty_captured']['base']
+        elif new_sortie.is_bailout:
+            penalty_pct = bonuses_score_dict['mod_penalty_bailout']['base']
+        elif new_sortie.is_shotdown:
+            penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
+        new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
+        new_sortie.score_dict['penalty_pct'] = penalty_pct
 
-    new_sortie.bonus = bonus_dict
-    bonus_score = new_sortie.score * bonus_pct // 100
-    new_sortie.score_dict['bonus'] = bonus_score
-    new_sortie.score += bonus_score
-    penalty_score = new_sortie.score * (100 - new_sortie.fairplay) // 100
-    new_sortie.score_dict['penalty'] = penalty_score
-    new_sortie.score -= penalty_score
-    # new_sortie.save()
+        new_sortie.bonus = bonus_dict
+        bonus_score = new_sortie.score * bonus_pct // 100
+        new_sortie.score_dict['bonus'] = bonus_score
+        new_sortie.score += bonus_score
+        penalty_score = new_sortie.score * (100 - new_sortie.fairplay) // 100
+        new_sortie.score_dict['penalty'] = penalty_score
+        new_sortie.score -= penalty_score
 
+    # TODO: Only do this if there is no retroactive compute going.
+    cls = decide_adjusted_cls(new_sortie)
+    if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
+        increment_subtype_persona(new_sortie, cls)
 
 # ======================== MODDED PART END
 
@@ -463,10 +462,6 @@ def increment_subtype_persona(sortie, cls):
         relive=0,
         cls=cls
     )[0]
-
-    # если случилась победа по очкам - требуется обновить бонусы
-    if mission.win_reason == 'score':
-        update_bonus_score(new_sortie=sortie)
 
     update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife,
                   player=player)
