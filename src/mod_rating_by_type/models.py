@@ -8,7 +8,6 @@ from mission_report.constants import Coalition, Country
 from mission_report.statuses import BotLifeStatus, SortieStatus, LifeStatus, VLifeStatus
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from django.conf import settings
-from stats.models_managers import PlayerManager, VLifeManager
 from stats.sql import get_position_by_field
 from django.urls import reverse
 
@@ -233,9 +232,6 @@ class FilteredPlayer(models.Model):
     relive_heavy = models.IntegerField(default=0)
     relive_medium = models.IntegerField(default=0)
     relive_light = models.IntegerField(default=0)
-
-    objects = models.Manager()
-    players = PlayerManager()
 
     class Meta:
         ordering = ['-id']
@@ -533,9 +529,6 @@ class FilteredVLife(models.Model):
     score_heavy = models.IntegerField(default=0, db_index=True)
     score_medium = models.IntegerField(default=0, db_index=True)
     score_light = models.IntegerField(default=0, db_index=True)
-
-    objects = models.Manager()
-    players = VLifeManager()
 
     class Meta:
         ordering = ['-id']

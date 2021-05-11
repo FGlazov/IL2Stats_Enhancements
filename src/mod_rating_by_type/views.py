@@ -383,22 +383,14 @@ def main(request):
     summary_total = request.tour.stats_summary_total()
     summary_coal = request.tour.stats_summary_coal()
 
-    top_streak = (Player.players.pilots(tour_id=request.tour.id)
-                      .exclude(score_streak_current=0)
-                      .active(tour=request.tour).order_by('-score_streak_current')[:10])
+    top_streak = __top_current_streak(request.tour)
 
     top_24 = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION))
 
     if module_active(MODULE_SPLIT_RANKINGS):
-        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                                .exclude(score_streak_current_heavy=0)
-                                .active(tour=request.tour).order_by('-score_streak_current_heavy')[:10])
-        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                                 .exclude(score_streak_current_medium=0)
-                                 .active(tour=request.tour).order_by('-score_streak_current_medium')[:10])
-        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                                .exclude(score_streak_current_light=0)
-                                .active(tour=request.tour).order_by('-score_streak_current_light')[:10])
+        top_streak_heavy = __top_current_streak(request.tour, 'heavy')
+        top_streak_medium = __top_current_streak(request.tour, 'medium')
+        top_streak_light = __top_current_streak(request.tour, 'light')
         top_24_heavy = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='heavy')
         top_24_medium = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='medium')
         top_24_light = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='light')
@@ -464,6 +456,35 @@ def main(request):
         'coal_2_online': coal_2_online,
         'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
     })
+
+
+def __top_current_streak(tour, cls='all'):
+    sort_by = '-score_streak_current'
+    if cls != 'all':
+        sort_by += '_' + cls
+
+    if cls != 'all' and FilteredPlayer.objects.filter(tour=tour).exists():
+
+        query = (FilteredPlayer.objects.filter(tour_id=tour.id, type='pilot', cls=cls)
+                    .exclude(score_streak_current_heavy=0))
+        query = __active_filter(tour, query).order_by(sort_by)
+        return query[:10]
+
+    else:
+        return (Player.players.pilots(tour_id=tour.id)
+                    .exclude(score_streak_current_heavy=0)
+                    .active(tour=tour).order_by(sort_by)[:10])
+
+
+def __active_filter(tour, query):
+    if settings.INACTIVE_PLAYER_DAYS:
+        if tour.is_ended:
+            date = tour.date_end - settings.INACTIVE_PLAYER_DAYS
+        else:
+            date = timezone.now() - settings.INACTIVE_PLAYER_DAYS
+        return query.filter(date_last_combat__gt=date, tour_id=tour.id)
+    else:
+        return query.filter(tour_id=tour.id)
 
 
 def tour(request):
