@@ -658,8 +658,6 @@ def ironman_stats(request):
 
 
 def pilot_vlife(request, vlife_id):
-    # TODO: Render that it is a fighter/attacker/bomber VLife
-
     cls = request.GET.get('cls', 'all')
 
     if cls == 'all':
@@ -679,4 +677,5 @@ def pilot_vlife(request, vlife_id):
         'vlife': vlife,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
         'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
+        'cls': cls,
     })

@@ -14,7 +14,16 @@
 <section id="vlife">
     <div class="wrapper">
         <div class="vlife_title">
+            {% if cls == 'all' %}
             {% trans 'VLife' context 'vlife_page_title' %}:
+            {% elif cls == 'light' %}
+            {% trans 'Fighter VLife' context 'vlife_page_title' %}:
+            {% elif cls == 'medium' %}
+            {% trans 'Attacker VLife' context 'vlife_page_title' %}:
+            {% elif cls == 'heavy' %}
+            {% trans 'Bomber VLife' context 'vlife_page_title' %}:
+            {% endif %}
+
             {{ vlife.date_first_sortie|date:'d.m.Y' }}
             {% if vlife.date_last_sortie|date:'d.m.Y' != vlife.date_first_sortie|date:'d.m.Y' %}
             - {{ vlife.date_last_sortie|date:'d.m.Y' }}
@@ -45,6 +54,21 @@
                  alt="{% trans 'Landed' context 'sortie_status' %}">
             {% endif %}
         </div>
+
+        {% if split_rankings %}
+        <div style = 'float:right;'>
+        {% if cls == 'all' %}
+            <img src="{% static 'img/icons/personas/all-persona.png' %}">
+        {% elif cls == 'light' %}
+            <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
+        {% elif cls == 'medium' %}
+            <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
+        {% elif cls == 'heavy' %}
+            <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
+        {% endif %}
+        </div>
+        {% endif %}
+
         <div class="pilot_nickname">
             {% trans 'pilot' context 'pilot_vlifes' %}: {{ player.nickname }}
         </div>
@@ -54,6 +78,10 @@
                 {% trans 'Back to vlifes list' %}
             </div>
         </a>
+
+        <div class="clearfix"></div>
+
+
 
         <div class="profile_main_stats" style="margin-top: 30px;">
             <div class="item">
@@ -76,7 +104,7 @@
                 <div class="text">{% trans 'Gunnery Accuracy' %}</div>
                 <div class="num">{{ vlife.accuracy }}</div>
             </div>
-            {% if split_rankings %}
+            {% if split_rankings and cls == 'all' %}
             <div class="item">
                 <img src="{% static 'img/icons/big/rating_light.png' %}" width="" height="" title="" alt="">
                 <div class="text">{% trans 'Fighter Score' %}</div>
