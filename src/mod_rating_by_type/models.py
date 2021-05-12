@@ -1,7 +1,7 @@
 from django.contrib.postgres.fields import ArrayField, JSONField
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models import Avg
+from django.db.models import Avg, Sum, Q, F
 from stats.models import (Sortie, Player, VLife, PlayerMission, PlayerAircraft, Tour, Profile, default_coal_list, Award,
                           default_sorties_cls, default_ammo, rating_format_helper, calculate_rating, Mission, Object)
 from mission_report.constants import Coalition, Country
@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from django.conf import settings
 from stats.sql import get_position_by_field
 from django.urls import reverse
+from .config_modules import module_active, MODULE_SPLIT_RANKINGS
 
 
 def get_profile_url(profile_id, nickname, tour_id, cls):
@@ -44,6 +45,51 @@ def get_killboard_url(profile_id, nickname, tour_id, cls):
         url=reverse('stats:pilot_killboard', args=[profile_id, nickname]),
         tour_id=tour_id, cls=cls)
     return url
+
+
+# Monkey patched into Tour class of stats.models
+def stats_summary_coal(self):
+    summary_coal = {
+        1: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0, 'light_flight_time': 0, 'medium_flight_time': 0,
+            'heavy_flight_time': 0},
+        2: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0, 'light_flight_time': 0, 'medium_flight_time': 0,
+            'heavy_flight_time': 0},
+    }
+    _summary_coal = (Sortie.objects
+                     .filter(tour_id=self.id, is_disco=False)
+                     .values('coalition')
+                     .order_by()
+                     .annotate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                               score=Sum('score'), flight_time_alias=Sum('flight_time')
+                               ))
+    if module_active(MODULE_SPLIT_RANKINGS):
+        _summary_coal = _summary_coal.annotate(
+            light_flight_time=models.Sum(
+                models.Case(
+                    models.When(aircraft__cls='aircraft_light', then=F('flight_time')),
+                    default=0,
+                    output_field=models.IntegerField()
+                )),
+            medium_flight_time=models.Sum(
+                models.Case(
+                    models.When(aircraft__cls='aircraft_medium', then=F('flight_time')),
+                    default=0,
+                    output_field=models.IntegerField()
+                )),
+            heavy_flight_time=models.Sum(
+                models.Case(
+                    models.When(aircraft__cls='aircraft_heavy', then=F('flight_time')),
+                    default=0,
+                    output_field=models.IntegerField()
+                )),
+        )
+
+    for s in _summary_coal:
+        summary_coal[s['coalition']].update(s)
+        summary_coal[s['coalition']]['flight_time'] = s['flight_time_alias']
+        print(s)
+
+    return summary_coal
 
 
 class SortieAugmentation(models.Model):

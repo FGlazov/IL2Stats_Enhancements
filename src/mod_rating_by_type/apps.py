@@ -60,8 +60,12 @@ class ModConfig(AppConfig):
         from . import import_csv_data as new_csv_data
         old_csv_data.Command.handle = new_csv_data.Command.handle
 
-        from stats.models import Player
+
+        from stats.models import Player, Tour
+        from . import models as new_models
         from .models import FilteredPlayer
+
+        Tour.stats_summary_coal = new_models.stats_summary_coal
 
         Player.get_base_profile_url = FilteredPlayer.get_base_profile_url
         Player.get_light_profile_url = FilteredPlayer.get_light_profile_url

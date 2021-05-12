@@ -71,5 +71,10 @@ Version 2.1.6
 
 Version 2.2.0
 
-- Module Ammo Breakdown: Try to figure out which ammo caused damage in a "damage/damaged" line and show it. 
+- Module Ammo Breakdown: Try to figure out which ammo caused damage in a "damage/damaged" line and display the guess in sortie logs.
+- Module SplitRankings: Completley seperate fighter/attacker/personas! Now every field in your player profile can be seen seperately for fighter/attacker/bomber types. For example, check your K/D when flying with only fighters, or your GK/HR when you fly attacker types. This also works with the ironman rankings module!
 - Module SplitRankings: Now consider some attacker aircraft sorties towards fighter rating. Those sorties with more air kills and air assist together than ground kills are counted towards fighter rating. Recent history of the player is taken into account in case of ambiguous sorties.
+- Module SplitRankings: Reset 
+- New module "Top Last Mission", which replaces top of last 24 hours with top player in the last mission. Mainly meant for event servers where the action doesn't happen 24/7.
+- New module "Rearm Accuracy Workaround", which stops sorties where a player took off twice (and thus presumambly rearmed) from being counted towards player accuracy. The total nr shots fired is reset when you rearm in the logs, and there is no way to recover how many shots you fired before the rearm. This is a workaround whichs bandaids the problem.
+- New module "Bailout Accuracy Workaround", which stops sorties where a player bailed out from being counted towards player accuracy. The number of shots is set to the max possible (= how many shots you started with) in sorties where you bailout, and again it is a bug in the game logs, and as such impossible to count the number of shots. This is a workaround whichs bandaids the problem.
