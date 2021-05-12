@@ -89,24 +89,37 @@ def pilot_rankings(request):
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
-    players = Player.players.pilots(tour_id=request.tour.id).order_by(sort_by, 'id')
-    if search:
-        players = players.search(name=search)
+    cls = validate_and_get_player_cls(request)
+
+    if cls == 'all':
+        players = Player.players.pilots(tour_id=request.tour.id).order_by(sort_by, 'id')
+        if search:
+            players = players.search(name=search)
+        else:
+            players = players.active(tour=request.tour)
     else:
-        players = players.active(tour=request.tour)
+        players = FilteredPlayer.objects.filter(
+            type='pilot',
+            tour_id=request.tour.id,
+            cls=cls
+        ).order_by(sort_by, 'id')
+        if search:
+            players = players.filter(profile__nickname__icontains=search)
+        else:
+            players = __active_filter(request.tour, players)
+
     players = Paginator(players, ITEMS_PER_PAGE).page(page)
     return render(request, 'pilots.html', {
         'players': players,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'cls': cls,
     })
 
 
 def pilot(request, profile_id, nickname=None):
     tour_id = request.GET.get('tour')
-    cls = request.GET.get('cls', 'all')
-    if cls != 'all' and not module_active(MODULE_SPLIT_RANKINGS):
-        raise Http404("Server does not have split rankings.")
+    cls = validate_and_get_player_cls(request)
 
     player, profile = __get_player(profile_id, request, tour_id, cls)
     if player is None:
@@ -227,9 +240,7 @@ def _get_filtered_player_rating_position(filtered_player):
 
 
 def pilot_sorties(request, profile_id, nickname=None):
-    cls = request.GET.get('cls', 'all')
-    if cls != 'all' and not module_active(MODULE_SPLIT_RANKINGS):
-        raise Http404("Server does not have split rankings.")
+    cls = validate_and_get_player_cls(request)
 
     try:
         base_player = (Player.objects.select_related('profile', 'tour')
@@ -268,7 +279,7 @@ def pilot_sorties(request, profile_id, nickname=None):
 
 
 def pilot_vlifes(request, profile_id, nickname=None):
-    cls = request.GET.get('cls', 'all')
+    cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
     if player.nickname != nickname:
@@ -301,7 +312,7 @@ def pilot_vlifes(request, profile_id, nickname=None):
 
 
 def pilot_awards(request, profile_id, nickname=None):
-    cls = request.GET.get('cls', 'all')
+    cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
     if player.nickname != nickname:
@@ -397,7 +408,6 @@ def main(request):
     summary_coal = request.tour.stats_summary_coal()
 
     top_streak = __top_current_streak(request.tour)
-
     top_24 = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION))
 
     if module_active(MODULE_SPLIT_RANKINGS):
@@ -472,20 +482,20 @@ def main(request):
 
 
 def __top_current_streak(tour, cls='all'):
-    sort_by = '-score_streak_current'
+    field = 'score_streak_current'
     if cls != 'all':
-        sort_by += '_' + cls
+        field += '_' + cls
+    sort_by = '-' + field
 
     if cls != 'all' and FilteredPlayer.objects.filter(tour=tour).exists():
-
         query = (FilteredPlayer.objects.filter(tour_id=tour.id, type='pilot', cls=cls)
-                 .exclude(score_streak_current_heavy=0))
+                 .exclude(**{field: 0}))
         query = __active_filter(tour, query).order_by(sort_by)
         return query[:10]
 
     else:
         return (Player.players.pilots(tour_id=tour.id)
-                    .exclude(score_streak_current_heavy=0)
+                    .exclude(score_streak_current=0)
                     .active(tour=tour).order_by(sort_by)[:10])
 
 
@@ -507,9 +517,7 @@ def tour(request):
     summary_total = request.tour.stats_summary_total()
     summary_coal = request.tour.stats_summary_coal()
 
-    top_streak = (Player.players.pilots(tour_id=request.tour.id)
-                      .exclude(score_streak_max=0)
-                      .active(tour=request.tour).order_by('-score_streak_max')[:10])
+    top_streak = __top_max_streak(request.tour)
 
     top_rating = (Player.players.pilots(tour_id=request.tour.id)
                       .exclude(rating=0)
@@ -527,18 +535,9 @@ def tour(request):
         top_rating_light = (Player.players.pilots(tour_id=request.tour.id)
                                 .exclude(rating_light=0)
                                 .active(tour=request.tour).order_by('-rating_light')[:10])
-
-        top_streak_heavy = (Player.players.pilots(tour_id=request.tour.id)
-                                .exclude(score_streak_max_heavy=0)
-                                .active(tour=request.tour).order_by('-score_streak_max_heavy')[:10])
-
-        top_streak_medium = (Player.players.pilots(tour_id=request.tour.id)
-                                 .exclude(score_streak_max_medium=0)
-                                 .active(tour=request.tour).order_by('-score_streak_max_medium')[:10])
-
-        top_streak_light = (Player.players.pilots(tour_id=request.tour.id)
-                                .exclude(score_streak_max_light=0)
-                                .active(tour=request.tour).order_by('-score_streak_max_light')[:10])
+        top_streak_heavy = __top_max_streak(request.tour, cls='heavy')
+        top_streak_medium = __top_max_streak(request.tour, cls='medium')
+        top_streak_light = __top_max_streak(request.tour, cls='light')
     else:
         top_rating_heavy = None
         top_rating_medium = None
@@ -567,6 +566,25 @@ def tour(request):
         'coal_active_players': coal_active_players,
         'total_active_players': total_active_players,
     })
+
+
+def __top_max_streak(tour, cls='all'):
+    field = 'score_streak_max'
+    if cls != 'all':
+        field += '_' + cls
+    sort_by = '-' + field
+
+    if cls != 'all' and FilteredPlayer.objects.filter(tour=tour).exists():
+
+        query = (FilteredPlayer.objects.filter(tour_id=tour.id, type='pilot', cls=cls)
+                 .exclude(**{field: 0}))
+        query = __active_filter(tour, query).order_by(sort_by)
+        return query[:10]
+
+    else:
+        return (Player.players.pilots(tour_id=tour.id)
+                    .exclude(score_streak_max=0)
+                    .active(tour=tour).order_by(sort_by)[:10])
 
 
 def mission(request, mission_id):
@@ -667,15 +685,23 @@ def pilot_sortie_log(request, sortie_id):
 def ironman_stats(request):
     if not module_active(MODULE_IRONMAN_STATS):
         raise Http404("Ironman stats not available on this server.")
+    cls = validate_and_get_player_cls(request)
 
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
 
-    players = (VLife.objects
+    if cls == 'all':
+        vlife_object = VLife
+    else:
+        vlife_object = FilteredVLife
+
+    players = (vlife_object.objects
                .filter(tour__id=request.tour.id, sorties_total__gt=0, player__type='pilot')
                .exclude(profile__is_hide=True)
                .order_by(sort_by, 'id'))
+    if cls != 'all':
+        players = players.filter(cls=cls)
 
     if not request.tour.is_ended:
         players.filter(relive=0)
@@ -688,11 +714,12 @@ def ironman_stats(request):
         'players': players,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'cls': cls,
     })
 
 
 def pilot_vlife(request, vlife_id):
-    cls = request.GET.get('cls', 'all')
+    cls = validate_and_get_player_cls(request)
 
     if cls == 'all':
         vlife_class = VLife
@@ -713,3 +740,12 @@ def pilot_vlife(request, vlife_id):
         'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
         'cls': cls,
     })
+
+
+def validate_and_get_player_cls(request):
+    cls = request.GET.get('cls', 'all')
+    if cls != 'all' and not module_active(MODULE_SPLIT_RANKINGS):
+        raise Http404("Server does not have split rankings.")
+    if cls not in {'all', 'heavy', 'medium', 'light'}:
+        raise Http404("Invalid cls")
+    return cls
