@@ -125,8 +125,10 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
     )
 
     new_sortie.save()
-
     # ======================== MODDED PART BEGIN
+    new_sortie.turret_kills = 0
+    if hasattr(sortie.aircraft, 'turret_kills'):
+        new_sortie.turret_kills = len(sortie.aircraft.turret_kills)
     cls = decide_adjusted_cls(new_sortie, touch_db=True)
     SortieAugmentation(sortie=new_sortie, cls=cls).save()
 
@@ -235,6 +237,7 @@ def update_bonus_score(new_sortie):
     cls = decide_adjusted_cls(new_sortie)
     if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
         increment_subtype_persona(new_sortie, cls)
+
 
 # ======================== MODDED PART END
 

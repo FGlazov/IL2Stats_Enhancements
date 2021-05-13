@@ -1,4 +1,5 @@
 from .models import PlayerAugmentation
+from stats.models import LogEntry
 
 FIGHTER_WHITE_LIST = {'P-38J-25', 'Me 262 A'}
 JABO_MODS = {'Ground attack modification', 'U17 strike modification'}
@@ -18,7 +19,29 @@ def __is_modification_jabo(mod):
     return False
 
 
-def decide_adjusted_cls(sortie, touch_db=False):
+def decide_adjusted_cls(sortie, touch_db=False, retroactive_compute=False):
+    """
+    Every sortie needs a class for split rankings to work, i.e. is this a fighter, attacker, or bomber sortie. This
+    comes from the fact that rating formula takes flight time, deaths, and score earned as an input. So, in order to
+    properly pass flight time and deaths, sorties must get class.
+
+    The naive way to decide class of a Sortie for split rankings would be to look at the class of the aircraft flown in
+    that sortie. I.e. every sortie with a fighter plane would be counted towards fighter ranking, attacker plane sorties
+    towards attacker rating etc.
+
+    However, there are two edge casess where it makes sense to deviate from this. Namely:
+
+    1. Jabo flights in fighter planes. Think of a P-47 or FW-190 which only took bombs/rockets.
+       These jabo flights are counted towards attacker rating. Jabo flights are detected by looking at which
+       modifcations the plane took.
+    2. Attacker planes like BF 110, P-38, HS-129, IL-2s used as (heavy) fighters instead of attackers.
+       This is decided by how many air kills were scored by the main guns of that plane.
+    2a. If Air kills from main guns > ground kills, then it's counted towards figher rating,
+        and the ground kills < air kills case is counted the other way around.
+    2b. If it can't be decided like this (e.g. 0 air and ground kills), the system attempts to decide via the recent
+        history of the player (i.e. did they recently take a lot of attackers out as ground pounders or heavy fighters?)
+    2c. Fall back if that also doesn't work is to simply return "attacker".
+    """
     player = sortie.player
     player_augmentation = PlayerAugmentation.objects.get_or_create(player=player)[0]
     if touch_db:
@@ -42,12 +65,21 @@ def decide_adjusted_cls(sortie, touch_db=False):
     # Think of a BF-110, or an IL-2 in an early war scenario.
     # Here even with gunpods it's hard to tell a priori what the likely intent was, hence we try
     # and figure it out by how many air kills/ground kills the plane scored.
-    if sortie.ak_total + sortie.ak_assist > sortie.gk_total:
+    if retroactive_compute:
+        ak_from_guns = LogEntry.objects.filter(
+            act_sortie=sortie,
+            type='shotdown',
+            cact_object__base_cls='aircraft'
+        ).count()
+    else:
+        ak_from_guns = sortie.ak_total - sortie.turret_kills
+
+    if ak_from_guns > sortie.gk_total:
         if touch_db:
             player_augmentation.increment_attacker_plane_as_fighter()
             player_augmentation.save()
         return 'light'
-    elif sortie.gk_total > sortie.ak_total + sortie.ak_assist:
+    elif sortie.gk_total > ak_from_guns:
         if touch_db:
             player_augmentation.increment_attacker_plane_as_attacker()
             player_augmentation.save()
