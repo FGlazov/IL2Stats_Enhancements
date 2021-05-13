@@ -87,7 +87,7 @@
                 <a href="{{ player.get_light_profile_url }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Fighter' %}
+                    {% trans 'Fighter' context 'specialty' %}
                     <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
                 </div>
                 {% endif %}
@@ -101,7 +101,7 @@
                 <a href="{{ player.get_medium_profile_url }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Attacker' %}
+                    {% trans 'Attacker' context 'total' %}
                     <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
                 </div>
                 {% endif %}
@@ -115,7 +115,7 @@
                 <a href="{{ player.get_heavy_profile_url }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Bomber' %}
+                    {% trans 'Bomber' context 'specialty' %}
                     <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
                 </div>
                 {% endif %}

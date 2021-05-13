@@ -146,7 +146,7 @@
                 <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}&cls=light&sort_by={{ sort_by }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Fighter' %}
+                    {% trans 'Fighter' context 'specialty' %}
                     <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
                 </div>
                 {% if cls != 'light' %}
@@ -158,7 +158,7 @@
                 <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}&cls=medium&sort_by={{ sort_by }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Attacker' %}
+                    {% trans 'Attacker' context 'specialty' %}
                     <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
                 </div>
                 {% if cls != 'medium' %}
@@ -170,7 +170,7 @@
                 <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}&cls=heavy&sort_by={{ sort_by }}" >
                 <div class="persona" >
                 {% endif %}
-                    {% trans 'Bomber' %}
+                    {% trans 'Bomber' context 'specialty' %}
                     <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
                 </div>
                 {% if cls != 'heavy' %}

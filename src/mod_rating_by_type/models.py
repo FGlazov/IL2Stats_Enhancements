@@ -50,44 +50,19 @@ def get_killboard_url(profile_id, nickname, tour_id, cls):
 # Monkey patched into Tour class of stats.models
 def stats_summary_coal(self):
     summary_coal = {
-        1: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0, 'light_flight_time': 0, 'medium_flight_time': 0,
-            'heavy_flight_time': 0},
-        2: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0, 'light_flight_time': 0, 'medium_flight_time': 0,
-            'heavy_flight_time': 0},
+        1: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
+        2: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
     }
     _summary_coal = (Sortie.objects
                      .filter(tour_id=self.id, is_disco=False)
                      .values('coalition')
                      .order_by()
                      .annotate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
-                               score=Sum('score'), flight_time_alias=Sum('flight_time')
+                               score=Sum('score'), flight_time=Sum('flight_time')
                                ))
-    if module_active(MODULE_SPLIT_RANKINGS):
-        _summary_coal = _summary_coal.annotate(
-            light_flight_time=models.Sum(
-                models.Case(
-                    models.When(aircraft__cls='aircraft_light', then=F('flight_time')),
-                    default=0,
-                    output_field=models.IntegerField()
-                )),
-            medium_flight_time=models.Sum(
-                models.Case(
-                    models.When(aircraft__cls='aircraft_medium', then=F('flight_time')),
-                    default=0,
-                    output_field=models.IntegerField()
-                )),
-            heavy_flight_time=models.Sum(
-                models.Case(
-                    models.When(aircraft__cls='aircraft_heavy', then=F('flight_time')),
-                    default=0,
-                    output_field=models.IntegerField()
-                )),
-        )
 
     for s in _summary_coal:
         summary_coal[s['coalition']].update(s)
-        summary_coal[s['coalition']]['flight_time'] = s['flight_time_alias']
-        print(s)
 
     return summary_coal
 
