@@ -1,7 +1,7 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie, KillboardPvP
+from stats.models import Sortie, KillboardPvP, LogEntry
 from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
@@ -10,9 +10,77 @@ from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MO
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
-from stats.stats_whore import update_killboard, update_status
+from stats.stats_whore import (update_killboard, update_status, stats_whore, cleanup, collect_mission_reports,
+                               update_online, cleanup_registration)
+from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data
+import sys
+from core import __version__
+from stats.logger import logger
+import time
+import django
 
+MISSION_REPORT_PATH = settings.MISSION_REPORT_PATH
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
+
+
+def main():
+    logger.info('IL2 stats {stats}, Python {python}, Django {django}'.format(
+        stats=__version__, python=sys.version[0:5], django=django.get_version()))
+
+    # TODO переделать на проверку по времени создания файлов
+    processed_reports = []
+
+    waiting_new_report = False
+    online_timestamp = 0
+
+    # ======================== MODDED PART BEGIN
+    reset_corrupted_data()
+    background_work_left = True
+    # ======================== MODDED PART END
+
+    while True:
+        new_reports = []
+        for m_report_file in MISSION_REPORT_PATH.glob('missionReport*[[]0[]].txt'):
+            if m_report_file.name not in processed_reports:
+                new_reports.append(m_report_file)
+
+        if len(new_reports) > 1:
+            waiting_new_report = False
+            # обрабатываем все логи кроме последней миссии
+            for m_report_file in new_reports[:-1]:
+                stats_whore(m_report_file=m_report_file)
+                cleanup(m_report_file=m_report_file)
+                processed_reports.append(m_report_file.name)
+            continue
+        elif len(new_reports) == 1:
+            m_report_file = new_reports[0]
+            m_report_files = collect_mission_reports(m_report_file=m_report_file)
+            online_timestamp = update_online(m_report_files=m_report_files, online_timestamp=online_timestamp)
+            # если последний файл был создан более 2х минут назад - обрабатываем его
+            if time.time() - m_report_files[-1].stat().st_mtime > 120:
+                waiting_new_report = False
+                # ======================== MODDED PART BEGIN
+                backfill_log = True
+                # ======================== MODDED PART END
+                stats_whore(m_report_file=m_report_file)
+                cleanup(m_report_file=m_report_file)
+                processed_reports.append(m_report_file.name)
+                continue
+        # ======================== MODDED PART BEGIN
+        if background_work_left:
+            background_work_left = run_background_jobs()
+            continue
+        # ======================== MODDED PART END
+
+        if not waiting_new_report:
+            logger.info('waiting new report...')
+        waiting_new_report = True
+
+        # удаляем юзеров которые не активировали свои регистрации в течении определенного времени
+        cleanup_registration()
+
+        # в идеале новые логи появляются как минимум раз в 30 секунд
+        time.sleep(30)
 
 
 def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
@@ -223,7 +291,7 @@ def update_bonus_score(new_sortie):
         elif new_sortie.is_shotdown:
             penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
         new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
-        new_sortie.score_dict['penalty_pct'] = penalty_pct
+        new_sortie.score_dict['penalty_pct']    = penalty_pct
 
         new_sortie.bonus = bonus_dict
         bonus_score = new_sortie.score * bonus_pct // 100
@@ -237,7 +305,9 @@ def update_bonus_score(new_sortie):
     cls = decide_adjusted_cls(new_sortie)
     if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
         increment_subtype_persona(new_sortie, cls)
-
+        sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
+        sortie_augmentation.computed_filtered_player = True
+        sortie_augmentation.save()
 
 # ======================== MODDED PART END
 
@@ -279,10 +349,17 @@ def update_general(player, new_sortie):
         pass  # Some player objects have no score or relive attributes for light/medium/heavy aircraft.
 
 
-def update_ammo(sortie, player):
+def update_ammo(sortie, player, retroactive_compute=False):
     # ======================== MODDED PART BEGIN
     if module_active(MODULE_REARM_ACCURACY_WORKAROUND):
-        if hasattr(sortie, 'takeoff_count') and sortie.takeoff_count > 1:
+        if retroactive_compute:
+            takeoff_count = LogEntry.objects.filter(
+                act_sortie_id=sortie.id,
+                type='takeoff'
+            ).count()
+            if takeoff_count > 1:
+                return  # Bug work around. Rearming (and as such taking off twice) resets ammo used according to logs.
+        elif hasattr(sortie, 'takeoff_count') and sortie.takeoff_count > 1:
             return
 
     if module_active(MODULE_BAILOUT_ACCURACY_WORKAROUND):
@@ -305,7 +382,7 @@ def update_ammo(sortie, player):
 
 
 # Monkey patched into update_sortie of stats_whore.
-def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=None):
+def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=None, retroactive_compute=False):
     # ======================== MODDED PART BEGIN
     if player is None:
         player = new_sortie.player
