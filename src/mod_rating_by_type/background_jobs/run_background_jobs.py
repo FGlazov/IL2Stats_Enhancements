@@ -75,5 +75,5 @@ def __run_background_job(job, tour_cutoff):
     return True
 
 
-def no_retro_streak_compute_running():
-    return SplitRankingsRetroCompute.work_left
+def retro_split_rankings_compute_running():
+    return jobs[0].work_left  # jobs[0] = the SplitRankingsRetroCompute() instance

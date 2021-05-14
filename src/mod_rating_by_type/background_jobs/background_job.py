@@ -17,7 +17,11 @@ def get_tour_cutoff():
 
 class BackgroundJob:
     def __init__(self):
-        self.work_left = self.query_find_sorties(get_tour_cutoff()).count() > 0
+        tour_cutoff = get_tour_cutoff()
+        if tour_cutoff is not None:
+            self.work_left = self.query_find_sorties(get_tour_cutoff()).count() > 0
+        else:
+            self.work_left = False
         self.unlimited_work = False  # Marker for a continuous job which always gets extra work.
 
     """Abstract class which represents a job to be done in the background in stats.cmd while there is no new mission

@@ -69,7 +69,7 @@ def decide_adjusted_cls(sortie, touch_db=False, retroactive_compute=False):
         ak_from_guns = LogEntry.objects.filter(
             act_sortie=sortie,
             type='shotdown',
-            cact_object__base_cls='aircraft'
+            cact_object__cls_base='aircraft'
         ).count()
     else:
         ak_from_guns = sortie.ak_total - sortie.turret_kills
