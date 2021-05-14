@@ -16,6 +16,10 @@ def get_tour_cutoff():
 
 
 class BackgroundJob:
+    def __init__(self):
+        self.work_left = self.query_find_sorties(get_tour_cutoff()).count() > 0
+        self.unlimited_work = False  # Marker for a continuous job which always gets extra work.
+
     """Abstract class which represents a job to be done in the background in stats.cmd while there is no new mission
     to be processed. This includes fixing corrupted data due to bugs, and retroactively computing aircraft stats, as
     well as filling in missing fields which were added in an update to the aircraft stats system.
@@ -64,6 +68,3 @@ class BackgroundJob:
         are at least correct.
         """
         pass
-
-    def work_left(self):
-        return self.query_find_sorties(get_tour_cutoff()).exists()
