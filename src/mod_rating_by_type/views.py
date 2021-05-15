@@ -8,13 +8,13 @@ from django.utils import timezone
 from mission_report.constants import Coalition
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
-                          VLife, Reward)
+                          VLife, Reward, KillboardPvP)
 from stats.views import *
 from stats.views import _get_rating_position, _get_squad
 
 from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
-from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward
+from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -331,6 +331,49 @@ def pilot_awards(request, profile_id, nickname=None):
     return render(request, 'pilot_awards.html', {
         'player': player,
         'rewards': rewards,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'light_player_exists': light_player_exists,
+        'medium_player_exists': medium_player_exists,
+        'heavy_player_exists': heavy_player_exists,
+        'cls': cls,
+    })
+
+
+def pilot_killboard(request, profile_id, nickname=None):
+    cls = validate_and_get_player_cls(request)
+    player, _ = __get_player(profile_id, request, request.tour.id, cls)
+
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    if cls == 'all':
+        _killboard = (KillboardPvP.objects
+                      .select_related('player_1__profile', 'player_2__profile')
+                      .filter(Q(player_1=player) | Q(player_2=player)))
+    else:
+        _killboard = (FilteredKillboard.objects
+                      .select_related('player_1__profile', 'player_2__profile')
+                      .filter(player_1=player))
+
+    killboard = []
+    for k in _killboard:
+        if k.player_1_id == player.id:
+            killboard.append({'player': k.player_2, 'won': k.won_1, 'lose': k.won_2, 'wl': k.wl_1})
+        else:
+            killboard.append({'player': k.player_1, 'won': k.won_2, 'lose': k.won_1, 'wl': k.wl_2})
+
+    _sort_by = get_sort_by(request=request, sort_fields=killboard_sort_fields, default='-wl')
+    sort_reverse = True if _sort_by.startswith('-') else False
+    sort_by = _sort_by.replace('-', '')
+    killboard = sorted(killboard, key=lambda x: x[sort_by], reverse=sort_reverse)
+
+    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
+
+    return render(request, 'pilot_killboard.html', {
+        'player': player,
+        'killboard': killboard,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
         'light_player_exists': light_player_exists,
         'medium_player_exists': medium_player_exists,

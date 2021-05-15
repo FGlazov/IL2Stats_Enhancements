@@ -86,6 +86,7 @@ class SortieAugmentation(models.Model):
     # In all other cases, it should be equal to the one found in
     cls = models.CharField(choices=CLASSES, max_length=16, blank=True, db_index=True)
     computed_filtered_player = models.BooleanField(default=False, db_index=True)
+    computed_filter_player_killboard = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
@@ -335,7 +336,7 @@ class FilteredPlayer(models.Model):
         return get_killboard_url(self.profile_id, self.nickname, self.tour_id, self.cls)
 
     def get_base_killboard_url(self):
-        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+        return get_killboard_url(self.profile_id, self.nickname, self.tour_id, 'all ')
 
     def get_light_killboard_url(self):
         return get_killboard_url(self.profile_id, self.nickname, self.tour_id, 'light')
@@ -944,3 +945,16 @@ class FilteredReward(models.Model):
 
     def __str__(self):
         return '{player} - {award}'.format(player=self.player, award=self.award)
+
+
+class FilteredKillboard(models.Model):
+    player_1 = models.ForeignKey(FilteredPlayer, related_name='+', on_delete=models.CASCADE)
+    player_2 = models.ForeignKey(Player, related_name='+', on_delete=models.CASCADE)
+    won_1 = models.IntegerField(default=0)
+    won_2 = models.IntegerField(default=0)
+    wl_1 = models.FloatField(default=0)
+    wl_2 = models.FloatField(default=0)
+
+    def update_analytics(self):
+        self.wl_1 = round(self.won_1 / max(self.won_2, 1), 2)
+        self.wl_2 = round(self.won_2 / max(self.won_1, 1), 2)

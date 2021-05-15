@@ -2,10 +2,11 @@ from django.db import transaction
 
 from .background_job import get_tour_cutoff
 from .split_rankings_retro_compute import SplitRankingsRetroCompute
+from .filtered_killboard_compute import FilteredKillboardCompute
 from stats.logger import logger
 
 # Subclasses of BackgroundJob, see background_job.py
-jobs = [SplitRankingsRetroCompute()]
+jobs = [SplitRankingsRetroCompute(), FilteredKillboardCompute()]
 
 LOG_COUNTER = 0
 LOGGING_INTERVAL = 5  # How many batches are run before an update log is produced.
@@ -60,7 +61,7 @@ def __run_background_job(job, tour_cutoff):
         job.work_left = False
         return False
 
-    if LOG_COUNTER == 0:
+    if LOG_COUNTER == 0 and job.log_update(nr_left):
         logger.info(job.log_update(nr_left))
     LOG_COUNTER = (LOG_COUNTER + 1) % LOGGING_INTERVAL
 
@@ -68,7 +69,8 @@ def __run_background_job(job, tour_cutoff):
         job.compute_for_sortie(sortie)
 
     if nr_left <= SORTIES_PER_BATCH:
-        logger.info(job.log_done())
+        if job.log_done():
+            logger.info(job.log_done())
         job.work_left = False
         LOG_COUNTER = 0
 
