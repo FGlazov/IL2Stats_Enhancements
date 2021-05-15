@@ -12,7 +12,8 @@ from stats import stats_whore as old_stats_whore
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
 from stats.stats_whore import (update_killboard, update_status, stats_whore, cleanup, collect_mission_reports,
                                update_online, cleanup_registration)
-from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data
+from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data, \
+    retro_split_rankings_compute_running
 import sys
 from core import __version__
 from stats.logger import logger
@@ -290,7 +291,7 @@ def update_bonus_score(new_sortie):
         elif new_sortie.is_shotdown:
             penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
         new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
-        new_sortie.score_dict['penalty_pct']    = penalty_pct
+        new_sortie.score_dict['penalty_pct'] = penalty_pct
 
         new_sortie.bonus = bonus_dict
         bonus_score = new_sortie.score * bonus_pct // 100
@@ -300,13 +301,14 @@ def update_bonus_score(new_sortie):
         new_sortie.score_dict['penalty'] = penalty_score
         new_sortie.score -= penalty_score
 
-    # TODO: Only do this if there is no retroactive compute going.
     cls = decide_adjusted_cls(new_sortie)
-    if module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}:
+    if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
+            and not retro_split_rankings_compute_running()):
         increment_subtype_persona(new_sortie, cls)
         sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
         sortie_augmentation.computed_filtered_player = True
         sortie_augmentation.save()
+
 
 # ======================== MODDED PART END
 
