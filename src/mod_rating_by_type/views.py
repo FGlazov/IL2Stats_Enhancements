@@ -10,7 +10,8 @@ from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
                           VLife, Reward, KillboardPvP)
 from stats.views import *
-from stats.views import _get_rating_position, _get_squad
+from stats.views import (_get_rating_position, _get_squad, _overall_missions_wins, _overall_stats_summary_total,
+                         _overall_stats_summary_coal)
 
 from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
@@ -235,7 +236,7 @@ def _get_filtered_player_rating_position(filtered_player):
         cls=filtered_player.cls,
         rating__gt=filtered_player.rating
     ).count())
-    page = position // ITEMS_PER_PAGE + 1
+    page = (position - 1) // ITEMS_PER_PAGE + 1
     return position, page
 
 
@@ -783,6 +784,74 @@ def pilot_vlife(request, vlife_id):
         'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
         'cls': cls,
     })
+
+
+def overall(request):
+    missions_wins = _overall_missions_wins()
+    missions_wins_total = sum(missions_wins.values())
+    summary_total = _overall_stats_summary_total()
+    summary_coal = _overall_stats_summary_coal()
+
+    top_rating = (Player.players.pilots()
+                      .exclude(rating=0)
+                      .order_by('-rating')[:10])
+
+    top_streak_score = (Player.players.pilots()
+                            .exclude(score_streak_max=0)
+                            .order_by('-score_streak_max')[:10])
+
+    top_streak_ak = (Player.players.pilots()
+                         .exclude(streak_max=0)
+                         .order_by('-streak_max')[:10])
+
+    top_streak_gk = (Player.players.pilots()
+                         .exclude(streak_ground_max=0)
+                         .order_by('-streak_ground_max')[:10])
+
+    total_players = Profile.objects.count()
+
+    if module_active(MODULE_SPLIT_RANKINGS):
+        top_rating_light = _top_rating('light')
+        top_rating_medium = _top_rating('medium')
+        top_rating_heavy = _top_rating('heavy')
+
+        top_streak_ak_light = FilteredPlayer.objects.filter(
+            type='pilot', cls='light'
+        ).exclude(streak_max=0).order_by('-streak_max')[:10]
+        top_streak_gk_medium = FilteredPlayer.objects.filter(
+            type='pilot', cls='medium'
+        ).exclude(streak_ground_max=0).order_by('-streak_ground_max')[:10]
+        top_streak_gk_heavy = FilteredPlayer.objects.filter(
+            type='pilot', cls='heavy'
+        ).exclude(streak_ground_max=0).order_by('-streak_ground_max')[:10]
+    else:
+        top_rating_light = top_rating_medium = top_rating_heavy = None
+        top_streak_ak_light = top_streak_gk_medium = top_streak_gk_heavy = None
+
+    return render(request, 'overall.html', {
+        'tour': request.tour,
+        'missions_wins': missions_wins,
+        'missions_wins_total': missions_wins_total,
+        'summary_total': summary_total,
+        'summary_coal': summary_coal,
+        'top_rating': top_rating,
+        'top_streak_score': top_streak_score,
+        'top_streak_ak': top_streak_ak,
+        'top_streak_gk': top_streak_gk,
+        'total_players': total_players,
+        'top_rating_light': top_rating_light,
+        'top_rating_medium': top_rating_medium,
+        'top_rating_heavy': top_rating_heavy,
+        'top_streak_ak_light': top_streak_ak_light,
+        'top_streak_gk_medium': top_streak_gk_medium,
+        'top_streak_gk_heavy': top_streak_gk_heavy,
+    })
+
+
+def _top_rating(cls):
+    return FilteredPlayer.objects.filter(
+        type='pilot', cls=cls,
+    ).exclude(rating=0).order_by('-rating')[:10]
 
 
 def validate_and_get_player_cls(request):

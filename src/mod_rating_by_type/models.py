@@ -185,6 +185,7 @@ class FilteredPlayer(models.Model):
     streak_ground_current = models.IntegerField(default=0, db_index=True)
     streak_ground_max = models.IntegerField(default=0)
 
+    # TODO: Index some of these streaks.
     sorties_streak_current = models.IntegerField(default=0)
     sorties_streak_max = models.IntegerField(default=0)
 
