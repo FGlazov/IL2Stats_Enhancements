@@ -404,6 +404,22 @@
                     </div>
                 </div>
 
+                {% if total_players %}
+                <div class="active_players">
+                    <div class="title">
+                        {% trans 'Players' %}
+                    </div>
+                    <div class="total">
+                        {% trans 'total' context 'tour_active' %}
+                    </div>
+                    <div class="total_num">
+                        {{ total_players }}
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                {% endif %}
+
             </div>
 
             <div class="clearfix"></div>
