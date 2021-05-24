@@ -37,8 +37,8 @@ class SplitRankingsRetroCompute(BackgroundJob):
         augmentation.save()
 
     def log_update(self, to_compute):
-        return '[mod_rating_by_stats]: Retroactively computing aircraft stats. {} sorties left to process.' \
+        return '[mod_rating_by_stats]: Retroactively computing split personas. {} sorties left to process.' \
             .format(to_compute)
 
     def log_done(self):
-        return '[mod_rating_by_stats]: Completed retroactively computing aircraft stats.'
+        return '[mod_rating_by_stats]: Completed retroactively computing split personas.'

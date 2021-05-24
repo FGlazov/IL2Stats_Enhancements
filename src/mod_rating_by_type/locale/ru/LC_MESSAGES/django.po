@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-17 14:44+0200\n"
+"POT-Creation-Date: 2021-05-18 00:36+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,29 +19,29 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Translated-Using: django-rosetta 0.7.10\n"
 
-#: .\mod_rating_by_type\bullets_types.py:36
-#: .\mod_rating_by_type\bullets_types.py:38
+#: .\mod_rating_by_type\bullets_types.py:51
+#: .\mod_rating_by_type\bullets_types.py:53
 msgctxt "bullet_type"
 msgid "11mm Vickers"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:37
-#: .\mod_rating_by_type\bullets_types.py:51
+#: .\mod_rating_by_type\bullets_types.py:52
+#: .\mod_rating_by_type\bullets_types.py:66
 msgctxt "bullet_type"
 msgid ".303 BMG"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:39
+#: .\mod_rating_by_type\bullets_types.py:54
 msgctxt "bullet_type"
 msgid "MG 131 (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:40
+#: .\mod_rating_by_type\bullets_types.py:55
 msgctxt "bullet_type"
 msgid "MG 131 (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:41
+#: .\mod_rating_by_type\bullets_types.py:56
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MG 17 AP [2000]"
@@ -49,12 +49,12 @@ msgctxt "bullet_type"
 msgid "MG 17 (AP)"
 msgstr "MG 17 ББ [2000]"
 
-#: .\mod_rating_by_type\bullets_types.py:42
+#: .\mod_rating_by_type\bullets_types.py:57
 msgctxt "bullet_type"
 msgid "MG 17 (SS)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:43
+#: .\mod_rating_by_type\bullets_types.py:58
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "Breda 12.7 AP/HE [800]"
@@ -62,7 +62,7 @@ msgctxt "bullet_type"
 msgid "Breda 12.7mm (AP)"
 msgstr "Breda 12.7 ББ/ОФ [800]"
 
-#: .\mod_rating_by_type\bullets_types.py:44
+#: .\mod_rating_by_type\bullets_types.py:59
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "Breda 12.7 AP/HE [800]"
@@ -70,73 +70,73 @@ msgctxt "bullet_type"
 msgid "Breda 12.7mm (HE)"
 msgstr "Breda 12.7 ББ/ОФ [800]"
 
-#: .\mod_rating_by_type\bullets_types.py:45
+#: .\mod_rating_by_type\bullets_types.py:60
 msgctxt "bullet_type"
 msgid " Breda 7.7mm"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:46
+#: .\mod_rating_by_type\bullets_types.py:61
 msgctxt "bullet_type"
 msgid "Pistol bullet"
 msgstr "Пистолетная пуля"
 
-#: .\mod_rating_by_type\bullets_types.py:47
+#: .\mod_rating_by_type\bullets_types.py:62
 msgctxt "bullet_type"
 msgid "UB (AP)"
 msgstr "УБ (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:48
+#: .\mod_rating_by_type\bullets_types.py:63
 msgctxt "bullet_type"
 msgid "UB (HE)"
 msgstr "УБ (HE)"
 
-#: .\mod_rating_by_type\bullets_types.py:49
+#: .\mod_rating_by_type\bullets_types.py:64
 msgctxt "bullet_type"
 msgid "ShKAS (AP)"
 msgstr "ШКАС (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:50
+#: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
 msgid ".50 BMG"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:52
-#: .\mod_rating_by_type\bullets_types.py:53
+#: .\mod_rating_by_type\bullets_types.py:67
+#: .\mod_rating_by_type\bullets_types.py:68
 msgctxt "bullet_type"
 msgid "MG 34"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:54
+#: .\mod_rating_by_type\bullets_types.py:69
 msgctxt "bullet_type"
 msgid "7.62 Soviet"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:55
+#: .\mod_rating_by_type\bullets_types.py:70
 msgctxt "bullet_type"
 msgid "4x 7.62 Soviet"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:56
+#: .\mod_rating_by_type\bullets_types.py:71
 msgctxt "bullet_type"
 msgid "122mm Soviet"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:57
+#: .\mod_rating_by_type\bullets_types.py:72
 msgctxt "bullet_type"
 msgid "130mm Soviet"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:58
+#: .\mod_rating_by_type\bullets_types.py:73
 msgctxt "bullet_type"
 msgid "155mm Soviet"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:59
+#: .\mod_rating_by_type\bullets_types.py:74
 msgctxt "bullet_type"
 msgid "M2 90mm (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:60
+#: .\mod_rating_by_type\bullets_types.py:75
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MK 108 HE [360]"
@@ -144,17 +144,17 @@ msgctxt "bullet_type"
 msgid "M2 90mm (HE)"
 msgstr "MK 108 ОФ [360]"
 
-#: .\mod_rating_by_type\bullets_types.py:61
+#: .\mod_rating_by_type\bullets_types.py:76
 msgctxt "bullet_type"
 msgid "MG 151/15 (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:62
+#: .\mod_rating_by_type\bullets_types.py:77
 msgctxt "bullet_type"
 msgid "MG 151/15 (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:63
+#: .\mod_rating_by_type\bullets_types.py:78
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MG 151/20 AP/HE [780]"
@@ -162,7 +162,7 @@ msgctxt "bullet_type"
 msgid "MG 151/20 (AP)"
 msgstr "MG 151/20 ББ/ОФ [780]"
 
-#: .\mod_rating_by_type\bullets_types.py:64
+#: .\mod_rating_by_type\bullets_types.py:79
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MG 151/20 AP/HE [780]"
@@ -170,7 +170,7 @@ msgctxt "bullet_type"
 msgid "MG 151/20 (HE)"
 msgstr "MG 151/20 ББ/ОФ [780]"
 
-#: .\mod_rating_by_type\bullets_types.py:65
+#: .\mod_rating_by_type\bullets_types.py:80
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "BK 3.7 AP [24]"
@@ -178,7 +178,7 @@ msgctxt "bullet_type"
 msgid "BK 3,7 (AP)"
 msgstr "BK 3.7 ББ [24]"
 
-#: .\mod_rating_by_type\bullets_types.py:66
+#: .\mod_rating_by_type\bullets_types.py:81
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "BK 3.7 HE [24]"
@@ -186,62 +186,62 @@ msgctxt "bullet_type"
 msgid "BK 3,7 (HE)"
 msgstr "BK 3.7 ОФ [24]"
 
-#: .\mod_rating_by_type\bullets_types.py:67
+#: .\mod_rating_by_type\bullets_types.py:82
 msgctxt "bullet_type"
 msgid "122mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:68
+#: .\mod_rating_by_type\bullets_types.py:83
 msgctxt "bullet_type"
 msgid "122mm Soviet (HEAT)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:69
+#: .\mod_rating_by_type\bullets_types.py:84
 msgctxt "bullet_type"
 msgid "ShVAK (AP)"
 msgstr "ШВАК (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:70
+#: .\mod_rating_by_type\bullets_types.py:85
 msgctxt "bullet_type"
 msgid "ShVAK (HE)"
 msgstr "ШВАК (HE)"
 
-#: .\mod_rating_by_type\bullets_types.py:71
+#: .\mod_rating_by_type\bullets_types.py:86
 msgctxt "bullet_type"
 msgid "VYA-23 (AP)"
 msgstr "ВЯ-23 (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:72
+#: .\mod_rating_by_type\bullets_types.py:87
 msgctxt "bullet_type"
 msgid "VYA-23 (HE)"
 msgstr "ВЯ-23 (HE)"
 
-#: .\mod_rating_by_type\bullets_types.py:73
+#: .\mod_rating_by_type\bullets_types.py:88
 msgctxt "bullet_type"
 msgid "SH-37 (AP)"
 msgstr "Ш-37 (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:74
+#: .\mod_rating_by_type\bullets_types.py:89
 msgctxt "bullet_type"
 msgid "SH-37 (HE)"
 msgstr "Ш-37 (HE)"
 
-#: .\mod_rating_by_type\bullets_types.py:75
+#: .\mod_rating_by_type\bullets_types.py:90
 msgctxt "bullet_type"
 msgid "NS-37 (AP)"
 msgstr "НС-37 (AP)"
 
-#: .\mod_rating_by_type\bullets_types.py:76
+#: .\mod_rating_by_type\bullets_types.py:91
 msgctxt "bullet_type"
 msgid "NS-37 (HE)"
 msgstr "НС-37 (HE)"
 
-#: .\mod_rating_by_type\bullets_types.py:77
+#: .\mod_rating_by_type\bullets_types.py:92
 msgctxt "bullet_type"
 msgid "76.2mm 34-K"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:78
+#: .\mod_rating_by_type\bullets_types.py:93
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MG 17 AP [2000]"
@@ -249,33 +249,33 @@ msgctxt "bullet_type"
 msgid "M4 Cobra (AP)"
 msgstr "MG 17 ББ [2000]"
 
-#: .\mod_rating_by_type\bullets_types.py:79
+#: .\mod_rating_by_type\bullets_types.py:94
 msgctxt "bullet_type"
 msgid "M4 Cobra (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:80
+#: .\mod_rating_by_type\bullets_types.py:95
 msgctxt "bullet_type"
 msgid "76mm M5 (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:81
+#: .\mod_rating_by_type\bullets_types.py:96
 msgctxt "bullet_type"
 msgid "76mm M5 (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:82
+#: .\mod_rating_by_type\bullets_types.py:97
 msgctxt "bullet_type"
 msgid "76mm British (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:83
-#: .\mod_rating_by_type\bullets_types.py:122
+#: .\mod_rating_by_type\bullets_types.py:98
+#: .\mod_rating_by_type\bullets_types.py:137
 msgctxt "bullet_type"
 msgid "105mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:84
+#: .\mod_rating_by_type\bullets_types.py:99
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "BK 3.7 AP [24]"
@@ -283,7 +283,7 @@ msgctxt "bullet_type"
 msgid "Flak 38 (AP)"
 msgstr "BK 3.7 ББ [24]"
 
-#: .\mod_rating_by_type\bullets_types.py:85
+#: .\mod_rating_by_type\bullets_types.py:100
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MK 108 HE [360]"
@@ -291,201 +291,201 @@ msgctxt "bullet_type"
 msgid "Flak 38 (HE)"
 msgstr "MK 108 ОФ [360]"
 
-#: .\mod_rating_by_type\bullets_types.py:86
+#: .\mod_rating_by_type\bullets_types.py:101
 msgctxt "bullet_type"
 msgid "Flak 36"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:87
+#: .\mod_rating_by_type\bullets_types.py:102
 msgctxt "bullet_type"
 msgid "37mm Pak-35 (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:88
-#: .\mod_rating_by_type\bullets_types.py:90
+#: .\mod_rating_by_type\bullets_types.py:103
+#: .\mod_rating_by_type\bullets_types.py:105
 msgctxt "bullet_type"
 msgid "37mm German Flak (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:89
-#: .\mod_rating_by_type\bullets_types.py:91
+#: .\mod_rating_by_type\bullets_types.py:104
+#: .\mod_rating_by_type\bullets_types.py:106
 msgctxt "bullet_type"
 msgid "37mm German Flak (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:92
+#: .\mod_rating_by_type\bullets_types.py:107
 msgctxt "bullet_type"
 msgid "50mm German (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:93
-#: .\mod_rating_by_type\bullets_types.py:128
+#: .\mod_rating_by_type\bullets_types.py:108
+#: .\mod_rating_by_type\bullets_types.py:143
 msgctxt "bullet_type"
 msgid "50mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:94
+#: .\mod_rating_by_type\bullets_types.py:109
 msgctxt "bullet_type"
 msgid "75mm German (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:95
-#: .\mod_rating_by_type\bullets_types.py:131
+#: .\mod_rating_by_type\bullets_types.py:110
+#: .\mod_rating_by_type\bullets_types.py:146
 msgctxt "bullet_type"
 msgid "75mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:96
+#: .\mod_rating_by_type\bullets_types.py:111
 msgctxt "bullet_type"
 msgid "77mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:97
+#: .\mod_rating_by_type\bullets_types.py:112
 msgctxt "bullet_type"
 msgid "88mm German Flak (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:98
+#: .\mod_rating_by_type\bullets_types.py:113
 msgctxt "bullet_type"
 msgid "88mm German Flak (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:99
+#: .\mod_rating_by_type\bullets_types.py:114
 msgctxt "bullet_type"
 msgid "100mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:100
-#: .\mod_rating_by_type\bullets_types.py:143
+#: .\mod_rating_by_type\bullets_types.py:115
+#: .\mod_rating_by_type\bullets_types.py:158
 msgctxt "bullet_type"
 msgid "152mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:101
-#: .\mod_rating_by_type\bullets_types.py:144
+#: .\mod_rating_by_type\bullets_types.py:116
+#: .\mod_rating_by_type\bullets_types.py:159
 msgctxt "bullet_type"
 msgid "25mm 72-K (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:102
-#: .\mod_rating_by_type\bullets_types.py:145
+#: .\mod_rating_by_type\bullets_types.py:117
+#: .\mod_rating_by_type\bullets_types.py:160
 msgctxt "bullet_type"
 msgid "25mm 72-K (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:103
+#: .\mod_rating_by_type\bullets_types.py:118
 msgctxt "bullet_type"
 msgid "37mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:104
+#: .\mod_rating_by_type\bullets_types.py:119
 msgctxt "bullet_type"
 msgid "37mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:105
+#: .\mod_rating_by_type\bullets_types.py:120
 msgctxt "bullet_type"
 msgid "45mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:106
+#: .\mod_rating_by_type\bullets_types.py:121
 msgctxt "bullet_type"
 msgid "45mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:107
+#: .\mod_rating_by_type\bullets_types.py:122
 msgctxt "bullet_type"
 msgid "45mm Soviet (HEAT)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:108
+#: .\mod_rating_by_type\bullets_types.py:123
 msgctxt "bullet_type"
 msgid "57mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:109
+#: .\mod_rating_by_type\bullets_types.py:124
 msgctxt "bullet_type"
 msgid "57mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:110
+#: .\mod_rating_by_type\bullets_types.py:125
 msgctxt "bullet_type"
 msgid "57mm Soviet (HE) "
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:111
-#: .\mod_rating_by_type\bullets_types.py:146
+#: .\mod_rating_by_type\bullets_types.py:126
+#: .\mod_rating_by_type\bullets_types.py:161
 msgctxt "bullet_type"
 msgid "76mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:112
-#: .\mod_rating_by_type\bullets_types.py:148
+#: .\mod_rating_by_type\bullets_types.py:127
+#: .\mod_rating_by_type\bullets_types.py:163
 msgctxt "bullet_type"
 msgid "76mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:113
+#: .\mod_rating_by_type\bullets_types.py:128
 msgctxt "bullet_type"
 msgid "76mm Soviet Naval (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:114
+#: .\mod_rating_by_type\bullets_types.py:129
 msgctxt "bullet_type"
 msgid "85mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:115
+#: .\mod_rating_by_type\bullets_types.py:130
 msgctxt "bullet_type"
 msgid "85mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:116
+#: .\mod_rating_by_type\bullets_types.py:131
 msgctxt "bullet_type"
 msgid "85mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:117
+#: .\mod_rating_by_type\bullets_types.py:132
 msgctxt "bullet_type"
 msgid "115mm British"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:118
+#: .\mod_rating_by_type\bullets_types.py:133
 msgctxt "bullet_type"
 msgid "Hispano (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:119
+#: .\mod_rating_by_type\bullets_types.py:134
 msgctxt "bullet_type"
 msgid "Hispano (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:120
+#: .\mod_rating_by_type\bullets_types.py:135
 msgctxt "bullet_type"
 msgid "40mm Vickers (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:121
+#: .\mod_rating_by_type\bullets_types.py:136
 msgctxt "bullet_type"
 msgid "40mm Vickers (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:123
+#: .\mod_rating_by_type\bullets_types.py:138
 msgctxt "bullet_type"
 msgid "105mm German (HEAT)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:124
+#: .\mod_rating_by_type\bullets_types.py:139
 msgctxt "bullet_type"
 msgid "150mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:125
+#: .\mod_rating_by_type\bullets_types.py:140
 msgctxt "bullet_type"
 msgid "MK 108 (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:126
+#: .\mod_rating_by_type\bullets_types.py:141
 #, fuzzy
 #| msgctxt "aircraft_payload"
 #| msgid "MK 108 HE [360]"
@@ -493,107 +493,192 @@ msgctxt "bullet_type"
 msgid "MK 108 (HE)"
 msgstr "MK 108 ОФ [360]"
 
-#: .\mod_rating_by_type\bullets_types.py:127
+#: .\mod_rating_by_type\bullets_types.py:142
 msgctxt "bullet_type"
 msgid "50mm German (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:129
+#: .\mod_rating_by_type\bullets_types.py:144
 msgctxt "bullet_type"
 msgid "50mm German (HVAP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:130
+#: .\mod_rating_by_type\bullets_types.py:145
 msgctxt "bullet_type"
 msgid "75mm German (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:132
+#: .\mod_rating_by_type\bullets_types.py:147
 msgctxt "bullet_type"
 msgid "75mm German (HEAT)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:133
+#: .\mod_rating_by_type\bullets_types.py:148
 msgctxt "bullet_type"
 msgid "75mm German (HVAP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:134
+#: .\mod_rating_by_type\bullets_types.py:149
 msgctxt "bullet_type"
 msgid "88mm German (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:135
+#: .\mod_rating_by_type\bullets_types.py:150
 msgctxt "bullet_type"
 msgid "88mm German (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:136
+#: .\mod_rating_by_type\bullets_types.py:151
 msgctxt "bullet_type"
 msgid "88mm German (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:137
+#: .\mod_rating_by_type\bullets_types.py:152
 #, fuzzy
 #| msgid "German"
 msgctxt "bullet_type"
 msgid "88mm German"
 msgstr "Немецкий"
 
-#: .\mod_rating_by_type\bullets_types.py:138
+#: .\mod_rating_by_type\bullets_types.py:153
 msgctxt "bullet_type"
 msgid "88mm German (HVAP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:139
+#: .\mod_rating_by_type\bullets_types.py:154
 msgctxt "bullet_type"
 msgid "100mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:140
+#: .\mod_rating_by_type\bullets_types.py:155
 msgctxt "bullet_type"
 msgid "100mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:141
+#: .\mod_rating_by_type\bullets_types.py:156
 msgctxt "bullet_type"
 msgid "130mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:142
+#: .\mod_rating_by_type\bullets_types.py:157
 msgctxt "bullet_type"
 msgid "152mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:147
+#: .\mod_rating_by_type\bullets_types.py:162
 msgctxt "bullet_type"
 msgid "76mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:149
+#: .\mod_rating_by_type\bullets_types.py:164
 msgctxt "bullet_type"
 msgid "76mm Soviet (HVAP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:150
+#: .\mod_rating_by_type\bullets_types.py:165
 msgctxt "bullet_type"
 msgid "155mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:151
+#: .\mod_rating_by_type\bullets_types.py:166
 msgctxt "bullet_type"
 msgid "75mm Soviet (AP)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:152
+#: .\mod_rating_by_type\bullets_types.py:167
 msgctxt "bullet_type"
 msgid "75mm Soviet (APHE)"
 msgstr ""
 
-#: .\mod_rating_by_type\bullets_types.py:153
+#: .\mod_rating_by_type\bullets_types.py:168
 msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
 msgstr ""
+
+#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:479
+#: .\mod_rating_by_type\models.py:696
+#, fuzzy
+#| msgctxt "coalition"
+#| msgid "neutral"
+msgid "neutral"
+msgstr "нейтральная"
+
+#: .\mod_rating_by_type\models.py:517
+msgctxt "sortie_status"
+msgid "landed"
+msgstr "посадка на аэродром"
+
+#: .\mod_rating_by_type\models.py:518
+msgctxt "sortie_status"
+msgid "ditched"
+msgstr "посадка вне аэродрома"
+
+#: .\mod_rating_by_type\models.py:519
+msgctxt "sortie_status"
+msgid "crashed"
+msgstr "разбился"
+
+#: .\mod_rating_by_type\models.py:520
+msgctxt "sortie_status"
+msgid "shotdown"
+msgstr "сбит"
+
+#: .\mod_rating_by_type\models.py:521
+msgctxt "sortie_status"
+msgid "not takeoff"
+msgstr "не взлетал"
+
+#: .\mod_rating_by_type\models.py:522
+msgctxt "sortie_status"
+msgid "in flight"
+msgstr "в полете"
+
+#: .\mod_rating_by_type\models.py:528
+#, fuzzy
+#| msgid "username"
+msgctxt "aircraft_status"
+msgid "unharmed"
+msgstr "имя пользователя"
+
+#: .\mod_rating_by_type\models.py:529
+#, fuzzy
+#| msgctxt "sortie_log"
+#| msgid "damaged"
+msgctxt "aircraft_status"
+msgid "damaged"
+msgstr "нанес повреждения"
+
+#: .\mod_rating_by_type\models.py:530
+msgctxt "aircraft_status"
+msgid "destroyed"
+msgstr ""
+
+#: .\mod_rating_by_type\models.py:536
+msgctxt "sortie_status"
+msgid "healthy"
+msgstr "здоров"
+
+#: .\mod_rating_by_type\models.py:537
+msgctxt "sortie_status"
+msgid "wounded"
+msgstr "ранен"
+
+#: .\mod_rating_by_type\models.py:538
+msgctxt "sortie_status"
+msgid "dead"
+msgstr "погиб"
+
+#: .\mod_rating_by_type\models.py:944
+#, fuzzy
+#| msgid "award"
+msgid "reward"
+msgstr "награда"
+
+#: .\mod_rating_by_type\models.py:945
+#, fuzzy
+#| msgid "awards"
+msgid "rewards"
+msgstr "награды"
 
 #: .\mod_rating_by_type\templates\base.html:47
 msgid ""
@@ -639,7 +724,7 @@ msgstr "Рейтинги"
 #: .\mod_rating_by_type\templates\base.html:85
 #: .\mod_rating_by_type\templates\mission.html:119
 #: .\mod_rating_by_type\templates\pilots.html:3
-#: .\mod_rating_by_type\templates\pilots.html:13
+#: .\mod_rating_by_type\templates\pilots.html:15
 msgid "Pilot Rankings"
 msgstr "Рейтинг пилотов"
 
@@ -678,93 +763,149 @@ msgid "Info"
 msgstr "Инфо"
 
 #: .\mod_rating_by_type\templates\base.html:104
-#: .\mod_rating_by_type\templates\main.html:363
+#: .\mod_rating_by_type\templates\main.html:379
 #: .\mod_rating_by_type\templates\tour.html:3
 msgid "Tour"
 msgstr "Тур"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:14
+#: .\mod_rating_by_type\templates\ironman_pilots.html:16
 msgid "Ironman Rankings (Best streak)"
 msgstr "Рейтинг Ironman (Лучшая серия)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:16
+#: .\mod_rating_by_type\templates\ironman_pilots.html:18
 msgid "Ironman Rankings (Living Pilots)"
 msgstr "Рейтинг Ironman (Живые пилоты)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:23
-#: .\mod_rating_by_type\templates\pilots.html:19
+#: .\mod_rating_by_type\templates\ironman_pilots.html:25
+#: .\mod_rating_by_type\templates\pilots.html:21
 msgid "Search pilot"
 msgstr "Найти пилота"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:38
+#: .\mod_rating_by_type\templates\ironman_pilots.html:40
 #: .\mod_rating_by_type\templates\mission.html:132
-#: .\mod_rating_by_type\templates\pilots.html:33
+#: .\mod_rating_by_type\templates\pilot_sorties.html:35
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:37
+#: .\mod_rating_by_type\templates\pilots.html:35
 #: .\mod_rating_by_type\templates\squad_pilots.html:56
 #: .\mod_rating_by_type\templates\squads.html:38
 msgid "Air Kills"
 msgstr "Сбил самолетов"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:44
+#: .\mod_rating_by_type\templates\ironman_pilots.html:46
 #: .\mod_rating_by_type\templates\mission.html:138
-#: .\mod_rating_by_type\templates\pilots.html:45
+#: .\mod_rating_by_type\templates\pilot_sorties.html:39
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:41
+#: .\mod_rating_by_type\templates\pilots.html:47
 #: .\mod_rating_by_type\templates\squad_pilots.html:68
 #: .\mod_rating_by_type\templates\squads.html:44
 msgid "Ground Kills"
 msgstr "Уничтожил наземной техники"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:50
+#: .\mod_rating_by_type\templates\ironman_pilots.html:52
 #: .\mod_rating_by_type\templates\mission.html:144
 #: .\mod_rating_by_type\templates\mission.html:145
-#: .\mod_rating_by_type\templates\pilots.html:51
+#: .\mod_rating_by_type\templates\pilots.html:53
 #: .\mod_rating_by_type\templates\squad_pilots.html:74
 #: .\mod_rating_by_type\templates\squads.html:50
 msgid "Flight Time (hours:minutes)"
 msgstr "Налет (часы:минуты)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:68
+#: .\mod_rating_by_type\templates\ironman_pilots.html:70
 #: .\mod_rating_by_type\templates\mission.html:163
-#: .\mod_rating_by_type\templates\pilot.html:93
+#: .\mod_rating_by_type\templates\pilot.html:156
 #: .\mod_rating_by_type\templates\pilot_sortie.html:789
-#: .\mod_rating_by_type\templates\pilot_vlife.html:76
-#: .\mod_rating_by_type\templates\pilots.html:69
+#: .\mod_rating_by_type\templates\pilot_vlife.html:104
+#: .\mod_rating_by_type\templates\pilots.html:71
 #: .\mod_rating_by_type\templates\squad_pilots.html:92
 msgid "Gunnery Accuracy"
 msgstr "Точность стрельбы"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:75
-#: .\mod_rating_by_type\templates\ironman_pilots.html:81
-#: .\mod_rating_by_type\templates\ironman_pilots.html:87
-#: .\mod_rating_by_type\templates\ironman_pilots.html:94
+#: .\mod_rating_by_type\templates\ironman_pilots.html:77
+#: .\mod_rating_by_type\templates\ironman_pilots.html:83
+#: .\mod_rating_by_type\templates\ironman_pilots.html:89
+#: .\mod_rating_by_type\templates\ironman_pilots.html:96
 #: .\mod_rating_by_type\templates\mission.html:170
 #: .\mod_rating_by_type\templates\mission.html:176
 #: .\mod_rating_by_type\templates\mission.html:182
 #: .\mod_rating_by_type\templates\mission.html:189
-#: .\mod_rating_by_type\templates\pilot_vlife.html:99
+#: .\mod_rating_by_type\templates\pilot_sorties.html:43
+#: .\mod_rating_by_type\templates\pilot_vlife.html:127
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:45
 msgid "Score"
 msgstr "Очки"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:75
+#: .\mod_rating_by_type\templates\ironman_pilots.html:77
 #: .\mod_rating_by_type\templates\mission.html:170
-#: .\mod_rating_by_type\templates\pilot_vlife.html:82
+#: .\mod_rating_by_type\templates\pilot_vlife.html:110
 msgid "Fighter Score"
 msgstr "Истребитель"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:81
+#: .\mod_rating_by_type\templates\ironman_pilots.html:83
 #: .\mod_rating_by_type\templates\mission.html:176
-#: .\mod_rating_by_type\templates\pilot_vlife.html:87
+#: .\mod_rating_by_type\templates\pilot_vlife.html:115
 msgid "Attacker Score"
 msgstr "Счёт (Штурмовик)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:87
+#: .\mod_rating_by_type\templates\ironman_pilots.html:89
 #: .\mod_rating_by_type\templates\mission.html:182
-#: .\mod_rating_by_type\templates\pilot_vlife.html:93
+#: .\mod_rating_by_type\templates\pilot_vlife.html:121
 msgid "Bomber Score"
 msgstr "Счёт (Бомбардировщик)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:128
+#: .\mod_rating_by_type\templates\ironman_pilots.html:136
+#: .\mod_rating_by_type\templates\pilot.html:77
+#: .\mod_rating_by_type\templates\pilot_awards.html:43
+#: .\mod_rating_by_type\templates\pilot_killboard.html:69
+#: .\mod_rating_by_type\templates\pilot_sorties.html:110
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:109
+#: .\mod_rating_by_type\templates\pilots.html:137
+#, fuzzy
+#| msgctxt "coalition"
+#| msgid "Allies"
+msgctxt "persona"
+msgid "All"
+msgstr "Союзники"
+
+#: .\mod_rating_by_type\templates\ironman_pilots.html:148
+#: .\mod_rating_by_type\templates\pilot.html:90
+#: .\mod_rating_by_type\templates\pilot.html:645
+#: .\mod_rating_by_type\templates\pilot_awards.html:56
+#: .\mod_rating_by_type\templates\pilot_killboard.html:82
+#: .\mod_rating_by_type\templates\pilot_sorties.html:123
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:122
+#: .\mod_rating_by_type\templates\pilots.html:149
+msgctxt "specialty"
+msgid "Fighter"
+msgstr "Истребитель"
+
+#: .\mod_rating_by_type\templates\ironman_pilots.html:160
+#: .\mod_rating_by_type\templates\pilot.html:656
+#: .\mod_rating_by_type\templates\pilot_awards.html:70
+#: .\mod_rating_by_type\templates\pilot_killboard.html:96
+#: .\mod_rating_by_type\templates\pilot_sortie.html:165
+#: .\mod_rating_by_type\templates\pilot_sorties.html:137
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:136
+#: .\mod_rating_by_type\templates\pilots.html:161
+msgctxt "specialty"
+msgid "Attacker"
+msgstr "Ударный"
+
+#: .\mod_rating_by_type\templates\ironman_pilots.html:172
+#: .\mod_rating_by_type\templates\pilot.html:118
+#: .\mod_rating_by_type\templates\pilot.html:667
+#: .\mod_rating_by_type\templates\pilot_awards.html:84
+#: .\mod_rating_by_type\templates\pilot_killboard.html:110
+#: .\mod_rating_by_type\templates\pilot_sorties.html:151
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:150
+#: .\mod_rating_by_type\templates\pilots.html:173
+msgctxt "specialty"
+msgid "Bomber"
+msgstr "Бомбардировщик"
+
+#: .\mod_rating_by_type\templates\ironman_pilots.html:183
 #: .\mod_rating_by_type\templates\mission.html:215
-#: .\mod_rating_by_type\templates\pilot.html:743
-#: .\mod_rating_by_type\templates\pilots.html:129
+#: .\mod_rating_by_type\templates\pilot.html:806
+#: .\mod_rating_by_type\templates\pilots.html:185
 msgid ""
 "<strong>Attention!</strong> Algorithms collection statistics IL2 stats "
 "differs from statistics in-game. As a consequence of these statistics will "
@@ -774,9 +915,9 @@ msgstr ""
 "от статистики в игре. Как следствие данная статистика не будет совпадать с "
 "игровой."
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:134
-#: .\mod_rating_by_type\templates\pilot.html:750
-#: .\mod_rating_by_type\templates\pilots.html:135
+#: .\mod_rating_by_type\templates\ironman_pilots.html:189
+#: .\mod_rating_by_type\templates\pilot.html:813
+#: .\mod_rating_by_type\templates\pilots.html:191
 #, python-format
 msgid ""
 "Players inactive for more than %(days)s day - do not participate in the "
@@ -788,49 +929,49 @@ msgstr[0] "Игроки неактивные более %(days)s дня - не �
 msgstr[1] "Игроки неактивные более %(days)s дней - не участвуют в рейтинге."
 msgstr[2] "Игроки неактивные более %(days)s дней - не участвуют в рейтинге."
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:151
+#: .\mod_rating_by_type\templates\ironman_pilots.html:206
 #: .\mod_rating_by_type\templates\mission.html:230
-#: .\mod_rating_by_type\templates\pilots.html:152
+#: .\mod_rating_by_type\templates\pilots.html:208
 #: .\mod_rating_by_type\templates\squads.html:132
 msgid "on the number of air kills"
 msgstr "по количеству сбитых"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:152
+#: .\mod_rating_by_type\templates\ironman_pilots.html:207
 #: .\mod_rating_by_type\templates\mission.html:231
-#: .\mod_rating_by_type\templates\pilots.html:153
+#: .\mod_rating_by_type\templates\pilots.html:209
 msgid "on the current streak of kills"
 msgstr "по текущему стрику"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:153
+#: .\mod_rating_by_type\templates\ironman_pilots.html:208
 #: .\mod_rating_by_type\templates\mission.html:232
-#: .\mod_rating_by_type\templates\pilots.html:154
+#: .\mod_rating_by_type\templates\pilots.html:210
 #: .\mod_rating_by_type\templates\squads.html:133
 msgid "on the number of ground kills"
 msgstr "по количеству уничтоженных наземных целей"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:154
+#: .\mod_rating_by_type\templates\ironman_pilots.html:209
 #: .\mod_rating_by_type\templates\mission.html:233
-#: .\mod_rating_by_type\templates\pilots.html:155
+#: .\mod_rating_by_type\templates\pilots.html:211
 #: .\mod_rating_by_type\templates\squads.html:134
 msgid "on the flight time (hours:minutes)"
 msgstr "по налету (часы:минуты)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:155
+#: .\mod_rating_by_type\templates\ironman_pilots.html:210
 #, fuzzy
 #| msgid "on the average number of kill per one death (K/D)"
 msgid "on the average number of kills per one aircraft lost (K/L)"
 msgstr "по среднему количеству сбитых на одну смерть (K/D)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:156
+#: .\mod_rating_by_type\templates\ironman_pilots.html:211
 #: .\mod_rating_by_type\templates\mission.html:235
-#: .\mod_rating_by_type\templates\pilots.html:157
+#: .\mod_rating_by_type\templates\pilots.html:213
 #: .\mod_rating_by_type\templates\squads.html:136
 msgid "on the average number of kill per one hour (K/Hr)"
 msgstr "по среднему количеству сбитых в час (K/Hr)"
 
-#: .\mod_rating_by_type\templates\ironman_pilots.html:157
+#: .\mod_rating_by_type\templates\ironman_pilots.html:212
 #: .\mod_rating_by_type\templates\mission.html:236
-#: .\mod_rating_by_type\templates\pilots.html:158
+#: .\mod_rating_by_type\templates\pilots.html:214
 msgid "on the accuracy"
 msgstr "по точности стрельбы"
 
@@ -839,12 +980,14 @@ msgid "Current Tour"
 msgstr "Текущий тур"
 
 #: .\mod_rating_by_type\templates\main.html:16
+#: .\mod_rating_by_type\templates\overall.html:16
 #: .\mod_rating_by_type\templates\tour.html:19
 msgctxt "tour"
 msgid "Dominance"
 msgstr "Доминирование"
 
 #: .\mod_rating_by_type\templates\main.html:19
+#: .\mod_rating_by_type\templates\overall.html:19
 #: .\mod_rating_by_type\templates\tour.html:22
 msgctxt "tour"
 msgid "Won missions"
@@ -852,6 +995,7 @@ msgstr "Побед в миссиях"
 
 #: .\mod_rating_by_type\templates\main.html:38
 #: .\mod_rating_by_type\templates\mission.html:41
+#: .\mod_rating_by_type\templates\overall.html:38
 #: .\mod_rating_by_type\templates\tour.html:40
 msgctxt "tour"
 msgid "Shotdown aircraft"
@@ -859,6 +1003,7 @@ msgstr "Сбили самолетов"
 
 #: .\mod_rating_by_type\templates\main.html:56
 #: .\mod_rating_by_type\templates\mission.html:59
+#: .\mod_rating_by_type\templates\overall.html:56
 #: .\mod_rating_by_type\templates\tour.html:58
 msgctxt "tour"
 msgid "Ground targets destroyed"
@@ -866,6 +1011,7 @@ msgstr "Уничтожили наземных целей"
 
 #: .\mod_rating_by_type\templates\main.html:74
 #: .\mod_rating_by_type\templates\mission.html:77
+#: .\mod_rating_by_type\templates\overall.html:74
 #: .\mod_rating_by_type\templates\tour.html:76
 msgctxt "tour"
 msgid "Score"
@@ -873,24 +1019,43 @@ msgstr "Очков"
 
 #: .\mod_rating_by_type\templates\main.html:93
 #: .\mod_rating_by_type\templates\mission.html:95
+#: .\mod_rating_by_type\templates\overall.html:93
 #: .\mod_rating_by_type\templates\tour.html:94
 msgctxt "tour"
 msgid "Flight time (hours)"
 msgstr "Налет часов"
 
-#: .\mod_rating_by_type\templates\main.html:118
+#: .\mod_rating_by_type\templates\main.html:119
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best pilots in the last 24 hours"
+msgctxt "tour_top"
+msgid "Best pilots in the last mission"
+msgstr "Лучшие пилоты за последние 24 часа"
+
+#: .\mod_rating_by_type\templates\main.html:121
 msgctxt "tour_top"
 msgid "Best pilots in the last 24 hours"
 msgstr "Лучшие пилоты за последние 24 часа"
 
-#: .\mod_rating_by_type\templates\main.html:123
-#: .\mod_rating_by_type\templates\main.html:149
-#: .\mod_rating_by_type\templates\main.html:177
-#: .\mod_rating_by_type\templates\main.html:203
-#: .\mod_rating_by_type\templates\main.html:231
-#: .\mod_rating_by_type\templates\main.html:257
-#: .\mod_rating_by_type\templates\main.html:285
-#: .\mod_rating_by_type\templates\main.html:311
+#: .\mod_rating_by_type\templates\main.html:127
+#: .\mod_rating_by_type\templates\main.html:153
+#: .\mod_rating_by_type\templates\main.html:185
+#: .\mod_rating_by_type\templates\main.html:211
+#: .\mod_rating_by_type\templates\main.html:243
+#: .\mod_rating_by_type\templates\main.html:269
+#: .\mod_rating_by_type\templates\main.html:301
+#: .\mod_rating_by_type\templates\main.html:327
+#: .\mod_rating_by_type\templates\overall.html:123
+#: .\mod_rating_by_type\templates\overall.html:149
+#: .\mod_rating_by_type\templates\overall.html:177
+#: .\mod_rating_by_type\templates\overall.html:203
+#: .\mod_rating_by_type\templates\overall.html:229
+#: .\mod_rating_by_type\templates\overall.html:255
+#: .\mod_rating_by_type\templates\overall.html:281
+#: .\mod_rating_by_type\templates\overall.html:307
+#: .\mod_rating_by_type\templates\overall.html:333
+#: .\mod_rating_by_type\templates\overall.html:359
 #: .\mod_rating_by_type\templates\tour.html:123
 #: .\mod_rating_by_type\templates\tour.html:149
 #: .\mod_rating_by_type\templates\tour.html:175
@@ -903,14 +1068,15 @@ msgctxt "tour_top"
 msgid "pilot nickname"
 msgstr "имя пилота"
 
-#: .\mod_rating_by_type\templates\main.html:125
-#: .\mod_rating_by_type\templates\main.html:151
-#: .\mod_rating_by_type\templates\main.html:179
-#: .\mod_rating_by_type\templates\main.html:205
-#: .\mod_rating_by_type\templates\main.html:233
-#: .\mod_rating_by_type\templates\main.html:259
-#: .\mod_rating_by_type\templates\main.html:287
-#: .\mod_rating_by_type\templates\main.html:313
+#: .\mod_rating_by_type\templates\main.html:129
+#: .\mod_rating_by_type\templates\main.html:155
+#: .\mod_rating_by_type\templates\main.html:187
+#: .\mod_rating_by_type\templates\main.html:213
+#: .\mod_rating_by_type\templates\main.html:245
+#: .\mod_rating_by_type\templates\main.html:271
+#: .\mod_rating_by_type\templates\main.html:303
+#: .\mod_rating_by_type\templates\main.html:329
+#: .\mod_rating_by_type\templates\overall.html:151
 #: .\mod_rating_by_type\templates\tour.html:151
 #: .\mod_rating_by_type\templates\tour.html:203
 #: .\mod_rating_by_type\templates\tour.html:255
@@ -919,54 +1085,79 @@ msgctxt "tour_top"
 msgid "score"
 msgstr "очков"
 
-#: .\mod_rating_by_type\templates\main.html:144
+#: .\mod_rating_by_type\templates\main.html:148
 msgctxt "tour_top"
 msgid "Best live pilots"
 msgstr "Лучшие живые пилоты"
 
-#: .\mod_rating_by_type\templates\main.html:172
+#: .\mod_rating_by_type\templates\main.html:177
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best fighter pilots in the last 24 hours"
+msgctxt "tour_top"
+msgid "Best fighter pilots in the last mission"
+msgstr "Лучшие игроки на истребителях за последние 24 часа"
+
+#: .\mod_rating_by_type\templates\main.html:179
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last 24 hours"
 msgstr "Лучшие игроки на истребителях за последние 24 часа"
 
-#: .\mod_rating_by_type\templates\main.html:198
+#: .\mod_rating_by_type\templates\main.html:206
 msgctxt "tour_top"
 msgid "Best live fighter pilots"
 msgstr "Счёт за наилучший вылет на истребителе"
 
-#: .\mod_rating_by_type\templates\main.html:226
+#: .\mod_rating_by_type\templates\main.html:235
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best attacker pilots in the last 24 hours"
+msgctxt "tour_top"
+msgid "Best attacker pilots in the last mission"
+msgstr "Лучшие игроки на штурмовиках за последние 24 часа"
+
+#: .\mod_rating_by_type\templates\main.html:237
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last 24 hours"
 msgstr "Лучшие игроки на штурмовиках за последние 24 часа"
 
-#: .\mod_rating_by_type\templates\main.html:252
+#: .\mod_rating_by_type\templates\main.html:264
 msgctxt "tour_top"
 msgid "Best live attacker pilots"
 msgstr "Счёт за наилучший вылет на штурмовике"
 
-#: .\mod_rating_by_type\templates\main.html:280
+#: .\mod_rating_by_type\templates\main.html:293
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best bomber pilots in the last 24 hours"
+msgctxt "tour_top"
+msgid "Best bomber pilots in the last mission"
+msgstr "Лучшие игроки на бомбардировщиках за последние 24 часа"
+
+#: .\mod_rating_by_type\templates\main.html:295
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last 24 hours"
 msgstr "Лучшие игроки на бомбардировщиках за последние 24 часа"
 
-#: .\mod_rating_by_type\templates\main.html:306
+#: .\mod_rating_by_type\templates\main.html:322
 msgctxt "tour_top"
 msgid "Best live bomber pilots"
 msgstr "Счёт за наилучший вылет на бомбардировщике"
 
-#: .\mod_rating_by_type\templates\main.html:334
+#: .\mod_rating_by_type\templates\main.html:350
 #: .\mod_rating_by_type\templates\tour.html:328
 msgid "Overall Pilot Rankings"
 msgstr "Полный рейтинг пилотов"
 
-#: .\mod_rating_by_type\templates\main.html:346
-#: .\mod_rating_by_type\templates\pilot.html:547
+#: .\mod_rating_by_type\templates\main.html:362
+#: .\mod_rating_by_type\templates\overall.html:393
+#: .\mod_rating_by_type\templates\pilot.html:610
 #: .\mod_rating_by_type\templates\squad.html:451
 #: .\mod_rating_by_type\templates\tour.html:340
 msgid "Coalitions"
 msgstr "Коалиции"
 
-#: .\mod_rating_by_type\templates\main.html:370
+#: .\mod_rating_by_type\templates\main.html:386
 #, python-format
 msgid "%(days)s day left"
 msgid_plural "%(days)s days left"
@@ -974,52 +1165,53 @@ msgstr[0] "Остался %(days)s день"
 msgstr[1] "Осталось %(days)s дня"
 msgstr[2] "Осталось %(days)s дней"
 
-#: .\mod_rating_by_type\templates\main.html:385
+#: .\mod_rating_by_type\templates\main.html:401
 #: .\mod_rating_by_type\templates\tour.html:357
 msgid "Active players"
 msgstr "Активные игроки"
 
-#: .\mod_rating_by_type\templates\main.html:388
+#: .\mod_rating_by_type\templates\main.html:404
+#: .\mod_rating_by_type\templates\overall.html:413
 #: .\mod_rating_by_type\templates\tour.html:360
 msgctxt "tour_active"
 msgid "total"
 msgstr "всего"
 
-#: .\mod_rating_by_type\templates\main.html:421
+#: .\mod_rating_by_type\templates\main.html:437
 msgid "Online"
 msgstr "Сейчас на сервере"
 
-#: .\mod_rating_by_type\templates\main.html:424
+#: .\mod_rating_by_type\templates\main.html:440
 msgctxt "online"
 msgid "pilots"
 msgstr "пилотов"
 
-#: .\mod_rating_by_type\templates\main.html:446
+#: .\mod_rating_by_type\templates\main.html:462
 msgid "List of pilots online"
 msgstr "Список пилотов онлайн"
 
-#: .\mod_rating_by_type\templates\main.html:461
+#: .\mod_rating_by_type\templates\main.html:477
 msgid "Summary previous tour"
 msgstr "Сводка прошлого тура"
 
-#: .\mod_rating_by_type\templates\main.html:471
+#: .\mod_rating_by_type\templates\main.html:487
 msgctxt "tour_winner"
 msgid "winner"
 msgstr "победитель"
 
-#: .\mod_rating_by_type\templates\main.html:478
+#: .\mod_rating_by_type\templates\main.html:494
 msgid "Top Pilots"
 msgstr "Лучшие пилоты"
 
-#: .\mod_rating_by_type\templates\main.html:490
+#: .\mod_rating_by_type\templates\main.html:506
 msgid "Top Fighter Pilots"
 msgstr "Лучшие игроки на истребителях"
 
-#: .\mod_rating_by_type\templates\main.html:503
+#: .\mod_rating_by_type\templates\main.html:519
 msgid "Top Attacker Pilots"
 msgstr "Лучшие игроки на штурмовиках"
 
-#: .\mod_rating_by_type\templates\main.html:516
+#: .\mod_rating_by_type\templates\main.html:532
 msgid "Top Bomber Pilots"
 msgstr "Лучшие игроки на бомбардировщиках"
 
@@ -1060,7 +1252,7 @@ msgid "Pilots total"
 msgstr "Всего пилотов"
 
 #: .\mod_rating_by_type\templates\mission.html:234
-#: .\mod_rating_by_type\templates\pilots.html:156
+#: .\mod_rating_by_type\templates\pilots.html:212
 #: .\mod_rating_by_type\templates\squads.html:135
 msgid "on the average number of kill per one death (K/D)"
 msgstr "по среднему количеству сбитых на одну смерть (K/D)"
@@ -1069,9 +1261,128 @@ msgstr "по среднему количеству сбитых на одну с
 msgid "on the score"
 msgstr "по очкам"
 
-#: .\mod_rating_by_type\templates\pilot.html:23
+#: .\mod_rating_by_type\templates\overall.html:3
+#: .\mod_rating_by_type\templates\overall.html:9
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Aerostats"
+msgid "Overall stats"
+msgstr "Аэростатов"
+
+#: .\mod_rating_by_type\templates\overall.html:118
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best pilots"
+msgctxt "overall"
+msgid "Best pilots"
+msgstr "Лучшие пилоты"
+
+#: .\mod_rating_by_type\templates\overall.html:125
+#: .\mod_rating_by_type\templates\overall.html:231
+#: .\mod_rating_by_type\templates\overall.html:283
+#: .\mod_rating_by_type\templates\overall.html:335
+#: .\mod_rating_by_type\templates\tour.html:125
+#: .\mod_rating_by_type\templates\tour.html:177
+#: .\mod_rating_by_type\templates\tour.html:229
+#: .\mod_rating_by_type\templates\tour.html:281
+msgctxt "tour_top"
+msgid "rating"
+msgstr "рейтинг"
+
+#: .\mod_rating_by_type\templates\overall.html:144
+#, fuzzy
+#| msgctxt "pilot_nav_tab"
+#| msgid "Virtual Lifes"
+msgctxt "overall_top"
+msgid "Best virtual lifes"
+msgstr "Виртуальные жизни"
+
+#: .\mod_rating_by_type\templates\overall.html:172
+#, fuzzy
+#| msgid "Best Streak"
+msgctxt "overall"
+msgid "Best streak"
+msgstr "Лучший стрик"
+
+#: .\mod_rating_by_type\templates\overall.html:179
+#: .\mod_rating_by_type\templates\overall.html:205
+#: .\mod_rating_by_type\templates\overall.html:257
+#: .\mod_rating_by_type\templates\overall.html:309
+#: .\mod_rating_by_type\templates\overall.html:361
+#, fuzzy
+#| msgid "Streak"
+msgctxt "overall"
+msgid "streak"
+msgstr "Стрик"
+
+#: .\mod_rating_by_type\templates\overall.html:198
+#, fuzzy
+#| msgid "Best Ground Streak"
+msgctxt "overall"
+msgid "Best ground streak"
+msgstr "Лучший стрик по Н.Ц."
+
+#: .\mod_rating_by_type\templates\overall.html:224
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best fighter pilots"
+msgctxt "overall"
+msgid "Best fighter pilots"
+msgstr "Лучшие игроки на истребителе"
+
+#: .\mod_rating_by_type\templates\overall.html:250
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best fighter streak"
+msgctxt "overall"
+msgid "Best fighter air kill streak"
+msgstr "Лучшая серия побед на истребителе"
+
+#: .\mod_rating_by_type\templates\overall.html:276
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best attacker pilots"
+msgctxt "overall"
+msgid "Best attacker pilots"
+msgstr "Лучшие игроки на штурмовике"
+
+#: .\mod_rating_by_type\templates\overall.html:302
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best attacker streak"
+msgctxt "overall"
+msgid "Best attacker ground streak"
+msgstr "Лучшая серия побед на штурмовике"
+
+#: .\mod_rating_by_type\templates\overall.html:328
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best bomber pilots"
+msgctxt "overall"
+msgid "Best bomber pilots"
+msgstr "Лучшие игроки на бомбардировщике"
+
+#: .\mod_rating_by_type\templates\overall.html:354
+#, fuzzy
+#| msgctxt "tour_top"
+#| msgid "Best bomber streak"
+msgctxt "overall"
+msgid "Best bomber ground streak"
+msgstr "Лучшая серия побед на бомбардировщике"
+
+#: .\mod_rating_by_type\templates\overall.html:381
+msgid ""
+"<strong>Attention!</strong> The same player can appear in the ranking "
+"several times (profiles from different tours) and this is expected behavior."
+msgstr ""
+
+#: .\mod_rating_by_type\templates\overall.html:410
+msgid "Players"
+msgstr ""
+
 #: .\mod_rating_by_type\templates\pilot.html:27
 #: .\mod_rating_by_type\templates\pilot.html:31
+#: .\mod_rating_by_type\templates\pilot.html:35
 #: .\mod_rating_by_type\templates\squad.html:20
 #: .\mod_rating_by_type\templates\squad.html:24
 #: .\mod_rating_by_type\templates\squad.html:28
@@ -1081,8 +1392,8 @@ msgstr "по очкам"
 msgid "favorite coalition"
 msgstr "предпочитаемая коалиция"
 
-#: .\mod_rating_by_type\templates\pilot.html:30
-#: .\mod_rating_by_type\templates\pilot.html:31
+#: .\mod_rating_by_type\templates\pilot.html:34
+#: .\mod_rating_by_type\templates\pilot.html:35
 #: .\mod_rating_by_type\templates\squad.html:27
 #: .\mod_rating_by_type\templates\squad.html:28
 #: .\mod_rating_by_type\templates\squad_pilots.html:27
@@ -1091,153 +1402,153 @@ msgctxt "favorite_coalition"
 msgid "No"
 msgstr "Полосатый"
 
-#: .\mod_rating_by_type\templates\pilot.html:35
+#: .\mod_rating_by_type\templates\pilot.html:39
 msgid "favorite aircraft"
 msgstr "любимый самолет"
 
-#: .\mod_rating_by_type\templates\pilot.html:42
-#: .\mod_rating_by_type\templates\pilot.html:522
-#: .\mod_rating_by_type\templates\pilot.html:526
+#: .\mod_rating_by_type\templates\pilot.html:46
+#: .\mod_rating_by_type\templates\pilot.html:585
+#: .\mod_rating_by_type\templates\pilot.html:589
 msgid "Streak"
 msgstr "Стрик"
 
-#: .\mod_rating_by_type\templates\pilot.html:43
+#: .\mod_rating_by_type\templates\pilot.html:47
 msgid "number of downed aircraft for the current virtual life"
 msgstr "количество сбитых самолетов за текущую виртуальную жизнь"
 
-#: .\mod_rating_by_type\templates\pilot.html:52
+#: .\mod_rating_by_type\templates\pilot.html:56
 msgid "Ground Streak"
 msgstr "Стрик по наземным целям"
 
-#: .\mod_rating_by_type\templates\pilot.html:53
+#: .\mod_rating_by_type\templates\pilot.html:57
 msgid "number of destroyed ground targets for the current virtual life"
 msgstr "количество уничтоженных наземных целей за текущую виртуальную жизнь"
 
-#: .\mod_rating_by_type\templates\pilot.html:68
-#: .\mod_rating_by_type\templates\pilot.html:522
-#: .\mod_rating_by_type\templates\pilot_vlife.html:61
-#: .\mod_rating_by_type\templates\squad.html:61
-msgid "Aerial victories"
-msgstr "Воздушных побед"
-
-#: .\mod_rating_by_type\templates\pilot.html:73
-#: .\mod_rating_by_type\templates\pilot.html:492
-msgid "Best Streak"
-msgstr "Лучший стрик"
-
-#: .\mod_rating_by_type\templates\pilot.html:78
-#: .\mod_rating_by_type\templates\pilot.html:526
-#: .\mod_rating_by_type\templates\pilot_vlife.html:66
-#: .\mod_rating_by_type\templates\squad.html:66
-msgid "Destroyed on Ground"
-msgstr "Уничтожено на земле"
-
-#: .\mod_rating_by_type\templates\pilot.html:83
-#: .\mod_rating_by_type\templates\pilot.html:496
-msgid "Best Ground Streak"
-msgstr "Лучший стрик по Н.Ц."
-
-#: .\mod_rating_by_type\templates\pilot.html:88
-#: .\mod_rating_by_type\templates\pilot.html:530
-#: .\mod_rating_by_type\templates\pilot_vlife.html:71
-#: .\mod_rating_by_type\templates\squad.html:71
-msgid "Flight Time"
-msgstr "Налет"
-
-#: .\mod_rating_by_type\templates\pilot.html:98
-#: .\mod_rating_by_type\templates\squad.html:112
-msgid "Position in Rating"
-msgstr "Позиция в рейтинге"
-
-#: .\mod_rating_by_type\templates\pilot.html:110
-#: .\mod_rating_by_type\templates\squad.html:77
-msgid "Position Fighter Rating"
-msgstr "Позиция в рейтинге<br/>(Истребитель)"
-
-#: .\mod_rating_by_type\templates\pilot.html:121
-#: .\mod_rating_by_type\templates\squad.html:88
-msgid "Position Attacker Rating"
-msgstr "Позиция в рейтинге<br/>(Штурмовик)"
-
-#: .\mod_rating_by_type\templates\pilot.html:132
-#: .\mod_rating_by_type\templates\squad.html:99
-msgid "Position Bomber Rating"
-msgstr "Позиция в рейтинге<br/>(Бомбардировщик)"
-
-#: .\mod_rating_by_type\templates\pilot.html:146
-#: .\mod_rating_by_type\templates\pilot_vlife.html:108
-#: .\mod_rating_by_type\templates\squad.html:125
-msgid "Detailed combat results"
-msgstr "Подробные боевые результаты"
-
-#: .\mod_rating_by_type\templates\pilot.html:149
-#: .\mod_rating_by_type\templates\pilot_sortie.html:142
-#: .\mod_rating_by_type\templates\pilot_vlife.html:111
-#: .\mod_rating_by_type\templates\squad.html:128
-msgctxt "total"
-msgid "Total Aircraft"
-msgstr "Самолетов всего"
-
-#: .\mod_rating_by_type\templates\pilot.html:156
-#: .\mod_rating_by_type\templates\pilot.html:184
-#: .\mod_rating_by_type\templates\pilot_sortie.html:151
-#: .\mod_rating_by_type\templates\pilot_sortie.html:207
-#: .\mod_rating_by_type\templates\pilot_vlife.html:117
-#: .\mod_rating_by_type\templates\pilot_vlife.html:145
-#: .\mod_rating_by_type\templates\squad.html:134
-#: .\mod_rating_by_type\templates\squad.html:162
-msgctxt "total"
-msgid "Fighters"
-msgstr "Истребители"
-
-#: .\mod_rating_by_type\templates\pilot.html:163
-#: .\mod_rating_by_type\templates\pilot.html:191
-#: .\mod_rating_by_type\templates\pilot_sortie.html:165
+#: .\mod_rating_by_type\templates\pilot.html:104
+#: .\mod_rating_by_type\templates\pilot.html:226
+#: .\mod_rating_by_type\templates\pilot.html:254
 #: .\mod_rating_by_type\templates\pilot_sortie.html:221
-#: .\mod_rating_by_type\templates\pilot_vlife.html:124
 #: .\mod_rating_by_type\templates\pilot_vlife.html:152
+#: .\mod_rating_by_type\templates\pilot_vlife.html:180
 #: .\mod_rating_by_type\templates\squad.html:141
 #: .\mod_rating_by_type\templates\squad.html:169
 msgctxt "total"
 msgid "Attacker"
 msgstr "Ударные"
 
-#: .\mod_rating_by_type\templates\pilot.html:170
-#: .\mod_rating_by_type\templates\pilot.html:198
+#: .\mod_rating_by_type\templates\pilot.html:131
+#: .\mod_rating_by_type\templates\pilot.html:585
+#: .\mod_rating_by_type\templates\pilot_vlife.html:89
+#: .\mod_rating_by_type\templates\squad.html:61
+msgid "Aerial victories"
+msgstr "Воздушных побед"
+
+#: .\mod_rating_by_type\templates\pilot.html:136
+#: .\mod_rating_by_type\templates\pilot.html:555
+msgid "Best Streak"
+msgstr "Лучший стрик"
+
+#: .\mod_rating_by_type\templates\pilot.html:141
+#: .\mod_rating_by_type\templates\pilot.html:589
+#: .\mod_rating_by_type\templates\pilot_vlife.html:94
+#: .\mod_rating_by_type\templates\squad.html:66
+msgid "Destroyed on Ground"
+msgstr "Уничтожено на земле"
+
+#: .\mod_rating_by_type\templates\pilot.html:146
+#: .\mod_rating_by_type\templates\pilot.html:559
+msgid "Best Ground Streak"
+msgstr "Лучший стрик по Н.Ц."
+
+#: .\mod_rating_by_type\templates\pilot.html:151
+#: .\mod_rating_by_type\templates\pilot.html:593
+#: .\mod_rating_by_type\templates\pilot_vlife.html:99
+#: .\mod_rating_by_type\templates\squad.html:71
+msgid "Flight Time"
+msgstr "Налет"
+
+#: .\mod_rating_by_type\templates\pilot.html:161
+#: .\mod_rating_by_type\templates\squad.html:112
+msgid "Position in Rating"
+msgstr "Позиция в рейтинге"
+
+#: .\mod_rating_by_type\templates\pilot.html:173
+#: .\mod_rating_by_type\templates\squad.html:77
+msgid "Position Fighter Rating"
+msgstr "Позиция в рейтинге<br/>(Истребитель)"
+
+#: .\mod_rating_by_type\templates\pilot.html:184
+#: .\mod_rating_by_type\templates\squad.html:88
+msgid "Position Attacker Rating"
+msgstr "Позиция в рейтинге<br/>(Штурмовик)"
+
+#: .\mod_rating_by_type\templates\pilot.html:195
+#: .\mod_rating_by_type\templates\squad.html:99
+msgid "Position Bomber Rating"
+msgstr "Позиция в рейтинге<br/>(Бомбардировщик)"
+
+#: .\mod_rating_by_type\templates\pilot.html:209
+#: .\mod_rating_by_type\templates\pilot_vlife.html:136
+#: .\mod_rating_by_type\templates\squad.html:125
+msgid "Detailed combat results"
+msgstr "Подробные боевые результаты"
+
+#: .\mod_rating_by_type\templates\pilot.html:212
+#: .\mod_rating_by_type\templates\pilot_sortie.html:142
+#: .\mod_rating_by_type\templates\pilot_vlife.html:139
+#: .\mod_rating_by_type\templates\squad.html:128
+msgctxt "total"
+msgid "Total Aircraft"
+msgstr "Самолетов всего"
+
+#: .\mod_rating_by_type\templates\pilot.html:219
+#: .\mod_rating_by_type\templates\pilot.html:247
+#: .\mod_rating_by_type\templates\pilot_sortie.html:151
+#: .\mod_rating_by_type\templates\pilot_sortie.html:207
+#: .\mod_rating_by_type\templates\pilot_vlife.html:145
+#: .\mod_rating_by_type\templates\pilot_vlife.html:173
+#: .\mod_rating_by_type\templates\squad.html:134
+#: .\mod_rating_by_type\templates\squad.html:162
+msgctxt "total"
+msgid "Fighters"
+msgstr "Истребители"
+
+#: .\mod_rating_by_type\templates\pilot.html:233
+#: .\mod_rating_by_type\templates\pilot.html:261
 #: .\mod_rating_by_type\templates\pilot_sortie.html:179
 #: .\mod_rating_by_type\templates\pilot_sortie.html:235
-#: .\mod_rating_by_type\templates\pilot_vlife.html:131
 #: .\mod_rating_by_type\templates\pilot_vlife.html:159
+#: .\mod_rating_by_type\templates\pilot_vlife.html:187
 #: .\mod_rating_by_type\templates\squad.html:148
 #: .\mod_rating_by_type\templates\squad.html:176
 msgctxt "total"
 msgid "Bombers"
 msgstr "Бомбардировщики"
 
-#: .\mod_rating_by_type\templates\pilot.html:177
-#: .\mod_rating_by_type\templates\pilot.html:205
+#: .\mod_rating_by_type\templates\pilot.html:240
+#: .\mod_rating_by_type\templates\pilot.html:268
 #: .\mod_rating_by_type\templates\pilot_sortie.html:193
 #: .\mod_rating_by_type\templates\pilot_sortie.html:249
-#: .\mod_rating_by_type\templates\pilot_vlife.html:138
 #: .\mod_rating_by_type\templates\pilot_vlife.html:166
+#: .\mod_rating_by_type\templates\pilot_vlife.html:194
 #: .\mod_rating_by_type\templates\squad.html:155
 #: .\mod_rating_by_type\templates\squad.html:183
 msgctxt "total"
 msgid "Transport"
 msgstr "Транспортные"
 
-#: .\mod_rating_by_type\templates\pilot.html:184
-#: .\mod_rating_by_type\templates\pilot.html:191
-#: .\mod_rating_by_type\templates\pilot.html:198
-#: .\mod_rating_by_type\templates\pilot.html:205
+#: .\mod_rating_by_type\templates\pilot.html:247
+#: .\mod_rating_by_type\templates\pilot.html:254
+#: .\mod_rating_by_type\templates\pilot.html:261
+#: .\mod_rating_by_type\templates\pilot.html:268
 #: .\mod_rating_by_type\templates\pilot_sortie.html:207
 #: .\mod_rating_by_type\templates\pilot_sortie.html:221
 #: .\mod_rating_by_type\templates\pilot_sortie.html:235
 #: .\mod_rating_by_type\templates\pilot_sortie.html:249
-#: .\mod_rating_by_type\templates\pilot_vlife.html:145
-#: .\mod_rating_by_type\templates\pilot_vlife.html:152
-#: .\mod_rating_by_type\templates\pilot_vlife.html:159
-#: .\mod_rating_by_type\templates\pilot_vlife.html:166
+#: .\mod_rating_by_type\templates\pilot_vlife.html:173
+#: .\mod_rating_by_type\templates\pilot_vlife.html:180
+#: .\mod_rating_by_type\templates\pilot_vlife.html:187
+#: .\mod_rating_by_type\templates\pilot_vlife.html:194
 #: .\mod_rating_by_type\templates\squad.html:162
 #: .\mod_rating_by_type\templates\squad.html:169
 #: .\mod_rating_by_type\templates\squad.html:176
@@ -1246,359 +1557,359 @@ msgctxt "total"
 msgid "AI"
 msgstr "ИИ"
 
-#: .\mod_rating_by_type\templates\pilot.html:212
+#: .\mod_rating_by_type\templates\pilot.html:275
 #: .\mod_rating_by_type\templates\pilot_sortie.html:263
-#: .\mod_rating_by_type\templates\pilot_vlife.html:173
+#: .\mod_rating_by_type\templates\pilot_vlife.html:201
 #: .\mod_rating_by_type\templates\squad.html:190
 msgctxt "total"
 msgid "Assisted"
 msgstr "Ассистов"
 
-#: .\mod_rating_by_type\templates\pilot.html:218
+#: .\mod_rating_by_type\templates\pilot.html:281
 #: .\mod_rating_by_type\templates\pilot_sortie.html:276
-#: .\mod_rating_by_type\templates\pilot_vlife.html:179
+#: .\mod_rating_by_type\templates\pilot_vlife.html:207
 #: .\mod_rating_by_type\templates\squad.html:196
 msgctxt "total"
 msgid "Destroyed ground targets"
 msgstr "Уничтожено наземных целей"
 
-#: .\mod_rating_by_type\templates\pilot.html:224
+#: .\mod_rating_by_type\templates\pilot.html:287
 #: .\mod_rating_by_type\templates\pilot_sortie.html:285
-#: .\mod_rating_by_type\templates\pilot_vlife.html:185
+#: .\mod_rating_by_type\templates\pilot_vlife.html:213
 #: .\mod_rating_by_type\templates\squad.html:202
 msgctxt "total"
 msgid "Heavy Tanks"
 msgstr "Тяжелых танков"
 
-#: .\mod_rating_by_type\templates\pilot.html:231
+#: .\mod_rating_by_type\templates\pilot.html:294
 #: .\mod_rating_by_type\templates\pilot_sortie.html:299
-#: .\mod_rating_by_type\templates\pilot_vlife.html:192
+#: .\mod_rating_by_type\templates\pilot_vlife.html:220
 #: .\mod_rating_by_type\templates\squad.html:209
 msgctxt "total"
 msgid "Medium Tanks"
 msgstr "Средних танков"
 
-#: .\mod_rating_by_type\templates\pilot.html:238
+#: .\mod_rating_by_type\templates\pilot.html:301
 #: .\mod_rating_by_type\templates\pilot_sortie.html:313
-#: .\mod_rating_by_type\templates\pilot_vlife.html:199
+#: .\mod_rating_by_type\templates\pilot_vlife.html:227
 #: .\mod_rating_by_type\templates\squad.html:216
 msgctxt "total"
 msgid "Light Tanks"
 msgstr "Легких танков"
 
-#: .\mod_rating_by_type\templates\pilot.html:245
+#: .\mod_rating_by_type\templates\pilot.html:308
 #: .\mod_rating_by_type\templates\pilot_sortie.html:327
-#: .\mod_rating_by_type\templates\pilot_vlife.html:206
+#: .\mod_rating_by_type\templates\pilot_vlife.html:234
 #: .\mod_rating_by_type\templates\squad.html:223
 msgctxt "total"
 msgid "Armored vehicles"
 msgstr "Бронемашин"
 
-#: .\mod_rating_by_type\templates\pilot.html:252
+#: .\mod_rating_by_type\templates\pilot.html:315
 #: .\mod_rating_by_type\templates\pilot_sortie.html:341
-#: .\mod_rating_by_type\templates\pilot_vlife.html:213
+#: .\mod_rating_by_type\templates\pilot_vlife.html:241
 #: .\mod_rating_by_type\templates\squad.html:230
 msgctxt "total"
 msgid "Cars"
 msgstr "Автомобилей"
 
-#: .\mod_rating_by_type\templates\pilot.html:259
+#: .\mod_rating_by_type\templates\pilot.html:322
 #: .\mod_rating_by_type\templates\pilot_sortie.html:355
-#: .\mod_rating_by_type\templates\pilot_vlife.html:220
+#: .\mod_rating_by_type\templates\pilot_vlife.html:248
 #: .\mod_rating_by_type\templates\squad.html:237
 msgctxt "total"
 msgid "Trucks"
 msgstr "Грузовиков"
 
-#: .\mod_rating_by_type\templates\pilot.html:266
+#: .\mod_rating_by_type\templates\pilot.html:329
 #: .\mod_rating_by_type\templates\pilot_sortie.html:369
-#: .\mod_rating_by_type\templates\pilot_vlife.html:227
+#: .\mod_rating_by_type\templates\pilot_vlife.html:255
 #: .\mod_rating_by_type\templates\squad.html:244
 msgctxt "total"
 msgid "Large-caliber AA guns"
 msgstr "Зениток крупного калибра"
 
-#: .\mod_rating_by_type\templates\pilot.html:273
+#: .\mod_rating_by_type\templates\pilot.html:336
 #: .\mod_rating_by_type\templates\pilot_sortie.html:383
-#: .\mod_rating_by_type\templates\pilot_vlife.html:234
+#: .\mod_rating_by_type\templates\pilot_vlife.html:262
 #: .\mod_rating_by_type\templates\squad.html:251
 msgctxt "total"
 msgid "Medium-caliber AA guns"
 msgstr "Зениток среднего калибра"
 
-#: .\mod_rating_by_type\templates\pilot.html:280
+#: .\mod_rating_by_type\templates\pilot.html:343
 #: .\mod_rating_by_type\templates\pilot_sortie.html:397
-#: .\mod_rating_by_type\templates\pilot_vlife.html:241
+#: .\mod_rating_by_type\templates\pilot_vlife.html:269
 #: .\mod_rating_by_type\templates\squad.html:258
 msgctxt "total"
 msgid "Small-caliber AA guns"
 msgstr "Зениток малого калибра"
 
-#: .\mod_rating_by_type\templates\pilot.html:287
+#: .\mod_rating_by_type\templates\pilot.html:350
 #: .\mod_rating_by_type\templates\pilot_sortie.html:411
-#: .\mod_rating_by_type\templates\pilot_vlife.html:248
+#: .\mod_rating_by_type\templates\pilot_vlife.html:276
 #: .\mod_rating_by_type\templates\squad.html:265
 msgctxt "total"
 msgid "Machine gunners"
 msgstr "Пулеметчиков"
 
-#: .\mod_rating_by_type\templates\pilot.html:294
+#: .\mod_rating_by_type\templates\pilot.html:357
 #: .\mod_rating_by_type\templates\pilot_sortie.html:425
-#: .\mod_rating_by_type\templates\pilot_vlife.html:255
+#: .\mod_rating_by_type\templates\pilot_vlife.html:283
 #: .\mod_rating_by_type\templates\squad.html:272
 msgctxt "total"
 msgid "Aerostats"
 msgstr "Аэростатов"
 
-#: .\mod_rating_by_type\templates\pilot.html:301
+#: .\mod_rating_by_type\templates\pilot.html:364
 #: .\mod_rating_by_type\templates\pilot_sortie.html:439
-#: .\mod_rating_by_type\templates\pilot_vlife.html:262
+#: .\mod_rating_by_type\templates\pilot_vlife.html:290
 #: .\mod_rating_by_type\templates\squad.html:279
 msgctxt "total"
 msgid "Searchlights"
 msgstr "Прожекторов"
 
-#: .\mod_rating_by_type\templates\pilot.html:308
+#: .\mod_rating_by_type\templates\pilot.html:371
 #: .\mod_rating_by_type\templates\pilot_sortie.html:453
-#: .\mod_rating_by_type\templates\pilot_vlife.html:269
+#: .\mod_rating_by_type\templates\pilot_vlife.html:297
 #: .\mod_rating_by_type\templates\squad.html:286
 msgctxt "total"
 msgid "Locomotives"
 msgstr "Локомотивов"
 
-#: .\mod_rating_by_type\templates\pilot.html:315
+#: .\mod_rating_by_type\templates\pilot.html:378
 #: .\mod_rating_by_type\templates\pilot_sortie.html:467
-#: .\mod_rating_by_type\templates\pilot_vlife.html:276
+#: .\mod_rating_by_type\templates\pilot_vlife.html:304
 #: .\mod_rating_by_type\templates\squad.html:293
 msgctxt "total"
 msgid "Wagons"
 msgstr "Вагонов"
 
-#: .\mod_rating_by_type\templates\pilot.html:322
+#: .\mod_rating_by_type\templates\pilot.html:385
 #: .\mod_rating_by_type\templates\pilot_sortie.html:481
-#: .\mod_rating_by_type\templates\pilot_vlife.html:283
+#: .\mod_rating_by_type\templates\pilot_vlife.html:311
 #: .\mod_rating_by_type\templates\squad.html:300
 msgctxt "total"
 msgid "Field Artillery"
 msgstr "Полевых орудий"
 
-#: .\mod_rating_by_type\templates\pilot.html:329
+#: .\mod_rating_by_type\templates\pilot.html:392
 #: .\mod_rating_by_type\templates\pilot_sortie.html:495
-#: .\mod_rating_by_type\templates\pilot_vlife.html:290
+#: .\mod_rating_by_type\templates\pilot_vlife.html:318
 #: .\mod_rating_by_type\templates\squad.html:307
 msgctxt "total"
 msgid "Howitzers"
 msgstr "Гаубиц"
 
-#: .\mod_rating_by_type\templates\pilot.html:336
+#: .\mod_rating_by_type\templates\pilot.html:399
 #: .\mod_rating_by_type\templates\pilot_sortie.html:509
-#: .\mod_rating_by_type\templates\pilot_vlife.html:297
+#: .\mod_rating_by_type\templates\pilot_vlife.html:325
 #: .\mod_rating_by_type\templates\squad.html:314
 msgctxt "total"
 msgid "Rocket Artillery"
 msgstr "Реактивной артиллерии"
 
-#: .\mod_rating_by_type\templates\pilot.html:343
+#: .\mod_rating_by_type\templates\pilot.html:406
 #: .\mod_rating_by_type\templates\pilot_sortie.html:523
-#: .\mod_rating_by_type\templates\pilot_vlife.html:304
+#: .\mod_rating_by_type\templates\pilot_vlife.html:332
 #: .\mod_rating_by_type\templates\squad.html:321
 msgctxt "total"
 msgid "Ships"
 msgstr "Судов"
 
-#: .\mod_rating_by_type\templates\pilot.html:343
-#: .\mod_rating_by_type\templates\pilot_vlife.html:304
+#: .\mod_rating_by_type\templates\pilot.html:406
+#: .\mod_rating_by_type\templates\pilot_vlife.html:332
 #: .\mod_rating_by_type\templates\squad.html:321
 msgid "outdated parameter"
 msgstr "устаревший параметр"
 
-#: .\mod_rating_by_type\templates\pilot.html:350
+#: .\mod_rating_by_type\templates\pilot.html:413
 #: .\mod_rating_by_type\templates\pilot_sortie.html:537
-#: .\mod_rating_by_type\templates\pilot_vlife.html:311
+#: .\mod_rating_by_type\templates\pilot_vlife.html:339
 #: .\mod_rating_by_type\templates\squad.html:328
 msgctxt "total"
 msgid "Heavy Ships"
 msgstr "Тяжелых судов"
 
-#: .\mod_rating_by_type\templates\pilot.html:357
+#: .\mod_rating_by_type\templates\pilot.html:420
 #: .\mod_rating_by_type\templates\pilot_sortie.html:551
-#: .\mod_rating_by_type\templates\pilot_vlife.html:318
+#: .\mod_rating_by_type\templates\pilot_vlife.html:346
 #: .\mod_rating_by_type\templates\squad.html:335
 msgctxt "total"
 msgid "Medium Ships"
 msgstr "Средних судов"
 
-#: .\mod_rating_by_type\templates\pilot.html:364
+#: .\mod_rating_by_type\templates\pilot.html:427
 #: .\mod_rating_by_type\templates\pilot_sortie.html:565
-#: .\mod_rating_by_type\templates\pilot_vlife.html:325
+#: .\mod_rating_by_type\templates\pilot_vlife.html:353
 #: .\mod_rating_by_type\templates\squad.html:342
 msgctxt "total"
 msgid "Light Ships"
 msgstr "Легких судов"
 
-#: .\mod_rating_by_type\templates\pilot.html:371
+#: .\mod_rating_by_type\templates\pilot.html:434
 #: .\mod_rating_by_type\templates\pilot_sortie.html:579
-#: .\mod_rating_by_type\templates\pilot_vlife.html:332
+#: .\mod_rating_by_type\templates\pilot_vlife.html:360
 #: .\mod_rating_by_type\templates\squad.html:349
 msgctxt "total"
 msgid "Static Aircraft"
 msgstr "Статичных самолетов"
 
-#: .\mod_rating_by_type\templates\pilot.html:378
+#: .\mod_rating_by_type\templates\pilot.html:441
 #: .\mod_rating_by_type\templates\pilot_sortie.html:593
-#: .\mod_rating_by_type\templates\pilot_vlife.html:339
+#: .\mod_rating_by_type\templates\pilot_vlife.html:367
 #: .\mod_rating_by_type\templates\squad.html:356
 msgctxt "total"
 msgid "Static Vehicles"
 msgstr "Статичной техники"
 
-#: .\mod_rating_by_type\templates\pilot.html:385
+#: .\mod_rating_by_type\templates\pilot.html:448
 #: .\mod_rating_by_type\templates\pilot_sortie.html:607
-#: .\mod_rating_by_type\templates\pilot_vlife.html:346
+#: .\mod_rating_by_type\templates\pilot_vlife.html:374
 #: .\mod_rating_by_type\templates\squad.html:363
 msgctxt "total"
 msgid "Airfield Objects"
 msgstr "Аэродромных объектов"
 
-#: .\mod_rating_by_type\templates\pilot.html:392
+#: .\mod_rating_by_type\templates\pilot.html:455
 #: .\mod_rating_by_type\templates\pilot_sortie.html:621
-#: .\mod_rating_by_type\templates\pilot_vlife.html:353
+#: .\mod_rating_by_type\templates\pilot_vlife.html:381
 #: .\mod_rating_by_type\templates\squad.html:370
 msgctxt "total"
 msgid "Bridges"
 msgstr "Мостов"
 
-#: .\mod_rating_by_type\templates\pilot.html:399
+#: .\mod_rating_by_type\templates\pilot.html:462
 #: .\mod_rating_by_type\templates\pilot_sortie.html:635
-#: .\mod_rating_by_type\templates\pilot_vlife.html:360
+#: .\mod_rating_by_type\templates\pilot_vlife.html:388
 #: .\mod_rating_by_type\templates\squad.html:377
 msgctxt "total"
 msgid "Industrial Objects"
 msgstr "Индустриальных объектов"
 
-#: .\mod_rating_by_type\templates\pilot.html:406
+#: .\mod_rating_by_type\templates\pilot.html:469
 #: .\mod_rating_by_type\templates\pilot_sortie.html:649
-#: .\mod_rating_by_type\templates\pilot_vlife.html:367
+#: .\mod_rating_by_type\templates\pilot_vlife.html:395
 #: .\mod_rating_by_type\templates\squad.html:384
 msgctxt "total"
 msgid "Big buildings"
 msgstr "Больших зданий"
 
-#: .\mod_rating_by_type\templates\pilot.html:413
+#: .\mod_rating_by_type\templates\pilot.html:476
 #: .\mod_rating_by_type\templates\pilot_sortie.html:663
-#: .\mod_rating_by_type\templates\pilot_vlife.html:374
+#: .\mod_rating_by_type\templates\pilot_vlife.html:402
 #: .\mod_rating_by_type\templates\squad.html:391
 msgctxt "total"
 msgid "Medium buildings"
 msgstr "Средних зданий"
 
-#: .\mod_rating_by_type\templates\pilot.html:420
+#: .\mod_rating_by_type\templates\pilot.html:483
 #: .\mod_rating_by_type\templates\pilot_sortie.html:677
-#: .\mod_rating_by_type\templates\pilot_vlife.html:381
+#: .\mod_rating_by_type\templates\pilot_vlife.html:409
 #: .\mod_rating_by_type\templates\squad.html:398
 msgctxt "total"
 msgid "Small buildings"
 msgstr "Маленьких зданий"
 
-#: .\mod_rating_by_type\templates\pilot.html:429
-#: .\mod_rating_by_type\templates\pilot_vlife.html:390
+#: .\mod_rating_by_type\templates\pilot.html:492
+#: .\mod_rating_by_type\templates\pilot_vlife.html:418
 #: .\mod_rating_by_type\templates\squad.html:407
 msgid "Detailed sorties results"
 msgstr "Подробные результаты вылетов"
 
-#: .\mod_rating_by_type\templates\pilot.html:432
-#: .\mod_rating_by_type\templates\pilot_vlife.html:393
+#: .\mod_rating_by_type\templates\pilot.html:495
+#: .\mod_rating_by_type\templates\pilot_vlife.html:421
 #: .\mod_rating_by_type\templates\squad.html:410
 msgctxt "total"
 msgid "Score"
 msgstr "Очков"
 
-#: .\mod_rating_by_type\templates\pilot.html:436
-#: .\mod_rating_by_type\templates\pilot.html:534
-#: .\mod_rating_by_type\templates\pilot_vlife.html:397
+#: .\mod_rating_by_type\templates\pilot.html:499
+#: .\mod_rating_by_type\templates\pilot.html:597
+#: .\mod_rating_by_type\templates\pilot_vlife.html:425
 #: .\mod_rating_by_type\templates\squad.html:414
 msgctxt "total"
 msgid "Sorties"
 msgstr "Вылетов"
 
-#: .\mod_rating_by_type\templates\pilot.html:448
-#: .\mod_rating_by_type\templates\pilot.html:538
-#: .\mod_rating_by_type\templates\pilot_vlife.html:401
+#: .\mod_rating_by_type\templates\pilot.html:511
+#: .\mod_rating_by_type\templates\pilot.html:601
+#: .\mod_rating_by_type\templates\pilot_vlife.html:429
 #: .\mod_rating_by_type\templates\squad.html:418
 msgctxt "total"
 msgid "Lost aircraft"
 msgstr "Самолетов потеряно"
 
-#: .\mod_rating_by_type\templates\pilot.html:456
-#: .\mod_rating_by_type\templates\pilot_vlife.html:405
+#: .\mod_rating_by_type\templates\pilot.html:519
+#: .\mod_rating_by_type\templates\pilot_vlife.html:433
 #: .\mod_rating_by_type\templates\squad.html:422
 msgctxt "total"
 msgid "Bailout"
 msgstr "Прыжков с парашютом"
 
-#: .\mod_rating_by_type\templates\pilot.html:464
+#: .\mod_rating_by_type\templates\pilot.html:527
 #: .\mod_rating_by_type\templates\squad.html:426
 msgctxt "total"
 msgid "Dead"
 msgstr "Смертей"
 
-#: .\mod_rating_by_type\templates\pilot.html:468
+#: .\mod_rating_by_type\templates\pilot.html:531
 #: .\mod_rating_by_type\templates\squad.html:430
 msgctxt "total"
 msgid "Captured"
 msgstr "Попаданий в плен"
 
-#: .\mod_rating_by_type\templates\pilot.html:472
-#: .\mod_rating_by_type\templates\pilot_vlife.html:409
+#: .\mod_rating_by_type\templates\pilot.html:535
+#: .\mod_rating_by_type\templates\pilot_vlife.html:437
 #: .\mod_rating_by_type\templates\squad.html:434
 msgctxt "total"
 msgid "Disco"
 msgstr "Разрывов связи"
 
-#: .\mod_rating_by_type\templates\pilot.html:476
-#: .\mod_rating_by_type\templates\pilot_vlife.html:413
+#: .\mod_rating_by_type\templates\pilot.html:539
+#: .\mod_rating_by_type\templates\pilot_vlife.html:441
 #: .\mod_rating_by_type\templates\squad.html:438
 msgctxt "total"
 msgid "Shotdown Friendly Aircraft"
 msgstr "Сбито дружественных самолетов"
 
-#: .\mod_rating_by_type\templates\pilot.html:480
-#: .\mod_rating_by_type\templates\pilot_vlife.html:417
+#: .\mod_rating_by_type\templates\pilot.html:543
+#: .\mod_rating_by_type\templates\pilot_vlife.html:445
 #: .\mod_rating_by_type\templates\squad.html:442
 msgctxt "total"
 msgid "Destroyed Friendly Ground Targets"
 msgstr "Уничтожено дружественных наземных целей"
 
-#: .\mod_rating_by_type\templates\pilot.html:489
+#: .\mod_rating_by_type\templates\pilot.html:552
 msgid "Best results"
 msgstr "Лучшие достижения"
 
-#: .\mod_rating_by_type\templates\pilot.html:500
+#: .\mod_rating_by_type\templates\pilot.html:563
 msgid "Best Flight time Streak"
 msgstr "Макс. налет за одну жизнь"
 
-#: .\mod_rating_by_type\templates\pilot.html:504
+#: .\mod_rating_by_type\templates\pilot.html:567
 msgid "Best Sorties Streak"
 msgstr "Макс. кол-во вылетов за одну жизнь"
 
-#: .\mod_rating_by_type\templates\pilot.html:508
+#: .\mod_rating_by_type\templates\pilot.html:571
 msgid "Max Aerial Victories in one sortie"
 msgstr "Макс. кол-во воздушных побед за один вылет"
 
-#: .\mod_rating_by_type\templates\pilot.html:512
+#: .\mod_rating_by_type\templates\pilot.html:575
 msgid "Max Destroyed on Ground in one sortie"
 msgstr "Макс. кол-во уничтоженых Н.Ц. за один вылет"
 
-#: .\mod_rating_by_type\templates\pilot.html:519
+#: .\mod_rating_by_type\templates\pilot.html:582
 msgid "Current life"
 msgstr "Текущая виртуальная жизнь"
 
-#: .\mod_rating_by_type\templates\pilot.html:553
-#: .\mod_rating_by_type\templates\pilot.html:564
-#: .\mod_rating_by_type\templates\pilot.html:583
-#: .\mod_rating_by_type\templates\pilot.html:594
-#: .\mod_rating_by_type\templates\pilot.html:605
 #: .\mod_rating_by_type\templates\pilot.html:616
+#: .\mod_rating_by_type\templates\pilot.html:627
+#: .\mod_rating_by_type\templates\pilot.html:646
+#: .\mod_rating_by_type\templates\pilot.html:657
+#: .\mod_rating_by_type\templates\pilot.html:668
+#: .\mod_rating_by_type\templates\pilot.html:679
 #: .\mod_rating_by_type\templates\squad.html:457
 #: .\mod_rating_by_type\templates\squad.html:468
 #: .\mod_rating_by_type\templates\squad.html:487
@@ -1608,40 +1919,25 @@ msgstr "Текущая виртуальная жизнь"
 msgid "number of sorties"
 msgstr "количество вылетов"
 
-#: .\mod_rating_by_type\templates\pilot.html:577
+#: .\mod_rating_by_type\templates\pilot.html:640
 #: .\mod_rating_by_type\templates\squad.html:481
 msgid "Specialty"
 msgstr "Специализация"
 
-#: .\mod_rating_by_type\templates\pilot.html:582
-msgctxt "specialty"
-msgid "Fighter"
-msgstr "Истребитель"
-
-#: .\mod_rating_by_type\templates\pilot.html:593
-msgctxt "specialty"
-msgid "Attacker"
-msgstr "Ударный"
-
-#: .\mod_rating_by_type\templates\pilot.html:604
-msgctxt "specialty"
-msgid "Bomber"
-msgstr "Бомбардировщик"
-
-#: .\mod_rating_by_type\templates\pilot.html:615
+#: .\mod_rating_by_type\templates\pilot.html:678
 #: .\mod_rating_by_type\templates\squad.html:519
 msgctxt "specialty"
 msgid "Transport"
 msgstr "Транспорт"
 
-#: .\mod_rating_by_type\templates\pilot.html:634
-#: .\mod_rating_by_type\templates\pilot_vlife.html:429
+#: .\mod_rating_by_type\templates\pilot.html:697
+#: .\mod_rating_by_type\templates\pilot_vlife.html:457
 #: .\mod_rating_by_type\templates\squad.html:538
 msgid "W/L - Win/Loss"
 msgstr "W/L - Побед/Поражений"
 
-#: .\mod_rating_by_type\templates\pilot.html:640
-#: .\mod_rating_by_type\templates\pilot_vlife.html:436
+#: .\mod_rating_by_type\templates\pilot.html:703
+#: .\mod_rating_by_type\templates\pilot_vlife.html:464
 msgid ""
 "if ratio > 1 - pilot flying in the minority, if ratio < 1 - pilot flying in "
 "the majority"
@@ -1649,74 +1945,115 @@ msgstr ""
 "ратио > 1 - пилот летает в меньшинстве, ратио < 1 - пилот летает в "
 "большинстве"
 
-#: .\mod_rating_by_type\templates\pilot.html:642
-#: .\mod_rating_by_type\templates\pilot_vlife.html:438
+#: .\mod_rating_by_type\templates\pilot.html:705
+#: .\mod_rating_by_type\templates\pilot_vlife.html:466
 msgid "Ratio"
 msgstr "Ратио"
 
-#: .\mod_rating_by_type\templates\pilot.html:650
+#: .\mod_rating_by_type\templates\pilot.html:713
 #: .\mod_rating_by_type\templates\pilot_sortie.html:775
 msgid "Fairplay Index"
 msgstr "Индекс честной игры"
 
-#: .\mod_rating_by_type\templates\pilot.html:660
+#: .\mod_rating_by_type\templates\pilot.html:723
 #: .\mod_rating_by_type\templates\squad.html:548
 msgid "K/D - Kills per Death"
 msgstr "K/D - Сбитых к смертям"
 
-#: .\mod_rating_by_type\templates\pilot.html:668
-#: .\mod_rating_by_type\templates\pilot_vlife.html:448
+#: .\mod_rating_by_type\templates\pilot.html:731
+#: .\mod_rating_by_type\templates\pilot_vlife.html:476
 #: .\mod_rating_by_type\templates\squad.html:556
 msgid "K/L - Kills per Aircraft Lost"
 msgstr "K/L - Сбитых к потерям"
 
-#: .\mod_rating_by_type\templates\pilot.html:676
-#: .\mod_rating_by_type\templates\pilot_vlife.html:456
+#: .\mod_rating_by_type\templates\pilot.html:739
+#: .\mod_rating_by_type\templates\pilot_vlife.html:484
 #: .\mod_rating_by_type\templates\squad.html:564
 msgid "K/S - Kills per Sortie"
 msgstr "K/S - Сбитых за вылет"
 
-#: .\mod_rating_by_type\templates\pilot.html:684
-#: .\mod_rating_by_type\templates\pilot_vlife.html:464
+#: .\mod_rating_by_type\templates\pilot.html:747
+#: .\mod_rating_by_type\templates\pilot_vlife.html:492
 #: .\mod_rating_by_type\templates\squad.html:572
 msgid "K/H - Kills per Hour of Flight"
 msgstr "K/H - Сбитых в час"
 
-#: .\mod_rating_by_type\templates\pilot.html:694
+#: .\mod_rating_by_type\templates\pilot.html:757
 #: .\mod_rating_by_type\templates\squad.html:582
 msgid "GK/D - G.Kills per Death"
 msgstr "GK/D - Уничтожено к смертям"
 
-#: .\mod_rating_by_type\templates\pilot.html:702
-#: .\mod_rating_by_type\templates\pilot_vlife.html:474
+#: .\mod_rating_by_type\templates\pilot.html:765
+#: .\mod_rating_by_type\templates\pilot_vlife.html:502
 #: .\mod_rating_by_type\templates\squad.html:590
 msgid "GK/L - G.Kills per Aircraft Lost"
 msgstr "GK/L - Уничтожено к потерям"
 
-#: .\mod_rating_by_type\templates\pilot.html:710
-#: .\mod_rating_by_type\templates\pilot_vlife.html:482
+#: .\mod_rating_by_type\templates\pilot.html:773
+#: .\mod_rating_by_type\templates\pilot_vlife.html:510
 #: .\mod_rating_by_type\templates\squad.html:598
 msgid "GK/S - G.Kills per Sortie"
 msgstr "GK/S - Уничтожено за вылет"
 
-#: .\mod_rating_by_type\templates\pilot.html:718
-#: .\mod_rating_by_type\templates\pilot_vlife.html:490
+#: .\mod_rating_by_type\templates\pilot.html:781
+#: .\mod_rating_by_type\templates\pilot_vlife.html:518
 #: .\mod_rating_by_type\templates\squad.html:606
 msgid "GK/H - G.Kills per Hour of Flight"
 msgstr "GK/H - Уничтожено в час"
 
-#: .\mod_rating_by_type\templates\pilot.html:733
+#: .\mod_rating_by_type\templates\pilot.html:796
 msgid "Other names of the pilot on this account"
 msgstr "Другие имена пилота на этом аккаунте"
 
+#: .\mod_rating_by_type\templates\pilot_awards.html:3
+#: .\mod_rating_by_type\templates\pilot_awards.html:16
+msgctxt "pilot_awards"
+msgid "Awards"
+msgstr "Награды"
+
+#: .\mod_rating_by_type\templates\pilot_awards.html:17
+msgctxt "pilot_awards"
+msgid "pilot"
+msgstr "пилот"
+
+#: .\mod_rating_by_type\templates\pilot_killboard.html:3
+#: .\mod_rating_by_type\templates\pilot_killboard.html:16
+msgid "Killboard"
+msgstr ""
+
+#: .\mod_rating_by_type\templates\pilot_killboard.html:17
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:17
+msgid "pilot"
+msgstr "пилот"
+
+#: .\mod_rating_by_type\templates\pilot_killboard.html:29
+msgctxt "killboard"
+msgid "Won"
+msgstr "Победы"
+
+#: .\mod_rating_by_type\templates\pilot_killboard.html:35
+msgctxt "killboard"
+msgid "Lose"
+msgstr "Поражения"
+
+#: .\mod_rating_by_type\templates\pilot_killboard.html:41
+msgctxt "killboard"
+msgid "Won/Lose"
+msgstr "Победы/Поражения"
+
 #: .\mod_rating_by_type\templates\pilot_sortie.html:3
 #: .\mod_rating_by_type\templates\pilot_sortie.html:16
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:18
 msgctxt "sortie_page_title"
 msgid "Sortie"
 msgstr "Вылет от"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:19
 #: .\mod_rating_by_type\templates\pilot_sortie.html:20
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:21
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:22
+#: .\mod_rating_by_type\templates\pilot_sorties.html:55
+#: .\mod_rating_by_type\templates\pilot_sorties.html:56
 msgctxt "sortie_status"
 msgid "Disconnect"
 msgstr "Разрыв связи"
@@ -1724,8 +2061,14 @@ msgstr "Разрыв связи"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:23
 #: .\mod_rating_by_type\templates\pilot_sortie.html:24
 #: .\mod_rating_by_type\templates\pilot_sortie.html:715
-#: .\mod_rating_by_type\templates\pilot_vlife.html:24
-#: .\mod_rating_by_type\templates\pilot_vlife.html:25
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:25
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:26
+#: .\mod_rating_by_type\templates\pilot_sorties.html:59
+#: .\mod_rating_by_type\templates\pilot_sorties.html:60
+#: .\mod_rating_by_type\templates\pilot_vlife.html:33
+#: .\mod_rating_by_type\templates\pilot_vlife.html:34
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:54
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:55
 msgctxt "sortie_status"
 msgid "Dead"
 msgstr "Погиб"
@@ -1734,8 +2077,14 @@ msgstr "Погиб"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:28
 #: .\mod_rating_by_type\templates\pilot_sortie.html:75
 #: .\mod_rating_by_type\templates\pilot_sortie.html:717
-#: .\mod_rating_by_type\templates\pilot_vlife.html:28
-#: .\mod_rating_by_type\templates\pilot_vlife.html:29
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:29
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:30
+#: .\mod_rating_by_type\templates\pilot_sorties.html:63
+#: .\mod_rating_by_type\templates\pilot_sorties.html:64
+#: .\mod_rating_by_type\templates\pilot_vlife.html:37
+#: .\mod_rating_by_type\templates\pilot_vlife.html:38
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:58
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:59
 msgctxt "sortie_status"
 msgid "Captured"
 msgstr "Попал в плен"
@@ -1743,42 +2092,69 @@ msgstr "Попал в плен"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:31
 #: .\mod_rating_by_type\templates\pilot_sortie.html:32
 #: .\mod_rating_by_type\templates\pilot_sortie.html:719
-#: .\mod_rating_by_type\templates\pilot_vlife.html:32
-#: .\mod_rating_by_type\templates\pilot_vlife.html:33
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:33
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:34
+#: .\mod_rating_by_type\templates\pilot_sorties.html:67
+#: .\mod_rating_by_type\templates\pilot_sorties.html:68
+#: .\mod_rating_by_type\templates\pilot_vlife.html:41
+#: .\mod_rating_by_type\templates\pilot_vlife.html:42
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:62
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:63
 msgctxt "sortie_status"
 msgid "Bailout"
 msgstr "Выпрыгнул с парашютом"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:35
 #: .\mod_rating_by_type\templates\pilot_sortie.html:36
-#: .\mod_rating_by_type\templates\pilot_vlife.html:36
-#: .\mod_rating_by_type\templates\pilot_vlife.html:37
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:37
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:38
+#: .\mod_rating_by_type\templates\pilot_sorties.html:71
+#: .\mod_rating_by_type\templates\pilot_sorties.html:72
+#: .\mod_rating_by_type\templates\pilot_vlife.html:45
+#: .\mod_rating_by_type\templates\pilot_vlife.html:46
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:66
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:67
 msgctxt "sortie_status"
 msgid "Aircraft lost"
 msgstr "Самолет потерян"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:39
 #: .\mod_rating_by_type\templates\pilot_sortie.html:40
-#: .\mod_rating_by_type\templates\pilot_vlife.html:40
-#: .\mod_rating_by_type\templates\pilot_vlife.html:41
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:41
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:42
+#: .\mod_rating_by_type\templates\pilot_sorties.html:75
+#: .\mod_rating_by_type\templates\pilot_sorties.html:76
+#: .\mod_rating_by_type\templates\pilot_vlife.html:49
+#: .\mod_rating_by_type\templates\pilot_vlife.html:50
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:70
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:71
 msgctxt "sortie_status"
 msgid "In Flight"
 msgstr "В полете"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:43
 #: .\mod_rating_by_type\templates\pilot_sortie.html:44
-#: .\mod_rating_by_type\templates\pilot_vlife.html:44
-#: .\mod_rating_by_type\templates\pilot_vlife.html:45
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:45
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:46
+#: .\mod_rating_by_type\templates\pilot_sorties.html:79
+#: .\mod_rating_by_type\templates\pilot_sorties.html:80
+#: .\mod_rating_by_type\templates\pilot_vlife.html:53
+#: .\mod_rating_by_type\templates\pilot_vlife.html:54
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:74
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:75
 msgctxt "sortie_status"
 msgid "Landed"
 msgstr "Посадка на аэродром"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:48
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:50
+#: .\mod_rating_by_type\templates\pilot_sorties.html:17
 msgctxt "pilot_sorties"
 msgid "pilot"
 msgstr "пилот"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:53
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:55
 msgid "Back to sorties list"
 msgstr "Назад к журналу вылетов"
 
@@ -1915,7 +2291,10 @@ msgid "Scoring"
 msgstr "Подсчет очков"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:691
-msgid "Бонус за лётное время"
+#, fuzzy
+#| msgctxt "tour"
+#| msgid "Flight time (hours)"
+msgid "Flight time bonus"
 msgstr "Налет часов"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:702
@@ -1923,7 +2302,9 @@ msgid "Undamaged bailout penalty"
 msgstr "Штраф за прыжок из неповрежденного самолёта"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:713
-msgid "Наказание"
+#, fuzzy
+#| msgid "Specialty"
+msgid "Penalty"
 msgstr "Специализация"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:721
@@ -1980,48 +2361,107 @@ msgstr "Отчет о повреждениях"
 msgid "Number of hits taken"
 msgstr "Количество"
 
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:3
+msgctxt "sortie_page_title"
+msgid "Sortie Log"
+msgstr "Хронология вылета"
+
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:98
+msgctxt "sortie_log"
+msgid "AI"
+msgstr "ИИ"
+
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:109
+msgid ""
+"Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
+"logs are attached via processing to damage logs using an educated guess, so "
+"it may be incorrect."
+msgstr ""
+
+#: .\mod_rating_by_type\templates\pilot_sorties.html:3
+#: .\mod_rating_by_type\templates\pilot_sorties.html:16
+msgctxt "pilot_sorties"
+msgid "Sorties"
+msgstr "Журнал вылетов"
+
+#: .\mod_rating_by_type\templates\pilot_sorties.html:30
+#: .\mod_rating_by_type\templates\pilot_sorties.html:31
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:32
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:33
+msgid "Duration (hours:minutes)"
+msgstr "Продолжительность (часы:минуты)"
+
 #: .\mod_rating_by_type\templates\pilot_vlife.html:3
-#: .\mod_rating_by_type\templates\pilot_vlife.html:17
+#: .\mod_rating_by_type\templates\pilot_vlife.html:18
 msgctxt "vlife_page_title"
 msgid "VLife"
 msgstr "Виртуальная жизнь"
 
-#: .\mod_rating_by_type\templates\pilot_vlife.html:49
+#: .\mod_rating_by_type\templates\pilot_vlife.html:20
+#, fuzzy
+#| msgctxt "specialty"
+#| msgid "Fighter"
+msgctxt "vlife_page_title"
+msgid "Fighter VLife"
+msgstr "Истребитель"
+
+#: .\mod_rating_by_type\templates\pilot_vlife.html:22
+#, fuzzy
+#| msgctxt "total"
+#| msgid "Attacker"
+msgctxt "vlife_page_title"
+msgid "Attacker VLife"
+msgstr "Ударные"
+
+#: .\mod_rating_by_type\templates\pilot_vlife.html:24
+#, fuzzy
+#| msgid "Bomber Score"
+msgctxt "vlife_page_title"
+msgid "Bomber VLife"
+msgstr "Счёт (Бомбардировщик)"
+
+#: .\mod_rating_by_type\templates\pilot_vlife.html:73
 msgctxt "pilot_vlifes"
 msgid "pilot"
 msgstr "пилот"
 
-#: .\mod_rating_by_type\templates\pilot_vlife.html:54
+#: .\mod_rating_by_type\templates\pilot_vlife.html:78
 msgid "Back to vlifes list"
 msgstr "Назад к списку виртуальных жизней"
 
-#: .\mod_rating_by_type\templates\pilots.html:39
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:3
+#: .\mod_rating_by_type\templates\pilot_vlifes.html:16
+msgctxt "pilot_vlifes"
+msgid "Virtual Lifes"
+msgstr "Виртуальные жизни"
+
+#: .\mod_rating_by_type\templates\pilots.html:41
 #: .\mod_rating_by_type\templates\squad_pilots.html:62
 msgid "Current Streak"
 msgstr "Текущий стрик"
 
-#: .\mod_rating_by_type\templates\pilots.html:76
-#: .\mod_rating_by_type\templates\pilots.html:82
-#: .\mod_rating_by_type\templates\pilots.html:88
-#: .\mod_rating_by_type\templates\pilots.html:95
+#: .\mod_rating_by_type\templates\pilots.html:78
+#: .\mod_rating_by_type\templates\pilots.html:84
+#: .\mod_rating_by_type\templates\pilots.html:90
+#: .\mod_rating_by_type\templates\pilots.html:97
 #: .\mod_rating_by_type\templates\squad_pilots.html:118
 #: .\mod_rating_by_type\templates\squads.html:88
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: .\mod_rating_by_type\templates\pilots.html:76
+#: .\mod_rating_by_type\templates\pilots.html:78
 #: .\mod_rating_by_type\templates\squad_pilots.html:99
 #: .\mod_rating_by_type\templates\squads.html:69
 msgid "Fighter Rating"
 msgstr "Рейтинг летчиков-истребителей"
 
-#: .\mod_rating_by_type\templates\pilots.html:82
+#: .\mod_rating_by_type\templates\pilots.html:84
 #: .\mod_rating_by_type\templates\squad_pilots.html:105
 #: .\mod_rating_by_type\templates\squads.html:75
 msgid "Attacker Rating"
 msgstr "Рейтинг пилотов штурмовика"
 
-#: .\mod_rating_by_type\templates\pilots.html:88
+#: .\mod_rating_by_type\templates\pilots.html:90
 #: .\mod_rating_by_type\templates\squad_pilots.html:111
 #: .\mod_rating_by_type\templates\squads.html:81
 msgid "Bomber Rating"
@@ -2090,14 +2530,6 @@ msgctxt "tour_top"
 msgid "Best pilots"
 msgstr "Лучшие пилоты"
 
-#: .\mod_rating_by_type\templates\tour.html:125
-#: .\mod_rating_by_type\templates\tour.html:177
-#: .\mod_rating_by_type\templates\tour.html:229
-#: .\mod_rating_by_type\templates\tour.html:281
-msgctxt "tour_top"
-msgid "rating"
-msgstr "рейтинг"
-
 #: .\mod_rating_by_type\templates\tour.html:144
 msgctxt "tour_top"
 msgid "Best pilots streak"
@@ -2133,6 +2565,12 @@ msgctxt "tour_top"
 msgid "Best bomber streak"
 msgstr "Лучшая серия побед на бомбардировщике"
 
+#~ msgid "Бонус за лётное время"
+#~ msgstr "Налет часов"
+
+#~ msgid "Наказание"
+#~ msgstr "Специализация"
+
 #~ msgid "title"
 #~ msgstr "название"
 
@@ -2152,10 +2590,6 @@ msgstr "Лучшая серия побед на бомбардировщике"
 #~ msgctxt "coalition"
 #~ msgid "Central Powers"
 #~ msgstr "Центральные державы"
-
-#~ msgctxt "coalition"
-#~ msgid "Allies"
-#~ msgstr "Союзники"
 
 #~ msgctxt "coalition"
 #~ msgid "Axis"
@@ -5888,54 +6322,6 @@ msgstr "Лучшая серия побед на бомбардировщике"
 #~ msgid "profiles"
 #~ msgstr "профили"
 
-#, fuzzy
-#~| msgctxt "coalition"
-#~| msgid "neutral"
-#~ msgid "neutral"
-#~ msgstr "нейтральная"
-
-#~ msgctxt "sortie_status"
-#~ msgid "landed"
-#~ msgstr "посадка на аэродром"
-
-#~ msgctxt "sortie_status"
-#~ msgid "ditched"
-#~ msgstr "посадка вне аэродрома"
-
-#~ msgctxt "sortie_status"
-#~ msgid "crashed"
-#~ msgstr "разбился"
-
-#~ msgctxt "sortie_status"
-#~ msgid "shotdown"
-#~ msgstr "сбит"
-
-#~ msgctxt "sortie_status"
-#~ msgid "not takeoff"
-#~ msgstr "не взлетал"
-
-#~ msgctxt "sortie_status"
-#~ msgid "in flight"
-#~ msgstr "в полете"
-
-#, fuzzy
-#~| msgid "username"
-#~ msgctxt "aircraft_status"
-#~ msgid "unharmed"
-#~ msgstr "имя пользователя"
-
-#~ msgctxt "sortie_status"
-#~ msgid "healthy"
-#~ msgstr "здоров"
-
-#~ msgctxt "sortie_status"
-#~ msgid "wounded"
-#~ msgstr "ранен"
-
-#~ msgctxt "sortie_status"
-#~ msgid "dead"
-#~ msgstr "погиб"
-
 #~ msgid "USSR"
 #~ msgstr "СССР"
 
@@ -5978,16 +6364,6 @@ msgstr "Лучшая серия побед на бомбардировщике"
 
 #~ msgid "Image size should be 180x180"
 #~ msgstr "Размер изображения должен быть 180х180"
-
-#~ msgid "award"
-#~ msgstr "награда"
-
-#~ msgid "awards"
-#~ msgstr "награды"
-
-#~ msgctxt "sortie_log"
-#~ msgid "damaged"
-#~ msgstr "нанес повреждения"
 
 #~ msgctxt "sortie_log"
 #~ msgid "wounded"
@@ -6081,10 +6457,6 @@ msgstr "Лучшая серия побед на бомбардировщике"
 #~ msgstr "Журнал вылетов"
 
 #~ msgctxt "pilot_nav_tab"
-#~ msgid "Virtual Lifes"
-#~ msgstr "Виртуальные жизни"
-
-#~ msgctxt "pilot_nav_tab"
 #~ msgid "Awards"
 #~ msgstr "Награды"
 
@@ -6110,56 +6482,14 @@ msgstr "Лучшая серия побед на бомбардировщике"
 #~ msgid "Search mission"
 #~ msgstr "Найти миссию"
 
-#~ msgid "Duration (hours:minutes)"
-#~ msgstr "Продолжительность (часы:минуты)"
-
 #~ msgid "Pilots on the server"
 #~ msgstr "Пилотов на сервере"
-
-#~ msgctxt "pilot_awards"
-#~ msgid "Awards"
-#~ msgstr "Награды"
-
-#~ msgctxt "pilot_awards"
-#~ msgid "pilot"
-#~ msgstr "пилот"
 
 #~ msgid "Player profile was hidden"
 #~ msgstr "Профиль игрока был скрыт"
 
-#~ msgid "pilot"
-#~ msgstr "пилот"
-
-#~ msgctxt "killboard"
-#~ msgid "Won"
-#~ msgstr "Победы"
-
-#~ msgctxt "killboard"
-#~ msgid "Lose"
-#~ msgstr "Поражения"
-
-#~ msgctxt "killboard"
-#~ msgid "Won/Lose"
-#~ msgstr "Победы/Поражения"
-
 #~ msgid "The player did not participate in this tour"
 #~ msgstr "Игрок не принимал участия в этом туре"
-
-#~ msgctxt "sortie_page_title"
-#~ msgid "Sortie Log"
-#~ msgstr "Хронология вылета"
-
-#~ msgctxt "sortie_log"
-#~ msgid "AI"
-#~ msgstr "ИИ"
-
-#~ msgctxt "pilot_sorties"
-#~ msgid "Sorties"
-#~ msgstr "Журнал вылетов"
-
-#~ msgctxt "pilot_vlifes"
-#~ msgid "Virtual Lifes"
-#~ msgstr "Виртуальные жизни"
 
 #, fuzzy
 #~| msgid "The player did not participate in this tour"
