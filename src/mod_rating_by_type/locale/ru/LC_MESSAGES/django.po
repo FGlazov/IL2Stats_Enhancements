@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-24 19:50+0200\n"
+"POT-Creation-Date: 2021-05-31 17:41+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -859,12 +859,9 @@ msgstr "Счёт (Бомбардировщик)"
 #: .\mod_rating_by_type\templates\pilot_sorties.html:110
 #: .\mod_rating_by_type\templates\pilot_vlifes.html:109
 #: .\mod_rating_by_type\templates\pilots.html:137
-#, fuzzy
-#| msgctxt "coalition"
-#| msgid "Allies"
 msgctxt "persona"
 msgid "All"
-msgstr "Союзники"
+msgstr "Все"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:148
 #: .\mod_rating_by_type\templates\pilot.html:90
@@ -1026,12 +1023,9 @@ msgid "Flight time (hours)"
 msgstr "Налет часов"
 
 #: .\mod_rating_by_type\templates\main.html:119
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best pilots in the last mission"
-msgstr "Лучшие пилоты за последние 24 часа"
+msgstr "Лучшие лётчики в прошлой миссии"
 
 #: .\mod_rating_by_type\templates\main.html:121
 msgctxt "tour_top"
@@ -1091,12 +1085,9 @@ msgid "Best live pilots"
 msgstr "Лучшие живые пилоты"
 
 #: .\mod_rating_by_type\templates\main.html:177
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best fighter pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last mission"
-msgstr "Лучшие игроки на истребителях за последние 24 часа"
+msgstr "Лучшие лётчики-истребители в прошлой миссии"
 
 #: .\mod_rating_by_type\templates\main.html:179
 msgctxt "tour_top"
@@ -1109,12 +1100,9 @@ msgid "Best live fighter pilots"
 msgstr "Счёт за наилучший вылет на истребителе"
 
 #: .\mod_rating_by_type\templates\main.html:235
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best attacker pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
-msgstr "Лучшие игроки на штурмовиках за последние 24 часа"
+msgstr "Лучшие лётчики-штурмовики в прошлой миссии"
 
 #: .\mod_rating_by_type\templates\main.html:237
 msgctxt "tour_top"
@@ -1127,12 +1115,9 @@ msgid "Best live attacker pilots"
 msgstr "Счёт за наилучший вылет на штурмовике"
 
 #: .\mod_rating_by_type\templates\main.html:293
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best bomber pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last mission"
-msgstr "Лучшие игроки на бомбардировщиках за последние 24 часа"
+msgstr "Лучшие пилоты бомбардировщиков в прошлой миссии"
 
 #: .\mod_rating_by_type\templates\main.html:295
 msgctxt "tour_top"
@@ -1329,12 +1314,9 @@ msgid "Best fighter pilots"
 msgstr "Лучшие игроки на истребителе"
 
 #: .\mod_rating_by_type\templates\overall.html:250
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best fighter streak"
 msgctxt "overall"
 msgid "Best fighter air kill streak"
-msgstr "Лучшая серия побед на истребителе"
+msgstr "Лучшая серия убийств самолётов в воздухе"
 
 #: .\mod_rating_by_type\templates\overall.html:276
 #: .\mod_rating_by_type\templates\tour.html:222
@@ -1343,12 +1325,9 @@ msgid "Best attacker pilots"
 msgstr "Лучшие игроки на штурмовике"
 
 #: .\mod_rating_by_type\templates\overall.html:302
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best attacker streak"
 msgctxt "overall"
 msgid "Best attacker ground streak"
-msgstr "Лучшая серия побед на штурмовике"
+msgstr "Лучшая серия убийств на земле"
 
 #: .\mod_rating_by_type\templates\overall.html:328
 #: .\mod_rating_by_type\templates\tour.html:274
@@ -1357,12 +1336,9 @@ msgid "Best bomber pilots"
 msgstr "Лучшие игроки на бомбардировщике"
 
 #: .\mod_rating_by_type\templates\overall.html:354
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best bomber streak"
 msgctxt "overall"
 msgid "Best bomber ground streak"
-msgstr "Лучшая серия побед на бомбардировщике"
+msgstr "Лучшая серия убийств бомбардировщиков"
 
 #: .\mod_rating_by_type\templates\overall.html:381
 msgid ""
@@ -2402,7 +2378,7 @@ msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
-msgstr ""
+msgstr "Типы боеприпасов не прикрепляются к журналам повреждений в файлах журналов. Журналы \"попаданий боеприпасов\" прикрепляются к журналам повреждений путем обработки с использованием предположений, которые могут быть не совсем верными."
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16
@@ -2424,27 +2400,19 @@ msgid "VLife"
 msgstr "Виртуальная жизнь"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:20
-#, fuzzy
-#| msgctxt "specialty"
-#| msgid "Fighter"
 msgctxt "vlife_page_title"
 msgid "Fighter VLife"
-msgstr "Истребитель"
+msgstr "Истребитель Вирт. жизнь"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:22
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Attacker"
 msgctxt "vlife_page_title"
 msgid "Attacker VLife"
-msgstr "Ударные"
+msgstr "Штурмовик Вирт. жизнь"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:24
-#, fuzzy
-#| msgid "Bomber Score"
 msgctxt "vlife_page_title"
 msgid "Bomber VLife"
-msgstr "Счёт (Бомбардировщик)"
+msgstr "Бомбардировщик Вирт. жизнь"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:73
 msgctxt "pilot_vlifes"
