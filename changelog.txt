@@ -105,3 +105,7 @@ Version 1.5.1
 Version 1.5.2
 
 - Update to 1.2.9 Global Aircraft Stats
+
+Version 1.5.3
+
+- Quick changes to tank part of bundle that make it compatible with version 1.2.53.
