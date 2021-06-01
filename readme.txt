@@ -15,7 +15,7 @@ Module Split Rankings
 
 Config name: split_rankings
 
-This module's main goal is to visualize who is the best fighter, attacker, and bomber pilot/squad. To that aim, it introduces rankings for fighter, attacker and bomber planes, similar to how pilots and squads are already ranked in the original version of IL2 stats. New fields include, for example, "Top fighter pilot in the last 24 hours" and "Best bomber streak".
+This module's main goal is to visualize who is the best fighter, attacker, and bomber pilot/squad. To that aim, it introduces seperate personas for fighter, attacker and bomber planes, similar to how pilots and squads are already ranked in the original version of IL2 stats. You can now check your rating in fighter planes, or, for example, your ground kills per hour in attacker flights only.
 
 The wonderful IL2 Stats website has been created by =FB=Vaal and =FB=Isaay. We thank =FB=Vaal and =FB=Isaay for helping us create this module. We also thank X51 Vaudoo, botya, SamVimes, and an unnamed Spanish speaking volunteer (They never let us know who they were!) for their help translating this module. We also thank RaptorAttacker for his graphic work for helping us make the icons.
 
@@ -33,7 +33,7 @@ This module modifies the sortie views to show how many and which bullets you've 
 
 If you additionally have the Global Aircraft Stats mod, then you will also be able to see Average Ammo To kill/Average ammo to death statistics. For example, you could see the average number of ShVAK rounds needed to take down a BF 109 G-4. 
 
-Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+Thanks to PR9INICHEK, HawkerMkIII, =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations!
 
 
 DISCLAIMER: This module is not retroactive, and will likely never be. It only gives you ammo breakdowns of new sorties. This also applies to the Global Aircraft Stats mod, the average offensive/defensive breakdowns of ammo can only be computed on new sorties.
@@ -46,8 +46,17 @@ Config name: ironman_stats
 
 This module adds a new table "Ironman Rankings" to IL2 stats, which is similar to the Pilot Rankings. The difference is that the stats in this page get reset as soon as your pilot dies. This is essentially an overview of all the current virutal lives. For past tours, the table instead shows the best streak of each pilot.
 
-Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for helping us translate this module!
 
+---------------------------
+Module Top Last Mission
+---------------------------
+
+Config name: top_last_mission 
+
+This module replaces the "Top players in last 24 hours" with "Top players in last mission" on the main page of the website. This is compatible with the split rankings module. This module is mainly meant for servers which do not run 24/7, such as weekly event servers.
+
+Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy for providing translations!
 
 ------------ Modules changing scoring of sorties ------------ 
 
@@ -73,7 +82,7 @@ mod_penalty_bailout      | 50%
 mod_penalty_shotdown     | 20%
 
 
-Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+Thanks to PR9INICHEK, HawkerMkIII, =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations.
 
 
 ----------------------------
@@ -86,7 +95,7 @@ This module adds bonus points to sorties depending on how long the player stayed
 
 If you wish to change the rate at which players gain points for staying in the air, then login into your IL2 stats installation as an admin. In the Admin Panel, under Stats->Scoring you will find the variable "mod_flight_time_bonus". By default it is 60, which stands for the 60 seconds a player needs to stay in the air in order to receive a point. 
 
-Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+Thanks to PR9INICHEK, HawkerMkIII, =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for their work translating this module!
 
 ----------------------------
 Module Undamaged Bailout Penalty
@@ -98,10 +107,33 @@ This module adds a penalty to sorties where the player bailed out of their aircr
 
 If you wish to change the concrete values for this penalty, then login into your IL2 stats installation as an admin. In the Admin Panel, under Stats->Scoring you will find the two variables "mod_undmg_bailout_score" and "mod_undmg_bailout_fair". The first variable is how many points are taken away as penalty, and the second variable controls the number of fairplay points that are taken away. Set a custom value for those variables you wish to change.
 
-Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy for translating this module into Russian, Spanish, and French respectively. 
+Thanks to PR9INICHEK, HawkerMkIII, =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations.
 
 
+------------ Modules for bug workarounds ------------ 
+
+----------------------------
+Module Rearm Accuracy
+----------------------------
+
+Config name: rearm_accuracy_workaround
  
+There is a bug in the IL-2 server logs which results in the number of bullets you shot to be reset whenever you rearm your plane without ending the sortie. Unforutanetely, there is no way to extract how many bullets you shot before the rearm. This leads to sorties where a player can somehow hit more bullets than you shot, for example: https://imgur.com/qo2YDH9
+
+The concern here is that while we can't fix the data, we can prevent this data from counting towards player accuracy. The base version of IL-2 stats currently does not count sorties where the number of hits exceeded the number of shots towards accuracy. This module provides yet another work around - if a player takes off twice, then that sortie is also not counted towards gunner accuracy. Currently, there is no way to detect a rearm event. Since you need to land to rearm, any sortie where you rearm has at least two takeoffs, and this module thus prevents those sorties from being counted towards accuracy.
+
+DISCLAIMER: This module is not retroactive, and will likely never be.
+
+----------------------------
+Module Bailout Accuracy
+----------------------------
+
+Config name: bailout_accuracy_workaround
+
+There is a bug in the IL-2 server logs where the number of remaining bullets you have in your plane is counted as 0 when you bailout, this essentialy means the logs think that you shoot out your entire arsenal when you bail out. This means you end up with sorties with very low gunnery accuracy, since you did not actually shot that many bullets. This module prevents bailout sorties from counting towards a pilot's accuracy. An example of this kind of sortie: https://imgur.com/ZgpY6un
+
+DISCLAIMER: This module is not retroactive, and will likely never be.
+
 Installation
 ---------------------------------------------
 
