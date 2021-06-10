@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-23 11:14+0200\n"
+"POT-Creation-Date: 2021-04-08 16:49+0200\n"
 "PO-Revision-Date: 2016-07-18 19:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,7 +26,7 @@ msgstr "Schlüssel"
 msgid "A unique name for this chunk of content"
 msgstr "Eindeutiger Name für diesen Inhalt"
 
-#: .\chunks\models.py:8 .\stats\models.py:270 .\stats\models.py:1591
+#: .\chunks\models.py:8 .\stats\models.py:270 .\stats\models.py:1590
 msgid "title"
 msgstr "Titel"
 
@@ -54,28 +54,24 @@ msgstr "Französisch"
 msgid "Spanish"
 msgstr ""
 
-#: .\core\settings.py:157
-msgid "Portuguese"
-msgstr ""
-
-#: .\core\settings.py:351
+#: .\core\settings.py:350
 #, fuzzy
 #| msgid "content"
 msgctxt "coalition"
 msgid "Entente"
 msgstr "Inhalt"
 
-#: .\core\settings.py:352
+#: .\core\settings.py:351
 msgctxt "coalition"
 msgid "Central Powers"
 msgstr ""
 
-#: .\core\settings.py:355
+#: .\core\settings.py:354
 msgctxt "coalition"
 msgid "Allies"
 msgstr "Alliierte"
 
-#: .\core\settings.py:356
+#: .\core\settings.py:355
 msgctxt "coalition"
 msgid "Axis"
 msgstr "Achsenmächte"
@@ -5399,7 +5395,7 @@ msgid "profiles"
 msgstr "Profile"
 
 #: .\stats\models.py:419 .\stats\models.py:695 .\stats\models.py:940
-#: .\stats\models.py:1155 .\stats\models.py:1161 .\stats\models.py:1395
+#: .\stats\models.py:1155 .\stats\models.py:1161 .\stats\models.py:1394
 msgid "neutral"
 msgstr "Neutral"
 
@@ -5507,21 +5503,21 @@ msgstr "Russisch"
 msgid "Austria-Hungary"
 msgstr ""
 
-#: .\stats\models.py:1585
+#: .\stats\models.py:1584
 #, fuzzy
 #| msgid "tour"
 msgctxt "award_type"
 msgid "tour"
 msgstr "Luftschlacht"
 
-#: .\stats\models.py:1586
+#: .\stats\models.py:1585
 #, fuzzy
 #| msgid "Mission"
 msgctxt "award_type"
 msgid "mission"
 msgstr "Missionen"
 
-#: .\stats\models.py:1587
+#: .\stats\models.py:1586
 #, fuzzy
 #| msgctxt "sortie_page_title"
 #| msgid "Sortie"
@@ -5529,59 +5525,59 @@ msgctxt "award_type"
 msgid "sortie"
 msgstr "Einsätze"
 
-#: .\stats\models.py:1588
+#: .\stats\models.py:1587
 msgctxt "award_type"
 msgid "vlife"
 msgstr ""
 
-#: .\stats\models.py:1590
+#: .\stats\models.py:1589
 msgid "function name"
 msgstr ""
 
-#: .\stats\models.py:1592
+#: .\stats\models.py:1591
 msgid "type"
 msgstr ""
 
-#: .\stats\models.py:1593
+#: .\stats\models.py:1592
 msgid "description"
 msgstr ""
 
-#: .\stats\models.py:1594
+#: .\stats\models.py:1593
 #, fuzzy
 #| msgctxt "sortie_log"
 #| msgid "damage"
 msgid "image"
 msgstr "beschädigt"
 
-#: .\stats\models.py:1595
+#: .\stats\models.py:1594
 msgid "Image size should be 180x180"
 msgstr ""
 
-#: .\stats\models.py:1596
+#: .\stats\models.py:1595
 msgid "order field"
 msgstr ""
 
-#: .\stats\models.py:1600
+#: .\stats\models.py:1599
 msgid "award"
 msgstr ""
 
-#: .\stats\models.py:1601
+#: .\stats\models.py:1600
 msgid "awards"
 msgstr ""
 
-#: .\stats\models.py:1615
+#: .\stats\models.py:1614
 msgid "reward"
 msgstr ""
 
-#: .\stats\models.py:1616
+#: .\stats\models.py:1615
 msgid "rewards"
 msgstr ""
 
-#: .\stats\models.py:1635
+#: .\stats\models.py:1634
 msgid "player online"
 msgstr ""
 
-#: .\stats\models.py:1636
+#: .\stats\models.py:1635
 msgid "players online"
 msgstr ""
 
@@ -5647,50 +5643,45 @@ msgstr "Einsatzende"
 
 #: .\stats\sortie_log.py:28
 msgctxt "sortie_log"
-msgid "DISCONNECTED"
-msgstr ""
-
-#: .\stats\sortie_log.py:29
-msgctxt "sortie_log"
 msgid "takeoff"
 msgstr "Gestartet"
 
-#: .\stats\sortie_log.py:30
+#: .\stats\sortie_log.py:29
 msgctxt "sortie_log"
 msgid "landed"
 msgstr "Gelandet"
 
-#: .\stats\sortie_log.py:31
+#: .\stats\sortie_log.py:30
 msgctxt "sortie_log"
 msgid "crashed"
 msgstr "Bruchlandung"
 
-#: .\stats\sortie_log.py:32
+#: .\stats\sortie_log.py:31
 msgctxt "sortie_log"
 msgid "ditched"
 msgstr "Bauchlandung"
 
-#: .\stats\sortie_log.py:33
+#: .\stats\sortie_log.py:32
 msgctxt "sortie_log"
 msgid "BAILOUT"
 msgstr "Ausgestiegen"
 
-#: .\stats\sortie_log.py:36
+#: .\stats\sortie_log.py:35
 msgctxt "sortie_log"
 msgid "damage"
 msgstr "beschädigt"
 
-#: .\stats\sortie_log.py:37
+#: .\stats\sortie_log.py:36
 msgctxt "sortie_log"
 msgid "wound"
 msgstr "verwundet"
 
-#: .\stats\sortie_log.py:38
+#: .\stats\sortie_log.py:37
 msgctxt "sortie_log"
 msgid "DIED"
 msgstr "GESTORBEN"
 
-#: .\stats\sortie_log.py:39 .\stats\sortie_log.py:40
+#: .\stats\sortie_log.py:38 .\stats\sortie_log.py:39
 msgctxt "sortie_log"
 msgid "DISABLED"
 msgstr "ARBEITSUNFÄHIG"
@@ -7867,37 +7858,6 @@ msgctxt "aircraft_payload"
 msgid "76,2 mm F-34 APHE [25], APCR [25], HE [25], Degtyarev MG AP [2898]"
 msgstr ""
 
-#: .\stats\tank_payloads.py:912 .\stats\tank_payloads.py:913
-#: .\stats\tank_payloads.py:921 .\stats\tank_payloads.py:922
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K APHE [147]"
-msgstr ""
-
-#: .\stats\tank_payloads.py:914 .\stats\tank_payloads.py:923
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K HE [147]"
-msgstr ""
-
-#: .\stats\tank_payloads.py:915 .\stats\tank_payloads.py:924
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K AP [147]"
-msgstr ""
-
-#: .\stats\tank_payloads.py:916 .\stats\tank_payloads.py:925
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K APHE [77]"
-msgstr ""
-
-#: .\stats\tank_payloads.py:917 .\stats\tank_payloads.py:926
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K HE [77]"
-msgstr ""
-
-#: .\stats\tank_payloads.py:918 .\stats\tank_payloads.py:927
-msgctxt "aircraft_payload"
-msgid "25 mm 72-K AP [77]"
-msgstr ""
-
 #: .\stats\templates\base.html:47
 msgid ""
 "For full functionality of this site it is necessary to enable JavaScript. "
@@ -8134,8 +8094,8 @@ msgstr "Pilotenname"
 
 #: .\stats\templates\main.html:125 .\stats\templates\main.html:151
 #: .\stats\templates\main.html:179 .\stats\templates\main.html:205
-#: .\stats\templates\overall.html:151 .\stats\templates\overall.html:259
-#: .\stats\templates\tour.html:151 .\stats\templates\tour.html:205
+#: .\stats\templates\overall.html:151 .\stats\templates\tour.html:151
+#: .\stats\templates\tour.html:205
 msgctxt "tour_top"
 msgid "score"
 msgstr "Punktestand"
@@ -8151,8 +8111,6 @@ msgid "Best tankmen in the last 24 hours"
 msgstr "Beste Panzermänner der letzten 24 Stunden"
 
 #: .\stats\templates\main.html:177 .\stats\templates\main.html:203
-#: .\stats\templates\overall.html:231 .\stats\templates\overall.html:257
-#: .\stats\templates\overall.html:285 .\stats\templates\overall.html:311
 #: .\stats\templates\tour.html:177 .\stats\templates\tour.html:203
 msgctxt "tour_top"
 msgid "tankman nickname"
@@ -8171,7 +8129,7 @@ msgstr "Gesamtübersicht der Rangliste"
 msgid "Overall Tankman Rankings"
 msgstr "Gesamtübersicht der Panzermänn Rangliste"
 
-#: .\stats\templates\main.html:247 .\stats\templates\overall.html:345
+#: .\stats\templates\main.html:247 .\stats\templates\overall.html:237
 #: .\stats\templates\pilot.html:518 .\stats\templates\squad.html:417
 #: .\stats\templates\tankman.html:511 .\stats\templates\tour.html:246
 msgid "Coalitions"
@@ -8310,7 +8268,7 @@ msgstr "Flugzeit (Stunden:Minuten)"
 #: .\stats\templates\pilot_vlife.html:74 .\stats\templates\pilots.html:69
 #: .\stats\templates\squad_pilots.html:92
 #: .\stats\templates\squad_tankmans.html:92 .\stats\templates\tankman.html:100
-#: .\stats\templates\tankman_sortie.html:775
+#: .\stats\templates\tankman_sortie.html:731
 #: .\stats\templates\tankman_vlife.html:78 .\stats\templates\tankmans.html:69
 msgid "Gunnery Accuracy"
 msgstr "Trefferquote"
@@ -8422,8 +8380,8 @@ msgctxt "overall"
 msgid "Best pilots"
 msgstr "Beste Piloten"
 
-#: .\stats\templates\overall.html:125 .\stats\templates\overall.html:233
-#: .\stats\templates\tour.html:125 .\stats\templates\tour.html:179
+#: .\stats\templates\overall.html:125 .\stats\templates\tour.html:125
+#: .\stats\templates\tour.html:179
 msgctxt "tour_top"
 msgid "rating"
 msgstr "Bewertung"
@@ -8433,19 +8391,17 @@ msgstr "Bewertung"
 #| msgctxt "sortie"
 #| msgid "Detailed results"
 msgctxt "overall_top"
-msgid "Best pilots virtual lifes"
+msgid "Best virtual lifes"
 msgstr "Detaillierte Ergebnisse"
 
 #: .\stats\templates\overall.html:172
 #, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots streak"
+#| msgid "Best Streak"
 msgctxt "overall"
-msgid "Best pilots streak"
-msgstr "Besten Piloten in einer Serie"
+msgid "Best streak"
+msgstr "Beste Luftsiege in Folge"
 
 #: .\stats\templates\overall.html:179 .\stats\templates\overall.html:205
-#: .\stats\templates\overall.html:287 .\stats\templates\overall.html:313
 #, fuzzy
 #| msgid "Streak"
 msgctxt "overall"
@@ -8456,42 +8412,10 @@ msgstr "Luftsiege"
 #, fuzzy
 #| msgid "Best Ground Streak"
 msgctxt "overall"
-msgid "Best pilots ground streak"
+msgid "Best ground streak"
 msgstr "Beste zer. Bodenziele in Folge"
 
-#: .\stats\templates\overall.html:226
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best tankmen"
-msgctxt "overall"
-msgid "Best tankmen"
-msgstr "Beste Panzermänner"
-
-#: .\stats\templates\overall.html:252
-#, fuzzy
-#| msgctxt "sortie"
-#| msgid "Detailed results"
-msgctxt "overall_top"
-msgid "Best tankmen virtual lifes"
-msgstr "Detaillierte Ergebnisse"
-
-#: .\stats\templates\overall.html:280
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best tankmen streak"
-msgctxt "overall"
-msgid "Best tankmen GK streak"
-msgstr "Beste Panzermänner Abschussserie"
-
-#: .\stats\templates\overall.html:306
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best tankmen streak"
-msgctxt "overall"
-msgid "Best tankmen AK streak"
-msgstr "Beste Panzermänner Abschussserie"
-
-#: .\stats\templates\overall.html:333
+#: .\stats\templates\overall.html:225
 msgid ""
 "<strong>Attention!</strong> The same player can appear in the ranking "
 "several times (profiles from different tours) and this is expected behavior."
@@ -9100,7 +9024,7 @@ msgid "Ratio"
 msgstr "Verhältnis"
 
 #: .\stats\templates\pilot.html:621 .\stats\templates\pilot_sortie.html:726
-#: .\stats\templates\tankman.html:614 .\stats\templates\tankman_sortie.html:761
+#: .\stats\templates\tankman.html:614 .\stats\templates\tankman_sortie.html:717
 msgid "Fairplay Index"
 msgstr "Fairplay Index"
 
@@ -9250,7 +9174,6 @@ msgstr "Verbindungstrennung"
 #: .\stats\templates\pilot_vlifes.html:53
 #: .\stats\templates\tankman_sortie.html:23
 #: .\stats\templates\tankman_sortie.html:24
-#: .\stats\templates\tankman_sortie.html:705
 #: .\stats\templates\tankman_sortie_log.html:24
 #: .\stats\templates\tankman_sortie_log.html:25
 #: .\stats\templates\tankman_sorties.html:57
@@ -9276,7 +9199,6 @@ msgstr "Tod"
 #: .\stats\templates\tankman_sortie.html:27
 #: .\stats\templates\tankman_sortie.html:28
 #: .\stats\templates\tankman_sortie.html:79
-#: .\stats\templates\tankman_sortie.html:707
 #: .\stats\templates\tankman_sortie_log.html:28
 #: .\stats\templates\tankman_sortie_log.html:29
 #: .\stats\templates\tankman_sorties.html:61
@@ -9298,7 +9220,6 @@ msgstr "Gefangenschaft"
 #: .\stats\templates\pilot_vlife.html:30 .\stats\templates\pilot_vlife.html:31
 #: .\stats\templates\pilot_vlifes.html:60
 #: .\stats\templates\pilot_vlifes.html:61
-#: .\stats\templates\tankman_sortie.html:709
 msgctxt "sortie_status"
 msgid "Bailout"
 msgstr "Abgesprungen"
@@ -9477,7 +9398,7 @@ msgstr "Nicht gestartet"
 #: .\stats\templates\pilot_sortie.html:117
 #: .\stats\templates\pilot_sortie.html:705
 #: .\stats\templates\tankman_sortie.html:120
-#: .\stats\templates\tankman_sortie.html:740
+#: .\stats\templates\tankman_sortie.html:696
 msgctxt "sortie"
 msgid "Landed on Airfield"
 msgstr "Gelandet"
@@ -9522,29 +9443,29 @@ msgid "Scoring"
 msgstr "Auswertung"
 
 #: .\stats\templates\pilot_sortie.html:691
-#: .\stats\templates\tankman_sortie.html:726
+#: .\stats\templates\tankman_sortie.html:682
 msgctxt "total"
 msgid "Bonuses"
 msgstr "Bonus"
 
 #: .\stats\templates\pilot_sortie.html:716
-#: .\stats\templates\tankman_sortie.html:751
+#: .\stats\templates\tankman_sortie.html:707
 msgctxt "sortie"
 msgid "Coalition won a mission"
 msgstr "Koalition hat die Mission gewonnen"
 
 #: .\stats\templates\pilot_sortie.html:737
-#: .\stats\templates\tankman_sortie.html:772
+#: .\stats\templates\tankman_sortie.html:728
 msgid "Stats of weapons"
 msgstr "Statistik der Waffen"
 
 #: .\stats\templates\pilot_sortie.html:744
-#: .\stats\templates\tankman_sortie.html:779
+#: .\stats\templates\tankman_sortie.html:735
 msgid "Number of shots"
 msgstr "Anzahl der Schüsse"
 
 #: .\stats\templates\pilot_sortie.html:748
-#: .\stats\templates\tankman_sortie.html:783
+#: .\stats\templates\tankman_sortie.html:739
 msgid "Number of bullets hit the target"
 msgstr "Anzahl der Kugeln die getroffen haben"
 
@@ -9557,7 +9478,7 @@ msgid "Number of bombs dropped"
 msgstr "Anzahl der abgeworfenen Bomben"
 
 #: .\stats\templates\pilot_sortie.html:760
-#: .\stats\templates\tankman_sortie.html:795
+#: .\stats\templates\tankman_sortie.html:743
 msgid ""
 "This block may contain incorrect information, this is due to the errors in "
 "the game log."
@@ -9946,41 +9867,6 @@ msgctxt "sortie"
 msgid "Tank damage"
 msgstr "Panzerschaden"
 
-#: .\stats\templates\tankman_sortie.html:681
-#, fuzzy
-#| msgctxt "tour"
-#| msgid "Flight time (hours)"
-msgid "Flight time bonus"
-msgstr "Flugzeit (in Stunden)"
-
-#: .\stats\templates\tankman_sortie.html:692
-msgid "Undamaged bailout penalty"
-msgstr ""
-
-#: .\stats\templates\tankman_sortie.html:703
-#, fuzzy
-#| msgid "Specialty"
-msgid "Penalty"
-msgstr "Sonstiges"
-
-#: .\stats\templates\tankman_sortie.html:711
-#, fuzzy
-#| msgctxt "sortie"
-#| msgid "Shotdown"
-msgctxt "sortie_status"
-msgid "Shotdown"
-msgstr "Abgeschossen"
-
-#: .\stats\templates\tankman_sortie.html:804
-msgid "Damage Report"
-msgstr ""
-
-#: .\stats\templates\tankman_sortie.html:807
-#, fuzzy
-#| msgid "Number of shots"
-msgid "Number of hits taken"
-msgstr "Anzahl der Schüsse"
-
 #: .\stats\templates\tankman_sortie_log.html:3
 msgctxt "sortie_page_title"
 msgid "Tankman Sortie Log"
@@ -10317,12 +10203,6 @@ msgstr ""
 #: .\users\views.py:165
 msgid "Profile successfully changed."
 msgstr ""
-
-#, fuzzy
-#~| msgid "Best Streak"
-#~ msgctxt "overall"
-#~ msgid "Best streak"
-#~ msgstr "Beste Luftsiege in Folge"
 
 #~ msgid "Active players"
 #~ msgstr "Aktive Piloten"

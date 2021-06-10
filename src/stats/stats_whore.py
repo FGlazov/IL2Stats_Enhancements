@@ -199,7 +199,7 @@ def stats_whore(m_report_file):
             player = players_pilots[sortie.account_id]
         elif sortie.cls == 'aircraft_turret':
             player = players_gunners[sortie.account_id]
-        elif sortie.cls in ('tank_light', 'tank_heavy', 'tank_medium', 'tank_turret'):
+        elif sortie.cls in ('tank_light', 'tank_heavy', 'tank_medium', 'tank_turret', 'truck'):
             player = players_tankmans[sortie.account_id]
         else:
             continue
@@ -309,10 +309,10 @@ def stats_whore(m_report_file):
             params['type'] = 'end'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
             params['act_sortie_id'] = event['sortie'].sortie_db.id
-        elif event['type'] == 'disco':
+		elif event['type'] == 'disco':
             params['type'] = 'disco'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
-            params['act_sortie_id'] = event['sortie'].sortie_db.id			
+            params['act_sortie_id'] = event['sortie'].sortie_db.id
         elif event['type'] == 'takeoff':
             params['type'] = 'takeoff'
             params['act_object_id'] = event['aircraft'].sortie.sortie_db.aircraft.id
@@ -342,7 +342,8 @@ def stats_whore(m_report_file):
                 if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
                         and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the damage to the tank driver.
-                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
                     params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
                 elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
@@ -366,7 +367,8 @@ def stats_whore(m_report_file):
                 if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
                         and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the kill to the tank driver.
-                    params['act_object_id'] = event['attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
+                    params['act_object_id'] = event[
+                        'attacker'].parent.sortie.sortie_db.aircraft.id  # This is a tank, not an aircraft!
                     params['act_sortie_id'] = event['attacker'].parent.sortie.sortie_db.id
                 elif event['attacker'].sortie:
                     params['act_object_id'] = event['attacker'].sortie.sortie_db.aircraft.id
@@ -428,7 +430,7 @@ def create_profiles(tour, sorties):
         elif s.cls == 'aircraft_turret':
             players_gunners.setdefault(
                 s.account_id, Player.objects.get_or_create(profile_id=profile.id, tour_id=tour.id, type='gunner')[0])
-        elif s.cls in ('tank_light', 'tank_heavy', 'tank_medium', 'tank_turret'):
+        elif s.cls in ('tank_light', 'tank_heavy', 'tank_medium', 'tank_turret', 'truck'):
             players_tankmans.setdefault(
                 s.account_id, Player.objects.get_or_create(profile_id=profile.id, tour_id=tour.id, type='tankman')[0])
 
@@ -460,24 +462,25 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         if (sortie_tik_last // 50) - (sortie.tik_spawn // 50) < SORTIE_MIN_TIME:
             is_ignored = True
 
-	# for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
+    # for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
     if SORTIE_DISCO_MIN_TIME and sortie.is_disco:
         if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
             sortie.is_discobailout = True
             sortie.is_disco = False
-			
-    # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco, 
-	# if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
-    if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:  
+
+    # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco,
+       # if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
+    if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:
         if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
             sortie.is_disco = True
-            sortie.is_damageddisco = False	
-	        # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie 
+            sortie.is_damageddisco = False
+            # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
             if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
                 sortie.is_discobailout = True
                 sortie.is_disco = False
-                sortie.is_damageddisco = False			
-
+                sortie.is_damageddisco = False
+			
+			
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)
 
@@ -561,7 +564,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         aircraft_status=sortie.aircraft_status.status,
         bot_status=sortie.bot_status.status,
 
-		is_bailout=sortie.is_bailout or sortie.is_discobailout,
+        is_bailout=sortie.is_bailout or sortie.is_discobailout,
         is_captured=sortie.is_captured or sortie.is_damageddisco,
         is_disco=sortie.is_disco,
 
@@ -625,10 +628,10 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
 
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
-	
+
     if new_sortie:
         if new_sortie.aircraft.cls_base == 'aircraft' and not new_sortie.is_not_takeoff:
-			
+
             if new_sortie.aircraft.cls in player.sorties_cls:
                 player.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
@@ -644,7 +647,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
                     player.squad.sorties_cls[new_sortie.aircraft.cls] += 1
                 else:
                     player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
-					
+
         if new_sortie.aircraft.cls_base == 'tank':
             if new_sortie.aircraft.cls in player.sorties_cls:
                 player.sorties_cls[new_sortie.aircraft.cls] += 1
@@ -661,7 +664,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
                     player.squad.sorties_cls[new_sortie.aircraft.cls] += 1
                 else:
                     player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
-					
+
     update_general(player=player, new_sortie=new_sortie)
     update_general(player=player_mission, new_sortie=new_sortie)
     update_general(player=player_aircraft, new_sortie=new_sortie)

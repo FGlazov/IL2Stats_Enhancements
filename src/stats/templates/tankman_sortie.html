@@ -150,6 +150,7 @@
                     <div class="right">&nbsp;</div>
                 </div>
 
+
                 {% if sortie.killboard_pvp.tank_heavy %}
                     <div class="sub_row">
                         <div class="left">
@@ -331,7 +332,21 @@
                         </div>
                     </div>
                 {% endif %}
-				
+
+                {% if sortie.killboard_pve.machine_gunner %}
+                    <div class="sub_row">
+                        <div class="left">
+                            {% trans 'Machine gunners' context 'total' %}
+                            <span>{{ sortie.killboard_pve.machine_gunner }}</span>
+                        </div>
+                        <div class="right score">
+                            {{ sortie.killboard_pve.machine_gunner }}
+                            &times;
+                            {{ score_dict.machine_gunner.ai }}
+                        </div>
+                    </div>
+                {% endif %}
+
                 {% if sortie.killboard_pve.aerostat %}
                     <div class="sub_row">
                         <div class="left">
@@ -731,7 +746,7 @@
                 </div>
                 {% endif %}
 
-                {% if sortie.score_dict.flight_time_bonus %}
+				{% if sortie.score_dict.flight_time_bonus %}
                     <div class="row">
                         <div class="left">
                             {% trans 'Flight time bonus' %}
@@ -757,15 +772,15 @@
                     <div class="row">
                         <div class="left">
                             {% trans 'Penalty' %}:
-								{% if sortie.is_dead %}
-										 {% trans 'Dead' context 'sortie_status' %}
-								{% elif sortie.is_captured %}
-										 {% trans 'Captured' context 'sortie_status' %}
-								{% elif sortie.is_bailout %}
-										 {% trans 'Bailout' context 'sortie_status' %}
-								{% elif sortie.is_shotdown %}
-										 {% trans 'Shotdown' context 'sortie_status' %}
-								{% endif %}
+                                                               {% if sortie.is_dead %}
+                                                                                {% trans 'Dead' context 'sortie_status' %}
+                                                               {% elif sortie.is_captured %}
+                                                                                {% trans 'Captured' context 'sortie_status' %}
+                                                               {% elif sortie.is_bailout %}
+                                                                                {% trans 'Bailout' context 'sortie_status' %}
+                                                               {% elif sortie.is_shotdown %}
+                                                                                {% trans 'Shotdown' context 'sortie_status' %}
+                                                               {% endif %}
                         </div>
                         <div class="right">
                             {{ sortie.score_dict.basic }}
@@ -775,6 +790,7 @@
                         </div>
                     </div>
                 {% endif %}
+
 
                 {% if sortie.bonus.total %}
                     <div class="row">
@@ -821,6 +837,7 @@
                             </div>
                         </div>
                     {% endif %}
+
                 {% endif %}
                     <div class="row">
                         <div class="left">
@@ -857,13 +874,14 @@
                 </div>
                 {% endfor %}
                 {% endif %}
+
                 <span style="color: #CF2D1C; font-size: 13px;">
                     * {% trans 'This block may contain incorrect information, this is due to the errors in the game log.' %}
                 </span>
             </div>
 
             <div class="clearfix"></div>
-
+			
             {% if ammo_breakdown.total_received %}
             <div class="sortie_detailed" style="float: left;">
                 <div class="title">
@@ -884,7 +902,6 @@
             {% endif %}
 
             <div class="clearfix"></div>
-
         </div>
     </section>
 {% endblock content %}
