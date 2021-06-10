@@ -38,6 +38,8 @@ WIN_SCORE_MIN = settings.WIN_SCORE_MIN
 WIN_SCORE_RATIO = settings.WIN_SCORE_RATIO
 SORTIE_MIN_TIME = settings.SORTIE_MIN_TIME
 
+SORTIE_DISCO_MIN_TIME = settings.SORTIE_DISCO_MIN_TIME
+SORTIE_DAMAGE_DISCO_TIME = settings.SORTIE_DAMAGE_DISCO_TIME
 
 def main():
     logger.info('IL2 stats {stats}, Python {python}, Django {django}'.format(
@@ -309,7 +311,7 @@ def stats_whore(m_report_file):
             params['type'] = 'end'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
             params['act_sortie_id'] = event['sortie'].sortie_db.id
-		elif event['type'] == 'disco':
+        elif event['type'] == 'disco':
             params['type'] = 'disco'
             params['act_object_id'] = event['sortie'].sortie_db.aircraft.id
             params['act_sortie_id'] = event['sortie'].sortie_db.id
@@ -479,8 +481,8 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 sortie.is_discobailout = True
                 sortie.is_disco = False
                 sortie.is_damageddisco = False
-			
-			
+
+
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)
 
