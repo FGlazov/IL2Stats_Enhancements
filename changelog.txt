@@ -109,3 +109,9 @@ Version 1.5.2
 Version 1.5.3
 
 - Quick changes to tank part of bundle that make it compatible with version 1.2.53.
+
+Version 1.5.4
+
+- Add missing bug fix from 1.2.53 which now shows total player tanks a pilot destroyed on pilot/squad/virtual life pages.
+- Update to 1.2.54 of IL2 Stats.
+- Update to latest tank mod version.
