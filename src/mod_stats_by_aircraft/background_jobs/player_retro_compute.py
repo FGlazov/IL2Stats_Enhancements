@@ -1,6 +1,7 @@
 from .background_job import BackgroundJob
 from stats.models import Sortie
 from ..aircraft_mod_models import AircraftBucket
+from ..aircraft_stats_compute import process_aircraft_stats, process_log_entries, get_sortie_type
 
 
 class PlayerRetroCompute(BackgroundJob):
@@ -17,12 +18,10 @@ class PlayerRetroCompute(BackgroundJob):
     def query_find_sorties(self, tour_cutoff):
         return (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__player_stats_processed=False,
                                       aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
-                .order_by('-tour__id'))
+                .order_by('-tour__id', 'id'))
 
     def compute_for_sortie(self, sortie):
-        from ..stats_whore import process_aircraft_stats, process_log_entries, get_sortie_type
-
-        process_aircraft_stats(sortie, sortie.player)
+        process_aircraft_stats(sortie, sortie.player, is_retro_compute=True)
 
         bucket = (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                        filter_type='NO_FILTER', player=None))[0]

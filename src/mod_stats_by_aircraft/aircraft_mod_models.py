@@ -60,7 +60,7 @@ class AircraftBucket(models.Model):
     # ========================= NATURAL KEY
     tour = models.ForeignKey(Tour, related_name='+', on_delete=models.PROTECT)
     aircraft = models.ForeignKey(Object, related_name='+', on_delete=models.PROTECT)
-    filter_type = models.CharField(max_length=16, choices=filter_choices, default=NO_FILTER)
+    filter_type = models.CharField(max_length=16, choices=filter_choices, default=NO_FILTER, db_index=True)
     player = models.ForeignKey(Player, related_name='+', on_delete=models.PROTECT, null=True)
     # ========================= NATURAL KEY END
 
@@ -78,6 +78,10 @@ class AircraftBucket(models.Model):
     pilot_lethality = models.FloatField(default=0, db_index=True)
     elo = models.IntegerField(default=1500, db_index=True)
     rating = models.IntegerField(default=0, db_index=True)
+    max_ak_streak = models.IntegerField(default=0, db_index=True)
+    max_gk_streak = models.IntegerField(default=0, db_index=True)
+    kills = models.BigIntegerField(default=0, db_index=True)
+    ground_kills = models.BigIntegerField(default=0, db_index=True)
     # ========================= SORTABLE FIELDS END
 
     # ========================= NON-SORTABLE VISIBLE FIELDS
@@ -93,8 +97,6 @@ class AircraftBucket(models.Model):
     # Assists per death
     ahd = models.FloatField(default=0)
 
-    kills = models.BigIntegerField(default=0)
-    ground_kills = models.BigIntegerField(default=0)
     assists = models.BigIntegerField(default=0)
 
     killboard_planes = JSONField(default=dict)
@@ -121,6 +123,24 @@ class AircraftBucket(models.Model):
     deaths_to_aa = models.BigIntegerField(default=0)
     aircraft_lost_to_accident = models.BigIntegerField(default=0)
     aircraft_lost_to_aa = models.BigIntegerField(default=0)
+
+    max_score_streak = models.IntegerField(default=0, db_index=True)
+    max_ak_streak_player = models.ForeignKey(Player, related_name='+', on_delete=models.PROTECT, null=True)
+    max_gk_streak_player = models.ForeignKey(Player, related_name='+', on_delete=models.PROTECT, null=True)
+    max_score_streak_player = models.ForeignKey(Player, related_name='+', on_delete=models.PROTECT, null=True)
+
+    # These following 3 are for player buckets only.
+    # TODO: Make sure this does not conflict with a retro compute.
+    current_score_streak = models.IntegerField(default=0)
+    current_ak_streak = models.IntegerField(default=0)
+    current_gk_streak = models.IntegerField(default=0)
+
+    best_score_in_sortie = models.IntegerField(default=0)
+    best_score_sortie = models.ForeignKey(Sortie, related_name='+', on_delete=models.PROTECT, null=True)
+    best_ak_in_sortie = models.IntegerField(default=0)
+    best_ak_sortie = models.ForeignKey(Sortie, related_name='+', on_delete=models.PROTECT, null=True)
+    best_gk_in_sortie = models.IntegerField(default=0)
+    best_gk_sortie = models.ForeignKey(Sortie, related_name='+', on_delete=models.PROTECT, null=True)
 
     ammo_breakdown = JSONField(default=default_ammo_breakdown)
     # ========================== NON-SORTABLE VISIBLE FIELDS END
@@ -156,6 +176,14 @@ class AircraftBucket(models.Model):
         ordering = ['-id']
 
     def update_derived_fields(self):
+        ai_kills = 0
+        if 'aircraft_light' in self.killboard_ground:
+            ai_kills += self.killboard_ground['aircraft_light']
+        if 'aircraft_medium' in self.killboard_ground:
+            ai_kills += self.killboard_ground['aircraft_medium']
+        if 'aircraft_heavy' in self.killboard_ground:
+            ai_kills += self.killboard_ground['aircraft_heavy']
+
         self.khr = compute_float(self.kills, self.flight_time_hours)
         self.gkhr = compute_float(self.ground_kills, self.flight_time_hours)
         self.kd = compute_float(self.kills, self.relive)
@@ -166,7 +194,7 @@ class AircraftBucket(models.Model):
         self.pilot_survivability = compute_float(100 * self.pilot_survivability_counter, self.sorties_plane_was_hit)
         self.plane_lethality = compute_float(100 * self.plane_lethality_counter, self.distinct_enemies_hit)
         self.pilot_lethality = compute_float(100 * self.pilot_lethality_counter, self.distinct_enemies_hit)
-        self.plane_lethality_no_assists = compute_float(100 * self.kills, self.distinct_enemies_hit)
+        self.plane_lethality_no_assists = compute_float(100 * (self.kills - ai_kills), self.distinct_enemies_hit)
         self.update_rating()
         self.ahr = compute_float(self.assists, self.flight_time_hours)
         self.ahd = compute_float(self.assists, self.relive)
@@ -179,15 +207,22 @@ class AircraftBucket(models.Model):
         self.reset_elo = True
 
     def update_rating(self):
-        # score per death
-        sd = self.score / max(self.relive, 1)
-        # score per hour
-        shr = self.score / max(self.flight_time_hours, 1)
-        self.rating = int(sd * shr)
-        # Note this rating is NOT multiplied by score
-        # In the original formula, you got higher rating the longer you played with the same performance.
-        # This was due to the multiplication by score. This is not wanted for aircraft stats.
-        # Also no need to divide by 1000, since the nr tends to be small enouh to display as is.
+        if self.player is None:
+            # score per death
+            sd = self.score / max(self.relive, 1)
+            # score per hour
+            shr = self.score / max(self.flight_time_hours, 1)
+            self.rating = int(sd * shr)
+            # Note this rating is NOT multiplied by score
+            # In the original formula, you got higher rating the longer you played with the same performance.
+            # This was due to the multiplication by score. This is not wanted for global aircraft stats.
+            # Also no need to divide by 1000, since the nr tends to be small enouh to display as is.
+        else:
+            # score per death
+            sd = self.score / max(self.relive, 1)
+            # score per hour
+            shr = self.score / max(self.flight_time_hours, 1)
+            self.rating = (int((sd * shr * self.score) / 1000))
 
     @property
     def flight_time_hours(self):
@@ -201,6 +236,7 @@ class AircraftBucket(models.Model):
     def rating_format(self):
         return rating_format_helper(self.rating)
 
+    # TODO: Refactor the following 4 methods, DRY
     def percent_pvp_helper(self, key):
         if key in self.killboard_planes:
             percent = compute_float(self.killboard_planes[key] * 100, self.kills)
@@ -221,6 +257,14 @@ class AircraftBucket(models.Model):
         if key in self.killboard_ground:
             percent = compute_float(self.killboard_ground[key] * 100, self.ground_kills)
             total = self.killboard_ground[key]
+            return percent_format(percent, total)
+        else:
+            return percent_format(0, 0)
+
+    def percent_player_ground_helper(self, key):
+        if key in self.killboard_planes:
+            percent = compute_float(self.killboard_planes[key] * 100, self.ground_kills)
+            total = self.killboard_planes[key]
             return percent_format(percent, total)
         else:
             return percent_format(0, 0)
@@ -256,6 +300,22 @@ class AircraftBucket(models.Model):
     @property
     def percent_transport_ai_kills(self):
         return self.percent_air_ai_helper('aircraft_transport')
+
+    @property
+    def percent_player_tank_heavy(self):
+        return self.percent_player_ground_helper('tank_heavy')
+
+    @property
+    def percent_player_tank_medium(self):
+        return self.percent_player_ground_helper('tank_medium')
+
+    @property
+    def percent_player_tank_light(self):
+        return self.percent_player_ground_helper('tank_light')
+
+    @property
+    def percent_player_truck(self):
+        return self.percent_player_ground_helper('truck')
 
     @property
     def percent_tank_heavy(self):
@@ -499,8 +559,14 @@ class AircraftBucket(models.Model):
     def get_killboard_enemy_all_mods(self):
         return get_killboard_url(self.aircraft.id, self.tour.id, self.player, self.filter_type, self.ALL)
 
+    def get_aircraft_pilot_rankings_url(self):
+        return get_aircraft_pilot_rankings_url(self.aircraft.id, self.tour.id, self.filter_type)
+
     def get_pilot_url(self):
         return get_aircraft_url(self.aircraft.id, self.tour.id, self.NO_FILTER, self.player)
+
+    def get_pilot_filtered_url(self):
+        return get_aircraft_url(self.aircraft.id, self.tour.id, str(self.filter_type), self.player)
 
     def increment_ammo_received(self, ammo_dict):
         self.__increment_helper(ammo_dict, self.ammo_breakdown[RECEIVED])
@@ -575,6 +641,12 @@ def get_killboard_url(aircraft_id, tour_id, player, bucket_filter, enemy_filter=
     return url
 
 
+def get_aircraft_pilot_rankings_url(aircraft_id, tour_id, bucket_filter):
+    return '{url}?tour={tour_id}'.format(
+        url=reverse('stats:aircraft_pilot_rankings', args=[aircraft_id, bucket_filter]),
+        tour_id=tour_id)
+
+
 # All pairs of aircraft. Here, aircraft_1.name < aircraft_2.name (Lex order)
 class AircraftKillboard(models.Model):
     # ========================= NATURAL KEY
@@ -624,6 +696,8 @@ class SortieAugmentation(models.Model):
     fixed_aa_accident_stats = models.BooleanField(default=False, db_index=True)
     fixed_doubled_turret_killboards = models.BooleanField(default=False, db_index=True)
     added_player_kb_losses = models.BooleanField(default=False, db_index=True)
+    computed_max_streaks = models.BooleanField(default=False, db_index=True)
+    fixed_accuracy = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

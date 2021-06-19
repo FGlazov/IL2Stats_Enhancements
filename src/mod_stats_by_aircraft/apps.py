@@ -20,8 +20,19 @@ class ModConfig(AppConfig):
 
         from . import models
         from stats import models as old_models
-
         old_models.Player.get_aircraft_overview_url = models.get_aircraft_overview_url
+
+        try:
+            from mod_rating_by_type.models import FilteredPlayer
+            FilteredPlayer.get_aircraft_overview_url = models.get_aircraft_overview_url
+
+            from mod_rating_by_type.background_jobs.run_background_jobs import jobs as rating_type_jobs
+            from .background_jobs.run_background_jobs import jobs as aircraft_mod_jobs
+            for rating_type_job in rating_type_jobs:
+                aircraft_mod_jobs.append(rating_type_job)
+        except RuntimeError:
+            pass  # Case when mod_rating_by_type is not installed.
+
 
         # monkey-patch the new config parameter.
         import config

@@ -3,8 +3,8 @@ BOMB_VARIANT_WHITE_LIST = {'P-38J-25', 'Me 262 A', 'Bristol F2B (F.II)', 'Bristo
 BOMB_VARIANT_BLACK_LIST = {'Spitfire Mk.VB', 'Yak-9 series 1', 'Yak-9T series 1', 'Hurricane Mk.II', 'Albatros D.Va',
                            'Fokker D.VII', 'Fokker D.VIIF', 'Fokker Dr.I', 'Pfalz D.IIIa'}
 JUICEABLES = {'P-47D-28', 'P-47D-22', 'P-51D-15', 'La-5 (series 8)', 'Bf 109 G-6 Late', 'Bf 109 K-4',
-              'Spitfire Mk.IXe', 'Hurricane Mk.II', 'Tempest Mk.V ser.2'}
-#          P47/P51/Spit9     Tempest                               BF-109 K-4          La-5
+              'Spitfire Mk.IXe', 'Hurricane Mk.II', 'Tempest Mk.V ser.2', 'Spitfire Mk.XIV'}
+#          P47/P51/Spit9/Spit14  Tempest                           BF-109 K-4          La-5
 JUICES = {'150 grade fuel', 'Sabre IIA engine with +11 lb boost', 'DB 605 DC engine', 'M-82F engine',
           # Hurricane                          BF-109 G-6 Late
           'Merlin XX engine with +14 lb boost', 'MW-50 System'}

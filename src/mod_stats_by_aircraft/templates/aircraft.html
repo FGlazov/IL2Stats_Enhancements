@@ -233,23 +233,51 @@
                 <div class="num">{{ aircraft_bucket.ground_kills }}</div>
             </div>
 
-            {% if aircraft_bucket.killboard_ground.tank_heavy %}
+            {% if aircraft_bucket.killboard_planes.tank_heavy %}
             <div class="sub_item">
                 <div class="name">{% trans 'Heavy Tanks' context 'total' %}</div>
+                <div class="num">{{ aircraft_bucket.percent_player_tank_heavy }}</div>
+            </div>
+            {% endif %}
+
+            {% if aircraft_bucket.killboard_planes.tank_medium %}
+            <div class="sub_item">
+                <div class="name">{% trans 'Medium Tanks' context 'total' %}</div>
+                <div class="num">{{ aircraft_bucket.percent_player_tank_medium }}</div>
+            </div>
+            {% endif %}
+
+            {% if aircraft_bucket.killboard_planes.tank_light %}
+            <div class="sub_item">
+                <div class="name">{% trans 'Light Tanks' context 'total' %}</div>
+                <div class="num">{{ aircraft_bucket.percent_player_tank_light }}</div>
+            </div>
+            {% endif %}
+
+            {% if aircraft_bucket.killboard_planes.truck %}
+            <div class="sub_item">
+                <div class="name">{% trans 'Trucks' context 'total' %}</div>
+                <div class="num">{{ aircraft_bucket.percent_player_truck }}</div>
+            </div>
+            {% endif %}
+
+            {% if aircraft_bucket.killboard_ground.tank_heavy %}
+            <div class="sub_item">
+                <div class="name">{% trans 'Heavy Tanks' context 'total' %} ({% trans 'AI' context 'total' %})</div>
                 <div class="num">{{ aircraft_bucket.percent_tank_heavy }}</div>
             </div>
             {% endif %}
 
             {% if aircraft_bucket.killboard_ground.tank_medium %}
             <div class="sub_item">
-                <div class="name">{% trans 'Medium Tanks' context 'total' %}</div>
+                <div class="name">{% trans 'Medium Tanks' context 'total' %} ({% trans 'AI' context 'total' %})</div>
                 <div class="num">{{ aircraft_bucket.percent_tank_medium }}</div>
             </div>
             {% endif %}
 
             {% if aircraft_bucket.killboard_ground.tank_light %}
             <div class="sub_item">
-                <div class="name">{% trans 'Light Tanks' context 'total' %}</div>
+                <div class="name">{% trans 'Light Tanks' context 'total' %} ({% trans 'AI' context 'total' %})</div>
                 <div class="num">{{ aircraft_bucket.percent_tank_light }}</div>
             </div>
             {% endif %}
@@ -270,7 +298,7 @@
 
             {% if aircraft_bucket.killboard_ground.truck %}
             <div class="sub_item">
-                <div class="name">{% trans 'Trucks' context 'total' %}</div>
+                <div class="name">{% trans 'Trucks' context 'total' %} ({% trans 'AI' context 'total' %})</div>
                 <div class="num">{{ aircraft_bucket.percent_truck }}</div>
             </div>
             {% endif %}
@@ -509,6 +537,75 @@
 
         <div class="clearfix"></div>
 
+        {% if aircraft_bucket.max_ak_streak_player or aircraft_bucket.max_gk_streak_player or aircraft_bucket.max_score_streak_player %}
+        <div class="player_detailed" style="float: left;">
+            <div class="title">
+                {% trans 'Best results' %}
+            </div>
+            {% if aircraft_bucket.max_ak_streak_player %}
+            <a href="{{aircraft_bucket.max_ak_streak_player.get_profile_url}}">
+                <div class="item">
+                    <div class="name">{% trans 'Best air kill streak' %} ({{ aircraft_bucket.max_ak_streak_player}})</div>
+                    <div class="num"> {{aircraft_bucket.max_ak_streak}}</div>
+                </div>
+            </a>
+            {% endif %}
+            {% if aircraft_bucket.max_gk_streak_player %}
+            <a href="{{aircraft_bucket.max_gk_streak_player.get_profile_url}}">
+                <div class="item">
+                    <div class="name">{% trans 'Best Ground streak' %} ({{ aircraft_bucket.max_gk_streak_player}})</div>
+                    <div class="num"> {{aircraft_bucket.max_gk_streak}}</div>
+                </div>
+            </a>
+            {% endif %}
+            {% if aircraft_bucket.max_score_streak_player %}
+            <a href="{{aircraft_bucket.max_score_streak_player.get_profile_url}}">
+                <div class="item">
+                    <div class="name">{% trans 'Best score streak' %} ({{ aircraft_bucket.max_score_streak_player}})</div>
+                    <div class="num"> {{aircraft_bucket.max_score_streak}}</div>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if aircraft_bucket.best_ak_sortie or aircraft_bucket.best_gk_sortie or aircraft_bucket.best_score_sortie %}
+        <div class="player_detailed" style="float: right;">
+            <div class="title">
+                {% trans 'Best results in a single sortie' %}
+            </div>
+
+            {% if aircraft_bucket.best_ak_sortie %}
+            <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_ak_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
+                <div class="item">
+                    <div class="name">{% trans 'Max air kills in a single sortie' %} ({{ aircraft_bucket.best_ak_sortie.player}})</div>
+                    <div class="num"> {{aircraft_bucket.best_ak_in_sortie}}</div>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if aircraft_bucket.best_gk_sortie %}
+            <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_gk_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
+                <div class="item">
+                    <div class="name">{% trans 'Max ground kills in a single sortie' %} ({{ aircraft_bucket.best_gk_sortie.player}})</div>
+                    <div class="num"> {{aircraft_bucket.best_gk_in_sortie}}</div>
+                </div>
+            </a>
+            {% endif %}
+
+            {% if aircraft_bucket.best_score_sortie %}
+            <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_score_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
+                <div class="item">
+                    <div class="name">{% trans 'Max score in a single sortie' %} ({{ aircraft_bucket.best_score_sortie.player}})</div>
+                    <div class="num"> {{aircraft_bucket.best_score_in_sortie}}</div>
+                </div>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="clearfix"></div>
+
 
         {% if ammo_breakdown.given|length > 0 %}
          <div class="player_detailed" style="float: left;">
@@ -560,8 +657,7 @@
                         {{ aircraft_bucket.plane_survivability }}%
                     </div>
                 </div>
-                <div class="item"
-                     title="{% trans 'if ratio > 1 - pilot flying in the minority, if ratio < 1 - pilot flying in the majority' %}">
+                <div class="item" style="height:auto;overflow: hidden;">
                     <div class="text">
                         {% trans 'Pilot Survivability' %}*
                     </div>
@@ -577,7 +673,7 @@
                         {{ aircraft_bucket.plane_lethality }}%
                     </div>
                 </div>
-                <div class="item" style="height:auto">
+                <div class="item" style="height:auto;overflow: hidden;">
                     <div class="text" >
                         {% trans 'Plane Lethality (no assists)' %}
                     </div>

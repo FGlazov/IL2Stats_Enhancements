@@ -30,7 +30,7 @@ class FixTurretKillboards(BackgroundJob):
                 .order_by('-tour__id', 'id'))
 
     def compute_for_sortie(self, sortie):
-        from ..stats_whore import process_log_entries, get_sortie_type
+        from ..aircraft_stats_compute import process_log_entries, get_sortie_type
 
         buckets = [(AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                          filter_type='NO_FILTER', player=None))[0]]

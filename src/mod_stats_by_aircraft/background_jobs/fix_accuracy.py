@@ -1,32 +1,24 @@
 from .background_job import BackgroundJob
 from stats.models import Sortie
 from ..aircraft_mod_models import AircraftBucket
-from ..aircraft_stats_compute import process_aa_accident_death, get_sortie_type
+from ..aircraft_stats_compute import decrement_ammo_bugged, get_sortie_type
 
 
-class FixCorruptedAaAccidents(BackgroundJob):
+class FixAccuracy(BackgroundJob):
     """
-    A bug in the early versions of 1.2.X caused the retroactive compute to double accidental/aa deaths.
+    Versions before 1.3.0 counted all bullet/bomb/rocket hits and misses towards stats from all sorties. This was
+    incorrect behaviour, since game logs contain bugs in certain cases.
 
-    This job resets the accidental/aa deaths, and recomputes them. Note that a simple halving would not work here,
-    since missions processed after the bugged update did not double accidental/aa deaths.
+    This job goes through all the sorties that were processed, and decrements the broken sorties.
     """
-
-    def reset_relevant_fields(self, tour_cutoff):
-        AircraftBucket.objects.filter(reset_accident_aa_stats=False).update(
-            deaths_to_accident=0,
-            deaths_to_aa=0,
-            aircraft_lost_to_accident=0,
-            aircraft_lost_to_aa=0,
-            reset_accident_aa_stats=True
-        )
 
     def query_find_sorties(self, tour_cutoff):
-        return (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__fixed_aa_accident_stats=False,
+        return (Sortie.objects.filter(SortieAugmentation_MOD_STATS_BY_AIRCRAFT__fixed_accuracy=False,
                                       aircraft__cls_base='aircraft', tour__id__gte=tour_cutoff)
                 .order_by('-tour__id'))
 
     def compute_for_sortie(self, sortie):
+        # TODO: Refactor this "get all buckets code" into a util function.
         buckets = [(AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                          filter_type='NO_FILTER', player=None))[0],
                    (AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
@@ -37,17 +29,17 @@ class FixCorruptedAaAccidents(BackgroundJob):
                                                                  filter_type=filter_type, player=None))[0])
             buckets.append((AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                                  filter_type=filter_type, player=sortie.player))[0])
+
         for bucket in buckets:
-            process_aa_accident_death(bucket, sortie)
+            decrement_ammo_bugged(bucket, sortie)
             bucket.update_derived_fields()
             bucket.save()
 
-        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.fixed_aa_accident_stats = True
+        sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.fixed_accuracy = True
         sortie.SortieAugmentation_MOD_STATS_BY_AIRCRAFT.save()
 
     def log_update(self, to_compute):
-        return '[mod_stats_by_aircraft]: Fixing AA/Accidents aircraft lost/deaths stats. {} sorties left to process.' \
-            .format(to_compute)
+        return '[mod_stats_by_aircraft]: Fixing accuracy stats. {} sorties left to process.' .format(to_compute)
 
     def log_done(self):
-        return '[mod_stats_by_aircraft]: Completed fixing AA/Accidents aircraft lost/deaths stats.'
+        return '[mod_stats_by_aircraft]: Completed fixing accuracy stats.'

@@ -16,12 +16,12 @@ from stats import sortie_log
 from stats.views import *
 
 from .variant_utils import has_juiced_variant, has_bomb_variant
-from .aircraft_mod_models import AircraftBucket, AircraftKillboard, compute_float
+from .aircraft_mod_models import AircraftBucket, AircraftKillboard, compute_float, get_aircraft_pilot_rankings_url
 from .bullets_types import render_ammo_breakdown
 
 aircraft_sort_fields = ['total_sorties', 'total_flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy',
                         'bomb_rocket_accuracy', 'plane_survivability', 'pilot_survivability', 'plane_lethality',
-                        'pilot_lethality', 'elo', 'rating']
+                        'pilot_lethality', 'elo', 'rating', 'kills', 'ground_kills', 'max_ak_streak', 'max_gk_streak']
 aircraft_killboard_sort_fields = ['kills', 'assists', 'deaths', 'kdr', 'plane_survivability', 'pilot_survivability',
                                   'plane_lethality', 'pilot_lethality']
 ITEMS_PER_PAGE = 20
@@ -83,6 +83,43 @@ def aircraft_killboard(request, aircraft_id, airfilter):
         'aircraft_bucket': bucket,
         'killboard': killboard,
         'enemy_filter': enemy_filter,
+    })
+
+
+def aircraft_pilot_rankings(request, aircraft_id, airfilter):
+    tour_id = request.GET.get('tour')
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=aircraft_sort_fields, default='-rating')
+    page = request.GET.get('page', 1)
+    base_bucket = find_aircraft_bucket(aircraft_id, tour_id, airfilter)
+    if base_bucket is None:
+        return render(request, 'aircraft_does_not_exist.html')
+
+    buckets = AircraftBucket.objects.filter(
+        tour_id=tour_id,
+        aircraft_id=aircraft_id,
+        filter_type=airfilter,
+        player__isnull=False
+    ).select_related(
+        'player', 'player__profile'
+    ).order_by(
+        sort_by, 'id'
+    )
+
+    if search:
+        buckets = buckets.filter(player__profile__nickname__icontains=search)
+
+    buckets = Paginator(buckets, ITEMS_PER_PAGE).page(page)
+
+    return render(request, 'aircraft_pilot_rankings.html', {
+        'aircraft_bucket': base_bucket,
+        'pilot_aircraft': buckets,
+        'filter_type': airfilter,
+        'no_filter_url': get_aircraft_pilot_rankings_url(aircraft_id, request.tour.id, 'NO_FILTER'),
+        'no_mods_url': get_aircraft_pilot_rankings_url(aircraft_id, request.tour.id, 'NO_BOMBS_JUICE'),
+        'bombs_url': get_aircraft_pilot_rankings_url(aircraft_id, request.tour.id, 'BOMBS'),
+        'juiced_url': get_aircraft_pilot_rankings_url(aircraft_id, request.tour.id, 'JUICE'),
+        'all_mods_urls': get_aircraft_pilot_rankings_url(aircraft_id, request.tour.id, 'ALL'),
     })
 
 
@@ -233,6 +270,7 @@ def pilot_aircraft(request, aircraft_id, airfilter, profile_id, nickname=None):
     bucket = find_aircraft_bucket(aircraft_id, request.GET.get('tour'), airfilter, player)
     if bucket is None:
         return render(request, 'aircraft_does_not_exist.html')
+    rating_position, page_position = _get_player_aircraft_rating_position(bucket)
 
     ammo_breakdown = render_ammo_breakdown(bucket.ammo_breakdown, filter_out_flukes=False)
 
@@ -240,7 +278,9 @@ def pilot_aircraft(request, aircraft_id, airfilter, profile_id, nickname=None):
         'player': player,
         'aircraft_bucket': bucket,
         'filter_option': airfilter,
-        'ammo_breakdown': ammo_breakdown
+        'ammo_breakdown': ammo_breakdown,
+        'rating_position': rating_position,
+        'page_position': page_position
     })
 
 
@@ -248,14 +288,33 @@ def find_aircraft_bucket(aircraft_id, tour_id, bucket_filter, player=None):
     if tour_id:
         try:
             bucket = (AircraftBucket.objects.select_related('aircraft', 'tour')
+                      .select_related('max_ak_streak_player', 'max_gk_streak_player', 'max_score_streak_player',
+                                      'best_score_sortie', 'best_ak_sortie', 'best_gk_sortie')
                       .get(aircraft=aircraft_id, tour_id=tour_id, filter_type=bucket_filter, player=player))
         except AircraftBucket.DoesNotExist:
             bucket = None
     else:
         try:
             bucket = (AircraftBucket.objects.select_related('aircraft', 'tour')
+                      .select_related('max_ak_streak_player', 'max_gk_streak_player', 'max_score_streak_player',
+                                      'best_score_sortie', 'best_ak_sortie', 'best_gk_sortie')
                       .filter(aircraft=aircraft_id, filter_type=bucket_filter, player=player)
                       .order_by('-id'))[0]
         except IndexError:
             raise Http404
     return bucket
+
+
+def _get_player_aircraft_rating_position(bucket):
+    if bucket.score == 0:
+        return None, None
+
+    position = 1 + (AircraftBucket.objects.filter(
+        tour=bucket.tour,
+        aircraft=bucket.aircraft,
+        filter_type=bucket.filter_type,
+        player__isnull=False,
+        rating__gt=bucket.rating
+    ).count())
+    page = (position - 1) // ITEMS_PER_PAGE + 1
+    return position, page

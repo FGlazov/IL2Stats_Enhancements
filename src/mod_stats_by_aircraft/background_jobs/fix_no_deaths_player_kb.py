@@ -1,6 +1,7 @@
 from .background_job import BackgroundJob
 from stats.models import Sortie
 from ..aircraft_mod_models import AircraftBucket, AircraftKillboard
+from ..aircraft_stats_compute import process_log_entries, get_sortie_type
 
 
 class FixNoDeathsPlayerKB(BackgroundJob):
@@ -45,8 +46,6 @@ class FixNoDeathsPlayerKB(BackgroundJob):
                 .order_by('-tour__id'))
 
     def compute_for_sortie(self, sortie):
-        from ..stats_whore import process_log_entries, get_sortie_type
-
         buckets = [(AircraftBucket.objects.get_or_create(tour=sortie.tour, aircraft=sortie.aircraft,
                                                          filter_type='NO_FILTER', player=None))[0]]
         filter_type = get_sortie_type(sortie)

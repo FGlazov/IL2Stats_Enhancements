@@ -1,26 +1,22 @@
 from django.db import transaction
-from django.db.models import Max
 
+from .background_job import get_tour_cutoff
 from .full_retro_compute import FullRetroCompute
 from .player_retro_compute import PlayerRetroCompute
+from .streaks_retro_compute import StreaksRetroCompute
 from .fix_corrupted_aa_accident import FixCorruptedAaAccidents
 from .fix_turret_killboards import FixTurretKillboards
 from .fix_no_deaths_player_kb import FixNoDeathsPlayerKB
-from stats.models import Tour
+from .fix_accuracy import FixAccuracy
 from stats.logger import logger
-import config
 
 # Subclasses of BackgroundJob, see background_job.py
-jobs = [FullRetroCompute(), PlayerRetroCompute(), FixCorruptedAaAccidents(), FixTurretKillboards(),
-        FixNoDeathsPlayerKB()]
+jobs = [FullRetroCompute(), PlayerRetroCompute(), StreaksRetroCompute(), FixCorruptedAaAccidents(),
+        FixTurretKillboards(), FixNoDeathsPlayerKB(), FixAccuracy()]
 
 LOG_COUNTER = 0
 LOGGING_INTERVAL = 5  # How many batches are run before an update log is produced.
 SORTIES_PER_BATCH = 1000  # How many sorties computed per batch
-
-RETRO_COMPUTE_FOR_LAST_TOURS = config.get_conf()['stats'].getint('retro_compute_for_last_tours')
-if RETRO_COMPUTE_FOR_LAST_TOURS is None:
-    RETRO_COMPUTE_FOR_LAST_TOURS = 10
 
 
 @transaction.atomic
@@ -31,7 +27,7 @@ def reset_corrupted_data():
     Note this must be done before any new mission is processed, otherwise the new data would be overwritten
     if reset later after the mission is processed.
     """
-    tour_cutoff = __get_tour_cutoff()
+    tour_cutoff = get_tour_cutoff()
     if tour_cutoff is None:
         return
 
@@ -47,7 +43,7 @@ def run_background_jobs():
     @returns True if some work was done, False if there is no more work left to do.
     """
 
-    tour_cutoff = __get_tour_cutoff()
+    tour_cutoff = get_tour_cutoff()
     if tour_cutoff is None:
         return False
 
@@ -60,14 +56,18 @@ def run_background_jobs():
 
 
 def __run_background_job(job, tour_cutoff):
+    if not job.work_left and not job.unlimited_work:
+        return False
+
     global LOG_COUNTER
 
     backfill_sorties = job.query_find_sorties(tour_cutoff)
     nr_left = backfill_sorties.count()
     if nr_left == 0:
+        job.work_left = False
         return False
 
-    if LOG_COUNTER == 0:
+    if LOG_COUNTER == 0 and job.log_update(nr_left):
         logger.info(job.log_update(nr_left))
     LOG_COUNTER = (LOG_COUNTER + 1) % LOGGING_INTERVAL
 
@@ -75,15 +75,18 @@ def __run_background_job(job, tour_cutoff):
         job.compute_for_sortie(sortie)
 
     if nr_left <= SORTIES_PER_BATCH:
-        logger.info(job.log_done())
+        if job.log_done():
+            logger.info(job.log_done())
+        job.work_left = False
         LOG_COUNTER = 0
 
     return True
 
 
-def __get_tour_cutoff():
-    max_id = Tour.objects.aggregate(Max('id'))['id__max']
-    if max_id is None:  # Edge case: No tour yet
-        return None
-
-    return max_id - RETRO_COMPUTE_FOR_LAST_TOURS
+def retro_streak_compute_running():
+    retro_streak_compute_jobs = [
+        jobs[0],  # FullRetroCompute()
+        jobs[1],  # PlayerRetroCompute()
+        jobs[2],  # StreaksRetroCompute()
+    ]
+    return True in {job.work_left for job in retro_streak_compute_jobs}
