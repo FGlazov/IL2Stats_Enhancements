@@ -8,7 +8,7 @@ from django.utils import timezone
 from mission_report.constants import Coalition
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
-                          VLife, Reward, KillboardPvP, LogEntry)
+                          VLife, Reward, KillboardPvP)
 from stats.views import *
 from stats.views import (_get_rating_position, _get_squad, _overall_missions_wins, _overall_stats_summary_total,
                          _overall_stats_summary_coal)
@@ -17,7 +17,6 @@ from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
 from .variant_utils import FIGHTER_WHITE_LIST
 from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
-from stats import sortie_log
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -291,7 +290,6 @@ def pilot_sorties(request, profile_id, nickname=None):
 def pilot_vlifes(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
->>>>>>> master
 
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
@@ -394,6 +392,64 @@ def pilot_killboard(request, profile_id, nickname=None):
 
 
 def __top_24_pilots(tour_id, cls=None):
+    _queryset = (Sortie.objects
+                 .exclude(score=0)
+                 .filter(tour_id=tour_id,
+                         is_disco=False,
+                         player__type='pilot',
+                         profile__is_hide=False,
+                         date_start__gt=timezone.now() - timedelta(hours=24)))
+
+    if cls:
+        aircraft_cls = 'aircraft_' + cls
+        _queryset = _queryset.filter(
+            (Q(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)  # Expected case. E.g. recorded jabos as type 'medium'.
+
+             # The edge case, when this mod is freshly installed we haven't recorded type. So instead use aircraft type.
+             | (Q(aircraft__cls=aircraft_cls) & Q(SortieAugmentation_MOD_SPLIT_RANKINGS=None))))
+
+    _queryset = _queryset.values('player').annotate(sum_score=Sum('score'))
+    top_24_score = _queryset.order_by('-sum_score')[:10]
+    top_24_pilots = Player.players.pilots(tour_id=tour_id).filter(id__in=[s['player'] for s in top_24_score])
+    top_24_pilots = {p.id: p for p in top_24_pilots}
+    top_24 = []
+    for p in top_24_score:
+        top_24.append((top_24_pilots[p['player']], p['sum_score']))
+    return top_24
+
+def __top_recent_players(tour_id, by_mission, cls=None):
+    if by_mission:
+        return __top_last_mission_players(tour_id, cls)
+    else:
+        return __top_24_pilots(tour_id, cls)
+
+
+def __top_last_mission_players(tour_id, cls):
+    mission_query = (Mission.objects
+                     .values_list('id', flat=True)
+                     .filter(tour_id=tour_id, players_total__gt=0)
+                     .order_by('-date_start'))
+
+    if not mission_query.exists():
+        return []
+
+    mission_id = mission_query[0]
+    score_name = 'score'
+    if cls:
+        score_name = 'score_' + cls
+
+    player_missions = (PlayerMission.objects.select_related('player')
+                       .filter(mission_id=mission_id, player__type='pilot')
+                       .order_by('-' + score_name))[:10]
+
+    result = []
+    for player_mission in player_missions:
+        result.append((player_mission.player, getattr(player_mission, score_name)))
+
+    return result
+
+
+def __top_24_pilots(tour_id, cls):
     _queryset = (Sortie.objects
                  .exclude(score=0)
                  .filter(tour_id=tour_id,

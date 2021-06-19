@@ -44,8 +44,7 @@ class ModConfig(AppConfig):
         original_views.overall = new_views.overall
 
         from . import report as new_report
-        from mission_report.report import MissionReport
-
+        from mission_report.report import MissionReport, Object
         MissionReport.event_hit = new_report.event_hit
         Object.got_damaged = new_report.got_damaged
         Object.got_killed = new_report.got_killed

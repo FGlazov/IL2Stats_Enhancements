@@ -11,6 +11,82 @@ LAST_DMG_OBJECT = 'last_dmg_object'
 LAST_TURRET_ACCOUNT = 'last_turret_account'
 
 
+# This is a bit of a hack to associate event_damage with the bullets that caused the damage.
+# The data we get from the log files currently does not connect the damage to the bullet.
+# Instead, we get "Bullet from A hit B", and "A damaged B" as separate lines.
+# Typically, the damage line comes after a bullet hit line (or multiple bullet hit lines).
+# So, we guess that the damage line after a bullet hit line is the one which is associated to the bullet hit line.
+#
+# This can fail in many ways, since this really is only an educated guess.
+# That's why we, for example, drop non-recent hits - i.e. if a damage line is missing.
+class RecentHitsCache:
+    def __init__(self):
+        self.cache = {}
+        self.prune_counter = 0
+
+    def add_to_hits_cache(self, tik, target, attacker, ammo):
+        if target is None or attacker is None:
+            return
+
+        if target.parent:
+            target = target.parent
+        if attacker.parent:
+            attacker = attacker.parent
+
+        key = (target.id, attacker.id)
+
+        if key not in self.cache:
+            self.cache[key] = []
+
+        self.cache[key].append({'ammo': ammo['name'], 'tik': tik})
+
+        self.prune_counter += 1
+        if self.prune_counter > PRUNE_COUNTER_MAX:
+            self.prune_hits_cache(tik)
+
+    def prune_hits_cache(self, current_tik):
+        empty_keys = []
+        for key in self.cache:
+            self.cache[key] = [hit for hit in self.cache[key] if current_tik - hit['tik'] < RECENT_HITS_CUTOFF]
+            if not self.cache[key]:
+                empty_keys.append(key)
+
+        for empty_key in empty_keys:
+            del self.cache[empty_key]
+
+        self.prune_counter = 0
+
+    def get_recent_hits(self, current_tik, attacker, target):
+        if target is None or attacker is None:
+            return {}
+
+        if target.parent:
+            target = target.parent
+        if attacker.parent:
+            attacker = attacker.parent
+
+        key = (target.id, attacker.id)
+        if key not in self.cache:
+            return {}
+
+        recent_hits = [hit for hit in self.cache[key] if current_tik - hit['tik'] < RECENT_HITS_CUTOFF]
+        result = {}
+        for recent_hit in recent_hits:
+            ammo = recent_hit['ammo']
+            if ammo not in result:
+                result[ammo] = 0
+            result[ammo] += 1
+
+        del self.cache[key]
+
+        return result
+
+
+RECENT_HITS_CACHE = RecentHitsCache()
+RECENT_HITS_CUTOFF = 3000  # After 3000 ticks = ~1 minute a hit isn't considered recent anymore.
+PRUNE_COUNTER_MAX = 500  # After 500 event hits prune the cache.
+
+
 def event_hit(self, tik, ammo, attacker_id, target_id):
     # ======================== MODDED PART BEGIN
     ammo_db = self.objects[ammo.lower()]
@@ -24,6 +100,7 @@ def event_hit(self, tik, ammo, attacker_id, target_id):
         # ======================== MODDED PART BEGIN
         record_hits(target, attacker, ammo_db)
         # ======================== MODDED PART END
+
 
 # Monkey patched into Object class inside report.py
 def got_damaged(self, damage, attacker=None, pos=None):

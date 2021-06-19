@@ -282,29 +282,30 @@ def update_bonus_score(new_sortie):
         bonus_pct = 0
         bonus_dict = {}
         penalty_pct = 0
+        is_aircraft = new_sortie.aircraft.cls_base == 'aircraft' or new_sortie.aircraft.cls == 'aircraft_turret'
 
         # бонусы получают только "честные" игроки
         if new_sortie.fairplay == 100:
             if new_sortie.is_landed:
-				bonus_key = 'mod_bonus_landed' if is_aircraft else 'tank_bonus_landed'
-				bonus = bonuses_score_dict[bonus_key]['base']
-				bonus_pct += bonus
-				bonus_dict['landed'] = bonus
-			if new_sortie.coalition == new_sortie.mission.winning_coalition:
-				bonus_key = 'mod_bonus_winning_coal' if is_aircraft else 'tank_bonus_winning_coa'
-				bonus = bonuses_score_dict[bonus_key]['base']
-				bonus_pct += bonus
-				bonus_dict['winning_coalition'] = bonus
-			if new_sortie.is_in_flight:
-				bonus_key = 'mod_bonus_in_flight' if is_aircraft else 'tank_bonus_in_flight'
-				bonus = bonuses_score_dict[bonus_key]['base']
-				bonus_pct += bonus
-				bonus_dict['in_flight'] = bonus
-			if new_sortie.is_not_takeoff and not is_aircraft:
-				bonus_key = 'tank_bonus_in_service'
-				bonus = bonuses_score_dict[bonus_key]['base']
-				bonus_pct += bonus
-				bonus_dict['in_service'] = bonus
+                bonus_key = 'mod_bonus_landed' if is_aircraft else 'tank_bonus_landed'
+                bonus = bonuses_score_dict[bonus_key]['base']
+                bonus_pct += bonus
+                bonus_dict['landed'] = bonus
+            if new_sortie.coalition == new_sortie.mission.winning_coalition:
+                bonus_key = 'mod_bonus_winning_coal' if is_aircraft else 'tank_bonus_winning_coa'
+                bonus = bonuses_score_dict[bonus_key]['base']
+                bonus_pct += bonus
+                bonus_dict['winning_coalition'] = bonus
+            if new_sortie.is_in_flight:
+                bonus_key = 'mod_bonus_in_flight' if is_aircraft else 'tank_bonus_in_flight'
+                bonus = bonuses_score_dict[bonus_key]['base']
+                bonus_pct += bonus
+                bonus_dict['in_flight'] = bonus
+            if new_sortie.is_not_takeoff and not is_aircraft:
+                bonus_key = 'tank_bonus_in_service'
+                bonus = bonuses_score_dict[bonus_key]['base']
+                bonus_pct += bonus
+                bonus_dict['in_service'] = bonus
         bonus_dict['total'] = bonus_pct
 
         # ставим базовые очки т.к. функция может вызваться несколько раз
