@@ -177,15 +177,14 @@ class FilteredPlayer(models.Model):
     accuracy = models.FloatField(default=0, db_index=True)
 
     streak_current = models.IntegerField(default=0, db_index=True)
-    streak_max = models.IntegerField(default=0)
+    streak_max = models.IntegerField(default=0, db_index=True)
 
     score_streak_current = models.IntegerField(default=0, db_index=True)
-    score_streak_max = models.IntegerField(default=0)
+    score_streak_max = models.IntegerField(default=0, db_index=True)
 
     streak_ground_current = models.IntegerField(default=0, db_index=True)
-    streak_ground_max = models.IntegerField(default=0)
+    streak_ground_max = models.IntegerField(default=0, db_index=True)
 
-    # TODO: Index some of these streaks.
     sorties_streak_current = models.IntegerField(default=0)
     sorties_streak_max = models.IntegerField(default=0)
 

@@ -150,6 +150,8 @@ After step 3 and 4 your config should contain two lines like:
 mods = mod_rating_by_type
 modules = split_rankings, ammo_breakdown, ironman_stats
 
+4a. If you're using the split rankings module: It is possible to retroactively compute the fighter/attacker/bomber personas for already existing misisons before this mod was installed. The config paramater is called "retro_compute_for_last_tours=10" under [stats] in src/conf.ini. It is shared with the global aircraft stats mod. A value of 0 will retroactively compute for only the current tour (for any sorties in the current tour before this mod was installed), a value of -1 will completely disable the retroactive computations. The default value of 10 retroactively aggregates stats for the previous 10 tours and the current one.
+
 5. Run collect_static in your run folder. Otherwise you will likely get a 500 error on the pilot rankings page.
 
 Uninstallation
