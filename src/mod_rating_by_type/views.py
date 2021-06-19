@@ -8,7 +8,7 @@ from django.utils import timezone
 from mission_report.constants import Coalition
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
-                          VLife, Reward, KillboardPvP)
+                          VLife, Reward, KillboardPvP, LogEntry)
 from stats.views import *
 from stats.views import (_get_rating_position, _get_squad, _overall_missions_wins, _overall_stats_summary_total,
                          _overall_stats_summary_coal)
@@ -17,6 +17,7 @@ from .bullets_types import translate_ammo_breakdown
 from .config_modules import *
 from .variant_utils import FIGHTER_WHITE_LIST
 from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
+from stats import sortie_log
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
