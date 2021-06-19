@@ -21,14 +21,14 @@ from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, Filte
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
 
-
 missions_sort_fields = ['id', 'players_total', 'pilots_total', 'tankmans_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy', 'gkd',
-                      'gkhr','score', 'score_light', 'score_medium', 'score_heavy',
+                      'gkhr', 'score', 'score_light', 'score_medium', 'score_heavy',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
-tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr', 'accuracy', 'score', 'rating']
+tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr',
+                        'accuracy', 'score', 'rating']
 killboard_sort_fields = ['won', 'lose', 'wl']
 
 
@@ -417,6 +417,7 @@ def __top_24_pilots(tour_id, cls=None):
         top_24.append((top_24_pilots[p['player']], p['sum_score']))
     return top_24
 
+
 def __top_recent_players(tour_id, by_mission, cls=None):
     if by_mission:
         return __top_last_mission_players(tour_id, cls)
@@ -506,20 +507,40 @@ def main(request):
     toptank_streak = (Player.players.tankmans(tour_id=request.tour.id)
                           .exclude(score_streak_current=0)
                           .active(tour=request.tour).order_by('-score_streak_current')[:10])
-    toptank_24_score = (Sortie.objects
-                            .filter(tour_id=request.tour.id, is_disco=False, player__type='tankman',
-                                    profile__is_hide=False)
-                            .filter(date_start__gt=timezone.now() - timedelta(hours=24))
-                            .exclude(score=0)
-                            .values('player')
-                            .annotate(sum_score=Sum('score'))
-                            .order_by('-sum_score')[:10])
-    toptank_24_tankmans = (Player.players.tankmans(tour_id=request.tour.id)
+    if module_active(MODULE_TOP_LAST_MISSION):
+        mission_query = (Mission.objects
+                         .values_list('id', flat=True)
+                         .filter(tour_id=request.tour.id, players_total__gt=0)
+                         .order_by('-date_start'))
+
+        if not mission_query.exists():
+            toptank_24 = []
+        else:
+            mission_id = mission_query[0]
+            player_missions = (PlayerMission.objects.select_related('player')
+                               .filter(mission_id=mission_id, player__type='tankman')
+                               .order_by('-score'))[:10]
+
+            toptank_24 = []
+            for player_mission in player_missions:
+                toptank_24.append((player_mission.player, player_mission.score))
+
+    else:
+        toptank_24_score = (Sortie.objects
+                                .filter(tour_id=request.tour.id, is_disco=False, player__type='tankman',
+                                        profile__is_hide=False)
+                                .filter(date_start__gt=timezone.now() - timedelta(hours=24))
+                                .exclude(score=0)
+                                .values('player')
+                                .annotate(sum_score=Sum('score'))
+                                .order_by('-sum_score')[:10])
+
+        toptank_24_tankmans = (Player.players.tankmans(tour_id=request.tour.id)
                            .filter(id__in=[s['player'] for s in toptank_24_score]))
-    toptank_24_tankmans = {p.id: p for p in toptank_24_tankmans}
-    toptank_24 = []
-    for p in toptank_24_score:
-        toptank_24.append((toptank_24_tankmans[p['player']], p['sum_score']))
+        toptank_24_tankmans = {p.id: p for p in toptank_24_tankmans}
+        toptank_24 = []
+        for p in toptank_24_score:
+            toptank_24.append((toptank_24_tankmans[p['player']], p['sum_score']))
 
     coal_active_tankmans = request.tour.coal_active_tankmans()
     total_active_tankmans = sum(coal_active_tankmans.values())
@@ -584,6 +605,7 @@ def main(request):
         'total_online': total_online,
         'coal_1_online': coal_1_online,
         'coal_2_online': coal_2_online,
+        'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
     })
 
 
@@ -656,11 +678,11 @@ def tour(request):
     total_active_pilots = sum(coal_active_pilots.values())
 
     toptank_streak = (Player.players.tankmans(tour_id=request.tour.id)
-                  .exclude(score_streak_max=0)
-                  .active(tour=request.tour).order_by('-score_streak_max')[:10])
+                          .exclude(score_streak_max=0)
+                          .active(tour=request.tour).order_by('-score_streak_max')[:10])
     toptank_rating = (Player.players.tankmans(tour_id=request.tour.id)
-                  .exclude(rating=0)
-                  .active(tour=request.tour).order_by('-rating')[:10])
+                          .exclude(rating=0)
+                          .active(tour=request.tour).order_by('-rating')[:10])
 
     coal_active_tankmans = request.tour.coal_active_tankmans()
     total_active_tankmans = sum(coal_active_tankmans.values())
@@ -713,10 +735,10 @@ def mission(request, mission_id):
     if sort_by.replace('-', '') not in pilots_sort_fields:
         return redirect('stats:players_list', permanent=False)
     pilots = (PlayerMission.objects.select_related('player', 'profile')
-               .filter(mission_id=mission_id, player__type='pilot')
-               # .only('profile_id', 'player__tour_id', 'ak_total', 'gk_total', 'flight_time',
-               #       'kd', 'khr', 'accuracy', 'score', 'sorties_coal', 'sorties_total')
-               .order_by(sort_by, '-flight_time'))
+              .filter(mission_id=mission_id, player__type='pilot')
+              # .only('profile_id', 'player__tour_id', 'ak_total', 'gk_total', 'flight_time',
+              #       'kd', 'khr', 'accuracy', 'score', 'sorties_coal', 'sorties_total')
+              .order_by(sort_by, '-flight_time'))
 
     tankmans = (PlayerMission.objects.select_related('player', 'profile')
                 .filter(mission_id=mission_id, player__type='tankman')

@@ -115,8 +115,11 @@
                 {% if top_24 %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
+                        {% if MODULE_TOP_LAST_MISSION %}
+                        {% trans 'Best pilots in the last mission' context 'tour_top' %}
+                        {% else %}
                         {% trans 'Best pilots in the last 24 hours' context 'tour_top' %}
-                    </div>
+                        {% endif %}                    </div>
                     <div class="top_table">
                         <div class="head_row">
                             <div class="cell" style="width: 30px;">#</div>
@@ -169,7 +172,11 @@
                 {% if toptank_24 %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
+                        {% if MODULE_TOP_LAST_MISSION %}
+                        {% trans 'Best tankmen in the last mission' context 'tour_top' %}
+                        {% else %}
                         {% trans 'Best tankmen in the last 24 hours' context 'tour_top' %}
+                        {% endif %}
                     </div>
                     <div class="top_table">
                         <div class="head_row">
@@ -196,6 +203,7 @@
                 <div class="top_pilots" style="float: right;">
                     <div class="top_title">
                         {% trans 'Best live tankmen' context 'tour_top' %}
+
                     </div>
                     <div class="top_table">
                         <div class="head_row">
@@ -223,7 +231,11 @@
                 {% if top_24_light %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
+                        {% if MODULE_TOP_LAST_MISSION %}
+                        {% trans 'Best fighter pilots in the last mission' context 'tour_top' %}
+                        {% else %}
                         {% trans 'Best fighter pilots in the last 24 hours' context 'tour_top' %}
+                        {% endif %}
                     </div>
                     <div class="top_table">
                         <div class="head_row">
@@ -277,7 +289,11 @@
                 {% if top_24_medium %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
+                        {% if MODULE_TOP_LAST_MISSION %}
+                        {% trans 'Best attacker pilots in the last mission' context 'tour_top' %}
+                        {% else %}
                         {% trans 'Best attacker pilots in the last 24 hours' context 'tour_top' %}
+                        {% endif %}
                     </div>
                     <div class="top_table">
                         <div class="head_row">
@@ -331,7 +347,11 @@
                 {% if top_24_heavy %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
+                        {% if MODULE_TOP_LAST_MISSION %}
+                        {% trans 'Best bomber pilots in the last mission' context 'tour_top' %}
+                        {% else %}
                         {% trans 'Best bomber pilots in the last 24 hours' context 'tour_top' %}
+                        {% endif %}
                     </div>
                     <div class="top_table">
                         <div class="head_row">
