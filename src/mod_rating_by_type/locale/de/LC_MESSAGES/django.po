@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 17:41+0200\n"
+"POT-Creation-Date: 2021-06-19 10:47+0200\n"
 "PO-Revision-Date: 2016-07-18 19:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1091,7 +1091,7 @@ msgctxt "tour_top"
 msgid "Best live fighter pilots"
 msgstr "Beste überlebende Jagdflieger"
 
-#: .\mod_rating_by_type\templates\main.html:235"
+#: .\mod_rating_by_type\templates\main.html:235
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
 msgstr "Beste Schlachtflugzeugpiloten in der letzten Mission"
@@ -2400,17 +2400,20 @@ msgctxt "sortie_page_title"
 msgid "Sortie Log"
 msgstr "Einsatz Logbuch"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:98
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:95
 msgctxt "sortie_log"
 msgid "AI"
 msgstr "KI"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:109
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:106
 msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
-msgstr "Die Art der Kugel ist nicht direkt an einer Schadensmeldung in den Logs angeknüpft. Die Kugelarten werden nachträglich erschlossen: Dadurch können Fehler entstehen."
+msgstr ""
+"Die Art der Kugel ist nicht direkt an einer Schadensmeldung in den Logs "
+"angeknüpft. Die Kugelarten werden nachträglich erschlossen: Dadurch können "
+"Fehler entstehen."
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16

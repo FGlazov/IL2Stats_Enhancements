@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 17:41+0200\n"
+"POT-Creation-Date: 2021-06-19 10:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -817,12 +817,9 @@ msgstr "Pontuação de Bombardeiro"
 #: .\mod_rating_by_type\templates\pilot_sorties.html:110
 #: .\mod_rating_by_type\templates\pilot_vlifes.html:109
 #: .\mod_rating_by_type\templates\pilots.html:137
-#, fuzzy
-#| msgctxt "coalition"
-#| msgid "Allies"
 msgctxt "persona"
 msgid "All"
-msgstr "Aliados"
+msgstr "Todos"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:148
 #: .\mod_rating_by_type\templates\pilot.html:90
@@ -916,8 +913,6 @@ msgid "on the flight time (hours:minutes)"
 msgstr "sobre o tempo de voo (horas:minutos)"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:210
-#, fuzzy
-#| msgid "on the average number of kill per one death (K/D)"
 msgid "on the average number of kills per one aircraft lost (K/L)"
 msgstr "sobre el número promedio de victorias por muerte"
 
@@ -985,9 +980,6 @@ msgid "Flight time (hours)"
 msgstr "Tempo de voo (horas)"
 
 #: .\mod_rating_by_type\templates\main.html:119
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best pilots in the last mission"
 msgstr "Melhores pilotos das últimas 24 horas"
@@ -1050,9 +1042,6 @@ msgid "Best live pilots"
 msgstr "Melhores pilotos vivos"
 
 #: .\mod_rating_by_type\templates\main.html:177
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last mission"
 msgstr "Melhores pilotos das últimas 24 horas"
@@ -1068,9 +1057,6 @@ msgid "Best live fighter pilots"
 msgstr "Melhores pilotos de caça vivos"
 
 #: .\mod_rating_by_type\templates\main.html:235
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
 msgstr "Melhores pilotos das últimas 24 horas"
@@ -1218,15 +1204,10 @@ msgstr "sobre os pontos"
 
 #: .\mod_rating_by_type\templates\overall.html:3
 #: .\mod_rating_by_type\templates\overall.html:9
-#, fuzzy
-#| msgid "Overall Pilot Rankings"
 msgid "Overall stats"
 msgstr "Classificação Geral de Pilotos"
 
 #: .\mod_rating_by_type\templates\overall.html:118
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots"
 msgctxt "overall"
 msgid "Best pilots"
 msgstr "Melhores pilotos"
@@ -1244,16 +1225,11 @@ msgid "rating"
 msgstr "classificação"
 
 #: .\mod_rating_by_type\templates\overall.html:144
-#, fuzzy
-#| msgctxt "pilot_nav_tab"
-#| msgid "Virtual Lifes"
 msgctxt "overall_top"
 msgid "Best virtual lifes"
 msgstr "Vidas"
 
 #: .\mod_rating_by_type\templates\overall.html:172
-#, fuzzy
-#| msgid "Best Streak"
 msgctxt "overall"
 msgid "Best streak"
 msgstr "Melhor Sequência"
@@ -1263,15 +1239,11 @@ msgstr "Melhor Sequência"
 #: .\mod_rating_by_type\templates\overall.html:257
 #: .\mod_rating_by_type\templates\overall.html:309
 #: .\mod_rating_by_type\templates\overall.html:361
-#, fuzzy
-#| msgid "Streak"
 msgctxt "overall"
 msgid "streak"
 msgstr "Sequência"
 
 #: .\mod_rating_by_type\templates\overall.html:198
-#, fuzzy
-#| msgid "Best Ground Streak"
 msgctxt "overall"
 msgid "Best ground streak"
 msgstr "Melhor Sequência de Alvos Destruídos"
@@ -1283,8 +1255,6 @@ msgid "Best fighter pilots"
 msgstr "Melhores pilotos vivos"
 
 #: .\mod_rating_by_type\templates\overall.html:250
-#, fuzzy
-#| msgid "Best Streak"
 msgctxt "overall"
 msgid "Best fighter air kill streak"
 msgstr "Melhor Sequência de Tempo de voo"
@@ -1296,8 +1266,6 @@ msgid "Best attacker pilots"
 msgstr "Melhores pilotos de ataque ao solo"
 
 #: .\mod_rating_by_type\templates\overall.html:302
-#, fuzzy
-#| msgid "Best Ground Streak"
 msgctxt "overall"
 msgid "Best attacker ground streak"
 msgstr "Melhor Sequência de Alvos Destruídos"
@@ -1309,8 +1277,6 @@ msgid "Best bomber pilots"
 msgstr "Melhores pilotos de bombardeiro"
 
 #: .\mod_rating_by_type\templates\overall.html:354
-#, fuzzy
-#| msgid "Best Ground Streak"
 msgctxt "overall"
 msgid "Best bomber ground streak"
 msgstr "Melhor Sequência de Alvos Destruídos"
@@ -1704,9 +1670,6 @@ msgstr "parâmetro desatualizado"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:593
 #: .\mod_rating_by_type\templates\pilot_vlife.html:366
 #: .\mod_rating_by_type\templates\squad.html:356
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Heavy Tanks"
 msgctxt "total"
 msgid "Heavy Ships"
 msgstr "Navios de Grande Porte"
@@ -1715,9 +1678,6 @@ msgstr "Navios de Grande Porte"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:607
 #: .\mod_rating_by_type\templates\pilot_vlife.html:373
 #: .\mod_rating_by_type\templates\squad.html:363
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Medium Tanks"
 msgctxt "total"
 msgid "Medium Ships"
 msgstr "Navios de Médio Porte"
@@ -1726,9 +1686,6 @@ msgstr "Navios de Médio Porte"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:621
 #: .\mod_rating_by_type\templates\pilot_vlife.html:380
 #: .\mod_rating_by_type\templates\squad.html:370
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Light Tanks"
 msgctxt "total"
 msgid "Light Ships"
 msgstr "Navios de Pequeno Porte"
@@ -1785,9 +1742,6 @@ msgstr "Construções de Grande Porte"
 #: .\mod_rating_by_type\templates\pilot_sortie.html:719
 #: .\mod_rating_by_type\templates\pilot_vlife.html:429
 #: .\mod_rating_by_type\templates\squad.html:419
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Medium Tanks"
 msgctxt "total"
 msgid "Medium buildings"
 msgstr "Construções de Médio Porte"
@@ -1870,40 +1824,26 @@ msgid "Destroyed Friendly Ground Targets"
 msgstr "Destruiu Alvos de Solo Amigos"
 
 #: .\mod_rating_by_type\templates\pilot.html:580
-#, fuzzy
-#| msgctxt "sortie"
-#| msgid "Detailed results"
 msgid "Best results"
 msgstr "Melhores resultados"
 
 #: .\mod_rating_by_type\templates\pilot.html:591
-#, fuzzy
-#| msgid "Best Streak"
 msgid "Best Flight time Streak"
 msgstr "Melhor Sequência de Tempo de voo"
 
 #: .\mod_rating_by_type\templates\pilot.html:595
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots streak"
 msgid "Best Sorties Streak"
 msgstr "Melhor Sequência de Surtidas"
 
 #: .\mod_rating_by_type\templates\pilot.html:599
-#, fuzzy
-#| msgid "Aerial victories"
 msgid "Max Aerial Victories in one sortie"
 msgstr "Maior quantidade de abates por surtida"
 
 #: .\mod_rating_by_type\templates\pilot.html:603
-#, fuzzy
-#| msgid "Destroyed on Ground"
 msgid "Max Destroyed on Ground in one sortie"
 msgstr "Maior quantidade de alvos destruídos por surtida"
 
 #: .\mod_rating_by_type\templates\pilot.html:610
-#, fuzzy
-#| msgid "Current Streak"
 msgid "Current life"
 msgstr "Vida Atual"
 
@@ -1929,9 +1869,6 @@ msgstr "Especialidade"
 
 #: .\mod_rating_by_type\templates\pilot.html:706
 #: .\mod_rating_by_type\templates\squad.html:547
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Transport"
 msgctxt "specialty"
 msgid "Transport"
 msgstr "Avião de Transporte"
@@ -2030,16 +1967,10 @@ msgstr "Painel de Kills"
 
 #: .\mod_rating_by_type\templates\pilot_killboard.html:17
 #: .\mod_rating_by_type\templates\pilot_vlifes.html:17
-#, fuzzy
-#| msgctxt "pilot_awards"
-#| msgid "pilot"
 msgid "pilot"
 msgstr "piloto"
 
 #: .\mod_rating_by_type\templates\pilot_killboard.html:29
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Wagons"
 msgctxt "killboard"
 msgid "Won"
 msgstr "Vitórias"
@@ -2319,9 +2250,6 @@ msgid "Penalty"
 msgstr "Penalidade"
 
 #: .\mod_rating_by_type\templates\pilot_sortie.html:777
-#, fuzzy
-#| msgctxt "sortie"
-#| msgid "Shotdown"
 msgctxt "sortie_status"
 msgid "Shotdown"
 msgstr "Abatido"
@@ -2377,17 +2305,17 @@ msgctxt "sortie_page_title"
 msgid "Sortie Log"
 msgstr "Log da missão"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:98
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:95
 msgctxt "sortie_log"
 msgid "AI"
 msgstr "IA"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:109
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:106
 msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
-msgstr ""
+msgstr "* Les types de munitions ne sont pas rattachés aux dégâts dans le fichier journal."
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16
@@ -2409,40 +2337,26 @@ msgid "VLife"
 msgstr "VVirtuais"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:20
-#, fuzzy
-#| msgctxt "specialty"
-#| msgid "Fighter"
 msgctxt "vlife_page_title"
 msgid "Fighter VLife"
-msgstr "Caça"
+msgstr "Vies virtuelles en chasseur"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:22
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Attacker"
 msgctxt "vlife_page_title"
 msgid "Attacker VLife"
-msgstr "Aviões de Ataque ao Solo"
+msgstr "Vies virtuelles en avion d’attaque au sol"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:24
-#, fuzzy
-#| msgctxt "specialty"
-#| msgid "Bomber"
 msgctxt "vlife_page_title"
 msgid "Bomber VLife"
-msgstr "Bombardeiro"
+msgstr "Vies virtuelles en bombardier"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:73
-#, fuzzy
-#| msgctxt "pilot_awards"
-#| msgid "pilot"
 msgctxt "pilot_vlifes"
 msgid "pilot"
 msgstr "piloto"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:78
-#, fuzzy
-#| msgid "Back to sorties list"
 msgid "Back to vlifes list"
 msgstr "Voltar à lista de missões"
 

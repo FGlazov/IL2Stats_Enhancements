@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 17:41+0200\n"
+"POT-Creation-Date: 2021-06-19 10:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -849,12 +849,9 @@ msgstr "Puntuación actual de bombardero"
 #: .\mod_rating_by_type\templates\pilot_sorties.html:110
 #: .\mod_rating_by_type\templates\pilot_vlifes.html:109
 #: .\mod_rating_by_type\templates\pilots.html:137
-#, fuzzy
-#| msgctxt "coalition"
-#| msgid "Allies"
 msgctxt "persona"
 msgid "All"
-msgstr "Aliados"
+msgstr "Todos"
 
 #: .\mod_rating_by_type\templates\ironman_pilots.html:148
 #: .\mod_rating_by_type\templates\pilot.html:90
@@ -1017,12 +1014,9 @@ msgid "Flight time (hours)"
 msgstr "Tiempo de vuelo (horas)"
 
 #: .\mod_rating_by_type\templates\main.html:119
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best pilots in the last mission"
-msgstr "Mejores pilotos en las últimas 24 horas"
+msgstr "Mejores pilotos en la última misión"
 
 #: .\mod_rating_by_type\templates\main.html:121
 msgctxt "tour_top"
@@ -1082,12 +1076,9 @@ msgid "Best live pilots"
 msgstr "Mejores pilotos vivos"
 
 #: .\mod_rating_by_type\templates\main.html:177
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best fighter pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last mission"
-msgstr "Mejores pilotos de caza en las últimas 24 horas"
+msgstr "Mejores pilotos de caza en la última misión"
 
 #: .\mod_rating_by_type\templates\main.html:179
 msgctxt "tour_top"
@@ -1100,12 +1091,9 @@ msgid "Best live fighter pilots"
 msgstr "Mejores pilotos de caza con vida en este momento"
 
 #: .\mod_rating_by_type\templates\main.html:235
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best attacker pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
-msgstr "Mejores pilotos de ataque a suelo en las últimas 24 horas"
+msgstr "Mejores pilotos de ataque a tierra en la última misión"
 
 #: .\mod_rating_by_type\templates\main.html:237
 msgctxt "tour_top"
@@ -1118,12 +1106,9 @@ msgid "Best live attacker pilots"
 msgstr "Mejores pilotos de ataque a suelo con vida en este momento"
 
 #: .\mod_rating_by_type\templates\main.html:293
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best bomber pilots in the last 24 hours"
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last mission"
-msgstr "Mejores pilotos de bombardero en las últimas 24 horas"
+msgstr "Mejores pilotos de bombarderos en la última misión"
 
 #: .\mod_rating_by_type\templates\main.html:295
 msgctxt "tour_top"
@@ -1318,12 +1303,9 @@ msgid "Best fighter pilots"
 msgstr "Mejores pilotos de caza"
 
 #: .\mod_rating_by_type\templates\overall.html:250
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best fighter streak"
 msgctxt "overall"
 msgid "Best fighter air kill streak"
-msgstr "Mejor racha de caza"
+msgstr "Mejor racha de derribos aéreos en un caza"
 
 #: .\mod_rating_by_type\templates\overall.html:276
 #: .\mod_rating_by_type\templates\tour.html:222
@@ -1332,12 +1314,9 @@ msgid "Best attacker pilots"
 msgstr "Mejores pilotos de ataque a suelo"
 
 #: .\mod_rating_by_type\templates\overall.html:302
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best attacker streak"
 msgctxt "overall"
 msgid "Best attacker ground streak"
-msgstr "Mejor racha de ataque a suelo"
+msgstr "Mejor racha de derribos a tierra en un ataque a tierra"
 
 #: .\mod_rating_by_type\templates\overall.html:328
 #: .\mod_rating_by_type\templates\tour.html:274
@@ -1346,12 +1325,9 @@ msgid "Best bomber pilots"
 msgstr "Mejores pilotos de bombardero"
 
 #: .\mod_rating_by_type\templates\overall.html:354
-#, fuzzy
-#| msgctxt "tour_top"
-#| msgid "Best bomber streak"
 msgctxt "overall"
 msgid "Best bomber ground streak"
-msgstr "Mejor racha de bombardero"
+msgstr "Mejor racha de derribos a tierra en un bombardero"
 
 #: .\mod_rating_by_type\templates\overall.html:381
 msgid ""
@@ -2411,17 +2387,21 @@ msgctxt "sortie_page_title"
 msgid "Sortie Log"
 msgstr "Log de salida"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:98
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:95
 msgctxt "sortie_log"
 msgid "AI"
 msgstr "IA"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:109
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:106
 msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
 msgstr ""
+"Los tipos de munición no se adjuntan a los registros de daño en los archivos "
+"de registro. Los registros de ‘’Impacto de munición’’  se adjuntan mediante "
+"procesamiento a los registros de daño utilizando una suposición "
+"fundamentada, siendo propenso a estar incorrecto. "
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16
@@ -2443,32 +2423,21 @@ msgid "VLife"
 msgstr ""
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:20
-#, fuzzy
-#| msgctxt "specialty"
-#| msgid "Fighter"
 msgctxt "vlife_page_title"
 msgid "Fighter VLife"
-msgstr "Caza"
+msgstr "Caza VLife "
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:22
-#, fuzzy
-#| msgctxt "total"
-#| msgid "Attacker"
 msgctxt "vlife_page_title"
 msgid "Attacker VLife"
-msgstr "Ataque"
+msgstr "Ataque a tierra VLife"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:24
-#, fuzzy
-#| msgid "Bomber Score"
 msgctxt "vlife_page_title"
 msgid "Bomber VLife"
-msgstr "Puntuación actual de bombardero"
+msgstr "Bombardero VLife"
 
 #: .\mod_rating_by_type\templates\pilot_vlife.html:73
-#, fuzzy
-#| msgctxt "pilot_awards"
-#| msgid "pilot"
 msgctxt "pilot_vlifes"
 msgid "pilot"
 msgstr "piloto"

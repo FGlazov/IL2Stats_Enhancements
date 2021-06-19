@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-31 17:41+0200\n"
+"POT-Creation-Date: 2021-06-19 10:47+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2368,17 +2368,21 @@ msgctxt "sortie_page_title"
 msgid "Sortie Log"
 msgstr "Хронология вылета"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:98
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:95
 msgctxt "sortie_log"
 msgid "AI"
 msgstr "ИИ"
 
-#: .\mod_rating_by_type\templates\pilot_sortie_log.html:109
+#: .\mod_rating_by_type\templates\pilot_sortie_log.html:106
 msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
-msgstr "Типы боеприпасов не прикрепляются к журналам повреждений в файлах журналов. Журналы \"попаданий боеприпасов\" прикрепляются к журналам повреждений путем обработки с использованием предположений, которые могут быть не совсем верными."
+msgstr ""
+"Типы боеприпасов не прикрепляются к журналам повреждений в файлах журналов. "
+"Журналы \"попаданий боеприпасов\" прикрепляются к журналам повреждений путем "
+"обработки с использованием предположений, которые могут быть не совсем "
+"верными."
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16
