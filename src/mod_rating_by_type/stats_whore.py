@@ -449,7 +449,14 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     vlife.bot_status = new_sortie.bot_status
 
     # TODO проверить как это отработает для вылетов стрелков
-    if not new_sortie.is_not_takeoff:
+    if new_sortie.aircraft.cls_base == 'aircraft' and not new_sortie.is_not_takeoff:
+        player.sorties_coal[new_sortie.coalition] += 1
+        player_mission.sorties_coal[new_sortie.coalition] += 1
+        vlife.sorties_coal[new_sortie.coalition] += 1
+
+        if player.squad:
+            player.squad.sorties_coal[new_sortie.coalition] += 1
+    if new_sortie.aircraft.cls_base == 'tank':
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
@@ -457,7 +464,26 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
 
-        if new_sortie.aircraft.cls_base == 'aircraft':
+    if new_sortie:
+        if new_sortie.aircraft.cls_base == 'aircraft' and not new_sortie.is_not_takeoff:
+
+            if new_sortie.aircraft.cls in player.sorties_cls:
+                player.sorties_cls[new_sortie.aircraft.cls] += 1
+            else:
+                player.sorties_cls[new_sortie.aircraft.cls] = 1
+
+            if new_sortie.aircraft.cls in vlife.sorties_cls:
+                vlife.sorties_cls[new_sortie.aircraft.cls] += 1
+            else:
+                vlife.sorties_cls[new_sortie.aircraft.cls] = 1
+
+            if player.squad:
+                if new_sortie.aircraft.cls in player.squad.sorties_cls:
+                    player.squad.sorties_cls[new_sortie.aircraft.cls] += 1
+                else:
+                    player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
+
+        if new_sortie.aircraft.cls_base == 'tank':
             if new_sortie.aircraft.cls in player.sorties_cls:
                 player.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
@@ -478,6 +504,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     update_general(player=player_mission, new_sortie=new_sortie)
     update_general(player=player_aircraft, new_sortie=new_sortie)
     update_general(player=vlife, new_sortie=new_sortie)
+
     if player.squad:
         update_general(player=player.squad, new_sortie=new_sortie)
 

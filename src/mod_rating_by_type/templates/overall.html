@@ -218,6 +218,115 @@
                 </div>
                 {% endif %}
 
+
+                <div class="clearfix"></div>
+
+                {% if toptank_rating %}
+                <div class="top_pilots" style="float: left;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen' context 'overall' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'rating' context 'tour_top' %}</div>
+                        </div>
+                        {% for player in toptank_rating %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell" title="{{ player.rating }}">{{ player.rating_format }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if toptank_streak_score %}
+                <div class="top_pilots" style="float: right;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen virtual lifes' context 'overall_top' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                        </div>
+                        {% for player in toptank_streak_score %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ player.score_streak_max }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="clearfix"></div>
+
+                {% if toptank_streak_gk %}
+                <div class="top_pilots" style="float: right;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen GK streak' context 'overall' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'streak' context 'overall' %}</div>
+                        </div>
+                        {% for player in toptank_streak_gk %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ player.streak_ground_max }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if toptank_streak_ak %}
+                <div class="top_pilots" style="float: left;">
+                    <div class="top_title">
+                        {% trans 'Best tankmen AK streak' context 'overall' %}
+                    </div>
+                    <div class="top_table">
+                        <div class="head_row">
+                            <div class="cell" style="width: 30px;">#</div>
+                            <div class="cell">{% trans 'tankman nickname' context 'tour_top' %}</div>
+                            <div class="cell" style="width: 30px;"></div>
+                            <div class="cell">{% trans 'streak' context 'overall' %}</div>
+                        </div>
+                        {% for player in toptank_streak_ak %}
+                        <a class="row" href="{{ player.get_tankman_url }}">
+                            <div class="cell">{{ forloop.counter }}</div>
+                            <div class="cell">{{ player.nickname }}</div>
+                            <div class="cell img">
+                                {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            </div>
+                            <div class="cell">{{ player.streak_max }}</div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
                 {% if top_rating_light %}
                 <div class="top_pilots" style="float: left;">
                     <div class="top_title">
@@ -243,6 +352,8 @@
                     </div>
                 </div>
                 {% endif %}
+
+                <div class="clearfix"></div>
 
                 {% if top_streak_ak_light %}
                 <div class="top_pilots" style="float: right;">

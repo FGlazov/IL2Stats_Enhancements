@@ -8,15 +8,16 @@ from django.utils import timezone
 from mission_report.constants import Coalition
 from stats.helpers import Paginator, get_sort_by, redirect_fix_url
 from stats.models import (Player, Mission, PlayerMission, PlayerAircraft, Sortie, Tour, Profile, Squad, PlayerOnline,
-                          VLife, Reward, KillboardPvP)
+                          VLife, Reward, KillboardPvP, LogEntry)
 from stats.views import *
 from stats.views import (_get_rating_position, _get_squad, _overall_missions_wins, _overall_stats_summary_total,
                          _overall_stats_summary_coal)
 
-from .bullets_types import translate_ammo_breakdown
+from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
 from .variant_utils import FIGHTER_WHITE_LIST
 from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
+from stats import sortie_log
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -933,6 +934,22 @@ def overall(request):
         top_rating_light = top_rating_medium = top_rating_heavy = None
         top_streak_ak_light = top_streak_gk_medium = top_streak_gk_heavy = None
 
+    toptank_rating = (Player.players.tankmans()
+                  .exclude(rating=0)
+                  .order_by('-rating')[:10])
+
+    toptank_streak_score = (Player.players.tankmans()
+                        .exclude(score_streak_max=0)
+                        .order_by('-score_streak_max')[:10])
+
+    toptank_streak_ak = (Player.players.tankmans()
+                     .exclude(streak_max=0)
+                     .order_by('-streak_max')[:10])
+
+    toptank_streak_gk = (Player.players.tankmans()
+                     .exclude(streak_ground_max=0)
+                     .order_by('-streak_ground_max')[:10])
+
     return render(request, 'overall.html', {
         'tour': request.tour,
         'missions_wins': missions_wins,
@@ -950,6 +967,10 @@ def overall(request):
         'top_streak_ak_light': top_streak_ak_light,
         'top_streak_gk_medium': top_streak_gk_medium,
         'top_streak_gk_heavy': top_streak_gk_heavy,
+        'toptank_rating': toptank_rating,
+        'toptank_streak_score': toptank_streak_score,
+        'toptank_streak_ak': toptank_streak_ak,
+        'toptank_streak_gk': toptank_streak_gk,
     })
 
 

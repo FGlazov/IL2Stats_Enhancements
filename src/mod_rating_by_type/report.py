@@ -98,7 +98,7 @@ def event_hit(self, tik, ammo, attacker_id, target_id):
     if target:
         target.got_hit(ammo=ammo, attacker=attacker)
         # ======================== MODDED PART BEGIN
-        record_hits(target, attacker, ammo_db)
+        record_hits(tik, target, attacker, ammo_db)
         # ======================== MODDED PART END
 
 
@@ -211,12 +211,14 @@ def got_killed(self, attacker=None, pos=None, force_by_dmg=False):
 
 
 # ======================== MODDED PART BEGIN
-def record_hits(target, attacker, ammo):
+def record_hits(tik, target, attacker, ammo):
     if not module_active(MODULE_AMMO_BREAKDOWN):
         return
 
     if ammo['cls'] != 'shell' and ammo['cls'] != 'bullet':
         return
+
+    RECENT_HITS_CACHE.add_to_hits_cache(tik, target, attacker, ammo)
 
     sortie = target.sortie
     if target.parent:

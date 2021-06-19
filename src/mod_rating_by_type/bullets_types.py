@@ -32,6 +32,19 @@ def translate_bullet(bullet_type):
         return bullet_type
 
 
+def translate_damage_log_bullets(hits):
+    result = [''] * len(hits)
+    sorted_names = sorted([translate_bullet(ammo) for ammo in hits])
+    for ammo in hits:
+        ammo_name = translate_bullet(ammo)
+        times = hits[ammo]
+        if times > 1:
+            result[sorted_names.index(ammo_name)] = '{} X {}'.format(times, ammo_name)
+        else:
+            result[sorted_names.index(ammo_name)] = str(ammo_name)
+    return ', '.join(result)
+
+
 bullet_types = {
     'BULLET_ENG_11x59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
     'BULLET_ENG_7-7x56_AP': pgettext_lazy('bullet_type', '.303 BMG'),
