@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles tz stats %}
+{% block title %}{% trans 'Killboard' %} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
+
+{% block nav_tabs %}
+    {% include 'inline/pilot_tabs.html' %}
+{% endblock nav_tabs %}
+
+{% block content %}
+    <link href="{% static 'css/personas.css' %}" rel="stylesheet">
+
+    <section id="content">
+        <div class="wrapper">
+            <div class="content_head">
+                <div class="content_title">
+                    {% trans 'Killboard' %}
+                    <div class="content_title_sm">{% trans 'pilot' %}: {{ player.nickname }}</div>
+                </div>
+            </div>
+            {% if killboard %}
+            <div class="content_table" style="width: 700px;">
+                <div class="head_row">
+                    <div class="cell" style="width: 60px;"></div>
+                    <div class="cell"></div>
+                    <div class="cell" style="width: 60px;"></div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-won">
+                            <img src="{% static 'img/icons/small/kb_won.png' %}" width="18" height="18"
+                                 alt="{% trans 'Won' context 'killboard' %}" title="{% trans 'Won' context 'killboard' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-lose">
+                            <img src="{% static 'img/icons/small/kb_lose.png' %}" width="18" height="18"
+                                 alt="{% trans 'Lose' context 'killboard' %}" title="{% trans 'Lose' context 'killboard' %}">
+                        </a>
+                    </div>
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-wl">
+                            <img src="{% static 'img/icons/small/kd.png' %}" width="18" height="18"
+                                 alt="{% trans 'Won/Lose' context 'killboard' %}" title="{% trans 'Won/Lose' context 'killboard' %}">
+                        </a>
+                    </div>
+                </div>
+                {% for k in killboard %}
+                <a class="row" href="{{ k.player.get_profile_url }}">
+                    <div class="cell">{{ forloop.counter }}</div>
+                    <div class="cell" style="text-align: left;">{{ k.player.nickname }}</div>
+                    <div class="cell img">
+                        {% include 'inline/table_coal_pref_icon.html' with coal_pref=k.player.coal_pref %}
+                    </div>
+                    <div class="cell">{{ k.won }}</div>
+                    <div class="cell">{{ k.lose }}</div>
+                    <div class="cell">{{ k.wl }}</div>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+                    {% if split_rankings %}
+        {% if light_player_exists and medium_player_exists or light_player_exists and heavy_player_exists or medium_player_exists and heavy_player_exists %}
+        <div id="container" class="personas">
+            {% if cls == 'all' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_base_killboard_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'All' context 'persona' %}
+                <img src="{% static 'img/icons/personas/all-persona.png' %}">
+            </div>
+            {% if cls != 'all' %}
+            </a>
+            {% endif %}
+            {% if light_player_exists %}
+            {% if cls == 'light' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_light_killboard_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Fighter' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'light' %}
+            </a>
+            {% endif %}
+            {% if medium_player_exists %}
+            {% if cls == 'medium' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_medium_killboard_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Attacker' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'medium' %}
+            </a>
+            {% endif %}
+            {% if heavy_player_exists %}
+            {% if cls == 'heavy' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_heavy_killboard_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Bomber' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'heavy' %}
+            </a>
+            {% endif %}
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}
+
+{% block bottom %}
+    {{ block.super }}
+    <script src="{% static 'js/table.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            uri_sort_by('-wl');
+        });
+    </script>
+{% endblock bottom %}

@@ -20,8 +20,7 @@ Global Aircraft Stats mod version : 1.2.9
 DISCLAIMER: This module is NOT (currently) retroactive, it will only split the stats of new sorties. 
 
 Installation
----------------------------------------------
-
+--------------------------------------------
 1. You need an installation of il2 stats. The latest version can be found under https://forum.il2sturmovik.com/topic/19083-il2-stats-statistics-system-for-a-dedicated-server-il2-battle-of-stalingrad/
 
 2. Copy the src folder inside this .zip into your il2 stats folder.
@@ -35,7 +34,7 @@ sortie_damage_disco_time = 120
 under [stats], with values as you wish (in seconds).
 More details in the disconnect mod thread/readme.
 
-5. Inside your src/conf.ini, configure how many tours back you wish to retroactively compute for the global aircraft stats mod.
+5. Inside your src/conf.ini, configure how many tours back you wish to retroactively compute for the global aircraft stats mod and split rankings module.
 The parameter is "retro_compute_for_last_tours=10" under [stats]. A value of -1 disables retroactive computations,
 0 retroactively computes for all sorties inside the current tour (before the mod was installed). A value of 10 computes for
 the last 10 tours. More details inside the Global Aircraft stats readme.
@@ -59,8 +58,6 @@ tank_penalty_bailout     | 50%
 tank_penalty_shotdown    | 20%
 
 Currently "in_service" is the scenario where a tank makes it back, "in_flight" or "landed" might become relevant if the game logs change.
-
-
 
 Support
 ---------------------------------------------

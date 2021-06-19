@@ -162,7 +162,7 @@
                 {% if sortie.killboard_pvp.aircraft_medium %}
                     <div class="sub_row">
                         <div class="left">
-                            {% trans 'Attacker' context 'total' %}
+                            {% trans 'Attacker' context 'specialty' %}
                             <span>{{ sortie.killboard_pvp.aircraft_medium }}</span>
                         </div>
                         <div class="right score">
@@ -408,8 +408,8 @@
                 {% if sortie.killboard_pve.truck %}
                     <div class="sub_row">
                         <div class="left">
-                            {% trans 'Trucks' context 'total' %}
-                            <span>{{ sortie.killboard_pve.truck }} ({% trans 'AI' context 'total' %})</span>
+                            {% trans 'Trucks' context 'total' %} ({% trans 'AI' context 'total' %})
+                            <span>{{ sortie.killboard_pve.truck }}</span>
                         </div>
                         <div class="right score">
                             {{ sortie.killboard_pve.truck }}

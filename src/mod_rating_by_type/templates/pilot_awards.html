@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles tz stats %}
+{% block title %}{% trans 'Awards' context 'pilot_awards' %} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
+
+{% block nav_tabs %}
+    {% include 'inline/pilot_tabs.html' %}
+{% endblock nav_tabs %}
+
+{% block content %}
+    <link href="{% static 'css/personas.css' %}" rel="stylesheet">
+
+    <section id="content">
+        <div class="wrapper">
+            <div class="content_head">
+                <div class="content_title">
+                    {% trans 'Awards' context 'pilot_awards' %}
+                    <div class="content_title_sm">{% trans 'pilot' context 'pilot_awards' %}: {{ player.nickname }}</div>
+                </div>
+            </div>
+            {% if rewards %}
+                <div class="pilot_awards">
+                {% for reward in rewards %}
+                    <div class="award">
+                        <div class="title">
+                            {{ reward.award.title }}
+                        </div>
+                        <img src="{{ reward.award.img.url }}" alt="" title="{{ reward.award.desc }}" width="180" height="180">
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        {% if split_rankings %}
+        {% if light_player_exists and medium_player_exists or light_player_exists and heavy_player_exists or medium_player_exists and heavy_player_exists %}
+        <div id="container" class="personas">
+            {% if cls == 'all' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_base_awards_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'All' context 'persona' %}
+                <img src="{% static 'img/icons/personas/all-persona.png' %}">
+            </div>
+            {% if cls != 'all' %}
+            </a>
+            {% endif %}
+            {% if light_player_exists %}
+            {% if cls == 'light' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_light_awards_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Fighter' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/fighter-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'light' %}
+            </a>
+            {% endif %}
+            {% if medium_player_exists %}
+            {% if cls == 'medium' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_medium_awards_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Attacker' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/attacker-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'medium' %}
+            </a>
+            {% endif %}
+            {% if heavy_player_exists %}
+            {% if cls == 'heavy' %}
+            <div class="persona selected">
+            {% else %}
+            <a href="{{ player.get_heavy_awards_url }}" >
+            <div class="persona" >
+            {% endif %}
+                {% trans 'Bomber' context 'specialty' %}
+                <img src="{% static 'img/icons/personas/bomber-persona.png' %}">
+            </div>
+            {% endif %}
+            {% if cls != 'heavy' %}
+            </a>
+            {% endif %}
+            </div>
+            {% endif %}
+            {% endif %}
+    </section>
+{% endblock content %}
