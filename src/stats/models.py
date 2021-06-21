@@ -1264,11 +1264,11 @@ class Sortie(models.Model):
 	# change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player	
     @property
     def is_ditched(self):
-        return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout
+        return self.status == SortieStatus.ditched
 
     @property
     def is_crashed(self):
-        return self.status == SortieStatus.crashed
+        return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout
 
     @property
     def is_shotdown(self):

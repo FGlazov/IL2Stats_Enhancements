@@ -118,3 +118,7 @@ Version 1.5.4
 Version 1.6.0
 
 - Update to 2.2.0 of enhancements, 1.3.0 of global aircraft stats.
+
+Version 1.6.1
+
+- Fix bug with bundling which caused disconnect mod to not end streaks of people who died by disconnecting. 
