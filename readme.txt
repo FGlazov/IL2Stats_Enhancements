@@ -56,7 +56,7 @@ Config name: top_last_mission
 
 This module replaces the "Top players in last 24 hours" with "Top players in last mission" on the main page of the website. This is compatible with the split rankings module. This module is mainly meant for servers which do not run 24/7, such as weekly event servers.
 
-Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy for providing translations!
+Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations!
 
 ------------ Modules changing scoring of sorties ------------ 
 
