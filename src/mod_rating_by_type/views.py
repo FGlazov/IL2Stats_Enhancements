@@ -715,7 +715,7 @@ def pilot_sortie_log(request, sortie_id):
             e.opponent_object = e.cact_object
             e.opponent_act = False
 
-        if (e.type == 'damaged' or e.type == 'wounded' and type(e.extra_data['damage']) is dict
+        if ((e.type == 'damaged' or e.type == 'wounded') and type(e.extra_data['damage']) is dict
                 and 'hits' in e.extra_data['damage']):
             e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
 
