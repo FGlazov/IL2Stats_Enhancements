@@ -122,3 +122,7 @@ Version 1.6.0
 Version 1.6.1
 
 - Fix bug with bundling which caused disconnect mod to not end streaks of people who died by disconnecting. 
+
+Version 1.6.2
+
+- Fix bug where damage/ammo hits were being garbled in tankman sortie logs.

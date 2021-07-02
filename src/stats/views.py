@@ -480,6 +480,15 @@ def tankman_sortie_log(request, sortie_id):
               .filter(Q(act_sortie_id=sortie.id) | Q(cact_sortie_id=sortie.id))
               .exclude(Q(act_object__cls='trash') | Q(cact_object__cls='trash') | Q(type='shotdown', act_object__isnull=True))
               .order_by('tik'))
+
+    try:
+        from mod_rating_by_type.config_modules import module_active, MODULE_AMMO_BREAKDOWN
+        ammo_breakdown_active = module_active(MODULE_AMMO_BREAKDOWN)
+    except ImportError:
+        ammo_breakdown_active = False
+        print("[BundleMod]: WARNING: Could not find ammo_breakdowns for tank sortie logs."
+              " Is [mod_ratings_by_type] disabled? ")
+
     for e in events:
         is_friendly_fire = e.extra_data.get('is_friendly_fire', False)
         if e.cact_sortie and e.cact_sortie.id == sortie.id:
@@ -495,10 +504,20 @@ def tankman_sortie_log(request, sortie_id):
             e.opponent_object = e.cact_object
             e.opponent_act = False
 
+        try:
+            from mod_rating_by_type.bullets_types import translate_damage_log_bullets
+            if (e.type == 'damaged' or e.type == 'wounded' and type(e.extra_data['damage']) is dict
+                    and 'hits' in e.extra_data['damage']):
+                e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
+        except ImportError:
+            # Couldn't find the mod which creates ammo_breakdowns for some reason, perhaps it is disabled?
+            pass
+
     return render(request, 'tankman_sortie_log.html', {
         'player': sortie.player,
         'sortie': sortie,
         'events': events,
+        'MODULE_AMMO_BREAKDOWN': ammo_breakdown_active
     })
 
 

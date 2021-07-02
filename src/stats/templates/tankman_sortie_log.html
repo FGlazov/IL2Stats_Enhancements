@@ -70,13 +70,25 @@
                     <!-- {{ event.tik }} / {{ event.extra_data.pos|safe }}  -->
                     <div class="row">
                         <div class="cell {{ event.color }}"></div>
-                        <div class="cell">{{ event.date|time:'H:i:s' }}</div>
-                        <div class="cell">
-                            {{ event.message }}
-                            {% if event.extra_data.damage %}
-                                - {{ event.extra_data.damage }}%
-                            {% endif %}
-                        </div>
+                <div class="cell">{{ event.date|time:'H:i:s' }}</div>
+                {% if MODULE_AMMO_BREAKDOWN %}
+                <div class="cell" style="width: 400px;">
+                    {% else %}
+                    <div class="cell">
+                        {% endif %}
+                        {{ event.message }}
+                        {% if event.extra_data.damage %}
+                        {% if event.extra_data.damage.pct %}
+                        - {{ event.extra_data.damage.pct }}%
+
+                        {% if event.extra_data.damage.translated_hits %}
+                        <br/> {{ event.extra_data.damage.translated_hits }}
+                        {% endif %}
+                        {% else %}
+                        - {{ event.extra_data.damage }}%
+                        {% endif %}
+                        {% endif %}
+                    </div>
                         <div class="cell">
                             {% if event.opponent_sortie and event.opponent_object.cls_base == 'aircraft' %}
                                 <a href="{% url 'stats:pilot_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
@@ -92,6 +104,12 @@
                     </div>
                 {% endfor %}
             </div>
+            {% if MODULE_AMMO_BREAKDOWN %}
+            <span style="color: #CF2D1C; font-size: 13px;">
+                * {% trans 'Ammo types are not attached to damage logs in the log files. "Ammo hit" logs are attached via processing to damage logs using an educated guess, so it may be incorrect.' %}
+            </span>
+            {% endif %}
+
 
         </div>
     </section>
