@@ -506,7 +506,7 @@ def tankman_sortie_log(request, sortie_id):
 
         try:
             from mod_rating_by_type.bullets_types import translate_damage_log_bullets
-            if (e.type == 'damaged' or e.type == 'wounded' and type(e.extra_data['damage']) is dict
+            if ((e.type == 'damaged' or e.type == 'wounded') and type(e.extra_data['damage']) is dict
                     and 'hits' in e.extra_data['damage']):
                 e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
         except ImportError:
