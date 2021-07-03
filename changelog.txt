@@ -127,5 +127,6 @@ Version 1.6.2
 - Fix bug where damaged sortie logs without attached hits were causing a 500 error in pilot sortie logs.
 - Fix bug where links to pilot in "Best Live Fighter/Attacker/Bomber" were missing on main page.
 - Fix bug where you couldn't return to main profile if you went to another tab, link on tab was missing.
+- Add in aircraft payloads/mods from future version (1.2.55 of IL2 stats). This allows the filter to work more reliably for the aircraft stats mod.
 - Update to 2.2.1 of enhancements.
 - Update to 3.2 of tank mod.
