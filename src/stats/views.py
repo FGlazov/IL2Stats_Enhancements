@@ -341,9 +341,9 @@ def tankman(request, profile_id, nickname=None):
 
     try:
         fav_aircraft = (PlayerAircraft.objects
-                        .select_related('aircraft')
-                        .filter(player_id=player.id, aircraft__cls_base='tank')
-                        .order_by('-sorties_total')[0])
+            .select_related('aircraft')
+            .filter(Q(aircraft__cls_base='tank') | Q(aircraft__cls_base='vehicle'), player_id=player.id)
+            .order_by('-sorties_total')[0])
     except IndexError:
         fav_aircraft = None
 

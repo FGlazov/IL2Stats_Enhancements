@@ -35,7 +35,7 @@ def default_sorties_cls():
     return {
         'aircraft_light': 0, 'aircraft_medium': 0, 'aircraft_heavy': 0, 'aircraft_transport': 0,
         'aircraft_turret': 0,
-        'tank_light': 0, 'tank_medium': 0, 'tank_heavy': 0,
+        'tank_light': 0, 'tank_medium': 0, 'tank_heavy': 0, 'truck': 0,
     }
 
 
@@ -1261,11 +1261,11 @@ class Sortie(models.Model):
     def is_in_flight(self):
         return self.status == SortieStatus.in_flight
 
-	# change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player	
     @property
     def is_ditched(self):
         return self.status == SortieStatus.ditched
 
+    # change added so when discobailout or damageddisco(when not shotdown) events = True, lost airplane for thouse sorties counts in total airplane lost for player
     @property
     def is_crashed(self):
         return self.status == SortieStatus.crashed or self.is_captured or self.is_bailout

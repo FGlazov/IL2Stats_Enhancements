@@ -1525,7 +1525,7 @@ tank_medium,T-34-76 UVZ 43,1,T-34-76 UVZ 1943,Т-34 УВЗ обр. 1943
 tank_medium,T-34/76 STZ(1942),1,T-34-76 STZ 1942,Т-34 СТЗ обр. 1942
 tank_medium,T-34/76 UTZ (1943),1,T-34-76 UTZ 1943,Т-34 УTЗ обр. 1943
 tank_medium,T-34/76 UVZ (1943),1,T-34-76 UVZ 1943,Т-34 УВЗ обр. 1943
-tank_light,_GAZ-MM-72K_T0,1,GAZ-MM 72K turret,ГАЗ-ММ 72K башня
+tank_turret,_GAZ-MM-72K_T0,1,GAZ-MM 72K turret,ГАЗ-ММ 72K башня
 tank_turret,_GAZ-MM-72K_T1,1,,
 tank_turret,_GAZ-MM-72K_T3,1,,
 tank_heavy,_KV1S_T0,1,KV-1s turret,КВ-1С башня
@@ -2285,7 +2285,7 @@ truck,Ford G917 ammo,0,,
 truck,GAZ-55,0,,
 truck,GAZ-AA,0,GAZ-AA truck,грузовик ГАЗ-АА
 truck,GAZ-AA ammo,0,,
-tank_light,GAZ-MM 72-K,1,GAZ-MM 72-K,ГАЗ-ММ 72-К
+truck,GAZ-MM 72-K,1,GAZ-MM 72-K,ГАЗ-ММ 72-К
 truck,GMC CCKW 353,0,GMC CCKW truck,грузовик GMC CCKW
 truck,GMC CCKW 353 ammo,0,,
 truck,GMC CCKW 353 Fuel,0,,

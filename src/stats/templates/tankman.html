@@ -576,6 +576,17 @@
                     {% trans 'Specialty' %}
                 </div>
                 <div class="block_wrapper">
+                    {% if player.sorties_cls.truck %}
+                        <div class="item">
+                            <div class="name">{% trans 'Trucks' context 'specialty' %}</div>
+                            <div class="desc">{% trans 'number of sorties' %}: {{ player.sorties_cls.truck }}</div>
+                            {% widthratio player.sorties_cls.truck player.sorties_total 100 as width %}
+                            <div class="pct">{{ width|floatformat:'0' }}%</div>
+                            <div class="bar">
+                                <div class="progress yellow" style="width: {{ width }}%;"></div>
+                            </div>
+                        </div>
+                    {% endif %}
                     {% if player.sorties_cls.tank_light %}
                         <div class="item">
                             <div class="name">{% trans 'Light Tanks' context 'specialty' %}</div>

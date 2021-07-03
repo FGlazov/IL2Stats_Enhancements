@@ -341,7 +341,7 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'damaged'
             if event['attacker']:
-                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
+                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank' or (event['attacker'].cls_base == 'vehicle')))
                         and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the damage to the tank driver.
                     params['act_object_id'] = event[
@@ -366,7 +366,7 @@ def stats_whore(m_report_file):
             else:
                 params['type'] = 'destroyed'
             if event['attacker']:
-                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank'))
+                if ((event['attacker'].cls == 'tank_turret' or (event['attacker'].cls_base == 'tank' or (event['attacker'].cls_base == 'vehicle')))
                         and event['attacker'].parent and event['attacker'].parent.sortie):
                     # Credit the kill to the tank driver.
                     params['act_object_id'] = event[
@@ -623,7 +623,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
 
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
-    if new_sortie.aircraft.cls_base == 'tank':
+    if new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle'):
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
@@ -650,7 +650,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
                 else:
                     player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
 
-        if new_sortie.aircraft.cls_base == 'tank':
+        if new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle'):
             if new_sortie.aircraft.cls in player.sorties_cls:
                 player.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
@@ -734,7 +734,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife):
 
 def update_general(player, new_sortie):
     flight_time_add = 0
-    if (not new_sortie.is_not_takeoff) or new_sortie.aircraft.cls_base == 'tank':
+    if (not new_sortie.is_not_takeoff) or ( new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle')):
         player.sorties_total += 1
         flight_time_add = new_sortie.flight_time
     player.flight_time += flight_time_add
