@@ -1,6 +1,6 @@
 BOMB_VARIANT_WHITE_LIST = {'P-38J-25', 'Me 262 A', 'Bristol F2B (F.II)', 'Bristol F2B (F.III)', 'Halberstadt CL.II',
                            'Halberstadt CL.II 200hp'}
-BOMB_VARIANT_BLACK_LIST = {'Spitfire Mk.VB', 'Yak-9 series 1', 'Yak-9T series 1', 'Hurricane Mk.II', 'Albatros D.Va',
+BOMB_VARIANT_BLACK_LIST = {'Spitfire Mk.VB', 'Yak-9 series 1', 'Yak-9T series 1', 'Albatros D.Va',
                            'Fokker D.VII', 'Fokker D.VIIF', 'Fokker Dr.I', 'Pfalz D.IIIa'}
 JUICEABLES = {'P-47D-28', 'P-47D-22', 'P-51D-15', 'La-5 (series 8)', 'Bf 109 G-6 Late', 'Bf 109 K-4',
               'Spitfire Mk.IXe', 'Hurricane Mk.II', 'Tempest Mk.V ser.2', 'Spitfire Mk.XIV'}
@@ -9,6 +9,10 @@ JUICES = {'150 grade fuel', 'Sabre IIA engine with +11 lb boost', 'DB 605 DC eng
           # Hurricane                          BF-109 G-6 Late
           'Merlin XX engine with +14 lb boost', 'MW-50 System'}
 JABO_MODS = {'Ground attack modification', 'U17 strike modification'}
+
+BOMBS_ROCKETS = ['FAB-100M', 'FAB-250tsk', 'GP ', 'MC ', 'SC ', 'SD ', '21cm WGr.42', 'lb Cooper', 'H.E.R.L.',
+                 'Pz.Bl. 1', 'R-Sprgr. M8', 'P.u.W', 'ROS-82', 'RBS-82', 'ROFS-132', '50-T', '100-T', 'M64', 'M65',
+                 'M8', 'FAB-250sv', 'FAB-500M', 'RP-3']
 
 
 # Whether the aircraft has an upgraded engine or better fuel
@@ -41,6 +45,13 @@ def is_jabo(sortie):
         if modification in JABO_MODS:
             return True
 
+    return __payload_has_bomb(sortie.payload)
+
+
+def __payload_has_bomb(payload):
+    for bomb_rocket in BOMBS_ROCKETS:
+        if bomb_rocket in str(payload):
+            return True
     return False
 
 
