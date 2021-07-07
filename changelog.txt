@@ -132,3 +132,7 @@ Version 1.6.2
 - Add in aircraft payloads/mods from future version (1.2.55 of IL2 stats). This allows the filter to work more reliably for the aircraft stats mod.
 - Update to 2.2.1 of enhancements.
 - Update to 3.2 of tank mod.
+
+Version 1.6.3
+
+- Update to 2.2.2 of enhancements.
