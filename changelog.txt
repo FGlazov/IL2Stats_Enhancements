@@ -83,3 +83,7 @@ Version 2.2.0
 Version 2.2.1
 
 - Fix bug where damaged sortie logs without attached hits were causing a 500 error in pilot sortie logs.
+
+Version 2.2.2
+
+- Fix bug where not all sorties with bombs/rockets as fighter were being recognized as attackers. For example FW 190 A8 with side bombs only, or Hurricanes with bombs.

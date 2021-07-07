@@ -3,12 +3,15 @@ from stats.models import LogEntry
 
 FIGHTER_WHITE_LIST = {'P-38J-25', 'Me 262 A'}
 JABO_MODS = {'Ground attack modification', 'U17 strike modification'}
+BOMBS_ROCKETS = ['FAB-100M', 'FAB-250tsk', 'GP ', 'MC ', 'SC ', 'SD ', '21cm WGr.42', 'lb Cooper', 'H.E.R.L.',
+                 'Pz.Bl. 1', 'R-Sprgr. M8', 'P.u.W', 'ROS-82', 'RBS-82', 'ROFS-132', '50-T', '100-T', 'M64', 'M65',
+                 'M8', 'FAB-250sv', 'FAB-500M', 'RP-3']
 
 
 # The P-38 and Me-262 are considered as fighters for this function.
 # (They're technically aircraft_medium, i.e. attackers)
 def is_jabo(sortie):
-    return True in [__is_modification_jabo(mod) for mod in sortie.modifications]
+    return [__is_modification_jabo(mod) for mod in sortie.modifications] or __payload_has_bomb(sortie.payload)
 
 
 def __is_modification_jabo(mod):
@@ -16,6 +19,13 @@ def __is_modification_jabo(mod):
         return True
     if mod in JABO_MODS:
         return True
+    return False
+
+
+def __payload_has_bomb(payload):
+    for bomb_rocket in BOMBS_ROCKETS:
+        if bomb_rocket in str(payload):
+            return True
     return False
 
 
