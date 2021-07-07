@@ -112,7 +112,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
             sortie.is_disco = True
             sortie.is_damageddisco = False
-    # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
+            # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
             if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
                 sortie.is_discobailout = True
                 sortie.is_disco = False
@@ -344,7 +344,8 @@ def update_bonus_score(new_sortie):
 
 def update_general(player, new_sortie):
     flight_time_add = 0
-    if not new_sortie.is_not_takeoff or new_sortie.aircraft.cls_base == 'tank':
+    if (not new_sortie.is_not_takeoff) or (
+            new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle')):
         player.sorties_total += 1
         flight_time_add = new_sortie.flight_time
     player.flight_time += flight_time_add
@@ -456,7 +457,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
-    if new_sortie.aircraft.cls_base == 'tank':
+    if new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle'):
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
@@ -483,7 +484,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
                 else:
                     player.squad.sorties_cls[new_sortie.aircraft.cls] = 1
 
-        if new_sortie.aircraft.cls_base == 'tank':
+        if new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle'):
             if new_sortie.aircraft.cls in player.sorties_cls:
                 player.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
