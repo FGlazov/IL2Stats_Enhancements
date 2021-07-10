@@ -98,6 +98,7 @@ Version 1.5.0
 
 - Add separate bonuses/penalties for tanks when using adjustable bonuses and penalties module.
 
+<<<<<<< HEAD
 Version 1.5.1
 
 - Update to 2.1.6 Enhancements, 1.2.8 Global Aircraft stats.
@@ -138,3 +139,7 @@ Version 1.6.3
 - Update to 2.2.2 of enhancements.
 - Update to 1.3.1 of global aircraft stats.
 - Fix incorrect merge of 3.2 changes from tank mod (some of the changes were missing).
+
+Version 1.6.4
+
+- Update to 2.2.3 of enhancements.

@@ -11,7 +11,7 @@ BOMBS_ROCKETS = ['FAB-100M', 'FAB-250tsk', 'GP ', 'MC ', 'SC ', 'SD ', '21cm WGr
 # The P-38 and Me-262 are considered as fighters for this function.
 # (They're technically aircraft_medium, i.e. attackers)
 def is_jabo(sortie):
-    return [__is_modification_jabo(mod) for mod in sortie.modifications] or __payload_has_bomb(sortie.payload)
+    return True in [__is_modification_jabo(mod) for mod in sortie.modifications] or __payload_has_bomb(sortie.payload)
 
 
 def __is_modification_jabo(mod):
