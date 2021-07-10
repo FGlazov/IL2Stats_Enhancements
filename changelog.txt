@@ -87,3 +87,7 @@ Version 2.2.1
 Version 2.2.2
 
 - Fix bug where not all sorties with bombs/rockets as fighter were being recognized as attackers. For example FW 190 A8 with side bombs only, or Hurricanes with bombs.
+
+Version 2.2.3
+
+- Fix bug introduced in last version where all modifications were being recognized as attacker modifications.
