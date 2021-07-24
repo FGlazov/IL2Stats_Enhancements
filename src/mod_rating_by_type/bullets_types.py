@@ -49,7 +49,7 @@ def translate_bullet(bullet_type):
 
 bullet_types = {
     'BULLET_ENG_11x59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
-    'BULLET_ENG_7-7x56_AP': pgettext_lazy('bullet_type', '.303 BMG'),
+    'BULLET_ENG_7-7x56_AP': pgettext_lazy('bullet_type', '.303 British'),
     'BULLET_GBR_11x59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
     'BULLET_GER_13x64_AP': pgettext_lazy('bullet_type', 'MG 131 (AP)'),
     'BULLET_GER_13x64_HE': pgettext_lazy('bullet_type', 'MG 131 (HE)'),
@@ -63,7 +63,7 @@ bullet_types = {
     'BULLET_RUS_12-7x108_HE': pgettext_lazy('bullet_type', 'UB (HE)'),
     'BULLET_RUS_7-62x54_AP': pgettext_lazy('bullet_type', 'ShKAS (AP)'),
     'BULLET_USA_12-7x99_AP': pgettext_lazy('bullet_type', '.50 BMG'),
-    'BULLET_USA_7-62x63_AP': pgettext_lazy('bullet_type', '.303 BMG'),
+    'BULLET_USA_7-62x63_AP': pgettext_lazy('bullet_type', '.30-06 Springfield'),
     'NPC_BULLET_GER_7-92': pgettext_lazy('bullet_type', 'MG 34'),
     'NPC_BULLET_GER_7-92_AP_short': pgettext_lazy('bullet_type', 'MG 34'),
     'NPC_BULLET_RUS_7-62_AP_short': pgettext_lazy('bullet_type', '7.62 Soviet'),

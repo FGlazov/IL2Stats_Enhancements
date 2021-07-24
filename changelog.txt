@@ -91,3 +91,7 @@ Version 2.2.2
 Version 2.2.3
 
 - Fix bug introduced in last version where all modifications were being recognized as attacker modifications.
+
+Version 2.2.4
+
+- Disambiguate the two bullet types shot from small caliber brownings - ".303 British" and ".30-06 Springfield".
