@@ -145,3 +145,11 @@ Version 1.6.4
 Version 1.7.0
 
 - Update to 2.2.4 of enhancements, 1.4.0 of global aircraft stats, 3.3 of tank mod, 1.6.2 of disco.
+
+Version 1.7.1
+
+- Add missing requirments.txt/in
+
+Version 1.7.2 
+
+- Recompile requirments.txt
