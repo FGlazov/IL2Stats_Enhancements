@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.postgres.fields import ArrayField, JSONField
 from django.templatetags.static import static
 from django.db import connection, models
-from django.db.models import Avg, Count, Sum, BigIntegerField
+from django.db.models import Avg, Count, Sum, BigIntegerField, Q
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
@@ -1584,7 +1584,6 @@ class Squad(models.Model):
         ).values_list(
             'profile_id'
         ).distinct().count()
-        print(self.num_members)
 
         if self.num_members > self.max_members:
             self.max_members = self.num_members
