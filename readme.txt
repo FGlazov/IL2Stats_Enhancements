@@ -12,10 +12,10 @@ Global Aircraft Stats mod =Few=Revolves and Enigma89  ( https://forum.il2sturmov
 
 This bundle version is designed to work with version 1.2.54 of IL-2 stats.
 
-Disconnect mod version: 1.6
-Tank mod version: 3.2
-Stats Enhancements version : 2.2.3
-Global Aircraft Stats mod version : 1.3.1
+Disconnect mod version: 1.6.2
+Tank mod version: 3.3
+Stats Enhancements version : 2.2.4
+Global Aircraft Stats mod version : 1.4.0
 
 DISCLAIMER: This module is NOT (currently) retroactive, it will only split the stats of new sorties. 
 
