@@ -1,6 +1,10 @@
 from django.utils.translation import pgettext_lazy
-from .aircraft_mod_models import (AVERAGES, INST, RECEIVED, GIVEN, TOTALS,
+from .aircraft_mod_models import (AVERAGES, INST, RECEIVED, GIVEN, TOTALS, PILOT_KILLS, STANDARD_DEVIATION,
                                   multi_key_to_string, string_to_multikey)
+from .reservoir_sampling import get_samples
+import numpy as np
+from scipy.spatial.distance import cdist, euclidean
+from sklearn.decomposition import PCA
 
 
 def take_first(elem):
@@ -31,23 +35,69 @@ def __render_sub_dict(sub_dict, filter_out_flukes, fluke_threshold=0.05):
         translated_mg_keys = sorted([str(translate_bullet(key)) for key in keys if 'BULLET' in key])
         translated_cannon_keys = sorted([str(translate_bullet(key)) for key in keys if 'SHELL' in key])
 
-        mg_avgs = [''] * len(translated_mg_keys)
-        cannon_avgs = [''] * len(translated_cannon_keys)
-
-        for key in keys:
-            if 'BULLET' in key:
-                key_index = translated_mg_keys.index(translate_bullet(key))
-                mg_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][key])
-            else:
-                key_index = translated_cannon_keys.index(translate_bullet(key))
-                cannon_avgs[key_index] = str(sub_dict[AVERAGES][multi_key][key])
-
+        samples = get_samples(sub_dict[TOTALS][multi_key], len(keys))
         ammo_names = ' | '.join(translated_cannon_keys + translated_mg_keys)
-        avg_use = " | ".join(cannon_avgs + mg_avgs)
-        result.append((ammo_names, avg_use))
+
+        avg_use = get_display_string(sub_dict[AVERAGES][multi_key], keys, translated_mg_keys, translated_cannon_keys)
+
+        if STANDARD_DEVIATION in sub_dict[TOTALS][multi_key] and inst > 1:
+            stds = get_display_string(sub_dict[TOTALS][multi_key][STANDARD_DEVIATION], keys, translated_mg_keys,
+                                      translated_cannon_keys)
+        else:
+            stds = '-'
+
+        medians = [round(median, 2) for median in geometric_median(samples)]
+        medians = get_display_string(medians, keys, translated_mg_keys, translated_cannon_keys)
+
+        if len(samples) >= 10:
+            percentiles = [round(percentile_component, 2) for percentile_component in percentile(samples, 90)]
+            percentiles = get_display_string(percentiles, keys, translated_mg_keys, translated_cannon_keys)
+        else:
+            percentiles = '-'
+
+        pilot_kills = '-'
+        pilot_kills_percent = '-'
+        if PILOT_KILLS in sub_dict[TOTALS][multi_key]:
+            pilot_kills = sub_dict[TOTALS][multi_key][PILOT_KILLS]
+            pilot_kills_percent = round(100 * pilot_kills / max(inst, 1), 2)
+
+        extra_info = {
+            'key': multi_key,
+            'instances': inst,
+            'pilot_kills': pilot_kills,
+            'pilot_kills_percent': pilot_kills_percent,
+            "stds": stds,
+            "medians": medians,
+            "percentiles": percentiles,
+        }
+        result.append((ammo_names, avg_use, extra_info))
 
     result.sort(key=take_first)
     return result
+
+
+def get_display_string(to_sort, keys, translated_mg_keys, translated_cannon_keys):
+    if not to_sort:
+        return '-'
+
+    mg_result = [''] * len(translated_mg_keys)
+    cannon_result = [''] * len(translated_cannon_keys)
+
+    for i, key in enumerate(keys):
+        if 'BULLET' in key:
+            key_index = translated_mg_keys.index(translate_bullet(key))
+            if type(to_sort) is dict:
+                mg_result[key_index] = str(to_sort[key])
+            else:
+                mg_result[key_index] = str(to_sort[i])
+        else:
+            key_index = translated_cannon_keys.index(translate_bullet(key))
+            if type(to_sort) is dict:
+                cannon_result[key_index] = str(to_sort[key])
+            else:
+                cannon_result[key_index] = str(to_sort[i])
+
+    return ' | '.join(cannon_result + mg_result)
 
 
 def translate_bullet(bullet_type):
@@ -57,9 +107,75 @@ def translate_bullet(bullet_type):
         return bullet_type
 
 
+def geometric_median(X, eps=1e-3, max_iterations=50):
+    """
+    https://stackoverflow.com/a/30305181
+
+    Computes the geometric median, which is a generalization of the median to multi-dimensional data.
+    """
+    if len(X) == 0:
+        return []
+
+    y = np.mean(X, 0)
+
+    i = 0
+    while True:
+        D = cdist(X, [y])
+        nonzeros = (D != 0)[:, 0]
+
+        Dinv = 1 / D[nonzeros]
+        Dinvs = np.sum(Dinv)
+        W = Dinv / Dinvs
+        T = np.sum(W * X[nonzeros], 0)
+
+        num_zeros = len(X) - np.sum(nonzeros)
+        if num_zeros == 0:
+            y1 = T
+        elif num_zeros == len(X):
+            return y
+        else:
+            R = (T - y) * Dinvs
+            r = np.linalg.norm(R)
+            rinv = 0 if r == 0 else num_zeros / r
+            y1 = max(0, 1 - rinv) * T + min(1, rinv) * y
+
+        if euclidean(y, y1) < eps or i > max_iterations:
+            return y1
+
+        y = y1
+        i += 1
+
+
+def percentile(samples, threshold):
+    """
+    Retrieves the "percentile" at threshold, i.e. the 90th percentile if threshold = 90.
+
+    Since the data is multidimensional (different kind of bullets hitting), it's not actually a percentile in this case.
+    Still, since most of the data is highly correlated and "almost lies on a line" (most kills from players involve
+    the same % of each bullet type hitting), we can instead try and find the line the data lies on and derive the
+    percentiles from that.
+
+    This is done by reducing the data into a single dimension using PCA (principal component analysis), taking the
+    median on the reduced data, and then returning the domain into the orignal space.
+    """
+    if samples.shape[1] == 1:  # Edge case: Data is already 1D.
+        return [np.percentile(samples.flatten(), threshold)]
+
+    # Fit the PCA
+    pca = PCA(n_components=1)
+    pca.fit(samples)
+
+    # Transform to 1D and take the percentile there
+    reduced_samples = pca.transform(samples)
+    reduced_percentile = np.percentile(reduced_samples, threshold)
+
+    # Transform back to the original space and return
+    return pca.inverse_transform(reduced_percentile).flatten()
+
+
 bullet_types = {
     'BULLET_ENG_11x59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
-    'BULLET_ENG_7-7x56_AP': pgettext_lazy('bullet_type', '.303 BMG'),
+    'BULLET_ENG_7-7x56_AP': pgettext_lazy('bullet_type', '.303 British'),
     'BULLET_GBR_11x59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
     'BULLET_GER_13x64_AP': pgettext_lazy('bullet_type', 'MG 131 (AP)'),
     'BULLET_GER_13x64_HE': pgettext_lazy('bullet_type', 'MG 131 (HE)'),
@@ -73,7 +189,7 @@ bullet_types = {
     'BULLET_RUS_12-7x108_HE': pgettext_lazy('bullet_type', 'UB (HE)'),
     'BULLET_RUS_7-62x54_AP': pgettext_lazy('bullet_type', 'ShKAS (AP)'),
     'BULLET_USA_12-7x99_AP': pgettext_lazy('bullet_type', '.50 BMG'),
-    'BULLET_USA_7-62x63_AP': pgettext_lazy('bullet_type', '.303 BMG'),
+    'BULLET_USA_7-62x63_AP': pgettext_lazy('bullet_type', '.30-06 Springfield'),
     'NPC_BULLET_GER_7-92': pgettext_lazy('bullet_type', 'MG 34'),
     'NPC_BULLET_GER_7-92_AP_short': pgettext_lazy('bullet_type', 'MG 34'),
     'NPC_BULLET_RUS_7-62_AP_short': pgettext_lazy('bullet_type', '7.62 Soviet'),

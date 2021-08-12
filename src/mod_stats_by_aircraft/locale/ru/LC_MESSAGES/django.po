@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 14:40+0200\n"
+"POT-Creation-Date: 2021-06-19 10:47+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1005,22 +1005,22 @@ msgstr "Наземка УбзаСм"
 #: .\mod_stats_by_aircraft\templates\aircraft.html:147
 #: .\mod_stats_by_aircraft\templates\aircraft.html:166
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:198
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:120
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:108
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:148
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:168
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:128
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:116
 msgid "Gunnery Accuracy"
 msgstr "Точность стрельбы"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:152
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:144
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:132
 msgid "Elo"
 msgstr "Эло"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:157
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:211
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:150
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:153
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:138
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:141
 msgid "Rating"
 msgstr "Рейтинг"
 
@@ -1071,18 +1071,10 @@ msgstr "Транспортные"
 #: .\mod_stats_by_aircraft\templates\aircraft.html:202
 #: .\mod_stats_by_aircraft\templates\aircraft.html:209
 #: .\mod_stats_by_aircraft\templates\aircraft.html:216
-#: .\mod_stats_by_aircraft\templates\aircraft.html:266
-#: .\mod_stats_by_aircraft\templates\aircraft.html:273
-#: .\mod_stats_by_aircraft\templates\aircraft.html:280
-#: .\mod_stats_by_aircraft\templates\aircraft.html:301
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:197
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:204
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:211
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:218
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:268
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:275
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:282
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:303
 msgctxt "total"
 msgid "AI"
 msgstr "ИИ"
@@ -1096,10 +1088,10 @@ msgstr "Ассистов"
 #: .\mod_stats_by_aircraft\templates\aircraft.html:227
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:204
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:205
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:126
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:114
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:229
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:134
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:135
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:122
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:123
 msgctxt "total"
 msgid "Bomb/Rocket Accuracy"
 msgstr "Точность бомб и ракет"
@@ -1111,422 +1103,414 @@ msgid "Destroyed ground targets"
 msgstr "Уничтожено наземных целей"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:238
-#: .\mod_stats_by_aircraft\templates\aircraft.html:266
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:240
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:268
 msgctxt "total"
 msgid "Heavy Tanks"
 msgstr "Тяжелых танков"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:245
-#: .\mod_stats_by_aircraft\templates\aircraft.html:273
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:247
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:275
 msgctxt "total"
 msgid "Medium Tanks"
 msgstr "Средних танков"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:252
-#: .\mod_stats_by_aircraft\templates\aircraft.html:280
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:254
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:282
 msgctxt "total"
 msgid "Light Tanks"
 msgstr "Легких танков"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:259
-#: .\mod_stats_by_aircraft\templates\aircraft.html:301
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:261
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:303
-msgctxt "total"
-msgid "Trucks"
-msgstr "Грузовиков"
-
-#: .\mod_stats_by_aircraft\templates\aircraft.html:287
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:289
 msgctxt "total"
 msgid "Armored vehicles"
 msgstr "Бронемашин"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:294
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:296
+#: .\mod_stats_by_aircraft\templates\aircraft.html:266
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:268
 msgctxt "total"
 msgid "Cars"
 msgstr "Автомобилей"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:308
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:310
+#: .\mod_stats_by_aircraft\templates\aircraft.html:273
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:275
+msgctxt "total"
+msgid "Trucks"
+msgstr "Грузовиков"
+
+#: .\mod_stats_by_aircraft\templates\aircraft.html:280
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:282
 msgctxt "total"
 msgid "Large-caliber AA guns"
 msgstr "Зениток крупного калибра"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:315
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:317
+#: .\mod_stats_by_aircraft\templates\aircraft.html:287
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:289
 msgctxt "total"
 msgid "Medium-caliber AA guns"
 msgstr "Зениток среднего калибра"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:322
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:324
+#: .\mod_stats_by_aircraft\templates\aircraft.html:294
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:296
 msgctxt "total"
 msgid "Small-caliber AA guns"
 msgstr "Зениток малого калибра"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:329
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:331
+#: .\mod_stats_by_aircraft\templates\aircraft.html:301
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:303
 msgctxt "total"
 msgid "Machine gunners"
 msgstr "Пулеметчиков"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:336
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:338
+#: .\mod_stats_by_aircraft\templates\aircraft.html:308
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:310
 msgctxt "total"
 msgid "Aerostats"
 msgstr "Аэростатов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:343
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:345
+#: .\mod_stats_by_aircraft\templates\aircraft.html:315
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:317
 msgctxt "total"
 msgid "Searchlights"
 msgstr "Прожекторов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:350
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:352
+#: .\mod_stats_by_aircraft\templates\aircraft.html:322
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:324
 msgctxt "total"
 msgid "Locomotives"
 msgstr "Локомотивов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:357
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:359
+#: .\mod_stats_by_aircraft\templates\aircraft.html:329
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:331
 msgctxt "total"
 msgid "Wagons"
 msgstr "Вагонов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:364
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:366
+#: .\mod_stats_by_aircraft\templates\aircraft.html:336
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:338
 msgctxt "total"
 msgid "Field Artillery"
 msgstr "Полевых орудий"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:371
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:373
+#: .\mod_stats_by_aircraft\templates\aircraft.html:343
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:345
 msgctxt "total"
 msgid "Howitzers"
 msgstr "Гаубиц"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:378
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:380
+#: .\mod_stats_by_aircraft\templates\aircraft.html:350
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:352
 msgctxt "total"
 msgid "Rocket Artillery"
 msgstr "Реактивной артиллерии"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:385
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:387
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:359
 msgctxt "total"
 msgid "Ships"
 msgstr "Судов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:385
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:387
+#: .\mod_stats_by_aircraft\templates\aircraft.html:357
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:359
 msgid "outdated parameter"
 msgstr "устаревший параметр"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:392
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:394
+#: .\mod_stats_by_aircraft\templates\aircraft.html:364
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:366
 msgctxt "total"
 msgid "Heavy Ships"
 msgstr "Тяжелых судов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:399
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:401
+#: .\mod_stats_by_aircraft\templates\aircraft.html:371
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:373
 msgctxt "total"
 msgid "Medium Ships"
 msgstr "Средних судов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:406
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:408
+#: .\mod_stats_by_aircraft\templates\aircraft.html:378
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:380
 msgctxt "total"
 msgid "Light Ships"
 msgstr "Легких судов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:413
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:415
+#: .\mod_stats_by_aircraft\templates\aircraft.html:385
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:387
 msgctxt "total"
 msgid "Static Aircraft"
 msgstr "Статичных самолетов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:420
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:422
+#: .\mod_stats_by_aircraft\templates\aircraft.html:392
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:394
 msgctxt "total"
 msgid "Static Vehicles"
 msgstr "Статичной техники"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:427
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:429
+#: .\mod_stats_by_aircraft\templates\aircraft.html:399
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:401
 msgctxt "total"
 msgid "Airfield Objects"
 msgstr "Аэродромных объектов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:434
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:436
+#: .\mod_stats_by_aircraft\templates\aircraft.html:406
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:408
 msgctxt "total"
 msgid "Bridges"
 msgstr "Мостов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:441
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:443
+#: .\mod_stats_by_aircraft\templates\aircraft.html:413
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:415
 msgctxt "total"
 msgid "Industrial Objects"
 msgstr "Индустриальных объектов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:448
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:450
+#: .\mod_stats_by_aircraft\templates\aircraft.html:420
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:422
 msgctxt "total"
 msgid "Big buildings"
 msgstr "Больших зданий"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:455
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:457
+#: .\mod_stats_by_aircraft\templates\aircraft.html:427
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:429
 msgctxt "total"
 msgid "Medium buildings"
 msgstr "Средних зданий"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:462
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:464
+#: .\mod_stats_by_aircraft\templates\aircraft.html:434
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:436
 msgctxt "total"
 msgid "Small buildings"
 msgstr "Маленьких зданий"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:470
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:471
+#: .\mod_stats_by_aircraft\templates\aircraft.html:442
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:444
 msgid "Detailed sorties results"
 msgstr "Подробные результаты вылетов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:473
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:474
+#: .\mod_stats_by_aircraft\templates\aircraft.html:445
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:447
 msgid "Flight Time"
 msgstr "Налет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:477
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:478
+#: .\mod_stats_by_aircraft\templates\aircraft.html:449
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:451
 msgctxt "total"
 msgid "Score"
 msgstr "Очков"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:481
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:482
+#: .\mod_stats_by_aircraft\templates\aircraft.html:453
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:455
 msgctxt "total"
 msgid "Sorties"
 msgstr "Вылетов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:485
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:486
+#: .\mod_stats_by_aircraft\templates\aircraft.html:457
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:459
 msgctxt "sortie"
 msgid "Landed on Airfield"
 msgstr "Посадка на аэродром"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:489
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:490
+#: .\mod_stats_by_aircraft\templates\aircraft.html:461
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:463
 msgctxt "sortie_status"
 msgid "in flight"
 msgstr "в полете"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:493
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:494
+#: .\mod_stats_by_aircraft\templates\aircraft.html:465
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:467
 msgctxt "total"
 msgid "Lost aircraft"
 msgstr "Самолетов потеряно"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:497
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:498
+#: .\mod_stats_by_aircraft\templates\aircraft.html:469
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:471
 msgctxt "total"
 msgid "Bailout"
 msgstr "Прыжков с парашютом"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:501
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:502
+#: .\mod_stats_by_aircraft\templates\aircraft.html:473
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:475
 msgctxt "total"
 msgid "Dead"
 msgstr "Смертей"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:505
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:506
+#: .\mod_stats_by_aircraft\templates\aircraft.html:477
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:479
 msgctxt "total"
 msgid "Captured"
 msgstr "Попаданий в плен"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:509
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:510
+#: .\mod_stats_by_aircraft\templates\aircraft.html:481
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:483
 msgctxt "sortie_status"
 msgid "ditched"
 msgstr "посадка вне аэродрома"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:514
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:515
+#: .\mod_stats_by_aircraft\templates\aircraft.html:486
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:488
 msgctxt "total"
 msgid "Percent deaths to AA"
 msgstr "Процент смертей от ПВО"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:520
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:521
+#: .\mod_stats_by_aircraft\templates\aircraft.html:492
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:494
 msgctxt "total"
 msgid "Percent deaths due to accidents"
 msgstr "Процент смертей в результате несчастных случаев"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:526
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:527
+#: .\mod_stats_by_aircraft\templates\aircraft.html:498
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:500
 msgctxt "total"
 msgid "Percent aircraft lost to AA"
 msgstr "Процент самолетов, потерянных от ПВО"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:532
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:533
+#: .\mod_stats_by_aircraft\templates\aircraft.html:504
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:506
 msgctxt "total"
 msgid "Percent aircraft lost due to accidents"
 msgstr "Процент самолетов, потерянных в результате аварий"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:543
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:543
+#: .\mod_stats_by_aircraft\templates\aircraft.html:514
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:516
 msgid "Best results"
 msgstr "Лучшие достижения"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:548
+#: .\mod_stats_by_aircraft\templates\aircraft.html:519
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:147
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:547
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:520
 msgid "Best air kill streak"
 msgstr "Лучшая серия убийств в воздухе"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:556
+#: .\mod_stats_by_aircraft\templates\aircraft.html:527
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:159
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:554
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:527
 msgid "Best Ground streak"
 msgstr "Лучшая серия убийств на земле"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:564
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:561
+#: .\mod_stats_by_aircraft\templates\aircraft.html:535
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:534
 msgid "Best score streak"
 msgstr "Лучшая серия очков"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:575
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:582
+#: .\mod_stats_by_aircraft\templates\aircraft.html:544
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:554
 msgid "Best results in a single sortie"
 msgstr "Лучшие результаты за один боевой вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:581
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:588
+#: .\mod_stats_by_aircraft\templates\aircraft.html:550
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:560
 msgid "Max air kills in a single sortie"
 msgstr "Макс. кол-во убийств в воздухе за один боевой вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:590
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:597
+#: .\mod_stats_by_aircraft\templates\aircraft.html:559
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:569
 msgid "Max ground kills in a single sortie"
 msgstr "Макс. кол-во убийств наземки за один боевой вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:599
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:606
+#: .\mod_stats_by_aircraft\templates\aircraft.html:568
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:578
 msgid "Max score in a single sortie"
 msgstr "Макс. кол-во очков за один боевой вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:613
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:620
+#: .\mod_stats_by_aircraft\templates\aircraft.html:581
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:590
 msgid "Offensive ammo breakdown"
 msgstr "Распределение наступательных боеприпасов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:616
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:623
+#: .\mod_stats_by_aircraft\templates\aircraft.html:584
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:593
 msgid "Average hits per aircraft kill"
 msgstr "Среднее количество попаданий на один убитый самолет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:633
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:640
+#: .\mod_stats_by_aircraft\templates\aircraft.html:601
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:610
 msgid "Defensive ammo breakdown"
 msgstr "Распределение оборонительных боеприпасов"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:636
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:643
+#: .\mod_stats_by_aircraft\templates\aircraft.html:604
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:613
 msgid "Average hits per aircraft lost"
 msgstr "Среднее количество попаданий на один потерянный самолет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:654
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:132
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:663
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:141
+#: .\mod_stats_by_aircraft\templates\aircraft.html:622
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:120
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:633
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:129
 msgid "Plane Durability"
 msgstr "Прочность самолёта"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:662
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:671
+#: .\mod_stats_by_aircraft\templates\aircraft.html:630
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:641
 msgid "Pilot Survivability"
 msgstr "Живучесть пилота"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:670
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:138
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:679
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:147
+#: .\mod_stats_by_aircraft\templates\aircraft.html:638
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:126
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:649
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:135
 msgid "Plane Lethality"
 msgstr "Смертоносность самолёта"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:678
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:687
+#: .\mod_stats_by_aircraft\templates\aircraft.html:646
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:657
 msgid "Plane Lethality (no assists)"
 msgstr "Смертоносность самолёта (без поддержки)<br/>"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:686
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:695
+#: .\mod_stats_by_aircraft\templates\aircraft.html:654
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:665
 msgid "Pilot Lethality"
 msgstr "Смертоносность пилота"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:696
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:705
+#: .\mod_stats_by_aircraft\templates\aircraft.html:664
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:675
 msgid "K/D - Kills per Death"
 msgstr "K/D - Сбитых к смертям"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:704
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:713
+#: .\mod_stats_by_aircraft\templates\aircraft.html:672
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:683
 msgid "K/L - Kills per Aircraft Lost"
 msgstr "K/L - Сбитых к потерям"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:712
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:721
+#: .\mod_stats_by_aircraft\templates\aircraft.html:680
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:691
 msgid "K/S - Kills per Sortie"
 msgstr "K/S - Сбитых за вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:720
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:729
+#: .\mod_stats_by_aircraft\templates\aircraft.html:688
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:699
 msgid "K/H - Kills per Hour of Flight"
 msgstr "K/H - Сбитых в час"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:730
+#: .\mod_stats_by_aircraft\templates\aircraft.html:698
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:184
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:185
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:108
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:739
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:114
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:115
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:96
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:709
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:102
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:103
 msgid "GK/D - G.Kills per Death"
 msgstr "GK/D - Уничтожено к смертям"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:738
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:747
+#: .\mod_stats_by_aircraft\templates\aircraft.html:706
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:717
 msgid "GK/L - G.Kills per Aircraft Lost"
 msgstr "GK/L - Уничтожено к потерям"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:746
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:755
+#: .\mod_stats_by_aircraft\templates\aircraft.html:714
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:725
 msgid "GK/S - G.Kills per Sortie"
 msgstr "GK/S - Уничтожено за вылет"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:754
+#: .\mod_stats_by_aircraft\templates\aircraft.html:722
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:191
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:192
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:114
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:763
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:121
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:122
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:102
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:733
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:109
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:110
 msgid "GK/H - G.Kills per Hour of Flight"
 msgstr "GK/H - Уничтожено в час"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:768
+#: .\mod_stats_by_aircraft\templates\aircraft.html:736
 #, python-format
 msgid ""
 "★ This data is pulled purely from sorties where this plane was the sole "
@@ -1540,9 +1524,9 @@ msgstr ""
 "противником (один самолет / танк / зенитная артиллерия и т.д). Отображаются "
 "только конфигурации оружия, на которые приходится не менее 5%% смертей."
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:772
+#: .\mod_stats_by_aircraft\templates\aircraft.html:740
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:243
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:784
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:754
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:249
 msgid ""
 "* Plane Durability is percent of sorties the plane survived after taking "
@@ -1561,13 +1545,13 @@ msgstr ""
 "вражеских пилотов, погибших после получения повреждений от этого самолета. "
 "Количество помощи в уничтожении также засчитывается.<br/>"
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:782
+#: .\mod_stats_by_aircraft\templates\aircraft.html:750
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:253
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:241
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:190
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:794
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:176
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:764
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:259
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:196
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:182
 msgid ""
 "<strong>Attention!</strong> Algorithms collection statistics IL2 stats "
 "differs from statistics in-game. As a consequence of these statistics will "
@@ -1577,13 +1561,13 @@ msgstr ""
 "от статистики в игре. Как следствие данная статистика не будет совпадать с "
 "игровой."
 
-#: .\mod_stats_by_aircraft\templates\aircraft.html:789
+#: .\mod_stats_by_aircraft\templates\aircraft.html:757
 #: .\mod_stats_by_aircraft\templates\aircraft_killboard.html:260
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:248
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:197
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:801
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:183
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:771
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:266
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:203
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:189
 #, python-format
 msgid ""
 "Players inactive for more than %(days)s day - do not participate in the "
@@ -1680,8 +1664,6 @@ msgid "Search pilot"
 msgstr "Найти пилота"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:141
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:84
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:90
 #, fuzzy
 #| msgid "Air KD"
 msgid "Air Kills"
@@ -1689,8 +1671,6 @@ msgstr "Воздух УбзаСм"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:153
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:159
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:102
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:108
 #, fuzzy
 #| msgid "Ground KD"
 msgid "Ground Kills"
@@ -1706,46 +1686,46 @@ msgid "Flight Time (days:hours:minutes)"
 msgstr "время полета (дни: часы: минуты)"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:265
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:214
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:220
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:200
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:206
 msgid "on the number of air kills"
 msgstr "по количеству сбитых"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:266
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:215
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:221
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:201
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:207
 msgid "on the current streak of kills"
 msgstr "по текущему стрику"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:267
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:216
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:222
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:202
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:208
 msgid "on the number of ground kills"
 msgstr "по количеству уничтоженных наземных целей"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:268
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:217
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:223
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:203
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:209
 #, fuzzy
 #| msgid "on the flight time (hours:minutes)"
 msgid "on the flight time (days:hours:minutes)"
 msgstr "по налету (часы:минуты)"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:269
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:218
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:224
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:204
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:210
 msgid "on the average number of kill per one death (K/D)"
 msgstr "по среднему количеству сбитых на одну смерть (K/D)"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:270
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:219
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:225
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:205
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:211
 msgid "on the average number of kill per one hour (K/Hr)"
 msgstr "по среднему количеству сбитых в час (K/Hr)"
 
 #: .\mod_stats_by_aircraft\templates\aircraft_pilot_rankings.html:271
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:220
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:226
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:206
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:212
 msgid "on the accuracy"
 msgstr "по точности стрельбы"
 
@@ -1760,8 +1740,8 @@ msgstr "Рейтинги самолётов"
 msgid "Search aircraft"
 msgstr "Найти самолёт"
 
-#: .\mod_stats_by_aircraft\templates\all_aircraft.html:184
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:189
+#: .\mod_stats_by_aircraft\templates\all_aircraft.html:170
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:175
 msgid ""
 "* Plane Durability is percent of sorties the plane survived after taking "
 "damage. </br> * Plane Lethality is the percent of enemy aircraft which went "
@@ -1904,21 +1884,21 @@ msgstr "пилот"
 msgid "Position in Rating"
 msgstr "Позиция в рейтинге"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:566
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:539
 msgid "Current air kill streak"
 msgstr "Текущая серия убийств в воздухе"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:570
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:543
 msgid "Current ground kill streak"
 msgstr "Текущая серия убийств на земле"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:574
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:547
 msgid "Current score streak"
 msgstr "Текущая серия очков"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:777
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:747
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft_killboard.html:246
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:186
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft_overview.html:172
 msgid ""
 "Due to technical reasons, kills from your turret gunners are not counted "
 "towards the killboard. Plane and pilot lethality are also affected. </br>"
@@ -1926,7 +1906,7 @@ msgstr ""
 "По техническим причинам убийства ваших турелей не засчитываются в счётчик "
 "убийств. Также затронуты летальность самолетов и пилотов.</br>"
 
-#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:780
+#: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:750
 msgid ""
 "★ This data is pulled purely from sorties where this plane was the sole "
 "source of damage. </br> ⛤ This data is pulled purely from sorties where this "

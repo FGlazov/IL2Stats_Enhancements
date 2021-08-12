@@ -8,11 +8,12 @@ from .fix_corrupted_aa_accident import FixCorruptedAaAccidents
 from .fix_turret_killboards import FixTurretKillboards
 from .fix_no_deaths_player_kb import FixNoDeathsPlayerKB
 from .fix_accuracy import FixAccuracy
+from .update_ammo_breakdown import UpdateAmmoBreakdown
 from stats.logger import logger
 
 # Subclasses of BackgroundJob, see background_job.py
 jobs = [FullRetroCompute(), PlayerRetroCompute(), StreaksRetroCompute(), FixCorruptedAaAccidents(),
-        FixTurretKillboards(), FixNoDeathsPlayerKB(), FixAccuracy()]
+        UpdateAmmoBreakdown(), FixTurretKillboards(), FixNoDeathsPlayerKB(), FixAccuracy()]
 
 LOG_COUNTER = 0
 LOGGING_INTERVAL = 5  # How many batches are run before an update log is produced.

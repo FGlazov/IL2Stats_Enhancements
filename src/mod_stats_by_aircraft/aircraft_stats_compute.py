@@ -2,8 +2,10 @@ from django.db.models import Q, F
 
 from .aircraft_mod_models import AircraftBucket, SortieAugmentation, AircraftKillboard
 from .variant_utils import has_juiced_variant, has_bomb_variant, get_sortie_type
+from .ammo_file_manager import write_breakdown_line, OFFENSIVE_BREAKDOWN, DEFENSIVE_BREAKDOWN
 
 from stats.models import Sortie, LogEntry, Player, Object
+from stats.logger import logger
 
 
 def process_aircraft_stats(sortie, player=None, is_retro_compute=False):
@@ -82,6 +84,8 @@ def process_bucket(bucket, sortie, has_subtype, is_subtype, is_retro_compute):
     sortie_augmentation.fixed_doubled_turret_killboards = True
     sortie_augmentation.added_player_kb_losses = True
     sortie_augmentation.fixed_accuracy = True
+    sortie_augmentation.recomputed_ammo_breakdown = True
+
     sortie_augmentation.save()
 
 
@@ -439,10 +443,10 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
             # I.e. we got hit by an aircraft turret and the MGs of another plane (the MGs didn't cause any dmg)
             aircraft_hit_us = set()
             for enemy_object in enemy_objects:
-                db_object = Object.objects.get(id=enemy_object[0])
-                if db_object.cls != 'aircraft_turret':
+                db_enemy_object = Object.objects.get(id=enemy_object[0])
+                if db_enemy_object.cls != 'aircraft_turret':
                     return
-                aircraft = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour)
+                aircraft = turret_to_aircraft_bucket(db_enemy_object.name, tour=bucket.tour)
                 if aircraft is None:
                     return
                 aircraft_hit_us.add(aircraft.id)
@@ -471,40 +475,39 @@ def process_ammo_breakdown(bucket, sortie, is_subtype):
     # For ShVAKs: We keep it as is, since LA-5(FN) has mono-ammo belts.
     # So even if another plane has a fluke like this, it does same damage as when shot by LA-5 anyways.
 
-    bucket.increment_ammo_received(ammo_breakdown['total_received'])
+    enemy_object = enemy_objects[0][0]
+    enemy_sortie = enemy_objects[0][1]
+    db_enemy_object = Object.objects.get(id=enemy_object)
+    pilot_snipe = is_pilot_snipe(sortie)
+
+    bucket.increment_ammo_received(ammo_breakdown['total_received'], pilot_snipe)
+    if not bucket.player:
+        write_breakdown_line(bucket, ammo_breakdown['total_received'], DEFENSIVE_BREAKDOWN, db_enemy_object,
+                             pilot_snipe)
 
     if is_subtype:
         # Updates for enemy aircraft were done in main type.
         return
 
-    enemy_object = enemy_objects[0][0]
-    enemy_sortie = enemy_objects[0][1]
-
-    db_object = Object.objects.get(id=enemy_object)
-
-    if db_object.cls_base != 'aircraft' and db_object.cls != 'aircraft_turret':
+    if db_enemy_object.cls_base != 'aircraft' and db_enemy_object.cls != 'aircraft_turret':
         return
-    if db_object.cls_base == 'aircraft' and not enemy_sortie:
+    if db_enemy_object.cls_base == 'aircraft' and not enemy_sortie:
         return
 
-    base_bucket, db_sortie, filter_type = ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
+    base_bucket, db_sortie, filtered_bucket = ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_enemy_object,
+                                                                          enemy_sortie)
 
-    if base_bucket:
-        base_bucket.increment_ammo_given(ammo_breakdown['total_received'])
+    if base_bucket is not None:
+        base_bucket.increment_ammo_given(ammo_breakdown['total_received'], pilot_snipe)
+        if not base_bucket.player:
+            write_breakdown_line(base_bucket, ammo_breakdown['total_received'], OFFENSIVE_BREAKDOWN, bucket.aircraft,
+                                 pilot_snipe)
         base_bucket.save()
-
-    # Note that we can't update filtered Halberstadt (turreted plane with jabo type)
-    # here since we don't know which subtype it is.
-    if filter_type != 'NO_FILTER' and db_sortie.player:
-        if bucket.player:
-            filtered_bucket = AircraftBucket.objects.get_or_create(
-                tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=db_sortie.player)[0]
-        else:
-            filtered_bucket = AircraftBucket.objects.get_or_create(
-                tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=None)[0]
-
-        filtered_bucket.increment_ammo_given(ammo_breakdown['total_received'])
-
+    if filtered_bucket is not None:
+        filtered_bucket.increment_ammo_given(ammo_breakdown['total_received'], pilot_snipe)
+        if not filtered_bucket.player:
+            write_breakdown_line(filtered_bucket, ammo_breakdown['total_received'], OFFENSIVE_BREAKDOWN,
+                                 bucket.aircraft, pilot_snipe)
         filtered_bucket.save()
 
 
@@ -515,6 +518,63 @@ def fill_in_ammo(ammo_breakdown, ap_ammo, he_ammo):
     if (he_ammo not in ammo_breakdown['total_received']
             and ap_ammo in ammo_breakdown['total_received']):
         ammo_breakdown['total_received'][he_ammo] = 0
+
+
+def is_pilot_snipe(sortie):
+    """
+    A pilot snipe is when a plane goes down because the pilot gets killed, and not because the aircraft is crtically
+    damaged. Currently, in the logs, a pilot snipe looks rather similar to a normal death. Even in a pilot snipe,
+    the logs think the aircraft gets shotdown before the pilot dies - i.e. it emits "plane shotdown" before "pilot dead"
+
+    Instead the logs sees to relay the information that it was a pilot snipe by "damage to the pilot". I.e. a pilot
+    snipe has "damage to pilot X by plane Y" events, whereas a death due to a not pilot snipe has "damgage to pilot X
+    without a plane" events.
+
+    So, to check for pilot snipe we check:
+
+    1. The pilot must have died to a player/AI object.
+    2. That the death didn't happen much later than the shotdown, otherwise it could've been someone strafing a plane
+    which was already dead.
+    3. That the shotdown didn't happen much later than the last damage to pilot event, otherwise it could be as above.
+    4. That there was sufficent damage to the pilot from enemy planes to cause a death to the pilot.
+
+    If all 3 conditions are satisified, then it's a pilot snipe.
+    """
+    death_event = (LogEntry.objects
+                   .filter(Q(cact_sortie_id=sortie.id),
+                           Q(type='killed'), act_object_id__isnull=False))
+
+    shotdown_event = (LogEntry.objects
+                      .filter(Q(cact_sortie_id=sortie.id),
+                              Q(type='killed'), act_object_id__isnull=False))
+
+    wound_events = (LogEntry.objects
+                    .filter(Q(cact_sortie_id=sortie.id),
+                            Q(type='wounded'), act_object_id__isnull=False)
+                    .order_by('-tik'))
+
+    if not death_event.exists() or not shotdown_event.exists() or not wound_events.exists():
+        # Condition 1 in function description.
+        return False
+
+    death_event = death_event[0]
+    shotdown_event = shotdown_event[0]
+
+    if death_event.tik - shotdown_event.tik > 20:
+        # Condition 2 in function description
+        # Threshold is 20 tiks = 0.4 seconds.
+        return False
+
+    if wound_events[0].tik - shotdown_event.tik > 20:
+        # Condition 3 in function description.
+        # Threshold is 20 tiks = 0.4 seconds.
+        return False
+
+    wound_damage = 0
+    for wound_event in wound_events:
+        wound_damage += wound_event.extra_data['damage']['pct']
+
+    return wound_damage > 0.95  # Condition 4 in function description. At least 95% damage threshold.
 
 
 def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie):
@@ -532,22 +592,34 @@ def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
 
     @return base_bucket: Enemy bucket who did the damaging,
             db_sortie: Sortie corresponding to input enemy_sortie or None if not passed.
-            filter_type: Filter_type corresponding to db_sortie.
+            filtered_bucket: Enemy subbucket which did the damaging, e.g. "With bombs" if jabo flight.
     """
-    # TODO: Refactor filter_type into instead directly returning filtered_bucket.
-
     if db_object.cls_base == 'aircraft':
         db_sortie = Sortie.objects.get(id=enemy_sortie)
-        filter_type = get_sortie_type(db_sortie)
-        if bucket.player:
+        if bucket.player:  # We only want to update the enemy player bucket and the enemy generic bucket once each.
             base_bucket = AircraftBucket.objects.get_or_create(
                 tour=db_sortie.tour, aircraft=db_object, filter_type='NO_FILTER', player=db_sortie.player)[0]
         else:
             base_bucket = AircraftBucket.objects.get_or_create(
                 tour=db_sortie.tour, aircraft=db_object, filter_type='NO_FILTER', player=None)[0]
+
+        filter_type = get_sortie_type(db_sortie)
+        if filter_type != 'NO_FILTER' and db_sortie.player:
+            if bucket.player:  # We only want to update the enemy player bucket and the enemy generic bucket once each.
+                filtered_bucket = AircraftBucket.objects.get_or_create(
+                    tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=db_sortie.player)[0]
+            else:
+                filtered_bucket = AircraftBucket.objects.get_or_create(
+                    tour=bucket.tour, aircraft=db_object, filter_type=filter_type, player=None)[0]
+        else:
+            filtered_bucket = None
+
     else:  # Turret
         db_sortie = None
-        if bucket.player:
+        # Note that we can't update filtered Halberstadt (turreted plane with jabo type)
+        # here since we don't know which subtype it is.
+        filtered_bucket = None
+        if bucket.player:  # We only want to update the enemy player bucket and the enemy generic bucket once each.
             if 'last_turret_account' in ammo_breakdown:
                 try:
                     enemy_player = Player.objects.filter(
@@ -562,9 +634,7 @@ def ammo_breakdown_enemy_bucket(ammo_breakdown, bucket, db_object, enemy_sortie)
                 base_bucket = None
         else:
             base_bucket = turret_to_aircraft_bucket(db_object.name, tour=bucket.tour)
-
-        filter_type = 'NO_FILTER'
-    return base_bucket, db_sortie, filter_type
+    return base_bucket, db_sortie, filtered_bucket
 
 
 def process_streaks_and_best_sorties(bucket, sortie):
@@ -713,5 +783,5 @@ def turret_to_aircraft_bucket(turret_name, tour, player=None):
         return (AircraftBucket.objects.get_or_create(tour=tour, aircraft=aircraft, filter_type='NO_FILTER',
                                                      player=player))[0]
     except Object.DoesNotExist:
-        logger.info("[mod_stats_by_aircraft] WARNING: Could not find aircraft for turret " + turret_name)
+        logger.warning("[mod_stats_by_aircraft] Could not find aircraft for turret " + turret_name)
         return None

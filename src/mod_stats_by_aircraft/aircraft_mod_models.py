@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _, pgettext_lazy
 from django.conf import settings
 from django.urls import reverse
 
+from .reservoir_sampling import SAMPLE, RESERVOIR_COUNTER, update_reservoir
 from .variant_utils import has_bomb_variant, has_juiced_variant
+import math
 
 TOTALS = 'totals'
 AVERAGES = 'avg'
@@ -16,7 +18,10 @@ CANNON_MG = 'all'
 RECEIVED = 'received'
 GIVEN = 'given'
 INST = 'instances'
+PILOT_KILLS = 'pilot_kills'
 COUNT = 'count'
+M2 = 'm2'  # For Welford's online algorithm to compute variance.
+STANDARD_DEVIATION = 'std'
 
 
 def default_ammo_breakdown():
@@ -167,7 +172,8 @@ class AircraftBucket(models.Model):
     reset_accident_aa_stats = models.BooleanField(default=False, db_index=True)
     # Dito for Elo computations, this was bugged.
     reset_elo = models.BooleanField(default=False, db_index=True)
-
+    # Ammo breakdowns recomputation to include more data.
+    reset_ammo_breakdown = models.BooleanField(default=False, db_index=True)
     # ========================== NON-VISIBLE HELPER FIELDS  END
 
     class Meta:
@@ -205,6 +211,7 @@ class AircraftBucket(models.Model):
         # or it was made after the bug was fixed.
         self.reset_accident_aa_stats = True
         self.reset_elo = True
+        self.reset_ammo_breakdown = True
 
     def update_rating(self):
         if self.player is None:
@@ -568,14 +575,17 @@ class AircraftBucket(models.Model):
     def get_pilot_filtered_url(self):
         return get_aircraft_url(self.aircraft.id, self.tour.id, str(self.filter_type), self.player)
 
-    def increment_ammo_received(self, ammo_dict):
-        self.__increment_helper(ammo_dict, self.ammo_breakdown[RECEIVED])
+    def increment_ammo_received(self, ammo_dict, pilot_snipe):
+        self.__increment_helper(ammo_dict, self.ammo_breakdown[RECEIVED], pilot_snipe)
 
-    def increment_ammo_given(self, ammo_dict):
-        self.__increment_helper(ammo_dict, self.ammo_breakdown[GIVEN])
+    def increment_ammo_given(self, ammo_dict, pilot_snipe):
+        self.__increment_helper(ammo_dict, self.ammo_breakdown[GIVEN], pilot_snipe)
 
     @staticmethod
-    def __increment_helper(ammo_dict, sub_dict):
+    def __increment_helper(ammo_dict, sub_dict, pilot_snipe):
+        # TODO: Refactor this mess if possible.
+        #       Perhaps create data classes that we later convert automagically into dicts/jsons for storage?
+        #       Or adapt the database schema to not use JSON.
         key = multi_key_to_string(list(ammo_dict.keys()))
         if not key:
             return
@@ -584,19 +594,41 @@ class AircraftBucket(models.Model):
             sub_dict[TOTALS][key] = {
                 INST: 0,
                 COUNT: dict(),
+                M2: dict(),
+                STANDARD_DEVIATION: dict(),
+                PILOT_KILLS: 0,
+                SAMPLE: None,
+                RESERVOIR_COUNTER: 0
             }
             sub_dict[AVERAGES][key] = dict()
             for ammo_key in ammo_dict:
                 sub_dict[TOTALS][key][COUNT][ammo_key] = 0
 
+        update_reservoir(ammo_dict, sub_dict[TOTALS][key])
         sub_dict[TOTALS][key][INST] += 1
+        sub_dict[TOTALS][key][PILOT_KILLS] += 1 if pilot_snipe else 0
         for ammo_key in ammo_dict:
             times_hit = ammo_dict[ammo_key]
             sub_dict[TOTALS][key][COUNT][ammo_key] += times_hit
-            sub_dict[AVERAGES][key][ammo_key] = compute_float(
+            mean_delta = times_hit
+            if ammo_key in sub_dict[AVERAGES][key]:
+                mean_delta -= sub_dict[AVERAGES][key][ammo_key]
+            new_mean = compute_float(
                 sub_dict[TOTALS][key][COUNT][ammo_key],
                 sub_dict[TOTALS][key][INST]
             )
+            sub_dict[AVERAGES][key][ammo_key] = new_mean
+
+            # Welford's online algorithm to compute variance in one pass.
+            if ammo_key not in sub_dict[TOTALS][key][M2]:
+                sub_dict[TOTALS][key][M2][ammo_key] = 0
+
+            m2_delta = times_hit - new_mean
+            sub_dict[TOTALS][key][M2][ammo_key] += m2_delta * mean_delta
+            if sub_dict[TOTALS][key][INST] > 1:
+                sub_dict[TOTALS][key][STANDARD_DEVIATION][ammo_key] = round(math.sqrt(
+                    sub_dict[TOTALS][key][M2][ammo_key] / (sub_dict[TOTALS][key][INST] - 1),
+                ), 2)
 
 
 def multi_key_to_string(keys, separator='|'):
@@ -698,6 +730,7 @@ class SortieAugmentation(models.Model):
     added_player_kb_losses = models.BooleanField(default=False, db_index=True)
     computed_max_streaks = models.BooleanField(default=False, db_index=True)
     fixed_accuracy = models.BooleanField(default=False, db_index=True)
+    recomputed_ammo_breakdown = models.BooleanField(default=False, db_index=True)
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

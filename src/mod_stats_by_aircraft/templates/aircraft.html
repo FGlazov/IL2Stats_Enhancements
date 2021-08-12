@@ -7,6 +7,8 @@
 {% endblock nav_tabs %}
 
 {% block content %}
+<link href="{% static 'css/collapsible.css' %}" rel="stylesheet">
+
 <section id="player">
     <div class="wrapper">
         <div class="profile_name">
@@ -544,7 +546,7 @@
             </div>
             {% if aircraft_bucket.max_ak_streak_player %}
             <a href="{{aircraft_bucket.max_ak_streak_player.get_profile_url}}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Best air kill streak' %} ({{ aircraft_bucket.max_ak_streak_player}})</div>
                     <div class="num"> {{aircraft_bucket.max_ak_streak}}</div>
                 </div>
@@ -552,7 +554,7 @@
             {% endif %}
             {% if aircraft_bucket.max_gk_streak_player %}
             <a href="{{aircraft_bucket.max_gk_streak_player.get_profile_url}}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Best Ground streak' %} ({{ aircraft_bucket.max_gk_streak_player}})</div>
                     <div class="num"> {{aircraft_bucket.max_gk_streak}}</div>
                 </div>
@@ -560,7 +562,7 @@
             {% endif %}
             {% if aircraft_bucket.max_score_streak_player %}
             <a href="{{aircraft_bucket.max_score_streak_player.get_profile_url}}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Best score streak' %} ({{ aircraft_bucket.max_score_streak_player}})</div>
                     <div class="num"> {{aircraft_bucket.max_score_streak}}</div>
                 </div>
@@ -577,7 +579,7 @@
 
             {% if aircraft_bucket.best_ak_sortie %}
             <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_ak_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Max air kills in a single sortie' %} ({{ aircraft_bucket.best_ak_sortie.player}})</div>
                     <div class="num"> {{aircraft_bucket.best_ak_in_sortie}}</div>
                 </div>
@@ -586,7 +588,7 @@
 
             {% if aircraft_bucket.best_gk_sortie %}
             <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_gk_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Max ground kills in a single sortie' %} ({{ aircraft_bucket.best_gk_sortie.player}})</div>
                     <div class="num"> {{aircraft_bucket.best_gk_in_sortie}}</div>
                 </div>
@@ -595,7 +597,7 @@
 
             {% if aircraft_bucket.best_score_sortie %}
             <a href="{% url 'stats:pilot_sortie' aircraft_bucket.best_score_sortie_id %}?tour={{ aircraft_bucket.tour_id }}">
-                <div class="item">
+                <div class="item link">
                     <div class="name">{% trans 'Max score in a single sortie' %} ({{ aircraft_bucket.best_score_sortie.player}})</div>
                     <div class="num"> {{aircraft_bucket.best_score_in_sortie}}</div>
                 </div>
@@ -616,14 +618,42 @@
                 <div class="name">{% trans 'Average hits per aircraft kill' %} ★</div>
             </div>
 
-             {% for ammo_name, avg_used in ammo_breakdown.given %}
-             <div class="item" style="height: auto;overflow: hidden;">
-                <div class="name">{{ammo_name}}</div>
-                <div class="num">{{avg_used}}</div>
+             {% for ammo_name, avg_used, extra_info in ammo_breakdown.given %}
+             <button class="collapsible">
+                 <span class="name">{{ammo_name}}</span>
+                 <span class="num collapsible-num">{{avg_used}}</span>
+             </button>
+             <div class="content">
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Total Instances' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.instances }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Pilot snipes' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.pilot_kills_percent }}% ({{ extra_info.pilot_kills}})</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Standard deviation' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.stds }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Geometric median' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.medians }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans '90th percentile' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.percentiles }}</div>
+                </div>
+                 <a href="{% url 'stats:download_ammo_breakdown_csv' ammo_key=extra_info.key breakdown_type='OFFENSIVE_BREAKDOWN' bucket_id=aircraft_bucket.id %}?tour={{ aircraft_bucket.tour_id }}">
+                     <div class="item collapsible-item downloadable">
+                        <div class="name">{% trans 'Download data' context 'total' %}</div>
+                        <div class="num collapsible-num">
+                              <img src="{% static 'img/icons/small/download.png' %}" width="" height="" title="" alt="">
+                        </div>
+                    </div>
+                 </a>
              </div>
             {% endfor %}
-
-
          </div>
         {% endif  %}
 
@@ -635,10 +665,40 @@
             <div class="item">
                 <div class="name">{% trans 'Average hits per aircraft lost' %} ⛤</div>
             </div>
-            {% for ammo_name, avg_used in ammo_breakdown.received %}
-            <div class="item" style="height: auto;overflow: hidden;">
-                <div class="name">{{ammo_name}}</div>
-                <div class="num">{{avg_used}}</div>
+            {% for ammo_name, avg_used, extra_info in ammo_breakdown.received %}
+            <button class="collapsible">
+                 <span class="name">{{ammo_name}}</span>
+                 <span class="num collapsible-num">{{avg_used}}</span>
+             </button>
+             <div class="content">
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Total instances' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.instances }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Pilot snipes' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.pilot_kills_percent }}% ({{ extra_info.pilot_kills}})</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Standard deviation' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.stds }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans 'Geometric median' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.medians }}</div>
+                </div>
+                 <div class="item collapsible-item">
+                    <div class="name">{% trans '90th percentile' context 'total' %}</div>
+                    <div class="num collapsible-num">{{ extra_info.percentiles }}</div>
+                </div>
+                 <a href="{% url 'stats:download_ammo_breakdown_csv' ammo_key=extra_info.key breakdown_type='DEFENSIVE_BREAKDOWN' bucket_id=aircraft_bucket.id %}?tour={{ aircraft_bucket.tour_id }}">
+                     <div class="item collapsible-item downloadable">
+                        <div class="name">{% trans 'Download data' context 'total' %}</div>
+                        <div class="num collapsible-num">
+                              <img src="{% static 'img/icons/small/download.png' %}" width="" height="" title="" alt="">
+                        </div>
+                    </div>
+                 </a>
              </div>
             {% endfor %}
          </div>
@@ -795,5 +855,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+</script>
 </section>
 {% endblock content %}

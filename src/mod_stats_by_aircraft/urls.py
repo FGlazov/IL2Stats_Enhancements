@@ -55,6 +55,8 @@ urlpatterns = [
         views.pilot_aircraft, name='pilot_aircraft'),
     url(r'^pilot_aircraft_killboard/(?P<aircraft_id>\d+)/(?P<airfilter>\S+)/(?P<profile_id>\d+)/(?P<nickname>\S+)/$',
         views.pilot_aircraft_killboard, name='pilot_aircraft_killboard'),
+    url(r'^download_ammo_breakdown_csv/(?P<ammo_key>\S+)/(?P<breakdown_type>\S+)/(?P<bucket_id>\d+)/$',
+        views.download_ammo_breakdown_csv, name='download_ammo_breakdown_csv'),		
 
     url(r'^online/$', views.online, name='online'),
     url(r'^$', views.main, name='main'),
