@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n staticfiles tz stats %}
-{% block title %}{% trans 'Tankman Killboard' %} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
+{% block title %}{% trans 'Killboard' %} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
 
 {% block nav_tabs %}
-    {% include 'inline/tankman_tabs.html' %}
+    {% include 'inline/pilot_tabs.html' %}
 {% endblock nav_tabs %}
 
 {% block content %}
@@ -11,8 +11,8 @@
         <div class="wrapper">
             <div class="content_head">
                 <div class="content_title">
-                    {% trans 'Tankman Killboard' %}
-                    <div class="content_title_sm">{% trans 'Tankman' %}: {{ player.nickname }}</div>
+                    {% trans 'Killboard' %}
+                    <div class="content_title_sm">{% trans 'pilot' %}: {{ player.nickname }}</div>
                 </div>
             </div>
             {% if killboard %}

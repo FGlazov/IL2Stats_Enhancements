@@ -666,14 +666,17 @@ class Object:
             self.mission.logger_event({'type': 'kill', 'attacker': attacker, 'pos': pos,
                                        'target': self, 'is_friendly_fire': is_friendly_fire})
 
-    def killed_by_damage(self, dmg_pct=0):
-        if not self.is_killed and (self.damage > dmg_pct or self.is_captured):
+    def killed_by_damage(self, dmg_pct=0, dmg_pct_tk=5):
+        if self.cls_base == 'tank' or self.cls_base == 'vehicle': 
+		    # - by changing dmg_pct_tk value you can set up to what damage % tank or truck can be damaged to not give kill to attacker or sortie status changed to destroyed.  
+            if not self.is_killed and (self.damage > dmg_pct_tk or self.is_captured):
+                if (self.on_ground and not self.is_rtb) or self.is_bailout or (self.bot and self.bot.life_status.is_destroyed):
+                    self.got_killed(force_by_dmg=True)
+        if self.cls_base == 'aircraft':
+            if not self.is_killed and (self.damage > dmg_pct or self.is_captured):
             # если самолет приземлился не в зоне своего филда или пилот выпрыгнул или пилот мертв
             # - записываем его как сбитый
-            if (self.on_ground and not self.is_rtb) or self.is_bailout or (self.bot and self.bot.life_status.is_destroyed):
-                self.got_killed(force_by_dmg=True)
-            if self.sortie and not self.is_rtb:
-                if not self.sortie.is_ended:
+                if (self.on_ground and not self.is_rtb) or self.is_bailout or (self.bot and self.bot.life_status.is_destroyed):
                     self.got_killed(force_by_dmg=True)
 
     def update_by_sortie(self, sortie, is_aircraft=True):

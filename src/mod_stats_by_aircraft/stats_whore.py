@@ -352,7 +352,7 @@ def stats_whore(m_report_file):
                 params['cact_object_id'] = objects[event['target'].log_name]['id']
 
         l = LogEntry.objects.create(**params)
-        if l.type == 'shotdown' and l.act_sortie and l.cact_sortie and not l.act_sortie.is_disco and not l.extra_data.get('is_friendly_fire'):
+        if l.type in {'shotdown', 'destroyed'} and l.act_sortie and l.cact_sortie and not l.act_sortie.is_disco and not l.extra_data.get('is_friendly_fire'):
             update_killboard_pvp(player=l.act_sortie.player, opponent=l.cact_sortie.player, players_killboard=players_killboard)
 
     for p in players_killboard.values():

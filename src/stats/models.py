@@ -1302,6 +1302,10 @@ class Sortie(models.Model):
         return get_aircraft_mods(aircraft=self.aircraft.log_name, id_list=tuple(self.weapon_mods_id))
 
     @property
+    def modificationst(self):
+        return get_tank_mods(aircraft=self.aircraft.log_name, id_list=tuple(self.weapon_mods_id))
+
+    @property
     def payload(self):
         return get_aircraft_payload(aircraft=self.aircraft.log_name, payload_id=self.payload_id)
 
@@ -1575,7 +1579,13 @@ class Squad(models.Model):
                 self.coal_pref = 0
 
     def update_num_members(self):
-        self.num_members = self.players.filter(type='pilot').count()
+        self.num_members = self.players.filter(
+            Q(type='pilot') | Q(type='tankman')
+        ).values_list(
+            'profile_id'
+        ).distinct().count()
+        print(self.num_members)
+
         if self.num_members > self.max_members:
             self.max_members = self.num_members
 

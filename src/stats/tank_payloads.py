@@ -926,4 +926,22 @@ aircraft_payloads = {
         5: pgettext_lazy('aircraft_payload', '25 mm 72-K HE [77]'),
         6: pgettext_lazy('aircraft_payload', '25 mm 72-K AP [77]'),
     },
+    'sd.kfz.10-5': {
+        0: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [280]'),
+        1: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [280]'),
+        2: pgettext_lazy('aircraft_payload', '20 mm Flak 38 HE [280]'),
+        3: pgettext_lazy('aircraft_payload', '20 mm Flak 38 AP [280]'),
+        4: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [140]'),
+        5: pgettext_lazy('aircraft_payload', '20 mm Flak 38 HE [140]'),
+        6: pgettext_lazy('aircraft_payload', '20 mm Flak 38 AP [140]'),
+    },
+    '_sdkfz10-5_t0': {
+        0: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [280]'),
+        1: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [280]'),
+        2: pgettext_lazy('aircraft_payload', '20 mm Flak 38 HE [280]'),
+        3: pgettext_lazy('aircraft_payload', '20 mm Flak 38 AP [280]'),
+        4: pgettext_lazy('aircraft_payload', '20 mm Flak 38 APHE [140]'),
+        5: pgettext_lazy('aircraft_payload', '20 mm Flak 38 HE [140]'),
+        6: pgettext_lazy('aircraft_payload', '20 mm Flak 38 AP [140]'),
+    },
 }
