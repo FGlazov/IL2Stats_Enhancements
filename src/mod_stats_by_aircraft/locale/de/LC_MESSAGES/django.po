@@ -1464,7 +1464,7 @@ msgstr "Anzahl Abschüsse"
 #: .\mod_stats_by_aircraft\templates\pilot_aircraft.html:678
 msgctxt "total"
 msgid "Pilot snipes"
-msgstr "Abschuss durch Pilotenverlust"
+msgstr "Abschüsse durch Pilotenverlust"
 
 #: .\mod_stats_by_aircraft\templates\aircraft.html:636
 #: .\mod_stats_by_aircraft\templates\aircraft.html:683
