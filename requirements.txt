@@ -6,7 +6,7 @@
 #
 argon2-cffi==20.1.0
     # via -r requirements.in
-cffi==1.13.1
+cffi==1.14.6
     # via argon2-cffi
 dj-static==0.0.6
     # via -r requirements.in
@@ -27,14 +27,14 @@ pillow==6.2.2
     # via -r requirements.in
 psycopg2==2.8.6
     # via -r requirements.in
-pycparser==2.19
+pycparser==2.20
     # via cffi
 pytz==2020.1
     # via
     #   -r requirements.in
     #   django
     #   tzlocal
-scikit-learn==0.22
+scikit-learn==0.22.2post1
     # via -r requirements.in
 scipy==1.4.1
     # via

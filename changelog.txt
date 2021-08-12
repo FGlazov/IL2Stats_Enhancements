@@ -153,3 +153,7 @@ Version 1.7.1
 Version 1.7.2 
 
 - Recompile requirments.txt
+
+Version 1.7.3
+
+- Update requirments to ones which should hopefully work on more machines.
