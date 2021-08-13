@@ -414,21 +414,21 @@
                 {% if total_active_pilots %}
                 <div class="active_players">
                     <div class="title">
-                        {% trans 'Active players' %}
+                        {% trans 'Active pilots' %}
                     </div>
                     <div class="total">
                         {% trans 'total pilots' context 'tour_active' %}
                     </div>
                     <div class="total_num">
-                        {{ total_active_players }}
+                        {{ total_active_pilots }}
                     </div>
 
                     <div class="bar_mini" style="float: right;">
                         <div class="bar">
                             <div class="bar_grid" style="width: 50%;"></div>
-                            {% widthratio coal_active_players.1 total_active_players 100 as width %}
+                            {% widthratio coal_active_pilots.1 total_active_pilots 100 as width %}
                             <div class="bar_red" style="width: {{ width }}%;"></div>
-                            {% widthratio coal_active_players.2 total_active_players 100 as width %}
+                            {% widthratio coal_active_pilots.2 total_active_pilots 100 as width %}
                             <div class="bar_blue" style="width: {{ width }}%;"></div>
                         </div>
                         <div class="bar_red_num">

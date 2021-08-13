@@ -156,4 +156,9 @@ Version 1.7.2
 
 Version 1.7.3
 
-- Update requirments to ones which should hopefully work on more machines.
+- Update requirements to ones which should hopefully work on more machines.
+
+Version 1.7.4
+
+- Update to 1.4.3 of aircraft mod.
+- Fix bug in merge with tank mod which resulted in total pilots not being shown on previous tour page.
