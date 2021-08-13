@@ -1,3 +1,5 @@
+import shutil
+
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.http import Http404, HttpResponse
@@ -92,3 +94,8 @@ def initialize_csv(path, ammo_keys):
 def get_breakdown_path(tour_id, bucket, ammo_key, breakdown_type):
     return os.path.join(settings.MEDIA_ROOT, 'ammo_breakdowns', str(tour_id), str(bucket.id), ammo_key,
                         bucket.aircraft.name_en + '_Tour_' + str(tour_id) + '_' + breakdown_type + '.csv')
+
+
+def reset_ammo_breakdown_csvs():
+    ammo_breakdown_dir = os.path.join(settings.MEDIA_ROOT, 'ammo_breakdowns')
+    shutil.rmtree(ammo_breakdown_dir, ignore_errors=True)

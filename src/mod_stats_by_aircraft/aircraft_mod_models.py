@@ -174,6 +174,7 @@ class AircraftBucket(models.Model):
     reset_elo = models.BooleanField(default=False, db_index=True)
     # Ammo breakdowns recomputation to include more data.
     reset_ammo_breakdown = models.BooleanField(default=False, db_index=True)
+    reset_ammo_breakdown_2 = models.BooleanField(default=False, db_index=True)
     # ========================== NON-VISIBLE HELPER FIELDS  END
 
     class Meta:
@@ -212,6 +213,7 @@ class AircraftBucket(models.Model):
         self.reset_accident_aa_stats = True
         self.reset_elo = True
         self.reset_ammo_breakdown = True
+        self.reset_ammo_breakdown_2 = True
 
     def update_rating(self):
         if self.player is None:
@@ -731,6 +733,8 @@ class SortieAugmentation(models.Model):
     computed_max_streaks = models.BooleanField(default=False, db_index=True)
     fixed_accuracy = models.BooleanField(default=False, db_index=True)
     recomputed_ammo_breakdown = models.BooleanField(default=False, db_index=True)
+    recomputed_ammo_breakdown_2 = models.BooleanField(default=False, db_index=True)
+
 
     class Meta:
         # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.

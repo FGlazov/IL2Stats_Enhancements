@@ -85,6 +85,7 @@ def process_bucket(bucket, sortie, has_subtype, is_subtype, is_retro_compute):
     sortie_augmentation.added_player_kb_losses = True
     sortie_augmentation.fixed_accuracy = True
     sortie_augmentation.recomputed_ammo_breakdown = True
+    sortie_augmentation.recomputed_ammo_breakdown_2 = True
 
     sortie_augmentation.save()
 
@@ -572,7 +573,10 @@ def is_pilot_snipe(sortie):
 
     wound_damage = 0
     for wound_event in wound_events:
-        wound_damage += wound_event.extra_data['damage']['pct']
+        if type(wound_event.extra_data['damage']) is dict:
+            wound_damage += wound_event.extra_data['damage']['pct']
+        else:
+            wound_damage += wound_event.extra_data['damage']
 
     return wound_damage > 0.95  # Condition 4 in function description. At least 95% damage threshold.
 
