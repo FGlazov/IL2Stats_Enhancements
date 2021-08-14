@@ -162,3 +162,7 @@ Version 1.7.4
 
 - Update to 1.4.3 of aircraft mod.
 - Fix bug in merge with tank mod which resulted in total pilots not being shown on previous tour page.
+
+Update 1.7.5
+
+- Update to 1.4.4 of aircraft mod.

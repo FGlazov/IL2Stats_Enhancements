@@ -15,7 +15,7 @@ This bundle version is designed to work with version 1.2.54 of IL-2 stats.
 Disconnect mod version: 1.6.2
 Tank mod version: 3.3
 Stats Enhancements version : 2.2.4
-Global Aircraft Stats mod version : 1.4.0
+Global Aircraft Stats mod version : 1.4.4
 
 DISCLAIMER: This module is NOT (currently) retroactive, it will only split the stats of new sorties. 
 

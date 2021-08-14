@@ -679,7 +679,7 @@ def process_streaks_and_best_sorties(bucket, sortie):
         aircraft=bucket.aircraft,
         filter_type=bucket.filter_type,
         player=None,
-    ).get()
+    ).get_or_create()[0]
 
     if bucket.max_score_streak > not_player_bucket.max_score_streak:
         not_player_bucket.max_score_streak = bucket.max_score_streak
