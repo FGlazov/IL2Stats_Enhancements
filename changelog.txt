@@ -95,3 +95,7 @@ Version 2.2.3
 Version 2.2.4
 
 - Disambiguate the two bullet types shot from small caliber brownings - ".303 British" and ".30-06 Springfield".
+
+Version 2.3.0
+
+- New module "Mission Win New Tour", which starts new a new tour every time a mission is won.
