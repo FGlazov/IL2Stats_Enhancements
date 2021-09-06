@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 10:47+0200\n"
+"POT-Creation-Date: 2021-08-12 11:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,10 +25,12 @@ msgid "11mm Vickers"
 msgstr "11mm Vickers"
 
 #: .\mod_rating_by_type\bullets_types.py:52
-#: .\mod_rating_by_type\bullets_types.py:66
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "115mm British"
 msgctxt "bullet_type"
-msgid ".303 BMG"
-msgstr ".303 BMG"
+msgid ".303 British"
+msgstr "115mm Britannique"
 
 #: .\mod_rating_by_type\bullets_types.py:54
 msgctxt "bullet_type"
@@ -98,6 +100,11 @@ msgstr "ShKAS (AP)"
 msgctxt "bullet_type"
 msgid ".50 BMG"
 msgstr ".50 BMG"
+
+#: .\mod_rating_by_type\bullets_types.py:66
+msgctxt "bullet_type"
+msgid ".30-06 Springfield"
+msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:67
 #: .\mod_rating_by_type\bullets_types.py:68
@@ -594,76 +601,76 @@ msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
 msgstr "75mm Soviétique (HE)"
 
-#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:479
-#: .\mod_rating_by_type\models.py:696
+#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:478
+#: .\mod_rating_by_type\models.py:695
 msgid "neutral"
 msgstr "neutre"
 
-#: .\mod_rating_by_type\models.py:517
+#: .\mod_rating_by_type\models.py:516
 msgctxt "sortie_status"
 msgid "landed"
 msgstr "posé"
 
-#: .\mod_rating_by_type\models.py:518
+#: .\mod_rating_by_type\models.py:517
 msgctxt "sortie_status"
 msgid "ditched"
 msgstr "posé en catastrophe"
 
-#: .\mod_rating_by_type\models.py:519
+#: .\mod_rating_by_type\models.py:518
 msgctxt "sortie_status"
 msgid "crashed"
 msgstr "crashé"
 
-#: .\mod_rating_by_type\models.py:520
+#: .\mod_rating_by_type\models.py:519
 msgctxt "sortie_status"
 msgid "shotdown"
 msgstr "abattu"
 
-#: .\mod_rating_by_type\models.py:521
+#: .\mod_rating_by_type\models.py:520
 msgctxt "sortie_status"
 msgid "not takeoff"
 msgstr "pas décollé"
 
-#: .\mod_rating_by_type\models.py:522
+#: .\mod_rating_by_type\models.py:521
 msgctxt "sortie_status"
 msgid "in flight"
 msgstr "en vol"
 
-#: .\mod_rating_by_type\models.py:528
+#: .\mod_rating_by_type\models.py:527
 msgctxt "aircraft_status"
 msgid "unharmed"
 msgstr "intact"
 
-#: .\mod_rating_by_type\models.py:529
+#: .\mod_rating_by_type\models.py:528
 msgctxt "aircraft_status"
 msgid "damaged"
 msgstr "endommagé"
 
-#: .\mod_rating_by_type\models.py:530
+#: .\mod_rating_by_type\models.py:529
 msgctxt "aircraft_status"
 msgid "destroyed"
 msgstr "détruit"
 
-#: .\mod_rating_by_type\models.py:536
+#: .\mod_rating_by_type\models.py:535
 msgctxt "sortie_status"
 msgid "healthy"
 msgstr "en bonne santé"
 
-#: .\mod_rating_by_type\models.py:537
+#: .\mod_rating_by_type\models.py:536
 msgctxt "sortie_status"
 msgid "wounded"
 msgstr "blessé"
 
-#: .\mod_rating_by_type\models.py:538
+#: .\mod_rating_by_type\models.py:537
 msgctxt "sortie_status"
 msgid "dead"
 msgstr "tué"
 
-#: .\mod_rating_by_type\models.py:944
+#: .\mod_rating_by_type\models.py:943
 msgid "reward"
 msgstr "récompense"
 
-#: .\mod_rating_by_type\models.py:945
+#: .\mod_rating_by_type\models.py:944
 msgid "rewards"
 msgstr "récompenses"
 
@@ -1092,7 +1099,8 @@ msgstr "Meilleurs pilotes de chasse en vie"
 #: .\mod_rating_by_type\templates\main.html:235
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
-msgstr "Meilleurs pilotes d’avions d’attaque au sol lors de la dernière mission"
+msgstr ""
+"Meilleurs pilotes d’avions d’attaque au sol lors de la dernière mission"
 
 #: .\mod_rating_by_type\templates\main.html:237
 msgctxt "tour_top"
@@ -2574,6 +2582,10 @@ msgstr "Meilleure série d’attaque au sol"
 msgctxt "tour_top"
 msgid "Best bomber streak"
 msgstr "Meilleure série d’attaque au sol"
+
+#~ msgctxt "bullet_type"
+#~ msgid ".303 BMG"
+#~ msgstr ".303 BMG"
 
 #, fuzzy
 #~| msgctxt "tour_top"

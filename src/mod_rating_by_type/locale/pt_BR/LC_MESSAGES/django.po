@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 10:47+0200\n"
+"POT-Creation-Date: 2021-08-12 11:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,10 +25,12 @@ msgid "11mm Vickers"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:52
-#: .\mod_rating_by_type\bullets_types.py:66
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "115mm British"
 msgctxt "bullet_type"
-msgid ".303 BMG"
-msgstr ""
+msgid ".303 British"
+msgstr "115mm Inglesa"
 
 #: .\mod_rating_by_type\bullets_types.py:54
 msgctxt "bullet_type"
@@ -88,6 +90,11 @@ msgstr ""
 #: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
 msgid ".50 BMG"
+msgstr ""
+
+#: .\mod_rating_by_type\bullets_types.py:66
+msgctxt "bullet_type"
+msgid ".30-06 Springfield"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:67
@@ -567,76 +574,76 @@ msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
 msgstr "75mm Soviética (HE)"
 
-#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:479
-#: .\mod_rating_by_type\models.py:696
+#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:478
+#: .\mod_rating_by_type\models.py:695
 msgid "neutral"
 msgstr "neutro"
 
-#: .\mod_rating_by_type\models.py:517
+#: .\mod_rating_by_type\models.py:516
 msgctxt "sortie_status"
 msgid "landed"
 msgstr "aterrissou"
 
-#: .\mod_rating_by_type\models.py:518
+#: .\mod_rating_by_type\models.py:517
 msgctxt "sortie_status"
 msgid "ditched"
 msgstr "pouso forçado"
 
-#: .\mod_rating_by_type\models.py:519
+#: .\mod_rating_by_type\models.py:518
 msgctxt "sortie_status"
 msgid "crashed"
 msgstr "colidiu"
 
-#: .\mod_rating_by_type\models.py:520
+#: .\mod_rating_by_type\models.py:519
 msgctxt "sortie_status"
 msgid "shotdown"
 msgstr "derrubado"
 
-#: .\mod_rating_by_type\models.py:521
+#: .\mod_rating_by_type\models.py:520
 msgctxt "sortie_status"
 msgid "not takeoff"
 msgstr "não decolou"
 
-#: .\mod_rating_by_type\models.py:522
+#: .\mod_rating_by_type\models.py:521
 msgctxt "sortie_status"
 msgid "in flight"
 msgstr "em voo"
 
-#: .\mod_rating_by_type\models.py:528
+#: .\mod_rating_by_type\models.py:527
 msgctxt "aircraft_status"
 msgid "unharmed"
 msgstr "sem danos"
 
-#: .\mod_rating_by_type\models.py:529
+#: .\mod_rating_by_type\models.py:528
 msgctxt "aircraft_status"
 msgid "damaged"
 msgstr "danificado"
 
-#: .\mod_rating_by_type\models.py:530
+#: .\mod_rating_by_type\models.py:529
 msgctxt "aircraft_status"
 msgid "destroyed"
 msgstr "destruído"
 
-#: .\mod_rating_by_type\models.py:536
+#: .\mod_rating_by_type\models.py:535
 msgctxt "sortie_status"
 msgid "healthy"
 msgstr "sem ferimentos"
 
-#: .\mod_rating_by_type\models.py:537
+#: .\mod_rating_by_type\models.py:536
 msgctxt "sortie_status"
 msgid "wounded"
 msgstr "ferido"
 
-#: .\mod_rating_by_type\models.py:538
+#: .\mod_rating_by_type\models.py:537
 msgctxt "sortie_status"
 msgid "dead"
 msgstr "morto"
 
-#: .\mod_rating_by_type\models.py:944
+#: .\mod_rating_by_type\models.py:943
 msgid "reward"
 msgstr "recompensa"
 
-#: .\mod_rating_by_type\models.py:945
+#: .\mod_rating_by_type\models.py:944
 msgid "rewards"
 msgstr "recompensas"
 
@@ -2315,7 +2322,9 @@ msgid ""
 "Ammo types are not attached to damage logs in the log files. \"Ammo hit\" "
 "logs are attached via processing to damage logs using an educated guess, so "
 "it may be incorrect."
-msgstr "* Les types de munitions ne sont pas rattachés aux dégâts dans le fichier journal."
+msgstr ""
+"* Les types de munitions ne sont pas rattachés aux dégâts dans le fichier "
+"journal."
 
 #: .\mod_rating_by_type\templates\pilot_sorties.html:3
 #: .\mod_rating_by_type\templates\pilot_sorties.html:16

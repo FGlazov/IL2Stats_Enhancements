@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 10:47+0200\n"
+"POT-Creation-Date: 2021-08-12 11:35+0200\n"
 "PO-Revision-Date: 2016-03-19 20:51+0000\n"
 "Last-Translator: b'Anonymous User <vaal.87@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,8 @@ msgid "11mm Vickers"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:52
-#: .\mod_rating_by_type\bullets_types.py:66
 msgctxt "bullet_type"
-msgid ".303 BMG"
+msgid ".303 British"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:54
@@ -98,6 +97,11 @@ msgstr "ШКАС (AP)"
 #: .\mod_rating_by_type\bullets_types.py:65
 msgctxt "bullet_type"
 msgid ".50 BMG"
+msgstr ""
+
+#: .\mod_rating_by_type\bullets_types.py:66
+msgctxt "bullet_type"
+msgid ".30-06 Springfield"
 msgstr ""
 
 #: .\mod_rating_by_type\bullets_types.py:67
@@ -595,52 +599,52 @@ msgctxt "bullet_type"
 msgid "75mm Soviet (HE)"
 msgstr ""
 
-#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:479
-#: .\mod_rating_by_type\models.py:696
+#: .\mod_rating_by_type\models.py:166 .\mod_rating_by_type\models.py:478
+#: .\mod_rating_by_type\models.py:695
 #, fuzzy
 #| msgctxt "coalition"
 #| msgid "neutral"
 msgid "neutral"
 msgstr "нейтральная"
 
-#: .\mod_rating_by_type\models.py:517
+#: .\mod_rating_by_type\models.py:516
 msgctxt "sortie_status"
 msgid "landed"
 msgstr "посадка на аэродром"
 
-#: .\mod_rating_by_type\models.py:518
+#: .\mod_rating_by_type\models.py:517
 msgctxt "sortie_status"
 msgid "ditched"
 msgstr "посадка вне аэродрома"
 
-#: .\mod_rating_by_type\models.py:519
+#: .\mod_rating_by_type\models.py:518
 msgctxt "sortie_status"
 msgid "crashed"
 msgstr "разбился"
 
-#: .\mod_rating_by_type\models.py:520
+#: .\mod_rating_by_type\models.py:519
 msgctxt "sortie_status"
 msgid "shotdown"
 msgstr "сбит"
 
-#: .\mod_rating_by_type\models.py:521
+#: .\mod_rating_by_type\models.py:520
 msgctxt "sortie_status"
 msgid "not takeoff"
 msgstr "не взлетал"
 
-#: .\mod_rating_by_type\models.py:522
+#: .\mod_rating_by_type\models.py:521
 msgctxt "sortie_status"
 msgid "in flight"
 msgstr "в полете"
 
-#: .\mod_rating_by_type\models.py:528
+#: .\mod_rating_by_type\models.py:527
 #, fuzzy
 #| msgid "username"
 msgctxt "aircraft_status"
 msgid "unharmed"
 msgstr "имя пользователя"
 
-#: .\mod_rating_by_type\models.py:529
+#: .\mod_rating_by_type\models.py:528
 #, fuzzy
 #| msgctxt "sortie_log"
 #| msgid "damaged"
@@ -648,33 +652,33 @@ msgctxt "aircraft_status"
 msgid "damaged"
 msgstr "нанес повреждения"
 
-#: .\mod_rating_by_type\models.py:530
+#: .\mod_rating_by_type\models.py:529
 msgctxt "aircraft_status"
 msgid "destroyed"
 msgstr ""
 
-#: .\mod_rating_by_type\models.py:536
+#: .\mod_rating_by_type\models.py:535
 msgctxt "sortie_status"
 msgid "healthy"
 msgstr "здоров"
 
-#: .\mod_rating_by_type\models.py:537
+#: .\mod_rating_by_type\models.py:536
 msgctxt "sortie_status"
 msgid "wounded"
 msgstr "ранен"
 
-#: .\mod_rating_by_type\models.py:538
+#: .\mod_rating_by_type\models.py:537
 msgctxt "sortie_status"
 msgid "dead"
 msgstr "погиб"
 
-#: .\mod_rating_by_type\models.py:944
+#: .\mod_rating_by_type\models.py:943
 #, fuzzy
 #| msgid "award"
 msgid "reward"
 msgstr "награда"
 
-#: .\mod_rating_by_type\models.py:945
+#: .\mod_rating_by_type\models.py:944
 #, fuzzy
 #| msgid "awards"
 msgid "rewards"
