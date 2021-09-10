@@ -43,7 +43,11 @@
                     </div>
                 </div>
                 {% for k in killboard %}
+                {% if k.player.type == 'pilot' %}
                 <a class="row" href="{{ k.player.get_profile_url }}">
+                {% else %}
+                <a class="row" href="{{ k.player.get_tankman_url }}">
+                {% endif %}
                     <div class="cell">{{ forloop.counter }}</div>
                     <div class="cell" style="text-align: left;">{{ k.player.nickname }}</div>
                     <div class="cell img">
