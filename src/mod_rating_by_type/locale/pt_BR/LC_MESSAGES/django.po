@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2021-06-19 14:40+0200\n"
+=======
+"POT-Creation-Date: 2021-08-12 11:35+0200\n"
+>>>>>>> master
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,11 +28,18 @@ msgctxt "bullet_type"
 msgid "11mm Vickers"
 msgstr ""
 
+<<<<<<< HEAD
 #: .\mod_rating_by_type\bullets_types.py:37
 #: .\mod_rating_by_type\bullets_types.py:51
+=======
+#: .\mod_rating_by_type\bullets_types.py:52
+#, fuzzy
+#| msgctxt "bullet_type"
+#| msgid "115mm British"
+>>>>>>> master
 msgctxt "bullet_type"
-msgid ".303 BMG"
-msgstr ""
+msgid ".303 British"
+msgstr "115mm Inglesa"
 
 #: .\mod_rating_by_type\bullets_types.py:39
 msgctxt "bullet_type"
@@ -90,8 +101,18 @@ msgctxt "bullet_type"
 msgid ".50 BMG"
 msgstr ""
 
+<<<<<<< HEAD
 #: .\mod_rating_by_type\bullets_types.py:52
 #: .\mod_rating_by_type\bullets_types.py:53
+=======
+#: .\mod_rating_by_type\bullets_types.py:66
+msgctxt "bullet_type"
+msgid ".30-06 Springfield"
+msgstr ""
+
+#: .\mod_rating_by_type\bullets_types.py:67
+#: .\mod_rating_by_type\bullets_types.py:68
+>>>>>>> master
 msgctxt "bullet_type"
 msgid "MG 34"
 msgstr ""

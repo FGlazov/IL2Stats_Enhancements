@@ -1,12 +1,12 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie, KillboardPvP, LogEntry
+from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour
 from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
-                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS)
+                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
@@ -568,9 +568,6 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
 # ======================== MODDED PART BEGIN
 def increment_subtype_persona(sortie, cls):
-    # TODO: At some point also calculate the killboard.
-    #   At the moment there seems to be no way to do it outside of monkey patching stats_whore or retroactive computing.
-    #   Perhaps there is a nicer way to calculate it...
     player = FilteredPlayer.objects.get_or_create(
         profile_id=sortie.player.profile.id,
         tour_id=sortie.tour.id,
@@ -614,5 +611,40 @@ def increment_subtype_persona(sortie, cls):
     reward_vlife(vlife=vlife, player=player)
     reward_mission(player_mission=player_mission, player=player)
     reward_tour(player=player)
+
+
+def get_tour(date):
+    """
+    :type date: datetime
+    """
+    if not module_active(MODULE_MISSION_WIN_NEW_TOUR):
+        return old_stats_whore.old_get_tour(date)
+    else:
+        day_name = date.strftime("%Y-%m-%d")
+
+        try:
+            current_tour = Tour.objects.get(is_ended=False)
+        except Tour.DoesNotExist:
+            current_tour = Tour.objects.create(title=day_name)
+            logger.info('[mod_rating_by_type] Started first tour by winning mission.')
+        except Tour.MultipleObjectsReturned:
+            logger.error('multiple not ended tours - should be only one')
+            input()
+            sys.exit()
+
+        if not Mission.objects.filter(tour=current_tour).exists():
+            return current_tour
+
+        last_mission = Mission.objects.filter(tour=current_tour).order_by('-id')[0]
+        if last_mission.winning_coalition is not None:
+            current_tour.is_ended = True
+            current_tour.save()
+
+            new_tour = Tour.objects.create(title=day_name)
+            logger.info('[mod_rating_by_type] Started new tour by winning mission.')
+
+            return new_tour
+        else:
+            return current_tour
 
 # ======================== MODDED PART END

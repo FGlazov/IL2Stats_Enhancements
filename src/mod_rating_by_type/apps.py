@@ -55,6 +55,8 @@ class ModConfig(AppConfig):
         original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
         original_stats_whore.update_general = new_stats_whore.update_general
         original_stats_whore.old_update_bonus_score = original_stats_whore.update_bonus_score
+        original_stats_whore.old_get_tour = original_stats_whore.get_tour
+        original_stats_whore.get_tour = new_stats_whore.get_tour
         original_stats_whore.update_bonus_score = new_stats_whore.update_bonus_score
         original_stats_whore.update_ammo = new_stats_whore.update_ammo
         original_stats_whore.update_sortie = new_stats_whore.update_sortie
