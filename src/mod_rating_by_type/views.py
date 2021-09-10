@@ -209,12 +209,8 @@ def __get_player(profile_id, request, tour_id, cls):
 
             request.tour = player.tour
         except IndexError:
-            try:
-                player = (Player.objects.select_related('profile', 'tour')
-                    .filter(profile_id=profile_id, type='tankman').order_by('-id')[0])
-                request.tour = player.tour
-            except Profile.DoesNotExist:
-                raise Http404
+            raise Http404
+
     return player, profile
 
 
