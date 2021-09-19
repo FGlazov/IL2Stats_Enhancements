@@ -4,6 +4,10 @@ import operator
 
 TOTAL_HITS = 'total_hits'
 TOTAL_RECEIVED = 'total_received'
+# Here "ORDINANCE" is bombs + rockets but not bullets + shells.
+ORDINANCE = 'ordinance'
+BOMBS = 'bombs'
+ROCKETS = 'rockets'
 ALL_TAKEN = 'all_taken'
 DMG_FROM_ONE_SOURCE = 'dmg_from_one_source'
 LAST_DMG_SORTIE = 'last_dmg_sortie'
@@ -216,7 +220,7 @@ def record_hits(tik, target, attacker, ammo):
     if not module_active(MODULE_AMMO_BREAKDOWN):
         return
 
-    if ammo['cls'] != 'shell' and ammo['cls'] != 'bullet':
+    if ammo['cls'] not in {'shell', 'bullet', 'bomb', 'rocket'}:
         return
 
     RECENT_HITS_CACHE.add_to_hits_cache(tik, target, attacker, ammo)
@@ -229,8 +233,7 @@ def record_hits(tik, target, attacker, ammo):
         if not hasattr(sortie, 'ammo_breakdown'):
             sortie.ammo_breakdown = default_ammo_breakdown()
 
-        increment(sortie.ammo_breakdown, TOTAL_RECEIVED, ammo['name'])
-        sortie.ammo_breakdown[ALL_TAKEN] += 1
+        increment_hit(ammo, sortie, TOTAL_RECEIVED)
 
         if attacker:
             attacker_id = attacker.id
@@ -269,16 +272,23 @@ def record_hits(tik, target, attacker, ammo):
         increment(sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
 
 
-def default_ammo_breakdown():
-    return {
-        TOTAL_HITS: dict(),
-        TOTAL_RECEIVED: dict(),
-        ALL_TAKEN: 0,
-        DMG_FROM_ONE_SOURCE: False,
-        LAST_DMG_SORTIE: None,
-        LAST_DMG_OBJECT: None,
-        LAST_TURRET_ACCOUNT: None,
-    }
+def increment_hit(ammo, sortie, main_key):
+    bomb = ammo['cls'] == 'bomb'
+    rocket = ammo['cls'] == 'rocket'
+    ordinance = bomb or rocket
+
+    if not ordinance:
+        increment(sortie.ammo_breakdown, main_key, ammo['name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ALL_TAKEN] += 1
+    elif bomb:
+        increment(sortie.ammo_breakdown[ORDINANCE][BOMBS], main_key, ammo['name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ORDINANCE][BOMBS][ALL_TAKEN] += 1
+    elif rocket:
+        increment(sortie.ammo_breakdown[ORDINANCE][ROCKETS], main_key, ammo['name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ORDINANCE][ROCKETS][ALL_TAKEN] += 1
 
 
 def increment(ammo_breakdown, main_key, subkey):
@@ -286,6 +296,30 @@ def increment(ammo_breakdown, main_key, subkey):
         ammo_breakdown[main_key][subkey] += 1
     else:
         ammo_breakdown[main_key][subkey] = 1
+
+
+def default_ammo_breakdown():
+    return {
+        TOTAL_HITS: dict(),
+        TOTAL_RECEIVED: dict(),
+        ALL_TAKEN: 0,
+        ORDINANCE: {
+            BOMBS: {
+                TOTAL_HITS: dict(),
+                TOTAL_RECEIVED: dict(),
+                ALL_TAKEN: 0,
+            },
+            ROCKETS: {
+                TOTAL_HITS: dict(),
+                TOTAL_RECEIVED: dict(),
+                ALL_TAKEN: 0,
+            }
+        },
+        DMG_FROM_ONE_SOURCE: False,
+        LAST_DMG_SORTIE: None,
+        LAST_DMG_OBJECT: None,
+        LAST_TURRET_ACCOUNT: None,
+    }
 
 
 def encode_tuple(obj, ammo):
