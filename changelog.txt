@@ -172,3 +172,7 @@ Version 1.8.0
 - Update to 2.3.0 of enhancements.
 - Fix bug where victories against tank players were showing incorrect point values in sortie log (the score was computed correctly, but the score gained when killing tank players was being displayed incorrectly).
 - Fix bug which causes a 500 error to occur instead of a 404 when an unknown player is queried without a tour.
+
+Version 1.8.1
+
+- Update objects.csv
