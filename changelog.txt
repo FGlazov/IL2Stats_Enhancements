@@ -176,3 +176,7 @@ Version 1.8.0
 Version 1.8.1
 
 - Update objects.csv
+
+Version 1.8.2
+
+- Fix bug where tank penalties were not working properly.

@@ -17,8 +17,6 @@ Tank mod version: 3.4
 Stats Enhancements version : 2.3.0
 Global Aircraft Stats mod version : 1.4.4
 
-DISCLAIMER: This module is NOT (currently) retroactive, it will only split the stats of new sorties. 
-
 Installation
 --------------------------------------------
 1. You need an installation of il2 stats. The latest version can be found under https://forum.il2sturmovik.com/topic/19083-il2-stats-statistics-system-for-a-dedicated-server-il2-battle-of-stalingrad/

@@ -312,13 +312,17 @@ def update_bonus_score(new_sortie):
         new_sortie.score = new_sortie.score_dict['basic']
 
         if new_sortie.is_dead:
-            penalty_pct = bonuses_score_dict['mod_penalty_dead']['base']
+            penalty_key = 'mod_penalty_dead' if is_aircraft else 'tank_penalty_dead'
+            penalty_pct = bonuses_score_dict[penalty_key]['base']
         elif new_sortie.is_captured:
-            penalty_pct = bonuses_score_dict['mod_penalty_captured']['base']
+            penalty_key = 'mod_penalty_captured' if is_aircraft else 'tank_penalty_captured'
+            penalty_pct = bonuses_score_dict[penalty_key]['base']
         elif new_sortie.is_bailout:
-            penalty_pct = bonuses_score_dict['mod_penalty_bailout']['base']
+            penalty_key = 'mod_penalty_bailout' if is_aircraft else 'tank_penalty_bailout'
+            penalty_pct = bonuses_score_dict[penalty_key]['base']
         elif new_sortie.is_shotdown:
-            penalty_pct = bonuses_score_dict['mod_penalty_shotdown']['base']
+            penalty_key = 'mod_penalty_shotdown' if is_aircraft else 'tank_penalty_shotdown'
+            penalty_pct = bonuses_score_dict[penalty_key]['base']
         new_sortie.score = int(new_sortie.score * ((100 - penalty_pct) / 100))
         new_sortie.score_dict['penalty_pct'] = penalty_pct
 
