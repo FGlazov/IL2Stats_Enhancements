@@ -5,7 +5,7 @@ Authors: =FEW=Revolves and Enigma89
 
 This is a mod for IL2 Stats, which adds and changes minor things to the IL2 stats websites. The mod is seperated into modules, which can be turned on and off so you can customize which of the features of the mod you wish to use. Descriptions of the modules follow.
 
-This version of the mod is compatible with version 1.2.50 of IL2 stats.
+This version of the mod is compatible with version 1.2.57 of IL2 stats.
 
 ------------ Modules which show new information ------------ 
 
