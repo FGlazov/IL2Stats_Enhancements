@@ -187,12 +187,8 @@ Version 1.8.3
 
 Version 1.8.4
 
-<<<<<<< HEAD
 - Update to 1.2.58 of IL2 Stats
-=======
-- Update to 1.2.57 of IL2 Stats.
 
-Version 2.3.2
+Version 1.8.5
 
-- Module Ammo breakdown: Fix rare bug where stats parser would crash if there was a hit registered in the DServer logs with a bullet/shell projectile that did not have an attacker.
->>>>>>> 2.3
+- Update to 2.3.2 of enhancements.
