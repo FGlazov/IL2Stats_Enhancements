@@ -261,9 +261,11 @@ def record_hits(tik, target, attacker, ammo):
     if attacker and attacker.coal_id == target.coal_id:
         return
 
-    sortie = attacker.sortie
-    if attacker.parent:
-        sortie = attacker.parent.sortie
+    sortie = None
+    if attacker is not None:
+        sortie = attacker.sortie
+        if attacker.parent:
+            sortie = attacker.parent.sortie
 
     if sortie:
         if not hasattr(sortie, 'ammo_breakdown'):
