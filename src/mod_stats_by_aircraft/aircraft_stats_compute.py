@@ -675,8 +675,8 @@ def process_streaks_and_best_sorties(bucket, sortie):
         bucket.current_gk_streak = 0
 
     not_player_bucket = AircraftBucket.objects.filter(
-        tour=bucket.tour,
-        aircraft=bucket.aircraft,
+        tour=sortie.tour,
+        aircraft=sortie.aircraft,
         filter_type=bucket.filter_type,
         player=None,
     ).get_or_create()[0]

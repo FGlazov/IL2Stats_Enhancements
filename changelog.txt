@@ -192,3 +192,7 @@ Version 1.8.4
 Version 1.8.5
 
 - Update to 2.3.2 of enhancements.
+
+Version 1.8.6
+
+- Update to 1.4.5 of aircraft mod.
