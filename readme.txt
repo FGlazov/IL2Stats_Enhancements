@@ -10,7 +10,7 @@ Disconnect mod by CountZero ( https://forum.il2sturmovik.com/topic/56709-mod-for
 Split Rankings mod by =Few=Revolves and Enigma89 ( https://forum.il2sturmovik.com/topic/69965-il-2-stats-submod-split-rankings/ )
 Global Aircraft Stats mod =Few=Revolves and Enigma89  ( https://forum.il2sturmovik.com/topic/70380-il-2-stats-mod-global-aircraft-stats/ )
 
-This bundle version is designed to work with version 1.2.58 of IL-2 stats.
+This bundle version is designed to work with version 1.2.59 of IL-2 stats.
 
 Disconnect mod version: 1.6.2
 Tank mod version: 3.4
@@ -42,7 +42,7 @@ config parameter "modules" under [stats]. More details inside the Stats Enhancem
 
 7. Run the update script in your /run folder after you're done with the above.
 
-8. If you're using the module "Adjustable Bonuses and Penalities", there are seperate variables for tank bonuses/penalties you might wish to configure:
+8. If you're using the module "Adjustable Bonuses and Penalities", there are seperate variables for tank bonuses/penalties you might wish to configure. You can find them inside the admin panel under "Scoring".
 
 Config name              | Default
 -------------------------|--------
@@ -55,7 +55,7 @@ tank_penalty_captured    | 75%
 tank_penalty_bailout     | 50%
 tank_penalty_shotdown    | 20%
 
-Currently "in_service" is the scenario where a tank makes it back, "in_flight" or "landed" might become relevant if the game logs change.
+Currently "in_service" is the scenario where a tank makes it back, "in_flight" or "landed" might become relevant if the game logs change. 
 
 Support
 ---------------------------------------------
