@@ -200,3 +200,4 @@ Version 1.8.6
 Version 1.8.7
 
 - Update to 2.3.3 of enhancements, 1.4.6 of aircraft mod.
+- Update object.csv
