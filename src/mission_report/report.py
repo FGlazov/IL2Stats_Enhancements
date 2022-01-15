@@ -389,6 +389,7 @@ class MissionReport:
             if not (sortie.is_ended or sortie.is_bailout or (not sortie.aircraft) or sortie.aircraft.on_ground ) and sortie.aircraft.damage > dmg_pct:
                 sortie.is_damageddisco = True
                 self.logger_event({'type': 'disco', 'sortie': sortie})
+                sortie.aircraft.got_killed(force_by_dmg=True)
             # вылет был завершен, был прыжок, не был создан самолет, самолет на земле
             elif not (sortie.is_ended or sortie.is_bailout or (not sortie.aircraft) or sortie.aircraft.on_ground):
                 sortie.is_disco = True
@@ -558,8 +559,11 @@ class Object:
             self.captured()
         if self.is_aircraft_rtb(pos=pos):
             self.is_rtb = True
+        dmg_pct_tk = 5
+        if self.is_rtb:
+            dmg_pct_tk = 50
         # если повреждения самолета более 50% предполагаем что посадка была жесткой
-        self.killed_by_damage(dmg_pct=50)
+        self.killed_by_damage(dmg_pct=50, dmg_pct_tk=dmg_pct_tk)
 
     def bot_eject_leave(self, tik, pos):
         self.is_bailout = True
