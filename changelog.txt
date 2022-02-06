@@ -99,3 +99,15 @@ Version 2.2.4
 Version 2.3.0
 
 - New module "Mission Win New Tour", which starts new a new tour every time a mission is won.
+
+Version 2.3.1
+
+- Update to 1.2.57 of IL2 Stats.
+
+Version 2.3.2
+
+- Module Ammo breakdown: Fix rare bug where stats parser would crash if there was a hit registered in the DServer logs with a bullet/shell projectile that did not have an attacker.
+
+Version 2.3.3
+
+- Update to 1.2.59 of IL2 Stats.

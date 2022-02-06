@@ -122,6 +122,9 @@ def got_damaged(self, damage, attacker=None, pos=None):
         attacker = None
     if attacker:
         self.damagers[attacker] += damage
+        # на случай когда самолет сбивают убив пилота, "не повредив" самолет
+        if self.parent:
+            self.parent.damagers[attacker] += damage
     is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
 
     # ======================== MODDED PART BEGIN
@@ -261,9 +264,11 @@ def record_hits(tik, target, attacker, ammo):
     if attacker and attacker.coal_id == target.coal_id:
         return
 
-    sortie = attacker.sortie
-    if attacker.parent:
-        sortie = attacker.parent.sortie
+    sortie = None
+    if attacker is not None:
+        sortie = attacker.sortie
+        if attacker.parent:
+            sortie = attacker.parent.sortie
 
     if sortie:
         if not hasattr(sortie, 'ammo_breakdown'):
