@@ -686,6 +686,7 @@ def pilot_sortie(request, sortie_id):
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
+        'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
     })
 
 

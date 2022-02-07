@@ -865,10 +865,36 @@
                     <div class="name">{% trans 'Number of rockets launches' %}</div>
                     <div class="num">{{ sortie.ammo.used_rockets }}</div>
                 </div>
+                {% if ammo_breakdown_module %}
+                <div class="item">
+                    <div class="name">{% trans 'Number of rocket hits' %}</div>
+                    <div class="num">{{ sortie.ammo.hit_rockets }}</div>
+                </div>
+                {% for ammo, nr_hits in ammo_breakdown.rockets.total_hits %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
                 <div class="item">
                     <div class="name">{% trans 'Number of bombs dropped' %}</div>
                     <div class="num">{{ sortie.ammo.used_bombs }}</div>
                 </div>
+                {% if ammo_breakdown_module %}
+                <div class="item">
+                    <div class="name">{% trans 'Number of bomb hits' %}</div>
+                    <div class="num">{{ sortie.ammo.hit_bombs }}</div>
+                </div>
+                {% for ammo, nr_hits in ammo_breakdown.bombs.total_hits %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
                 <span style="color: #CF2D1C; font-size: 13px;">
                     * {% trans 'This block may contain incorrect information, this is due to the errors in the game log.' %}
                 </span>

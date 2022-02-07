@@ -274,7 +274,7 @@ def record_hits(tik, target, attacker, ammo):
         if not hasattr(sortie, 'ammo_breakdown'):
             sortie.ammo_breakdown = default_ammo_breakdown()
 
-        increment(sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
+        increment_hit(ammo, sortie, TOTAL_HITS)
 
 
 def increment_hit(ammo, sortie, main_key):
@@ -287,11 +287,11 @@ def increment_hit(ammo, sortie, main_key):
         if main_key == TOTAL_RECEIVED:
             sortie.ammo_breakdown[ALL_TAKEN] += 1
     elif bomb:
-        increment(sortie.ammo_breakdown[ORDINANCE][BOMBS], main_key, ammo['name'])
+        increment(sortie.ammo_breakdown[ORDINANCE][BOMBS], main_key, ammo['log_name'])
         if main_key == TOTAL_RECEIVED:
             sortie.ammo_breakdown[ORDINANCE][BOMBS][ALL_TAKEN] += 1
     elif rocket:
-        increment(sortie.ammo_breakdown[ORDINANCE][ROCKETS], main_key, ammo['name'])
+        increment(sortie.ammo_breakdown[ORDINANCE][ROCKETS], main_key, ammo['log_name'])
         if main_key == TOTAL_RECEIVED:
             sortie.ammo_breakdown[ORDINANCE][ROCKETS][ALL_TAKEN] += 1
 
