@@ -118,3 +118,4 @@ Version 2.4.0
 - New module "Gunner stats", which includes a new table "Gunner Rankings" which works like "Pilot rankings", but for gunners of an aircraft.
 - Module Ammo Breakdown: The breakdowns now also work for bombs/rockets. This is useful for attacker/bomber planes, and also works for tanks (bombs/rockets taken).
 - Fix bug where sorties were being counted twice for specialized VLives (fighter/attacker/bomber vlives). Happened only if mission was declared to be "won by score".
+- Fix bug where waitress was giving 500 errors when it should have been giving out 404 errors (invalid player IDs).

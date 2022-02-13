@@ -123,7 +123,7 @@ def pilot(request, profile_id, nickname=None):
     tour_id = request.GET.get('tour')
     cls = validate_and_get_player_cls(request)
 
-    player, profile = __get_player(profile_id, request, tour_id, cls)
+    player, profile = __get_player(profile_id, request, tour_id, cls, redirect_on_fail=True)
     if player is None:
         return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
@@ -175,7 +175,7 @@ def __find_filtered_players(profile_id, tour_id):
     return light_player_exists, medium_player_exists, heavy_player_exists
 
 
-def __get_player(profile_id, request, tour_id, cls):
+def __get_player(profile_id, request, tour_id, cls, redirect_on_fail=False):
     if cls == 'all':
         player_class = Player
     else:
@@ -190,6 +190,9 @@ def __get_player(profile_id, request, tour_id, cls):
             player = query.get(profile_id=profile_id, type='pilot', tour_id=request.tour.id)
 
         except player_class.DoesNotExist:
+            if not redirect_on_fail:
+                raise Http404
+
             try:
                 profile = Profile.objects.get(id=profile_id)
                 player = None
