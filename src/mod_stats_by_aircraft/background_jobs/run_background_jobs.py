@@ -1,6 +1,7 @@
 from django.db import transaction
 
 from .background_job import get_tour_cutoff
+from .fix_captures import FixCaptures
 from .full_retro_compute import FullRetroCompute
 from .player_retro_compute import PlayerRetroCompute
 from .streaks_retro_compute import StreaksRetroCompute
@@ -13,7 +14,7 @@ from stats.logger import logger
 
 # Subclasses of BackgroundJob, see background_job.py
 jobs = [FullRetroCompute(), PlayerRetroCompute(), StreaksRetroCompute(), FixCorruptedAaAccidents(),
-        UpdateAmmoBreakdown(), FixTurretKillboards(), FixNoDeathsPlayerKB(), FixAccuracy()]
+        UpdateAmmoBreakdown(), FixTurretKillboards(), FixNoDeathsPlayerKB(), FixAccuracy(), FixCaptures()]
 
 LOG_COUNTER = 0
 LOGGING_INTERVAL = 5  # How many batches are run before an update log is produced.

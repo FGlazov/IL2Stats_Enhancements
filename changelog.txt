@@ -205,3 +205,7 @@ Version 1.8.7
 Version 1.8.8
 
 - Update to 1.7 of disconnect mod, 3.5 of tank mod.
+
+Version 1.8.9
+
+- Update to 1.4.7 of aircraft mod.

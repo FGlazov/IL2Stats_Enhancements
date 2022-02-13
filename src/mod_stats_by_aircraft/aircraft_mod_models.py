@@ -734,6 +734,7 @@ class SortieAugmentation(models.Model):
     fixed_accuracy = models.BooleanField(default=False, db_index=True)
     recomputed_ammo_breakdown = models.BooleanField(default=False, db_index=True)
     recomputed_ammo_breakdown_2 = models.BooleanField(default=False, db_index=True)
+    fixed_captures = models.BooleanField(default=False, db_index=True)
 
 
     class Meta:
