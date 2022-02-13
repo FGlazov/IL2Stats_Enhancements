@@ -50,7 +50,7 @@ urlpatterns = [
 
     url(r'^ironman/$', views.ironman_stats, name='ironman'),
 
-    url(r'^gunnners/$', views.gunners, name='gunners'),
+    url(r'^gunners/$', views.gunners, name='gunners'),
     url(r'^gunner/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner, name='gunner'),
     url(r'^gunner_sortie/(?P<sortie_id>\d+)/$', views.gunner_sortie, name='gunner_sortie'),
     url(r'^gunner_sortie/log/(?P<sortie_id>\d+)/$', views.gunner_sortie_log, name='gunner_sortie_log'),

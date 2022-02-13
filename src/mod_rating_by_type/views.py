@@ -1112,31 +1112,20 @@ def gunners(request):
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
-    cls = validate_and_get_player_cls(request)
 
-    if cls == 'all':
-        players = Player.players.pilots(tour_id=request.tour.id).order_by(sort_by, 'id')
-        if search:
-            players = players.search(name=search)
-        else:
-            players = players.active(tour=request.tour)
+    players = Player.objects.filter(
+        type='gunner',
+        tour_id=request.tour.id
+    ).order_by('id')
+    if search:
+        players = players.filter(profile__nickname__icontains=search)
     else:
-        players = FilteredPlayer.objects.filter(
-            type='pilot',
-            tour_id=request.tour.id,
-            cls=cls
-        ).order_by(sort_by, 'id')
-        if search:
-            players = players.filter(profile__nickname__icontains=search)
-        else:
-            players = __active_filter(request.tour, players)
+        players = __active_filter(request.tour, players)
 
     players = Paginator(players, ITEMS_PER_PAGE).page(page)
-    return render(request, 'pilots.html', {
+    return render(request, 'gunners.html', {
         'players': players,
         'sort_by': sort_by,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'cls': cls,
     })
 
 

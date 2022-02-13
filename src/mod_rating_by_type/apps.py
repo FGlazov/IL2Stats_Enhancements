@@ -43,6 +43,14 @@ class ModConfig(AppConfig):
         original_views.pilot_awards = new_views.pilot_awards
         original_views.pilot_killboard = new_views.pilot_killboard
         original_views.overall = new_views.overall
+        original_views.gunners = new_views.gunners
+        original_views.gunner = new_views.gunner
+        original_views.gunner_sortie = new_views.gunner_sortie
+        original_views.gunner_sortie_log = new_views.gunner_sortie_log
+        original_views.gunner_vlife = new_views.gunner_vlife
+        original_views.gunner_vlifes = new_views.gunner_vlifes
+        original_views.gunner_awards = new_views.gunner_awards
+        original_views.gunner_killboard = new_views.gunner_killboard
 
         from . import report as new_report
         from mission_report.report import MissionReport, Object

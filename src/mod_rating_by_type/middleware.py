@@ -1,4 +1,4 @@
-from .config_modules import MODULE_IRONMAN_STATS, module_active
+from .config_modules import MODULE_IRONMAN_STATS, MODULE_GUNNER_STATS, module_active
 from config import get_conf
 
 
@@ -11,6 +11,7 @@ def ironman_middleware(get_response):
         # the view (and later middleware) are called.
 
         request.module_ironman = module_active(MODULE_IRONMAN_STATS)
+        request.module_gunner_stats = module_active(MODULE_GUNNER_STATS)
         response = get_response(request)
 
         # Code to be executed for each request/response after
