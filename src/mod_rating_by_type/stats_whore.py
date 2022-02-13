@@ -1,7 +1,7 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife
+from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife, Player
 from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer, \
     VLifeAugmentation
@@ -303,14 +303,6 @@ def update_bonus_score(new_sortie):
         new_sortie.score_dict['penalty'] = penalty_score
         new_sortie.score -= penalty_score
 
-    cls = decide_adjusted_cls(new_sortie)
-    if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
-            and not retro_split_rankings_compute_running()):
-        increment_subtype_persona(new_sortie, cls)
-        sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
-        sortie_augmentation.computed_filtered_player = True
-        sortie_augmentation.save()
-
 
 # ======================== MODDED PART END
 
@@ -389,6 +381,15 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     # ======================== MODDED PART BEGIN
     if player is None:
         player = new_sortie.player
+    if type(player) is Player:
+        cls = decide_adjusted_cls(new_sortie)
+        if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
+                and not retro_split_rankings_compute_running()):
+            increment_subtype_persona(new_sortie, cls)
+            sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
+            sortie_augmentation.computed_filtered_player = True
+            sortie_augmentation.save()
+
     # ======================== MODDED PART END
 
     if not player.date_first_sortie:
