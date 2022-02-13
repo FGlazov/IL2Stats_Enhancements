@@ -126,7 +126,8 @@ Module Air streaks no AI
 Config name: air_streaks_no_ai
 
 This module makes the stats not count AI kills towards air streaks. E.g. shooting down a Spitfire
-flown by a bot does not increase your air streak by 1.
+flown by a bot does not increase your air streak by 1. Works with the global aircraft stats mod,
+if installed.
 
 ------------ Modules for bug workarounds ------------ 
 
