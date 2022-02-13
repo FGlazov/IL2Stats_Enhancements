@@ -48,5 +48,14 @@ urlpatterns = [
     url(r'^sorties/(?P<profile_id>\d+)/$', views.pilot_sorties),
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
 
-    url(r'^ironman/$', views.ironman_stats, name='ironman')
+    url(r'^ironman/$', views.ironman_stats, name='ironman'),
+
+    url(r'^gunnners/$', views.gunners, name='gunners'),
+    url(r'^gunner/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner, name='gunner'),
+    url(r'^gunner_sortie/(?P<sortie_id>\d+)/$', views.gunner_sortie, name='gunner_sortie'),
+    url(r'^gunner_sortie/log/(?P<sortie_id>\d+)/$', views.gunner_sortie_log, name='gunner_sortie_log'),
+    url(r'^gunner_vlife/(?P<vlife_id>\d+)/$', views.gunner_vlife, name='gunner_vlife'),
+    url(r'^gunner_vlifes/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_vlifes, name='gunner_vlifes'),
+    url(r'^gunner_awards/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_awards, name='gunner_awards'),
+    url(r'^gunner_killboard/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_killboard, name='gunner_killboard'),
 ]
