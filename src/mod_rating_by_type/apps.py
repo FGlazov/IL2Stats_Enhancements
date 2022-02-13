@@ -68,7 +68,7 @@ class ModConfig(AppConfig):
         old_csv_data.Command.handle = new_csv_data.Command.handle
 
 
-        from stats.models import Player, Tour
+        from stats.models import Player, Tour, VLife
         from . import models as new_models
         from .models import FilteredPlayer
 
@@ -98,6 +98,11 @@ class ModConfig(AppConfig):
         Player.get_light_killboard_url = FilteredPlayer.get_light_killboard_url
         Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
         Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url
+
+
+        from stats import rewards as original_rewards
+        from . import rewards as new_rewards
+        original_rewards.reward_vlife = new_rewards.reward_vlife_patch
 
         try:
             if module_active(MODULE_AIR_STREAKS_NO_AI):

@@ -1,9 +1,10 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour
+from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife
 from .variant_utils import decide_adjusted_cls
-from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
+from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer, \
+    VLifeAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
                              MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
@@ -469,11 +470,17 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
     player.streak_current = vlife.ak_total
     # ======================== MODDED PART BEGIN
+    ak_no_ai = player.streak_current
+    killboard = vlife.killboard_pve
+    aircraft_types = ['aircraft_light', 'aircraft_medium', 'aircraft_heavy', 'aircraft_transport']
+    for aircraft_type in aircraft_types:
+        ak_no_ai -= killboard[aircraft_type] if aircraft_type in killboard else 0
+
     if module_active(MODULE_AIR_STREAKS_NO_AI):
-        killboard = vlife.killboard_pve
-        aircraft_types = ['aircraft_light', 'aircraft_medium', 'aircraft_heavy', 'aircraft_transport']
-        for aircraft_type in aircraft_types:
-            player.streak_current -= killboard[aircraft_type] if aircraft_type in killboard else 0
+        player.streak_current = ak_no_ai
+
+    if type(vlife) is FilteredVLife:
+        vlife.ak_no_ai = ak_no_ai
     # ======================== MODDED PART END
     player.streak_max = max(player.streak_max, player.streak_current)
     player.streak_ground_current = vlife.gk_total

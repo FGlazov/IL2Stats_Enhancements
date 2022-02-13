@@ -25,7 +25,7 @@ missions_sort_fields = ['id', 'pilots_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
-                      'score', 'score_light', 'score_medium', 'score_heavy',
+                      'score', 'score_light', 'score_medium', 'score_heavy', 'ak_no_ai',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 killboard_sort_fields = ['won', 'lose', 'wl']
 
@@ -739,6 +739,10 @@ def ironman_stats(request):
 
     if cls == 'all':
         vlife_object = VLife
+        if sort_by == 'ak_no_ai':
+            sort_by = 'VLifeAugmentation_MOD_SPLIT_RANKINGS__ak_no_ai'
+        if sort_by == '-ak_no_ai':
+            sort_by = '-VLifeAugmentation_MOD_SPLIT_RANKINGS__ak_no_ai'
     else:
         vlife_object = FilteredVLife
 
@@ -760,6 +764,7 @@ def ironman_stats(request):
         'players': players,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'no_ai_streaks': module_active(MODULE_AIR_STREAKS_NO_AI),
         'cls': cls,
     })
 

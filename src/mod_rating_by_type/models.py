@@ -123,6 +123,21 @@ class PlayerAugmentation(models.Model):
             return None
 
 
+class VLifeAugmentation(models.Model):
+    """
+    Additional fields to VLife objects used by this mod.
+    """
+
+    vlife = models.OneToOneField(VLife, on_delete=models.PROTECT, primary_key=True,
+                                 related_name='VLifeAugmentation_MOD_SPLIT_RANKINGS')
+
+    ak_no_ai = models.IntegerField(default=0, db_index=True)
+
+    class Meta:
+        # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
+        db_table = "VLifeAugmentation_MOD_SPLIT_RANKINGS"
+
+
 class FilteredPlayer(models.Model):
     """
     A copy of Player model from base IL2 Stats with added field "cls". Represents the fighter/attacker/bomber personas.
@@ -504,6 +519,7 @@ class FilteredVLife(models.Model):
     disco = models.IntegerField(default=0)
 
     ak_total = models.IntegerField(default=0, db_index=True)
+    ak_no_ai = models.IntegerField(default=0, db_index=True)
     ak_assist = models.IntegerField(default=0)
     gk_total = models.IntegerField(default=0, db_index=True)
     fak_total = models.IntegerField(default=0)

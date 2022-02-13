@@ -40,6 +40,14 @@
                                  alt="{% trans 'Air Kills' %}" title="{% trans 'Air Kills' %}">
                         </a>
                     </div>
+                    {% if no_ai_streaks %}
+                    <div class="cell" style="width: 90px;">
+                        <a class="sort_by" href="?sort_by=-ak_total">
+                            <img src="{% static 'img/icons/small/streak.png' %}" width="18" height="18"
+                                 alt="{% trans 'Air Kills (No AI)' %}" title="{% trans 'Air Kills (No AI)' %}">
+                        </a>
+                    </div>
+                    {% endif %}
                     <div class="cell" style="width: 90px;">
                         <a class="sort_by" href="?sort_by=-gk_total">
                             <img src="{% static 'img/icons/small/gk.png' %}" width="18" height="18"
@@ -105,6 +113,18 @@
                         {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
                     </div>
                     <div class="cell">{{ player.ak_total }}</div>
+                    {% if no_ai_streaks %}
+                    {% if cls == 'all' %}
+                    {% if player.VLifeAugmentation_MOD_SPLIT_RANKINGS.ak_no_ai != '' %}
+                    <div class="cell">{{ player.VLifeAugmentation_MOD_SPLIT_RANKINGS.ak_no_ai }}</div>
+                    {% else %}
+                    <div class="cell">?</div>
+                    {% endif %}
+
+                    {% else %}
+                    <div class="cell">{{ player.ak_no_ai }}</div>
+                    {% endif %}
+                    {% endif %}
                     <div class="cell">{{ player.gk_total }}</div>
                     <div class="cell">{{ player.flight_time|seconds_to_time }}</div>
                     <div class="cell">{{ player.kl }}</div>
