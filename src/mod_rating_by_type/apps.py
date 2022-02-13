@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
+from .config_modules import module_active, MODULE_AIR_STREAKS_NO_AI
 
 from django.conf.urls import url
 
@@ -97,3 +98,10 @@ class ModConfig(AppConfig):
         Player.get_light_killboard_url = FilteredPlayer.get_light_killboard_url
         Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
         Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url
+
+        try:
+            if module_active(MODULE_AIR_STREAKS_NO_AI):
+                import mod_stats_by_aircraft as aircraft_mod
+                aircraft_mod.apps.IGNORE_AI_KILLS_STREAKS = True
+        except ImportError:
+            pass  # Case when mod_stats_by_aircraft is not installed.
