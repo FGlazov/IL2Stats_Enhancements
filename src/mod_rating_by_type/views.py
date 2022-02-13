@@ -869,6 +869,7 @@ def validate_and_get_player_cls(request):
         raise Http404("Invalid cls")
     return cls
 
+
 def gunner_sortie(request, sortie_id):
     try:
         sortie = (Sortie.objects
@@ -1116,7 +1117,7 @@ def gunners(request):
     players = Player.objects.filter(
         type='gunner',
         tour_id=request.tour.id
-    ).order_by('id')
+    ).order_by(sort_by)
     if search:
         players = players.filter(profile__nickname__icontains=search)
     else:
