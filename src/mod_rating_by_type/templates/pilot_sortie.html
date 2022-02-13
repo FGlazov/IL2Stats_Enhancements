@@ -903,11 +903,12 @@
             <div class="clearfix"></div>
 
 
-            {% if ammo_breakdown.total_received %}
+            {% if ammo_breakdown.total_received or ammo_breakdown.bombs.total_received or ammo_breakdown.rockets.total_received %}
             <div class="sortie_detailed" style="float: left;">
                 <div class="title">
                     {% trans 'Damage Report' %}
                 </div>
+                {% if ammo_breakdown.total_received %}
                 <div class="item">
                     <div class="name">{% trans 'Number of hits taken' %}</div>
                     <div class="num">{{ ammo_breakdown.all_taken }}</div>
@@ -918,6 +919,33 @@
                     <div class="num">{{ nr_hits }}</div>
                 </div>
                 {% endfor %}
+                {% endif %}
+
+                {% if ammo_breakdown.bombs.total_received %}
+                <div class="item">
+                    <div class="name">{% trans 'Number of bombs taken' %}</div>
+                    <div class="num">{{ ammo_breakdown.bombs.all_taken }}</div>
+                </div>
+                {% for ammo, nr_hits in ammo_breakdown.bombs.total_received %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                {% if ammo_breakdown.rockets.total_received %}
+                <div class="item">
+                    <div class="name">{% trans 'Number of rockets taken' %}</div>
+                    <div class="num">{{ ammo_breakdown.rockets.all_taken }}</div>
+                </div>
+                {% for ammo, nr_hits in ammo_breakdown.rockets.total_received %}
+                <div class="sub_item">
+                    <div class="name">{{ ammo }}</div>
+                    <div class="num">{{ nr_hits }}</div>
+                </div>
+                {% endfor %}
+                {% endif %}
 
             </div>
             {% endif %}
