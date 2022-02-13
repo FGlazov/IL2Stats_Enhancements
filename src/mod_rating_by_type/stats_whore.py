@@ -6,7 +6,8 @@ from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
-                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR)
+                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
+                             MODULE_AIR_STREAKS_NO_AI)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
@@ -467,6 +468,13 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
                      killboard_pve=new_sortie.killboard_pve)
 
     player.streak_current = vlife.ak_total
+    # ======================== MODDED PART BEGIN
+    if module_active(MODULE_AIR_STREAKS_NO_AI):
+        killboard = vlife.killboard_pve
+        aircraft_types = ['aircraft_light', 'aircraft_medium', 'aircraft_heavy', 'aircraft_transport']
+        for aircraft_type in aircraft_types:
+            player.streak_current -= killboard[aircraft_type] if aircraft_type in killboard else 0
+    # ======================== MODDED PART END
     player.streak_max = max(player.streak_max, player.streak_current)
     player.streak_ground_current = vlife.gk_total
     player.streak_ground_max = max(player.streak_ground_max, player.streak_ground_current)

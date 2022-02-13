@@ -111,3 +111,8 @@ Version 2.3.2
 Version 2.3.3
 
 - Update to 1.2.59 of IL2 Stats.
+
+Version 2.4.0
+
+- New module "Air streaks no AI", makes air streaks not count ai kills.
+- Module Ammo Breakdown: The breakdowns now also work for bombs/rockets. This is useful for attacker/bomber planes, and also works for tanks (bombs/rockets taken).

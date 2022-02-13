@@ -118,6 +118,16 @@ Config name: mission_win_new_tour
 
 This module makes IL2 stats start a new tour every time a mission is won. This is primarily meant for servers which have few mission wins, where a win is for example the result of a long dynamic campaign spanning several days or even weeks. 
 
+
+----------------------------
+Module Air streaks no AI
+----------------------------
+
+Config name: air_streaks_no_ai
+
+This module makes the stats not count AI kills towards air streaks. E.g. shooting down a Spitfire
+flown by a bot does not increase your air streak by 1.
+
 ------------ Modules for bug workarounds ------------ 
 
 ----------------------------
