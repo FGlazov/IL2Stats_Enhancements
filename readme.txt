@@ -49,6 +49,16 @@ This module adds a new table "Ironman Rankings" to IL2 stats, which is similar t
 Thanks to PR9INICHEK, HawkerMkIII and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for helping us translate this module!
 
 ---------------------------
+Module Gunnery Stats
+---------------------------
+
+Config name: gunnery_stats
+
+This module adds a new table of "Gunner Rankings" to IL2 stats, which is like pilot rankings, but for
+gunners. This lets players track their gunner's stats and lives. Recommended for servers which want
+to encourge players to fly gunners or do not actively discourge it - e.g. Flying Circus servers.
+
+---------------------------
 Module Top Last Mission
 ---------------------------
 
