@@ -871,6 +871,9 @@ def validate_and_get_player_cls(request):
 
 
 def gunner_sortie(request, sortie_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     try:
         sortie = (Sortie.objects
                   .select_related('player', 'player__profile', 'player__tour', 'mission')
@@ -905,6 +908,9 @@ def gunner_sortie(request, sortie_id):
 
 
 def gunner_vlifes(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
@@ -938,6 +944,9 @@ def gunner_vlifes(request, profile_id, nickname=None):
 
 
 def gunner_vlife(request, vlife_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     cls = validate_and_get_player_cls(request)
 
     if cls == 'all':
@@ -962,6 +971,9 @@ def gunner_vlife(request, vlife_id):
 
 
 def gunner_sortie_log(request, sortie_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     try:
         sortie = Sortie.objects.select_related('player', 'player__profile', 'player__tour', 'mission').get(id=sortie_id)
     except Sortie.DoesNotExist:
@@ -1000,6 +1012,9 @@ def gunner_sortie_log(request, sortie_id):
 
 
 def gunner_killboard(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     cls = validate_and_get_player_cls(request)
     player, _ = __get_player(profile_id, request, request.tour.id, cls)
 
@@ -1043,6 +1058,9 @@ def gunner_killboard(request, profile_id, nickname=None):
 
 
 def gunner_awards(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
@@ -1071,6 +1089,9 @@ def gunner_awards(request, profile_id, nickname=None):
 
 
 def gunner_sorties(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     cls = validate_and_get_player_cls(request)
 
     try:
@@ -1110,6 +1131,9 @@ def gunner_sorties(request, profile_id, nickname=None):
 
 
 def gunners(request):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     page = request.GET.get('page', 1)
     search = request.GET.get('search', '').strip()
     sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
@@ -1131,6 +1155,9 @@ def gunners(request):
 
 
 def gunner(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
     tour_id = request.GET.get('tour')
     cls = validate_and_get_player_cls(request)
 

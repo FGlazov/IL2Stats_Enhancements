@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 {% for player in players %}
-                <a class="row" href="{{ player.get_profile_url }}">
+                <a class="row" href="{{ player.get_gunner_profile_url }}">
                     <div class="cell">{{ players.start_index|add:forloop.counter0 }}</div>
                     <div class="cell" style="text-align: left;">{{ player.nickname }}</div>
                     <div class="cell img">

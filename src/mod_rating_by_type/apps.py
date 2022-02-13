@@ -79,7 +79,7 @@ class ModConfig(AppConfig):
 
         from stats.models import Player, Tour, VLife
         from . import models as new_models
-        from .models import FilteredPlayer
+        from .models import FilteredPlayer, get_gunner_profile_url
 
         Tour.stats_summary_coal = new_models.stats_summary_coal
 
@@ -107,6 +107,8 @@ class ModConfig(AppConfig):
         Player.get_light_killboard_url = FilteredPlayer.get_light_killboard_url
         Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
         Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url
+
+        Player.get_gunner_profile_url = get_gunner_profile_url
 
 
         from stats import rewards as original_rewards

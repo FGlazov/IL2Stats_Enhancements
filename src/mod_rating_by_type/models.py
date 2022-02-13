@@ -974,3 +974,10 @@ class FilteredKillboard(models.Model):
     def update_analytics(self):
         self.wl_1 = round(self.won_1 / max(self.won_2, 1), 2)
         self.wl_2 = round(self.won_2 / max(self.won_1, 1), 2)
+
+
+# For gunner rankings
+def get_gunner_profile_url(self):
+    url = '{url}?tour={tour_id}'.format(url=reverse('stats:gunner', args=[self.profile_id, self.nickname]),
+                                        tour_id=self.tour_id)
+    return url
