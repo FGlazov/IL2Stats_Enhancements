@@ -209,3 +209,8 @@ Version 1.8.8
 Version 1.8.9
 
 - Update to 1.4.7 of aircraft mod.
+
+Version 1.8.10
+
+- Update to 1.2.60 of IL2 stats.
+- Add in loadout and modifaction support for the p-51b, thanks CountZero!

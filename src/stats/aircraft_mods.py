@@ -391,6 +391,16 @@ aircraft_mods = {
         7: pgettext_lazy('aircraft_mod', 'Mirror'),
         8: pgettext_lazy('aircraft_mod', '150 grade fuel'),
     },
+    'p-51b-5': {
+        1: pgettext_lazy('aircraft_mod', 'Ground attack'),
+        2: pgettext_lazy('aircraft_mod', 'Gunsight MKII'),
+        3: pgettext_lazy('aircraft_mod', 'Gyro Gunsight'),
+        4: pgettext_lazy('aircraft_mod', 'Merlin V-1650-7'),
+        5: pgettext_lazy('aircraft_mod', '150 grade fuel'),
+        6: pgettext_lazy('aircraft_mod', '81" 150 grade fuel'),
+        7: pgettext_lazy('aircraft_mod', 'Malcolm hood'),
+        8: pgettext_lazy('aircraft_mod', 'Mirror'),
+    },
     'p-51d-15': {
         1: pgettext_lazy('aircraft_mod', '4 x ANM2 .50 cal machine guns'),
         2: pgettext_lazy('aircraft_mod', 'Additional ANM2 .50 cal MG ammo'),
