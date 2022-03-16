@@ -159,7 +159,9 @@ class Object(models.Model):
         return self.name
 
     def aircraft_image(self):
-        return static('img/aircraft/{log_name}.png'.format(log_name=self.log_name))
+        # хак для Handley Page O/400
+        log_name = self.log_name.replace('/', '-')
+        return static('img/aircraft/{log_name}.png'.format(log_name=log_name))
 		
     def tank_image(self):
         return static('img/Tank/{log_name}.png'.format(log_name=self.log_name))
