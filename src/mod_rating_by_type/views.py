@@ -896,21 +896,21 @@ def gunner_sortie(request, sortie_id):
             break
         mission_score_dict[k] = {'base': v, 'ai': v}
 
-    if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
-        ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
-    else:
-        ammo_breakdown = dict()
-
     if 'penalty_pct' in sortie.score_dict:
         base_score = sortie.score_dict['basic']
         penalty_pct = sortie.score_dict['penalty_pct']
         sortie.score_dict['after_penalty_score'] = int(base_score * ((100 - penalty_pct) / 100))
 
-    return render(request, 'pilot_sortie.html', {
+    if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
+        ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
+    else:
+        ammo_breakdown = dict()
+
+    return render(request, 'gunner_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
-        'ammo_breakdown': ammo_breakdown,
+        'ammo_breakdown': ammo_breakdown,  # TODO: Get ammo breakdown working.
         'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
     })
 
@@ -919,35 +919,21 @@ def gunner_vlifes(request, profile_id, nickname=None):
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    cls = validate_and_get_player_cls(request)
-    player, profile = __get_player(profile_id, request, request.tour.id, cls)
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
 
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
         return render(request, 'pilot_hide.html', {'player': player})
-    if cls == 'all':
-        vlife_class = VLife
-    else:
-        vlife_class = FilteredVLife
 
-    vlifes = vlife_class.objects.filter(player_id=player.id).exclude(sorties_total=0).order_by('-id')
-    if cls != 'all':
-        vlifes.filter(cls=cls)
+    vlifes = VLife.objects.filter(player_id=player.id).exclude(sorties_total=0).order_by('-id')
 
     page = request.GET.get('page', 1)
     vlifes = Paginator(vlifes, ITEMS_PER_PAGE).page(page)
 
-    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
-
-    return render(request, 'pilot_vlifes.html', {
+    return render(request, 'gunner_vlifes.html', {
         'player': player,
         'vlifes': vlifes,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'light_player_exists': light_player_exists,
-        'medium_player_exists': medium_player_exists,
-        'heavy_player_exists': heavy_player_exists,
-        'cls': cls,
     })
 
 
@@ -955,26 +941,17 @@ def gunner_vlife(request, vlife_id):
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    cls = validate_and_get_player_cls(request)
-
-    if cls == 'all':
-        vlife_class = VLife
-    else:
-        vlife_class = FilteredVLife
-
     try:
-        vlife = (vlife_class.objects
+        vlife = (VLife.objects
                  .select_related('player', 'player__profile', 'player__tour')
-                 .get(id=vlife_id, player__type='pilot'))
+                 .get(id=vlife_id, player__type='gunner'))
 
     except VLife.DoesNotExist:
         raise Http404
-    return render(request, 'pilot_vlife.html', {
+    return render(request, 'gunner_vlife.html', {
         'player': vlife.player,
         'vlife': vlife,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
-        'cls': cls,
     })
 
 
@@ -1011,7 +988,7 @@ def gunner_sortie_log(request, sortie_id):
                 and 'hits' in e.extra_data['damage']):
             e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
 
-    return render(request, 'pilot_sortie_log.html', {
+    return render(request, 'gunner_sortie_log.html', {
         'player': sortie.player,
         'sortie': sortie,
         'events': events,
@@ -1023,22 +1000,16 @@ def gunner_killboard(request, profile_id, nickname=None):
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    cls = validate_and_get_player_cls(request)
-    player, _ = __get_player(profile_id, request, request.tour.id, cls)
+    player, _ = __get_player(profile_id, request, request.tour.id, gunner=True)
 
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
         return render(request, 'pilot_hide.html', {'player': player})
 
-    if cls == 'all':
-        _killboard = (KillboardPvP.objects
-                      .select_related('player_1__profile', 'player_2__profile')
-                      .filter(Q(player_1=player) | Q(player_2=player)))
-    else:
-        _killboard = (FilteredKillboard.objects
-                      .select_related('player_1__profile', 'player_2__profile')
-                      .filter(player_1=player))
+    _killboard = (KillboardPvP.objects
+                  .select_related('player_1__profile', 'player_2__profile')
+                  .filter(Q(player_1=player) | Q(player_2=player)))
 
     killboard = []
     for k in _killboard:
@@ -1052,16 +1023,9 @@ def gunner_killboard(request, profile_id, nickname=None):
     sort_by = _sort_by.replace('-', '')
     killboard = sorted(killboard, key=lambda x: x[sort_by], reverse=sort_reverse)
 
-    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
-
-    return render(request, 'pilot_killboard.html', {
+    return render(request, 'gunner_killboard.html', {
         'player': player,
         'killboard': killboard,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'light_player_exists': light_player_exists,
-        'medium_player_exists': medium_player_exists,
-        'heavy_player_exists': heavy_player_exists,
-        'cls': cls,
     })
 
 
@@ -1069,48 +1033,33 @@ def gunner_awards(request, profile_id, nickname=None):
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    cls = validate_and_get_player_cls(request)
-    player, profile = __get_player(profile_id, request, request.tour.id, cls)
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
 
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
         return render(request, 'pilot_hide.html', {'player': player})
 
-    if cls == 'all':
-        reward_class = Reward
-    else:
-        reward_class = FilteredReward
+    rewards = Reward.objects.select_related('award').filter(player_id=player.id).order_by('award__order', '-date')
 
-    rewards = reward_class.objects.select_related('award').filter(player_id=player.id).order_by('award__order', '-date')
-    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
-
-    return render(request, 'pilot_awards.html', {
+    return render(request, 'gunner_awards.html', {
         'player': player,
         'rewards': rewards,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'light_player_exists': light_player_exists,
-        'medium_player_exists': medium_player_exists,
-        'heavy_player_exists': heavy_player_exists,
-        'cls': cls,
     })
 
 
 def gunner_sorties(request, profile_id, nickname=None):
+    # TODO: For some reason the air kills here don't add up.
+    # Fix it.
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    cls = validate_and_get_player_cls(request)
-
     try:
         base_player = (Player.objects.select_related('profile', 'tour')
-                       .get(profile_id=profile_id, type='pilot', tour_id=request.tour.id))
+                       .get(profile_id=profile_id, type='gunner', tour_id=request.tour.id))
         player = base_player
     except Player.DoesNotExist:
         raise Http404
-
-    if cls != 'all':
-        player, profile = __get_player(profile_id, request, base_player.tour_id, cls)
 
     if base_player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=base_player.nickname)
@@ -1120,21 +1069,13 @@ def gunner_sorties(request, profile_id, nickname=None):
                .filter(player_id=base_player.id)
                .exclude(status='not_takeoff')
                .order_by('-id'))
-    if cls != 'all':
-        sorties = sorties.filter(SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)
 
     page = request.GET.get('page', 1)
     sorties = Paginator(sorties, ITEMS_PER_PAGE).page(page)
-    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, player.tour_id)
 
-    return render(request, 'pilot_sorties.html', {
+    return render(request, 'gunner_sorties.html', {
         'player': player,
         'sorties': sorties,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'light_player_exists': light_player_exists,
-        'medium_player_exists': medium_player_exists,
-        'heavy_player_exists': heavy_player_exists,
-        'cls': cls,
     })
 
 

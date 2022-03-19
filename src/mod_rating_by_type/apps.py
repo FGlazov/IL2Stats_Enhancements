@@ -113,6 +113,7 @@ class ModConfig(AppConfig):
         Player.get_gunner_sorties_url = new_models.get_gunner_sorties_url
         Player.get_gunner_vlifes_url = new_models.get_gunner_vlifes_url
         Player.get_gunner_awards_url = new_models.get_gunner_awards_url
+        Player.get_gunner_killboard_url = new_models.get_gunner_killboard_url
 
         from stats import rewards as original_rewards
         from . import rewards as new_rewards

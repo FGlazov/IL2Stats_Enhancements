@@ -16,12 +16,12 @@ def translate_ammo_breakdown(ammo_breakdown):
         BOMBS: {
             TOTAL_HITS: [],
             TOTAL_RECEIVED: [],
-            ALL_TAKEN: ammo_breakdown[ORDINANCE][BOMBS][ALL_TAKEN]
+            ALL_TAKEN: 0
         },
         ROCKETS: {
             TOTAL_HITS: [],
             TOTAL_RECEIVED: [],
-            ALL_TAKEN: ammo_breakdown[ORDINANCE][ROCKETS][ALL_TAKEN]
+            ALL_TAKEN: 0
         },
     }
 
@@ -33,12 +33,17 @@ def translate_ammo_breakdown(ammo_breakdown):
     result[TOTAL_RECEIVED].sort(key=take_first)
 
     for ordinance_type in [BOMBS, ROCKETS]:
+        if ORDINANCE not in ammo_breakdown:
+            continue
+
         for ammo, hits in ammo_breakdown[ORDINANCE][ordinance_type][TOTAL_HITS].items():
             result[ordinance_type][TOTAL_HITS].append((translate_bullet(ammo), hits))
         for ammo, hits in ammo_breakdown[ORDINANCE][ordinance_type][TOTAL_RECEIVED].items():
             result[ordinance_type][TOTAL_RECEIVED].append((translate_bullet(ammo), hits))
         result[ordinance_type][TOTAL_HITS].sort(key=take_first)
         result[ordinance_type][TOTAL_RECEIVED].sort(key=take_first)
+
+        result[ordinance_type][ALL_TAKEN] = ammo_breakdown[ORDINANCE][ordinance_type][ALL_TAKEN]
 
     return result
 
