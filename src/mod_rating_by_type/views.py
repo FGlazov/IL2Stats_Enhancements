@@ -175,7 +175,7 @@ def __find_filtered_players(profile_id, tour_id):
     return light_player_exists, medium_player_exists, heavy_player_exists
 
 
-def __get_player(profile_id, request, tour_id, cls, redirect_on_fail=False):
+def __get_player(profile_id, request, tour_id, cls='all', redirect_on_fail=False, gunner=False):
     if cls == 'all':
         player_class = Player
     else:
@@ -187,7 +187,12 @@ def __get_player(profile_id, request, tour_id, cls, redirect_on_fail=False):
             query = player_class.objects.select_related('profile', 'tour')
             if cls != 'all':
                 query = query.filter(cls=cls)
-            player = query.get(profile_id=profile_id, type='pilot', tour_id=request.tour.id)
+            if gunner:
+                query = query.filter(type='gunner')
+            else:
+                query = query.filter(type='pilot')
+
+            player = query.get(profile_id=profile_id, tour_id=request.tour.id)
 
         except player_class.DoesNotExist:
             if not redirect_on_fail:
@@ -1162,9 +1167,8 @@ def gunner(request, profile_id, nickname=None):
         raise Http404("Gunner stats not available on this server.")
 
     tour_id = request.GET.get('tour')
-    cls = validate_and_get_player_cls(request)
 
-    player, profile = __get_player(profile_id, request, tour_id, cls)
+    player, profile = __get_player(profile_id, request, tour_id, gunner=True)
     if player is None:
         return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
@@ -1174,33 +1178,7 @@ def gunner(request, profile_id, nickname=None):
 
     fav_aircraft = __get_fav_aircraft(player)
 
-    if cls == 'all':
-        rating_position, page_position = _get_rating_position(item=player)
-        rating_light_position, page_light_position = _get_rating_position(item=player, field='rating_light')
-        rating_medium_position, page_medium_position = _get_rating_position(item=player, field='rating_medium')
-        rating_heavy_position, page_heavy_position = _get_rating_position(item=player, field='rating_heavy')
-    else:
-        # TODO: Make this point to the page in Filtered sorties.
-        rating_position, page_position = _get_filtered_player_rating_position(player)
-        rating_light_position = rating_medium_position = rating_heavy_position = None
-        page_light_position = page_medium_position = page_heavy_position = None
-
-    light_player_exists, medium_player_exists, heavy_player_exists = __find_filtered_players(profile_id, tour_id)
-
-    return render(request, 'pilot.html', {
+    return render(request, 'gunner.html', {
         'fav_aircraft': fav_aircraft,
         'player': player,
-        'rating_position': rating_position,
-        'rating_light_position': rating_light_position,
-        'rating_medium_position': rating_medium_position,
-        'rating_heavy_position': rating_heavy_position,
-        'page_position': page_position,
-        'page_light_position': page_light_position,
-        'page_medium_position': page_medium_position,
-        'page_heavy_position': page_heavy_position,
-        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
-        'light_player_exists': light_player_exists,
-        'medium_player_exists': medium_player_exists,
-        'heavy_player_exists': heavy_player_exists,
-        'cls': cls,
     })

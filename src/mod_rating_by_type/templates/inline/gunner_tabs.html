@@ -1,0 +1,10 @@
+{% load i18n staticfiles tz stats %}
+<nav id="nav_tabs">
+    <div class="nav_tabs">
+        <a href="{{ player.get_gunner_profile_url }}">{% trans 'Gunner Statistics' context 'pilot_nav_tab' %}</a>
+        <a href="{{ player.get_gunner_sorties_url }}">{% trans 'Sorties' context 'pilot_nav_tab' %}</a>
+        <a href="{{ player.get_gunner_vlifes_url }}">{% trans 'Virtual Lifes' context 'pilot_nav_tab' %}</a>
+        <a href="{{ player.get_gunner_awards_url }}">{% trans 'Awards' context 'pilot_nav_tab' %}</a>
+        <a href="{{ player.get_gunner_killboard_url }}">{% trans 'Killboard' context 'pilot_nav_tab' %}</a>
+    </div>
+</nav>

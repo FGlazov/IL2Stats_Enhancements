@@ -47,6 +47,7 @@ class ModConfig(AppConfig):
         original_views.gunner = new_views.gunner
         original_views.gunner_sortie = new_views.gunner_sortie
         original_views.gunner_sortie_log = new_views.gunner_sortie_log
+        original_views.gunner_sorties = new_views.gunner_sorties
         original_views.gunner_vlife = new_views.gunner_vlife
         original_views.gunner_vlifes = new_views.gunner_vlifes
         original_views.gunner_awards = new_views.gunner_awards
@@ -79,7 +80,7 @@ class ModConfig(AppConfig):
 
         from stats.models import Player, Tour, VLife
         from . import models as new_models
-        from .models import FilteredPlayer, get_gunner_profile_url
+        from .models import FilteredPlayer
 
         Tour.stats_summary_coal = new_models.stats_summary_coal
 
@@ -108,8 +109,10 @@ class ModConfig(AppConfig):
         Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
         Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url
 
-        Player.get_gunner_profile_url = get_gunner_profile_url
-
+        Player.get_gunner_profile_url = new_models.get_gunner_profile_url
+        Player.get_gunner_sorties_url = new_models.get_gunner_sorties_url
+        Player.get_gunner_vlifes_url = new_models.get_gunner_vlifes_url
+        Player.get_gunner_awards_url = new_models.get_gunner_awards_url
 
         from stats import rewards as original_rewards
         from . import rewards as new_rewards
