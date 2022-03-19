@@ -117,5 +117,6 @@ Version 2.4.0
 - New module "Air streaks no AI", makes air streaks not count ai kills.
 - New module "Gunner stats", which includes a new table "Gunner Rankings" which works like "Pilot rankings", but for gunners of an aircraft.
 - Module Ammo Breakdown: The breakdowns now also work for bombs/rockets. This is useful for attacker/bomber planes, and also works for tanks (bombs/rockets taken).
+- Module Split Rankings: Now consider JU-88 C6 an attacker (it is dynamically switched to fighter like with other attackers depending on the sortie. I.e. if you go hunting with the main gun)
 - Fix bug where sorties were being counted twice for specialized VLives (fighter/attacker/bomber vlives). Happened only if mission was declared to be "won by score".
 - Fix bug where waitress was giving 500 errors when it should have been giving out 404 errors (invalid player IDs).
