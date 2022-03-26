@@ -109,6 +109,12 @@
 {#                            - {{ m }}<br>#}
 {#                        {% endfor %}#}
                     {% endif %}
+                    {% if aircraft %}
+                    <img src="{{ aircraft.aircraft_image }}" width="335" height="120"
+                         style="margin-top: 10px;"
+                         title="{% trans aircraft.name %}"
+                         alt="{% trans aircraft.name %}">
+                    {% endif %}
                     <br>
                     {% trans 'aircraft status' context 'sortie' %}:
                     {% if sortie.is_not_takeoff %}

@@ -36,10 +36,10 @@
                     {% endif %}
                     {% if fav_aircraft %}
                         <div class="aircraft">
-                            {% trans 'favorite aircraft' %}: <span>{{ fav_aircraft.aircraft.name }}</span>
+                            {% trans 'favorite aircraft' %}: <span>{{ fav_aircraft.name }}</span>
                         </div>
-                        <img src="{{ fav_aircraft.aircraft.aircraft_image }}" width="670" height="240" class="fav_aircraft"
-                             title="{% trans fav_aircraft.aircraft.name %}" alt="{% trans fav_aircraft.aircraft.name %}">
+                        <img src="{{ fav_aircraft.aircraft_image }}" width="670" height="240" class="fav_aircraft"
+                             title="{% trans fav_aircraft.name %}" alt="{% trans fav_aircraft.name %}">
                     {% endif %}
                 </div>
                 <div class="head_right">

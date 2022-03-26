@@ -17,6 +17,7 @@ from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullet
 from .config_modules import *
 from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
 from stats import sortie_log
+from .turret_utils import turret_to_aircraft
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -233,6 +234,21 @@ def __get_fav_aircraft(player):
     except IndexError:
         fav_aircraft = None
     return fav_aircraft
+
+
+def __get_fav_turret_aircraft(player):
+    try:
+        fav_turret = (PlayerAircraft.objects
+                  .select_related('aircraft')
+                  .filter(player_id=player.id)
+                  .order_by('-sorties_total'))[0]
+    except IndexError:
+        fav_turret = None
+
+    if fav_turret is not None:
+        return turret_to_aircraft(fav_turret.aircraft)
+    else:
+        return None
 
 
 def _get_filtered_player_rating_position(filtered_player):
@@ -919,12 +935,15 @@ def gunner_sortie(request, sortie_id):
     else:
         ammo_breakdown = dict()
 
+    aircraft = turret_to_aircraft(sortie.aircraft)
+
     return render(request, 'gunner_sortie.html', {
         'player': sortie.player,
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,  # TODO: Get ammo breakdown working.
         'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
+        'aircraft' : aircraft,
     })
 
 
@@ -1130,8 +1149,8 @@ def gunner(request, profile_id, nickname=None):
         return render(request, 'pilot_hide.html', {'player': player})
 
     rating_position, page_position = _get_gunner_player_rating_position(player)
-
-    fav_aircraft = __get_fav_aircraft(player)
+    fav_aircraft = __get_fav_turret_aircraft(player)
+    print(fav_aircraft)
 
     return render(request, 'gunner.html', {
         'fav_aircraft': fav_aircraft,
