@@ -92,8 +92,11 @@
                         {% endif %}
                     </div>
                     <div class="cell">
-                            {% if event.opponent_sortie %}
+                            {% if event.opponent_sortie and event.opponent_object.cls_base == 'aircraft' %}
                                 <a href="{% url 'stats:pilot_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
+                                    {{ event.opponent_sortie.nickname }}</a>
+                            {% elif event.opponent_sortie and event.opponent_object.cls_base == 'turret' %}
+                                <a href="{% url 'stats:gunner_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
                                     {{ event.opponent_sortie.nickname }}</a>
                             {% elif event.opponent_object and event.opponent_object.cls_base != 'block' %}
                                 {% trans 'AI' context 'sortie_log' %}
