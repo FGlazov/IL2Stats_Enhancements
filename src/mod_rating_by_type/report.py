@@ -35,7 +35,7 @@ class RecentHitsCache:
 
         if target.parent:
             target = target.parent
-        if attacker.parent:
+        if attacker.cls != 'aircraft_turret' and attacker.parent:
             attacker = attacker.parent
 
         key = (target.id, attacker.id)
@@ -67,7 +67,7 @@ class RecentHitsCache:
 
         if target.parent:
             target = target.parent
-        if attacker.parent:
+        if attacker.cls != 'aircraft_turret' and attacker.parent:
             attacker = attacker.parent
 
         key = (target.id, attacker.id)
@@ -289,7 +289,7 @@ def record_hits(tik, target, attacker, ammo):
     sortie = None
     if attacker is not None:
         sortie = attacker.sortie
-        if attacker.parent:
+        if sortie is None and attacker.parent:
             sortie = attacker.parent.sortie
 
     if sortie:

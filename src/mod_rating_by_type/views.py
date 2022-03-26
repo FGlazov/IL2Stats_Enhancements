@@ -1150,7 +1150,6 @@ def gunner(request, profile_id, nickname=None):
 
     rating_position, page_position = _get_gunner_player_rating_position(player)
     fav_aircraft = __get_fav_turret_aircraft(player)
-    print(fav_aircraft)
 
     return render(request, 'gunner.html', {
         'fav_aircraft': fav_aircraft,
