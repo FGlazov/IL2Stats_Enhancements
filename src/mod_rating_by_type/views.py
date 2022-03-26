@@ -1067,7 +1067,6 @@ def gunner_sorties(request, profile_id, nickname=None):
         return render(request, 'pilot_hide.html', {'base_player': base_player})
     sorties = (Sortie.objects.select_related('aircraft', 'mission')
                .filter(player_id=base_player.id)
-               .exclude(status='not_takeoff')
                .order_by('-id'))
 
     page = request.GET.get('page', 1)

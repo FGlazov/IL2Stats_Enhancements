@@ -42,6 +42,10 @@
                     <img src="{% static 'img/sortie/status/landed_big.png' %}" width="28" height="28"
                          title="{% trans 'Landed' context 'sortie_status' %}"
                          alt="{% trans 'Landed' context 'sortie_status' %}">
+                {% elif sortie.is_not_takeoff %}
+                    <img src="{% static 'img/sortie/status/in_flight_big.png' %}" width="28" height="28"
+                         title="{% trans 'In Flight' context 'sortie_status' %}"
+                         alt="{% trans 'In Flight' context 'sortie_status' %}">
                 {% endif %}
             </div>
             <div class="pilot_nickname">
@@ -108,7 +112,7 @@
                     <br>
                     {% trans 'aircraft status' context 'sortie' %}:
                     {% if sortie.is_not_takeoff %}
-                        <span class="status_gray">{% trans 'Not Takeoff' context 'sortie' %}</span>
+                        <span class="status_green">{% trans 'In Flight' context 'sortie' %}</span>
                     {% elif sortie.is_landed %}
                         <span class="status_green">{% trans 'Landed on Airfield' context 'sortie' %}</span>
                     {% elif sortie.is_in_flight %}
@@ -120,6 +124,7 @@
                     {% elif sortie.is_crashed %}
                         <span class="status_orange">{% trans 'Crashed' context 'sortie' %}</span>
                     {% endif %}
+
                     <br>
                     {% if sortie.damage %}
                     {% trans 'damage aircraft' context 'sortie' %}: {{ sortie.damage|floatformat:'0' }}%
