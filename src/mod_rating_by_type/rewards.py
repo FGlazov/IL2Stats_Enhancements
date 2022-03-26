@@ -4,7 +4,6 @@ from custom import rewards
 from stats.models import Award, VLife
 from .models import FilteredReward, VLifeAugmentation
 
-
 _awards_tour = Award.objects.filter(type='tour')
 _awards_mission = Award.objects.filter(type='mission')
 _awards_sortie = Award.objects.filter(type='sortie')
@@ -44,6 +43,7 @@ def reward_vlife(vlife, player):
         if get_reward_func(award.func)(vlife=vlife):
             rewarding(award_id=award.id, player_id=player.id)
 
+
 def reward_vlife_patch(vlife):
     player = vlife.player
     for award in _awards_vlife:
@@ -62,4 +62,4 @@ def reward_vlife_patch(vlife):
 
     augmentation = VLifeAugmentation.objects.get_or_create(vlife=vlife)[0]
     augmentation.ak_no_ai = ak_no_ai
-    #augmentation.save()
+    augmentation.save()

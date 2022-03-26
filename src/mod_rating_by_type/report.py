@@ -289,7 +289,7 @@ def record_hits(tik, target, attacker, ammo):
     sortie = None
     if attacker is not None:
         sortie = attacker.sortie
-        if sortie is None and attacker.parent:
+        if (sortie is None or sortie.aircraft.cls != 'aircraft_turret') and attacker.parent:
             sortie = attacker.parent.sortie
 
     if sortie:
