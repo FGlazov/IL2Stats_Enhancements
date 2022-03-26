@@ -12,7 +12,7 @@ from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MO
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
-from stats.stats_whore import (update_killboard, update_status, stats_whore, cleanup, collect_mission_reports,
+from stats.stats_whore import (update_killboard, stats_whore, cleanup, collect_mission_reports,
                                update_online, cleanup_registration)
 from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data, \
     retro_split_rankings_compute_running
@@ -309,7 +309,7 @@ def update_bonus_score(new_sortie):
 
 def update_general(player, new_sortie):
     flight_time_add = 0
-    if not new_sortie.is_not_takeoff:
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_total += 1
         flight_time_add = new_sortie.flight_time
     player.flight_time += flight_time_add
@@ -423,7 +423,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     vlife.bot_status = new_sortie.bot_status
 
     # TODO проверить как это отработает для вылетов стрелков
-    if not new_sortie.is_not_takeoff:
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
@@ -523,6 +523,32 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     update_status(new_sortie=new_sortie, player=vlife)
     if player.squad:
         update_status(new_sortie=new_sortie, player=player.squad)
+
+
+def update_status(new_sortie, player):
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
+        player.takeoff += 1
+    if new_sortie.is_landed:
+        player.landed += 1
+    elif new_sortie.is_ditched:
+        player.ditched += 1
+    elif new_sortie.is_crashed:
+        player.crashed += 1
+    elif new_sortie.is_shotdown:
+        player.shotdown += 1
+    elif new_sortie.is_in_flight:
+        player.in_flight += 1
+
+    if new_sortie.is_dead:
+        player.dead += 1
+    elif new_sortie.is_wounded:
+        player.wounded += 1
+
+    if new_sortie.is_captured and not new_sortie.is_dead:
+        player.captured += 1
+
+    if new_sortie.is_bailout:
+        player.bailout += 1
 
 
 # ======================== MODDED PART BEGIN

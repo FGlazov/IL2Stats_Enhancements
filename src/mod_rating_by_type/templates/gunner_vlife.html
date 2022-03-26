@@ -52,6 +52,10 @@
             <img src="{% static 'img/sortie/status/landed_big.png' %}" width="28" height="28"
                  title="{% trans 'Landed' context 'sortie_status' %}"
                  alt="{% trans 'Landed' context 'sortie_status' %}">
+            {% elif vlife.is_not_takeoff %}
+            <img src="{% static 'img/sortie/status/in_flight.png' %}" width="20" height="20"
+                 title="{% trans 'In Flight' context 'sortie_status' %}"
+                 alt="{% trans 'In Flight' context 'sortie_status' %}">
             {% endif %}
         </div>
 
@@ -60,7 +64,7 @@
             {% trans 'pilot' context 'pilot_vlifes' %}: {{ player.nickname }}
         </div>
 
-        <a href="{{ player.get_vlifes_url }}">
+        <a href="{{ player.get_gunner_vlifes_url }}">
             <div class="vlife_back_to_vlifes">
                 {% trans 'Back to vlifes list' %}
             </div>

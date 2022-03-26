@@ -72,6 +72,10 @@
                                     <img src="{% static 'img/sortie/status/landed.png' %}" width="20" height="20"
                                          title="{% trans 'Landed' context 'sortie_status' %}"
                                          alt="{% trans 'Landed' context 'sortie_status' %}">
+                                {% elif vlife.is_not_takeoff %}
+                                    <img src="{% static 'img/sortie/status/in_flight.png' %}" width="20" height="20"
+                                         title="{% trans 'In Flight' context 'sortie_status' %}"
+                                         alt="{% trans 'In Flight' context 'sortie_status' %}">
                                 {% endif %}
                             </div>
                             <div class="cell">
