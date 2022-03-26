@@ -101,7 +101,7 @@
                     <div class="text">{% trans 'Position in Rating' %}</div>
                     <div class="num" title="{{ player.rating }}">
                         {% if rating_position %}
-                            <a href="{% url 'stats:pilots' %}?page={{ page_position }}&tour={{ player.tour_id }}">{{ rating_position }}</a>
+                            <a href="{% url 'stats:gunners' %}?page={{ page_position }}&tour={{ player.tour_id }}">{{ rating_position }}</a>
                         {% else %}
                             <span title="">?</span>
                         {% endif %}

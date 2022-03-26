@@ -249,6 +249,19 @@ def _get_filtered_player_rating_position(filtered_player):
     return position, page
 
 
+def _get_gunner_player_rating_position(player):
+    if player.score == 0:
+        return None, None
+
+    position = 1 + (Player.objects.filter(
+        tour=player.tour,
+        type='gunner',
+        rating__gt=player.rating
+    ).count())
+    page = (position - 1) // ITEMS_PER_PAGE + 1
+    return position, page
+
+
 def pilot_sorties(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
 
@@ -1116,9 +1129,13 @@ def gunner(request, profile_id, nickname=None):
     if player.profile.is_hide:
         return render(request, 'pilot_hide.html', {'player': player})
 
+    rating_position, page_position = _get_gunner_player_rating_position(player)
+
     fav_aircraft = __get_fav_aircraft(player)
 
     return render(request, 'gunner.html', {
         'fav_aircraft': fav_aircraft,
         'player': player,
+        'rating_position': rating_position,
+        'page_position': page_position,
     })
