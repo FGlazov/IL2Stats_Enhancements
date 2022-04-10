@@ -321,6 +321,8 @@ def pilot_vlifes(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -354,6 +356,8 @@ def pilot_awards(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -380,8 +384,10 @@ def pilot_awards(request, profile_id, nickname=None):
 
 def pilot_killboard(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
-    player, _ = __get_player(profile_id, request, request.tour.id, cls)
+    player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -941,7 +947,7 @@ def gunner_sortie(request, sortie_id):
         'player': sortie.player,
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
-        'ammo_breakdown': ammo_breakdown,  # TODO: Get ammo breakdown working.
+        'ammo_breakdown': ammo_breakdown,
         'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
         'aircraft' : aircraft,
     })
@@ -953,6 +959,8 @@ def gunner_vlifes(request, profile_id, nickname=None):
 
     player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -1032,8 +1040,10 @@ def gunner_killboard(request, profile_id, nickname=None):
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
 
-    player, _ = __get_player(profile_id, request, request.tour.id, gunner=True)
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -1067,6 +1077,8 @@ def gunner_awards(request, profile_id, nickname=None):
 
     player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -1081,7 +1093,6 @@ def gunner_awards(request, profile_id, nickname=None):
 
 
 def gunner_sorties(request, profile_id, nickname=None):
-    # TODO: For some reason the air kills here don't add up.
     # Fix it.
     if not module_active(MODULE_GUNNER_STATS):
         raise Http404("Gunner stats not available on this server.")
