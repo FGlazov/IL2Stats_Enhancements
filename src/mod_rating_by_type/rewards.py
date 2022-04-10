@@ -51,7 +51,6 @@ def reward_vlife_patch(vlife):
             rewarding(award_id=award.id, player_id=player.id)
 
     if vlife.id is None:
-        print("none!")
         return
 
     ak_no_ai = vlife.ak_total
