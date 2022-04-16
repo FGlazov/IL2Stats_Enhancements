@@ -239,9 +239,9 @@ def __get_fav_aircraft(player):
 def __get_fav_turret_aircraft(player):
     try:
         fav_turret = (PlayerAircraft.objects
-                  .select_related('aircraft')
-                  .filter(player_id=player.id)
-                  .order_by('-sorties_total'))[0]
+                      .select_related('aircraft')
+                      .filter(player_id=player.id)
+                      .order_by('-sorties_total'))[0]
     except IndexError:
         fav_turret = None
 
@@ -505,6 +505,9 @@ def main(request):
         top_24_heavy = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='heavy')
         top_24_medium = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='medium')
         top_24_light = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='light')
+        summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+        summary_total_medium = request.tour.cls_stats_summary_total('medium')
+        summary_total_light = request.tour.cls_stats_summary_total('light')
     else:
         top_streak_heavy = None
         top_streak_medium = None
@@ -512,7 +515,11 @@ def main(request):
         top_24_heavy = None
         top_24_medium = None
         top_24_light = None
+        summary_total_heavy = None
+        summary_total_medium = None
+        summary_total_light = None
 
+    print(summary_total_medium)
     coal_active_players = request.tour.coal_active_players()
     total_active_players = sum(coal_active_players.values())
 
@@ -547,6 +554,9 @@ def main(request):
         'missions_wins_total': missions_wins_total,
         'summary_total': summary_total,
         'summary_coal': summary_coal,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
         'top_streak': top_streak,
         'top_streak_heavy': top_streak_heavy,
         'top_streak_medium': top_streak_medium,
@@ -949,7 +959,7 @@ def gunner_sortie(request, sortie_id):
         'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
         'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
-        'aircraft' : aircraft,
+        'aircraft': aircraft,
     })
 
 

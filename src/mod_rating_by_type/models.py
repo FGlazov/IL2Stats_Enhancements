@@ -53,7 +53,7 @@ def get_gunner_profile_url(self):
     tour_id = self.tour_id
 
     url = '{url}?tour={tour_id}'.format(url=reverse('stats:gunner', args=[profile_id, nickname]),
-                                                  tour_id=tour_id)
+                                        tour_id=tour_id)
     return url
 
 
@@ -119,6 +119,19 @@ def stats_summary_coal(self):
         summary_coal[s['coalition']].update(s)
 
     return summary_coal
+
+
+# Monkey patched in Tour class class of stats.models
+def cls_stats_summary_total(self, cls):
+    summary_total = {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0}
+    _summary_total = (Sortie.objects
+                      .filter(tour_id=self.id, is_disco=False, SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)
+                      .aggregate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                                 score=Sum('score'), flight_time=Sum('flight_time')))
+
+    summary_total.update(_summary_total)
+
+    return summary_total
 
 
 class SortieAugmentation(models.Model):

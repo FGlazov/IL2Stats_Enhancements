@@ -84,6 +84,7 @@ class ModConfig(AppConfig):
         from .models import FilteredPlayer
 
         Tour.stats_summary_coal = new_models.stats_summary_coal
+        Tour.cls_stats_summary_total = new_models.cls_stats_summary_total
 
         Player.get_base_profile_url = FilteredPlayer.get_base_profile_url
         Player.get_light_profile_url = FilteredPlayer.get_light_profile_url
