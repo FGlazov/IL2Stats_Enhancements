@@ -120,6 +120,7 @@ Version 2.4.0
 - Module Ammo Breakdown: Also breakdown ammo of gunner rankings.
 - Module Ammo Breakdown: Fix bug where hits from a player turret were counting towards the breakdown of hits of the parent's sortie.
 - Module Split Rankings: Now consider JU-88 C6 an attacker (it is dynamically switched to fighter like with other attackers depending on the sortie. I.e. if you go hunting with the main gun)
+- Module Split Rankings: Add bars to main showing flight time of fighter/attacker/bombers by coalition.
 - Fix bug where sorties were being counted twice for specialized VLives (fighter/attacker/bomber vlives). Happened only if mission was declared to be "won by score".
 - Fix bug where waitress was giving 500 errors when it should have been giving out 404 errors (invalid player IDs).
 - Fix bug where retroactive fixing of captures would sometimes cause stats process to crash.
