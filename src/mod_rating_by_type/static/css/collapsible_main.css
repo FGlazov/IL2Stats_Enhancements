@@ -25,11 +25,10 @@
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
-  padding-left: 30px;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: rgba(150, 150, 150, 0.05);
+  background-color: #ffffff00;
   margin-bottom: 4px;
 }
 
