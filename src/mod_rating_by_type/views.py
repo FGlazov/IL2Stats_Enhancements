@@ -644,6 +644,12 @@ def tour(request):
         top_streak_heavy = __top_max_streak(request.tour, cls='heavy')
         top_streak_medium = __top_max_streak(request.tour, cls='medium')
         top_streak_light = __top_max_streak(request.tour, cls='light')
+        summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+        summary_total_medium = request.tour.cls_stats_summary_total('medium')
+        summary_total_light = request.tour.cls_stats_summary_total('light')
+        summary_coal_heavy = request.tour.cls_stats_summary_coal('heavy')
+        summary_coal_medium = request.tour.cls_stats_summary_coal('medium')
+        summary_coal_light = request.tour.cls_stats_summary_coal('light')
     else:
         top_rating_heavy = None
         top_rating_medium = None
@@ -651,6 +657,12 @@ def tour(request):
         top_streak_heavy = None
         top_streak_medium = None
         top_streak_light = None
+        summary_total_heavy = None
+        summary_total_medium = None
+        summary_total_light = None
+        summary_coal_heavy = None
+        summary_coal_medium = None
+        summary_coal_light = None
 
     coal_active_players = request.tour.coal_active_players()
     total_active_players = sum(coal_active_players.values())
@@ -665,6 +677,12 @@ def tour(request):
         'top_streak_heavy': top_streak_heavy,
         'top_streak_medium': top_streak_medium,
         'top_streak_light': top_streak_light,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
+        'summary_coal_heavy': summary_coal_heavy,
+        'summary_coal_medium': summary_coal_medium,
+        'summary_coal_light': summary_coal_light,
         'top_rating': top_rating,
         'top_rating_heavy': top_rating_heavy,
         'top_rating_medium': top_rating_medium,
