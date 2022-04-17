@@ -525,7 +525,6 @@ def main(request):
         summary_coal_medium = None
         summary_coal_light = None
 
-    print(summary_total_medium)
     coal_active_players = request.tour.coal_active_players()
     total_active_players = sum(coal_active_players.values())
 
