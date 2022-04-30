@@ -76,7 +76,7 @@ Config name: Rams
 
 This module records and shows rams between aircraft. This allows you to find out which two players rammed each other. 
 
-Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations!
+Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy for providing translations!
 
 ------------ Modules changing scoring of sorties ------------ 
 
