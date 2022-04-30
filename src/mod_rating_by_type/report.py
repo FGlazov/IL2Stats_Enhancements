@@ -1,3 +1,5 @@
+import math
+
 from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKAROUND, \
     MODULE_BAILOUT_ACCURACY_WORKAROUND, module_active
 from mission_report.report import Sortie
@@ -92,6 +94,41 @@ RECENT_HITS_CUTOFF = 3000  # After 3000 ticks = ~1 minute a hit isn't considered
 PRUNE_COUNTER_MAX = 500  # After 500 event hits prune the cache.
 
 
+def eucl_distance(x, y):
+    return math.sqrt((x['x'] - y['x']) ** 2 + (x['y'] - y['y']) ** 2 + (x['z'] - y['z']) ** 2)
+
+
+class RamsCache:
+    def __init__(self):
+        self.cache = []
+        self.prune_counter = 0
+
+    def register_ram(self, location, tik, event, sortie):
+        for i in range(len(self.cache) - 1, -1, -1):
+            other_ram = self.cache[i]
+            if eucl_distance(other_ram.location, location) < RAM_DISTANCE_CUTOFF:
+                # TODO: Finish this.
+                print('Detected ram!')
+
+        self.cache.append(Ram(
+            location, tik, event, sortie
+        ))
+
+
+class Ram:
+    def __init__(self, location, tik, event, sortie):
+        self.location = location
+        self.tik = tik
+        self.event = event
+        self.sortie = sortie
+
+
+RAMS_CACHE = RamsCache()
+RAM_CUTOFF = 10  # After 10 ticks = ~200 ms don't consider rams anymore
+RAM_PRUNE_COUNTER_MAX = 50  # After 50 rams prune the cache.
+RAM_DISTANCE_CUTOFF = 50  # The two ramers must be within 50 meters of each other.
+
+
 # Monkey patched event_hit in report.py
 def event_hit(self, tik, ammo, attacker_id, target_id):
     # ======================== MODDED PART BEGIN
@@ -139,6 +176,7 @@ def got_damaged(self, damage, attacker=None, pos=None):
         return
     self.life_status.damage()
     self.damage += damage
+
     # если атакуем сами себя - убираем прямое упоминание об этом
     if self.is_attack_itself(attacker=attacker):
         attacker = None
@@ -148,6 +186,21 @@ def got_damaged(self, damage, attacker=None, pos=None):
         if self.parent:
             self.parent.damagers[attacker] += damage
     is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
+
+    event = {
+        'type': 'damage',
+        'damage': {
+            'pct': damage,
+            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self)
+        },
+        'pos': pos,
+        'attacker': attacker,
+        'target': self,
+        'is_friendly_fire': is_friendly_fire,
+    }
+
+    if self.damage > 0.98 and attacker is None:
+        RAMS_CACHE.register_ram(pos, 0, event, self.sortie)
 
     # ======================== MODDED PART BEGIN
     self.mission.logger_event({
