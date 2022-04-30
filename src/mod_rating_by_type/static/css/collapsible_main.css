@@ -1,0 +1,56 @@
+ /* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  height: auto;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 40px;
+  text-align:  right;
+  background-color: #ffffff00;
+}
+
+/* Add a background color to the button when you move the mouse over it (hover) */
+.collapsible:hover {
+  background-color: #555;
+}
+
+/* Add a background color to the button when you move the mouse over it (hover) */
+.downloadable:hover, .link:hover {
+  background-color: #555 !important;
+}
+
+
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #ffffff00;
+  margin-bottom: 4px;
+}
+
+/* Style the +/- sign which shows that it's collapsible. */
+button::before {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-right: 10px;
+}
+
+/* Case where it's open */
+button.active::before {
+    content: "\2212";
+}
+
+.collapsible-num {
+    float: right;
+    padding-right: 25px;
+}
+
+.collapsible-item {
+    width: 98% !important;
+}

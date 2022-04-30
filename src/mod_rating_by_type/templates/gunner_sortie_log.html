@@ -4,7 +4,7 @@
 {{ sortie.date_start|date:'d.m.Y - H:i' }} / {{ player.nickname }} / {{ block.super }}{% endblock title %}
 
 {% block nav_tabs %}
-{% include 'inline/sortie_tabs.html' %}
+{% include 'inline/gunner_sortie_tabs.html' %}
 {% endblock nav_tabs %}
 
 
@@ -44,13 +44,17 @@
             <img src="{% static 'img/sortie/status/landed_big.png' %}" width="28" height="28"
                  title="{% trans 'Landed' context 'sortie_status' %}"
                  alt="{% trans 'Landed' context 'sortie_status' %}">
+            {% elif sortie.is_not_takeoff %}
+                    <img src="{% static 'img/sortie/status/in_flight_big.png' %}" width="28" height="28"
+                         title="{% trans 'In Flight' context 'sortie_status' %}"
+                         alt="{% trans 'In Flight' context 'sortie_status' %}">
             {% endif %}
         </div>
         <div class="pilot_nickname">
-            {% trans 'pilot' context 'pilot_sorties' %}: {{ player.nickname }}
+            {% trans 'gunner' context 'pilot_sorties' %}: {{ player.nickname }}
         </div>
 
-        <a href="{{ player.get_sorties_url }}">
+        <a href="{{ player.get_gunner_sorties_url }}">
             <div class="sortie_back_to_sorties">
                 {% trans 'Back to sorties list' %}
             </div>
@@ -74,12 +78,7 @@
                     {% else %}
                     <div class="cell">
                         {% endif %}
-
-                        {% if event.extra_data.damage.ram %}
-                        {% trans 'Ram' %}
-                        {% else %}
                         {{ event.message }}
-                        {% endif %}
                         {% if event.extra_data.damage %}
                         {% if event.extra_data.damage.pct %}
                         - {{ event.extra_data.damage.pct }}%
@@ -96,9 +95,6 @@
                             {% if event.opponent_sortie and event.opponent_object.cls_base == 'aircraft' %}
                                 <a href="{% url 'stats:pilot_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
                                     {{ event.opponent_sortie.nickname }}</a>
-                            {% elif event.opponent_sortie and event.opponent_object.cls_base == 'tank' %}
-                                <a href="{% url 'stats:tankman_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
-								    {{ event.opponent_sortie.nickname }}</a>
                             {% elif event.opponent_sortie and event.opponent_object.cls_base == 'turret' %}
                                 <a href="{% url 'stats:gunner_sortie' event.opponent_sortie.id %}?tour={{ request.tour.id }}">
                                     {{ event.opponent_sortie.nickname }}</a>

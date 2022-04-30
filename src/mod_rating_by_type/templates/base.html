@@ -34,6 +34,7 @@
 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/footer_coffee.css' %}" rel="stylesheet">
+    <link href="{% static 'css/collapsible_main.css' %}" rel="stylesheet">
     <script>
         var LANGUAGE_CODE = '{{ LANGUAGE_CODE }}';
         var TOUR_ID = {{ request.tour.id }};
@@ -88,6 +89,9 @@
                     <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}">{% trans 'Ironman Rankings' %}</a>
                     {% endif %}
                     <a href="{% url 'stats:tankmans' %}?tour={{ request.tour.id }}">{% trans 'Tankman Rankings' %}</a>
+                    {% if request.module_gunner_stats %}
+                    <a href="{% url 'stats:gunners' %}?tour={{ request.tour.id }}">{% trans 'Gunner Rankings' %}</a>
+                    {% endif %}
                     <a href="{% url 'stats:squads' %}?tour={{ request.tour.id }}">{% trans 'Squad Rankings' %}</a>
                     {% if request.aircraft_rankings_installed %}
                     <a href="{% url 'stats:all_aircraft' %}?tour={{ request.tour.id }}">{% trans 'Aircraft Rankings' %}</a>

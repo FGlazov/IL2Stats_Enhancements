@@ -1,9 +1,16 @@
+import math
+
 from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKAROUND, \
-    MODULE_BAILOUT_ACCURACY_WORKAROUND, module_active
+    MODULE_RAMS, module_active
+from mission_report.report import Sortie
 import operator
 
 TOTAL_HITS = 'total_hits'
 TOTAL_RECEIVED = 'total_received'
+# Here "ORDINANCE" is bombs + rockets but not bullets + shells.
+ORDINANCE = 'ordinance'
+BOMBS = 'bombs'
+ROCKETS = 'rockets'
 ALL_TAKEN = 'all_taken'
 DMG_FROM_ONE_SOURCE = 'dmg_from_one_source'
 LAST_DMG_SORTIE = 'last_dmg_sortie'
@@ -30,7 +37,7 @@ class RecentHitsCache:
 
         if target.parent:
             target = target.parent
-        if attacker.parent:
+        if attacker.cls != 'aircraft_turret' and attacker.parent:
             attacker = attacker.parent
 
         key = (target.id, attacker.id)
@@ -62,7 +69,7 @@ class RecentHitsCache:
 
         if target.parent:
             target = target.parent
-        if attacker.parent:
+        if attacker.cls != 'aircraft_turret' and attacker.parent:
             attacker = attacker.parent
 
         key = (target.id, attacker.id)
@@ -87,6 +94,62 @@ RECENT_HITS_CUTOFF = 3000  # After 3000 ticks = ~1 minute a hit isn't considered
 PRUNE_COUNTER_MAX = 500  # After 500 event hits prune the cache.
 
 
+def eucl_distance(x, y):
+    return math.sqrt((x['x'] - y['x']) ** 2 + (x['y'] - y['y']) ** 2 + (x['z'] - y['z']) ** 2)
+
+
+class RamsCache:
+    def __init__(self):
+        self.cache = []
+        self.prune_counter = 0
+
+    def register_ram(self, location, tik, event, obj):
+        if obj.cls_base not in {'aircraft', 'vehicle', 'tank'}:
+            return
+
+        self.prune_counter += 1
+        if self.prune_counter > RAM_PRUNE_COUNTER_MAX:
+            self.prune_cache(tik)
+
+        found_ram = False
+        for i in range(len(self.cache) - 1, -1, -1):
+            other_ram = self.cache[i]
+            if (eucl_distance(other_ram.location, location) < RAM_DISTANCE_CUTOFF
+                    and abs(tik - other_ram.tik) < RAM_CUTOFF and obj != other_ram.obj):
+                event['damage']['ram'] = True
+                event['attacker'] = other_ram.obj
+                other_ram.event['damage']['ram'] = True
+                other_ram.event['attacker'] = obj
+
+                del self.cache[i]
+                found_ram = True
+                break
+
+        if not found_ram:
+            self.cache.append(Ram(
+                location, tik, event, obj
+            ))
+
+    def prune_cache(self, tik):
+        self.cache = [ram for ram in self.cache if abs(tik - ram.tik) >= RAM_CUTOFF]
+        self.prune_counter = 0
+
+
+class Ram:
+    def __init__(self, location, tik, event, obj):
+        self.location = location
+        self.tik = tik
+        self.event = event
+        self.obj = obj
+
+
+RAMS_CACHE = RamsCache()
+RAM_CUTOFF = 10  # After 10 ticks = ~200 ms don't consider rams anymore
+RAM_PRUNE_COUNTER_MAX = 50  # After 50 rams prune the cache.
+RAM_DISTANCE_CUTOFF = 100  # The two ramers must be within 100 meters of each other.
+
+
+# Monkey patched event_hit in report.py
 def event_hit(self, tik, ammo, attacker_id, target_id):
     # ======================== MODDED PART BEGIN
     ammo_db = self.objects[ammo.lower()]
@@ -102,8 +165,43 @@ def event_hit(self, tik, ammo, attacker_id, target_id):
         # ======================== MODDED PART END
 
 
+# Monkey patched event_player in report.py
+def event_player(self, tik, aircraft_id, bot_id, account_id, profile_id, name, pos, aircraft_name, country_id,
+                 coal_id, airfield_id, airstart, parent_id, payload_id, fuel, skin, weapon_mods_id,
+                 cartridges, shells, bombs, rockets, form, is_player, is_tracking_stat):
+    sortie = Sortie(mission=self, tik=tik, aircraft_id=aircraft_id, bot_id=bot_id, account_id=account_id,
+                    profile_id=profile_id, name=name, pos=pos, aircraft_name=aircraft_name, country_id=country_id,
+                    coal_id=coal_id, airfield_id=airfield_id, airstart=airstart, parent_id=parent_id,
+                    payload_id=payload_id, fuel=fuel, skin=skin, weapon_mods_id=weapon_mods_id,
+                    cartridges=cartridges, shells=shells, bombs=bombs, rockets=rockets)
+
+    self.add_active_sortie(sortie=sortie)
+    self.sorties.append(sortie)
+    self.sorties_aircraft[sortie.aircraft_id] = sortie
+    self.sorties_bots[sortie.bot_id] = sortie
+    self.sorties_accounts[sortie.account_id] = sortie
+
+    current_ratio = self.get_current_ratio(sortie_coal_id=sortie.coal_id)
+    sortie.update_ratio(current_ratio=current_ratio)
+    self.logger_event({'type': 'respawn', 'sortie': sortie, 'pos': pos})
+
+
+# Monkey patched function inside report.py
+def event_damage(self, tik, damage, attacker_id, target_id, pos):
+    attacker = self.get_object(object_id=attacker_id)
+    target = self.get_object(object_id=target_id)
+    # дамага может не быть из-за бага логов
+    if target and damage:
+        # таймаут для парашютистов
+        if target.sortie and target.is_crew() and target.sortie.is_ended_by_timeout(timeout=120, tik=tik):
+            return
+        if target.sortie and not target.is_crew() and target.sortie.is_ended:
+            return
+        target.got_damaged(damage=damage, tik=tik, attacker=attacker, pos=pos)
+
+
 # Monkey patched into Object class inside report.py
-def got_damaged(self, damage, attacker=None, pos=None):
+def got_damaged(self, damage, tik, attacker=None, pos=None):
     """
     :type damage: int | float
     :type attacker: Object | None
@@ -112,6 +210,7 @@ def got_damaged(self, damage, attacker=None, pos=None):
         return
     self.life_status.damage()
     self.damage += damage
+
     # если атакуем сами себя - убираем прямое упоминание об этом
     if self.is_attack_itself(attacker=attacker):
         attacker = None
@@ -123,17 +222,23 @@ def got_damaged(self, damage, attacker=None, pos=None):
     is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
 
     # ======================== MODDED PART BEGIN
-    self.mission.logger_event({
+    event = {
         'type': 'damage',
         'damage': {
             'pct': damage,
-            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self)
+            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self),
+            'ram': False,
         },
         'pos': pos,
         'attacker': attacker,
         'target': self,
         'is_friendly_fire': is_friendly_fire,
-    })
+    }
+
+    if module_active(MODULE_RAMS) and self.damage > 98 and attacker is None:
+        RAMS_CACHE.register_ram(pos, tik, event, self)
+
+    self.mission.logger_event(event)
     # ======================== MODDED PART END
 
 
@@ -218,7 +323,7 @@ def record_hits(tik, target, attacker, ammo):
     if not module_active(MODULE_AMMO_BREAKDOWN):
         return
 
-    if ammo['cls'] != 'shell' and ammo['cls'] != 'bullet':
+    if ammo['cls'] not in {'shell', 'bullet', 'bomb', 'rocket'}:
         return
 
     RECENT_HITS_CACHE.add_to_hits_cache(tik, target, attacker, ammo)
@@ -231,8 +336,7 @@ def record_hits(tik, target, attacker, ammo):
         if not hasattr(sortie, 'ammo_breakdown'):
             sortie.ammo_breakdown = default_ammo_breakdown()
 
-        increment(sortie.ammo_breakdown, TOTAL_RECEIVED, ammo['name'])
-        sortie.ammo_breakdown[ALL_TAKEN] += 1
+        increment_hit(ammo, sortie, TOTAL_RECEIVED)
 
         if attacker:
             attacker_id = attacker.id
@@ -263,26 +367,33 @@ def record_hits(tik, target, attacker, ammo):
     sortie = None
     if attacker is not None:
         sortie = attacker.sortie
-        if attacker.parent:
+        if (sortie is None or sortie.aircraft.cls != 'aircraft_turret') and attacker.parent:
             sortie = attacker.parent.sortie
 
     if sortie:
         if not hasattr(sortie, 'ammo_breakdown'):
             sortie.ammo_breakdown = default_ammo_breakdown()
 
-        increment(sortie.ammo_breakdown, TOTAL_HITS, ammo['name'])
+        increment_hit(ammo, sortie, TOTAL_HITS)
 
 
-def default_ammo_breakdown():
-    return {
-        TOTAL_HITS: dict(),
-        TOTAL_RECEIVED: dict(),
-        ALL_TAKEN: 0,
-        DMG_FROM_ONE_SOURCE: False,
-        LAST_DMG_SORTIE: None,
-        LAST_DMG_OBJECT: None,
-        LAST_TURRET_ACCOUNT: None,
-    }
+def increment_hit(ammo, sortie, main_key):
+    bomb = ammo['cls'] == 'bomb'
+    rocket = ammo['cls'] == 'rocket'
+    ordinance = bomb or rocket
+
+    if not ordinance:
+        increment(sortie.ammo_breakdown, main_key, ammo['name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ALL_TAKEN] += 1
+    elif bomb:
+        increment(sortie.ammo_breakdown[ORDINANCE][BOMBS], main_key, ammo['log_name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ORDINANCE][BOMBS][ALL_TAKEN] += 1
+    elif rocket:
+        increment(sortie.ammo_breakdown[ORDINANCE][ROCKETS], main_key, ammo['log_name'])
+        if main_key == TOTAL_RECEIVED:
+            sortie.ammo_breakdown[ORDINANCE][ROCKETS][ALL_TAKEN] += 1
 
 
 def increment(ammo_breakdown, main_key, subkey):
@@ -290,6 +401,30 @@ def increment(ammo_breakdown, main_key, subkey):
         ammo_breakdown[main_key][subkey] += 1
     else:
         ammo_breakdown[main_key][subkey] = 1
+
+
+def default_ammo_breakdown():
+    return {
+        TOTAL_HITS: dict(),
+        TOTAL_RECEIVED: dict(),
+        ALL_TAKEN: 0,
+        ORDINANCE: {
+            BOMBS: {
+                TOTAL_HITS: dict(),
+                TOTAL_RECEIVED: dict(),
+                ALL_TAKEN: 0,
+            },
+            ROCKETS: {
+                TOTAL_HITS: dict(),
+                TOTAL_RECEIVED: dict(),
+                ALL_TAKEN: 0,
+            }
+        },
+        DMG_FROM_ONE_SOURCE: False,
+        LAST_DMG_SORTIE: None,
+        LAST_DMG_OBJECT: None,
+        LAST_TURRET_ACCOUNT: None,
+    }
 
 
 def encode_tuple(obj, ammo):

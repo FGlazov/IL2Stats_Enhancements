@@ -1,16 +1,18 @@
 from collections import defaultdict
 from django.conf import settings
 from datetime import timedelta
-from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour
+from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife, Player
 from .variant_utils import decide_adjusted_cls
-from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer
+from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer, \
+    VLifeAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
-                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR)
+                             MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
+                             MODULE_AIR_STREAKS_NO_AI)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
-from stats.stats_whore import (update_killboard, update_status, stats_whore, cleanup, collect_mission_reports,
+from stats.stats_whore import (update_killboard, stats_whore, cleanup, collect_mission_reports,
                                update_online, cleanup_registration)
 from .background_jobs.run_background_jobs import run_background_jobs, reset_corrupted_data, \
     retro_split_rankings_compute_running
@@ -334,22 +336,13 @@ def update_bonus_score(new_sortie):
         new_sortie.score_dict['penalty'] = penalty_score
         new_sortie.score -= penalty_score
 
-    cls = decide_adjusted_cls(new_sortie)
-    if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
-            and not retro_split_rankings_compute_running()):
-        increment_subtype_persona(new_sortie, cls)
-        sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
-        sortie_augmentation.computed_filtered_player = True
-        sortie_augmentation.save()
-
 
 # ======================== MODDED PART END
 
 
 def update_general(player, new_sortie):
     flight_time_add = 0
-    if (not new_sortie.is_not_takeoff) or (
-            new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle')):
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_total += 1
         flight_time_add = new_sortie.flight_time
     player.flight_time += flight_time_add
@@ -421,6 +414,15 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     # ======================== MODDED PART BEGIN
     if player is None:
         player = new_sortie.player
+    if type(player) is Player:
+        cls = decide_adjusted_cls(new_sortie)
+        if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
+                and not retro_split_rankings_compute_running()):
+            increment_subtype_persona(new_sortie, cls)
+            sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
+            sortie_augmentation.computed_filtered_player = True
+            sortie_augmentation.save()
+
     # ======================== MODDED PART END
 
     if not player.date_first_sortie:
@@ -454,14 +456,7 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     vlife.bot_status = new_sortie.bot_status
 
     # TODO проверить как это отработает для вылетов стрелков
-    if new_sortie.aircraft.cls_base == 'aircraft' and not new_sortie.is_not_takeoff:
-        player.sorties_coal[new_sortie.coalition] += 1
-        player_mission.sorties_coal[new_sortie.coalition] += 1
-        vlife.sorties_coal[new_sortie.coalition] += 1
-
-        if player.squad:
-            player.squad.sorties_coal[new_sortie.coalition] += 1
-    if new_sortie.aircraft.cls_base == 'tank' or (new_sortie.aircraft.cls_base == 'vehicle'):
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
@@ -528,6 +523,19 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
                      killboard_pve=new_sortie.killboard_pve)
 
     player.streak_current = vlife.ak_total
+    # ======================== MODDED PART BEGIN
+    ak_no_ai = player.streak_current
+    killboard = vlife.killboard_pve
+    aircraft_types = ['aircraft_light', 'aircraft_medium', 'aircraft_heavy', 'aircraft_transport']
+    for aircraft_type in aircraft_types:
+        ak_no_ai -= killboard[aircraft_type] if aircraft_type in killboard else 0
+
+    if module_active(MODULE_AIR_STREAKS_NO_AI):
+        player.streak_current = ak_no_ai
+
+    if type(vlife) is FilteredVLife:
+        vlife.ak_no_ai = ak_no_ai
+    # ======================== MODDED PART END
     player.streak_max = max(player.streak_max, player.streak_current)
     player.streak_ground_current = vlife.gk_total
     player.streak_ground_max = max(player.streak_ground_max, player.streak_ground_current)
@@ -568,6 +576,32 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     update_status(new_sortie=new_sortie, player=vlife)
     if player.squad:
         update_status(new_sortie=new_sortie, player=player.squad)
+
+
+def update_status(new_sortie, player):
+    if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
+        player.takeoff += 1
+    if new_sortie.is_landed:
+        player.landed += 1
+    elif new_sortie.is_ditched:
+        player.ditched += 1
+    elif new_sortie.is_crashed:
+        player.crashed += 1
+    elif new_sortie.is_shotdown:
+        player.shotdown += 1
+    elif new_sortie.is_in_flight:
+        player.in_flight += 1
+
+    if new_sortie.is_dead:
+        player.dead += 1
+    elif new_sortie.is_wounded:
+        player.wounded += 1
+
+    if new_sortie.is_captured and not new_sortie.is_dead:
+        player.captured += 1
+
+    if new_sortie.is_bailout:
+        player.bailout += 1
 
 
 # ======================== MODDED PART BEGIN

@@ -47,6 +47,60 @@ def get_killboard_url(profile_id, nickname, tour_id, cls):
     return url
 
 
+def get_gunner_profile_url(self):
+    profile_id = self.profile_id
+    nickname = self.nickname
+    tour_id = self.tour_id
+
+    url = '{url}?tour={tour_id}'.format(url=reverse('stats:gunner', args=[profile_id, nickname]),
+                                        tour_id=tour_id)
+    return url
+
+
+def get_gunner_sorties_url(self):
+    profile_id = self.profile_id
+    nickname = self.nickname
+    tour_id = self.tour_id
+
+    url = '{url}?tour={tour_id}'.format(
+        url=reverse('stats:gunner_sorties', args=[profile_id, nickname]),
+        tour_id=tour_id)
+    return url
+
+
+def get_gunner_vlifes_url(self):
+    profile_id = self.profile_id
+    nickname = self.nickname
+    tour_id = self.tour_id
+
+    url = '{url}?tour={tour_id}'.format(
+        url=reverse('stats:gunner_vlifes', args=[profile_id, nickname]),
+        tour_id=tour_id)
+    return url
+
+
+def get_gunner_awards_url(self):
+    profile_id = self.profile_id
+    nickname = self.nickname
+    tour_id = self.tour_id
+
+    url = '{url}?tour={tour_id}'.format(
+        url=reverse('stats:gunner_awards', args=[profile_id, nickname]),
+        tour_id=tour_id)
+    return url
+
+
+def get_gunner_killboard_url(self):
+    profile_id = self.profile_id
+    nickname = self.nickname
+    tour_id = self.tour_id
+
+    url = '{url}?tour={tour_id}'.format(
+        url=reverse('stats:gunner_killboard', args=[profile_id, nickname]),
+        tour_id=tour_id)
+    return url
+
+
 # Monkey patched into Tour class of stats.models
 def stats_summary_coal(self):
     summary_coal = {
@@ -64,6 +118,36 @@ def stats_summary_coal(self):
     for s in _summary_coal:
         summary_coal[s['coalition']].update(s)
 
+    return summary_coal
+
+
+# Monkey patched in Tour class class of stats.models
+def cls_stats_summary_total(self, cls):
+    summary_total = {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0}
+    _summary_total = (Sortie.objects
+                      .filter(tour_id=self.id, is_disco=False, SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)
+                      .aggregate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                                 score=Sum('score'), flight_time=Sum('flight_time')))
+
+    summary_total.update(_summary_total)
+
+    return summary_total
+
+
+# Monkey patched in Tour class class of stats.models
+def cls_stats_summary_coal(self, cls):
+    summary_coal = {
+        1: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
+        2: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
+    }
+    _summary_coal = (Sortie.objects
+                     .filter(tour_id=self.id, is_disco=False, SortieAugmentation_MOD_SPLIT_RANKINGS__cls=cls)
+                     .values('coalition')
+                     .order_by()
+                     .annotate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                               score=Sum('score'), flight_time=Sum('flight_time')))
+    for s in _summary_coal:
+        summary_coal[s['coalition']].update(s)
     return summary_coal
 
 
@@ -121,6 +205,21 @@ class PlayerAugmentation(models.Model):
             return 'medium'
         else:
             return None
+
+
+class VLifeAugmentation(models.Model):
+    """
+    Additional fields to VLife objects used by this mod.
+    """
+
+    vlife = models.OneToOneField(VLife, on_delete=models.PROTECT, primary_key=True,
+                                 related_name='VLifeAugmentation_MOD_SPLIT_RANKINGS')
+
+    ak_no_ai = models.IntegerField(default=0, db_index=True)
+
+    class Meta:
+        # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
+        db_table = "VLifeAugmentation_MOD_SPLIT_RANKINGS"
 
 
 class FilteredPlayer(models.Model):
@@ -504,6 +603,7 @@ class FilteredVLife(models.Model):
     disco = models.IntegerField(default=0)
 
     ak_total = models.IntegerField(default=0, db_index=True)
+    ak_no_ai = models.IntegerField(default=0, db_index=True)
     ak_assist = models.IntegerField(default=0)
     gk_total = models.IntegerField(default=0, db_index=True)
     fak_total = models.IntegerField(default=0)

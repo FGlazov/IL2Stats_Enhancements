@@ -2,6 +2,7 @@ from .models import PlayerAugmentation
 from stats.models import LogEntry
 
 FIGHTER_WHITE_LIST = {'P-38J-25', 'Me 262 A'}
+ATTACKER_WHITE_LIST = {'Ju 88 C-6'}
 JABO_MODS = {'Ground attack modification', 'U17 strike modification'}
 BOMBS_ROCKETS = ['FAB-100M', 'FAB-250tsk', 'GP ', 'MC ', 'SC ', 'SD ', '21cm WGr.42', 'lb Cooper', 'H.E.R.L.',
                  'Pz.Bl. 1', 'R-Sprgr. M8', 'P.u.W', 'ROS-82', 'RBS-82', 'ROFS-132', '50-T', '100-T', 'M64', 'M65',
@@ -58,6 +59,9 @@ def decide_adjusted_cls(sortie, touch_db=False, retroactive_compute=False):
         player_augmentation.save()
 
     sortie_cls = sortie.aircraft.cls
+    if sortie.aircraft.name_en in ATTACKER_WHITE_LIST:
+        sortie_cls = 'medium'
+
     if sortie_cls == 'aircraft_heavy':
         return 'heavy'
     if sortie_cls not in ['aircraft_light', 'aircraft_medium']:

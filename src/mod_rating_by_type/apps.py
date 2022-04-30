@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
+from .config_modules import module_active, MODULE_AIR_STREAKS_NO_AI
 
 from django.conf.urls import url
 
@@ -42,10 +43,21 @@ class ModConfig(AppConfig):
         original_views.pilot_awards = new_views.pilot_awards
         original_views.pilot_killboard = new_views.pilot_killboard
         original_views.overall = new_views.overall
+        original_views.gunners = new_views.gunners
+        original_views.gunner = new_views.gunner
+        original_views.gunner_sortie = new_views.gunner_sortie
+        original_views.gunner_sortie_log = new_views.gunner_sortie_log
+        original_views.gunner_sorties = new_views.gunner_sorties
+        original_views.gunner_vlife = new_views.gunner_vlife
+        original_views.gunner_vlifes = new_views.gunner_vlifes
+        original_views.gunner_awards = new_views.gunner_awards
+        original_views.gunner_killboard = new_views.gunner_killboard
 
         from . import report as new_report
         from mission_report.report import MissionReport, Object
         MissionReport.event_hit = new_report.event_hit
+        MissionReport.event_player = new_report.event_player
+        MissionReport.event_damage = new_report.event_damage
         Object.got_damaged = new_report.got_damaged
         Object.got_killed = new_report.got_killed
         Object.takeoff = new_report.takeoff
@@ -54,6 +66,7 @@ class ModConfig(AppConfig):
         from . import stats_whore as new_stats_whore
         original_stats_whore.create_new_sortie = new_stats_whore.create_new_sortie
         original_stats_whore.update_general = new_stats_whore.update_general
+        original_stats_whore.update_status = new_stats_whore.update_status
         original_stats_whore.old_update_bonus_score = original_stats_whore.update_bonus_score
         original_stats_whore.old_get_tour = original_stats_whore.get_tour
         original_stats_whore.get_tour = new_stats_whore.get_tour
@@ -67,11 +80,13 @@ class ModConfig(AppConfig):
         old_csv_data.Command.handle = new_csv_data.Command.handle
 
 
-        from stats.models import Player, Tour
+        from stats.models import Player, Tour, VLife
         from . import models as new_models
         from .models import FilteredPlayer
 
         Tour.stats_summary_coal = new_models.stats_summary_coal
+        Tour.cls_stats_summary_total = new_models.cls_stats_summary_total
+        Tour.cls_stats_summary_coal = new_models.cls_stats_summary_coal
 
         Player.get_base_profile_url = FilteredPlayer.get_base_profile_url
         Player.get_light_profile_url = FilteredPlayer.get_light_profile_url
@@ -97,3 +112,20 @@ class ModConfig(AppConfig):
         Player.get_light_killboard_url = FilteredPlayer.get_light_killboard_url
         Player.get_medium_killboard_url = FilteredPlayer.get_medium_killboard_url
         Player.get_heavy_killboard_url = FilteredPlayer.get_heavy_killboard_url
+
+        Player.get_gunner_profile_url = new_models.get_gunner_profile_url
+        Player.get_gunner_sorties_url = new_models.get_gunner_sorties_url
+        Player.get_gunner_vlifes_url = new_models.get_gunner_vlifes_url
+        Player.get_gunner_awards_url = new_models.get_gunner_awards_url
+        Player.get_gunner_killboard_url = new_models.get_gunner_killboard_url
+
+        from stats import rewards as original_rewards
+        from . import rewards as new_rewards
+        original_rewards.reward_vlife = new_rewards.reward_vlife_patch
+
+        try:
+            if module_active(MODULE_AIR_STREAKS_NO_AI):
+                import mod_stats_by_aircraft as aircraft_mod
+                aircraft_mod.apps.IGNORE_AI_KILLS_STREAKS = True
+        except ImportError:
+            pass  # Case when mod_stats_by_aircraft is not installed.

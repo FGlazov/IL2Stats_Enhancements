@@ -18,6 +18,7 @@ from .config_modules import *
 from .variant_utils import FIGHTER_WHITE_LIST
 from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
 from stats import sortie_log
+from .turret_utils import turret_to_aircraft
 
 INACTIVE_PLAYER_DAYS = settings.INACTIVE_PLAYER_DAYS
 ITEMS_PER_PAGE = 20
@@ -25,8 +26,13 @@ ITEMS_PER_PAGE = 20
 missions_sort_fields = ['id', 'players_total', 'pilots_total', 'tankmans_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
+<<<<<<< HEAD
 pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy', 'gkd',
                       'gkhr', 'score', 'score_light', 'score_medium', 'score_heavy',
+=======
+pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
+                      'score', 'score_light', 'score_medium', 'score_heavy', 'ak_no_ai',
+>>>>>>> master
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr',
                         'accuracy', 'score', 'rating']
@@ -126,7 +132,7 @@ def pilot(request, profile_id, nickname=None):
     tour_id = request.GET.get('tour')
     cls = validate_and_get_player_cls(request)
 
-    player, profile = __get_player(profile_id, request, tour_id, cls)
+    player, profile = __get_player(profile_id, request, tour_id, cls, redirect_on_fail=True)
     if player is None:
         return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
@@ -178,7 +184,7 @@ def __find_filtered_players(profile_id, tour_id):
     return light_player_exists, medium_player_exists, heavy_player_exists
 
 
-def __get_player(profile_id, request, tour_id, cls):
+def __get_player(profile_id, request, tour_id, cls='all', redirect_on_fail=False, gunner=False):
     if cls == 'all':
         player_class = Player
     else:
@@ -190,9 +196,17 @@ def __get_player(profile_id, request, tour_id, cls):
             query = player_class.objects.select_related('profile', 'tour')
             if cls != 'all':
                 query = query.filter(cls=cls)
-            player = query.get(profile_id=profile_id, type='pilot', tour_id=request.tour.id)
+            if gunner:
+                query = query.filter(type='gunner')
+            else:
+                query = query.filter(type='pilot')
+
+            player = query.get(profile_id=profile_id, tour_id=request.tour.id)
 
         except player_class.DoesNotExist:
+            if not redirect_on_fail:
+                raise Http404
+
             try:
                 profile = Profile.objects.get(id=profile_id)
                 player = None
@@ -231,6 +245,21 @@ def __get_fav_aircraft(player):
     return fav_aircraft
 
 
+def __get_fav_turret_aircraft(player):
+    try:
+        fav_turret = (PlayerAircraft.objects
+                      .select_related('aircraft')
+                      .filter(player_id=player.id)
+                      .order_by('-sorties_total'))[0]
+    except IndexError:
+        fav_turret = None
+
+    if fav_turret is not None:
+        return turret_to_aircraft(fav_turret.aircraft)
+    else:
+        return None
+
+
 def _get_filtered_player_rating_position(filtered_player):
     if filtered_player.score == 0:
         return None, None
@@ -240,6 +269,19 @@ def _get_filtered_player_rating_position(filtered_player):
         type='pilot',
         cls=filtered_player.cls,
         rating__gt=filtered_player.rating
+    ).count())
+    page = (position - 1) // ITEMS_PER_PAGE + 1
+    return position, page
+
+
+def _get_gunner_player_rating_position(player):
+    if player.score == 0:
+        return None, None
+
+    position = 1 + (Player.objects.filter(
+        tour=player.tour,
+        type='gunner',
+        rating__gt=player.rating
     ).count())
     page = (position - 1) // ITEMS_PER_PAGE + 1
     return position, page
@@ -288,6 +330,8 @@ def pilot_vlifes(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -321,6 +365,8 @@ def pilot_awards(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
     player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -347,8 +393,10 @@ def pilot_awards(request, profile_id, nickname=None):
 
 def pilot_killboard(request, profile_id, nickname=None):
     cls = validate_and_get_player_cls(request)
-    player, _ = __get_player(profile_id, request, request.tour.id, cls)
+    player, profile = __get_player(profile_id, request, request.tour.id, cls)
 
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
     if player.nickname != nickname:
         return redirect_fix_url(request=request, param='nickname', value=player.nickname)
     if player.profile.is_hide:
@@ -493,6 +541,12 @@ def main(request):
         top_24_heavy = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='heavy')
         top_24_medium = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='medium')
         top_24_light = __top_recent_players(request.tour.id, module_active(MODULE_TOP_LAST_MISSION), cls='light')
+        summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+        summary_total_medium = request.tour.cls_stats_summary_total('medium')
+        summary_total_light = request.tour.cls_stats_summary_total('light')
+        summary_coal_heavy = request.tour.cls_stats_summary_coal('heavy')
+        summary_coal_medium = request.tour.cls_stats_summary_coal('medium')
+        summary_coal_light = request.tour.cls_stats_summary_coal('light')
     else:
         top_streak_heavy = None
         top_streak_medium = None
@@ -500,6 +554,12 @@ def main(request):
         top_24_heavy = None
         top_24_medium = None
         top_24_light = None
+        summary_total_heavy = None
+        summary_total_medium = None
+        summary_total_light = None
+        summary_coal_heavy = None
+        summary_coal_medium = None
+        summary_coal_light = None
 
     toptank_streak = (Player.players.tankmans(tour_id=request.tour.id)
                           .exclude(score_streak_current=0)
@@ -579,6 +639,12 @@ def main(request):
         'missions_wins_total': missions_wins_total,
         'summary_total': summary_total,
         'summary_coal': summary_coal,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
+        'summary_coal_heavy': summary_coal_heavy,
+        'summary_coal_medium': summary_coal_medium,
+        'summary_coal_light': summary_coal_light,
         'top_streak': top_streak,
         'toptank_streak': toptank_streak,
         'top_streak_heavy': top_streak_heavy,
@@ -663,6 +729,12 @@ def tour(request):
         top_streak_heavy = __top_max_streak(request.tour, cls='heavy')
         top_streak_medium = __top_max_streak(request.tour, cls='medium')
         top_streak_light = __top_max_streak(request.tour, cls='light')
+        summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+        summary_total_medium = request.tour.cls_stats_summary_total('medium')
+        summary_total_light = request.tour.cls_stats_summary_total('light')
+        summary_coal_heavy = request.tour.cls_stats_summary_coal('heavy')
+        summary_coal_medium = request.tour.cls_stats_summary_coal('medium')
+        summary_coal_light = request.tour.cls_stats_summary_coal('light')
     else:
         top_rating_heavy = None
         top_rating_medium = None
@@ -670,6 +742,12 @@ def tour(request):
         top_streak_heavy = None
         top_streak_medium = None
         top_streak_light = None
+        summary_total_heavy = None
+        summary_total_medium = None
+        summary_total_light = None
+        summary_coal_heavy = None
+        summary_coal_medium = None
+        summary_coal_light = None
 
     coal_active_pilots = request.tour.coal_active_pilots()
     total_active_pilots = sum(coal_active_pilots.values())
@@ -695,6 +773,12 @@ def tour(request):
         'top_streak_heavy': top_streak_heavy,
         'top_streak_medium': top_streak_medium,
         'top_streak_light': top_streak_light,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
+        'summary_coal_heavy': summary_coal_heavy,
+        'summary_coal_medium': summary_coal_medium,
+        'summary_coal_light': summary_coal_light,
         'top_rating': top_rating,
         'toptank_rating': toptank_rating,
         'top_rating_heavy': top_rating_heavy,
@@ -787,6 +871,7 @@ def pilot_sortie(request, sortie_id):
         'sortie': sortie,
         'score_dict': mission_score_dict or sortie.mission.score_dict,
         'ammo_breakdown': ammo_breakdown,
+        'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
     })
 
 
@@ -839,6 +924,10 @@ def ironman_stats(request):
 
     if cls == 'all':
         vlife_object = VLife
+        if sort_by == 'ak_no_ai':
+            sort_by = 'VLifeAugmentation_MOD_SPLIT_RANKINGS__ak_no_ai'
+        if sort_by == '-ak_no_ai':
+            sort_by = '-VLifeAugmentation_MOD_SPLIT_RANKINGS__ak_no_ai'
     else:
         vlife_object = FilteredVLife
 
@@ -860,6 +949,7 @@ def ironman_stats(request):
         'players': players,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'no_ai_streaks': module_active(MODULE_AIR_STREAKS_NO_AI),
         'cls': cls,
     })
 
@@ -983,3 +1073,260 @@ def validate_and_get_player_cls(request):
     if cls not in {'all', 'heavy', 'medium', 'light'}:
         raise Http404("Invalid cls")
     return cls
+
+
+def gunner_sortie(request, sortie_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    try:
+        sortie = (Sortie.objects
+                  .select_related('player', 'player__profile', 'player__tour', 'mission')
+                  .get(id=sortie_id, player__type='gunner'))
+    except Sortie.DoesNotExist:
+        raise Http404
+
+    # обработка старого формат хранения очков, без AI очков
+    mission_score_dict = {}
+    for k, v in sortie.mission.score_dict.items():
+        if isinstance(v, dict):
+            break
+        mission_score_dict[k] = {'base': v, 'ai': v}
+
+    if 'penalty_pct' in sortie.score_dict:
+        base_score = sortie.score_dict['basic']
+        penalty_pct = sortie.score_dict['penalty_pct']
+        sortie.score_dict['after_penalty_score'] = int(base_score * ((100 - penalty_pct) / 100))
+
+    if 'ammo_breakdown' in sortie.ammo and module_active(MODULE_AMMO_BREAKDOWN):
+        ammo_breakdown = translate_ammo_breakdown(sortie.ammo['ammo_breakdown'])
+    else:
+        ammo_breakdown = dict()
+
+    aircraft = turret_to_aircraft(sortie.aircraft)
+
+    return render(request, 'gunner_sortie.html', {
+        'player': sortie.player,
+        'sortie': sortie,
+        'score_dict': mission_score_dict or sortie.mission.score_dict,
+        'ammo_breakdown': ammo_breakdown,
+        'ammo_breakdown_module': module_active(MODULE_AMMO_BREAKDOWN),
+        'aircraft': aircraft,
+    })
+
+
+def gunner_vlifes(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
+
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    vlifes = VLife.objects.filter(player_id=player.id).exclude(sorties_total=0).order_by('-id')
+
+    page = request.GET.get('page', 1)
+    vlifes = Paginator(vlifes, ITEMS_PER_PAGE).page(page)
+
+    return render(request, 'gunner_vlifes.html', {
+        'player': player,
+        'vlifes': vlifes,
+    })
+
+
+def gunner_vlife(request, vlife_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    try:
+        vlife = (VLife.objects
+                 .select_related('player', 'player__profile', 'player__tour')
+                 .get(id=vlife_id, player__type='gunner'))
+
+    except VLife.DoesNotExist:
+        raise Http404
+    return render(request, 'gunner_vlife.html', {
+        'player': vlife.player,
+        'vlife': vlife,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+    })
+
+
+def gunner_sortie_log(request, sortie_id):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    try:
+        sortie = Sortie.objects.select_related('player', 'player__profile', 'player__tour', 'mission').get(id=sortie_id)
+    except Sortie.DoesNotExist:
+        raise Http404
+    events = (LogEntry.objects
+              .select_related('act_object', 'act_sortie', 'cact_object', 'cact_sortie')
+              .filter(Q(act_sortie_id=sortie.id) | Q(cact_sortie_id=sortie.id))
+              .exclude(
+        Q(act_object__cls='trash') | Q(cact_object__cls='trash') | Q(type='shotdown', act_object__isnull=True))
+              .order_by('tik'))
+    for e in events:
+        is_friendly_fire = e.extra_data.get('is_friendly_fire', False)
+        if e.cact_sortie and e.cact_sortie.id == sortie.id:
+            e.message = sortie_log.get_message(act_type='cact', event_type=e.type, has_opponent=e.act_object)
+            e.color = sortie_log.get_color(act_type='cact', event_type=e.type, is_friendly_fire=is_friendly_fire)
+            e.opponent_sortie = e.act_sortie
+            e.opponent_object = e.act_object
+            e.opponent_act = True
+        elif e.act_sortie and e.act_sortie.id == sortie.id:
+            e.message = sortie_log.get_message(act_type='act', event_type=e.type, has_opponent=e.cact_object)
+            e.color = sortie_log.get_color(act_type='act', event_type=e.type, is_friendly_fire=is_friendly_fire)
+            e.opponent_sortie = e.cact_sortie
+            e.opponent_object = e.cact_object
+            e.opponent_act = False
+
+        if ((e.type == 'damaged' or e.type == 'wounded') and type(e.extra_data['damage']) is dict
+                and 'hits' in e.extra_data['damage']):
+            e.extra_data['damage']['translated_hits'] = translate_damage_log_bullets(e.extra_data['damage']['hits'])
+
+    return render(request, 'gunner_sortie_log.html', {
+        'player': sortie.player,
+        'sortie': sortie,
+        'events': events,
+        'MODULE_AMMO_BREAKDOWN': module_active(MODULE_AMMO_BREAKDOWN),
+    })
+
+
+def gunner_killboard(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
+
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    _killboard = (KillboardPvP.objects
+                  .select_related('player_1__profile', 'player_2__profile')
+                  .filter(Q(player_1=player) | Q(player_2=player)))
+
+    killboard = []
+    for k in _killboard:
+        if k.player_1_id == player.id:
+            killboard.append({'player': k.player_2, 'won': k.won_1, 'lose': k.won_2, 'wl': k.wl_1})
+        else:
+            killboard.append({'player': k.player_1, 'won': k.won_2, 'lose': k.won_1, 'wl': k.wl_2})
+
+    _sort_by = get_sort_by(request=request, sort_fields=killboard_sort_fields, default='-wl')
+    sort_reverse = True if _sort_by.startswith('-') else False
+    sort_by = _sort_by.replace('-', '')
+    killboard = sorted(killboard, key=lambda x: x[sort_by], reverse=sort_reverse)
+
+    return render(request, 'gunner_killboard.html', {
+        'player': player,
+        'killboard': killboard,
+    })
+
+
+def gunner_awards(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    player, profile = __get_player(profile_id, request, request.tour.id, gunner=True)
+
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    rewards = Reward.objects.select_related('award').filter(player_id=player.id).order_by('award__order', '-date')
+
+    return render(request, 'gunner_awards.html', {
+        'player': player,
+        'rewards': rewards,
+    })
+
+
+def gunner_sorties(request, profile_id, nickname=None):
+    # Fix it.
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    try:
+        base_player = (Player.objects.select_related('profile', 'tour')
+                       .get(profile_id=profile_id, type='gunner', tour_id=request.tour.id))
+        player = base_player
+    except Player.DoesNotExist:
+        raise Http404
+
+    if base_player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=base_player.nickname)
+    if base_player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'base_player': base_player})
+    sorties = (Sortie.objects.select_related('aircraft', 'mission')
+               .filter(player_id=base_player.id)
+               .order_by('-id'))
+
+    page = request.GET.get('page', 1)
+    sorties = Paginator(sorties, ITEMS_PER_PAGE).page(page)
+
+    return render(request, 'gunner_sorties.html', {
+        'player': player,
+        'sorties': sorties,
+    })
+
+
+def gunners(request):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    page = request.GET.get('page', 1)
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-rating')
+
+    players = Player.objects.filter(
+        type='gunner',
+        tour_id=request.tour.id
+    ).order_by(sort_by)
+    if search:
+        players = players.filter(profile__nickname__icontains=search)
+    else:
+        players = __active_filter(request.tour, players)
+
+    players = Paginator(players, ITEMS_PER_PAGE).page(page)
+    return render(request, 'gunners.html', {
+        'players': players,
+        'sort_by': sort_by,
+    })
+
+
+def gunner(request, profile_id, nickname=None):
+    if not module_active(MODULE_GUNNER_STATS):
+        raise Http404("Gunner stats not available on this server.")
+
+    tour_id = request.GET.get('tour')
+
+    player, profile = __get_player(profile_id, request, tour_id, gunner=True)
+    if player is None:
+        return render(request, 'pilot_not_exist.html', {'profile': profile})
+    if player.nickname != nickname:
+        return redirect_fix_url(request=request, param='nickname', value=player.nickname)
+    if player.profile.is_hide:
+        return render(request, 'pilot_hide.html', {'player': player})
+
+    rating_position, page_position = _get_gunner_player_rating_position(player)
+    fav_aircraft = __get_fav_turret_aircraft(player)
+
+    return render(request, 'gunner.html', {
+        'fav_aircraft': fav_aircraft,
+        'player': player,
+        'rating_position': rating_position,
+        'page_position': page_position,
+    })
