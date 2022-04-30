@@ -116,6 +116,7 @@ Version 2.4.0
 
 - New module "Air streaks no AI", makes air streaks not count ai kills.
 - New module "Gunner stats", which includes a new table "Gunner Rankings" which works like "Pilot rankings", but for gunners of an aircraft.
+- New module: "Rams", which tries to recognize rams and display them in sortie logs.
 - Module Ammo Breakdown: The breakdowns now also work for bombs/rockets. This is useful for attacker/bomber planes, and also works for tanks (bombs/rockets taken).
 - Module Ammo Breakdown: Also breakdown ammo of gunner rankings.
 - Module Ammo Breakdown: Fix bug where hits from a player turret were counting towards the breakdown of hits of the parent's sortie.

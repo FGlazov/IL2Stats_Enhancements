@@ -1,7 +1,7 @@
 import math
 
 from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKAROUND, \
-    MODULE_BAILOUT_ACCURACY_WORKAROUND, module_active
+    MODULE_RAMS, module_active
 from mission_report.report import Sortie
 import operator
 
@@ -103,30 +103,50 @@ class RamsCache:
         self.cache = []
         self.prune_counter = 0
 
-    def register_ram(self, location, tik, event, sortie):
+    def register_ram(self, location, tik, event, obj):
+        if obj.cls_base not in {'aircraft', 'vehicle', 'tank'}:
+            return
+
+        self.prune_counter += 1
+        if self.prune_counter > RAM_PRUNE_COUNTER_MAX:
+            self.prune_cache(tik)
+
+        found_ram = False
         for i in range(len(self.cache) - 1, -1, -1):
             other_ram = self.cache[i]
-            if eucl_distance(other_ram.location, location) < RAM_DISTANCE_CUTOFF:
-                # TODO: Finish this.
-                print('Detected ram!')
+            if (eucl_distance(other_ram.location, location) < RAM_DISTANCE_CUTOFF
+                    and abs(tik - other_ram.tik) < RAM_CUTOFF and obj != other_ram.obj):
+                event['damage']['ram'] = True
+                event['attacker'] = other_ram.obj
+                other_ram.event['damage']['ram'] = True
+                other_ram.event['attacker'] = obj
 
-        self.cache.append(Ram(
-            location, tik, event, sortie
-        ))
+                del self.cache[i]
+                found_ram = True
+                break
+
+        if not found_ram:
+            self.cache.append(Ram(
+                location, tik, event, obj
+            ))
+
+    def prune_cache(self, tik):
+        self.cache = [ram for ram in self.cache if abs(tik - ram.tik) >= RAM_CUTOFF]
+        self.prune_counter = 0
 
 
 class Ram:
-    def __init__(self, location, tik, event, sortie):
+    def __init__(self, location, tik, event, obj):
         self.location = location
         self.tik = tik
         self.event = event
-        self.sortie = sortie
+        self.obj = obj
 
 
 RAMS_CACHE = RamsCache()
 RAM_CUTOFF = 10  # After 10 ticks = ~200 ms don't consider rams anymore
 RAM_PRUNE_COUNTER_MAX = 50  # After 50 rams prune the cache.
-RAM_DISTANCE_CUTOFF = 50  # The two ramers must be within 50 meters of each other.
+RAM_DISTANCE_CUTOFF = 100  # The two ramers must be within 100 meters of each other.
 
 
 # Monkey patched event_hit in report.py
@@ -166,8 +186,22 @@ def event_player(self, tik, aircraft_id, bot_id, account_id, profile_id, name, p
     self.logger_event({'type': 'respawn', 'sortie': sortie, 'pos': pos})
 
 
+# Monkey patched function inside report.py
+def event_damage(self, tik, damage, attacker_id, target_id, pos):
+    attacker = self.get_object(object_id=attacker_id)
+    target = self.get_object(object_id=target_id)
+    # дамага может не быть из-за бага логов
+    if target and damage:
+        # таймаут для парашютистов
+        if target.sortie and target.is_crew() and target.sortie.is_ended_by_timeout(timeout=120, tik=tik):
+            return
+        if target.sortie and not target.is_crew() and target.sortie.is_ended:
+            return
+        target.got_damaged(damage=damage, tik=tik, attacker=attacker, pos=pos)
+
+
 # Monkey patched into Object class inside report.py
-def got_damaged(self, damage, attacker=None, pos=None):
+def got_damaged(self, damage, tik, attacker=None, pos=None):
     """
     :type damage: int | float
     :type attacker: Object | None
@@ -187,11 +221,13 @@ def got_damaged(self, damage, attacker=None, pos=None):
             self.parent.damagers[attacker] += damage
     is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
 
+    # ======================== MODDED PART BEGIN
     event = {
         'type': 'damage',
         'damage': {
             'pct': damage,
-            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self)
+            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self),
+            'ram': False,
         },
         'pos': pos,
         'attacker': attacker,
@@ -199,21 +235,10 @@ def got_damaged(self, damage, attacker=None, pos=None):
         'is_friendly_fire': is_friendly_fire,
     }
 
-    if self.damage > 0.98 and attacker is None:
-        RAMS_CACHE.register_ram(pos, 0, event, self.sortie)
+    if module_active(MODULE_RAMS) and self.damage > 98 and attacker is None:
+        RAMS_CACHE.register_ram(pos, tik, event, self)
 
-    # ======================== MODDED PART BEGIN
-    self.mission.logger_event({
-        'type': 'damage',
-        'damage': {
-            'pct': damage,
-            'hits': RECENT_HITS_CACHE.get_recent_hits(self.mission.tik_last, attacker, self)
-        },
-        'pos': pos,
-        'attacker': attacker,
-        'target': self,
-        'is_friendly_fire': is_friendly_fire,
-    })
+    self.mission.logger_event(event)
     # ======================== MODDED PART END
 
 

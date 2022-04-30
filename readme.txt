@@ -68,6 +68,16 @@ This module replaces the "Top players in last 24 hours" with "Top players in las
 
 Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations!
 
+---------------------------
+Module Rams
+---------------------------
+
+Config name: Rams
+
+This module records and shows rams between aircraft. This allows you to find out which two players rammed each other. 
+
+Thanks to HawkerMkIII, PR9INICHEK, JorgeHFJ, and =FEW=Hauggy, Arkanno, JorgeHFJ and GhostDragon for providing translations!
+
 ------------ Modules changing scoring of sorties ------------ 
 
 All of these scoring modules do NOT apply retroactively. They only apply to sorties after the module has been activated.

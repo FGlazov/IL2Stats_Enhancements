@@ -57,6 +57,7 @@ class ModConfig(AppConfig):
         from mission_report.report import MissionReport, Object
         MissionReport.event_hit = new_report.event_hit
         MissionReport.event_player = new_report.event_player
+        MissionReport.event_damage = new_report.event_damage
         Object.got_damaged = new_report.got_damaged
         Object.got_killed = new_report.got_killed
         Object.takeoff = new_report.takeoff
