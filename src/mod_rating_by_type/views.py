@@ -26,13 +26,8 @@ ITEMS_PER_PAGE = 20
 missions_sort_fields = ['id', 'players_total', 'pilots_total', 'tankmans_total', 'winning_coalition', 'duration']
 squads_sort_fields = ['ak_total', 'gk_total', 'flight_time', 'kd', 'khr', 'score', 'num_members',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
-<<<<<<< HEAD
 pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy', 'gkd',
-                      'gkhr', 'score', 'score_light', 'score_medium', 'score_heavy',
-=======
-pilots_sort_fields = ['ak_total', 'streak_current', 'gk_total', 'flight_time', 'kd', 'kl', 'khr', 'accuracy',
-                      'score', 'score_light', 'score_medium', 'score_heavy', 'ak_no_ai',
->>>>>>> master
+                      'gkhr', 'score', 'score_light', 'score_medium', 'score_heavy', 'ak_no_ai',
                       'rating_light', 'rating_medium', 'rating_heavy', 'rating']
 tankmans_sort_fields = ['gk_total', 'streak_ground_current', 'ak_total', 'flight_time', 'kd', 'khr', 'gkd', 'gkhr',
                         'accuracy', 'score', 'rating']
