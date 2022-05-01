@@ -198,6 +198,9 @@ def event_damage(self, tik, damage, attacker_id, target_id, pos):
         if target.sortie and not target.is_crew() and target.sortie.is_ended:
             return
         target.got_damaged(damage=damage, tik=tik, attacker=attacker, pos=pos)
+        # получить время об последний урон для диско - get time of last damage done to airplane when sortie is disco
+        if target.sortie:
+            target.sortie.tik_lastdamage = tik
 
 
 # Monkey patched into Object class inside report.py
