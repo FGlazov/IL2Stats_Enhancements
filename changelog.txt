@@ -218,3 +218,7 @@ Version 1.8.10
 Version 1.8.11
 
 - Update to 1.2.61 of IL2 stats.
+
+Version 1.9.0
+
+- Update to 2.4.0 of enhancements, 1.50 of aircraft mod.
