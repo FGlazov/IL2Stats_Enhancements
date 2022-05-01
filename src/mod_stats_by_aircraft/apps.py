@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from django.utils.translation import ugettext_lazy as _
 
+IGNORE_AI_KILLS_STREAKS = False
 
 class ModConfig(AppConfig):
     name = 'mod_stats_by_aircraft'

@@ -3,6 +3,7 @@ from django.db.models import Q, F
 from .aircraft_mod_models import AircraftBucket, SortieAugmentation, AircraftKillboard
 from .variant_utils import has_juiced_variant, has_bomb_variant, get_sortie_type
 from .ammo_file_manager import write_breakdown_line, OFFENSIVE_BREAKDOWN, DEFENSIVE_BREAKDOWN
+from .apps import IGNORE_AI_KILLS_STREAKS
 
 from stats.models import Sortie, LogEntry, Player, Object
 from stats.logger import logger
@@ -540,7 +541,7 @@ def is_pilot_snipe(sortie):
     3. That the shotdown didn't happen much later than the last damage to pilot event, otherwise it could be as above.
     4. That there was sufficent damage to the pilot from enemy planes to cause a death to the pilot.
 
-    If all 3 conditions are satisified, then it's a pilot snipe.
+    If all 4 conditions are satisified, then it's a pilot snipe.
     """
     death_event = (LogEntry.objects
                    .filter(Q(cact_sortie_id=sortie.id),
@@ -655,6 +656,11 @@ def process_streaks_and_best_sorties(bucket, sortie):
 
     bucket.current_score_streak += sortie.score
     bucket.current_ak_streak += sortie.ak_total
+    if IGNORE_AI_KILLS_STREAKS:
+        killboard = sortie.killboard_pve
+        aircraft_types = ['aircraft_light', 'aircraft_medium', 'aircraft_heavy', 'aircraft_transport']
+        for aircraft_type in aircraft_types:
+            bucket.current_ak_streak -= killboard[aircraft_type] if aircraft_type in killboard else 0
     bucket.current_gk_streak += sortie.gk_total
 
     bucket.max_score_streak = max(bucket.max_score_streak, bucket.current_score_streak)

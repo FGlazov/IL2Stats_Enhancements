@@ -84,3 +84,13 @@ urlpatterns = [
 
 if hasattr(views, 'ironman_stats'):  # For compatibility with mod_rating_by_type.
     urlpatterns.append(url(r'^ironman/$', views.ironman_stats, name='ironman'))
+    urlpatterns.append(url(r'^gunners/$', views.gunners, name='gunners'))
+    urlpatterns.append(url(r'^gunner/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner, name='gunner'))
+    urlpatterns.append(url(r'^gunner_sortie/(?P<sortie_id>\d+)/$', views.gunner_sortie, name='gunner_sortie'))
+    urlpatterns.append(url(r'^gunner_sortie/log/(?P<sortie_id>\d+)/$', views.gunner_sortie_log, name='gunner_sortie_log'))
+    urlpatterns.append(url(r'^gunner_vlife/(?P<vlife_id>\d+)/$', views.gunner_vlife, name='gunner_vlife'))
+    urlpatterns.append(url(r'^gunner_vlifes/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_vlifes, name='gunner_vlifes'))
+    urlpatterns.append(url(r'^gunner_awards/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_awards, name='gunner_awards'))
+    urlpatterns.append(url(r'^gunner_killboard/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_killboard, name='gunner_killboard'))
+    urlpatterns.append(url(r'^gunner_sorties/(?P<profile_id>\d+)/$', views.gunner_sorties, name='gunner_sorties'))
+    urlpatterns.append(url(r'^gunner_sorties/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner_sorties, name='gunner_sorties'))
