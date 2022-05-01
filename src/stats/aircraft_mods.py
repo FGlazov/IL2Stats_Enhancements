@@ -303,6 +303,14 @@ aircraft_mods = {
         4: pgettext_lazy('aircraft_mod', 'SC 1800 heavy bomb'),
         5: pgettext_lazy('aircraft_mod', '44 x SC 50 bombs'),
     },
+    'ju 88 c-6': {
+        1: pgettext_lazy('aircraft_mod', 'Additional armor'),
+        2: pgettext_lazy('aircraft_mod', 'Exhaust flame suppressors'),
+        3: pgettext_lazy('aircraft_mod', '20mm MG 151/20 gun'),
+        4: pgettext_lazy('aircraft_mod', '13mm MG131 turret'),
+        5: pgettext_lazy('aircraft_mod', '10 x SC 50 bombs'),
+        6: pgettext_lazy('aircraft_mod', 'Underwing bombs'),
+    },
     'la-5fn ser.2': {
         1: pgettext_lazy('aircraft_mod', '2 x FAB-50sv bombs'),
         2: pgettext_lazy('aircraft_mod', '2 x FAB-100M bombs'),
