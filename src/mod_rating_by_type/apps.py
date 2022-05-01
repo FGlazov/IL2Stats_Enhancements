@@ -87,6 +87,8 @@ class ModConfig(AppConfig):
         Tour.stats_summary_coal = new_models.stats_summary_coal
         Tour.cls_stats_summary_total = new_models.cls_stats_summary_total
         Tour.cls_stats_summary_coal = new_models.cls_stats_summary_coal
+        Tour.tank_summary_total = new_models.tank_summary_total
+        Tour.tank_summary_coal = new_models.tank_summary_coal
 
         Player.get_base_profile_url = FilteredPlayer.get_base_profile_url
         Player.get_light_profile_url = FilteredPlayer.get_light_profile_url

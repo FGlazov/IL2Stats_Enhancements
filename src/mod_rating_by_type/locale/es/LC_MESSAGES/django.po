@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-01 10:21+0200\n"
+"POT-Creation-Date: 2022-05-01 11:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -935,76 +935,76 @@ msgctxt "bullet_type"
 msgid "Rocket 280 mm HE"
 msgstr ""
 
-#: .\mod_rating_by_type\models.py:265 .\mod_rating_by_type\models.py:577
-#: .\mod_rating_by_type\models.py:795
+#: .\mod_rating_by_type\models.py:295 .\mod_rating_by_type\models.py:607
+#: .\mod_rating_by_type\models.py:825
 msgid "neutral"
 msgstr "neutral"
 
-#: .\mod_rating_by_type\models.py:616
+#: .\mod_rating_by_type\models.py:646
 msgctxt "sortie_status"
 msgid "landed"
 msgstr "aterrizado"
 
-#: .\mod_rating_by_type\models.py:617
+#: .\mod_rating_by_type\models.py:647
 msgctxt "sortie_status"
 msgid "ditched"
 msgstr "forzoso"
 
-#: .\mod_rating_by_type\models.py:618
+#: .\mod_rating_by_type\models.py:648
 msgctxt "sortie_status"
 msgid "crashed"
 msgstr "estrellado"
 
-#: .\mod_rating_by_type\models.py:619
+#: .\mod_rating_by_type\models.py:649
 msgctxt "sortie_status"
 msgid "shotdown"
 msgstr "derribado"
 
-#: .\mod_rating_by_type\models.py:620
+#: .\mod_rating_by_type\models.py:650
 msgctxt "sortie_status"
 msgid "not takeoff"
 msgstr "sin despegar"
 
-#: .\mod_rating_by_type\models.py:621
+#: .\mod_rating_by_type\models.py:651
 msgctxt "sortie_status"
 msgid "in flight"
 msgstr "en vuelo"
 
-#: .\mod_rating_by_type\models.py:627
+#: .\mod_rating_by_type\models.py:657
 msgctxt "aircraft_status"
 msgid "unharmed"
 msgstr "sin daños"
 
-#: .\mod_rating_by_type\models.py:628
+#: .\mod_rating_by_type\models.py:658
 msgctxt "aircraft_status"
 msgid "damaged"
 msgstr "dañado"
 
-#: .\mod_rating_by_type\models.py:629
+#: .\mod_rating_by_type\models.py:659
 msgctxt "aircraft_status"
 msgid "destroyed"
 msgstr "destruido"
 
-#: .\mod_rating_by_type\models.py:635
+#: .\mod_rating_by_type\models.py:665
 msgctxt "sortie_status"
 msgid "healthy"
 msgstr "sano"
 
-#: .\mod_rating_by_type\models.py:636
+#: .\mod_rating_by_type\models.py:666
 msgctxt "sortie_status"
 msgid "wounded"
 msgstr "herido"
 
-#: .\mod_rating_by_type\models.py:637
+#: .\mod_rating_by_type\models.py:667
 msgctxt "sortie_status"
 msgid "dead"
 msgstr "muerto"
 
-#: .\mod_rating_by_type\models.py:1043
+#: .\mod_rating_by_type\models.py:1073
 msgid "reward"
 msgstr "recompensa"
 
-#: .\mod_rating_by_type\models.py:1044
+#: .\mod_rating_by_type\models.py:1074
 msgid "rewards"
 msgstr "recompensas"
 
@@ -1102,7 +1102,7 @@ msgid "Info"
 msgstr "Información"
 
 #: .\mod_rating_by_type\templates\base.html:110
-#: .\mod_rating_by_type\templates\main.html:522
+#: .\mod_rating_by_type\templates\main.html:545
 #: .\mod_rating_by_type\templates\tour.html:3
 msgid "Tour"
 msgstr "Campaña"
@@ -1898,11 +1898,11 @@ msgid "Current life"
 msgstr "Racha Actual"
 
 #: .\mod_rating_by_type\templates\gunner.html:543
-#: .\mod_rating_by_type\templates\main.html:505
+#: .\mod_rating_by_type\templates\main.html:528
 #: .\mod_rating_by_type\templates\overall.html:504
 #: .\mod_rating_by_type\templates\pilot.html:644
 #: .\mod_rating_by_type\templates\squad.html:479
-#: .\mod_rating_by_type\templates\tour.html:477
+#: .\mod_rating_by_type\templates\tour.html:500
 msgid "Coalitions"
 msgstr "Coaliciones"
 
@@ -2999,24 +2999,30 @@ msgctxt "tour"
 msgid "Bomber flight time (hours)"
 msgstr "Horas de vuelo en bombardero (horas)"
 
-#: .\mod_rating_by_type\templates\main.html:196
+#: .\mod_rating_by_type\templates\main.html:190
+#: .\mod_rating_by_type\templates\tour.html:189
+msgctxt "tour"
+msgid "Tank operation time (hours)"
+msgstr "Tiempo de operación en tanque (horas)"
+
+#: .\mod_rating_by_type\templates\main.html:219
 msgctxt "tour_top"
 msgid "Best pilots in the last mission"
 msgstr "Mejores pilotos en la última misión"
 
-#: .\mod_rating_by_type\templates\main.html:198
+#: .\mod_rating_by_type\templates\main.html:221
 msgctxt "tour_top"
 msgid "Best pilots in the last 24 hours"
 msgstr "Mejores pilotos en las últimas 24 horas"
 
-#: .\mod_rating_by_type\templates\main.html:203
-#: .\mod_rating_by_type\templates\main.html:229
-#: .\mod_rating_by_type\templates\main.html:320
-#: .\mod_rating_by_type\templates\main.html:346
-#: .\mod_rating_by_type\templates\main.html:378
-#: .\mod_rating_by_type\templates\main.html:404
-#: .\mod_rating_by_type\templates\main.html:436
-#: .\mod_rating_by_type\templates\main.html:462
+#: .\mod_rating_by_type\templates\main.html:226
+#: .\mod_rating_by_type\templates\main.html:252
+#: .\mod_rating_by_type\templates\main.html:343
+#: .\mod_rating_by_type\templates\main.html:369
+#: .\mod_rating_by_type\templates\main.html:401
+#: .\mod_rating_by_type\templates\main.html:427
+#: .\mod_rating_by_type\templates\main.html:459
+#: .\mod_rating_by_type\templates\main.html:485
 #: .\mod_rating_by_type\templates\overall.html:123
 #: .\mod_rating_by_type\templates\overall.html:149
 #: .\mod_rating_by_type\templates\overall.html:177
@@ -3027,50 +3033,50 @@ msgstr "Mejores pilotos en las últimas 24 horas"
 #: .\mod_rating_by_type\templates\overall.html:418
 #: .\mod_rating_by_type\templates\overall.html:444
 #: .\mod_rating_by_type\templates\overall.html:470
-#: .\mod_rating_by_type\templates\tour.html:200
-#: .\mod_rating_by_type\templates\tour.html:226
-#: .\mod_rating_by_type\templates\tour.html:304
-#: .\mod_rating_by_type\templates\tour.html:330
-#: .\mod_rating_by_type\templates\tour.html:356
-#: .\mod_rating_by_type\templates\tour.html:382
-#: .\mod_rating_by_type\templates\tour.html:408
-#: .\mod_rating_by_type\templates\tour.html:434
+#: .\mod_rating_by_type\templates\tour.html:223
+#: .\mod_rating_by_type\templates\tour.html:249
+#: .\mod_rating_by_type\templates\tour.html:327
+#: .\mod_rating_by_type\templates\tour.html:353
+#: .\mod_rating_by_type\templates\tour.html:379
+#: .\mod_rating_by_type\templates\tour.html:405
+#: .\mod_rating_by_type\templates\tour.html:431
+#: .\mod_rating_by_type\templates\tour.html:457
 msgctxt "tour_top"
 msgid "pilot nickname"
 msgstr "piloto"
 
-#: .\mod_rating_by_type\templates\main.html:205
-#: .\mod_rating_by_type\templates\main.html:231
-#: .\mod_rating_by_type\templates\main.html:263
-#: .\mod_rating_by_type\templates\main.html:290
-#: .\mod_rating_by_type\templates\main.html:322
-#: .\mod_rating_by_type\templates\main.html:348
-#: .\mod_rating_by_type\templates\main.html:380
-#: .\mod_rating_by_type\templates\main.html:406
-#: .\mod_rating_by_type\templates\main.html:438
-#: .\mod_rating_by_type\templates\main.html:464
+#: .\mod_rating_by_type\templates\main.html:228
+#: .\mod_rating_by_type\templates\main.html:254
+#: .\mod_rating_by_type\templates\main.html:286
+#: .\mod_rating_by_type\templates\main.html:313
+#: .\mod_rating_by_type\templates\main.html:345
+#: .\mod_rating_by_type\templates\main.html:371
+#: .\mod_rating_by_type\templates\main.html:403
+#: .\mod_rating_by_type\templates\main.html:429
+#: .\mod_rating_by_type\templates\main.html:461
+#: .\mod_rating_by_type\templates\main.html:487
 #: .\mod_rating_by_type\templates\overall.html:151
 #: .\mod_rating_by_type\templates\overall.html:260
-#: .\mod_rating_by_type\templates\tour.html:228
-#: .\mod_rating_by_type\templates\tour.html:280
-#: .\mod_rating_by_type\templates\tour.html:332
-#: .\mod_rating_by_type\templates\tour.html:384
-#: .\mod_rating_by_type\templates\tour.html:436
+#: .\mod_rating_by_type\templates\tour.html:251
+#: .\mod_rating_by_type\templates\tour.html:303
+#: .\mod_rating_by_type\templates\tour.html:355
+#: .\mod_rating_by_type\templates\tour.html:407
+#: .\mod_rating_by_type\templates\tour.html:459
 msgctxt "tour_top"
 msgid "score"
 msgstr "puntos"
 
-#: .\mod_rating_by_type\templates\main.html:224
+#: .\mod_rating_by_type\templates\main.html:247
 msgctxt "tour_top"
 msgid "Best live pilots"
 msgstr "Mejores pilotos vivos"
 
-#: .\mod_rating_by_type\templates\main.html:253
+#: .\mod_rating_by_type\templates\main.html:276
 msgctxt "tour_top"
 msgid "Best tankmen in the last mission"
 msgstr "Mejores tanquista en la última misión"
 
-#: .\mod_rating_by_type\templates\main.html:255
+#: .\mod_rating_by_type\templates\main.html:278
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "Best pilots in the last 24 hours"
@@ -3078,14 +3084,14 @@ msgctxt "tour_top"
 msgid "Best tankmen in the last 24 hours"
 msgstr "Mejores pilotos en las últimas 24 horas"
 
-#: .\mod_rating_by_type\templates\main.html:261
-#: .\mod_rating_by_type\templates\main.html:288
+#: .\mod_rating_by_type\templates\main.html:284
+#: .\mod_rating_by_type\templates\main.html:311
 #: .\mod_rating_by_type\templates\overall.html:232
 #: .\mod_rating_by_type\templates\overall.html:258
 #: .\mod_rating_by_type\templates\overall.html:286
 #: .\mod_rating_by_type\templates\overall.html:312
-#: .\mod_rating_by_type\templates\tour.html:252
-#: .\mod_rating_by_type\templates\tour.html:278
+#: .\mod_rating_by_type\templates\tour.html:275
+#: .\mod_rating_by_type\templates\tour.html:301
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "pilot nickname"
@@ -3093,7 +3099,7 @@ msgctxt "tour_top"
 msgid "tankman nickname"
 msgstr "piloto"
 
-#: .\mod_rating_by_type\templates\main.html:282
+#: .\mod_rating_by_type\templates\main.html:305
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "Best live pilots"
@@ -3101,135 +3107,135 @@ msgctxt "tour_top"
 msgid "Best live tankmen"
 msgstr "Mejores pilotos vivos"
 
-#: .\mod_rating_by_type\templates\main.html:312
+#: .\mod_rating_by_type\templates\main.html:335
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last mission"
 msgstr "Mejores pilotos de caza en la última misión"
 
-#: .\mod_rating_by_type\templates\main.html:314
+#: .\mod_rating_by_type\templates\main.html:337
 msgctxt "tour_top"
 msgid "Best fighter pilots in the last 24 hours"
 msgstr "Mejores pilotos de caza en las últimas 24 horas"
 
-#: .\mod_rating_by_type\templates\main.html:341
+#: .\mod_rating_by_type\templates\main.html:364
 msgctxt "tour_top"
 msgid "Best live fighter pilots"
 msgstr "Mejores pilotos de caza con vida en este momento"
 
-#: .\mod_rating_by_type\templates\main.html:370
+#: .\mod_rating_by_type\templates\main.html:393
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last mission"
 msgstr "Mejores pilotos de ataque a tierra en la última misión"
 
-#: .\mod_rating_by_type\templates\main.html:372
+#: .\mod_rating_by_type\templates\main.html:395
 msgctxt "tour_top"
 msgid "Best attacker pilots in the last 24 hours"
 msgstr "Mejores pilotos de ataque a suelo en las últimas 24 horas"
 
-#: .\mod_rating_by_type\templates\main.html:399
+#: .\mod_rating_by_type\templates\main.html:422
 msgctxt "tour_top"
 msgid "Best live attacker pilots"
 msgstr "Mejores pilotos de ataque a suelo con vida en este momento"
 
-#: .\mod_rating_by_type\templates\main.html:428
+#: .\mod_rating_by_type\templates\main.html:451
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last mission"
 msgstr "Mejores pilotos de bombarderos en la última misión"
 
-#: .\mod_rating_by_type\templates\main.html:430
+#: .\mod_rating_by_type\templates\main.html:453
 msgctxt "tour_top"
 msgid "Best bomber pilots in the last 24 hours"
 msgstr "Mejores pilotos de bombardero en las últimas 24 horas"
 
-#: .\mod_rating_by_type\templates\main.html:457
+#: .\mod_rating_by_type\templates\main.html:480
 msgctxt "tour_top"
 msgid "Best live bomber pilots"
 msgstr "Mejores pilotos de bombardero con vida en este momento"
 
-#: .\mod_rating_by_type\templates\main.html:485
-#: .\mod_rating_by_type\templates\tour.html:457
+#: .\mod_rating_by_type\templates\main.html:508
+#: .\mod_rating_by_type\templates\tour.html:480
 msgid "Overall Pilot Rankings"
 msgstr "Ranking general de Pilotos"
 
-#: .\mod_rating_by_type\templates\main.html:493
-#: .\mod_rating_by_type\templates\tour.html:465
+#: .\mod_rating_by_type\templates\main.html:516
+#: .\mod_rating_by_type\templates\tour.html:488
 #, fuzzy
 #| msgid "Overall Pilot Rankings"
 msgid "Overall Tankman Rankings"
 msgstr "Ranking general de Pilotos"
 
-#: .\mod_rating_by_type\templates\main.html:529
+#: .\mod_rating_by_type\templates\main.html:552
 #, python-format
 msgid "%(days)s day left"
 msgid_plural "%(days)s days left"
 msgstr[0] "Falta %(days)s día"
 msgstr[1] "Faltan %(days)s días"
 
-#: .\mod_rating_by_type\templates\main.html:544
-#: .\mod_rating_by_type\templates\tour.html:494
+#: .\mod_rating_by_type\templates\main.html:567
+#: .\mod_rating_by_type\templates\tour.html:517
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "Best live pilots"
 msgid "Active pilots"
 msgstr "Mejores pilotos vivos"
 
-#: .\mod_rating_by_type\templates\main.html:547
-#: .\mod_rating_by_type\templates\main.html:582
+#: .\mod_rating_by_type\templates\main.html:570
+#: .\mod_rating_by_type\templates\main.html:605
 #: .\mod_rating_by_type\templates\overall.html:524
 msgctxt "tour_active"
 msgid "total"
 msgstr "total"
 
-#: .\mod_rating_by_type\templates\main.html:579
-#: .\mod_rating_by_type\templates\tour.html:529
+#: .\mod_rating_by_type\templates\main.html:602
+#: .\mod_rating_by_type\templates\tour.html:552
 #, fuzzy
 #| msgid "Active players"
 msgid "Active tankmen"
 msgstr "Pilotos Activos"
 
-#: .\mod_rating_by_type\templates\main.html:615
+#: .\mod_rating_by_type\templates\main.html:638
 msgid "Online"
 msgstr ""
 
-#: .\mod_rating_by_type\templates\main.html:618
+#: .\mod_rating_by_type\templates\main.html:641
 #, fuzzy
 #| msgid "Active players"
 msgctxt "online"
 msgid "players"
 msgstr "Pilotos Activos"
 
-#: .\mod_rating_by_type\templates\main.html:640
+#: .\mod_rating_by_type\templates\main.html:663
 #, fuzzy
 #| msgid "List of pilots online"
 msgid "List of players online"
 msgstr "Lista de pilotos online"
 
-#: .\mod_rating_by_type\templates\main.html:655
+#: .\mod_rating_by_type\templates\main.html:678
 msgid "Summary previous tour"
 msgstr "Sumario de campañas previas"
 
-#: .\mod_rating_by_type\templates\main.html:665
+#: .\mod_rating_by_type\templates\main.html:688
 msgctxt "tour_winner"
 msgid "winner"
 msgstr "ganador"
 
-#: .\mod_rating_by_type\templates\main.html:672
+#: .\mod_rating_by_type\templates\main.html:695
 msgid "Top Pilots"
 msgstr "Top Pilotos"
 
-#: .\mod_rating_by_type\templates\main.html:683
+#: .\mod_rating_by_type\templates\main.html:706
 msgid "Top Tankmen"
 msgstr ""
 
-#: .\mod_rating_by_type\templates\main.html:695
+#: .\mod_rating_by_type\templates\main.html:718
 msgid "Top Fighter Pilots"
 msgstr "Top mejores pilotos de caza"
 
-#: .\mod_rating_by_type\templates\main.html:708
+#: .\mod_rating_by_type\templates\main.html:731
 msgid "Top Attacker Pilots"
 msgstr "Top mejores pilotos de ataque a suelo"
 
-#: .\mod_rating_by_type\templates\main.html:721
+#: .\mod_rating_by_type\templates\main.html:744
 msgid "Top Bomber Pilots"
 msgstr "Top mejores pilotos de bombardero"
 
@@ -3319,11 +3325,11 @@ msgstr "Mejores pilotos"
 #: .\mod_rating_by_type\templates\overall.html:340
 #: .\mod_rating_by_type\templates\overall.html:394
 #: .\mod_rating_by_type\templates\overall.html:446
-#: .\mod_rating_by_type\templates\tour.html:202
-#: .\mod_rating_by_type\templates\tour.html:254
-#: .\mod_rating_by_type\templates\tour.html:306
-#: .\mod_rating_by_type\templates\tour.html:358
-#: .\mod_rating_by_type\templates\tour.html:410
+#: .\mod_rating_by_type\templates\tour.html:225
+#: .\mod_rating_by_type\templates\tour.html:277
+#: .\mod_rating_by_type\templates\tour.html:329
+#: .\mod_rating_by_type\templates\tour.html:381
+#: .\mod_rating_by_type\templates\tour.html:433
 msgctxt "tour_top"
 msgid "rating"
 msgstr "ranking"
@@ -3395,7 +3401,7 @@ msgid "Best tankmen AK streak"
 msgstr "Mejor racha de ataque a suelo"
 
 #: .\mod_rating_by_type\templates\overall.html:333
-#: .\mod_rating_by_type\templates\tour.html:299
+#: .\mod_rating_by_type\templates\tour.html:322
 msgctxt "tour_top"
 msgid "Best fighter pilots"
 msgstr "Mejores pilotos de caza"
@@ -3406,7 +3412,7 @@ msgid "Best fighter air kill streak"
 msgstr "Mejor racha de derribos aéreos en un caza"
 
 #: .\mod_rating_by_type\templates\overall.html:387
-#: .\mod_rating_by_type\templates\tour.html:351
+#: .\mod_rating_by_type\templates\tour.html:374
 msgctxt "tour_top"
 msgid "Best attacker pilots"
 msgstr "Mejores pilotos de ataque a suelo"
@@ -3417,7 +3423,7 @@ msgid "Best attacker ground streak"
 msgstr "Mejor racha de derribos a tierra en un ataque a tierra"
 
 #: .\mod_rating_by_type\templates\overall.html:439
-#: .\mod_rating_by_type\templates\tour.html:403
+#: .\mod_rating_by_type\templates\tour.html:426
 msgctxt "tour_top"
 msgid "Best bomber pilots"
 msgstr "Mejores pilotos de bombardero"
@@ -3609,24 +3615,24 @@ msgstr "Campaña \"%(tour)s\" terminada"
 msgid "%(coal)s victory"
 msgstr "Victoria %(coal)s"
 
-#: .\mod_rating_by_type\templates\tour.html:195
+#: .\mod_rating_by_type\templates\tour.html:218
 msgctxt "tour_top"
 msgid "Best pilots"
 msgstr "Mejores pilotos"
 
-#: .\mod_rating_by_type\templates\tour.html:221
+#: .\mod_rating_by_type\templates\tour.html:244
 msgctxt "tour_top"
 msgid "Best pilots streak"
 msgstr "Mejores rachas de pilotos"
 
-#: .\mod_rating_by_type\templates\tour.html:247
+#: .\mod_rating_by_type\templates\tour.html:270
 #, fuzzy
 #| msgid "Best Streak"
 msgctxt "tour_top"
 msgid "Best tankmen"
 msgstr "Mejor Racha"
 
-#: .\mod_rating_by_type\templates\tour.html:273
+#: .\mod_rating_by_type\templates\tour.html:296
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "Best attacker streak"
@@ -3634,22 +3640,22 @@ msgctxt "tour_top"
 msgid "Best tankmen streak"
 msgstr "Mejor racha de ataque a suelo"
 
-#: .\mod_rating_by_type\templates\tour.html:325
+#: .\mod_rating_by_type\templates\tour.html:348
 msgctxt "tour_top"
 msgid "Best fighter streak"
 msgstr "Mejor racha de caza"
 
-#: .\mod_rating_by_type\templates\tour.html:377
+#: .\mod_rating_by_type\templates\tour.html:400
 msgctxt "tour_top"
 msgid "Best attacker streak"
 msgstr "Mejor racha de ataque a suelo"
 
-#: .\mod_rating_by_type\templates\tour.html:429
+#: .\mod_rating_by_type\templates\tour.html:452
 msgctxt "tour_top"
 msgid "Best bomber streak"
 msgstr "Mejor racha de bombardero"
 
-#: .\mod_rating_by_type\templates\tour.html:497
+#: .\mod_rating_by_type\templates\tour.html:520
 #, fuzzy
 #| msgctxt "tour_top"
 #| msgid "Best pilots"
@@ -3657,7 +3663,7 @@ msgctxt "tour_active"
 msgid "total pilots"
 msgstr "Mejores pilotos"
 
-#: .\mod_rating_by_type\templates\tour.html:532
+#: .\mod_rating_by_type\templates\tour.html:555
 msgctxt "tour_active"
 msgid "total tankmen"
 msgstr ""

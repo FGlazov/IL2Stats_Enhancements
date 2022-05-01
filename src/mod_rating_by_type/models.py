@@ -151,6 +151,36 @@ def cls_stats_summary_coal(self, cls):
     return summary_coal
 
 
+# Monkey patched in Tour class class of stats.models
+def tank_summary_total(self):
+    summary_total = {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0}
+    _summary_total = (Sortie.objects
+                      .filter(tour_id=self.id, is_disco=False, player__type='tankman')
+                      .aggregate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                                 score=Sum('score'), flight_time=Sum('flight_time')))
+
+    summary_total.update(_summary_total)
+
+    return summary_total
+
+
+# Monkey patched in Tour class class of stats.models
+def tank_summary_coal(self):
+    summary_coal = {
+        1: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
+        2: {'ak_total': 0, 'gk_total': 0, 'score': 0, 'flight_time': 0},
+    }
+    _summary_coal = (Sortie.objects
+                     .filter(tour_id=self.id, is_disco=False, player__type='tankman')
+                     .values('coalition')
+                     .order_by()
+                     .annotate(ak_total=Sum('ak_total'), gk_total=Sum('gk_total'),
+                               score=Sum('score'), flight_time=Sum('flight_time')))
+    for s in _summary_coal:
+        summary_coal[s['coalition']].update(s)
+    return summary_coal
+
+
 class SortieAugmentation(models.Model):
     """
     Additional fields to Sortie objects used by this mod.
