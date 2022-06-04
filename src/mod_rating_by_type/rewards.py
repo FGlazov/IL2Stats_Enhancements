@@ -2,7 +2,9 @@ from functools import lru_cache
 
 from custom import rewards
 from stats.models import Award, VLife
+from stats.rewards import rewarding as old_rewarding
 from .models import FilteredReward, VLifeAugmentation
+
 
 _awards_tour = Award.objects.filter(type='tour')
 _awards_mission = Award.objects.filter(type='mission')
@@ -48,7 +50,7 @@ def reward_vlife_patch(vlife):
     player = vlife.player
     for award in _awards_vlife:
         if get_reward_func(award.func)(vlife=vlife):
-            rewarding(award_id=award.id, player_id=player.id)
+            old_rewarding(award_id=award.id, player_id=player.id)
 
     if vlife.id is None:
         return
