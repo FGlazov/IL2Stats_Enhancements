@@ -128,3 +128,7 @@ Version 2.4.0
 Version 2.4.1
 
 - Module Split Rankings: Fix bug where a VLife award would cause stats process to crash.
+
+Version 2.4.2
+
+- Update to latest version of il2 stats (cruise misssles killed are now shown).
