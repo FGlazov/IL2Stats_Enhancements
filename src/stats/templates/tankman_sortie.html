@@ -745,6 +745,20 @@
                     </div>
                 </div>
                 {% endif %}
+				
+				{% if sortie.killboard_pve.cruise_missile %}
+                    <div class="sub_row">
+                        <div class="left">
+                            {% trans 'Cruise Missile' context 'total' %}
+                            <span>{{ sortie.killboard_pve.cruise_missile }}</span>
+                        </div>
+                        <div class="right score">
+                            {{ sortie.killboard_pve.cruise_missile }}
+                            &times;
+                            {{ score_dict.cruise_missile.ai }}
+                        </div>
+                    </div>
+                {% endif %}
 
 				{% if sortie.score_dict.flight_time_bonus %}
                     <div class="row">

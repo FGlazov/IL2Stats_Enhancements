@@ -394,6 +394,13 @@
                     <div class="num">{{ vlife.ak_assist }}</div>
                 </div>
                 {% endif %}
+				
+				{% if vlife.killboard_pve.cruise_missile %}
+                <div class="sub_item">
+                    <div class="name">{% trans 'Cruise Missile' context 'total' %}</div>
+                    <div class="num">{{ vlife.killboard_pve.cruise_missile }}</div>
+                </div>
+                {% endif %}
 
             </div>
 
