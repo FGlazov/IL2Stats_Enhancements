@@ -800,7 +800,7 @@ TURRET_TO_AIRCRAFT = {
     'turrethalberstadtcl2_1_wm_beckap': 'Halberstadt CL.II',
     'turrethalberstadtcl2_1_wm_beckhe': 'Halberstadt CL.II',
     'turrethalberstadtcl2_1_wm_beckheap': 'Halberstadt CL.II',
-    'turrethalberstadtcl2_1_wm_Twinpar': 'Halberstadt CL.II',
+    'turrethalberstadtcl2_1_wm_twinpar': 'Halberstadt CL.II',
     'turrethalberstadtcl2_1m': 'Halberstadt CL.II',
     'turrethalberstadtcl2_1m2': 'Halberstadt CL.II',
     'turrethalberstadtcl2au_1': 'Halberstadt CL.II 200hp',
