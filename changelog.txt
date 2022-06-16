@@ -230,3 +230,9 @@ Version 1.9.1
 Version 1.9.2
 
 - Update to 2.4.1 of enhancemenets.
+- Module Split Rankings: Fix bug where a VLife award would cause stats process to crash.
+
+Version 1.9.3
+
+- Update to 2.4.2 of enhancements.
+- Update to 1.2.64 of IL2 stats.
