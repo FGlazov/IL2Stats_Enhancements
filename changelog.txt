@@ -237,3 +237,7 @@ Version 1.9.3
 - Update to 2.4.2 of enhancements.
 - Update to 1.51 of aircraft mod.
 - Update to 1.2.64 of IL2 stats.
+
+Version 1.9.4
+
+- Add Arado234 and Mosquito payloads/mods.

@@ -32,6 +32,15 @@ aircraft_mods = {
         8: pgettext_lazy('aircraft_mod', 'Cockpit light'),
         9: pgettext_lazy('aircraft_mod', 'Lewis Overwing'),
     },
+    'ar 234 b-2': {
+        1: pgettext_lazy('aircraft_mod', 'Bombload'),
+        2: pgettext_lazy('aircraft_mod', 'Bombsight'),
+        3: pgettext_lazy('aircraft_mod', 'Photo equipment'),
+        4: pgettext_lazy('aircraft_mod', 'Mirrors'),
+        5: pgettext_lazy('aircraft_mod', 'Starthilfe Jetboosters'),
+        6: pgettext_lazy('aircraft_mod', '2 x 20mm MG 151/20 gun pod'),
+        7: pgettext_lazy('aircraft_mod', 'Drogue Chute'),
+    },
     'bf 109 e-7': {
         1: pgettext_lazy('aircraft_mod', '4 x SC 50 bombs'),
         2: pgettext_lazy('aircraft_mod', '1 x SC 250 bomb'),
@@ -357,6 +366,16 @@ aircraft_mods = {
         3: pgettext_lazy('aircraft_mod', '2 x 12.7 mm BK machinegun pods'),
         4: pgettext_lazy('aircraft_mod', '2 x BS 12.7 mm (700 rounds)'),
         5: pgettext_lazy('aircraft_mod', '2 x 20mm ShVAK (300 rounds)'),
+    },
+    'mosquito f.b. mk.vi ser.2': {
+        1: pgettext_lazy('aircraft_mod', '57mm Molins Gun and 4 x .303'),
+        2: pgettext_lazy('aircraft_mod', '57mm Molins Gun and 2 x .303'),
+        3: pgettext_lazy('aircraft_mod', 'RP-3 on Mk.I Rails'),
+        4: pgettext_lazy('aircraft_mod', 'RP-3 on Mk.III Rails'),
+        5: pgettext_lazy('aircraft_mod', 'RP-3 on Mk.III Tiered Rails'),
+        6: pgettext_lazy('aircraft_mod', 'Mk.IIL Gunsight'),
+        7: pgettext_lazy('aircraft_mod', '150 grade fuel'),
+        8: pgettext_lazy('aircraft_mod', 'Open Exhausts'),
     },
     'p-38j-25': {
         1: pgettext_lazy('aircraft_mod', 'Additional ANM2 .50 cal MG ammo'),
