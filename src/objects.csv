@@ -18,6 +18,9 @@ aaa_light,QF 13 pounder 6 cwt,0,,
 aaa_light,QF 13 pounder 6 cwt turret,0,,
 aaa_light,Sd Kfz 10 Flak 38,0,Sd Kfz 10 APC with Flak 38 AAA gun,самоходное зенитное орудие Flak 38
 aaa_light,Thornycroft J-type 13pdr AA,0,,
+aaa_light,US Landlight,0,,
+aaa_light,US Searchlight,0,,
+aaa_light,US Searchlight Generator,0,,
 aaa_light,ZiS-5 72-K,0,ZiS-5 72-K AAA gun,самоходная зенитная пушка 72-К
 aaa_mg,DShK-AA,0,DShK AA machinegun,зенитный пулемёт ДШК
 aaa_mg,GAZ-AA M4,0,GAZ-AA truck with M4 AAA machinegun,самоходный зенитный пулемёт Максим
@@ -338,8 +341,8 @@ aircraft_pilot,BotPilot_U2_femRUSwi,1,pilot,пилот
 aircraft_pilot,BotPilot_U2_RUS41,1,pilot,пилот
 aircraft_pilot,BotPilot_U2_RUS42,1,pilot,пилот
 aircraft_pilot,BotPilot_U2_RUS43,1,pilot,пилот
-aircraft_pilot,BotPilot_V1_GER44,0,,
 aircraft_pilot,BotPilot_U2_RUSwi,1,pilot,пилот
+aircraft_pilot,BotPilot_V1_GER44,0,,
 aircraft_pilot,BotPilotNPC_A20B,0,pilot,пилот
 aircraft_pilot,BotPilotNPC_A20B_RAF43,1,pilot,пилот
 aircraft_pilot,BotPilotNPC_A20B_RUS42,1,pilot,пилот
@@ -585,7 +588,7 @@ armoured_vehicle,_BA-64,0,BA-64 armored car,БА-64
 armoured_vehicle,BA-10M,0,BA-10M armored car,БА-10М
 armoured_vehicle,BA-64,0,BA-64 armored car,БА-64
 armoured_vehicle,Humber Mk.IV,0,,
-armoured_vehicle,Sd Kfz 251-1 Ausf.C,0,Sd Kfz 251-1 Ausf.C APC,бронетранспортёр Sd Kfz 251-1 Ausf.C
+armoured_vehicle,Sd Kfz 251-1 Ausf.C,0,Sd Kfz 251-1 Ausf.C APC,бронетранспортёр Sd Kfz APC,бронетранспортёр Sd Kfz 251-1 Ausf.C
 artillery_field,53-K,0,53-К gun,орудие 53-К
 artillery_field,7.7 cm FK 96 n.A.,0,,
 artillery_field,7.7 cm FK 96 n.A. cart,0,,
@@ -2031,7 +2034,7 @@ trash,CTurretCamera,0,,
 trash,CTurretRadioAI,0,,
 trash,CTurretRadioAIInputController,0,,
 trash,CTurretRiffle,0,,
- trash,CUnmannedPlane,0,,
+trash,CUnmannedPlane,0,,
 trash,CVehicleAI,0,,
 trash,CVehicleExplosionTurret,0,,
 trash,CVehicleInputController,0,,
@@ -2072,8 +2075,8 @@ trash,det-object-Farm,0,,
 trash,det-object-Haystack,0,,
 trash,det-object-HouseBlue,0,,
 trash,DinamoWTR,0,,
-trash,Dive Bomb Sight Reticle Ar 234,0,,
 trash,Dive Bomb Sight Ar 234,0,,
+trash,Dive Bomb Sight Reticle Ar 234,0,,
 trash,Dogfight Mission,0,,
 trash,dot1,0,,
 trash,dot2,0,,

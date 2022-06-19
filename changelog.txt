@@ -241,3 +241,7 @@ Version 1.9.3
 Version 1.9.4
 
 - Add Arado234 and Mosquito payloads/mods.
+
+Versio 1.9.5
+
+- Fix object.csv - typo was in 1.9.3 which caused the import of the object.csv to not work.
