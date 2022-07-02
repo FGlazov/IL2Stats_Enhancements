@@ -245,3 +245,4 @@ Version 1.9.4
 Version 1.9.5
 
 - Fix object.csv - typo was in 1.9.3 which caused the import of the object.csv to not work.
+
