@@ -133,3 +133,7 @@ Version 2.4.2
 
 - Update to latest version of il2 stats (cruise misssles killed are now shown).
 - Fix bug where some halberstadt turrets were not recognized.
+
+Version 2.4.3
+
+- Assume that Mosquitos without bombs/rockets are fighters (like the P38).

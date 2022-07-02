@@ -1,7 +1,7 @@
 from .models import PlayerAugmentation
 from stats.models import LogEntry
 
-FIGHTER_WHITE_LIST = {'P-38J-25', 'Me 262 A'}
+FIGHTER_WHITE_LIST = {'P-38J-25', 'Me 262 A', 'Mosquito F.B. Mk.VI ser.2'}
 ATTACKER_WHITE_LIST = {'Ju 88 C-6'}
 JABO_MODS = {'Ground attack modification', 'U17 strike modification'}
 BOMBS_ROCKETS = ['FAB-100M', 'FAB-250tsk', 'GP ', 'MC ', 'SC ', 'SD ', '21cm WGr.42', 'lb Cooper', 'H.E.R.L.',
