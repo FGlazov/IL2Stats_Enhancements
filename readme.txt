@@ -37,8 +37,11 @@ The parameter is "retro_compute_for_last_tours=10" under [stats]. A value of -1 
 0 retroactively computes for all sorties inside the current tour (before the mod was installed). A value of 10 computes for
 the last 10 tours. More details inside the Global Aircraft stats readme.
 
-6. Inside your src/conf.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the 
-config parameter "modules" under [stats]. More details inside the Stats Enhancements readme.
+6. Inside your src/conf.ini, configure the  Stats Enhancements mod. I.e. choose the modules you want to use with the config parameter "modules" under [stats]. List of config modules can be found here: https://forum.il2sturmovik.com/topic/69965-il-2-stats-mod-enhancements/ (alternatively inside the readme of the il2 stats enchancments mod, can be downloaded in the link above as well)
+
+If, for example, you want to use modules "Split rankings", "Ammo breakdown" and "Flight time bonus" you would write:
+
+modules=split_rankings, ammo_breakdown, adjustable_bonuses_penalties
 
 7. Run the update script in your /run folder after you're done with the above.
 
