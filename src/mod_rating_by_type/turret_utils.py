@@ -37,7 +37,7 @@ TYPOS = {
 
 
 def turret_to_aircraft(turret):
-    turret_name = turret.name
+    turret_name = turret.name_en
     log_name = turret.log_name
 
     aircraft_name = turret_name[:len(turret_name) - 7]
@@ -50,7 +50,7 @@ def turret_to_aircraft(turret):
         # It's an AI flight, which isn't (yet) supported.
         return None
     try:
-        aircraft = Object.objects.filter(name=aircraft_name).get()
+        aircraft = Object.objects.filter(name_en=aircraft_name).get()
         return aircraft
     except Object.DoesNotExist:
         logger.warning("[mod_rating_by_type] Could not find aircraft for turret " + turret_name)
