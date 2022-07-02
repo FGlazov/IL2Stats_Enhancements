@@ -401,6 +401,9 @@ class FilteredPlayer(models.Model):
         self.update_coal_pref()
         super().save(*args, **kwargs)
 
+    def get_profile_url(self):
+        return get_profile_url(self.profile_id, self.nickname, self.tour_id, self.cls)
+
     def get_pilot_url(self):
         return get_profile_url(self.profile_id, self.nickname, self.tour_id, self.cls)
 
