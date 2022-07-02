@@ -69,7 +69,6 @@ aircraft_payloads = {
         14: pgettext_lazy('aircraft_payload', 'MG 151/20 AP/HE [400], SC 500 [2]'),
         15: pgettext_lazy('aircraft_payload', 'MG 151/20 AP/HE [400]'),
         16: pgettext_lazy('aircraft_payload', 'Empty'),
-        16: pgettext_lazy('aircraft_payload', 'Empty'),
         17: pgettext_lazy('aircraft_payload', 'White Smoke [1]'),
         18: pgettext_lazy('aircraft_payload', 'White Smoke [2]'),
         20: pgettext_lazy('aircraft_payload', 'Blue Smoke [1]'),
