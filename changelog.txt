@@ -251,4 +251,4 @@ Version 1.9.6
 - Update to 2.4.3 of enhancements.
 - Update to 1.5.2 of aircraft mod.
 - Fix bundle-only bug where filtered players profile tab link was broken.
-- Remove duplicate ar-234 aircraft payload (no functional change here).
+- Correct ar-234 payloads.
