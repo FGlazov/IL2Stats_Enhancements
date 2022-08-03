@@ -252,3 +252,8 @@ Version 1.9.6
 - Update to 1.5.2 of aircraft mod.
 - Fix bundle-only bug where filtered players profile tab link was broken.
 - Correct ar-234 payloads.
+
+Version 1.9.7
+
+- Update to 1.2.66 of il2 stats
+- Add me 410 payloads/modifcations. Thanks CountZero!

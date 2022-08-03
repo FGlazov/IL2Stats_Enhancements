@@ -360,6 +360,16 @@ aircraft_mods = {
         7: pgettext_lazy('aircraft_mod', 'Bomb load'),
         8: pgettext_lazy('aircraft_mod', 'Fuel regulating valve'),
     },
+    'me 410 a-1': {
+        1: pgettext_lazy('aircraft_mod', '2x MG 131 insted MG 17'),
+        2: pgettext_lazy('aircraft_mod', 'WB 151'),
+        3: pgettext_lazy('aircraft_mod', 'WB 151 and DB 603 Aa'),
+        4: pgettext_lazy('aircraft_mod', '4x MG 151 + 2x MG 131'),
+        5: pgettext_lazy('aircraft_mod', '2x MK 103 + 2x MG 131'),
+        6: pgettext_lazy('aircraft_mod', '50mm BK5 cannon'),
+        7: pgettext_lazy('aircraft_mod', 'DB 603 Aa Engine'),
+        8: pgettext_lazy('aircraft_mod', 'Additional Armour Plates'),
+    },
     'mig-3 ser.24': {
         1: pgettext_lazy('aircraft_mod', '6 x ROS-82 rockets'),
         2: pgettext_lazy('aircraft_mod', '2 x FAB-50sv / FAB-100M bombs'),
