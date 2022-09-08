@@ -257,3 +257,7 @@ Version 1.9.7
 
 - Update to 1.2.66 of il2 stats
 - Add me 410 payloads/modifcations. Thanks CountZero!
+
+Version 1.9.8
+
+- Update to 1.2.67 of IL2 stats.
