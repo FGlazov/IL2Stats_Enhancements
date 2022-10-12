@@ -12,6 +12,10 @@ def get_tank_payload(aircraft, payload_id):
 
 
 aircraft_payloads = {
+    'churchill iv': {
+        0: pgettext_lazy('aircraft_payload', '6-pounder 7 cwt Mk.V: Mk.V AP [81], 7.92 mm BESA MG AP [7875]'),
+        1: pgettext_lazy('aircraft_payload', '6-pounder 7 cwt Mk.V: Mk.V AP [40], 7.92 mm BESA MG AP [7875]'),
+    },
     'pz.kpfw.iii ausf.l': {
         0: pgettext_lazy('aircraft_payload', '5 cm KwK 39 L/60 APHE [46], HE [46], MG 34 AP [4950]'),
         1: pgettext_lazy('aircraft_payload', '5 cm KwK 39 L/60 APHE [30], APCR [30], HE [30], MG 34 AP [4950]'),
@@ -472,6 +476,10 @@ aircraft_payloads = {
         21: pgettext_lazy('aircraft_payload', '75 mm M-3 APHE [48], M1919 AP [6750], M2 .50 AP [1600]'),
         22: pgettext_lazy('aircraft_payload', '75 mm M-3 AP [48], M1919 AP [6750], M2 .50 AP [1600]'),
         23: pgettext_lazy('aircraft_payload', '75 mm M-3 HE [48], M1919 AP [6750], M2 .50 AP [1600]'),
+    },
+    'turret_churchill-iv': {
+        0: pgettext_lazy('aircraft_payload', '6-pounder 7 cwt Mk.V: Mk.V AP [81], 7.92 mm BESA MG AP [7875]'),
+        1: pgettext_lazy('aircraft_payload', '6-pounder 7 cwt Mk.V: Mk.V AP [40], 7.92 mm BESA MG AP [7875]'),
     },
     'turret_pziii-l': {
         0: pgettext_lazy('aircraft_payload', '5 cm KwK 39 L/60 APHE [46], HE [46], MG 34 AP [4950]'),

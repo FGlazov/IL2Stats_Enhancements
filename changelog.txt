@@ -261,3 +261,8 @@ Version 1.9.7
 Version 1.9.8
 
 - Update to 1.2.67 of IL2 stats.
+
+Version 1.9.9
+
+- Update to 1.2.68 of IL2 stats.
+- Update to 3.7 of tank mod.
