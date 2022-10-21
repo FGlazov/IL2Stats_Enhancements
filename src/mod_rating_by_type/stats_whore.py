@@ -8,7 +8,7 @@ from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAir
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
                              MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
-                             MODULE_AIR_STREAKS_NO_AI)
+                             MODULE_AIR_STREAKS_NO_AI, MODULE_LAST_MISSION_IRONMAN)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
@@ -381,6 +381,8 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     # ======================== MODDED PART BEGIN
     if player is None:
         player = new_sortie.player
+
+    mission_vlife = None
     if type(player) is Player:
         cls = decide_adjusted_cls(new_sortie)
         if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
@@ -389,6 +391,14 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
             sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
             sortie_augmentation.computed_filtered_player = True
             sortie_augmentation.save()
+        if module_active(MODULE_LAST_MISSION_IRONMAN):
+            mission_vlife = VLife.objects.get_or_create(
+                profile_id=new_sortie.profile,
+                player_id=new_sortie.player,
+                tour_id=new_sortie.tour.id,
+                relive=0,
+                mission_vlife=new_sortie.mission
+            )[0]
 
     # ======================== MODDED PART END
 
@@ -401,6 +411,11 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
         vlife.date_first_sortie = new_sortie.date_start
         vlife.date_last_combat = new_sortie.date_start
     vlife.date_last_sortie = new_sortie.date_start
+    if mission_vlife:
+        if not mission_vlife.date_first_sortie:
+            mission_vlife.date_first_sortie = new_sortie.date_start
+            mission_vlife.date_last_combat = new_sortie.date_start
+        mission_vlife.date_last_sortie = new_sortie.date_start
 
     # если вылет был окончен диско - результаты вылета не добавляться к общему профилю
     if new_sortie.is_disco:
@@ -408,6 +423,9 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
         player_mission.disco += 1
         player_aircraft.disco += 1
         vlife.disco += 1
+        if mission_vlife:
+            mission_vlife.disco += 1
+            mission_vlife.save()
         return
     # если вылет игнорируется по каким либо причинам
     elif new_sortie.is_ignored:
@@ -421,12 +439,18 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     vlife.status = new_sortie.status
     vlife.aircraft_status = new_sortie.aircraft_status
     vlife.bot_status = new_sortie.bot_status
+    if mission_vlife:
+        mission_vlife.status = new_sortie.status
+        mission_vlife.aircraft_status = new_sortie.aircraft_status
+        mission_vlife.bot_status = new_sortie.bot_status
 
     # TODO проверить как это отработает для вылетов стрелков
     if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
+        if mission_vlife:
+            mission_vlife.sorties_coal[new_sortie.coalition] += 1
 
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
@@ -439,8 +463,12 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
             if new_sortie.aircraft.cls in vlife.sorties_cls:
                 vlife.sorties_cls[new_sortie.aircraft.cls] += 1
+                if mission_vlife:
+                    mission_vlife.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
                 vlife.sorties_cls[new_sortie.aircraft.cls] = 1
+                if mission_vlife:
+                    mission_vlife.sorties_cls[new_sortie.aircraft.cls] = 1
 
             if player.squad:
                 if new_sortie.aircraft.cls in player.squad.sorties_cls:
@@ -454,11 +482,15 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     update_general(player=vlife, new_sortie=new_sortie)
     if player.squad:
         update_general(player=player.squad, new_sortie=new_sortie)
+    if mission_vlife:
+        update_general(player=mission_vlife, new_sortie=new_sortie)
 
     update_ammo(sortie=new_sortie, player=player)
     update_ammo(sortie=new_sortie, player=player_mission)
     update_ammo(sortie=new_sortie, player=player_aircraft)
     update_ammo(sortie=new_sortie, player=vlife)
+    if mission_vlife:
+        update_ammo(sortie=new_sortie, player=mission_vlife)
 
     update_killboard(player=player, killboard_pvp=new_sortie.killboard_pvp,
                      killboard_pve=new_sortie.killboard_pve)
@@ -468,6 +500,9 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
                      killboard_pve=new_sortie.killboard_pve)
     update_killboard(player=vlife, killboard_pvp=new_sortie.killboard_pvp,
                      killboard_pve=new_sortie.killboard_pve)
+    if mission_vlife:
+        update_killboard(player=mission_vlife, killboard_pvp=new_sortie.killboard_pvp,
+                         killboard_pve=new_sortie.killboard_pve)
 
     player.streak_current = vlife.ak_total
     # ======================== MODDED PART BEGIN
@@ -523,6 +558,9 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     update_status(new_sortie=new_sortie, player=vlife)
     if player.squad:
         update_status(new_sortie=new_sortie, player=player.squad)
+
+    if mission_vlife:
+        mission_vlife.save()
 
 
 def update_status(new_sortie, player):
