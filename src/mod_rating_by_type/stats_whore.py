@@ -4,11 +4,11 @@ from datetime import timedelta
 from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife, Player
 from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer, \
-    VLifeAugmentation
+    VLifeMission, SquadAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
                              MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
-                             MODULE_AIR_STREAKS_NO_AI, MODULE_LAST_MISSION_IRONMAN)
+                             MODULE_AIR_STREAKS_NO_AI, MODULE_LAST_MISSION_IRONMAN, MODULE_SQUAD_IRONMAN)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
@@ -382,9 +382,10 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     if player is None:
         player = new_sortie.player
 
+    squad_augmentation = None
     mission_vlife = None
+    cls = decide_adjusted_cls(new_sortie)
     if type(player) is Player:
-        cls = decide_adjusted_cls(new_sortie)
         if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
                 and not retro_split_rankings_compute_running()):
             increment_subtype_persona(new_sortie, cls)
@@ -392,13 +393,28 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
             sortie_augmentation.computed_filtered_player = True
             sortie_augmentation.save()
         if module_active(MODULE_LAST_MISSION_IRONMAN):
-            mission_vlife = VLife.objects.get_or_create(
-                profile_id=new_sortie.profile,
-                player_id=new_sortie.player,
+            mission_vlife = VLifeMission.objects.get_or_create(
+                profile_id=new_sortie.profile.id,
+                player_id=new_sortie.player.id,
                 tour_id=new_sortie.tour.id,
                 relive=0,
-                mission_vlife=new_sortie.mission
+                mission_id=player_mission.mission.id,
+                cls='generic'
             )[0]
+        if module_active(MODULE_SQUAD_IRONMAN) and player.squad:
+            squad_augmentation = SquadAugmentation.objects.get_or_create(
+                squad=player.squad
+            )[0]
+
+    elif module_active(MODULE_LAST_MISSION_IRONMAN):
+        mission_vlife = VLifeMission.objects.get_or_create(
+            profile_id=new_sortie.profile.id,
+            player_id=new_sortie.player.id,
+            tour_id=new_sortie.tour.id,
+            relive=0,
+            mission_id=player_mission.mission.id,
+            cls=cls
+        )[0]
 
     # ======================== MODDED PART END
 
@@ -521,6 +537,15 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     player.streak_max = max(player.streak_max, player.streak_current)
     player.streak_ground_current = vlife.gk_total
     player.streak_ground_max = max(player.streak_ground_max, player.streak_ground_current)
+
+    if squad_augmentation:
+        # Update with deltas
+        squad_augmentation.player.score_streak_current -= player.score_streak_current
+        squad_augmentation.player.score_streak_current += vlife.score
+        if vlife.score >=  player.score_streak_max:
+            squad_augmentation.best_ironman_score -= player.score_streak_max
+            squad_augmentation.best_ironman_score += vlife.score
+
     player.score_streak_current = vlife.score
     player.score_streak_current_heavy = vlife.score_heavy
     player.score_streak_current_medium = vlife.score_medium
@@ -561,6 +586,8 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
     if mission_vlife:
         mission_vlife.save()
+    if squad_augmentation:
+        squad_augmentation.save()
 
 
 def update_status(new_sortie, player):

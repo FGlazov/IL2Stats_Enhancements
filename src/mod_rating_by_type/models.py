@@ -3,7 +3,8 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import Avg, Sum, Q, F
 from stats.models import (Sortie, Player, VLife, PlayerMission, PlayerAircraft, Tour, Profile, default_coal_list, Award,
-                          default_sorties_cls, default_ammo, rating_format_helper, calculate_rating, Mission, Object)
+                          default_sorties_cls, default_ammo, rating_format_helper, calculate_rating, Mission, Object,
+                          Squad)
 from mission_report.constants import Coalition, Country
 from mission_report.statuses import BotLifeStatus, SortieStatus, LifeStatus, VLifeStatus
 from django.utils.translation import ugettext_lazy as _, pgettext_lazy
@@ -1061,10 +1062,22 @@ class FilteredKillboard(models.Model):
 
 
 class VLifeMission(models.Model):
+    LIGHT = 'light'
+    MEDIUM = 'medium'
+    HEAVY = 'heavy'
+    GENERIC = 'generic'
+    CLASSES = (
+        (LIGHT, 'light'),
+        (MEDIUM, 'medium'),
+        (HEAVY, 'heavy'),
+        (GENERIC, 'generic')
+    )
+
     profile = models.ForeignKey(Profile, related_name='+', on_delete=models.CASCADE)
     player = models.ForeignKey(Player, related_name='+', on_delete=models.CASCADE)
     tour = models.ForeignKey(Tour, related_name='+', on_delete=models.CASCADE)
     mission = models.ForeignKey(Mission, related_name='+', on_delete=models.CASCADE)
+    cls = models.CharField(choices=CLASSES, max_length=16, blank=True, db_index=True)
 
     date_first_sortie = models.DateTimeField(null=True)
     date_last_sortie = models.DateTimeField(null=True)
@@ -1156,10 +1169,9 @@ class VLifeMission(models.Model):
     score_medium = models.IntegerField(default=0, db_index=True)
     score_light = models.IntegerField(default=0, db_index=True)
 
-
     class Meta:
         ordering = ['-id']
-        db_table = 'vlifes'
+        db_table = 'vlifes_mission_MOD_SPLIT_RANKINGS_'
 
     def __str__(self):
         return self.profile.nickname
@@ -1264,3 +1276,18 @@ class VLifeMission(models.Model):
                 self.coal_pref = 2
             else:
                 self.coal_pref = 0
+
+
+class SquadAugmentation(models.Model):
+    """
+    Additional fields to Sortie objects used by this mod.
+    """
+    squad = models.OneToOneField(Squad, on_delete=models.PROTECT, primary_key=True,
+                                 related_name='SquadAugmentation_MOD_SPLIT_RANKINGS')
+
+    best_ironman_score = models.IntegerField(default=0, db_index=True)
+    live_ironman_score = models.IntegerField(default=0, db_index=True)
+
+    class Meta:
+        # The long table name is to avoid any conflicts with new tables defined in the main branch of IL2 Stats.
+        db_table = "Squad_MOD_SPLIT_RANKINGS"

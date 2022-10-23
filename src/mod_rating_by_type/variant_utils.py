@@ -60,7 +60,7 @@ def decide_adjusted_cls(sortie, touch_db=False, retroactive_compute=False):
 
     sortie_cls = sortie.aircraft.cls
     if sortie.aircraft.name_en in ATTACKER_WHITE_LIST:
-        sortie_cls = 'medium'
+        sortie_cls = 'aircraft_medium'
 
     if sortie_cls == 'aircraft_heavy':
         return 'heavy'
