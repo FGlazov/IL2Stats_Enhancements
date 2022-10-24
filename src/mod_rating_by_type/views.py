@@ -15,7 +15,8 @@ from stats.views import (_get_rating_position, _get_squad, _overall_missions_win
 
 from .bullets_types import translate_ammo_breakdown, translate_damage_log_bullets
 from .config_modules import *
-from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard
+from .models import FilteredPlayer, FilteredPlayerAircraft, FilteredVLife, FilteredReward, FilteredKillboard, \
+    VLifeMission
 from stats import sortie_log
 from .turret_utils import turret_to_aircraft
 
@@ -844,6 +845,70 @@ def ironman_stats(request):
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
         'no_ai_streaks': module_active(MODULE_AIR_STREAKS_NO_AI),
+        'cls': cls,
+    })
+
+
+def mission_ironman(request):
+    if not module_active(MODULE_LAST_MISSION_IRONMAN):
+        raise Http404()
+
+    if Mission.objects.filter(tour__id=request.tour.id).exists():
+        last_mission = Mission.objects.filter(tour__id=request.tour.id).order_by('-id')[0]
+    else:
+        last_mission = None
+
+    cls = validate_and_get_player_cls(request)
+    if cls == 'all':
+        cls = 'generic'
+
+    page = request.GET.get('page', 1)
+    search = request.GET.get('search', '').strip()
+    sort_by = get_sort_by(request=request, sort_fields=pilots_sort_fields, default='-score')
+
+    players = (VLifeMission.objects
+               .filter(tour__id=request.tour.id, sorties_total__gt=0, player__type='pilot', mission=last_mission)
+               .exclude(profile__is_hide=True)
+               .order_by(sort_by, 'id'))
+    if cls != 'all':
+        players = players.filter(cls=cls)
+
+    if not request.tour.is_ended:
+        players.filter(relive=0)
+
+    if search:
+        players = players.filter(player__profile__nickname__icontains=search)
+
+    players = Paginator(players, ITEMS_PER_PAGE).page(page)
+    if cls == 'generic':
+        cls = 'all'
+
+    return render(request, 'mission_ironman.html', {
+        'players': players,
+        'sort_by': sort_by,
+        'mission': last_mission,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'no_ai_streaks': module_active(MODULE_AIR_STREAKS_NO_AI),
+        'cls': cls,
+    })
+
+
+def mission_vlife(request, vlife_id):
+    try:
+        vlife = (VLifeMission.objects
+                 .select_related('player', 'player__profile', 'player__tour')
+                 .get(id=vlife_id, player__type='pilot'))
+        cls = vlife.cls
+        if cls == 'generic':
+            cls = 'all'
+
+    except VLife.DoesNotExist:
+        raise Http404
+    return render(request, 'mission_vlife.html', {
+        'player': vlife.player,
+        'vlife': vlife,
+        'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'ironman_stats:': module_active(MODULE_IRONMAN_STATS),
         'cls': cls,
     })
 

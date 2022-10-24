@@ -36,6 +36,8 @@ class ModConfig(AppConfig):
         original_views.mission = new_views.mission
         original_views.pilot_sortie = new_views.pilot_sortie
         original_views.ironman_stats = new_views.ironman_stats
+        original_views.mission_vlife = new_views.mission_vlife
+        original_views.mission_ironman = new_views.mission_ironman
         original_views.pilot_vlife = new_views.pilot_vlife
         original_views.pilot_sortie_log = new_views.pilot_sortie_log
         original_views.pilot_sorties = new_views.pilot_sorties

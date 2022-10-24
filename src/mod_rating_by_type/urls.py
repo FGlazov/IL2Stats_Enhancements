@@ -49,6 +49,8 @@ urlpatterns = [
     url(r'^vlifes/(?P<profile_id>\d+)/$', views.pilot_vlifes),
 
     url(r'^ironman/$', views.ironman_stats, name='ironman'),
+    url(r'^mission_ironman', views.mission_ironman, name='mission_ironman'),
+    url(r'^mission_vlife/(?P<vlife_id>\d+)/$', views.mission_vlife, name='mission_vlife'),
 
     url(r'^gunners/$', views.gunners, name='gunners'),
     url(r'^gunner/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner, name='gunner'),
