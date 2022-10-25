@@ -139,3 +139,8 @@ Version 2.4.3
 - Assume that Mosquitos without bombs/rockets are fighters (like the P38).
 - Fix typo that would cause a 500 error for a pilot/gunner page, if that pilot/gunner had destroyed a V-1 missle.
 - Fix errors which caused stacktrace in logs on gunner pages in non english versions of the website, show aircraft image on gunner pages in non-english versions of the website.
+
+Version 2.5.0
+
+- Fix bug where ironman for current tour was showing all virtual lives instead of only the living pilots.
+- Fix bug where JU88 C6 was not being considered an attacker or fighter (or even a bomber).

@@ -85,9 +85,14 @@
                 {% trans 'Rankings' %} &#x25BE;
                 <div class="nav_sub_menu_items">
                     <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}">{% trans 'Pilot Rankings' %}</a>
-                    {% if request.module_ironman %}
+                    {% if request.module_ironman and request.ironman_style == 'classic' %}
                     <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}">{% trans 'Ironman Rankings' %}</a>
                     {% endif %}
+                    {% if request.module_ironman and request.ironman_style == 'both' %}
+                    <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}&type=living">{% trans 'Ironman Rankings (Living Pilots)' %}</a>
+                    <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}&type=best">{% trans 'Ironman Rankings (Best streak) ' %}</a>
+                    {% endif %}
+
                     {% if request %}
                     <a href="{% url 'stats:mission_ironman' %}?tour={{ request.tour.id }}">{% trans 'Last Mission Ironman' %}</a>
                     {% endif %}

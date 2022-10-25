@@ -809,6 +809,10 @@ def pilot_sortie_log(request, sortie_id):
 
 
 def ironman_stats(request):
+    type = request.GET.get('type')
+    if type is None or type not in {'best', 'living'}:
+        type = 'best' if request.tour.is_ended else 'living'
+
     if not module_active(MODULE_IRONMAN_STATS):
         raise Http404("Ironman stats not available on this server.")
     cls = validate_and_get_player_cls(request)
@@ -833,8 +837,8 @@ def ironman_stats(request):
     if cls != 'all':
         players = players.filter(cls=cls)
 
-    if not request.tour.is_ended:
-        players.filter(relive=0)
+    if type == 'living':
+        players = players.filter(relive=0)
 
     if search:
         players = players.filter(player__profile__nickname__icontains=search)

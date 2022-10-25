@@ -1,4 +1,4 @@
-from .config_modules import MODULE_IRONMAN_STATS, MODULE_GUNNER_STATS, module_active, MODULE_LAST_MISSION_IRONMAN
+from .config_modules import MODULE_IRONMAN_STATS, MODULE_GUNNER_STATS, module_active, MODULE_LAST_MISSION_IRONMAN, get_ironman_style
 from config import get_conf
 
 
@@ -13,6 +13,7 @@ def ironman_middleware(get_response):
         request.module_ironman = module_active(MODULE_IRONMAN_STATS)
         request.module_gunner_stats = module_active(MODULE_GUNNER_STATS)
         request.module_mission_ironman = module_active(MODULE_LAST_MISSION_IRONMAN)
+        request.ironman_style = get_ironman_style()
 
         response = get_response(request)
 

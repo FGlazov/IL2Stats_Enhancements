@@ -22,6 +22,10 @@ modules = {MODULE_SPLIT_RANKINGS, MODULE_AMMO_BREAKDOWN, MODULE_IRONMAN_STATS, M
            MODULE_AIR_STREAKS_NO_AI, MODULE_GUNNER_STATS, MODULE_RAMS, MODULE_LAST_MISSION_IRONMAN,
            MODULE_SQUAD_IRONMAN}
 
+IRONMAN_CLASSIC = 'classic'
+IRONMAN_BOTH = 'both'
+IRONMAN_STYLES = {IRONMAN_CLASSIC, IRONMAN_BOTH}
+
 
 def get_active_modules():
     config = get_conf()
@@ -45,6 +49,19 @@ def get_active_modules():
 
 
 active_modules = get_active_modules()
+
+
+def get_ironman_style():
+    config = get_conf()
+    style = config['stats']['ironman_style']
+    if style not in IRONMAN_STYLES:
+        print(
+            '[mod_rating_by_type]: WARNING: Unknown value ' + style
+            + 'for ironman style. Valid values: ' + str(IRONMAN_STYLES)
+        )
+        style = 'classic'
+    return style
+
 
 
 # Expected is some MODULE_XXXXXXXXXXXX input, see global variables above.
