@@ -86,6 +86,7 @@ def squad_rankings(request):
         'squads': squads,
         'sort_by': sort_by,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'ironman': module_active(MODULE_SQUAD_IRONMAN)
     })
 
 

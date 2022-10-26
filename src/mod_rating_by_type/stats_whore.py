@@ -540,9 +540,12 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
     if squad_augmentation:
         # Update with deltas
-        squad_augmentation.player.score_streak_current -= player.score_streak_current
-        squad_augmentation.player.score_streak_current += vlife.score
-        if vlife.score >=  player.score_streak_max:
+        ironman_score = 0 if new_sortie.is_relive else vlife.score
+
+        squad_augmentation.live_ironman_score -= player.score_streak_current
+        squad_augmentation.live_ironman_score += ironman_score
+
+        if vlife.score >= player.score_streak_max:
             squad_augmentation.best_ironman_score -= player.score_streak_max
             squad_augmentation.best_ironman_score += vlife.score
 
