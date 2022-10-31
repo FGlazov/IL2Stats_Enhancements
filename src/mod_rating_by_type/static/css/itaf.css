@@ -1,0 +1,4 @@
+.three_column_grid {
+  display: grid !important;
+  grid-template-columns: 400px 400px 400px !important;
+}

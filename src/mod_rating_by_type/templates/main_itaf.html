@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles tz stats %}
+{#{% block title %}{{ block.super }}{% endblock title %}#}
+
+{% block content %}
+<link href="{% static 'css/itaf.css' %}" rel="stylesheet">
+
+<section id="main">
+    <div class="wrapper">
+        <div class="dominant_coal">
+            {% trans 'Current Tour' %}: {{ tour.get_title }}
+        </div>
+
+
+        <div class="three_column_grid general_block">
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best live pilots in the last mission' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for vlife in top_mission_streak %}
+                    <a class="row" href="{{ vlife.player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ vlife.profile.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ vlife.score }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best living pilots' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_streak %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_current }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best ironmen' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_ironman %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_max }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best living fighter pilots in the last mission' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for vlife in top_mission_streak_light %}
+                    <a class="row" href="{{ vlife.player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ vlife.profile.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ vlife.score }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best live fighter pilots' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_streak_light %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_current }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best fighter ironmen' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_ironman_light %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_max }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best living attacker pilots in the last mission' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for vlife in top_mission_streak_medium %}
+                    <a class="row" href="{{ vlife.player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ vlife.profile.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ vlife.score }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best live attacker pilots' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_streak_medium %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_current }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best attacker ironmen' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_ironman_medium %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_max }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best living bomber pilots in the last mission' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for vlife in top_mission_streak_heavy %}
+                    <a class="row" href="{{ vlife.player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ vlife.profile.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ vlife.score }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best live bomber pilots' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_streak_heavy %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_current }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="top_pilots">
+                <div class="top_title">
+                    {% trans 'Best bomber ironmen' context 'tour_top' %}
+                </div>
+                <div class="top_table">
+                    <div class="head_row">
+                        <div class="cell" style="width: 30px;">#</div>
+                        <div class="cell">{% trans 'pilot nickname' context 'tour_top' %}</div>
+                        <div class="cell" style="width: 30px;"></div>
+                        <div class="cell">{% trans 'score' context 'tour_top' %}</div>
+                    </div>
+                    {% for player in top_ironman_light %}
+                    <a class="row" href="{{ player.get_profile_url }}">
+                        <div class="cell">{{ forloop.counter }}</div>
+                        <div class="cell">{{ player.nickname }}</div>
+                        <div class="cell img">
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                        </div>
+                        <div class="cell">{{ player.score_streak_max }}</div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+
+
+        <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    </div>
+</section>
+<div class="clearfix"></div>
+{% endblock content %}

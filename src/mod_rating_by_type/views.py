@@ -491,6 +491,9 @@ def __top_24_pilots(tour_id, cls):
 def main(request):
     if request.tour.is_ended:
         return tour(request)
+    if module_active(MODULE_ITAF_LAYOUT):
+        return main_itaf(request)
+
     missions_wins = request.tour.missions_wins()
     missions_wins_total = sum(missions_wins.values())
 
@@ -589,6 +592,78 @@ def main(request):
     })
 
 
+def main_itaf(request):
+    missions_wins = request.tour.missions_wins()
+    missions_wins_total = sum(missions_wins.values())
+
+    summary_total = request.tour.stats_summary_total()
+    summary_coal = request.tour.stats_summary_coal()
+
+    # Split rankings and last mission ironman assumed to be active.
+    # Only use case it is active.
+
+    top_streak = __top_current_streak(request.tour)
+    top_streak_heavy = __top_current_streak(request.tour, 'heavy')
+    top_streak_medium = __top_current_streak(request.tour, 'medium')
+    top_streak_light = __top_current_streak(request.tour, 'light')
+
+    top_ironman = __top_ironman_streak(request.tour)
+    top_ironman_heavy = __top_current_streak(request.tour, 'heavy')
+    top_ironman_medium = __top_current_streak(request.tour, 'medium')
+    top_ironman_light = __top_current_streak(request.tour, 'light')
+
+    top_mission_streak = __top_mission_current_streak(request.tour)
+    top_mission_streak_heavy = __top_mission_current_streak(request.tour, 'heavy')
+    top_mission_streak_medium = __top_mission_current_streak(request.tour, 'medium')
+    top_mission_streak_light = __top_mission_current_streak(request.tour, 'light')
+
+    coal_active_players = request.tour.coal_active_players()
+    total_active_players = sum(coal_active_players.values())
+
+    summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+    summary_total_medium = request.tour.cls_stats_summary_total('medium')
+    summary_total_light = request.tour.cls_stats_summary_total('light')
+    summary_coal_heavy = request.tour.cls_stats_summary_coal('heavy')
+    summary_coal_medium = request.tour.cls_stats_summary_coal('medium')
+    summary_coal_light = request.tour.cls_stats_summary_coal('light')
+
+    coal_1_online = PlayerOnline.objects.filter(coalition=Coalition.coal_1).count()
+    coal_2_online = PlayerOnline.objects.filter(coalition=Coalition.coal_2).count()
+    total_online = coal_1_online + coal_2_online
+
+    return render(request, 'main_itaf.html', {
+        'tour': request.tour,
+        'missions_wins': missions_wins,
+        'missions_wins_total': missions_wins_total,
+        'summary_total': summary_total,
+        'summary_coal': summary_coal,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
+        'summary_coal_heavy': summary_coal_heavy,
+        'summary_coal_medium': summary_coal_medium,
+        'summary_coal_light': summary_coal_light,
+        'top_streak': top_streak,
+        'top_streak_heavy': top_streak_heavy,
+        'top_streak_medium': top_streak_medium,
+        'top_streak_light': top_streak_light,
+        'top_ironman': top_ironman,
+        'top_ironman_heavy': top_ironman_heavy,
+        'top_ironman_medium': top_ironman_medium,
+        'top_ironman_light': top_ironman_light,
+        'top_mission_streak': top_mission_streak,
+        'top_mission_streak_heavy': top_mission_streak_heavy,
+        'top_mission_streak_medium': top_mission_streak_medium,
+        'top_mission_streak_light': top_mission_streak_light,
+        'coal_active_players': coal_active_players,
+        'total_active_players': total_active_players,
+        'total_online': total_online,
+        'coal_1_online': coal_1_online,
+        'coal_2_online': coal_2_online,
+        'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
+    })
+
+
 def __top_current_streak(tour, cls='all'):
     field = 'score_streak_current'
     if cls != 'all':
@@ -605,6 +680,47 @@ def __top_current_streak(tour, cls='all'):
         return (Player.players.pilots(tour_id=tour.id)
                     .exclude(score_streak_current=0)
                     .active(tour=tour).order_by(sort_by)[:10])
+
+
+def __top_ironman_streak(tour, cls='all'):
+    field = 'score_streak_max'
+    if cls != 'all':
+        field += '_' + cls
+    sort_by = '-' + field
+
+    if cls != 'all' and FilteredPlayer.objects.filter(tour=tour).exists():
+        query = (FilteredPlayer.objects.filter(tour_id=tour.id, type='pilot', cls=cls).exclude(score=0))
+        query = __active_filter(tour, query).order_by(sort_by)
+        return query[:10]
+    else:
+        return (Player.players.pilots(tour_id=tour.id).exclude(score=0)
+                    .active(tour=tour).order_by(sort_by)[:10])
+
+
+def __top_mission_current_streak(tour, cls='generic'):
+    mission_query = (Mission.objects
+                     .values_list('id', flat=True)
+                     .filter(tour_id=tour.id, players_total__gt=0)
+                     .order_by('-date_start'))
+
+    if not mission_query.exists():
+        return []
+
+    mission_id = mission_query[0]
+
+    query = VLifeMission.objects.filter(
+        tour_id=tour.id,
+        mission_id=mission_id,
+        player__type='pilot',
+        cls=cls,
+        relive=0
+    ).exclude(
+        score=0
+    ).order_by(
+        '-score'
+    )
+
+    return query[:10]
 
 
 def __active_filter(tour, query):
