@@ -384,11 +384,11 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
     squad_augmentation = None
     mission_vlife = None
-    cls = decide_adjusted_cls(new_sortie)
+    cls = decide_adjusted_cls(new_sortie, retroactive_compute=retroactive_compute)
     if type(player) is Player:
         if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
                 and not retro_split_rankings_compute_running()):
-            increment_subtype_persona(new_sortie, cls)
+            increment_subtype_persona(new_sortie, cls, retroactive_compute)
             sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
             sortie_augmentation.computed_filtered_player = True
             sortie_augmentation.save()
@@ -620,7 +620,7 @@ def update_status(new_sortie, player):
 
 
 # ======================== MODDED PART BEGIN
-def increment_subtype_persona(sortie, cls):
+def increment_subtype_persona(sortie, cls, retroactive_compute=False):
     player = FilteredPlayer.objects.get_or_create(
         profile_id=sortie.player.profile.id,
         tour_id=sortie.tour.id,
@@ -652,7 +652,7 @@ def increment_subtype_persona(sortie, cls):
     )[0]
 
     update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife,
-                  player=player)
+                  player=player, retroactive_compute=retroactive_compute)
 
     player.save()
     player_mission.save()
