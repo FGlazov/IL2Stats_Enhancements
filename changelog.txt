@@ -145,3 +145,4 @@ Version 2.5.0
 - Fix bug where ironman for current tour was showing all virtual lives instead of only the living pilots.
 - Fix bug where JU88 C6 was not being considered an attacker or fighter (or even a bomber).
 - Fix bug where retroactive compute for split rankings was causing crash in stats process.
+- Fix memory leak caused by ram stats aggregation.
