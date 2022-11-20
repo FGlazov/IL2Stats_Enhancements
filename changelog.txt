@@ -146,3 +146,7 @@ Version 2.5.0
 - Fix bug where JU88 C6 was not being considered an attacker or fighter (or even a bomber).
 - Fix bug where retroactive compute for split rankings was causing crash in stats process.
 - Fix memory leak caused by ram stats aggregation.
+- Add new module "Ironman Squads", which aggregates information about the VLifes in a squad. (WIP: Some translations missing)
+- Add new module "Last mission ironman", which aggregates information about the VLifes during the last mission. (WIP: Some translations missing)
+- Add new modulke "itaf_layout", an alternative 3 column layout for the front page - requires the use of some other modules.
+- Add new config parameter "ironman_style", can be set to 'classic' or 'both' - classic is the behavior for Ironman stats as before (best/current VLife depending on the tour), both lets you see both behaviors for all tours.
