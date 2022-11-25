@@ -7,9 +7,13 @@
 
 <section id="main">
     <div class="wrapper">
-        <div class="dominant_coal">
-            {% trans 'Current Tour' %}: {{ tour.get_title }}
-        </div>
+            <div class="dominant_coal color_{{ tour.winning_coalition }}">
+                {% blocktrans with tour=tour.get_title %}Tour "{{ tour }}" ended{% endblocktrans %}.
+                {% if tour.winning_coalition %}
+                {% blocktrans with coal=tour.get_winning_coalition_display %}{{ coal }} victory{% endblocktrans %}.
+                {% endif %}
+            </div>
+
 
 
         <div class="three_column_grid general_block">
@@ -375,41 +379,9 @@
                 {% endif %}
 
 
-            {% if total_online %}
-                 <div class="clearfix"></div>
-                <div class="online_widget">
-                    <div class="title">
-                        {% trans 'Online' %}
-                    </div>
-                    <div class="total">
-                        {% trans 'pilots' context 'online' %}
-                    </div>
-                    <div class="total_num">
-                        {{ total_online }}
-                    </div>
+            <div class="clearfix"></div>
 
-                    <div class="bar_mini" style="float: right;">
-                        <div class="bar">
-                            <div class="bar_grid" style="width: 50%;"></div>
-                            {% widthratio coal_1_online total_online 100 as width %}
-                            <div class="bar_red" style="width: {{ width }}%;"></div>
-                            {% widthratio coal_2_online total_online 100 as width %}
-                            <div class="bar_blue" style="width: {{ width }}%;"></div>
-                        </div>
-                        <div class="bar_red_num">
-                            {{ coal_1_online }}
-                        </div>
-                        <div class="bar_blue_num">
-                            {{ coal_2_online }}
-                        </div>
-                    </div>
-                    <a class="online_button" href="{% url 'stats:online' %}">
-                        {% trans 'List of pilots online' %}
-                    </a>
 
-                    <div class="clearfix"></div>
-                </div>
-                {% endif %}
 
 
             <div class="clearfix"></div>

@@ -665,6 +665,71 @@ def main_itaf(request):
     })
 
 
+def tour_itaf(request):
+    missions_wins = request.tour.missions_wins()
+    missions_wins_total = sum(missions_wins.values())
+
+    summary_total = request.tour.stats_summary_total()
+    summary_coal = request.tour.stats_summary_coal()
+
+    # Split rankings and last mission ironman assumed to be active.
+    # Only use case it is active.
+
+    top_streak = __top_current_streak(request.tour)
+    top_streak_heavy = __top_current_streak(request.tour, 'heavy')
+    top_streak_medium = __top_current_streak(request.tour, 'medium')
+    top_streak_light = __top_current_streak(request.tour, 'light')
+
+    top_ironman = __top_ironman_streak(request.tour)
+    top_ironman_heavy = __top_current_streak(request.tour, 'heavy')
+    top_ironman_medium = __top_current_streak(request.tour, 'medium')
+    top_ironman_light = __top_current_streak(request.tour, 'light')
+
+    top_mission_streak = __top_mission_current_streak(request.tour)
+    top_mission_streak_heavy = __top_mission_current_streak(request.tour, 'heavy')
+    top_mission_streak_medium = __top_mission_current_streak(request.tour, 'medium')
+    top_mission_streak_light = __top_mission_current_streak(request.tour, 'light')
+
+    coal_active_players = request.tour.coal_active_players()
+    total_active_players = sum(coal_active_players.values())
+
+    summary_total_heavy = request.tour.cls_stats_summary_total('heavy')
+    summary_total_medium = request.tour.cls_stats_summary_total('medium')
+    summary_total_light = request.tour.cls_stats_summary_total('light')
+    summary_coal_heavy = request.tour.cls_stats_summary_coal('heavy')
+    summary_coal_medium = request.tour.cls_stats_summary_coal('medium')
+    summary_coal_light = request.tour.cls_stats_summary_coal('light')
+
+    return render(request, 'tour_itaf.html', {
+        'tour': request.tour,
+        'missions_wins': missions_wins,
+        'missions_wins_total': missions_wins_total,
+        'summary_total': summary_total,
+        'summary_coal': summary_coal,
+        'summary_total_heavy': summary_total_heavy,
+        'summary_total_medium': summary_total_medium,
+        'summary_total_light': summary_total_light,
+        'summary_coal_heavy': summary_coal_heavy,
+        'summary_coal_medium': summary_coal_medium,
+        'summary_coal_light': summary_coal_light,
+        'top_streak': top_streak,
+        'top_streak_heavy': top_streak_heavy,
+        'top_streak_medium': top_streak_medium,
+        'top_streak_light': top_streak_light,
+        'top_ironman': top_ironman,
+        'top_ironman_heavy': top_ironman_heavy,
+        'top_ironman_medium': top_ironman_medium,
+        'top_ironman_light': top_ironman_light,
+        'top_mission_streak': top_mission_streak,
+        'top_mission_streak_heavy': top_mission_streak_heavy,
+        'top_mission_streak_medium': top_mission_streak_medium,
+        'top_mission_streak_light': top_mission_streak_light,
+        'coal_active_players': coal_active_players,
+        'total_active_players': total_active_players,
+        'MODULE_TOP_LAST_MISSION': module_active(MODULE_TOP_LAST_MISSION),
+    })
+
+
 def __top_current_streak(tour, cls='all'):
     field = 'score_streak_current'
     if cls != 'all':
@@ -736,6 +801,9 @@ def __active_filter(tour, query):
 
 
 def tour(request):
+    if module_active(MODULE_ITAF_LAYOUT):
+        return tour_itaf(request)
+
     missions_wins = request.tour.missions_wins()
     missions_wins_total = sum(missions_wins.values())
 
