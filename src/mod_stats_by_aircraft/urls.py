@@ -84,6 +84,10 @@ urlpatterns = [
 
 if hasattr(views, 'ironman_stats'):  # For compatibility with mod_rating_by_type.
     urlpatterns.append(url(r'^ironman/$', views.ironman_stats, name='ironman'))
+    urlpatterns.append(url(r'^mission_ironman', views.mission_ironman, name='mission_ironman'))
+    urlpatterns.append(url(r'^mission_vlife/(?P<vlife_id>\d+)/$', views.mission_vlife, name='mission_vlife'))
+    urlpatterns.append(url(r'^mission_ironman', views.mission_ironman, name='mission_ironman'))
+    urlpatterns.append(url(r'^mission_vlife/(?P<vlife_id>\d+)/$', views.mission_vlife, name='mission_vlife'))
     urlpatterns.append(url(r'^gunners/$', views.gunners, name='gunners'))
     urlpatterns.append(url(r'^gunner/(?P<profile_id>\d+)/(?P<nickname>\S+)/$', views.gunner, name='gunner'))
     urlpatterns.append(url(r'^gunner_sortie/(?P<sortie_id>\d+)/$', views.gunner_sortie, name='gunner_sortie'))

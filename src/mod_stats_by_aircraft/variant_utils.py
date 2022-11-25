@@ -1,5 +1,5 @@
 BOMB_VARIANT_WHITE_LIST = {'P-38J-25', 'Me 262 A', 'Bristol F2B (F.II)', 'Bristol F2B (F.III)', 'Halberstadt CL.II',
-                           'Halberstadt CL.II 200hp'}
+                           'Halberstadt CL.II 200hp', 'Mosquito F.B. Mk.VI ser.2'}
 BOMB_VARIANT_BLACK_LIST = {'Spitfire Mk.VB', 'Yak-9 series 1', 'Yak-9T series 1', 'Albatros D.Va',
                            'Fokker D.VII', 'Fokker D.VIIF', 'Fokker Dr.I', 'Pfalz D.IIIa'}
 JUICEABLES = {'P-47D-28', 'P-47D-22', 'P-51D-15', 'La-5 (series 8)', 'Bf 109 G-6 Late', 'Bf 109 K-4',

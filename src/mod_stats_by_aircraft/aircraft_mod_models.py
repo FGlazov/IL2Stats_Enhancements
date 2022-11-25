@@ -82,7 +82,7 @@ class AircraftBucket(models.Model):
     plane_lethality = models.FloatField(default=0, db_index=True)
     pilot_lethality = models.FloatField(default=0, db_index=True)
     elo = models.IntegerField(default=1500, db_index=True)
-    rating = models.IntegerField(default=0, db_index=True)
+    rating = models.BigIntegerField(default=0, db_index=True)
     max_ak_streak = models.IntegerField(default=0, db_index=True)
     max_gk_streak = models.IntegerField(default=0, db_index=True)
     kills = models.BigIntegerField(default=0, db_index=True)
