@@ -54,6 +54,7 @@ def squad(request, squad_id, squad_tag=None):
         'page_medium_position': page_medium_position,
         'page_heavy_position': page_heavy_position,
         'split_rankings': module_active(MODULE_SPLIT_RANKINGS),
+        'squad_ironman': module_active(MODULE_SQUAD_IRONMAN),
     })
 
 
