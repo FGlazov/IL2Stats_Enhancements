@@ -131,7 +131,7 @@ class RamsCache:
             ))
 
     def prune_cache(self, tik):
-        self.cache = [ram for ram in self.cache if abs(tik - ram.tik) >= RAM_CUTOFF]
+        self.cache = [ram for ram in self.cache if abs(tik - ram.tik) < RAM_CUTOFF]
         self.prune_counter = 0
 
 

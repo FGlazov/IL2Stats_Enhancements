@@ -85,13 +85,22 @@
                 {% trans 'Rankings' %} &#x25BE;
                 <div class="nav_sub_menu_items">
                     <a href="{% url 'stats:pilots' %}?tour={{ request.tour.id }}">{% trans 'Pilot Rankings' %}</a>
-                    {% if request.module_ironman %}
+                    {% if request.module_ironman and request.ironman_style == 'classic' %}
                     <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}">{% trans 'Ironman Rankings' %}</a>
                     {% endif %}
                     <a href="{% url 'stats:tankmans' %}?tour={{ request.tour.id }}">{% trans 'Tankman Rankings' %}</a>
+                    {% if request.module_ironman and request.ironman_style == 'both' %}
+                    <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}&type=living">{% trans 'Ironman Rankings (Living Pilots)' %}</a>
+                    <a href="{% url 'stats:ironman' %}?tour={{ request.tour.id }}&type=best">{% trans 'Ironman Rankings (Best streak) ' %}</a>
+                    {% endif %}
+
+                    {% if request %}
+                    <a href="{% url 'stats:mission_ironman' %}?tour={{ request.tour.id }}">{% trans 'Last Mission Ironman' %}</a>
+                    {% endif %}
                     {% if request.module_gunner_stats %}
                     <a href="{% url 'stats:gunners' %}?tour={{ request.tour.id }}">{% trans 'Gunner Rankings' %}</a>
                     {% endif %}
+
                     <a href="{% url 'stats:squads' %}?tour={{ request.tour.id }}">{% trans 'Squad Rankings' %}</a>
                     {% if request.aircraft_rankings_installed %}
                     <a href="{% url 'stats:all_aircraft' %}?tour={{ request.tour.id }}">{% trans 'Aircraft Rankings' %}</a>

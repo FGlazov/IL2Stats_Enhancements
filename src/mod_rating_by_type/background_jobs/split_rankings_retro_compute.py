@@ -30,7 +30,7 @@ class SplitRankingsRetroCompute(BackgroundJob):
             sortie=sortie
         )[0]
 
-        increment_subtype_persona(sortie, cls)
+        increment_subtype_persona(sortie, cls, retroactive_compute=True)
 
         augmentation.cls = cls
         augmentation.computed_filtered_player = True

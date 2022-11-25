@@ -1,0 +1,283 @@
+.three_column_grid {
+  display: grid !important;
+  grid-template-columns: 400px 400px 400px !important;
+}
+
+
+section#main .wrapper .active_players {
+  position: relative;
+  background-color: #353535;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+}
+section#main .wrapper .active_players .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .active_players .total {
+  color: #6C6C6C;
+}
+section#main .wrapper .active_players .total_num {
+  font-size: 26px;
+}
+section#main .wrapper .active_players .bar_mini {
+  position: absolute;
+  top: 46px;
+  right: 25px;
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  margin: 20px 0;
+  font-size: 0;
+}
+section#main .wrapper .active_players .bar_mini .bar {
+  position: relative;
+  margin: 10px 0 4px 0;
+  background-color: #C3C3C3;
+  height: 2px;
+}
+section#main .wrapper .active_players .bar_mini .bar .bar_grid {
+  position: absolute;
+  top: -4px;
+  width: 50%;
+  height: 10px;
+}
+section#main .wrapper .active_players .bar_mini .bar .bar_grid:before {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  width: 2px;
+  height: 3px;
+  background-color: #4C4C4C;
+}
+section#main .wrapper .active_players .bar_mini .bar .bar_grid:after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  width: 2px;
+  height: 3px;
+  background-color: #4C4C4C;
+}
+section#main .wrapper .active_players .bar_mini .bar .bar_red {
+  display: inline-block;
+  position: relative;
+  background-color: #C72B11;
+  width: 50%;
+  height: 2px;
+  z-index: 10;
+}
+section#main .wrapper .active_players .bar_mini .bar .bar_blue {
+  display: inline-block;
+  float: right;
+  position: relative;
+  background-color: #3166CE;
+  width: 50%;
+  height: 2px;
+  z-index: 10;
+}
+section#main .wrapper .active_players .bar_mini .bar_red_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  float: left;
+}
+section#main .wrapper .active_players .bar_mini .bar_gray_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  text-align: center;
+}
+section#main .wrapper .active_players .bar_mini .bar_blue_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  float: right;
+  text-align: right;
+}
+
+
+section#main .wrapper .legend {
+  position: relative;
+  background-color: #353535;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+}
+section#main .wrapper .legend .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .legend .legend_items {
+  margin-top: 15px;
+}
+section#main .wrapper .legend .legend_items .legend_item {
+  position: relative;
+  margin: 10px 0;
+  font-size: 14px;
+  padding-left: 35px;
+}
+section#main .wrapper .legend .square {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+}
+section#main .wrapper .legend .square.red {
+  background-color: #C72B11;
+}
+section#main .wrapper .legend .square.blue {
+  background-color: #3166CE;
+}
+
+section#main .wrapper .tour {
+  position: relative;
+  background-color: #353535;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+}
+section#main .wrapper .tour .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .tour .tour_bar {
+  background-color: #4C4C4C;
+  height: 10px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .tour .tour_bar .bar_progress {
+  width: 0%;
+  height: 10px;
+  background-color: #999999;
+}
+section#main .wrapper .tour .tour_end {
+  color: #595959;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .tour .tours_button {
+  display: block;
+  background-color: #4C4C4C;
+  color: #969696;
+  font-size: 15px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+section#main .wrapper .online_widget {
+  position: relative;
+  background-color: #353535;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+}
+section#main .wrapper .online_widget .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+section#main .wrapper .online_widget .total {
+  color: #6C6C6C;
+}
+section#main .wrapper .online_widget .total_num {
+  font-size: 26px;
+}
+section#main .wrapper .online_widget .bar_mini {
+  position: absolute;
+  top: 46px;
+  right: 25px;
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  margin: 20px 0;
+  font-size: 0;
+}
+section#main .wrapper .online_widget .bar_mini .bar {
+  position: relative;
+  margin: 10px 0 4px 0;
+  background-color: #C3C3C3;
+  height: 2px;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_grid {
+  position: absolute;
+  top: -4px;
+  width: 50%;
+  height: 10px;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_grid:before {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  width: 2px;
+  height: 3px;
+  background-color: #4C4C4C;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_grid:after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  width: 2px;
+  height: 3px;
+  background-color: #4C4C4C;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_red {
+  display: inline-block;
+  position: relative;
+  background-color: #C72B11;
+  width: 50%;
+  height: 2px;
+  z-index: 10;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_red:after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -1px;
+  width: 2px;
+  height: 10px;
+  background-color: #C3C3C3;
+}
+section#main .wrapper .online_widget .bar_mini .bar .bar_blue {
+  display: inline-block;
+  float: right;
+  position: relative;
+  background-color: #3166CE;
+  width: 50%;
+  height: 2px;
+}
+section#main .wrapper .online_widget .bar_mini .bar_red_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  float: left;
+}
+section#main .wrapper .online_widget .bar_mini .bar_gray_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  text-align: center;
+}
+section#main .wrapper .online_widget .bar_mini .bar_blue_num {
+  display: inline-block;
+  width: 33%;
+  font-size: 16px;
+  color: #5C5C5C;
+  float: right;
+  text-align: right;
+}
+section#main .wrapper .online_widget .online_button {
+  display: block;
+  background-color: #4C4C4C;
+  color: #969696;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+  padding: 5px 0;
+}

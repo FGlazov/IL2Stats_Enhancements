@@ -477,6 +477,20 @@
                     <div class="name">{% trans 'Destroyed Friendly Ground Targets' context 'total' %}</div>
                     <div class="num">{{ squad.fgk_total }}</div>
                 </div>
+                {% if squad_ironman %}
+                <div class="item">
+                    <div class="name">{% trans 'Best ironman score' context 'total' %}</div>
+                    <div class="num">{{ squad.SquadAugmentation_MOD_SPLIT_RANKINGS.best_ironman_score }}</div>
+                </div>
+                <div class="item">
+                    <div class="name">{% trans 'Current score streak' context 'total' %}</div>
+                    <div class="num">{{ squad.SquadAugmentation_MOD_SPLIT_RANKINGS.live_ironman_score }}</div>
+                </div>
+
+                {% endif %}
+
+
+
             </div>
 
             <div class="clearfix"></div>

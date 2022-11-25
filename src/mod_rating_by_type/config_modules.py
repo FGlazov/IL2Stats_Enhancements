@@ -3,6 +3,8 @@ from config import get_conf
 MODULE_SPLIT_RANKINGS = 'split_rankings'
 MODULE_AMMO_BREAKDOWN = 'ammo_breakdown'
 MODULE_IRONMAN_STATS = 'ironman_stats'
+MODULE_LAST_MISSION_IRONMAN = 'last_mission_ironman'
+MODULE_SQUAD_IRONMAN = 'ironman_squad'
 MODULE_UNDAMAGED_BAILOUT_PENALTY = 'undamaged_bailout_penalty'
 MODULE_FLIGHT_TIME_BONUS = 'flight_time_bonus'
 MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES = 'adjustable_bonuses_penalties'
@@ -13,10 +15,17 @@ MODULE_MISSION_WIN_NEW_TOUR = 'mission_win_new_tour'
 MODULE_AIR_STREAKS_NO_AI = 'air_streaks_no_ai'
 MODULE_GUNNER_STATS = "gunner_stats"
 MODULE_RAMS = "rams"
+MODULE_ITAF_LAYOUT = "itaf_layout"
+
 modules = {MODULE_SPLIT_RANKINGS, MODULE_AMMO_BREAKDOWN, MODULE_IRONMAN_STATS, MODULE_UNDAMAGED_BAILOUT_PENALTY,
            MODULE_FLIGHT_TIME_BONUS, MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_TOP_LAST_MISSION,
            MODULE_REARM_ACCURACY_WORKAROUND, MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_MISSION_WIN_NEW_TOUR,
-           MODULE_AIR_STREAKS_NO_AI, MODULE_GUNNER_STATS, MODULE_RAMS}
+           MODULE_AIR_STREAKS_NO_AI, MODULE_GUNNER_STATS, MODULE_RAMS, MODULE_LAST_MISSION_IRONMAN,
+           MODULE_SQUAD_IRONMAN, MODULE_ITAF_LAYOUT}
+
+IRONMAN_CLASSIC = 'classic'
+IRONMAN_BOTH = 'both'
+IRONMAN_STYLES = {IRONMAN_CLASSIC, IRONMAN_BOTH}
 
 
 def get_active_modules():
@@ -41,6 +50,19 @@ def get_active_modules():
 
 
 active_modules = get_active_modules()
+
+
+def get_ironman_style():
+    config = get_conf()
+    style = config['stats']['ironman_style']
+    if style not in IRONMAN_STYLES:
+        print(
+            '[mod_rating_by_type]: WARNING: Unknown value ' + style
+            + 'for ironman style. Valid values: ' + str(IRONMAN_STYLES)
+        )
+        style = 'classic'
+    return style
+
 
 
 # Expected is some MODULE_XXXXXXXXXXXX input, see global variables above.

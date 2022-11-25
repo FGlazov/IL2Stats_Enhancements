@@ -4,11 +4,11 @@ from datetime import timedelta
 from stats.models import Sortie, KillboardPvP, LogEntry, Mission, Tour, VLife, Player
 from .variant_utils import decide_adjusted_cls
 from .models import SortieAugmentation, FilteredPlayerMission, FilteredPlayerAircraft, FilteredVLife, FilteredPlayer, \
-    VLifeAugmentation
+    VLifeMission, SquadAugmentation
 from .config_modules import (module_active, MODULE_UNDAMAGED_BAILOUT_PENALTY, MODULE_FLIGHT_TIME_BONUS,
                              MODULE_ADJUSTABLE_BONUSES_AND_PENALTIES, MODULE_REARM_ACCURACY_WORKAROUND,
                              MODULE_BAILOUT_ACCURACY_WORKAROUND, MODULE_SPLIT_RANKINGS, MODULE_MISSION_WIN_NEW_TOUR,
-                             MODULE_AIR_STREAKS_NO_AI)
+                             MODULE_AIR_STREAKS_NO_AI, MODULE_LAST_MISSION_IRONMAN, MODULE_SQUAD_IRONMAN)
 from stats import stats_whore as old_stats_whore
 
 from .rewards import reward_sortie, reward_vlife, reward_mission, reward_tour
@@ -414,14 +414,40 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     # ======================== MODDED PART BEGIN
     if player is None:
         player = new_sortie.player
+
+    squad_augmentation = None
+    mission_vlife = None
+    cls = decide_adjusted_cls(new_sortie, retroactive_compute=retroactive_compute)
     if type(player) is Player:
-        cls = decide_adjusted_cls(new_sortie)
         if (module_active(MODULE_SPLIT_RANKINGS) and cls in {'light', 'medium', 'heavy'}
                 and not retro_split_rankings_compute_running()):
-            increment_subtype_persona(new_sortie, cls)
+            increment_subtype_persona(new_sortie, cls, retroactive_compute)
             sortie_augmentation = new_sortie.SortieAugmentation_MOD_SPLIT_RANKINGS
             sortie_augmentation.computed_filtered_player = True
             sortie_augmentation.save()
+        if module_active(MODULE_LAST_MISSION_IRONMAN):
+            mission_vlife = VLifeMission.objects.get_or_create(
+                profile_id=new_sortie.profile.id,
+                player_id=new_sortie.player.id,
+                tour_id=new_sortie.tour.id,
+                relive=0,
+                mission_id=player_mission.mission.id,
+                cls='generic'
+            )[0]
+        if module_active(MODULE_SQUAD_IRONMAN) and player.squad:
+            squad_augmentation = SquadAugmentation.objects.get_or_create(
+                squad=player.squad
+            )[0]
+
+    elif module_active(MODULE_LAST_MISSION_IRONMAN):
+        mission_vlife = VLifeMission.objects.get_or_create(
+            profile_id=new_sortie.profile.id,
+            player_id=new_sortie.player.id,
+            tour_id=new_sortie.tour.id,
+            relive=0,
+            mission_id=player_mission.mission.id,
+            cls=cls
+        )[0]
 
     # ======================== MODDED PART END
 
@@ -434,6 +460,11 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
         vlife.date_first_sortie = new_sortie.date_start
         vlife.date_last_combat = new_sortie.date_start
     vlife.date_last_sortie = new_sortie.date_start
+    if mission_vlife:
+        if not mission_vlife.date_first_sortie:
+            mission_vlife.date_first_sortie = new_sortie.date_start
+            mission_vlife.date_last_combat = new_sortie.date_start
+        mission_vlife.date_last_sortie = new_sortie.date_start
 
     # если вылет был окончен диско - результаты вылета не добавляться к общему профилю
     if new_sortie.is_disco:
@@ -441,6 +472,9 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
         player_mission.disco += 1
         player_aircraft.disco += 1
         vlife.disco += 1
+        if mission_vlife:
+            mission_vlife.disco += 1
+            mission_vlife.save()
         return
     # если вылет игнорируется по каким либо причинам
     elif new_sortie.is_ignored:
@@ -454,12 +488,18 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     vlife.status = new_sortie.status
     vlife.aircraft_status = new_sortie.aircraft_status
     vlife.bot_status = new_sortie.bot_status
+    if mission_vlife:
+        mission_vlife.status = new_sortie.status
+        mission_vlife.aircraft_status = new_sortie.aircraft_status
+        mission_vlife.bot_status = new_sortie.bot_status
 
     # TODO проверить как это отработает для вылетов стрелков
     if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
         player.sorties_coal[new_sortie.coalition] += 1
         player_mission.sorties_coal[new_sortie.coalition] += 1
         vlife.sorties_coal[new_sortie.coalition] += 1
+        if mission_vlife:
+            mission_vlife.sorties_coal[new_sortie.coalition] += 1
 
         if player.squad:
             player.squad.sorties_coal[new_sortie.coalition] += 1
@@ -491,8 +531,12 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
             if new_sortie.aircraft.cls in vlife.sorties_cls:
                 vlife.sorties_cls[new_sortie.aircraft.cls] += 1
+                if mission_vlife:
+                    mission_vlife.sorties_cls[new_sortie.aircraft.cls] += 1
             else:
                 vlife.sorties_cls[new_sortie.aircraft.cls] = 1
+                if mission_vlife:
+                    mission_vlife.sorties_cls[new_sortie.aircraft.cls] = 1
 
             if player.squad:
                 if new_sortie.aircraft.cls in player.squad.sorties_cls:
@@ -507,11 +551,15 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
 
     if player.squad:
         update_general(player=player.squad, new_sortie=new_sortie)
+    if mission_vlife:
+        update_general(player=mission_vlife, new_sortie=new_sortie)
 
     update_ammo(sortie=new_sortie, player=player)
     update_ammo(sortie=new_sortie, player=player_mission)
     update_ammo(sortie=new_sortie, player=player_aircraft)
     update_ammo(sortie=new_sortie, player=vlife)
+    if mission_vlife:
+        update_ammo(sortie=new_sortie, player=mission_vlife)
 
     update_killboard(player=player, killboard_pvp=new_sortie.killboard_pvp,
                      killboard_pve=new_sortie.killboard_pve)
@@ -521,6 +569,9 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
                      killboard_pve=new_sortie.killboard_pve)
     update_killboard(player=vlife, killboard_pvp=new_sortie.killboard_pvp,
                      killboard_pve=new_sortie.killboard_pve)
+    if mission_vlife:
+        update_killboard(player=mission_vlife, killboard_pvp=new_sortie.killboard_pvp,
+                         killboard_pve=new_sortie.killboard_pve)
 
     player.streak_current = vlife.ak_total
     # ======================== MODDED PART BEGIN
@@ -539,6 +590,18 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     player.streak_max = max(player.streak_max, player.streak_current)
     player.streak_ground_current = vlife.gk_total
     player.streak_ground_max = max(player.streak_ground_max, player.streak_ground_current)
+
+    if squad_augmentation:
+        # Update with deltas
+        ironman_score = 0 if new_sortie.is_relive else vlife.score
+
+        squad_augmentation.live_ironman_score -= player.score_streak_current
+        squad_augmentation.live_ironman_score += ironman_score
+
+        if vlife.score >= player.score_streak_max:
+            squad_augmentation.best_ironman_score -= player.score_streak_max
+            squad_augmentation.best_ironman_score += vlife.score
+
     player.score_streak_current = vlife.score
     player.score_streak_current_heavy = vlife.score_heavy
     player.score_streak_current_medium = vlife.score_medium
@@ -577,6 +640,11 @@ def update_sortie(new_sortie, player_mission, player_aircraft, vlife, player=Non
     if player.squad:
         update_status(new_sortie=new_sortie, player=player.squad)
 
+    if mission_vlife:
+        mission_vlife.save()
+    if squad_augmentation:
+        squad_augmentation.save()
+
 
 def update_status(new_sortie, player):
     if new_sortie.aircraft.cls_base != 'aircraft' or not new_sortie.is_not_takeoff:
@@ -605,7 +673,7 @@ def update_status(new_sortie, player):
 
 
 # ======================== MODDED PART BEGIN
-def increment_subtype_persona(sortie, cls):
+def increment_subtype_persona(sortie, cls, retroactive_compute=False):
     player = FilteredPlayer.objects.get_or_create(
         profile_id=sortie.player.profile.id,
         tour_id=sortie.tour.id,
@@ -637,7 +705,7 @@ def increment_subtype_persona(sortie, cls):
     )[0]
 
     update_sortie(new_sortie=sortie, player_mission=player_mission, player_aircraft=player_aircraft, vlife=vlife,
-                  player=player)
+                  player=player, retroactive_compute=retroactive_compute)
 
     player.save()
     player_mission.save()
