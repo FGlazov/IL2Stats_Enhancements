@@ -300,6 +300,121 @@
             </div>
 
 
+             <div class="legend">
+                    <div class="title">
+                        {% trans 'Coalitions' %}
+                    </div>
+                    <div class="legend_items">
+                        <div class="legend_item">
+                            <div class="square red"></div>
+                            {{ COAL_1_NAME }}
+                        </div>
+                        <div class="legend_item">
+                            <div class="square blue"></div>
+                            {{ COAL_2_NAME }}
+                        </div>
+                    </div>
+                </div>
+
+            {% if NEW_TOUR_BY_MONTH %}
+                <div class="tour">
+                    <div class="title">
+                        {% trans 'Tour' %}: {{ tour.get_title }}
+                    </div>
+                    <div class="tour_bar">
+                        {% widthratio tour.days_passed tour.days_in_tour 100 as width %}
+                        <div class="bar_progress" style="width: {{ width }}%;"></div>
+                    </div>
+                    <div class="tour_end">
+                        {% blocktrans trimmed count days=tour.days_left %}
+                            {{ days }} day left
+                        {% plural %}
+                            {{ days }} days left
+                        {% endblocktrans %}
+                    </div>
+{#                    <a class="tours_button" href="#">#}
+{#                        {% trans 'Results of other tours' %}#}
+{#                    </a>#}
+                </div>
+                {% endif %}
+
+
+             {% if total_active_players %}
+                <div class="active_players">
+                    <div class="title">
+                        {% trans 'Active players' %}
+                    </div>
+                    <div class="total">
+                        {% trans 'total' context 'tour_active' %}
+                    </div>
+                    <div class="total_num">
+                        {{ total_active_players }}
+                    </div>
+
+                    <div class="bar_mini" style="float: right;">
+                        <div class="bar">
+                            <div class="bar_grid" style="width: 50%;"></div>
+                            {% widthratio coal_active_players.1 total_active_players 100 as width %}
+                            <div class="bar_red" style="width: {{ width }}%;"></div>
+                            {% widthratio coal_active_players.2 total_active_players 100 as width %}
+                            <div class="bar_blue" style="width: {{ width }}%;"></div>
+                        </div>
+                        <div class="bar_red_num">
+                            {{ coal_active_players.1 }}
+                        </div>
+                        <div class="bar_gray_num">
+                            {{ coal_active_players.0 }}
+                        </div>
+                        <div class="bar_blue_num">
+                            {{ coal_active_players.2 }}
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                {% endif %}
+
+
+            <div class="clearfix"></div>
+
+             {% if total_online %}
+                <div class="online_widget">
+                    <div class="title">
+                        {% trans 'Online' %}
+                    </div>
+                    <div class="total">
+                        {% trans 'pilots' context 'online' %}
+                    </div>
+                    <div class="total_num">
+                        {{ total_online }}
+                    </div>
+
+                    <div class="bar_mini" style="float: right;">
+                        <div class="bar">
+                            <div class="bar_grid" style="width: 50%;"></div>
+                            {% widthratio coal_1_online total_online 100 as width %}
+                            <div class="bar_red" style="width: {{ width }}%;"></div>
+                            {% widthratio coal_2_online total_online 100 as width %}
+                            <div class="bar_blue" style="width: {{ width }}%;"></div>
+                        </div>
+                        <div class="bar_red_num">
+                            {{ coal_1_online }}
+                        </div>
+                        <div class="bar_blue_num">
+                            {{ coal_2_online }}
+                        </div>
+                    </div>
+                    <a class="online_button" href="{% url 'stats:online' %}">
+                        {% trans 'List of pilots online' %}
+                    </a>
+
+                    <div class="clearfix"></div>
+                </div>
+                {% endif %}
+
+
+
+
             <div class="clearfix"></div>
         </div>
 
