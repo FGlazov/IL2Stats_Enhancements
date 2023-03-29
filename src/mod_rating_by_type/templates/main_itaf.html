@@ -29,7 +29,7 @@
                         <div class="cell">{{ forloop.counter }}</div>
                         <div class="cell">{{ vlife.profile.nickname }}</div>
                         <div class="cell img">
-                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=vlife.coal_pref %}
                         </div>
                         <div class="cell">{{ vlife.score }}</div>
                     </a>
@@ -98,7 +98,7 @@
                         <div class="cell">{{ forloop.counter }}</div>
                         <div class="cell">{{ vlife.profile.nickname }}</div>
                         <div class="cell img">
-                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=vlife.coal_pref %}
                         </div>
                         <div class="cell">{{ vlife.score }}</div>
                     </a>
@@ -171,7 +171,7 @@
                         <div class="cell">{{ forloop.counter }}</div>
                         <div class="cell">{{ vlife.profile.nickname }}</div>
                         <div class="cell img">
-                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=vlife.coal_pref %}
                         </div>
                         <div class="cell">{{ vlife.score }}</div>
                     </a>
@@ -243,7 +243,7 @@
                         <div class="cell">{{ forloop.counter }}</div>
                         <div class="cell">{{ vlife.profile.nickname }}</div>
                         <div class="cell img">
-                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=player.coal_pref %}
+                            {% include 'inline/table_coal_pref_icon.html' with coal_pref=vlife.coal_pref %}
                         </div>
                         <div class="cell">{{ vlife.score }}</div>
                     </a>
@@ -275,7 +275,7 @@
                 </div>
             </div>
 
-            <div class="top_pilots">
+             <div class="top_pilots">
                 <div class="top_title">
                     {% trans 'Best bomber ironmen' context 'tour_top' %}
                 </div>
@@ -286,7 +286,7 @@
                         <div class="cell" style="width: 30px;"></div>
                         <div class="cell">{% trans 'score' context 'tour_top' %}</div>
                     </div>
-                    {% for player in top_ironman_light %}
+                    {% for player in top_ironman_heavy %}
                     <a class="row" href="{{ player.get_profile_url }}">
                         <div class="cell">{{ forloop.counter }}</div>
                         <div class="cell">{{ player.nickname }}</div>
