@@ -10,11 +10,11 @@ Disconnect mod by CountZero ( https://forum.il2sturmovik.com/topic/56709-mod-for
 Split Rankings mod by =Few=Revolves and Enigma89 ( https://forum.il2sturmovik.com/topic/69965-il-2-stats-submod-split-rankings/ )
 Global Aircraft Stats mod =Few=Revolves and Enigma89  ( https://forum.il2sturmovik.com/topic/70380-il-2-stats-mod-global-aircraft-stats/ )
 
-This bundle version is designed to work with version 1.2.70 of IL-2 stats.
+This bundle version is designed to work with version 1.2.71 of IL-2 stats.
 
 Disconnect mod version: 1.7
 Tank mod version: 3.8
-Stats Enhancements version : 2.5.0
+Stats Enhancements version : 2.5.2
 Global Aircraft Stats mod version : 1.5.3
 
 Installation
