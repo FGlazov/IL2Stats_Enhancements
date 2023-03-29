@@ -154,3 +154,7 @@ Version 2.5.0
 Version 2.5.1
 
 - Fix bug where last mission players on itaf layout was not rendering coalition correclty (always both coalitions instead of the one the player played as).
+
+Version 2.5.2
+
+- Fix bug with itaf layout (thanks ITAF_LG965)
