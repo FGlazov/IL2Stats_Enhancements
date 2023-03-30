@@ -282,3 +282,7 @@ Version 1.10.2
 
 - Update to 1.2.71 of il2 stats
 - Update to 2.5.2 of enhancements.
+
+Version 1.10.3
+
+- Fix to object.csv to include missing tank.
