@@ -296,6 +296,11 @@ def got_killed(self, attacker=None, pos=None, force_by_dmg=False):
     if self.is_attack_itself(attacker=attacker):
         attacker = None
 
+    # dont give kill to attacker for tank/truck when its RTB and total damage to tank is less then 75%, if higher tank will be destroyed, no RTB, and attacker will get kill.
+    if (self.cls_base == 'tank' or self.cls_base == 'vehicle' or self.cls_base == 'turret') and self.is_tank_rtb(
+            pos=pos) and (self.damage < 75):
+        attacker = None
+
     is_friendly_fire = True if attacker and attacker.coal_id == self.coal_id else False
 
     if attacker:

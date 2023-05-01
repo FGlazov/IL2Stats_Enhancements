@@ -73,9 +73,9 @@
                                          title="{% trans 'In Flight' context 'sortie_status' %}"
                                          alt="{% trans 'In Flight' context 'sortie_status' %}">
                                 {% elif sortie.is_landed %}
-                                    <img src="{% static 'img/sortie/status/landed.png' %}" width="20" height="20"
-                                         title="{% trans 'Landed' context 'sortie_status' %}"
-                                         alt="{% trans 'Landed' context 'sortie_status' %}">
+                                    <img src="{% static 'img/sortie/status/tank_rtb_big.png' %}" width="20" height="20"
+                                         title="{% trans 'Returned to Base' context 'sortie_status' %}"
+                                         alt="{% trans 'Returned to Base' context 'sortie_status' %}">
                                 {% elif sortie.is_not_takeoff %}
                                     <img src="{% static 'img/sortie/status/in_drive.png' %}" width="20" height="20"
                                          title="{% trans 'In service' context 'sortie_status' %}"

@@ -39,9 +39,9 @@
                          title="{% trans 'In Flight' context 'sortie_status' %}"
                          alt="{% trans 'In Flight' context 'sortie_status' %}">
                 {% elif sortie.is_landed %}
-                    <img src="{% static 'img/sortie/status/landed_big.png' %}" width="28" height="28"
-                         title="{% trans 'Landed' context 'sortie_status' %}"
-                         alt="{% trans 'Landed' context 'sortie_status' %}">
+                    <img src="{% static 'img/sortie/status/tank_rtb_big.png' %}" width="28" height="28"
+                         title="{% trans 'Returned to Base' context 'sortie_status' %}"
+                         alt="{% trans 'Returned to Base' context 'sortie_status' %}">
                 {% elif sortie.is_not_takeoff %}
                     <img src="{% static 'img/sortie/status/in_drive_big.png' %}" width="28" height="28"
                          title="{% trans 'In service' context 'sortie_status' %}"
@@ -160,7 +160,7 @@
                         <div class="right score">
                             {{ sortie.killboard_pvp.tank_heavy }}
                             &times;
-                            {{ score_dict.tank_heavy.ai }}
+                            {{ score_dict.tank_heavy.base }}
                         </div>
                     </div>
                 {% endif %}
@@ -174,7 +174,7 @@
                         <div class="right score">
                             {{ sortie.killboard_pvp.tank_medium }}
                             &times;
-                            {{ score_dict.tank_medium.ai }}
+                            {{ score_dict.tank_medium.base }}
                         </div>
                     </div>
                 {% endif %}
@@ -188,7 +188,7 @@
                         <div class="right score">
                             {{ sortie.killboard_pvp.tank_light }}
                             &times;
-                            {{ score_dict.tank_light.ai }}
+                            {{ score_dict.tank_light.base }}
                         </div>
                     </div>
                 {% endif %}
@@ -202,7 +202,7 @@
                         <div class="right score">
                             {{ sortie.killboard_pvp.truck }}
                             &times;
-                            {{ score_dict.truck.ai }}
+                            {{ score_dict.truck.base }}
                         </div>
                     </div>
                 {% endif %}
@@ -823,7 +823,7 @@
                     {% if sortie.bonus.landed %}
                         <div class="sub_row">
                             <div class="left">
-                                {% trans 'Landed on Airfield' context 'sortie' %}
+                                {% trans 'Returned to Base' context 'sortie' %}
                             </div>
                             <div class="right">
                                 <span class="bonus">+ {{ sortie.bonus.landed }}%</span>
