@@ -100,7 +100,6 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
             is_ignored = True
 
     # for disco sorties, if the total departure time is less than the one set by the config, disco = bailout sortie (time is set in seconds)
-
     if SORTIE_DISCO_MIN_TIME and sortie.is_disco:
         if (sortie_tik_last // 50) - (sortie.tik_takeoff // 50) < SORTIE_DISCO_MIN_TIME:
             sortie.is_discobailout = True
@@ -108,10 +107,9 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
 
     # in case of disconect if time of damage to airplane happend outside of time set in conf.ini file, sortie is considered disco,
     # if time of damage happend inside time set, sortie will be considered captured (time is set in seconds)
-
     if SORTIE_DAMAGE_DISCO_TIME and sortie.is_damageddisco:
-
-        if (sortie.tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME:
+        if ((sortie_tik_last // 50) - (sortie.tik_lastdamage // 50) > SORTIE_DAMAGE_DISCO_TIME) and not (
+                (sortie.cls_base == 'tank' or sortie.cls_base == 'vehicle' or sortie.cls_base == 'turret')):
             sortie.is_disco = True
             sortie.is_damageddisco = False
             # for damaged disco sorties, if the total departure time is less than the one set by the config for disco_min_time, damageddisco = bailout sortie
@@ -119,6 +117,16 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
                 sortie.is_discobailout = True
                 sortie.is_disco = False
                 sortie.is_damageddisco = False
+
+    # in case of tank exit under fire, if time of damage to tank or truck happend outside of time set in conf.ini file, sortie is considered ok,
+    # if time of damage happend inside time set, sortie will be considered captured (time is set in seconds), if mission ends or crah while player is in sortie then it dont count.
+    if SORTIE_DAMAGE_DISCO_TIME and (
+            (sortie.cls_base == 'tank' or sortie.cls_base == 'vehicle' or sortie.cls_base == 'turret')) and (
+            sortie.tik_lastdamage) and (mission.date_end != sortie_date_end):
+        if (SORTIE_DAMAGE_DISCO_TIME > (sortie_tik_last // 50) - (sortie.tik_lastdamage // 50)) and (
+                not sortie.tik_bailout):
+            sortie.is_tank_exit_damaged = True
+            sortie.aircraft.got_killed(force_by_dmg=True)
 
     killboard_pvp = defaultdict(int)
     killboard_pve = defaultdict(int)
@@ -203,7 +211,7 @@ def create_new_sortie(mission, profile, player, sortie, sortie_aircraft_id):
         bot_status=sortie.bot_status.status,
 
         is_bailout=sortie.is_bailout or sortie.is_discobailout,
-        is_captured=sortie.is_captured or sortie.is_damageddisco,
+        is_captured=sortie.is_captured or sortie.is_damageddisco or sortie.is_tank_exit_damaged,
         is_disco=sortie.is_disco,
 
         score=score,
