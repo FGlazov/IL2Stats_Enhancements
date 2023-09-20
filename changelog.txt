@@ -296,3 +296,7 @@ Version 1.10.5
 - Update to 1.2.74 of il2 stats
 - Update tank mod to 3.9.1
 - Update disconnect mod to 1.73 + tanks disconnect/exit 1.0.1
+
+Version 1.10.6
+
+- Update to 1.2.75 of il2 stats. (Update objects)
