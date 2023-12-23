@@ -1,5 +1,3 @@
-import string
-
 from django.utils.translation import pgettext_lazy
 from .report import TOTAL_HITS, TOTAL_RECEIVED, ALL_TAKEN, BOMBS, ROCKETS, ORDINANCE
 
@@ -69,13 +67,18 @@ def translate_bullet(bullet_type):
         return bullet_type
 
 
+
 bullet_types = {
+    'BULLET_ROM_13x99_AP': pgettext_lazy('bullet_type', '13.2 X 99 Hotchkiss'),
+    'SHELL_GER_20x77_AP': pgettext_lazy('bullet_type', 'MG/151 20 Short (AP)'),
     'BULLET_ENG_11X59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
     'BULLET_ENG_7-7X56_AP': pgettext_lazy('bullet_type', '.303 British'),
+    'BULLET_ENG_7-7x56_APSMK': pgettext_lazy('bullet_type', '.303 British'),
     'BULLET_GBR_11X59_AP': pgettext_lazy('bullet_type', '11mm Vickers'),
     'BULLET_GER_13X64_AP': pgettext_lazy('bullet_type', 'MG 131 (AP)'),
     'BULLET_GER_13X64_HE': pgettext_lazy('bullet_type', 'MG 131 (HE)'),
     'BULLET_GER_7-92X57_AP': pgettext_lazy('bullet_type', 'MG 17 (AP)'),
+    'BULLET_GER_7-92X57_APSMK':  pgettext_lazy('bullet_type', 'MG 17 (AP)'),
     'BULLET_GER_792X57_SS': pgettext_lazy('bullet_type', 'MG 17 (SS)'),
     'BULLET_ITA_12-7X81_AP': pgettext_lazy('bullet_type', 'Breda 12.7mm (AP)'),
     'BULLET_ITA_12-7X81_HE': pgettext_lazy('bullet_type', 'Breda 12.7mm (HE)'),
@@ -84,14 +87,23 @@ bullet_types = {
     'BULLET_RUS_12-7X108_AP': pgettext_lazy('bullet_type', 'UB (AP)'),
     'BULLET_RUS_12-7X108_HE': pgettext_lazy('bullet_type', 'UB (HE)'),
     'BULLET_RUS_7-62X54_AP': pgettext_lazy('bullet_type', 'ShKAS (AP)'),
+    'BULLET_RUS_7-62X54_APSMK': pgettext_lazy('bullet_type', 'ShKAS (AP)'),
     'BULLET_USA_12-7X99_AP': pgettext_lazy('bullet_type', '.50 BMG'),
     'BULLET_USA_7-62X63_AP': pgettext_lazy('bullet_type', '.30-06 Springfield'),
     'NPC_BULLET_GER_7-92': pgettext_lazy('bullet_type', 'MG 34'),
-    'NPC_BULLET_GER_7-92_AP_short': pgettext_lazy('bullet_type', 'MG 34'),
-    'NPC_BULLET_RUS_7-62_AP_short': pgettext_lazy('bullet_type', '7.62 Soviet'),
+    'NPC_BULLET_GER_7-92_AP_SHORT': pgettext_lazy('bullet_type', 'MG 34'),
+    'NPC_BULLET_RUS_7-62_AP_SHORT': pgettext_lazy('bullet_type', '7.62 Soviet'),
+    'NPC_BULLET_RUS_12-7_AP': pgettext_lazy('bullet_type', '12.7 Soviet'),
+    'NPC_BULLET_RUS_12-7_AP_SHORT': pgettext_lazy('bullet_type', '12.7 Soviet (Short)'),
+    'NPC_BULLET_RUS_7-62_AP': pgettext_lazy('bullet_type', '7.62 Soviet'),
     'NPC_BULLET_RUS_7-62X4': pgettext_lazy('bullet_type', '4x 7.62 Soviet'),
+    'NPC_BULLET_USA_12-7_AP': pgettext_lazy('bullet_type', '12.7 USA'),
+    'NPC_BULLET_USA_7-62_AP_SHORT': pgettext_lazy('bullet_type', '7.62 USA'),
+    'NPC_SHELL_ENG_20_AP': pgettext_lazy('bullet_type', '20mm British (AP)'),
+    'NPC_SHELL_ENG_20_HE': pgettext_lazy('bullet_type', '20mm British (HE)'),
     'NPC_SHELL_RUS_122_HE': pgettext_lazy('bullet_type', '122mm Soviet'),
     'NPC_SHELL_RUS_130_HE': pgettext_lazy('bullet_type', '130mm Soviet'),
+    'NPC_SHELL_RUS_76_NAVAL_CV': pgettext_lazy('bullet_type', '76.2mm 34-K'),
     'NPC_SHELL_USA_155_HE': pgettext_lazy('bullet_type', '155mm Soviet'),
     'NPC_SHELL_USA_90_CV': pgettext_lazy('bullet_type', 'M2 90mm (APHE)'),
     'NPC_SHELL_USA_90_HE': pgettext_lazy('bullet_type', 'M2 90mm (HE)'),
@@ -111,7 +123,7 @@ bullet_types = {
     'SHELL_RUS_37X195_HE': pgettext_lazy('bullet_type', 'SH-37 (HE)'),
     'SHELL_RUS_37X198_AP': pgettext_lazy('bullet_type', 'NS-37 (AP)'),
     'SHELL_RUS_37X198_HE': pgettext_lazy('bullet_type', 'NS-37 (HE)'),
-    'SHELL_RUS_76_naval_HE': pgettext_lazy('bullet_type', '76.2mm 34-K'),
+    'SHELL_RUS_76_NAVAL_HE': pgettext_lazy('bullet_type', '76.2mm 34-K'),
     'SHELL_USA_37X145_AP': pgettext_lazy('bullet_type', 'M4 Cobra (AP)'),
     'SHELL_USA_37X145_HE': pgettext_lazy('bullet_type', 'M4 Cobra (HE)'),
     'SHELL_USA_76_CV': pgettext_lazy('bullet_type', '76mm M5 (APHE)'),
