@@ -163,6 +163,6 @@ Version 2.5.3
 
 - Add human-readable strings for new bullets. Fixes a bug where (among others) the low caliber machine gun of the BF 109s would render machine-readable bullet types instead of human-readable ones in ammo breakdowns.
 
-2.6.0
+Version 2.6.0
 
 - Add new module for WW1 servers. It considers any central power pilots which eject without a parachute as dead. This is determined by the mission date, any central power pilot before 1918 is considered to have no parachute. Before, you could eject, and quit mid descent before hitting the ground to get a bailout sortie.
