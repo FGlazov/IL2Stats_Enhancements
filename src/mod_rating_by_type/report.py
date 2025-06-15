@@ -1,7 +1,7 @@
 import math
 
 from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKAROUND, \
-    MODULE_RAMS, module_active
+    MODULE_RAMS, module_active, MODULE_NO_PARACHUTE_DEATHS
 from mission_report.report import Sortie
 import operator
 
@@ -317,6 +317,25 @@ def got_killed(self, attacker=None, pos=None, force_by_dmg=False):
         self.mission.logger_event({'type': 'kill', 'attacker': attacker, 'pos': pos,
                                    'target': self, 'is_friendly_fire': is_friendly_fire})
 
+
+# Monkey patched into MissionReport class inside report.py
+def event_bot_eject_leave(self, tik, bot_id, parent_id, pos):
+    parent = self.get_object(object_id=parent_id, create=False)
+    # если есть родительский объект - нужно сравнить ID бота родителя с ID прыгающего
+    # если ID не совпадают - считаем это прыжком десантника
+    if parent and parent.bot and parent.bot.id == bot_id:
+        bot = parent.bot
+        # ======================== MODDED PART BEGIN
+        is_central = bot.coal_id == 2
+        before_1918 = self.date_game.year < 1918
+        if module_active(MODULE_NO_PARACHUTE_DEATHS) and is_central and before_1918:
+            bot.got_killed(pos=pos, force_by_dmg=True)
+        # ======================== MODDED PART END (NO IF-ELSE IN MAIN VERSION)
+        else:
+            bot.bot_eject_leave(tik=tik, pos=pos)
+            if bot.sortie:
+                self.rm_active_sortie(sortie=bot.sortie)
+                self.logger_event({'type': 'bailout', 'bot': bot, 'pos': pos})
 
 # ======================== MODDED PART BEGIN
 def record_hits(tik, target, attacker, ammo):

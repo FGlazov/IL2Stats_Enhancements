@@ -61,6 +61,7 @@ class ModConfig(AppConfig):
         MissionReport.event_hit = new_report.event_hit
         MissionReport.event_player = new_report.event_player
         MissionReport.event_damage = new_report.event_damage
+        MissionReport.event_bot_eject_leave = new_report.event_bot_eject_leave
         Object.got_damaged = new_report.got_damaged
         Object.got_killed = new_report.got_killed
         Object.takeoff = new_report.takeoff

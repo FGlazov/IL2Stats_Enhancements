@@ -149,6 +149,14 @@ This module makes the stats not count AI kills towards air streaks. E.g. shootin
 flown by a bot does not increase your air streak by 1. Works with the global aircraft stats mod,
 if installed.
 
+----------------------------
+Module No Parachute Deaths
+----------------------------
+
+Config name: no_parachute_deaths
+
+This module turns any bailout without a parachute into a death. A pilot doesn't have a parachute if he's a central power pilot before 1918. Without this module, a player can bailout and quickly end the sortie in order to prevent death on the website.
+
 ------------ Modules for bug workarounds ------------ 
 
 ----------------------------
