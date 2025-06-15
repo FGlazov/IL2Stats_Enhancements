@@ -305,3 +305,7 @@ Version 1.10.7
 
 - Update to 1.2.78 of il2 stats. (Update objects).
 - Update to 1.5.4 of aircraft mod and 2.5.3 of il2 stats (Add human-readable strings for new bullets. Fixes a bug where (among others) the low caliber machine gun of the BF 109s would render machine-readable bullet types instead of human-readable ones in ammo breakdowns.)
+
+Version 1.11.0
+
+Update to 2.6.0 of enhancements.

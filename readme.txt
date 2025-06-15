@@ -14,7 +14,7 @@ This bundle version is designed to work with version 1.2.78 of IL-2 stats.
 
 Disconnect mod version: 1.7.3 + tanks disco/exit 1.0.1
 Tank mod version: 3.9.1
-Stats Enhancements version : 2.5.3
+Stats Enhancements version : 2.6.0
 Global Aircraft Stats mod version : 1.5.4
 
 Installation
