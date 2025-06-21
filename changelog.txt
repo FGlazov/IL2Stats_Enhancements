@@ -309,3 +309,8 @@ Version 1.10.7
 Version 1.11.0
 
 Update to 2.6.0 of enhancements.
+
+Version 1.11.1
+
+Update to 2.6.1 of enhancements.
+
