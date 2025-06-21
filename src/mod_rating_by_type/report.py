@@ -4,6 +4,7 @@ from .config_modules import MODULE_AMMO_BREAKDOWN, MODULE_REARM_ACCURACY_WORKARO
     MODULE_RAMS, module_active, MODULE_NO_PARACHUTE_DEATHS
 from mission_report.report import Sortie
 import operator
+from datetime import datetime
 
 TOTAL_HITS = 'total_hits'
 TOTAL_RECEIVED = 'total_received'
@@ -327,8 +328,13 @@ def event_bot_eject_leave(self, tik, bot_id, parent_id, pos):
         bot = parent.bot
         # ======================== MODDED PART BEGIN
         is_central = bot.coal_id == 2
-        before_1918 = self.date_game.year < 1918
-        if module_active(MODULE_NO_PARACHUTE_DEATHS) and is_central and before_1918:
+        before_parachute_cutoff = self.date_game < datetime(1918, 4, 1)
+
+        is_death = (is_central and before_parachute_cutoff) or not is_central
+        if module_active(MODULE_NO_PARACHUTE_DEATHS) and is_death:
+            if bot.sortie:
+                self.rm_active_sortie(sortie=bot.sortie)
+                self.logger_event({'type': 'bailout', 'bot': bot, 'pos': pos})
             bot.got_killed(pos=pos, force_by_dmg=True)
         # ======================== MODDED PART END (NO IF-ELSE IN MAIN VERSION)
         else:

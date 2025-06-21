@@ -166,3 +166,7 @@ Version 2.5.3
 Version 2.6.0
 
 - Add new module for WW1 servers. It considers any central power pilots which eject without a parachute as dead. This is determined by the mission date, any central power pilot before 1918 is considered to have no parachute. Before, you could eject, and quit mid descent before hitting the ground to get a bailout sortie.
+
+Version 2.6.1
+
+- Improve logic of WW1 bailout module. Any central pilot bailout before April 1918 and all entente bailouts are considered as deaths.
